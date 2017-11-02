@@ -1,0 +1,7 @@
+{
+    "template" : "d149ef9af1b57946d80563e97f4698b924c207a4e36703bd563e1c9a579e2577",
+    "clause" : "1d3d080ab0402774bb012c95fbdaccd470d752ebf5493c1995eafc250c82ff71",
+    "$class": "io.clause.saft.Launch",
+    "exchangeRate": 123,
+    "timestamp" : ""
+}

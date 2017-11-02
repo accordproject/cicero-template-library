@@ -1,0 +1,169 @@
+/**
+ * Data Model for the SAFT contract
+ */
+namespace io.clause.saft
+
+/**
+ * The network has launched!
+ */
+transaction Launch {
+  /**
+   * The exchange rate to use
+   */
+  o Double exchangeRate
+}
+
+/**
+ * The network has been terminated. :-(
+ */
+transaction Terminate {
+
+  /**
+   * How many funds remain, we need to reimburse them
+   */
+  o Double remainingFunds
+
+  /**
+   * What was the total amount invested
+   */
+  o Double totalInvested
+}
+
+/**
+ * Whether the network launches or terminates, we need to payout
+ */
+transaction Payout {
+
+  /**
+   * The amount to payout
+   */
+ o Double tokenAmount
+
+ /**
+  * The address to payout to
+  * TODO - this needs to be captured in the contract
+  */
+ o String tokenAddress
+}
+
+/**
+ * List of available states
+ */
+enum State {
+  o MA
+  o CA
+  o DE
+  o CO
+  o NY
+}
+
+/**
+ * Company types
+ */
+enum CompanyType {
+  o Incorporated
+  o Limited
+  o SA
+}
+
+/**
+ * The currencies supported
+ */
+enum Currency {
+  o USD
+  o EUR
+}
+
+/**
+ * Defines the data model for the Saft template.
+ */
+@AccordTemplateModel("saft")
+transaction TemplateModel { // TODO (DCS) this should be a concept, but blocked by https://github.com/hyperledger/composer/issues/2472
+  /**
+   * The name of the token to be sold
+   */
+  // @AccordType("Word (__ Word):?", "{% (d) => {let result = d[0]; if(d[2]) {result += ' ' + d[2]}; return result;} %}")
+  o String token
+
+  /**
+   * The name of the company selling the token
+   */
+  o String company
+
+  /**
+   * Type of company
+   */
+  o CompanyType companyType
+
+  /**
+   * The state the company is incorporated in
+   */
+  o State state
+
+  /**
+   * Whether the contract has an amendmentProvision
+   */
+  o Boolean amendmentProvision
+
+  /**
+   * The amount of coin being purchased
+   */
+  o Double purchaseAmount
+
+  /**
+   * The currency for the purchase
+   */
+  o Currency currency
+
+  /**
+   * The minimum amount that needs to be raised
+   */
+  o Double netProceedLimit
+
+  /**
+   * The date of the purchase
+   */
+  o DateTime date
+
+  /**
+   * The launch date
+   */
+  o DateTime deadlineDate
+
+  /**
+   * The discount rate as a percentage
+   */
+  o Double discountRatePercentage
+
+  /**
+   * The name of the network being launched
+   */
+  o String network
+
+  /**
+   * The name of the coin to be used to purchase
+   */
+  o String coin
+
+  /**
+   * The exchanges used for pricing
+   */
+  o String[] exchanges
+
+  /**
+   * The name of the company representative (first, last)
+   */
+  @AccordType("Word __ Word", "{% (d) => {return `${d[0]} ${d[2]}`;} %}")
+  o String companyRepresentative
+
+  /**
+   * The name of the purchaser (first, middle, last)
+   */
+  @AccordType("Word __ Word __ Word", "{% (d) => {return `${d[0]} ${d[2]} ${d[4]}`;} %}")
+  o String purchaser
+
+  /**
+   * The description of the offering
+   */
+  o String description
+}
