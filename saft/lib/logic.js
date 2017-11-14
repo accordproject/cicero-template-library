@@ -11,7 +11,7 @@
  * @param {io.clause.saft.Payout} context.response - the response
  * @AccordClauseLogic
  */
-function onLaunch(data, launch, payout) {
+function onLaunch(context) {
     logger.info(context);    
     var req = context.request;
     var res = context.response;
@@ -27,7 +27,7 @@ function onLaunch(data, launch, payout) {
  * @param {io.clause.saft.Payout} context.response - the response
  * @AccordClauseLogic
  */
-function onTerminate(data, terminate, payout) {
+function onTerminate(context) {
     logger.info(context);    
     var req = context.request;
     var res = context.response;
