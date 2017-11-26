@@ -1,0 +1,4 @@
+{
+    "$class": "org.accordproject.acceptanceofdelivery.Request",
+    "input": "World"
+}

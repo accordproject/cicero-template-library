@@ -1,4 +1,4 @@
-namespace org.accord.base
+namespace org.accordproject.base
 
 /**
  * Units for a duration. 24 hour days are assumed.
