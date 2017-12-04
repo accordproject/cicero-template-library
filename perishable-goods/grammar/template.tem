@@ -2,16 +2,14 @@ On receipt of the shipment [{shipment}] the importer [{importer}] pays the growe
 
 Shipping containers used must be temperature controlled, and temperature readings must be logged at least [{temperatureReadingFrequency}] per [{duration}].
 
-Shipments that arrive after [{dueDate}] are to be considered spoiled and are free.
+Shipments that arrive after [{dueDate}] are to be considered spoiled and must be arranged to be returned to or disposed of by grower at cost to grower.
 
-Shipments that have a temperature reading less than the agreed minimum temperate of [{minTemperature}] degrees centigrade have a cost penalty applied calculated using Formula 1 below. The minimum breach penalty factor to be be used is [{minPenaltyFactor}].
+Shipments that have a temperature reading less than the agreed minimum temperature of [{minTemperature}] degrees centigrade have a price penalty applied calculated using Formula 1 below. The minimum breach penalty factor to be be used is [{minPenaltyFactor}].
 
-Shipments that have a temperature reading greater than the agreed maximum temperate of [{maxTemperature}] degrees centigrade have a cost penalty applied calculated using Formula 2 below. The maximum breach penalty factor to be be used is [{maxPenaltyFactor}].
+Shipments that have a temperature reading greater than the agreed maximum temperature of [{maxTemperature}] degrees centigrade have a price penalty applied calculated using Formula 2 below. The maximum breach penalty factor to be be used is [{maxPenaltyFactor}].
 
 Formula 1: Maximum Temperature Breach Penalty:
-   absolute max temperature delta = |maximum temperature - agreed maximum temperature|
-   penalty = number of shipment units x absolute max temperature delta x maximum breach penalty factor
+   penalty = number of shipment units x difference between maximum temperature and agreed maximum temperature x maximum breach penalty factor
 
 Formula 2: Minimum Temperature Breach Penalty:
-   absolute min temperature delta = |minimum temperature - agreed minimum temperature|
-   penalty = number of shipment units x absolute min temperature delta x minimum breach penalty factor
+   penalty = number of shipment units x difference between minimum temperature and agreed minimum temperature x minimum breach penalty factor
