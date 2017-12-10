@@ -148,7 +148,7 @@ transaction TemplateModel { // TODO (DCS) this should be a concept, but blocked 
   /**
    * The exchanges used for pricing
    */
-  o String[] exchanges
+  o String exchanges
 
   /**
    * The name of the company representative (first, last)
