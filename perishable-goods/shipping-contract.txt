@@ -4,9 +4,9 @@ Shipping containers used must be temperature controlled, and temperature reading
 
 Shipments that arrive after 04/02/2018 are to be considered spoiled and must be arranged to be returned to or disposed of by grower at cost to grower.
 
-Shipments that have a temperature reading less than the agreed minimum temperature of 2 degrees centigrade have a price penalty applied calculated using Formula 1 below. The minimum breach penalty factor to be be used is 0.2.
+Shipments that have a temperature reading less than the agreed minimum temperature of 2 degrees centigrade have a price penalty applied calculated using Formula 1 below. The minimum breach penalty factor to be used is 0.2.
 
-Shipments that have a temperature reading greater than the agreed maximum temperature of 13 degrees centigrade have a price penalty applied calculated using Formula 2 below. The maximum breach penalty factor to be be used is 0.15.
+Shipments that have a temperature reading greater than the agreed maximum temperature of 13 degrees centigrade have a price penalty applied calculated using Formula 2 below. The maximum breach penalty factor to be used is 0.15.
 
 Formula 1: Maximum Temperature Breach Penalty:
    penalty = number of shipment units x difference between maximum temperature and agreed maximum temperature x maximum breach penalty factor
