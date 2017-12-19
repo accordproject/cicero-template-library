@@ -24,11 +24,17 @@ function execute(context) {
     res.penalty = 0;
 
     if (req.forceMajeure) {
-        logger.info('forceMajeure');
-        res.buyerMayTerminate = true;
+	// Can forceMajeure be claimed?
+	if (!data.forceMajeure) {
+            logger.info('forceMajeure cannot be claimed');
+	} else {
+            logger.info('forceMajeure claimed');
+            penalty = 0;
+            res.buyerMayTerminate = true;
+	}
     }
 
-    if (!req.forceMajeure && now.isAfter(agreed)) {
+    if ((!req.forceMajeure || !data.forceMajeure) && now.isAfter(agreed)) {
         logger.info('late');
         logger.info('penalty duration unit: ' + data.penaltyDuration.unit);
         logger.info('penalty duration amount: ' + data.penaltyDuration.amount);

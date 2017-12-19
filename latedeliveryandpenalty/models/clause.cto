@@ -12,7 +12,7 @@ transaction TemplateModel { // TODO (DCS) this should be a concept, but blocked 
   /**
    * Does the clause include a force majeure provision?
    */
-  o Boolean forceMajeure
+  o Boolean forceMajeure optional
 
   /**
    * For every penaltyDuration that the goods are late
