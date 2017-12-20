@@ -7,8 +7,8 @@
 /**
  * Execute the smart clause
  * @param {Context} context - the Accord context
- * @param {io.clause.saft.Launch} context.request - the incoming request
- * @param {io.clause.saft.Payout} context.response - the response
+ * @param {org.accordproject.saft.Launch} context.request - the incoming request
+ * @param {org.accordproject.saft.Payout} context.response - the response
  * @AccordClauseLogic
  */
 function onLaunch(context) {

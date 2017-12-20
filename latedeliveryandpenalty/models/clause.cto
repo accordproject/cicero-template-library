@@ -1,4 +1,4 @@
-namespace io.clause.latedeliveryandpenalty
+namespace org.accordproject.latedeliveryandpenalty
 
 import org.accordproject.base.*
 
@@ -8,7 +8,7 @@ import org.accordproject.base.*
  * must generate from input source text.
  */
 @AccordTemplateModel("latedeliveryandpenalty")
-transaction TemplateModel { // TODO (DCS) this should be a concept, but blocked by https://github.com/hyperledger/composer/issues/2472
+concept TemplateModel {
   /**
    * Does the clause include a force majeure provision?
    */

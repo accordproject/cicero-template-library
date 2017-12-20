@@ -1,4 +1,4 @@
-namespace io.clause.helloworld
+namespace org.accordproject.helloworld
 
 transaction Request {
   o String input
@@ -12,7 +12,7 @@ transaction Response {
  * The template model
  */
 @AccordTemplateModel("helloworld")
-transaction TemplateModel { // TODO (DCS) this should be a concept, but blocked by https://github.com/hyperledger/composer/issues/2472
+concept TemplateModel {
   /**
    * The name for the clause
    */

@@ -7,8 +7,8 @@
 /**
  * Execute the smart clause
  * @param {Context} context - the Accord context
- * @param {io.clause.helloworld.Request} context.request - the incoming request
- * @param {io.clause.helloworld.Response} context.response - the response
+ * @param {org.accordproject.helloworld.Request} context.request - the incoming request
+ * @param {org.accordproject.helloworld.Response} context.response - the response
  * @AccordClauseLogic
  */
 function execute(context) {
