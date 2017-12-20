@@ -1,6 +1,6 @@
 {
     "name": "helloworld",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Name of the person to greet: \"Dan\".\nThank you!",
     "scripts": {
         "test": "mocha"
