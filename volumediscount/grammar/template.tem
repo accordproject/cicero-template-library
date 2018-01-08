@@ -1,7 +1,5 @@
-Volume Discount Rate. The Merchant agrees to pay the Provider according to the following table:
-| annual charge     | discount rate  |
---------------------------------------
-| <[{firstVolume}]M | [{firstRate}]% |
-| [{firstVolume}]M<..<[{secondVolume}]M | [{secondRate}]% |
-| [{secondVolume}]M<.. | [{thirdRate}]% |
-plus a flat fee of [{flatFee}]%.
+Volume Discount Rate. The discount rate is defined according to the following table:
+| annual charge | discount rate |
+| <[{firstVolume}]M           | [{firstRate}]%            |
+| <[{secondVolume}]M          | [{secondRate}]%          |
+| >[{secondVolume}]M          | [{thirdRate}]%          |

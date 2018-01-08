@@ -1,7 +1,5 @@
-Volume Discount Rate. The Merchant agrees to pay the Provider according to the following table:
-| annual charge     | discount rate  |
---------------------------------------
-| <1M | 3% |
-| 1M<..<10M | 2% |
-| 10M<.. | 1.5% |
-plus a flat fee of 0.15%.
+Volume Discount Rate. The discount rate is defined according to the following table:
+| annual charge | discount rate |
+| <1M           | 3%            |
+| <10M          | 2.9%          |
+| >10M          | 2.8%          |

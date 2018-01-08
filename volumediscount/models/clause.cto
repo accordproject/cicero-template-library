@@ -32,11 +32,6 @@ concept TemplateModel {
    */
   o Double thirdRate
 
-  /**
-   * Flat fee
-   */
-  o Double flatFee
-
 }
 
 /**
@@ -59,9 +54,4 @@ transaction VolumeDiscountResponse {
    * The discount rate
    */
   o Double discountRate
-
-  /**
-   * The flat fee
-   */
-  o Double flatFee
 }

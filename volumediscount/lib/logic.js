@@ -18,10 +18,6 @@ function execute(context) {
     var res = context.response;
     var data = context.data;
 
-    // flatFee
-    var flatFee = context.data.flatFee;
-    res.flatFee = flatFee;
-
     // decision table
     var netAnnualChargeVolume = req.netAnnualChargeVolume;
 
