@@ -38,7 +38,6 @@ describe('Logic', () => {
     beforeEach( async function() {
         template = await Template.fromDirectory(rootDir);
         clause = new Clause(template);
-        clause.parse(clauseTextNoForceMajeure);
         clause.parse(clauseText);
         engine = new Engine();
     });
