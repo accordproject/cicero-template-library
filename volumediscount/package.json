@@ -1,0 +1,17 @@
+{
+    "name": "volumediscount",
+    "version": "0.0.4",
+    "description": "Volume Discount Rate. The Merchant agrees to pay the Provider according to the following table:\r\n| annual charge     | discount rate  |\r\n--------------------------------------\r\n| <1M | 3% |\r\n| 1M<..<10M | 2% |\r\n| 10M<.. | 1.5% |\r\nplus a flat fee of 0.15%.\r\n",
+    "scripts": {
+        "test": "mocha"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "chai-as-promised": "^7.1.1",
+        "chai-things": "^0.2.0",
+        "cicero-core": "^0.2.13",
+        "cicero-engine": "^0.2.13",
+        "mocha": "^4.0.1",
+        "moment": "^2.19.2"
+    }
+}
