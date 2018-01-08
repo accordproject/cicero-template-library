@@ -1,0 +1,5 @@
+Price of delivery is $[{deliveryPrice}]
+Acceleration must be between [{accelerationMin}] and [{accelerationMax}]
+For every reading outside this range pay a $[{accelerationBreachPenalty}] penalty
+Delivery must take less than [{deliveryLimitDuration}].
+Late deliveries pay a $[{lateDeliveryPenalty}] penalty.
