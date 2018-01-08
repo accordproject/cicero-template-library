@@ -1,7 +1,7 @@
 {
     "name": "fragile-goods",
     "version": "0.0.1",
-    "description": "Stateless clause for shipping fragile goods.",
+    "description": "Price of delivery is $1000.00\r\nAcceleration must be between -0.5 and 0.5\r\nFor every reading outside this range pay a $5.00 penalty\r\nDelivery must take less than 10 seconds.\r\nLate deliveries pay a $200 penalty.",
     "author": "Matt Roberts, clause.io",
     "license": "Apache-2.0",
     "scripts": {
