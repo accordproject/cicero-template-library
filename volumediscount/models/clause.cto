@@ -1,7 +1,5 @@
 namespace org.accordproject.volumediscount
 
-import org.accordproject.base.*
-
 /**
  * Defines the data model for the VolumeDiscount template.
  * This defines the structure of the abstract syntax tree that the parser for the template
