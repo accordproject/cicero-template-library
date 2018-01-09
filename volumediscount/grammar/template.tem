@@ -2,4 +2,4 @@ Volume Discount Rate. The discount rate is defined according to the following ta
 | annual charge | discount rate |
 | <[{firstVolume}]M           | [{firstRate}]%            |
 | <[{secondVolume}]M          | [{secondRate}]%          |
-| >[{secondVolume}]M          | [{thirdRate}]%          |
+| >[{thirdVolume}]M          | [{thirdRate}]%          |
