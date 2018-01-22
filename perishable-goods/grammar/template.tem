@@ -1,15 +1,14 @@
 On receipt of the shipment [{shipment}] the importer [{importer}] pays the grower [{grower}] [{unitPrice}] USD per [{unit}]. The shipment must contain between [{minUnits}] and [{maxUnits}] [{unit}] of [{product}].
 
-Shipping containers used must be temperature controlled, and temperature readings must be logged at least [{temperatureReadingFrequency}] per [{duration}].
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least [{sensorReadingFrequency}] per [{duration}].
 
 Shipments that arrive after [{dueDate}] are to be considered spoiled and must be arranged to be returned to or disposed of by grower at cost to grower.
 
-Shipments that have a temperature reading less than the agreed minimum temperature of [{minTemperature}] degrees centigrade have a price penalty applied calculated using Formula 1 below. The minimum breach penalty factor to be used is [{minPenaltyFactor}].
+Temperature readings for the shipment must be between [{minTemperature}] and [{maxTemperature}].
 
-Shipments that have a temperature reading greater than the agreed maximum temperature of [{maxTemperature}] degrees centigrade have a price penalty applied calculated using Formula 2 below. The maximum breach penalty factor to be used is [{maxPenaltyFactor}].
+Humidity readings for the shipment must be between [{minHumidity}] and [{maxHumidity}].
 
-Formula 1: Maximum Temperature Breach Penalty:
-   penalty = number of shipment units x difference between maximum temperature and agreed maximum temperature x maximum breach penalty factor
+Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is [{penaltyFactor}].
 
-Formula 2: Minimum Temperature Breach Penalty:
-   penalty = number of shipment units x difference between minimum temperature and agreed minimum temperature x minimum breach penalty factor
+Formula for Breach Penalty Calculation:
+   penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor

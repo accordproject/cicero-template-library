@@ -52,29 +52,50 @@ function payOut(context) {
     } else {
         res.late = false;       
         // find the lowest temperature reading
-        if (shipment.temperatureReadings) {
-            // sort the temperatureReadings by centigrade
-            shipment.temperatureReadings.sort(function (a, b) {
+        if (shipment.sensorReadings) {
+            // sort the sensorReadings by centigrade
+            shipment.sensorReadings.sort(function (a, b) {
                 return (a.centigrade - b.centigrade);
             });
-            var lowestReading = shipment.temperatureReadings[0];
-            var highestReading = shipment.temperatureReadings[shipment.temperatureReadings.length - 1];
+            var lowestReading = shipment.sensorReadings[0];
+            var highestReading = shipment.sensorReadings[shipment.sensorReadings.length - 1];
             var penalty = 0;
             logger.info('Lowest temp reading: ' + lowestReading.centigrade);
             logger.info('Highest temp reading: ' + highestReading.centigrade);
 
             // does the lowest temperature violate the contract?
             if (lowestReading.centigrade < data.minTemperature) {
-                penalty += (data.minTemperature - lowestReading.centigrade) * data.minPenaltyFactor;
+                penalty += (data.minTemperature - lowestReading.centigrade) * data.penaltyFactor;
                 logger.info('Min temp penalty: ' + penalty);
             }
 
             // does the highest temperature violate the contract?
             if (highestReading.centigrade > data.maxTemperature) {
-                penalty += (highestReading.centigrade - data.maxTemperature) * data.maxPenaltyFactor;
+                penalty += (highestReading.centigrade - data.maxTemperature) * data.penaltyFactor;
                 logger.info('Max temp penalty: ' + penalty);
             }
 
+            // sort the sensorReadings by humidity
+            shipment.sensorReadings.sort(function (a, b) {
+                return (a.humidity - b.humidity);
+            });
+            var lowestReading = shipment.sensorReadings[0];
+            var highestReading = shipment.sensorReadings[shipment.sensorReadings.length - 1];
+            logger.info('Lowest humidity reading: ' + lowestReading.humidity);
+            logger.info('Highest humidity reading: ' + highestReading.humidity);
+
+            // does the lowest humidity violate the contract?
+            if (lowestReading.humidity < data.minHumidity) {
+                penalty += (data.minHumidity - lowestReading.humidity) * data.penaltyFactor;
+                logger.info('Min humidity penalty: ' + penalty);
+            }
+
+            // does the highest humidity violate the contract?
+            if (highestReading.humidity > data.maxHumidity) {
+                penalty += (highestReading.humidity - data.maxHumidity) * data.penaltyFactor;
+                logger.info('Max humidity penalty: ' + penalty);
+            }
+            
             // apply any penalities
             var totalPenalty = penalty * shipmentReceived.unitCount;
             res.penalty = totalPenalty;

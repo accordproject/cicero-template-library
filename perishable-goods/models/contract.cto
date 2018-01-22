@@ -25,10 +25,11 @@ concept TemplateModel {
   o Integer minUnits
   o Integer maxUnits
   o String product
-  o Integer temperatureReadingFrequency
+  o Integer sensorReadingFrequency
   o Duration duration
   o Double minTemperature
   o Double maxTemperature
-  o Double minPenaltyFactor
-  o Double maxPenaltyFactor
+  o Double minHumidity
+  o Double maxHumidity
+  o Double penaltyFactor
 }

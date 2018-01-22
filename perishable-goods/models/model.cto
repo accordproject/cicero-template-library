@@ -43,8 +43,9 @@ abstract transaction ShipmentTransaction {
  * An temperature reading for a shipment. E.g. received from a
  * device within a temperature controlled shipping container
  */
-transaction TemperatureReading extends ShipmentTransaction {
+transaction SensorReading extends ShipmentTransaction {
   o Double centigrade
+  o Double humidity
 }
 
 /**
@@ -73,7 +74,7 @@ asset Shipment identified by shipmentId {
   o ShipmentStatus status
   --> Grower grower
   --> Importer importer
-  o TemperatureReading[] temperatureReadings optional
+  o SensorReading[] sensorReadings optional
   /**
    * the link to the smart clause for this shipment
    */
