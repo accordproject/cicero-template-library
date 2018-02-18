@@ -26,7 +26,7 @@
  * @AccordClauseLogic
  */
 function execute(context) {
-    logger.info(context);
+    // logger.info(context);
     var req = context.request;
     var res = context.response;
     var data = context.data;

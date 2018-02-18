@@ -1,0 +1,33 @@
+{
+    "$class":"org.accordproject.perishablegoods.ShipmentReceived",
+    "unitCount":3000,
+    "shipment":{
+        "$class":"org.accordproject.perishablegoods.Shipment",
+        "shipmentId":"SHIP_001",
+        "sensorReadings":[
+            {
+                "$class":"org.accordproject.perishablegoods.SensorReading",
+                "centigrade":2,
+                "humidity":80,
+                "shipment":"resource:org.accordproject.perishablegoods.Shipment#SHIP_001",
+                "transactionId":"a"
+            },
+            {
+                "$class":"org.accordproject.perishablegoods.SensorReading",
+                "centigrade":5,
+                "humidity":90,
+                "shipment":"resource:org.accordproject.perishablegoods.Shipment#SHIP_001",
+                "transactionId":"b"
+            },
+            {
+                "$class":"org.accordproject.perishablegoods.SensorReading",
+                "centigrade":15,
+                "humidity":65,
+                "shipment":"resource:org.accordproject.perishablegoods.Shipment#SHIP_001",
+                "transactionId":"c"
+            }
+        ]
+    },
+    "transactionId":"99c64b8a-b3b0-408a-8ec4-7820776cd447",
+    "timestamp":"2018-02-18T11:11:41.264Z"
+}

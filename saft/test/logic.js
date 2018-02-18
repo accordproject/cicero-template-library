@@ -44,7 +44,7 @@ describe('Logic', () => {
     
     describe('#Launch', async function() {
 
-        it('when network launches should be a payout', async function() {
+        it('when network launches there should be a payout', async function() {
             const request = {};
             const NS = 'org.accordproject.saft';
             request.$class = `${NS}.Launch`;

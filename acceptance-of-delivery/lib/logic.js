@@ -48,7 +48,7 @@ function execute(context) {
 
     res.shipper = factory.newRelationship('org.hyperledger.composer.system', 'Participant', data.shipper);
     res.receiver = factory.newRelationship('org.hyperledger.composer.system', 'Participant', data.receiver);
-    logger.info(context);
+    // logger.info(context);
 }
 
 /* eslint-enable no-unused-vars */
