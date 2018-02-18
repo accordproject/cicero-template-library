@@ -4,7 +4,7 @@
 This is a smart legal clause conforms that to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
-This clause allows the receiver of goods to inspect them for a given time period after delivery.
+> This clause allows the receiver of goods to inspect them for a given time period after delivery.
 
 ## Running this clause
 
@@ -66,7 +66,7 @@ For the request above, you should see the following response:
 
 ## Testing this clause
 
-This clause comes with an automated test that ensures that is executes correctly under different conditions. To test the clause, complete the following steps.
+This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.
 
 You need npm and node to test a clause. You can download both from [here](https://nodejs.org/).
 
@@ -84,10 +84,10 @@ npm install
 npm test
 ```
 If successful, you should see the following output
-```shell
+```
 mattmbp:acceptance-of-delivery matt$ npm test
 
-> acceptance-of-delivery@0.0.3 test /Users/matt/dev/mttrbrts/cicero-template-library/acceptance-of-delivery
+> acceptance-of-delivery@0.0.3 test /Users/matt/dev/accordproject/cicero-template-library/acceptance-of-delivery
 > mocha
 
 21:57:31 - info: Logging initialized. 2018-02-17T21:57:31.074Z
