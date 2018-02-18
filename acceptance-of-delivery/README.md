@@ -6,6 +6,12 @@ This is a smart legal clause conforms that to the [Accord Protocol Template Spec
 ## Description
 > This clause allows the receiver of goods to inspect them for a given time period after delivery.
 
+This clause contains:
+- *Some sample Clause Text* - [sample.txt](sample.txt)
+- *A template* - [grammar/template.tem](grammar/template.tem)
+- *A data model* - [models/model.cto](models/model.cto)
+- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+
 ## Running this clause
 
 ### On your own machine

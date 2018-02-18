@@ -7,6 +7,12 @@ This is a smart legal contract conforms that to the [Accord Protocol Template Sp
 
 > The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.
 
+This clause contains:
+- *Sample Clause Text* - [sample.txt](sample.txt)
+- *A template* - [grammar/template.tem](grammar/template.tem)
+- *Some data models* - [models/model.cto](models/model.cto), [models/states.cto](models/states.cto)
+- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+
 ## Running this clause
 
 ### On your own machine

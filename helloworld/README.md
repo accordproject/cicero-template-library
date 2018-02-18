@@ -6,6 +6,12 @@ This is a smart legal clause conforms that to the [Accord Protocol Template Spec
 
 > This is the Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.
 
+This clause contains:
+- *Some sample Clause Text* - [sample.txt](sample.txt)
+- *A template* - [grammar/template.tem](grammar/template.tem)
+- *A data model* - [models/model.cto](models/model.cto)
+- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+
 ## Running this clause
 
 ### On your own machine

@@ -7,6 +7,12 @@ This is a smart legal clause conforms that to the [Accord Protocol Template Spec
 
 > A sample Late Delivery And Penalty clause.
 
+This clause contains:
+- *Some sample Clause Text* - [sample.txt](sample.txt), [shipping-noforcemajure.txt](sample-noforcemajure.txt)
+- *A template* - [grammar/template.tem](grammar/template.tem)
+- *Some data models* - [models/model.cto](models/model.cto), [models/contact.cto](models/contact.cto)
+- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+
 ## Running this clause
 
 ### On your own machine
@@ -45,6 +51,22 @@ mattmbp:latedeliveryandpenalty matt$ cicero execute
 11:03:26 - info: CICERO-ENGINE capped.
 11:03:26 - info: {"clause":"latedeliveryandpenalty@0.0.4-a1c6d2f2e8f97d23244f73f21d67ffdac326b6f33425d56cef9f02a0177b5c0d","request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"December 17, 2017 03:24:00","deliveredAt":null,"goodsValue":200},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","penalty":110.00000000000001,"buyerMayTerminate":false,"transactionId":"92141ecd-3081-4fa6-938f-9f94917bcc47","timestamp":"2018-02-18T11:03:26.383Z"}}
 ```
+
+This template provides additional sample clause text. You can execute the second sample with the command:
+```
+cicero execute --dsl sample-noforcemajeure.txt 
+```
+You should then see the following output.
+```
+...
+11:52:42 - info: CICERO-ENGINE late
+11:52:42 - info: CICERO-ENGINE penalty duration unit: DAY
+11:52:42 - info: CICERO-ENGINE penalty duration amount: 9
+11:52:42 - info: CICERO-ENGINE diff:63
+11:52:42 - info: CICERO-ENGINE capped.
+...
+```
+> Output above is abbreviated for clarity at `...`
 
 ### Sample Payload Data
 

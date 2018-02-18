@@ -6,6 +6,12 @@ This is a smart legal clause conforms that to the [Accord Protocol Template Spec
 
 > This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.
 
+This clause contains:
+- *Some sample Clause Text* - [sample.txt](sample.txt), [shipping-contract.txt](shipping-contact.txt)
+- *A template* - [grammar/template.tem](grammar/template.tem)
+- *Some data models* - [models/model.cto](models/model.cto), [models/contact.cto](models/contact.cto)
+- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+
 ## Running this clause
 
 ### On your own machine
