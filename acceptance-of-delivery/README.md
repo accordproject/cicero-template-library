@@ -84,7 +84,7 @@ npm install
 npm test
 ```
 If successful, you should see the following output
-```
+```shell
 mattmbp:acceptance-of-delivery matt$ npm test
 
 > acceptance-of-delivery@0.0.3 test /Users/matt/dev/mttrbrts/cicero-template-library/acceptance-of-delivery
