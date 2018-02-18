@@ -1,7 +1,7 @@
 
 # Acceptance of Delivery
 
-This is a smart legal clause conforms that to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine, or on the [Clause](https://clause.io) platform. 
+This is a smart legal clause conforms that to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
 This clause allows the receiver of goods to inspect them for a given time period after delivery.
@@ -39,11 +39,10 @@ mattmbp:acceptance-of-delivery matt$ cicero execute
 21:49:40 - info: {"clause":"acceptance-of-delivery@0.0.3-e407ff0a315c5b1c267677edbda49a32d4e9ef890ad21a3e40b3bc110d06c88c","request":{"$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable","deliverableReceivedAt":"January 1, 2018 16:34:00","inspectionPassed":true},"response":{"$class":"org.accordproject.acceptanceofdelivery.InspectionResponse","status":"OUTSIDE_INSPECTION_PERIOD","shipper":"resource:org.hyperledger.composer.system.Participant#Party%20A","receiver":"resource:org.hyperledger.composer.system.Participant#Party%20B","transactionId":"57df30ca-3755-457b-9176-5fae50dd3283","timestamp":"2018-02-17T21:49:40.206Z"}}
 ```
 
-### Via a REST API
+### Sample Payload Data
 
-Either using [cicero-server](https://github.com/accordproject/cicero/tree/master/packages/cicero-server) or on clause.io
 
-Sample request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/acceptance-of-delivery/data.json)
+Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/acceptance-of-delivery/data.json)
 ```json
 {
     "$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable",
@@ -52,7 +51,7 @@ Sample request, as in [data.json](https://github.com/accordproject/cicero-templa
 }
 ```
 
-You should see the following response:
+For the request above, you should see the following response:
 ```json
 {
     "$class":"org.accordproject.acceptanceofdelivery.InspectionResponse",
