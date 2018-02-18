@@ -8,10 +8,10 @@ This is a smart legal clause conforms that to the [Accord Protocol Template Spec
 > A sample volume discount clause.
 
 This clause contains:
-- *Sample Clause Text* - [./sample.txt]()
-- *A template* - [./grammar/template.tem]()
-- *A data model* - [./models/clause.cto]()
-- *Contact logic* (in JavaScript) - [./logic/logic.js]()
+- *Sample Clause Text* - [sample.txt]()
+- *A template* - [grammar/template.tem]()
+- *A data model* - [models/clause.cto]()
+- *Contact logic* (in JavaScript) - [logic/logic.js]()
 
 ## Running this clause
 
