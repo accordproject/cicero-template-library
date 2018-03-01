@@ -30,6 +30,12 @@ These templates can be parsed and executed by the [Cicero](https://github.com/ac
 | [Simple Agreement for Future Tokens](saft/) | The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches. | Contract |
 | [Volume Discount](volumediscount/) | A sample volume discount clause. | Clause |
 
+### Services
+
+| Template Name | Description | Type |
+|---------------|-------------|------|
+| [Service Level Agreement](servicelevelagreement/) | A service level agreement that gives invoice credit based on service availability. | Contract |
+
 ## Contributing
 
 Can't find a something? Then why not make a new template yourself? 

@@ -1,0 +1,23 @@
+namespace org.accordproject.servicelevelagreement
+
+@AccordTemplateModel("servicelevelagreement")
+concept TemplateModel {
+ o Integer paymentPeriod 
+ o Double monthlyCapPercentage
+ o Double yearlyCapPercentage
+ o Double availability1
+ o Double serviceCredit1
+ o Double availability2
+ o Double serviceCredit2
+}
+
+transaction MonthSummary {
+  o Double monthlyServiceLevel
+  o Double monthlyCharge
+  o Double last11MonthCredit
+  o Double last11MonthCharge
+}
+
+transaction InvoiceCredit {
+  o Double monthlyCredit
+}
