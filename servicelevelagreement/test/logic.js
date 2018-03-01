@@ -120,7 +120,7 @@ describe('Logic', () => {
                 "last11MonthCredit": 0,
                 "last11MonthCharge": 0
             };
-            engine.execute(clause, request).catch((e) => {
+            await engine.execute(clause, request).catch((e) => {
                 e.message.should.equal('A service level must be at least 0% and at most 100%.');
             });
         });

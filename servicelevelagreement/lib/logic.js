@@ -25,8 +25,8 @@ function execute(context) {
             throw new Error('Template variables must not be negative.')
         }
 
-    if(data.monthlyServiceLevel < 0 
-        || data.monthlyServiceLevel > 100){
+    if(req.monthlyServiceLevel < 0 
+        || req.monthlyServiceLevel > 100){
             throw new Error('A service level must be at least 0% and at most 100%.')
         }
 
