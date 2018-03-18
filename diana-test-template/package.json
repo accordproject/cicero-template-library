@@ -1,0 +1,8 @@
+{
+    "name": "diana-test-template",
+    "version": "0.0.0",
+    "description": "Player to draft during specific game",
+    "engines": {
+      "cicero": "^0.2.46"
+    }
+  }

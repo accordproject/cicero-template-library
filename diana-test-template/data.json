@@ -1,0 +1,4 @@
+{
+    "$class": "test.dianaTestTemplate.Request",
+    "input": "hi"
+}

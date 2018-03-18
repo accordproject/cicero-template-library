@@ -1,0 +1,21 @@
+namespace test.dianaTestTemplate
+
+transaction Request {
+  o String input
+}
+
+transaction Response {
+  o String output
+}
+
+/**
+ * The template model
+ */
+@AccordTemplateModel("diana-test-template")
+concept TemplateModel {
+  /**
+   * The name for the clause
+   */
+  o String name
+  o DateTime gameDate
+}
