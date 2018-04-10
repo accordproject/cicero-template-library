@@ -2,6 +2,8 @@
     "name": "demandforecast",
     "version": "0.0.6",
     "description": "A sample demandforecast clause.",
+    "author": "Jerome Simeon, clause.io",
+    "license": "Apache-2.0",
     "engines": {
         "cicero": "^0.2.28"
     },
