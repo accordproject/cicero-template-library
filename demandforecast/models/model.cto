@@ -1,0 +1,34 @@
+namespace org.accordproject.demandforecast
+
+@AccordTemplateModel("demandforecast")
+concept TemplateModel {
+  o String purchaser
+  o String supplier 
+  o DateTime effectiveDate
+  o Double minimumPercentage
+}
+
+/**
+ * Defines the output data required by the template
+ */
+transaction ForecastRequest {
+/**
+ * How much is the forecast?
+ */
+  o Integer supplyForecast
+}
+
+transaction BindingResponse {
+/**
+ * Amount must purchase.
+ */
+  o Double requiredPurchase
+/**
+ * Which year?
+ */
+  o Integer year
+/**
+ * Which quarter in this year?
+ */
+  o Integer quarter
+}
