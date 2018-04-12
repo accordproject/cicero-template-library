@@ -1,0 +1,1 @@
+On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
