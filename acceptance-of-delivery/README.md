@@ -1,7 +1,7 @@
 
 # Acceptance of Delivery
 
-This is a smart legal clause conforms that to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
+This is a smart legal clause that conforms to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
 > This clause allows the receiver of goods to inspect them for a given time period after delivery.
@@ -26,7 +26,7 @@ cd acceptance-of-delivery
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --dsl ./sample --data ./data.json
+cicero execute --template ./ --dsl ./sample.txt --data ./data.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
