@@ -23,7 +23,7 @@ function execute(context) {
     var data = context.data;
     var now = moment(req.timestamp);
 
-    if (now.isBefore(data.effectiveDate)) {
+    if (now.isBefore(moment(data.effectiveDate,"MM-DD-YYYY"))) {
         throw new Error('Forecast was received before the effective date');
     }
     if (!isLastDayOfQuarter(now)) {
