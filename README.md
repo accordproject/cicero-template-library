@@ -22,6 +22,7 @@ These templates can be parsed and executed by the [Cicero](https://github.com/ac
 | [Fragile Goods](fragile-goods/) | This clause specifies penalties for shocks caused to a fragile package in transport | Clause |
 | [Late Delivery and Penalty](latedeliveryandpenalty/) | A sample Late Delivery And Penalty clause. | Clause | 
 | [Perishable Goods](perishable-goods/) | This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached. | Clause |
+| [Demand Forecast](demandforecast/) | This clause specifies obligations for a demand forecast from a purchaser. | Clause |
 
 ### Finance
 
