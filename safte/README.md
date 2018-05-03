@@ -56,7 +56,8 @@ Request, as in [data.json](https://github.com/accordproject/cicero-template-libr
 {
     "$class": "org.accordproject.safte.TokenSale",
     "tokenPrice": 1.23
-}```
+}
+```
 
 For the request above, you should see the following response:
 ```json
