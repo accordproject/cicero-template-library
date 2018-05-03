@@ -100,12 +100,12 @@ mattmbp:safte matt$ npm test
 
 
   Logic
-    #Launch
+    #TokenSale
 ...
-      ✓ when network launches there should be a payout
+      ✓ if token sale occurs, should provide a share of that sale
+...
 
-
-  1 passing (711ms)
+  3 passing (3s)
 
 ```
 > Output above is abbreviated for clarity at `...`

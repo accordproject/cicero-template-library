@@ -42,9 +42,9 @@ describe('Logic', () => {
         engine = new Engine();    
     });
     
-    describe('#Launch', async function() {
+    describe('#TokenSale', async function() {
 
-        it('when network launches there should be a payout', async function() {
+        it('if token sale occurs, should provide a share of that sale', async function() {
             const request = {};
             const NS = 'org.accordproject.safte';
             request.$class = `${NS}.TokenSale`;
@@ -52,6 +52,32 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request);
             result.should.not.be.null;
             result.response.tokenAmount.should.equal(21.855057260250017);
+        });
+    });
+    
+    describe('#', async function() {
+
+        it('if equity financing is chosen, should provide a share of that equity', async function() {
+            const request = {};
+            const NS = 'org.accordproject.safte';
+            request.$class = `${NS}.EquityFinancing`;
+            request.sharePrice = 3.00;
+            const result = await engine.execute(clause, request);
+            result.should.not.be.null;
+            result.response.equityAmount.should.equal(8.960573476702509);
+        });
+    });
+
+    describe('#', async function() {
+
+        it('if dissolution event occurs, should refund the amount', async function() {
+            const request = {};
+            const NS = 'org.accordproject.safte';
+            request.$class = `${NS}.DissolutionEvent`;
+            request.cause = "Went Shopping";
+            const result = await engine.execute(clause, request);
+            result.should.not.be.null;
+            result.response.amount.should.equal(25);
         });
     });
 });
