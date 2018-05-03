@@ -1,0 +1,4 @@
+{
+    "$class": "org.accordproject.safte.TokenSale",
+    "tokenPrice": 1.23
+}

@@ -1,0 +1,130 @@
+/**
+ * Data Model for the SAFTE contract
+ */
+namespace org.accordproject.safte
+
+import org.accordproject.us.state.*
+
+/**
+ * Token are issued!
+ */
+transaction TokenSale {
+  /**
+   * The token price
+   */
+  o Double tokenPrice
+}
+
+/**
+ * Token share
+ */
+transaction TokenShare {
+  /**
+   * The token amount
+   */
+  o Double tokenAmount
+}
+
+/**
+ * Financing through equity
+ */
+transaction EquityFinancing {
+  /**
+   * The share price
+   */
+  o Double sharePrice
+}
+
+/**
+ * Equity share
+ */
+transaction EquityShare {
+  /**
+   * The token amount
+   */
+  o Double equityAmount
+}
+
+/**
+ * Dissolution event
+ */
+transaction DissolutionEvent {
+  o String cause
+}
+
+/**
+ * Payout
+ */
+transaction PayOut {
+  /**
+   * The amount to payout
+   */
+ o Double amount
+}
+
+/**
+ * Defines the data model for the Safte template.
+ */
+@AccordTemplateModel("safte")
+concept TemplateModel {
+  /**
+   * The name of the company selling the token
+   */
+  o String companyName
+
+  /**
+   * The company registration number
+   */
+  o Long companyRegistrationNumber
+
+  /**
+   * The name of the purchaser
+   */
+  o String purchaser
+
+  /**
+   * Jurisdiction
+   */
+  o State jurisdiction
+
+  /**
+   * The amount being purchased
+   */
+  o Double purchaseAmount
+
+  /**
+   * The discount
+   */
+  o Double discount
+
+  /**
+   * The project name (the "Tokens")
+   */
+  o String projectName
+
+  /**
+   * The project description
+   */
+  o String projectDescription
+
+  /**
+   * The number of consecutive months raising capital
+   */
+  o Integer months
+
+  /**
+   * The number of consecutive months raising capital (text)
+   */
+  o String monthsText
+
+  /**
+   * The aggregate capital raised
+   */
+  o Double amount
+
+  /**
+   * The aggregate capital raised (text)
+   */
+  o String amountText
+
+}
