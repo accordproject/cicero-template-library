@@ -31,17 +31,17 @@ function execute(context) {
     var data = context.data;
     var now = moment(req.timestamp);
 
-		var royaltiesAmount = request.netSaleRevenue * data.royaltyRate / 100.00;
-		var sublicensingAmount = request.sublicensingRevenue * data.sublicensingRoyaltyRate / 100.00;
-		res.totalAmount = royaltiesAmount + sublicensingAmount;
-		
+    var royaltiesAmount = request.netSaleRevenue * data.royaltyRate / 100.00;
+    var sublicensingAmount = request.sublicensingRevenue * data.sublicensingRoyaltyRate / 100.00;
+    res.totalAmount = royaltiesAmount + sublicensingAmount;
+    
     if (!req.permissionGrantedBy) {
-				// TODO: add for other kinds of duration than DAY-based
-				res.dueBy = now.endOf('quarter').add(data.paymentPeriod.amount,'d').format('MM-DD-YYYY');
-		} else {
-				// TODO: add for other kinds of duration than DAY-based
-				res.dueBy = now.endOf('quarter').add(data.paymentPeriodWithPermission.amount,'d').format('MM-DD-YYYY');
-		}
+        // TODO: add for other kinds of duration than DAY-based
+        res.dueBy = now.endOf('quarter').add(data.paymentPeriod.amount,'d').format('MM-DD-YYYY');
+    } else {
+        // TODO: add for other kinds of duration than DAY-based
+        res.dueBy = moment(req.permissionGrantedBy).add(data.paymentPeriodWithPermission.amount,'d').format('MM-DD-YYYY');
+    }
 }
 
 /* eslint-enable no-unused-vars */

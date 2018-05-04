@@ -7,8 +7,8 @@ import org.accordproject.base.*
  */
 transaction PaymentRequest {
   o Double netSaleRevenue
-	o Double sublicensingRevenue
-	o DateTime permissionGrantedBy optional
+  o Double sublicensingRevenue
+  o DateTime permissionGrantedBy optional
 }
 
 /**
@@ -16,7 +16,7 @@ transaction PaymentRequest {
  */
 transaction PayOut {
   o Double totalAmount
-	o String dueBy
+  o String dueBy
 }
 
 /**
@@ -25,12 +25,12 @@ transaction PayOut {
 @AccordTemplateModel("ip-payment")
 concept TemplateModel {
   /* royalty */
-	o String royaltyText
-	o Double royaltyRate
+  o String royaltyText
+  o Double royaltyRate
 
-  /* royalty */
-	o String sublicensingRoyaltyText
-	o Double sublicensingRoyaltyRate
+  /* sub-licensing */
+  o String sublicensingRoyaltyText
+  o Double sublicensingRoyaltyRate
 
   /* payment */
   o Duration paymentPeriod
