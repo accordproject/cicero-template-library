@@ -28,15 +28,16 @@
 function execute(context) {
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
     var now = moment(req.timestamp);
     var received = moment(req.deliverableReceivedAt);
+    logger.info(context);
     
     if(now.isBefore(received)) {
         throw new Error('Timetamp of the transaction is before the deliverable date.')
     }
 
-    if(now.isAfter(received.add(data.businessDays, 'days'))) {
+    if(now.isAfter(received.add(contract.businessDays, 'days'))) {
         res.status = "OUTSIDE_INSPECTION_PERIOD";        
     }
     else if(req.inspectionPassed) {
@@ -46,8 +47,8 @@ function execute(context) {
         res.status = "FAILED_TESTING";        
     }
 
-    res.shipper = factory.newRelationship('org.hyperledger.composer.system', 'Participant', data.shipper);
-    res.receiver = factory.newRelationship('org.hyperledger.composer.system', 'Participant', data.receiver);
+    res.shipper = factory.newRelationship('org.hyperledger.composer.system', 'Participant', contract.shipper);
+    res.receiver = factory.newRelationship('org.hyperledger.composer.system', 'Participant', contract.receiver);
     // logger.info(context);
 }
 

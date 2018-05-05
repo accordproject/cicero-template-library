@@ -15,8 +15,8 @@ function execute(context) {
     // logger.info(context);
     var req = context.request;
     var res = context.response;
-    var data = context.data;
-    res.output = 'Hello ' + data.name + ' ' + request.input;
+    var contract = context.contract;
+    res.output = 'Hello ' + contract.name + ' ' + request.input;
 }
 
 /*eslint-enable no-unused-vars*/

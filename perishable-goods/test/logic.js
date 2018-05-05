@@ -56,7 +56,9 @@ describe('Logic', () => {
             const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};            
             shipment.sensorReadings = [readingLow, readingOk, readingHigh];
             request.shipment = shipment;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.totalPrice.should.equal(300);
             result.response.penalty.should.equal(4200);

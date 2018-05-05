@@ -53,7 +53,9 @@ describe('Logic', () => {
                 "last11MonthCredit": 0,
                 "last11MonthCharge": 0
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0);
         });
@@ -66,7 +68,9 @@ describe('Logic', () => {
                 "last11MonthCredit": 0,
                 "last11MonthCharge": 0
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0.2);
         });
@@ -79,7 +83,9 @@ describe('Logic', () => {
                 "last11MonthCredit": 0,
                 "last11MonthCharge": 0
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0.3);
         });
@@ -93,7 +99,9 @@ describe('Logic', () => {
                 "last11MonthCredit": 0,
                 "last11MonthCharge": 0
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(1);
         });
@@ -107,7 +115,9 @@ describe('Logic', () => {
                 "last11MonthCredit": 11.01,
                 "last11MonthCharge": 110
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0.99);
         });

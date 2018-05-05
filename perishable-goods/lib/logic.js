@@ -33,19 +33,19 @@ function payOut(context) {
     var shipment = shipmentReceived.shipment;
     var res = context.response;
     res.shipment = shipment;
-    var data = context.data;
-    var payOut = data.unitPrice * shipmentReceived.unitCount;
+    var contract = context.contract;
+    var payOut = contract.unitPrice * shipmentReceived.unitCount;
 
     logger.info('Base payOut: ' + payOut);
     logger.info('Received at: ' + shipmentReceived.timestamp);
-    logger.info('Contract arrivalDateTime: ' + data.dueDate);
+    logger.info('Contract arrivalDateTime: ' + contract.dueDate);
 
-    if(shipmentReceived.unitCount < data.minUnits || shipmentReceived.unitCount > data.maxUnits) {
+    if(shipmentReceived.unitCount < contract.minUnits || shipmentReceived.unitCount > contract.maxUnits) {
         throw new Error('Units received out of range for the contract.');
     }
 
     // if the shipment did not arrive on time the payout is zero
-    if (shipmentReceived.timestamp > data.dueDate) {
+    if (shipmentReceived.timestamp > contract.dueDate) {
         payOut = 0;
         res.late = true;
         logger.info('Late shipment');
@@ -64,14 +64,14 @@ function payOut(context) {
             logger.info('Highest temp reading: ' + highestReading.centigrade);
 
             // does the lowest temperature violate the contract?
-            if (lowestReading.centigrade < data.minTemperature) {
-                penalty += (data.minTemperature - lowestReading.centigrade) * data.penaltyFactor;
+            if (lowestReading.centigrade < contract.minTemperature) {
+                penalty += (contract.minTemperature - lowestReading.centigrade) * contract.penaltyFactor;
                 logger.info('Min temp penalty: ' + penalty);
             }
 
             // does the highest temperature violate the contract?
-            if (highestReading.centigrade > data.maxTemperature) {
-                penalty += (highestReading.centigrade - data.maxTemperature) * data.penaltyFactor;
+            if (highestReading.centigrade > contract.maxTemperature) {
+                penalty += (highestReading.centigrade - contract.maxTemperature) * contract.penaltyFactor;
                 logger.info('Max temp penalty: ' + penalty);
             }
 
@@ -85,14 +85,14 @@ function payOut(context) {
             logger.info('Highest humidity reading: ' + highestReading.humidity);
 
             // does the lowest humidity violate the contract?
-            if (lowestReading.humidity < data.minHumidity) {
-                penalty += (data.minHumidity - lowestReading.humidity) * data.penaltyFactor;
+            if (lowestReading.humidity < contract.minHumidity) {
+                penalty += (contract.minHumidity - lowestReading.humidity) * contract.penaltyFactor;
                 logger.info('Min humidity penalty: ' + penalty);
             }
 
             // does the highest humidity violate the contract?
-            if (highestReading.humidity > data.maxHumidity) {
-                penalty += (highestReading.humidity - data.maxHumidity) * data.penaltyFactor;
+            if (highestReading.humidity > contract.maxHumidity) {
+                penalty += (highestReading.humidity - contract.maxHumidity) * contract.penaltyFactor;
                 logger.info('Max humidity penalty: ' + penalty);
             }
             
