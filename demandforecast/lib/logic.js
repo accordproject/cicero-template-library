@@ -20,17 +20,17 @@ function execute(context) {
     logger.info(context);
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
     var now = moment(req.timestamp);
 
-    if (now.isBefore(moment(data.effectiveDate,"MM-DD-YYYY"))) {
+    if (now.isBefore(moment(contract.effectiveDate,"MM-DD-YYYY"))) {
         throw new Error('Forecast was received before the effective date');
     }
     if (!isLastDayOfQuarter(now)) {
         throw new Error('Forecast was not received on last day of quarter');
     }
     
-    res.requiredPurchase = req.supplyForecast * (data.minimumPercentage / 100.0);
+    res.requiredPurchase = req.supplyForecast * (contract.minimumPercentage / 100.0);
     res.year = now.year();
     res.quarter = now.quarter();
 }

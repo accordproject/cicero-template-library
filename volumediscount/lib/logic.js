@@ -16,17 +16,17 @@ function execute(context) {
     logger.info(context);
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
 
     // decision table
     var netAnnualChargeVolume = req.netAnnualChargeVolume;
 
-    if (netAnnualChargeVolume < data.firstVolume) {
-	res.discountRate = data.firstRate;
-    } else if (netAnnualChargeVolume < data.secondVolume) {
-	res.discountRate = data.secondRate;
+    if (netAnnualChargeVolume < contract.firstVolume) {
+        res.discountRate = contract.firstRate;
+    } else if (netAnnualChargeVolume < contract.secondVolume) {
+        res.discountRate = contract.secondRate;
     } else {
-	res.discountRate = data.thirdRate;
+        res.discountRate = contract.thirdRate;
     }
     
 }

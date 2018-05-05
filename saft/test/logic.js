@@ -49,7 +49,9 @@ describe('Logic', () => {
             const NS = 'org.accordproject.saft';
             request.$class = `${NS}.Launch`;
             request.exchangeRate = 100;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.tokenAmount.should.equal(100);
             result.response.tokenAddress.should.equal("Daniel Charles Selman");
