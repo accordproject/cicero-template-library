@@ -28,19 +28,19 @@
 function execute(context) {
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
     var now = moment(req.timestamp);
 
-    var royaltiesAmount = request.netSaleRevenue * data.royaltyRate / 100.00;
-    var sublicensingAmount = request.sublicensingRevenue * data.sublicensingRoyaltyRate / 100.00;
+    var royaltiesAmount = request.netSaleRevenue * contract.royaltyRate / 100.00;
+    var sublicensingAmount = request.sublicensingRevenue * contract.sublicensingRoyaltyRate / 100.00;
     res.totalAmount = royaltiesAmount + sublicensingAmount;
     
     if (!req.permissionGrantedBy) {
         // TODO: add for other kinds of duration than DAY-based
-        res.dueBy = now.endOf('quarter').add(data.paymentPeriod.amount,'d').format('MM-DD-YYYY');
+        res.dueBy = now.endOf('quarter').add(contract.paymentPeriod.amount,'d').format('MM-DD-YYYY');
     } else {
         // TODO: add for other kinds of duration than DAY-based
-        res.dueBy = moment(req.permissionGrantedBy).add(data.paymentPeriodWithPermission.amount,'d').format('MM-DD-YYYY');
+        res.dueBy = moment(req.permissionGrantedBy).add(contract.paymentPeriodWithPermission.amount,'d').format('MM-DD-YYYY');
     }
 }
 
