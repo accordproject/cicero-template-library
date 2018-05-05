@@ -47,7 +47,9 @@ describe('Logic', () => {
         it('licensee fee should be payed to the amount of', async function() {
             const request = {};
             request.$class = 'org.accordproject.copyrightlicense.PaymentRequest';
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.amount.should.equal(1000.0);
         });

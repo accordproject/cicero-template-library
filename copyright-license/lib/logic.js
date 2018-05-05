@@ -28,9 +28,9 @@
 function execute(context) {
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
     
-    res.amount = data.amount;
+    res.amount = contract.amount;
 }
 
 /* eslint-enable no-unused-vars */

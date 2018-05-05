@@ -49,7 +49,9 @@ describe('Logic', () => {
             const NS = 'org.accordproject.safte';
             request.$class = `${NS}.TokenSale`;
             request.tokenPrice = 1.23;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.tokenAmount.should.equal(21.855057260250017);
         });
@@ -62,7 +64,9 @@ describe('Logic', () => {
             const NS = 'org.accordproject.safte';
             request.$class = `${NS}.EquityFinancing`;
             request.sharePrice = 3.00;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.equityAmount.should.equal(8.960573476702509);
         });
@@ -75,7 +79,9 @@ describe('Logic', () => {
             const NS = 'org.accordproject.safte';
             request.$class = `${NS}.DissolutionEvent`;
             request.cause = "Went Shopping";
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.contract.State';
+            const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
             result.response.amount.should.equal(25);
         });

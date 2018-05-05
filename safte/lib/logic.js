@@ -15,10 +15,10 @@ function tokenSale(context) {
     logger.info(context);    
     var req = context.request;
     var res = context.response;
-    var data = context.data;
-		var discountRate = (100.0 - data.discount) / 100.00;
+    var contract = context.contract;
+		var discountRate = (100.0 - contract.discount) / 100.00;
 		var discountPrice = req.tokenPrice * discountRate;
-    res.tokenAmount = data.purchaseAmount / discountPrice;
+    res.tokenAmount = contract.purchaseAmount / discountPrice;
 }
 
 /**
@@ -32,10 +32,10 @@ function equityFinancing(context) {
     logger.info(context);    
     var req = context.request;
     var res = context.response;
-    var data = context.data;
-		var discountRate = (100.0 - data.discount) / 100.00;
+    var contract = context.contract;
+		var discountRate = (100.0 - contract.discount) / 100.00;
 		var discountPrice = req.sharePrice * discountRate;
-    res.equityAmount = data.purchaseAmount / discountPrice;
+    res.equityAmount = contract.purchaseAmount / discountPrice;
 }
 
 /**
@@ -49,8 +49,8 @@ function disolutionEvent(context) {
     logger.info(context);    
     var req = context.request;
     var res = context.response;
-    var data = context.data;
-    res.amount = data.purchaseAmount;
+    var contract = context.contract;
+    res.amount = contract.purchaseAmount;
 }
 
 /*eslint-enable no-unused-vars*/
