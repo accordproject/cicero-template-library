@@ -26,7 +26,7 @@ cd acceptance-of-delivery
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --dsl ./sample.txt --data ./data.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
