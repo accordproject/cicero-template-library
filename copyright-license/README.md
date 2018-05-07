@@ -26,7 +26,7 @@ cd copyright-license
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --dsl ./sample.txt --data ./data.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
 00:42:29 - info: Logging initialized. 2018-05-04T04:42:29.992Z
 00:42:30 - info: Using current directory as template folder
 00:42:30 - info: Loading a default sample.txt file.
