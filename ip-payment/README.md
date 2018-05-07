@@ -26,7 +26,7 @@ cd ip-payment
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --dsl ./sample.txt --data ./data.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
 09:36:32 - info: Logging initialized. 2018-05-04T13:36:32.831Z
 09:36:33 - info: {"clause":"copyright-license@0.0.3-b29a1d3b15800d29e2ace411d8f40d272e22675e81131b1e7dead5f16491ef56","request":{"$class":"org.accordproject.ippayment.PaymentRequest","netSaleRevenue":1200,"sublicensingRevenue":450,"permissionGrantedBy":"04-05-2018"},"response":{"$class":"org.accordproject.ippayment.PayOut","totalAmount":7740,"dueBy":"07-07-2018","transactionId":"21904a68-2409-47ad-a2ce-1323224454f5","timestamp":"2018-05-04T13:36:33.464Z"}}
 ```
