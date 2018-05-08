@@ -25,7 +25,7 @@
  * @param {org.accordproject.copyrightlicense.PayOut} context.response - the response
  * @AccordClauseLogic
  */
-function execute(context) {
+function paymentClause(context) {
     var req = context.request;
     var res = context.response;
     var contract = context.contract;
