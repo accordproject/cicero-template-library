@@ -16,6 +16,7 @@ function execute(context) {
     var req = context.request;
     var res = context.response;
 		var contract = context.contract;
+		var state = context.state;
 
 		context.state = { 'counter' : state.counter + 1};
     res.output = 'Hello ' + contract.name + ' ' + request.input + '(' + context.state.counter + ')';
