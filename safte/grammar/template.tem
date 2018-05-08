@@ -1,10 +1,10 @@
-[{companyName}]
+{{companyName}}
 
 SAFTE 
 (Simple Agreement for Future Tokens or Equity)
 
-THIS CERTIFIES THAT in exchange for the payment by [{purchaser}] (the “Purchaser”) of $[{purchaseAmount}] (the “Purchase Amount”) to [{companyName}], a limited company incorporated in [{jurisdiction}] with company number [{companyRegistrationNumber}] (the “Company”), the Company hereby issues to the Purchaser the right to either:- (1) cryptographic tokens in the [{projectName}] (the “Tokens”); or (2) certain shares in the Company’s share capital, in either case on the terms set forth below. 
-The “Discount Rate” is 100 minus [{discount}]%.
+THIS CERTIFIES THAT in exchange for the payment by {{purchaser}} (the “Purchaser”) of ${{purchaseAmount}} (the “Purchase Amount”) to {{companyName}}, a limited company incorporated in {{jurisdiction}} with company number {{companyRegistrationNumber}} (the “Company”), the Company hereby issues to the Purchaser the right to either:- (1) cryptographic tokens in the {{projectName}} (the “Tokens”); or (2) certain shares in the Company’s share capital, in either case on the terms set forth below. 
+The “Discount Rate” is 100 minus {{discount}}%.
 See Section 2 for certain additional defined terms.
 1.	Events
 
@@ -23,12 +23,12 @@ If the Company elects to operate the Qualifying Token Sale using a Nominated Ent
 
 	“Capital Shares” means the share capital of the Company, including, without limitation, the “Equity Financing Shares” and the “SAFTE Shares.”
 	“Change of Control” means (i) a transaction or series of related transactions in which more than fifty per cent (50 %) of the voting rights attaching to the Capital Shares of the Company are sold or are to be sold to one person or group of persons Acting in Concert; or (ii) a sale, lease or other disposition of all or substantially all of the assets of the Company.  
-“[{projectName}]” means a suite of smart contracts built on the Ethereum Network which [{projectDescription}].
+“{{projectName}}” means a suite of smart contracts built on the Ethereum Network which {{projectDescription}}.
 	“Discount Price” means (i) the price per share of the Equity Financing Shares sold in the Equity Financing multiplied by the Discount Rate, or (ii) the price per token of the Token sold in the Qualifying Token Sale multiplied by the Discount Rate. 
 	“Distribution” means the transfer to holders of Capital Shares by reason of their ownership thereof of cash or other property without consideration whether by way of dividend or otherwise, other than dividends on ordinary shares payable in ordinary shares, or the purchase or redemption of Capital Shares by the Company or its subsidiaries for cash or property other than: (i) repurchases of ordinary shares held by employees, officers, directors or consultants of the Company or its subsidiaries pursuant to an agreement providing, as applicable, a right of first refusal or a right to repurchase shares upon termination of such service provider’s employment or services; or (ii) repurchases of Capital Shares in connection with the settlement of disputes with any shareholder.
 
 	“Dissolution Event” means (i) a voluntary termination of operations, (ii) a general assignment for the benefit of the Company’s creditors or (iii) any other liquidation, dissolution or winding up of the Company (excluding a Liquidity Event), whether voluntary or involuntary.
-	“Equity Financing” means a bona fide transaction or series of transactions with the principal purpose of raising capital, where the Company raises during any consecutive [{monthsText}] [{months}] month(s) period in aggregate over [{amount}] [{amountText}] from an Purchaser or number of Purchasers, and pursuant to which the Company issues and sells either ordinary or preferred shares at a fixed pre-money valuation. 
+	“Equity Financing” means a bona fide transaction or series of transactions with the principal purpose of raising capital, where the Company raises during any consecutive {{monthsText}} {{months}} month(s) period in aggregate over {{amount}} {{amountText}} from an Purchaser or number of Purchasers, and pursuant to which the Company issues and sells either ordinary or preferred shares at a fixed pre-money valuation. 
 “Equity Financing Shares” means the shares issued as part of the Equity Financing. 
 	
 	“Liquidity Event” means a Change of Control or a Listing. 
@@ -39,13 +39,13 @@ If the Company elects to operate the Qualifying Token Sale using a Nominated Ent
 “Investment Amount” means the amounts paid by the Purchaser to the Company pursuant to this agreement.
 “Nominated Entity” means a company or other organisation, nominated by the Company to operate the Qualifying Token Sale.	
 “Pro Rata Rights Agreement” means a written agreement between the Company and the Purchaser (and holders of other SAFTEs, as appropriate) giving the Purchaser a right to purchase its pro rata share of private placements of securities by the Company occurring after the Equity Financing, subject to customary exceptions.  Pro rata for purposes of the Pro Rata Rights Agreement will be calculated based on the ratio of (1) the number of shares of Capital Shares owned by the Purchaser immediately prior to the issuance of the securities to (2) the total number of shares of outstanding Capital Shares on a fully diluted basis, calculated as of immediately prior to the issuance of the securities.  	
-“Qualifying Token Sale” means the operation by the Company or any subsidiary thereof of a public sale of cryptographic tokens necessary for the operation of the [{projectName}]. 
+“Qualifying Token Sale” means the operation by the Company or any subsidiary thereof of a public sale of cryptographic tokens necessary for the operation of the {{projectName}}. 
 	 “SAFTE” means an agreement containing a future right to shares of Capital Shares, similar in form and content to this agreement, purchased by Purchasers for the purpose of funding the Company’s business operations.
 	“SAFTE Shares” means shares in the Company having the identical rights, privileges, preferences and restrictions as the Equity Financing Shares, other than with respect to: (i) the per share liquidation preference and the conversion price for purposes of price-based anti-dilution protection, which will equal the Discount Price; and (ii) the basis for any dividend rights, which will be based on the Discount Price.
-	“Token Sale” means the public sale of cryptographic tokens in the [{projectName}] as seen as necessary for the running of the [{projectName}].
+	“Token Sale” means the public sale of cryptographic tokens in the {{projectName}} as seen as necessary for the running of the {{projectName}}.
 
  3.	Company Representations
-	(a)	The Company is duly incorporated and validly existing under the laws of [{jurisdiction}], and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.
+	(a)	The Company is duly incorporated and validly existing under the laws of {{jurisdiction}}, and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.
 	(b)	The execution, delivery and performance by the Company of this agreement is within the power of the Company and, other than with respect to the actions to be taken when equity is to be issued to the Purchaser, has been duly authorized by all necessary actions on the part of the Company. This agreement constitutes a legal, valid and binding obligation of the Company, enforceable against the Company in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.  To the knowledge of the Company, it is not in violation of (i) its current certificate of incorporation or articles of association, (ii) any material statute, rule or regulation applicable to the Company or (iii) any material indenture or contract to which the Company is a party or by which it is bound, where, in each case, such violation or default, individually, or together with all such violations or defaults, could reasonably be expected to have a material adverse effect on the Company.
 	(c)	The performance and consummation of the transactions contemplated by this agreement do not and will not: (i) violate any material judgment, statute, rule or regulation applicable to the Company; (ii) result in the acceleration of any material indenture or contract to which the Company is a party or by which it is bound; or (iii) result in the creation or imposition of any lien upon any property, asset or revenue of the Company or the suspension, forfeiture, or nonrenewal of any material permit, license or authorization applicable to the Company, its business or operations.
 	(d)	No consents or approvals are required in connection with the performance of this agreement, other than: (i) the Company’s corporate approvals; (ii) any qualifications or filings under applicable securities laws; and (iii) necessary corporate approvals for the authorization of Capital Shares issuable pursuant to Section 1.
@@ -64,9 +64,9 @@ If the Company elects to operate the Qualifying Token Sale using a Nominated Ent
 
 	(f)	This agreement may be executed and delivered in any number of counterparts, each of which when executed and delivered shall constitute a duplicate original, but all the counterparts together shall constitute the one agreement. 
 
-	(g) This agreement, and all rights and obligations hereunder, will be governed by and construed in accordance with the laws of [{jurisdiction}], and the courts of [{jurisdiction}] shall have exclusive jurisdiction to settle any dispute arising in connection with this agreement. 
+	(g) This agreement, and all rights and obligations hereunder, will be governed by and construed in accordance with the laws of {{jurisdiction}}, and the courts of {{jurisdiction}} shall have exclusive jurisdiction to settle any dispute arising in connection with this agreement. 
 
 This agreement has been executed and delivered as a deed on the date appearing at the beginning of this deed.
 
-Executed and delivered as a deed by [{companyName}].
+Executed and delivered as a deed by {{companyName}}.
 
