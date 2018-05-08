@@ -41,6 +41,10 @@ concept TemplateModel {
   o String workDescription
 
   /* payment */
+  o PaymentClause paymentClause
+}
+
+concept PaymentClause extends Clause {
   o String amountText
 	o Double amount
 	o String paymentProcedure
