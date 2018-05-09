@@ -47,11 +47,11 @@ describe('Logic', () => {
         it('should execute a smart clause', async function () {
             const request = {
 		"$class": "org.accordproject.promissorynote.Request",
-		"amountPaid": 100
+		"amountPaid": 100.0
 	    };
             const result = await engine.execute(clause, request);
             result.should.not.be.null;
-            result.response.outstandingBalance.should.equal(200);
+            result.response.outstandingBalance.should.greaterThan(200);
         });
     });
 });

@@ -1,11 +1,11 @@
 namespace org.accordproject.promissorynote
 
 transaction Request {
-  o Integer amountPaid
+  o Double amountPaid
 }
 
 transaction Response {
-  o Integer outstandingBalance
+  o Double outstandingBalance
 }
 
 enum LegalEntity {
@@ -23,7 +23,7 @@ concept TemplateModel {
   /**
    * The name for the clause
    */
-  o Integer dollarAmount
+  o Double dollarAmount
   o DateTime date
   o String maker
   o Double interestRate
@@ -32,7 +32,7 @@ concept TemplateModel {
   o String lender
   o LegalEntity legalEntity
   o String lenderAddress
-  o Integer principal
+  o Double principal
   o DateTime maturityDate
   o Integer defaultDays
   o Integer insolvencyDays
