@@ -1,0 +1,62 @@
+namespace org.accordproject.supplyagreement
+
+import org.accordproject.us.state.*
+import org.accordproject.purchaseorder.*
+
+@AccordTemplateModel("supplyagreement")
+concept TemplateModel {
+  o DateTime effectiveDate
+  o String supplier 
+  o String buyer
+  o String shortDescriptionOfTheProducts
+  o Integer noticeWindow
+  o Integer cancellationWindow
+  o Double minimumPercentage
+  o String deliverables
+  o Integer deliveryWindow
+  o String deliveryAttachment
+  o Integer inspectionWindow
+  o String acceptanceAttachment
+  o Integer priceUpdateWindow
+  o String accountNumber
+  o String routingNumnber
+  o Integer termYears
+  o Integer renewalYears
+  o Integer renewalWindow
+  o State governingState
+  o State venueState
+}
+
+/**
+ * Defines the output data required by the template
+ */
+transaction ForecastRequest {
+/**
+ * How much is the forecast?
+ */
+  o Integer supplyForecast
+}
+
+transaction BindingResponse {
+/**
+ * Amount must purchase.
+ */
+  o Double requiredPurchase
+/**
+ * Which year?
+ */
+  o Integer year
+/**
+ * Which quarter in this year?
+ */
+  o Integer quarter
+}
+
+transaction PurchaseRequest {
+  o PurchaseOrder purchaseOrder
+}
+
+transaction DeliveryResponse {
+  o DateTime expectedDelivery
+}
+

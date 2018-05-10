@@ -1,0 +1,4 @@
+{
+    "$class": "org.accordproject.supplyagreement.ForecastRequest",
+    "supplyForecast": 1200.0
+}
