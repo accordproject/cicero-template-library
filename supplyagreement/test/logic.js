@@ -42,11 +42,11 @@ describe('Logic', () => {
         engine = new Engine();
     });
     
-    describe('#DemandForecast', async function() {
+    describe('#SupplyAgreement', async function() {
 
         it('should execute a smart clause', async function () {
             const request = {
-                "$class": "org.accordproject.demandforecast.ForecastRequest",
+                "$class": "org.accordproject.supplyagreement.ForecastRequest",
                 "supplyForecast": 1200.0
             };
             const state = {};
