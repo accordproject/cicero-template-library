@@ -27,36 +27,57 @@ concept TemplateModel {
   o State venueState
 }
 
+
 /**
- * Defines the output data required by the template
+ * Defines contract obligations
  */
-transaction ForecastRequest {
-/**
- * How much is the forecast?
- */
-  o Integer supplyForecast
+concept Obligation {
+  o String party
+}
+concept DeliveryObligation extends Obligation {
+  o DateTime expectedDelivery
+  o PurchaseOrder deliverables
+}
+concept PurchaseObligation extends Obligation {
+  o Double requiredPurchase
+  o Integer year
+  o Integer quarter
+}
+concept PaymentObligation extends Obligation {
+  o Double amount
 }
 
-transaction BindingResponse {
 /**
- * Amount must purchase.
+ * Defines the state of the contract
  */
-  o Double requiredPurchase
+concept AgreementState {
+  o Obligation[] obligations
+}
+
 /**
- * Which year?
+ * Defines the contract transactions
  */
-  o Integer year
-/**
- * Which quarter in this year?
- */
-  o Integer quarter
+transaction ForecastRequest {
+  o Integer supplyForecast
+}
+transaction ForecastResponse {
 }
 
 transaction PurchaseRequest {
   o PurchaseOrder purchaseOrder
 }
-
-transaction DeliveryResponse {
-  o DateTime expectedDelivery
+transaction PurchaseResponse {
 }
 
+transaction DeliveryRequest {
+  o Product[] products
+}
+transaction DeliveryResponse {
+}
+
+transaction PaymentRequest {
+  o Double amount
+}
+transaction PaymentResponse {
+  o Double paid
+}
