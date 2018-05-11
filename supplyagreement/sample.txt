@@ -2,7 +2,7 @@ Supply Agreement
 
 This Supply Sales Agreement is made on 04/02/2018 (the "Effective Date") between "DAN" and "PETER".
 
-1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase the "Colorful Umbrellas" (the "Products") in accordance with the terms of this agreement.
+1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase the "Umbrellas" (the "Products") in accordance with the terms of this agreement.
 
 2. Orders
 2.1. Purchase Orders. "PETER" shall submit all orders for Products to "DAN" in writing to "DAN"'s address listed in the introduction to this agreement, or as "DAN" otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
@@ -19,14 +19,14 @@ This Supply Sales Agreement is made on 04/02/2018 (the "Effective Date") between
 
 3. Supply Forecasts. On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
 
-4. Delivery. "DAN" shall deliver the "Blue Umbrellas" and title to the "Blue Umbrellas" to "PETER" within 1 days of the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the "Annex A", attached to this agreement.
+4. Delivery. "DAN" shall deliver the "Colorful Umbrellas" and title to the "Colorful Umbrellas" to "PETER" within 1 days of the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the "Annex A", attached to this agreement.
 
 5. Acceptance
 5.1. Acceptance of Delivery. "DAN" will be deemed to have completed its delivery obligations if
-(a) in "PETER"'s opinion, the "Blue Umbrellas" satisfies the Acceptance Criteria, and
-(b) "PETER" notifies "DAN" in writing that it is accepting the "Blue Umbrellas".
-5.2. Inspection and Notice. "PETER" will have 3 Business Days to inspect and evaluate the "Blue Umbrellas" on the delivery date before notifying "DAN" that it is either accepting or rejecting the "Blue Umbrellas".
-5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Blue Umbrellas" must meet for "DAN" to comply with its requirements and obligations under this agreement, detailed in "Annex B", attached to this agreement.
+(a) in "PETER"'s opinion, the "Colorful Umbrellas" satisfies the Acceptance Criteria, and
+(b) "PETER" notifies "DAN" in writing that it is accepting the "Colorful Umbrellas".
+5.2. Inspection and Notice. "PETER" will have 3 Business Days to inspect and evaluate the "Colorful Umbrellas" on the delivery date before notifying "DAN" that it is either accepting or rejecting the "Colorful Umbrellas".
+5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Colorful Umbrellas" must meet for "DAN" to comply with its requirements and obligations under this agreement, detailed in "Annex B", attached to this agreement.
 
 6.  Pricing
 6.1.  Product Prices. The initial prices for all Products are set forth in Schedule A. All prices are FOB the Supplier's designated shipping point.
