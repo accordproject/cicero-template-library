@@ -26,7 +26,7 @@ cd helloworld
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -38,17 +38,17 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:helloworld matt$ cicero execute
-11:01:15 - info: Logging initialized. 2018-02-18T11:01:15.771Z
-11:01:16 - info: Using current directory as template folder
-11:01:16 - info: Loading a default sample.txt file.
-11:01:16 - info: Loading a default data.json file.
-11:01:16 - info: {"clause":"helloworld@0.0.5-3119b65d48818b038883b0846738d34a61df5ac895093eb88003f07c96ee39c7","request":{"$class":"org.accordproject.helloworld.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworld.Response","output":"Hello Fred Blogs Accord Project","transactionId":"1831144a-a329-4c4e-83f4-c50c238d561c","timestamp":"2018-02-18T11:01:16.572Z"}}
+00:44:12 - info: Logging initialized. 2018-05-14T04:44:12.185Z
+00:44:12 - info: Using current directory as template folder
+00:44:12 - info: Loading a default sample.txt file.
+00:44:12 - info: Loading a single default request.json file.
+00:44:12 - info: Loading a default state.json file.
+00:44:12 - info: {"clause":"helloworld@0.0.5-3119b65d48818b038883b0846738d34a61df5ac895093eb88003f07c96ee39c7","request":{"$class":"org.accordproject.helloworld.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworld.Response","output":"Hello Fred Blogs Accord Project","transactionId":"31c8ec08-30cd-4ca6-9687-d1ba132a741e","timestamp":"2018-05-14T04:44:12.920Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/helloworld/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/helloworld/request.json)
 ```json
 {
     "$class": "org.accordproject.helloworld.Request",

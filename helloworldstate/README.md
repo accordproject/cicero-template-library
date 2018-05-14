@@ -26,7 +26,7 @@ cd helloworldstate
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -37,12 +37,12 @@ cicero execute
 
 You should see the following output in your terminal:
 ```bash
-mattmbp:helloworldstate matt$ cicero execute
-11:01:15 - info: Logging initialized. 2018-02-18T11:01:15.771Z
-11:01:16 - info: Using current directory as template folder
-11:01:16 - info: Loading a default sample.txt file.
-11:01:16 - info: Loading a default data.json file.
-11:01:16 - info: {"clause":"helloworld@0.0.5-3119b65d48818b038883b0846738d34a61df5ac895093eb88003f07c96ee39c7","request":{"$class":"org.accordproject.helloworld.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworld.Response","output":"Hello Fred Blogs Accord Project(1)","transactionId":"8b0ec544-6fe1-4894-9044-18d1d568dce1","timestamp":"2018-05-07T18:26:07.721Z"},"state":{"counter":1},"emit":[]}
+00:48:27 - info: Logging initialized. 2018-05-14T04:48:27.048Z
+00:48:27 - info: Using current directory as template folder
+00:48:27 - info: Loading a default sample.txt file.
+00:48:27 - info: Loading a single default request.json file.
+00:48:27 - info: Loading a default state.json file.
+00:48:27 - info: {"clause":"helloworldstate@0.0.5-bf3fd89c5a3c5ac9faab5754f69c7cefe24e1e5b30fe786ff29883ca286b4f3d","request":{"$class":"org.accordproject.helloworldstate.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworldstate.Response","output":"Hello Fred Blogs Accord Project(1)","transactionId":"70413c61-f4d6-4abc-9179-4dc143057d93","timestamp":"2018-05-14T04:48:27.822Z"},"state":{"counter":1},"emit":[]}
 ```
 
 The contract state changes every time you call the clause. If you pass more than one requests on the command line, the input will use the state to return the number of times it has been called:
@@ -56,8 +56,7 @@ cicero execute --template ./ --sample ./sample.txt --request ./request.json --re
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/helloworld/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/helloworld/request.json)
 ```json
 {
     "$class": "org.accordproject.helloworld.Request",
@@ -108,7 +107,9 @@ mattmbp:helloworldstate matt$ npm test
 
   Logic
     #Hello
-      ✓ should produce correct result
+      ✓ should say hello once
+    #Hello
+      ✓ should say hello twice
 
 
   1 passing (217ms)

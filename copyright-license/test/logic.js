@@ -51,7 +51,7 @@ describe('Logic', () => {
             state.$class = 'org.accordproject.contract.State';
             const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
-            result.response.amount.should.equal(1000.0);
+            result.response.amount.should.equal(100.0);
         });
     });
 });
