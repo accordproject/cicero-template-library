@@ -26,15 +26,13 @@
  * @AccordClauseLogic
  */
 function payOut(context) {
-
-    logger.info(context);
-    
     var shipmentReceived = context.request;
     var shipment = shipmentReceived.shipment;
     var res = context.response;
     res.shipment = shipment;
     var contract = context.contract;
     var payOut = contract.unitPrice * shipmentReceived.unitCount;
+    //logger.info(context);
 
     logger.info('Base payOut: ' + payOut);
     logger.info('Received at: ' + shipmentReceived.timestamp);

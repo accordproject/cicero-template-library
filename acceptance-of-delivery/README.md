@@ -26,7 +26,7 @@ cd acceptance-of-delivery
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -38,17 +38,18 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:acceptance-of-delivery matt$ cicero execute
-21:49:39 - info: Logging initialized. 2018-02-17T21:49:39.676Z
-21:49:39 - info: Using current directory as template folder
-21:49:39 - info: Loading a default sample.txt file.
-21:49:39 - info: Loading a default data.json file.
-21:49:40 - info: {"clause":"acceptance-of-delivery@0.0.3-e407ff0a315c5b1c267677edbda49a32d4e9ef890ad21a3e40b3bc110d06c88c","request":{"$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable","deliverableReceivedAt":"January 1, 2018 16:34:00","inspectionPassed":true},"response":{"$class":"org.accordproject.acceptanceofdelivery.InspectionResponse","status":"OUTSIDE_INSPECTION_PERIOD","shipper":"resource:org.hyperledger.composer.system.Participant#Party%20A","receiver":"resource:org.hyperledger.composer.system.Participant#Party%20B","transactionId":"57df30ca-3755-457b-9176-5fae50dd3283","timestamp":"2018-02-17T21:49:40.206Z"}}
+00:41:56 - info: Logging initialized. 2018-05-14T04:41:56.064Z
+00:41:56 - info: Using current directory as template folder
+00:41:56 - info: Loading a default sample.txt file.
+00:41:56 - info: Loading a single default request.json file.
+00:41:56 - info: Loading a default state.json file.
+00:41:56 - info: {"clause":"acceptance-of-delivery@0.0.3-e407ff0a315c5b1c267677edbda49a32d4e9ef890ad21a3e40b3bc110d06c88c","request":{"$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable","deliverableReceivedAt":"January 1, 2018 16:34:00","inspectionPassed":true},"response":{"$class":"org.accordproject.acceptanceofdelivery.InspectionResponse","status":"OUTSIDE_INSPECTION_PERIOD","shipper":"resource:org.hyperledger.composer.system.Participant#Party%20A","receiver":"resource:org.hyperledger.composer.system.Participant#Party%20B","transactionId":"cbe39255-7ad2-41c2-b4b0-b3e4ce9cd4c5","timestamp":"2018-05-14T04:41:56.797Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
 
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/acceptance-of-delivery/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/acceptance-of-delivery/request.json)
 ```json
 {
     "$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable",

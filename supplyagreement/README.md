@@ -5,7 +5,7 @@ This is a smart legal clause that conforms to the [Accord Protocol Template Spec
 
 ## Description
 
-> A sample supply agreement.
+> A simple supply agreement.
 
 This clause contains:
 - *Sample Clause Text* - [sample.txt](sample.txt)
@@ -27,7 +27,7 @@ cd supplyagreement
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -39,19 +39,18 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:supplyagreement matt$ cicero execute
-14:39:08 - info: Logging initialized. 2018-05-10T18:39:08.552Z
-14:39:08 - info: Using current directory as template folder
-14:39:08 - info: Loading a default sample.txt file.
-14:39:08 - info: Loading a single default request.json file.
-14:39:08 - info: Loading a default state.json file.
-14:39:09 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200,"transactionId":"0da18b1c-98a5-4fbb-bc58-13b609df2e1e","timestamp":"2018-05-10T18:39:09.602Z"},"state":{"$class":"org.accordproject.contract.State"},"contract":{"$class":"org.accordproject.supplyagreement.TemplateModel","effectiveDate":"2018-04-02","supplier":"DAN","buyer":"PETER","shortDescriptionOfTheProducts":"Colorful Umbrellas","noticeWindow":2,"cancellationWindow":10,"minimumPercentage":85,"deliverables":"Blue Umbrellas","deliveryWindow":1,"deliveryAttachment":"Annex A","inspectionWindow":3,"acceptanceAttachment":"Annex B","priceUpdateWindow":15,"accountNumber":"XXX-XX","routingNumnber":"YYY-YY","termYears":2,"renewalYears":1,"renewalWindow":30,"governingState":"NY","venueState":"NY"},"clause":{},"response":{"$class":"org.accordproject.supplyagreement.BindingResponse","transactionId":"ee525721-7c99-4322-9a90-f9165466db28","timestamp":"2018-05-10T18:39:09.606Z"},"emit":[]}
-14:39:09 - info: {"clause":"supplyagreement@0.0.6-eae4c8d3c71aedf06d3b0ec7dc7d3178307f7b72fc6f0dc1c1c58db5c6664ff1","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"ee525721-7c99-4322-9a90-f9165466db28","timestamp":"2018-05-10T18:39:09.606Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+01:12:36 - info: Logging initialized. 2018-05-14T05:12:36.428Z
+01:12:36 - info: Using current directory as template folder
+01:12:36 - info: Loading a default sample.txt file.
+01:12:36 - info: Loading a single default request.json file.
+01:12:36 - info: Loading a default state.json file.
+01:12:37 - info: {"clause":"supplyagreement@0.0.6-21491f82e4ee4048cc4b22c8a46f9e1f9f9ea901454ab758ff4dbfc5b85bb36d","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.ForecastResponse","transactionId":"b8a1be70-f7b2-4638-a218-b15fe2eb9591","timestamp":"2018-05-14T05:12:37.616Z"},"state":{"obligations":[{"$class":"org.accordproject.supplyagreement.PurchaseObligation","party":"PETER","requiredPurchase":1020,"year":2018,"quarter":2}]},"emit":[]}
 ```
 
 ### Sample Payload Data
 
 
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/supplyagreement/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/supplyagreement/request.json)
 ```json
 {
     "$class": "org.accordproject.supplyagreement.ForecastRequest",

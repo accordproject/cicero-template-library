@@ -27,7 +27,7 @@ cd volumediscount
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -49,8 +49,7 @@ mattmbp:volumediscount matt$ cicero execute
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/perishable-goods/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/perishable-goods/request.json)
 ```json
 {
     "$class": "org.accordproject.volumediscount.VolumeDiscountRequest",

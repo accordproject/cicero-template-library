@@ -17,11 +17,11 @@ function isLastDayOfQuarter(timestamp) {
  * @AccordClauseLogic
  */
 function execute(context) {
-    logger.info(context);
     var req = context.request;
     var res = context.response;
     var contract = context.contract;
     var now = moment(req.timestamp);
+    //logger.info(context);
 
     if (now.isBefore(moment(contract.effectiveDate,"MM-DD-YYYY"))) {
         throw new Error('Forecast was received before the effective date');

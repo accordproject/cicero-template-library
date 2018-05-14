@@ -12,13 +12,12 @@
  * @AccordClauseLogic
  */
 function execute(context) {
-
-    logger.info(context);
     var req = context.request;
     var res = context.response;
     var contract = context.contract;
     var now = moment(req.timestamp);
     var agreed = moment(req.agreedDelivery);
+    //logger.info(context);
 
     res.buyerMayTerminate = false;
     res.penalty = 0;

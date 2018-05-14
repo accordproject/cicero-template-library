@@ -4,7 +4,7 @@
 This is a smart legal clause that conforms to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
-> This clause is a copyright license agreement.
+> This is a copyright license agreement.
 
 This clause contains:
 - *Some sample Clause Text* - [sample.txt](sample.txt)
@@ -26,12 +26,7 @@ cd copyright-license
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
-00:42:29 - info: Logging initialized. 2018-05-04T04:42:29.992Z
-00:42:30 - info: Using current directory as template folder
-00:42:30 - info: Loading a default sample.txt file.
-00:42:30 - info: Loading a default data.json file.
-00:42:30 - info: {"clause":"copyright-license@0.0.3-e949d285040b994e1585f8e375d211b9c2e95e142213e1a76141e7a2de8589f8","request":{"$class":"org.accordproject.copyrightlicense.PaymentRequest"},"response":{"$class":"org.accordproject.copyrightlicense.PayOut","amount":1000,"transactionId":"478eff7c-6861-4af8-ad66-68ed532035a6","timestamp":"2018-05-04T04:42:30.698Z"}}
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -43,12 +38,17 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:copyright-license matt$ cicero execute
+00:29:31 - info: Logging initialized. 2018-05-14T04:29:31.247Z
+00:29:31 - info: Using current directory as template folder
+00:29:31 - info: Loading a default sample.txt file.
+00:29:31 - info: Loading a single default request.json file.
+00:29:31 - info: Loading a default state.json file.
+00:29:32 - info: {"clause":"copyright-license@0.0.3-e52e29761b52f950a1fa7ec9ae29401cdbc6a102016a59027d56161dbb7d4eb2","request":{"$class":"org.accordproject.copyrightlicense.PaymentRequest"},"response":{"$class":"org.accordproject.copyrightlicense.PayOut","amount":100,"transactionId":"a1cd6567-fb57-48e2-97bb-387f85162305","timestamp":"2018-05-14T04:29:32.041Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/acceptance-of-delivery/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/copyright-notice/request.json)
 ```json
 {
     "$class":"org.accordproject.copyrightlicense.PaymentRequest"
@@ -59,7 +59,7 @@ For the request above, you should see the following response:
 ```json
 {
   "$class": "org.accordproject.copyrightlicense.PayOut",
-  "amount": 1000,
+  "amount": 100,
   "transactionId": "478eff7c-6861-4af8-ad66-68ed532035a6",
   "timestamp": "2018-05-04T04:42:30.698Z"
 }
@@ -96,13 +96,10 @@ mattmbp:copyright-license matt$ npm test
 
 
   Logic
-    #InspectDeliverable
-      ✓ passed inspection within time limit
-      ✓ failed inspection within time limit
-      ✓ inspection outside time limit
-      ✓ inspection before delivable should throw
+    #RequestPayment
+      ✓ licensee fee should be payed to the amount of
 
 
-  4 passing (458ms)
+  1 passing (362ms)
 
 ```
