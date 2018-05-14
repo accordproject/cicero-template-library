@@ -27,7 +27,7 @@ cd safte
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -39,19 +39,18 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:safte matt$ cicero execute
-03:43:37 - info: Logging initialized. 2018-05-03T07:43:37.887Z
-03:43:38 - info: Using current directory as template folder
-03:43:38 - info: Loading a default sample.txt file.
-03:43:38 - info: Loading a default data.json file.
-03:43:39 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23,"transactionId":"a6070cf8-5b17-41dd-86b7-d626a5936393","timestamp":"2018-05-03T07:43:39.268Z"},"response":{"$class":"org.accordproject.safte.TokenShare","transactionId":"f0ec9a22-58a4-4a29-8fc4-930f74e14783","timestamp":"2018-05-03T07:43:39.272Z"},"data":{"$class":"org.accordproject.safte.TemplateModel","companyName":"ACME","companyRegistrationNumber":555,"purchaser":"Dan","jurisdiction":"NY","purchaseAmount":25,"discount":7,"projectName":"Umbrella","projectDescription":"manages umbrella tokens","months":12,"monthsText":"twelve","amount":1000,"amountText":"one thousand"}}
-03:43:39 - info: {"clause":"safte@0.1.1-95e0689a76925ef6c11da3ccd7124fbbceb9233e6aa0361f67e45b28fe205018","request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23},"response":{"$class":"org.accordproject.safte.TokenShare","tokenAmount":21.855057260250017,"transactionId":"f0ec9a22-58a4-4a29-8fc4-930f74e14783","timestamp":"2018-05-03T07:43:39.272Z"}}
-...
+01:05:40 - info: Logging initialized. 2018-05-14T05:05:40.766Z
+01:05:41 - info: Using current directory as template folder
+01:05:41 - info: Loading a default sample.txt file.
+01:05:41 - info: Loading a single default request.json file.
+01:05:41 - info: Loading a default state.json file.
+01:05:42 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23,"transactionId":"a6e82d0a-1bc3-4b9c-8116-1a706c266556","timestamp":"2018-05-14T05:05:42.286Z"},"state":{"$class":"org.accordproject.contract.State"},"contract":{"$class":"org.accordproject.safte.TemplateModel","companyName":"ACME","companyRegistrationNumber":555,"purchaser":"Dan","jurisdiction":"NY","purchaseAmount":25,"discount":7,"projectName":"Umbrella","projectDescription":"manages umbrella tokens","months":12,"monthsText":"twelve","amount":1000,"amountText":"one thousand"},"response":{"$class":"org.accordproject.safte.TokenShare","transactionId":"707af9f4-0fb2-42b3-bc2c-7ccfe1e18608","timestamp":"2018-05-14T05:05:42.290Z"},"emit":[],"now":"2018-05-14T05:05:42.289Z"}
+01:05:42 - info: {"clause":"safte@0.1.1-95e0689a76925ef6c11da3ccd7124fbbceb9233e6aa0361f67e45b28fe205018","request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23},"response":{"$class":"org.accordproject.safte.TokenShare","tokenAmount":21.855057260250017,"transactionId":"707af9f4-0fb2-42b3-bc2c-7ccfe1e18608","timestamp":"2018-05-14T05:05:42.290Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/perishable-goods/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/perishable-goods/request.json)
 ```json
 {
     "$class": "org.accordproject.safte.TokenSale",
@@ -103,7 +102,12 @@ mattmbp:safte matt$ npm test
     #TokenSale
 ...
       ✓ if token sale occurs, should provide a share of that sale
+    #
 ...
+      ✓ if equity financing is chosen, should provide a share of that equity
+    #
+...
+      ✓ if dissolution event occurs, should refund the amount
 
   3 passing (3s)
 

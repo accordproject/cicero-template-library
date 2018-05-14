@@ -27,10 +27,6 @@ cd installment-sale
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
 cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
-11:21:39 - info: Logging initialized. 2018-05-08T15:21:39.670Z
-bash-3.2$ cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
-11:24:03 - info: Logging initialized. 2018-05-08T15:24:03.859Z
-11:24:04 - info: {"clause":"installment-sale@0.0.3-0a9db97c3ffc9b2e5e0ac30a3abf957f56de16d3cc5d273c19f40041925b1983","request":{"$class":"org.accordproject.installmentsale.Installment","amount":2500},"response":{"$class":"org.accordproject.installmentsale.Balance","balance":7612.499999999999,"total_paid":2500,"transactionId":"4c2c8861-6557-46e9-840e-b0e39e410e49","timestamp":"2018-05-08T15:24:04.434Z"},"state":{"status":"WaitingForFirstDayOfNextMonth","balance_remaining":7612.499999999999,"total_paid":2500,"next_payment_month":4},"emit":[]}
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -42,12 +38,17 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:installment-sale matt$ cicero execute
+00:50:52 - info: Logging initialized. 2018-05-14T04:50:52.049Z
+00:50:52 - info: Using current directory as template folder
+00:50:52 - info: Loading a default sample.txt file.
+00:50:52 - info: Loading a single default request.json file.
+00:50:52 - info: Loading a default state.json file.
+00:50:52 - info: {"clause":"installment-sale@0.0.3-7018ffb6733ef40574833128bff20f82bd305f8db438256d6921409da08bec2c","request":{"$class":"org.accordproject.installmentsale.Installment","amount":2500},"response":{"$class":"org.accordproject.installmentsale.Balance","balance":7612.499999999999,"total_paid":2500,"transactionId":"cd0cfdee-7ab7-4ccc-bc68-8bea7d9a2ab8","timestamp":"2018-05-14T04:50:52.759Z"},"state":{"status":"WaitingForFirstDayOfNextMonth","balance_remaining":7612.499999999999,"total_paid":2500,"next_payment_month":4},"emit":[{"from":"Dan","to":"Ned","amount":2500}]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/installment-sale/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/installment-sale/request.json)
 ```json
 {
     "$class": "org.accordproject.installmentsale.Installment",
@@ -97,11 +98,10 @@ mattmbp:installment-sale matt$ npm test
 
 
   Logic
-    #InspectDeliverable
-      ✓ passed inspection within time limit
-      ✓ failed inspection within time limit
-      ✓ inspection outside time limit
-      ✓ inspection before delivable should throw
+    #Installment
+      ✓ pay one installment
+    #Installment
+      ✓ pay in four installments
 
 
   4 passing (458ms)

@@ -26,7 +26,7 @@ cd fragile-goods
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -38,17 +38,17 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:fragile-goods matt$ cicero execute
-10:53:14 - info: Logging initialized. 2018-02-18T10:53:14.801Z
-10:53:15 - info: Using current directory as template folder
-10:53:15 - info: Loading a default sample.txt file.
-10:53:15 - info: Loading a default data.json file.
-10:53:15 - info: {"clause":"fragile-goods@0.0.3-8f725043d1fe2e64c5bcdefdb5693d65ba37fba60f743ac0f2f8d5e5595fe901","request":{"$class":"io.clause.demo.fragileGoods.DeliveryUpdate","startTime":"January 1, 2018 16:34:00","finishTime":"January 1, 2018 16:34:11","status":"ARRIVED","accelerometerReadings":[0.2,0.6,-0.3,-0.7,0.1]},"response":{"$class":"io.clause.demo.fragileGoods.PayOut","amount":790,"transactionId":"609813f8-e5b4-49f9-86ab-265a4428ee0f","timestamp":"2018-02-18T10:53:15.589Z"}}
+00:39:27 - info: Logging initialized. 2018-05-14T04:39:27.601Z
+00:39:28 - info: Using current directory as template folder
+00:39:28 - info: Loading a default sample.txt file.
+00:39:28 - info: Loading a single default request.json file.
+00:39:28 - info: Loading a default state.json file.
+00:39:28 - info: {"clause":"fragile-goods@0.0.4-8f725043d1fe2e64c5bcdefdb5693d65ba37fba60f743ac0f2f8d5e5595fe901","request":{"$class":"io.clause.demo.fragileGoods.DeliveryUpdate","startTime":"January 1, 2018 16:34:00","finishTime":"January 1, 2018 16:34:11","status":"ARRIVED","accelerometerReadings":[0.2,0.6,-0.3,-0.7,0.1]},"response":{"$class":"io.clause.demo.fragileGoods.PayOut","amount":790,"transactionId":"687dea08-51d7-44a7-b9f4-a9e1bb65e537","timestamp":"2018-05-14T04:39:28.401Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/fragile-goods/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/fragile-goods/request.json)
 ```json
 {
     "$class": "io.clause.demo.fragileGoods.DeliveryUpdate",
