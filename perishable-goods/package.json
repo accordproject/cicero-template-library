@@ -4,8 +4,9 @@
     "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
     "author": "clause.io",
     "license": "Apache-2.0",
-    "engines": {
-        "cicero": "^0.3.0-0"
+    "cicero": {
+        "template": "clause",
+        "version": "^0.3.0-0"
     },
     "repository": {
         "type": "git",

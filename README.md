@@ -33,6 +33,7 @@ These templates can be parsed and executed by the [Cicero](https://github.com/ac
 | [Simple Agreement for Future Tokens](saft/) | The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches. | Contract |
 | [Simple Agreement for Future Tokens or Equity](safte/) | The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company. | Contract |
 | [Volume Discount](volumediscount/) | A sample volume discount clause. | Clause |
+| [Installment Sale](installment-sale) | A simple clause for a sale paid in installments. | Contract |
 
 ### Services
 

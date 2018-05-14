@@ -4,7 +4,7 @@
 This is a smart legal clause that conforms to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
-> This is a clause for a simple installment sale.
+> A simple clause for a sale paid in installments.
 
 This clause contains:
 - *Some sample Clause Text* - [sample.txt](sample.txt)
