@@ -30,7 +30,7 @@ describe('Logic', () => {
 
     const rootDir = path.resolve(__dirname, '..');
     const clauseText = fs.readFileSync(path.resolve(rootDir, 'sample.txt'), 'utf8');
-
+    
     let template;
     let clause;
     let engine;    
@@ -39,19 +39,21 @@ describe('Logic', () => {
         template = await Template.fromDirectory(rootDir);
         clause = new Clause(template);
         clause.parse(clauseText);
-        engine = new Engine();    
+        engine = new Engine();
     });
     
-    describe('#RequestPayment', async function() {
+    describe('#SupplyAgreement', async function() {
 
-        it('licensee fee should be payed to the amount of', async function() {
-            const request = {};
-            request.$class = 'org.accordproject.copyrightlicense.PaymentRequest';
+        it('should execute a smart clause', async function () {
+            const request = {
+                "$class": "org.accordproject.supplyagreement.ForecastRequest",
+                "supplyForecast": 1200.0
+            };
             const state = {};
             state.$class = 'org.accordproject.contract.State';
             const result = await engine.execute(clause, request, state, false);
             result.should.not.be.null;
-            result.response.amount.should.equal(100.0);
+            result.state.obligations[0].requiredPurchase.should.equal(1020.0);
         });
     });
 });

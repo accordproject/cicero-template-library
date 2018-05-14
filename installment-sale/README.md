@@ -1,10 +1,10 @@
 
-# IP Payment Clause
+# Installment Sale
 
 This is a smart legal clause that conforms to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
-> A payment clause for an IP agreement, such as a trademark or a copyright licenses aggreement.
+> This is a clause for a simple installment sale.
 
 This clause contains:
 - *Some sample Clause Text* - [sample.txt](sample.txt)
@@ -16,13 +16,13 @@ This clause contains:
 
 ### On your own machine
 
-1. [Download the Cicero template library](https://github.com/accordproject/ip-payment/archive/master.zip)
+1. [Download the Cicero template library](https://github.com/accordproject/installment-sale/archive/master.zip)
 
 2. Unzip the library with your favourite tool
 
 3. Then from the command-line, change the current directory to the folder containing this README.md file.
 ```
-cd ip-payment
+cd installment-sale
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
@@ -37,37 +37,36 @@ cicero execute
 
 You should see the following output in your terminal:
 ```bash
-mattmbp:ip-payment matt$ cicero execute
-00:53:05 - info: Logging initialized. 2018-05-14T04:53:05.522Z
-00:53:06 - info: Using current directory as template folder
-00:53:06 - info: Loading a default sample.txt file.
-00:53:06 - info: Loading a single default request.json file.
-00:53:06 - info: Loading a default state.json file.
-00:53:06 - info: {"clause":"ip-payment@0.0.3-b29a1d3b15800d29e2ace411d8f40d272e22675e81131b1e7dead5f16491ef56","request":{"$class":"org.accordproject.ippayment.PaymentRequest","netSaleRevenue":1200,"sublicensingRevenue":450,"permissionGrantedBy":"04-05-2018"},"response":{"$class":"org.accordproject.ippayment.PayOut","totalAmount":77.4,"dueBy":"04-12-2018","transactionId":"827ef026-bd92-4612-833b-2573db0531e9","timestamp":"2018-05-14T04:53:06.334Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+mattmbp:installment-sale matt$ cicero execute
+00:50:52 - info: Logging initialized. 2018-05-14T04:50:52.049Z
+00:50:52 - info: Using current directory as template folder
+00:50:52 - info: Loading a default sample.txt file.
+00:50:52 - info: Loading a single default request.json file.
+00:50:52 - info: Loading a default state.json file.
+00:50:52 - info: {"clause":"installment-sale@0.0.3-7018ffb6733ef40574833128bff20f82bd305f8db438256d6921409da08bec2c","request":{"$class":"org.accordproject.installmentsale.Installment","amount":2500},"response":{"$class":"org.accordproject.installmentsale.Balance","balance":7612.499999999999,"total_paid":2500,"transactionId":"cd0cfdee-7ab7-4ccc-bc68-8bea7d9a2ab8","timestamp":"2018-05-14T04:50:52.759Z"},"state":{"status":"WaitingForFirstDayOfNextMonth","balance_remaining":7612.499999999999,"total_paid":2500,"next_payment_month":4},"emit":[{"from":"Dan","to":"Ned","amount":2500}]}
 ```
 
 ### Sample Payload Data
 
-Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/acceptance-of-delivery/request.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/installment-sale/request.json)
 ```json
 {
-    "$class":"org.accordproject.ippayment.PaymentRequest",
-		"netSaleRevenue":1200.00,
-		"sublicensingRevenue":450.00,
-		"permissionGrantedBy":"04-05-2018"
+    "$class": "org.accordproject.installmentsale.Installment",
+    "amount": 2500.00
 }
 ```
 
 For the request above, you should see the following response:
 ```json
 {
-  "$class": "org.accordproject.ippayment.PayOut",
-  "totalAmount": 7740,
-  "dueBy": "07-07-2018",
-  "transactionId": "8d8748f3-60a9-4041-b0d3-7fa83fcc4a7d",
-  "timestamp": "2018-05-04T13:36:58.290Z"
+  "$class": "org.accordproject.installmentsale.Balance",
+  "balance": 7612.499999999999,
+  "total_paid": 2500,
+  "transactionId": "4c2c8861-6557-46e9-840e-b0e39e410e49",
+  "timestamp": "2018-05-08T15:24:04.434Z"
 }
 ```
+
 
 ## Testing this clause
 
@@ -77,7 +76,7 @@ You need npm and node to test a clause. You can download both from [here](https:
 
 > This clause was tested with Node v8.9.3 and NPM v5.6.0
 
-From the `ip-payment` directory.
+From the `installment-sale` directory.
 
 1. Install all of the dependencies.
 ```
@@ -90,19 +89,21 @@ npm test
 ```
 If successful, you should see the following output
 ```
-mattmbp:ip-payment matt$ npm test
+mattmbp:installment-sale matt$ npm test
 
-> ip-payment@0.0.3 test /Users/matt/dev/accordproject/cicero-template-library/ip-payment
+> installment-sale@0.0.3 test /Users/matt/dev/accordproject/cicero-template-library/installment-sale
 > mocha
 
 21:57:31 - info: Logging initialized. 2018-02-17T21:57:31.074Z
 
 
   Logic
-    #RequestPayment
-      ✓ Payment should be payed to the amount of
+    #Installment
+      ✓ pay one installment
+    #Installment
+      ✓ pay in four installments
 
 
-  1 passing (239ms)
+  4 passing (458ms)
 
 ```

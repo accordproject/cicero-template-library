@@ -27,7 +27,7 @@ cd saft
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -39,18 +39,18 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:saft matt$ cicero execute
-11:29:54 - info: Logging initialized. 2018-02-18T11:29:54.114Z
-11:29:54 - info: Using current directory as template folder
-11:29:54 - info: Loading a default sample.txt file.
-11:29:54 - info: Loading a default data.json file.
-11:29:55 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123,"transactionId":"416a8609-ad1f-4bb3-be88-e648f95c146d","timestamp":"2018-02-18T11:29:55.333Z"},"response":{"$class":"org.accordproject.saft.Payout","transactionId":"51cc3295-dec4-4e5c-a5f0-ea0ee7901d3e","timestamp":"2018-02-18T11:29:55.347Z"},"data":{"$class":"org.accordproject.saft.TemplateModel","token":"Clause Token","company":"Clause","companyType":"Limited","state":"NY","amendmentProvision":true,"purchaseAmount":25,"currency":"EUR","netProceedLimit":3000000,"date":"10/04/2017","deadlineDate":"04/20/2018","discountRatePercentage":38,"network":"Clause Network","coin":"Ether","exchanges":"itBit","companyRepresentative":"Peter Hunn","purchaser":"Daniel Charles Selman","description":"happiness and intergalactic equality"}}
-11:29:55 - info: {"clause":"saft@0.1.1-d562b680e46b64846fdf0953aebcbf910da75f22b05b8553eea71ef0bd42e373","request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123},"response":{"$class":"org.accordproject.saft.Payout","tokenAmount":100,"tokenAddress":"Daniel Charles Selman","transactionId":"51cc3295-dec4-4e5c-a5f0-ea0ee7901d3e","timestamp":"2018-02-18T11:29:55.347Z"}}
+01:03:08 - info: Logging initialized. 2018-05-14T05:03:08.118Z
+01:03:08 - info: Using current directory as template folder
+01:03:08 - info: Loading a default sample.txt file.
+01:03:08 - info: Loading a single default request.json file.
+01:03:08 - info: Loading a default state.json file.
+01:03:09 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123,"transactionId":"5ef36bdf-956b-4e25-9a95-14bbf9dd7643","timestamp":"2018-05-14T05:03:09.216Z"},"state":{"$class":"org.accordproject.contract.State"},"contract":{"$class":"org.accordproject.saft.TemplateModel","token":"Clause Token","company":"Clause","companyType":"Limited","state":"NY","amendmentProvision":true,"purchaseAmount":25,"currency":"EUR","netProceedLimit":3000000,"date":"2017-10-04","deadlineDate":"2018-04-20","discountRatePercentage":38,"network":"Clause Network","coin":"Ether","exchanges":"itBit","companyRepresentative":"Peter Hunn","purchaser":"Daniel Charles Selman","description":"happiness and intergalactic equality"},"response":{"$class":"org.accordproject.saft.Payout","transactionId":"1a5f725e-392e-48fa-be3e-23085467794b","timestamp":"2018-05-14T05:03:09.220Z"},"emit":[],"now":"2018-05-14T05:03:09.220Z"}
+01:03:09 - info: {"clause":"saft@0.1.1-4175d2cf86166610d7765553553642f32960166fd76b0ac41b9998ff97a72986","request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123},"response":{"$class":"org.accordproject.saft.Payout","tokenAmount":100,"tokenAddress":"Daniel Charles Selman","transactionId":"1a5f725e-392e-48fa-be3e-23085467794b","timestamp":"2018-05-14T05:03:09.220Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/perishable-goods/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/perishable-goods/request.json)
 ```json
 {
     "$class": "org.accordproject.saft.Launch",

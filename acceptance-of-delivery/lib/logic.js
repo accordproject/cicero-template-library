@@ -31,7 +31,7 @@ function execute(context) {
     var contract = context.contract;
     var now = moment(req.timestamp);
     var received = moment(req.deliverableReceivedAt);
-    logger.info(context);
+    //logger.info(context);
     
     if(now.isBefore(received)) {
         throw new Error('Timetamp of the transaction is before the deliverable date.')

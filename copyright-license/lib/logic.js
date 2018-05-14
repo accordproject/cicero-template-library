@@ -29,8 +29,7 @@ function paymentClause(context) {
     var req = context.request;
     var res = context.response;
     var contract = context.contract;
-    
-    res.amount = contract.amount;
+    res.amount = contract.paymentClause.amount;
 }
 
 /* eslint-enable no-unused-vars */

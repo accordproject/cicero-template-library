@@ -1,11 +1,11 @@
 
-# Demand Forecast
+# Supply Agreement
 
 This is a smart legal clause that conforms to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
 
-> A sample demand forecast clause.
+> A simple supply agreement.
 
 This clause contains:
 - *Sample Clause Text* - [sample.txt](sample.txt)
@@ -23,7 +23,7 @@ This clause contains:
 
 3. Then from the command-line, change the current directory to the folder containing this README.md file.
 ```
-cd demandforecast
+cd supplyagreement
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
@@ -38,21 +38,22 @@ cicero execute
 
 You should see the following output in your terminal:
 ```bash
-mattmbp:demandforecast matt$ cicero execute
-00:33:53 - info: Logging initialized. 2018-05-14T04:33:53.699Z
-00:33:54 - info: Using current directory as template folder
-00:33:54 - info: Loading a default sample.txt file.
-00:33:54 - info: Loading a single default request.json file.
-00:33:54 - info: Loading a default state.json file.
-00:33:54 - info: {"clause":"demandforecast@0.0.6-33c2b992f58379853035778dff7ba160aee48558fc3462ca6252ecdab529e735","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"882154d1-0580-460e-a216-f8a9e1179168","timestamp":"2018-05-14T04:33:54.512Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+mattmbp:supplyagreement matt$ cicero execute
+01:12:36 - info: Logging initialized. 2018-05-14T05:12:36.428Z
+01:12:36 - info: Using current directory as template folder
+01:12:36 - info: Loading a default sample.txt file.
+01:12:36 - info: Loading a single default request.json file.
+01:12:36 - info: Loading a default state.json file.
+01:12:37 - info: {"clause":"supplyagreement@0.0.6-21491f82e4ee4048cc4b22c8a46f9e1f9f9ea901454ab758ff4dbfc5b85bb36d","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.ForecastResponse","transactionId":"b8a1be70-f7b2-4638-a218-b15fe2eb9591","timestamp":"2018-05-14T05:12:37.616Z"},"state":{"obligations":[{"$class":"org.accordproject.supplyagreement.PurchaseObligation","party":"PETER","requiredPurchase":1020,"year":2018,"quarter":2}]},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/demandforecast/request.json)
+
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/supplyagreement/request.json)
 ```json
 {
-    "$class": "org.accordproject.demandforecast.ForecastRequest",
+    "$class": "org.accordproject.supplyagreement.ForecastRequest",
     "supplyForecast": 1200.0
 }
 ```
@@ -60,12 +61,12 @@ Request, as in [request.json](https://github.com/accordproject/cicero-template-l
 For the request above, you should see the following response:
 ```json
 {
-  "$class": "org.accordproject.demandforecast.BindingResponse",
+  "$class": "org.accordproject.supplyagreement.BindingResponse",
   "requiredPurchase": 1020,
   "year": 2018,
   "quarter": 2,
-  "transactionId": "151aa717-096c-4300-8de3-72650325e599",
-  "timestamp": "2018-04-10T16:10:28.699Z"
+  "transactionId": "ee525721-7c99-4322-9a90-f9165466db28",
+  "timestamp": "2018-05-10T18:39:09.606Z"
 }
 ```
 
@@ -78,7 +79,7 @@ You need npm and node to test a clause. You can download both from [here](https:
 
 > This clause was tested with Node v8.9.3 and NPM v5.6.0
 
-From the `demandforecast` directory.
+From the `supplyagreement` directory.
 
 1. Install all of the dependencies.
 ```
@@ -91,16 +92,16 @@ npm test
 ```
 If successful, you should see the following output
 ```
-mattmbp:demandforecast matt$ npm test
+mattmbp:supplyagreement matt$ npm test
 
-> demandforecast@0.0.6 test /Users/matt/dev/mttrbrts/cicero-template-library/demandforecast
+> supplyagreement@0.0.6 test /Users/matt/dev/mttrbrts/cicero-template-library/supplyagreement
 > mocha
 
 11:37:53 - info: Logging initialized. 2018-02-18T11:37:53.706Z
 
 
   Logic
-    #DemandForecast
+    #Supplyagreement
 ...
       ✓ should execute a smart clause (234ms)
 

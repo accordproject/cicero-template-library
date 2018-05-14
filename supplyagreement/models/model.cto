@@ -1,0 +1,83 @@
+namespace org.accordproject.supplyagreement
+
+import org.accordproject.us.state.*
+import org.accordproject.purchaseorder.*
+
+@AccordTemplateModel("supplyagreement")
+concept TemplateModel {
+  o DateTime effectiveDate
+  o String supplier 
+  o String buyer
+  o String shortDescriptionOfTheProducts
+  o Integer noticeWindow
+  o Integer cancellationWindow
+  o Double minimumPercentage
+  o String deliverables
+  o Integer deliveryWindow
+  o String deliveryAttachment
+  o Integer inspectionWindow
+  o String acceptanceAttachment
+  o Integer priceUpdateWindow
+  o String accountNumber
+  o String routingNumnber
+  o Integer termYears
+  o Integer renewalYears
+  o Integer renewalWindow
+  o State governingState
+  o State venueState
+}
+
+
+/**
+ * Defines contract obligations
+ */
+concept Obligation {
+  o String party
+}
+concept DeliveryObligation extends Obligation {
+  o DateTime expectedDelivery
+  o PurchaseOrder deliverables
+}
+concept PurchaseObligation extends Obligation {
+  o Double requiredPurchase
+  o Integer year
+  o Integer quarter
+}
+concept PaymentObligation extends Obligation {
+  o Double amount
+}
+
+/**
+ * Defines the state of the contract
+ */
+concept AgreementState {
+  o Obligation[] obligations
+}
+
+/**
+ * Defines the contract transactions
+ */
+transaction ForecastRequest {
+  o Integer supplyForecast
+}
+transaction ForecastResponse {
+}
+
+transaction PurchaseRequest {
+  o PurchaseOrder purchaseOrder
+}
+transaction PurchaseResponse {
+}
+
+transaction DeliveryRequest {
+  o Product[] products
+}
+transaction DeliveryResponse {
+}
+
+transaction PaymentRequest {
+  o Double amount
+}
+transaction PaymentResponse {
+  o Double paid
+}
