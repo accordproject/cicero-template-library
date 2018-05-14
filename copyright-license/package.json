@@ -4,8 +4,9 @@
     "description": "This clause is a copyright license agreement.",
     "author": "clause.io",
     "license": "Apache-2.0",
-    "engines": {
-        "cicero": "^0.3.0-0"
+    "cicero": {
+      "template": "contract",
+      "target": "^0.3.0-0"
     },
     "repository": {
         "type": "git",
