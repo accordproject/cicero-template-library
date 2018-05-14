@@ -4,8 +4,9 @@
     "description": "A sample supply agreement.",
     "author": "Jerome Simeon, clause.io",
     "license": "Apache-2.0",
-    "engines": {
-        "cicero": "^0.3.0-0"
+    "cicero": {
+        "template": "contract",
+        "version": "^0.3.0-0"
     },
     "scripts": {
         "test": "mocha",
