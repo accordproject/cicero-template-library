@@ -18,7 +18,11 @@ function execute(context) {
 		var contract = context.contract;
 		var state = context.state;
 
-		context.state = { 'counter' : state.counter + 1};
+		context.state = serializer.fromJSON({
+        "$class": "org.accordproject.helloworldstate.HelloWorldState",
+        "stateId": "org.accordproject.helloworldstate.HelloWorldState#"+(state.counter+1),
+        'counter' : state.counter + 1
+    });
     res.output = 'Hello ' + contract.name + ' ' + request.input + '(' + context.state.counter + ')';
 }
 

@@ -38,12 +38,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:installment-sale matt$ cicero execute
-00:50:52 - info: Logging initialized. 2018-05-14T04:50:52.049Z
-00:50:52 - info: Using current directory as template folder
-00:50:52 - info: Loading a default sample.txt file.
-00:50:52 - info: Loading a single default request.json file.
-00:50:52 - info: Loading a default state.json file.
-00:50:52 - info: {"clause":"installment-sale@0.0.3-7018ffb6733ef40574833128bff20f82bd305f8db438256d6921409da08bec2c","request":{"$class":"org.accordproject.installmentsale.Installment","amount":2500},"response":{"$class":"org.accordproject.installmentsale.Balance","balance":7612.499999999999,"total_paid":2500,"transactionId":"cd0cfdee-7ab7-4ccc-bc68-8bea7d9a2ab8","timestamp":"2018-05-14T04:50:52.759Z"},"state":{"status":"WaitingForFirstDayOfNextMonth","balance_remaining":7612.499999999999,"total_paid":2500,"next_payment_month":4},"emit":[{"from":"Dan","to":"Ned","amount":2500}]}
+18:29:01 - info: Logging initialized. 2018-05-15T22:29:01.219Z
+18:29:01 - info: Using current directory as template folder
+18:29:01 - info: Loading a default sample.txt file.
+18:29:01 - info: Loading a single default request.json file.
+18:29:01 - info: Loading a default state.json file.
+18:29:01 - info: {"clause":"installment-sale@0.0.3-7018ffb6733ef40574833128bff20f82bd305f8db438256d6921409da08bec2c","request":{"$class":"org.accordproject.installmentsale.Installment","amount":2500},"response":{"$class":"org.accordproject.installmentsale.Balance","balance":7612.499999999999,"total_paid":2500,"transactionId":"99d68c6b-87df-43c2-b44f-3f409eef3480","timestamp":"2018-05-15T22:29:01.945Z"},"state":{"$class":"org.accordproject.installmentsale.InstallmentSaleState","status":"WaitingForFirstDayOfNextMonth","balance_remaining":7612.499999999999,"next_payment_month":4,"total_paid":2500,"stateId":"org.accordproject.installmentsale.InstallmentSaleState#1"},"emit":[{"$class":"org.accordproject.installmentsale.PaymentObligation","from":"Dan","to":"Ned","amount":2500,"eventId":"valid","timestamp":"2018-05-15T22:29:01.946Z"}]}
 ```
 
 ### Sample Payload Data

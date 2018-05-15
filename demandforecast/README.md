@@ -39,12 +39,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:demandforecast matt$ cicero execute
-00:33:53 - info: Logging initialized. 2018-05-14T04:33:53.699Z
-00:33:54 - info: Using current directory as template folder
-00:33:54 - info: Loading a default sample.txt file.
-00:33:54 - info: Loading a single default request.json file.
-00:33:54 - info: Loading a default state.json file.
-00:33:54 - info: {"clause":"demandforecast@0.0.6-33c2b992f58379853035778dff7ba160aee48558fc3462ca6252ecdab529e735","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"882154d1-0580-460e-a216-f8a9e1179168","timestamp":"2018-05-14T04:33:54.512Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:24:47 - info: Logging initialized. 2018-05-15T22:24:47.808Z
+18:24:48 - info: Using current directory as template folder
+18:24:48 - info: Loading a default sample.txt file.
+18:24:48 - info: Loading a single default request.json file.
+18:24:48 - info: Loading a default state.json file.
+18:24:48 - info: {"clause":"demandforecast@0.0.6-33c2b992f58379853035778dff7ba160aee48558fc3462ca6252ecdab529e735","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"d813cd90-2ac2-4491-b866-8fee4a267f74","timestamp":"2018-05-15T22:24:48.495Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

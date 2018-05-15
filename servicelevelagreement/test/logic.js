@@ -54,8 +54,9 @@ describe('Logic', () => {
                 "last11MonthCharge": 0
             };
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0);
         });
@@ -69,8 +70,9 @@ describe('Logic', () => {
                 "last11MonthCharge": 0
             };
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0.2);
         });
@@ -84,8 +86,9 @@ describe('Logic', () => {
                 "last11MonthCharge": 0
             };
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0.3);
         });
@@ -100,8 +103,9 @@ describe('Logic', () => {
                 "last11MonthCharge": 0
             };
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(1);
         });
@@ -116,8 +120,9 @@ describe('Logic', () => {
                 "last11MonthCharge": 110
             };
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.monthlyCredit.should.equal(0.99);
         });
@@ -130,7 +135,10 @@ describe('Logic', () => {
                 "last11MonthCredit": 0,
                 "last11MonthCharge": 0
             };
-            await engine.execute(clause, request).catch((e) => {
+            const state = {};
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            await engine.execute(clause, request, state).catch((e) => {
                 e.message.should.equal('A service level must be at least 0% and at most 100%.');
             });
         });

@@ -31,13 +31,16 @@ function demandforecast(context) {
         throw new Error('Forecast was not received on last day of quarter');
     }
 
-    context.state = { 'obligations' : [{
-        '$class' : 'org.accordproject.supplyagreement.PurchaseObligation',
-        'party' : contract.buyer,
-        'requiredPurchase' : req.supplyForecast * (contract.minimumPercentage / 100.0),
-        'year' : now.year(),
-        'quarter' : now.quarter()
-    }]};
+    context.state = serializer.fromJSON({
+        '$class' : 'org.accordproject.supplyagreement.AgreementState',
+        'stateId' : state.stateId,
+        'obligations' : [{
+            '$class' : 'org.accordproject.supplyagreement.PurchaseObligation',
+            'party' : contract.buyer,
+            'requiredPurchase' : req.supplyForecast * (contract.minimumPercentage / 100.0),
+            'year' : now.year(),
+            'quarter' : now.quarter()
+        }]});
     
     context.res = {};
 }

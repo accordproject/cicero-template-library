@@ -39,13 +39,13 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:safte matt$ cicero execute
-01:05:40 - info: Logging initialized. 2018-05-14T05:05:40.766Z
-01:05:41 - info: Using current directory as template folder
-01:05:41 - info: Loading a default sample.txt file.
-01:05:41 - info: Loading a single default request.json file.
-01:05:41 - info: Loading a default state.json file.
-01:05:42 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23,"transactionId":"a6e82d0a-1bc3-4b9c-8116-1a706c266556","timestamp":"2018-05-14T05:05:42.286Z"},"state":{"$class":"org.accordproject.contract.State"},"contract":{"$class":"org.accordproject.safte.TemplateModel","companyName":"ACME","companyRegistrationNumber":555,"purchaser":"Dan","jurisdiction":"NY","purchaseAmount":25,"discount":7,"projectName":"Umbrella","projectDescription":"manages umbrella tokens","months":12,"monthsText":"twelve","amount":1000,"amountText":"one thousand"},"response":{"$class":"org.accordproject.safte.TokenShare","transactionId":"707af9f4-0fb2-42b3-bc2c-7ccfe1e18608","timestamp":"2018-05-14T05:05:42.290Z"},"emit":[],"now":"2018-05-14T05:05:42.289Z"}
-01:05:42 - info: {"clause":"safte@0.1.1-95e0689a76925ef6c11da3ccd7124fbbceb9233e6aa0361f67e45b28fe205018","request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23},"response":{"$class":"org.accordproject.safte.TokenShare","tokenAmount":21.855057260250017,"transactionId":"707af9f4-0fb2-42b3-bc2c-7ccfe1e18608","timestamp":"2018-05-14T05:05:42.290Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:32:19 - info: Logging initialized. 2018-05-15T22:32:19.046Z
+18:32:19 - info: Using current directory as template folder
+18:32:19 - info: Loading a default sample.txt file.
+18:32:19 - info: Loading a single default request.json file.
+18:32:19 - info: Loading a default state.json file.
+18:32:20 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23,"transactionId":"8483dedf-0009-4b0a-ac03-470de19c23f0","timestamp":"2018-05-15T22:32:20.578Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"contract":{"$class":"org.accordproject.safte.TemplateModel","companyName":"ACME","companyRegistrationNumber":555,"purchaser":"Dan","jurisdiction":"NY","purchaseAmount":25,"discount":7,"projectName":"Umbrella","projectDescription":"manages umbrella tokens","months":12,"monthsText":"twelve","amount":1000,"amountText":"one thousand"},"response":{"$class":"org.accordproject.safte.TokenShare","transactionId":"47b04887-a5a2-42b8-9073-a4bb1ff539e7","timestamp":"2018-05-15T22:32:20.588Z"},"emit":[],"now":"2018-05-15T22:32:20.588Z"}
+18:32:20 - info: {"clause":"safte@0.1.1-95e0689a76925ef6c11da3ccd7124fbbceb9233e6aa0361f67e45b28fe205018","request":{"$class":"org.accordproject.safte.TokenSale","tokenPrice":1.23},"response":{"$class":"org.accordproject.safte.TokenShare","tokenAmount":21.855057260250017,"transactionId":"47b04887-a5a2-42b8-9073-a4bb1ff539e7","timestamp":"2018-05-15T22:32:20.588Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

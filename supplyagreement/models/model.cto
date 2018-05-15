@@ -1,5 +1,6 @@
 namespace org.accordproject.supplyagreement
 
+import org.accordproject.common.*
 import org.accordproject.us.state.*
 import org.accordproject.purchaseorder.*
 
@@ -23,8 +24,8 @@ concept TemplateModel {
   o Integer termYears
   o Integer renewalYears
   o Integer renewalWindow
-  o State governingState
-  o State venueState
+  o USState governingState
+  o USState venueState
 }
 
 
@@ -50,7 +51,7 @@ concept PaymentObligation extends Obligation {
 /**
  * Defines the state of the contract
  */
-concept AgreementState {
+asset AgreementState extends State {
   o Obligation[] obligations
 }
 

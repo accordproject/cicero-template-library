@@ -48,17 +48,14 @@ describe('Logic', () => {
             const request = {};
             request.$class = 'org.accordproject.installmentsale.Installment';
             request.amount = 2500.00;
-            const state = { '$class' : '',
-                            'status' : 'WaitingForFirstDayOfNextMonth',
-                            'balance_remaining' : 10000.00,
-                            'total_paid' : 0.00,
-                            'next_payment_month' : 3 };
-            state.$class = 'org.accordproject.installmentsale.ContractState';
+            const state = {};
+            state.$class = 'org.accordproject.installmentsale.InstallmentSaleState';
+            state.stateId = 'org.accordproject.installmentsale.InstallmentSaleState#1';
             state.status = 'WaitingForFirstDayOfNextMonth';
             state.balance_remaining = 10000.00;
             state.total_paid = 0.00;
             state.next_payment_month = 3;
-            const result = await engine.execute(clause, request, state, false);
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.balance.should.equal(7612.499999999999);
         });
@@ -73,20 +70,17 @@ describe('Logic', () => {
             const request2 = {};
             request2.$class = 'org.accordproject.installmentsale.ClosingPayment';
             request2.amount = 3229.525312499998;
-            const state = { '$class' : '',
-                            'status' : 'WaitingForFirstDayOfNextMonth',
-                            'balance_remaining' : 10000.00,
-                            'total_paid' : 0.00,
-                            'next_payment_month' : 3 };
-            state.$class = 'org.accordproject.installmentsale.ContractState';
+            const state = {};
+            state.$class = 'org.accordproject.installmentsale.InstallmentSaleState';
+            state.stateId = 'org.accordproject.installmentsale.InstallmentSaleState#1';
             state.status = 'WaitingForFirstDayOfNextMonth';
             state.balance_remaining = 10000.00;
             state.total_paid = 0.00;
             state.next_payment_month = 3;
-            const result1 = await engine.execute(clause, request1, state, false);
-            const result2 = await engine.execute(clause, request1, result1.state, false);
-            const result3 = await engine.execute(clause, request1, result2.state, false);
-            const result4 = await engine.execute(clause, request2, result3.state, false);
+            const result1 = await engine.execute(clause, request1, state);
+            const result2 = await engine.execute(clause, request1, result1.state);
+            const result3 = await engine.execute(clause, request1, result2.state);
+            const result4 = await engine.execute(clause, request2, result3.state);
             result4.should.not.be.null;
             result4.response.balance.should.equal(0.00);
         });
