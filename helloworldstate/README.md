@@ -37,18 +37,19 @@ cicero execute
 
 You should see the following output in your terminal:
 ```bash
-00:48:27 - info: Logging initialized. 2018-05-14T04:48:27.048Z
-00:48:27 - info: Using current directory as template folder
-00:48:27 - info: Loading a default sample.txt file.
-00:48:27 - info: Loading a single default request.json file.
-00:48:27 - info: Loading a default state.json file.
-00:48:27 - info: {"clause":"helloworldstate@0.0.5-bf3fd89c5a3c5ac9faab5754f69c7cefe24e1e5b30fe786ff29883ca286b4f3d","request":{"$class":"org.accordproject.helloworldstate.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworldstate.Response","output":"Hello Fred Blogs Accord Project(1)","transactionId":"70413c61-f4d6-4abc-9179-4dc143057d93","timestamp":"2018-05-14T04:48:27.822Z"},"state":{"counter":1},"emit":[]}
+mattmbp:helloworldstate matt$ cicero execute
+18:27:32 - info: Logging initialized. 2018-05-15T22:27:32.617Z
+18:27:33 - info: Using current directory as template folder
+18:27:33 - info: Loading a default sample.txt file.
+18:27:33 - info: Loading a single default request.json file.
+18:27:33 - info: Loading a default state.json file.
+18:27:33 - info: {"clause":"helloworldstate@0.0.5-bf3fd89c5a3c5ac9faab5754f69c7cefe24e1e5b30fe786ff29883ca286b4f3d","request":{"$class":"org.accordproject.helloworldstate.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworldstate.Response","output":"Hello Fred Blogs Accord Project(1)","transactionId":"507107a6-e7b8-4f55-a69a-5334d9953076","timestamp":"2018-05-15T22:27:33.287Z"},"state":{"$class":"org.accordproject.helloworldstate.HelloWorldState","counter":1,"stateId":"org.accordproject.helloworldstate.HelloWorldState#1"},"emit":[]}
 ```
 
 The contract state changes every time you call the clause. If you pass more than one requests on the command line, the input will use the state to return the number of times it has been called:
 
-```
-cicero execute --template ./ --sample ./sample.txt --request ./request.json --request ./request.json --request ./request.json
+```bash
+mattmbp:helloworldstate matt$ cicero execute --template ./ --sample ./sample.txt --request ./request.json --request ./request.json --request ./request.json
 14:31:19 - info: Logging initialized. 2018-05-07T18:31:19.790Z
 14:31:20 - info: Loading a default state.json file.
 14:31:20 - info: {"clause":"helloworldstate@0.0.5-bf3fd89c5a3c5ac9faab5754f69c7cefe24e1e5b30fe786ff29883ca286b4f3d","request":{"$class":"org.accordproject.helloworldstate.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworldstate.Response","output":"Hello Fred Blogs Accord Project(3)","transactionId":"5c3b1f10-8bf6-4b52-b03c-39b3498fcaee","timestamp":"2018-05-07T18:31:20.358Z"},"state":{"counter":3},"emit":[]}

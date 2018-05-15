@@ -3,7 +3,7 @@ namespace org.accordproject.us.state
 /**
  * List of available states
  */
-enum State {
+enum USState {
   o AL
   o AK
   o AZ

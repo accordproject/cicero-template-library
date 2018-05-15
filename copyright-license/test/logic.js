@@ -48,8 +48,9 @@ describe('Logic', () => {
             const request = {};
             request.$class = 'org.accordproject.copyrightlicense.PaymentRequest';
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.should.equal(100.0);
         });

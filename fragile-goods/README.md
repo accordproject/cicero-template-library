@@ -38,12 +38,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:fragile-goods matt$ cicero execute
-00:39:27 - info: Logging initialized. 2018-05-14T04:39:27.601Z
-00:39:28 - info: Using current directory as template folder
-00:39:28 - info: Loading a default sample.txt file.
-00:39:28 - info: Loading a single default request.json file.
-00:39:28 - info: Loading a default state.json file.
-00:39:28 - info: {"clause":"fragile-goods@0.0.4-8f725043d1fe2e64c5bcdefdb5693d65ba37fba60f743ac0f2f8d5e5595fe901","request":{"$class":"io.clause.demo.fragileGoods.DeliveryUpdate","startTime":"January 1, 2018 16:34:00","finishTime":"January 1, 2018 16:34:11","status":"ARRIVED","accelerometerReadings":[0.2,0.6,-0.3,-0.7,0.1]},"response":{"$class":"io.clause.demo.fragileGoods.PayOut","amount":790,"transactionId":"687dea08-51d7-44a7-b9f4-a9e1bb65e537","timestamp":"2018-05-14T04:39:28.401Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:25:06 - info: Logging initialized. 2018-05-15T22:25:06.285Z
+18:25:06 - info: Using current directory as template folder
+18:25:06 - info: Loading a default sample.txt file.
+18:25:06 - info: Loading a single default request.json file.
+18:25:06 - info: Loading a default state.json file.
+18:25:06 - info: {"clause":"fragile-goods@0.0.4-8f725043d1fe2e64c5bcdefdb5693d65ba37fba60f743ac0f2f8d5e5595fe901","request":{"$class":"io.clause.demo.fragileGoods.DeliveryUpdate","startTime":"January 1, 2018 16:34:00","finishTime":"January 1, 2018 16:34:11","status":"ARRIVED","accelerometerReadings":[0.2,0.6,-0.3,-0.7,0.1]},"response":{"$class":"io.clause.demo.fragileGoods.PayOut","amount":790,"transactionId":"0fd66669-addc-4c0c-8c30-6103fd2293aa","timestamp":"2018-05-15T22:25:06.988Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

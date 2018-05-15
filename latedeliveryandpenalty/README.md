@@ -39,18 +39,18 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:latedeliveryandpenalty matt$ cicero execute
-00:56:07 - info: Logging initialized. 2018-05-14T04:56:07.367Z
-00:56:07 - info: Using current directory as template folder
-00:56:07 - info: Loading a default sample.txt file.
-00:56:07 - info: Loading a single default request.json file.
-00:56:07 - info: Loading a default state.json file.
-00:56:08 - info: CICERO-ENGINE late
-00:56:08 - info: CICERO-ENGINE penalty duration unit: DAY
-00:56:08 - info: CICERO-ENGINE penalty duration amount: 2
-00:56:08 - info: CICERO-ENGINE diff:147
-00:56:08 - info: CICERO-ENGINE capped.
-00:56:08 - info: CICERO-ENGINE buyerMayTerminate.
-00:56:08 - info: {"clause":"latedeliveryandpenalty@0.0.4-a1c6d2f2e8f97d23244f73f21d67ffdac326b6f33425d56cef9f02a0177b5c0d","request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"December 17, 2017 03:24:00","deliveredAt":null,"goodsValue":200},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","penalty":110.00000000000001,"buyerMayTerminate":true,"transactionId":"5e6cd3e3-e817-4158-b8b4-6a7ec5fb44ac","timestamp":"2018-05-14T04:56:08.081Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:29:45 - info: Logging initialized. 2018-05-15T22:29:45.624Z
+18:29:46 - info: Using current directory as template folder
+18:29:46 - info: Loading a default sample.txt file.
+18:29:46 - info: Loading a single default request.json file.
+18:29:46 - info: Loading a default state.json file.
+18:29:46 - info: CICERO-ENGINE late
+18:29:46 - info: CICERO-ENGINE penalty duration unit: DAY
+18:29:46 - info: CICERO-ENGINE penalty duration amount: 2
+18:29:46 - info: CICERO-ENGINE diff:149
+18:29:46 - info: CICERO-ENGINE capped.
+18:29:46 - info: CICERO-ENGINE buyerMayTerminate.
+18:29:46 - info: {"clause":"latedeliveryandpenalty@0.0.4-a1c6d2f2e8f97d23244f73f21d67ffdac326b6f33425d56cef9f02a0177b5c0d","request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"December 17, 2017 03:24:00","deliveredAt":null,"goodsValue":200},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","penalty":110.00000000000001,"buyerMayTerminate":true,"transactionId":"c6eb6b44-bfe7-4b8e-8f3d-1e7b82638366","timestamp":"2018-05-15T22:29:46.333Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 This template provides additional sample clause text. You can execute the second sample with the command:
