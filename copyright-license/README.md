@@ -38,12 +38,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:copyright-license matt$ cicero execute
-00:29:31 - info: Logging initialized. 2018-05-14T04:29:31.247Z
-00:29:31 - info: Using current directory as template folder
-00:29:31 - info: Loading a default sample.txt file.
-00:29:31 - info: Loading a single default request.json file.
-00:29:31 - info: Loading a default state.json file.
-00:29:32 - info: {"clause":"copyright-license@0.0.3-e52e29761b52f950a1fa7ec9ae29401cdbc6a102016a59027d56161dbb7d4eb2","request":{"$class":"org.accordproject.copyrightlicense.PaymentRequest"},"response":{"$class":"org.accordproject.copyrightlicense.PayOut","amount":100,"transactionId":"a1cd6567-fb57-48e2-97bb-387f85162305","timestamp":"2018-05-14T04:29:32.041Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:23:14 - info: Logging initialized. 2018-05-15T22:23:14.567Z
+18:23:15 - info: Using current directory as template folder
+18:23:15 - info: Loading a default sample.txt file.
+18:23:15 - info: Loading a single default request.json file.
+18:23:15 - info: Loading a default state.json file.
+18:23:15 - info: {"clause":"copyright-license@0.0.3-ed96691079abc8d7017e5070ab9e3e901d04fc911ee6617fe181cefacf663010","request":{"$class":"org.accordproject.copyrightlicense.PaymentRequest"},"response":{"$class":"org.accordproject.copyrightlicense.PayOut","amount":100,"transactionId":"b27a6afc-8dd9-4620-bcc8-d063e5ffe5de","timestamp":"2018-05-15T22:23:15.353Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

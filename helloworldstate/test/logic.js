@@ -49,9 +49,10 @@ describe('Logic', () => {
             request.$class = 'org.accordproject.helloworldstate.Request';
             request.input = 'World'
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            state.counter = 0;
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.helloworldstate.HelloWorldState';
+            state.stateId = 'org.accordproject.helloworldstate.HelloWorldState#0';
+		        state.counter = 0;
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.output.should.equal('Hello Fred Blogs World(1)');
         });
@@ -64,13 +65,33 @@ describe('Logic', () => {
             request.$class = 'org.accordproject.helloworldstate.Request';
             request.input = 'World'
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            state.counter = 0;
-            const result1 = await engine.execute(clause, request, state, false);
-            const result2 = await engine.execute(clause, request, result1.state, false);
+            state.$class = 'org.accordproject.helloworldstate.HelloWorldState';
+            state.stateId = 'org.accordproject.helloworldstate.HelloWorldState#0';
+		        state.counter = 0;
+            const result1 = await engine.execute(clause, request, state);
+            const result2 = await engine.execute(clause, request, result1.state);
             result2.should.not.be.null;
             result2.response.output.should.equal('Hello Fred Blogs World(2)');
             result2.state.counter.should.equal(2);
+        });
+    });
+
+    describe('#Hello', async function() {
+
+        it('should say hello thrice', async function() {
+            const request = {};
+            request.$class = 'org.accordproject.helloworldstate.Request';
+            request.input = 'World'
+            const state = {};
+            state.$class = 'org.accordproject.helloworldstate.HelloWorldState';
+            state.stateId = 'org.accordproject.helloworldstate.HelloWorldState#0';
+		        state.counter = 0;
+            const result1 = await engine.execute(clause, request, state);
+            const result2 = await engine.execute(clause, request, result1.state);
+            const result3 = await engine.execute(clause, request, result2.state);
+            result3.should.not.be.null;
+            result3.response.output.should.equal('Hello Fred Blogs World(3)');
+            result3.state.counter.should.equal(3);
         });
     });
 });

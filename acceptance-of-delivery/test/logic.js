@@ -50,8 +50,9 @@ describe('Logic', () => {
             request.deliverableReceivedAt = new Date();
             request.inspectionPassed = true;
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('PASSED_TESTING');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
@@ -64,8 +65,9 @@ describe('Logic', () => {
             request.deliverableReceivedAt = new Date();
             request.inspectionPassed = false;
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, state, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('FAILED_TESTING');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
@@ -79,8 +81,9 @@ describe('Logic', () => {
             request.deliverableReceivedAt = moment().subtract(11, 'days');
             request.inspectionPassed = true;
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
-            const result = await engine.execute(clause, request, false);
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('OUTSIDE_INSPECTION_PERIOD');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
@@ -91,11 +94,12 @@ describe('Logic', () => {
             const request = {};
             request.$class = 'org.accordproject.acceptanceofdelivery.InspectDeliverable';
             const state = {};
-            state.$class = 'org.accordproject.contract.State';
+            state.$class = 'org.accordproject.common.State';
+            state.stateId = 'org.accordproject.common.State#1';
             // deliverable was received tomorrow!
             request.deliverableReceivedAt = moment().add(1, 'days');
             request.inspectionPassed = true;
-            engine.execute(clause, request, state, false).should.be.rejectedWith(Error);
+            engine.execute(clause, request, state).should.be.rejectedWith(Error);
         });
     });
 });

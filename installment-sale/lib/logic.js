@@ -54,13 +54,22 @@ function payInstallment(context) {
 
     // Declare the new state
     context.state =
-        { 'status' :'WaitingForFirstDayOfNextMonth',
-          'balance_remaining' : balance,
-          'total_paid' : total_paid,
-          'next_payment_month' : state.next_payment_month + 1 };
+        serializer.fromJSON({
+            '$class' : 'org.accordproject.installmentsale.InstallmentSaleState',
+            'stateId' : state.stateId,
+            'status' :'WaitingForFirstDayOfNextMonth',
+            'balance_remaining' : balance,
+            'total_paid' : total_paid,
+            'next_payment_month' : state.next_payment_month + 1
+        });
 
     // Emit payment obligation
-    emit.push({'from':contract.BUYER,'to':contract.SELLER,'amount':req.amount})
+    emit.push(serializer.fromJSON({
+        '$class': 'org.accordproject.installmentsale.PaymentObligation',
+        'from':contract.BUYER,
+        'to':contract.SELLER,
+        'amount':req.amount
+    }));
 }
 
 /**
@@ -89,13 +98,22 @@ function payLastInstallment(context) {
 
     // Declare the new state
     context.state =
-        { 'status' :'Fulfilled',
-          'balance_remaining' : 0.0,
-          'total_paid' : total_paid,
-          'next_payment_month' : 0.0 };
-    
+        serializer.fromJSON({
+            '$class' : 'org.accordproject.installmentsale.InstallmentSaleState',
+            'stateId' : state.stateId,
+            'status' :'Fulfilled',
+            'balance_remaining' : 0.0,
+            'total_paid' : total_paid,
+            'next_payment_month' : 0.0
+        });
+
     // Emit payment obligation
-    emit.push({'from':contract.BUYER,'to':contract.SELLER,'amount':req.amount})
+    emit.push(serializer.fromJSON({
+        '$class': 'org.accordproject.installmentsale.PaymentObligation',
+        'from':contract.BUYER,
+        'to':contract.SELLER,
+        'amount':req.amount
+    }));
 }
 
 /* eslint-enable no-unused-vars */

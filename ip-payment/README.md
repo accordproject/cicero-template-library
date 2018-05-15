@@ -38,12 +38,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:ip-payment matt$ cicero execute
-00:53:05 - info: Logging initialized. 2018-05-14T04:53:05.522Z
-00:53:06 - info: Using current directory as template folder
-00:53:06 - info: Loading a default sample.txt file.
-00:53:06 - info: Loading a single default request.json file.
-00:53:06 - info: Loading a default state.json file.
-00:53:06 - info: {"clause":"ip-payment@0.0.3-b29a1d3b15800d29e2ace411d8f40d272e22675e81131b1e7dead5f16491ef56","request":{"$class":"org.accordproject.ippayment.PaymentRequest","netSaleRevenue":1200,"sublicensingRevenue":450,"permissionGrantedBy":"04-05-2018"},"response":{"$class":"org.accordproject.ippayment.PayOut","totalAmount":77.4,"dueBy":"04-12-2018","transactionId":"827ef026-bd92-4612-833b-2573db0531e9","timestamp":"2018-05-14T04:53:06.334Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:29:20 - info: Logging initialized. 2018-05-15T22:29:20.325Z
+18:29:20 - info: Using current directory as template folder
+18:29:20 - info: Loading a default sample.txt file.
+18:29:20 - info: Loading a single default request.json file.
+18:29:20 - info: Loading a default state.json file.
+18:29:21 - info: {"clause":"ip-payment@0.0.3-b29a1d3b15800d29e2ace411d8f40d272e22675e81131b1e7dead5f16491ef56","request":{"$class":"org.accordproject.ippayment.PaymentRequest","netSaleRevenue":1200,"sublicensingRevenue":450,"permissionGrantedBy":"04-05-2018"},"response":{"$class":"org.accordproject.ippayment.PayOut","totalAmount":77.4,"dueBy":"04-12-2018","transactionId":"084e34b8-0407-403c-9ad6-944620b69f04","timestamp":"2018-05-15T22:29:21.054Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

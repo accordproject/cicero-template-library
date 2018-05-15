@@ -39,13 +39,13 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:saft matt$ cicero execute
-01:03:08 - info: Logging initialized. 2018-05-14T05:03:08.118Z
-01:03:08 - info: Using current directory as template folder
-01:03:08 - info: Loading a default sample.txt file.
-01:03:08 - info: Loading a single default request.json file.
-01:03:08 - info: Loading a default state.json file.
-01:03:09 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123,"transactionId":"5ef36bdf-956b-4e25-9a95-14bbf9dd7643","timestamp":"2018-05-14T05:03:09.216Z"},"state":{"$class":"org.accordproject.contract.State"},"contract":{"$class":"org.accordproject.saft.TemplateModel","token":"Clause Token","company":"Clause","companyType":"Limited","state":"NY","amendmentProvision":true,"purchaseAmount":25,"currency":"EUR","netProceedLimit":3000000,"date":"2017-10-04","deadlineDate":"2018-04-20","discountRatePercentage":38,"network":"Clause Network","coin":"Ether","exchanges":"itBit","companyRepresentative":"Peter Hunn","purchaser":"Daniel Charles Selman","description":"happiness and intergalactic equality"},"response":{"$class":"org.accordproject.saft.Payout","transactionId":"1a5f725e-392e-48fa-be3e-23085467794b","timestamp":"2018-05-14T05:03:09.220Z"},"emit":[],"now":"2018-05-14T05:03:09.220Z"}
-01:03:09 - info: {"clause":"saft@0.1.1-4175d2cf86166610d7765553553642f32960166fd76b0ac41b9998ff97a72986","request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123},"response":{"$class":"org.accordproject.saft.Payout","tokenAmount":100,"tokenAddress":"Daniel Charles Selman","transactionId":"1a5f725e-392e-48fa-be3e-23085467794b","timestamp":"2018-05-14T05:03:09.220Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:32:00 - info: Logging initialized. 2018-05-15T22:32:00.598Z
+18:32:01 - info: Using current directory as template folder
+18:32:01 - info: Loading a default sample.txt file.
+18:32:01 - info: Loading a single default request.json file.
+18:32:01 - info: Loading a default state.json file.
+18:32:01 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123,"transactionId":"f845a64b-f031-4982-8742-3e1f8be5d59a","timestamp":"2018-05-15T22:32:01.684Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"contract":{"$class":"org.accordproject.saft.TemplateModel","token":"Clause Token","company":"Clause","companyType":"Limited","state":"NY","amendmentProvision":true,"purchaseAmount":25,"currency":"EUR","netProceedLimit":3000000,"date":"2017-10-04","deadlineDate":"2018-04-20","discountRatePercentage":38,"network":"Clause Network","coin":"Ether","exchanges":"itBit","companyRepresentative":"Peter Hunn","purchaser":"Daniel Charles Selman","description":"happiness and intergalactic equality"},"response":{"$class":"org.accordproject.saft.Payout","transactionId":"ac6fad22-db01-4232-9b8a-d41f0db6a9e7","timestamp":"2018-05-15T22:32:01.695Z"},"emit":[],"now":"2018-05-15T22:32:01.694Z"}
+18:32:01 - info: {"clause":"saft@0.1.1-4175d2cf86166610d7765553553642f32960166fd76b0ac41b9998ff97a72986","request":{"$class":"org.accordproject.saft.Launch","exchangeRate":123},"response":{"$class":"org.accordproject.saft.Payout","tokenAmount":100,"tokenAddress":"Daniel Charles Selman","transactionId":"ac6fad22-db01-4232-9b8a-d41f0db6a9e7","timestamp":"2018-05-15T22:32:01.695Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

@@ -1,11 +1,17 @@
 namespace org.accordproject.helloworldstate
 
+import org.accordproject.common.*
+
 transaction Request {
   o String input
 }
 
 transaction Response {
   o String output
+}
+
+asset HelloWorldState extends State {
+  o Double counter
 }
 
 /**

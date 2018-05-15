@@ -1,4 +1,5 @@
 {
-    "$class": "org.accordproject.contract.State",
+    "$class": "org.accordproject.supplyagreement.AgreementState",
+    "stateId": "org.accordproject.supplyagreement.AgreementState#1",
     "obligations": []
 }

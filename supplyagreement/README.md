@@ -39,12 +39,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:supplyagreement matt$ cicero execute
-01:12:36 - info: Logging initialized. 2018-05-14T05:12:36.428Z
-01:12:36 - info: Using current directory as template folder
-01:12:36 - info: Loading a default sample.txt file.
-01:12:36 - info: Loading a single default request.json file.
-01:12:36 - info: Loading a default state.json file.
-01:12:37 - info: {"clause":"supplyagreement@0.0.6-21491f82e4ee4048cc4b22c8a46f9e1f9f9ea901454ab758ff4dbfc5b85bb36d","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.ForecastResponse","transactionId":"b8a1be70-f7b2-4638-a218-b15fe2eb9591","timestamp":"2018-05-14T05:12:37.616Z"},"state":{"obligations":[{"$class":"org.accordproject.supplyagreement.PurchaseObligation","party":"PETER","requiredPurchase":1020,"year":2018,"quarter":2}]},"emit":[]}
+18:32:53 - info: Logging initialized. 2018-05-15T22:32:53.827Z
+18:32:54 - info: Using current directory as template folder
+18:32:54 - info: Loading a default sample.txt file.
+18:32:54 - info: Loading a single default request.json file.
+18:32:54 - info: Loading a default state.json file.
+18:32:55 - info: {"clause":"supplyagreement@0.0.6-21491f82e4ee4048cc4b22c8a46f9e1f9f9ea901454ab758ff4dbfc5b85bb36d","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.ForecastResponse","transactionId":"f73ef652-b7a3-4236-b20b-14d4ac2aad40","timestamp":"2018-05-15T22:32:55.080Z"},"state":{"$class":"org.accordproject.supplyagreement.AgreementState","obligations":[{"$class":"org.accordproject.supplyagreement.PurchaseObligation","requiredPurchase":1020,"year":2018,"quarter":2,"party":"PETER"}],"stateId":"org.accordproject.supplyagreement.AgreementState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

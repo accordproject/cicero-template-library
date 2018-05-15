@@ -38,12 +38,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:helloworld matt$ cicero execute
-00:44:12 - info: Logging initialized. 2018-05-14T04:44:12.185Z
-00:44:12 - info: Using current directory as template folder
-00:44:12 - info: Loading a default sample.txt file.
-00:44:12 - info: Loading a single default request.json file.
-00:44:12 - info: Loading a default state.json file.
-00:44:12 - info: {"clause":"helloworld@0.0.5-3119b65d48818b038883b0846738d34a61df5ac895093eb88003f07c96ee39c7","request":{"$class":"org.accordproject.helloworld.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworld.Response","output":"Hello Fred Blogs Accord Project","transactionId":"31c8ec08-30cd-4ca6-9687-d1ba132a741e","timestamp":"2018-05-14T04:44:12.920Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:25:22 - info: Logging initialized. 2018-05-15T22:25:22.827Z
+18:25:23 - info: Using current directory as template folder
+18:25:23 - info: Loading a default sample.txt file.
+18:25:23 - info: Loading a single default request.json file.
+18:25:23 - info: Loading a default state.json file.
+18:25:23 - info: {"clause":"helloworld@0.0.5-3119b65d48818b038883b0846738d34a61df5ac895093eb88003f07c96ee39c7","request":{"$class":"org.accordproject.helloworld.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworld.Response","output":"Hello Fred Blogs Accord Project","transactionId":"71013a48-dfd2-4e90-bbf4-c1cb744ac48c","timestamp":"2018-05-15T22:25:23.503Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

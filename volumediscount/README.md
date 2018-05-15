@@ -39,12 +39,13 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:volumediscount matt$ cicero execute
-11:36:39 - info: Logging initialized. 2018-02-18T11:36:39.495Z
-11:36:40 - info: Using current directory as template folder
-11:36:40 - info: Loading a default sample.txt file.
-11:36:40 - info: Loading a default data.json file.
-11:36:40 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.volumediscount.VolumeDiscountRequest","netAnnualChargeVolume":0.4,"transactionId":"06b93a11-2d74-4030-a486-f35449ac032f","timestamp":"2018-02-18T11:36:40.340Z"},"response":{"$class":"org.accordproject.volumediscount.VolumeDiscountResponse","transactionId":"5f448219-851a-4b10-8fb9-14f979951ebd","timestamp":"2018-02-18T11:36:40.353Z"},"data":{"$class":"org.accordproject.volumediscount.TemplateModel","firstVolume":1,"secondVolume":10,"firstRate":3,"secondRate":2.9,"thirdRate":2.8}}
-11:36:40 - info: {"clause":"volumediscount@0.0.6-e6b68c35598afb65ddf51bfc40ada8cb482cb441605eb0285d46e708f8654d58","request":{"$class":"org.accordproject.volumediscount.VolumeDiscountRequest","netAnnualChargeVolume":0.4},"response":{"$class":"org.accordproject.volumediscount.VolumeDiscountResponse","discountRate":3,"transactionId":"5f448219-851a-4b10-8fb9-14f979951ebd","timestamp":"2018-02-18T11:36:40.353Z"}}
+18:33:10 - info: Logging initialized. 2018-05-15T22:33:10.712Z
+18:33:11 - info: Using current directory as template folder
+18:33:11 - info: Loading a default sample.txt file.
+18:33:11 - info: Loading a single default request.json file.
+18:33:11 - info: Loading a default state.json file.
+18:33:11 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.volumediscount.VolumeDiscountRequest","netAnnualChargeVolume":0.4,"transactionId":"bd964fa1-042e-46ad-b7c4-9c755205dbf4","timestamp":"2018-05-15T22:33:11.435Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"contract":{"$class":"org.accordproject.volumediscount.TemplateModel","firstVolume":1,"secondVolume":10,"firstRate":3,"secondRate":2.9,"thirdRate":2.8},"response":{"$class":"org.accordproject.volumediscount.VolumeDiscountResponse","transactionId":"f2a060e1-792e-40cc-a055-fd0faeb25aa9","timestamp":"2018-05-15T22:33:11.446Z"},"emit":[],"now":"2018-05-15T22:33:11.445Z"}
+18:33:11 - info: {"clause":"volumediscount@0.0.6-e6b68c35598afb65ddf51bfc40ada8cb482cb441605eb0285d46e708f8654d58","request":{"$class":"org.accordproject.volumediscount.VolumeDiscountRequest","netAnnualChargeVolume":0.4},"response":{"$class":"org.accordproject.volumediscount.VolumeDiscountResponse","discountRate":3,"transactionId":"f2a060e1-792e-40cc-a055-fd0faeb25aa9","timestamp":"2018-05-15T22:33:11.446Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

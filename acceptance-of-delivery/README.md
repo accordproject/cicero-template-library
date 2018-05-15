@@ -38,12 +38,12 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:acceptance-of-delivery matt$ cicero execute
-00:41:56 - info: Logging initialized. 2018-05-14T04:41:56.064Z
-00:41:56 - info: Using current directory as template folder
-00:41:56 - info: Loading a default sample.txt file.
-00:41:56 - info: Loading a single default request.json file.
-00:41:56 - info: Loading a default state.json file.
-00:41:56 - info: {"clause":"acceptance-of-delivery@0.0.3-e407ff0a315c5b1c267677edbda49a32d4e9ef890ad21a3e40b3bc110d06c88c","request":{"$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable","deliverableReceivedAt":"January 1, 2018 16:34:00","inspectionPassed":true},"response":{"$class":"org.accordproject.acceptanceofdelivery.InspectionResponse","status":"OUTSIDE_INSPECTION_PERIOD","shipper":"resource:org.hyperledger.composer.system.Participant#Party%20A","receiver":"resource:org.hyperledger.composer.system.Participant#Party%20B","transactionId":"cbe39255-7ad2-41c2-b4b0-b3e4ce9cd4c5","timestamp":"2018-05-14T04:41:56.797Z"},"state":{"$class":"org.accordproject.contract.State"},"emit":[]}
+18:22:38 - info: Logging initialized. 2018-05-15T22:22:38.131Z
+18:22:38 - info: Using current directory as template folder
+18:22:38 - info: Loading a default sample.txt file.
+18:22:38 - info: Loading a single default request.json file.
+18:22:38 - info: Loading a default state.json file.
+18:22:38 - info: {"clause":"acceptance-of-delivery@0.0.3-e407ff0a315c5b1c267677edbda49a32d4e9ef890ad21a3e40b3bc110d06c88c","request":{"$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable","deliverableReceivedAt":"January 1, 2018 16:34:00","inspectionPassed":true},"response":{"$class":"org.accordproject.acceptanceofdelivery.InspectionResponse","status":"OUTSIDE_INSPECTION_PERIOD","shipper":"resource:org.hyperledger.composer.system.Participant#Party%20A","receiver":"resource:org.hyperledger.composer.system.Participant#Party%20B","transactionId":"faacef8f-c0b2-4d9f-911f-007aa98a1c1d","timestamp":"2018-05-15T22:22:38.869Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
 ```
 
 ### Sample Payload Data
