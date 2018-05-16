@@ -37,7 +37,7 @@ concept Obligation {
 }
 concept DeliveryObligation extends Obligation {
   o DateTime expectedDelivery
-  o PurchaseOrder deliverables
+  o OrderItem[] deliverables
 }
 concept PurchaseObligation extends Obligation {
   o Double requiredPurchase
@@ -58,24 +58,28 @@ asset AgreementState extends State {
 /**
  * Defines the contract transactions
  */
+/* Forecast clause */
 transaction ForecastRequest {
   o Integer supplyForecast
 }
 transaction ForecastResponse {
 }
 
+/* Purchase order clause */
 transaction PurchaseRequest {
   o PurchaseOrder purchaseOrder
 }
 transaction PurchaseResponse {
 }
 
+/* Delivery clause */
 transaction DeliveryRequest {
   o Product[] products
 }
 transaction DeliveryResponse {
 }
 
+/* Payment clause */
 transaction PaymentRequest {
   o Double amount
 }

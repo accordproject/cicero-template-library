@@ -1,8 +1,6 @@
 {
-  "$class": "org.accordproject.supplyagreement.PurchaseRequest",
-  "purchaseOrder": {
-    "$class": "org.accordproject.purchaseorder.PurchaseOrder",
-    "products": [
+  "$class": "org.accordproject.supplyagreement.DeliveryRequest",
+  "products": [
       {
         "$class": "org.accordproject.purchaseorder.Product",
         "partNumber": "PN-001",
@@ -17,8 +15,5 @@
         "quantity": 100,
         "unitPrice": 4.99
       }
-    ],
-    "deliveryDate": "2018/05/10",
-    "deliveryLocation": "555 Main Street"
-  }
+    ]
 }
