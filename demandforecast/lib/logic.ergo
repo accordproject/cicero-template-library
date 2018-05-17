@@ -1,0 +1,25 @@
+namespace org.accordproject.demandforecast
+
+import org.accordproject.demandforecast.*
+
+define function isLastDayOfQuarter(timestamp : DateTime) : Boolean {
+    // Keep always true for testing
+    return true
+}
+
+contract DemandForecast over TemplateModel {
+	clause demandforecast(request : ForecastRequest) : BindingResponse {
+//    enforce momentIsBefore(contract.effectiveDate,now())
+//		else throw new Error{ message: "Forecast was received before the effective date" };
+
+    enforce isLastDayOfQuarter(now())
+		else throw new Error{ message: "Forecast was not received on last day of quarter" };
+    
+	  return new BindingResponse{
+			requiredPurchase : request.supplyForecast * (contract.minimumPercentage / 100.0),
+			year : 2018.0,
+			quarter : 1.0
+		}
+	}
+}
+
