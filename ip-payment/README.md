@@ -43,7 +43,7 @@ mattmbp:ip-payment matt$ cicero execute
 18:29:20 - info: Loading a default sample.txt file.
 18:29:20 - info: Loading a single default request.json file.
 18:29:20 - info: Loading a default state.json file.
-18:29:21 - info: {"clause":"ip-payment@0.0.3-b29a1d3b15800d29e2ace411d8f40d272e22675e81131b1e7dead5f16491ef56","request":{"$class":"org.accordproject.ippayment.PaymentRequest","netSaleRevenue":1200,"sublicensingRevenue":450,"permissionGrantedBy":"04-05-2018"},"response":{"$class":"org.accordproject.ippayment.PayOut","totalAmount":77.4,"dueBy":"04-12-2018","transactionId":"084e34b8-0407-403c-9ad6-944620b69f04","timestamp":"2018-05-15T22:29:21.054Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
+18:29:21 - info: {"clause":"ip-payment@0.0.3-b29a1d3b15800d29e2ace411d8f40d272e22675e81131b1e7dead5f16491ef56","request":{"$class":"org.accordproject.ippayment.PaymentRequest","netSaleRevenue":1200,"sublicensingRevenue":450,"permissionGrantedBy":"04-05-2018"},"response":{"$class":"org.accordproject.ippayment.PayOut","totalAmount":77.4,"dueBy":"04-12-2018","transactionId":"084e34b8-0407-403c-9ad6-944620b69f04","timestamp":"2018-05-15T22:29:21.054Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data
