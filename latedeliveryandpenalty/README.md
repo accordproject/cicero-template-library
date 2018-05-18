@@ -11,7 +11,7 @@ This clause contains:
 - *Some sample Clause Text* - [sample.txt](sample.txt), [shipping-noforcemajure.txt](sample-noforcemajure.txt)
 - *A template* - [grammar/template.tem](grammar/template.tem)
 - *Some data models* - [models/model.cto](models/model.cto), [models/contact.cto](models/contact.cto)
-- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+- *Contact logic* (in Ergo) - [logic/logic.ergo](lib/logic.ergo)
 
 ## Running this clause
 

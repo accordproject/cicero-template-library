@@ -11,7 +11,7 @@ This clause contains:
 - *Sample Clause Text* - [sample.txt](sample.txt)
 - *A template* - [grammar/template.tem](grammar/template.tem)
 - *A data model* - [models/clause.cto](models/clause.cto)
-- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+- *Contact logic* (in JavaScript) - [logic/logic.ergo](lib/logic.ergo)
 
 ## Running this clause
 
