@@ -44,7 +44,7 @@ mattmbp:servicelevelagreement matt$ cicero execute
 18:32:39 - info: Loading a default sample.txt file.
 18:32:39 - info: Loading a single default request.json file.
 18:32:39 - info: Loading a default state.json file.
-18:32:39 - info: {"clause":"servicelevelagreement@0.0.1-58c0a82b311c6ec6c1c3a994b13994fd11f7a138fae428fe752ef04ad3477bd3","request":{"$class":"org.accordproject.servicelevelagreement.MonthSummary","monthlyServiceLevel":99.7,"monthlyCharge":10,"last11MonthCredit":0,"last11MonthCharge":0},"response":{"$class":"org.accordproject.servicelevelagreement.InvoiceCredit","monthlyCredit":0.2,"transactionId":"e74bde3f-df1d-4ced-be4c-c9bc6226ec91","timestamp":"2018-05-15T22:32:39.823Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
+18:32:39 - info: {"clause":"servicelevelagreement@0.0.1-58c0a82b311c6ec6c1c3a994b13994fd11f7a138fae428fe752ef04ad3477bd3","request":{"$class":"org.accordproject.servicelevelagreement.MonthSummary","monthlyServiceLevel":99.7,"monthlyCharge":10,"last11MonthCredit":0,"last11MonthCharge":0},"response":{"$class":"org.accordproject.servicelevelagreement.InvoiceCredit","monthlyCredit":0.2,"transactionId":"e74bde3f-df1d-4ced-be4c-c9bc6226ec91","timestamp":"2018-05-15T22:32:39.823Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data
