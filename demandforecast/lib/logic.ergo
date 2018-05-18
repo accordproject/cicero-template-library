@@ -17,8 +17,8 @@ contract DemandForecast over TemplateModel {
     
 	  return new BindingResponse{
 			requiredPurchase : request.supplyForecast * (contract.minimumPercentage / 100.0),
-			year : 2018.0,
-			quarter : 1.0
+			year : momentYear(now()),
+			quarter : momentQuarter(now())
 		}
 	}
 }
