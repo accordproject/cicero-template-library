@@ -43,7 +43,7 @@ mattmbp:copyright-license matt$ cicero execute
 18:23:15 - info: Loading a default sample.txt file.
 18:23:15 - info: Loading a single default request.json file.
 18:23:15 - info: Loading a default state.json file.
-18:23:15 - info: {"clause":"copyright-license@0.0.3-ed96691079abc8d7017e5070ab9e3e901d04fc911ee6617fe181cefacf663010","request":{"$class":"org.accordproject.copyrightlicense.PaymentRequest"},"response":{"$class":"org.accordproject.copyrightlicense.PayOut","amount":100,"transactionId":"b27a6afc-8dd9-4620-bcc8-d063e5ffe5de","timestamp":"2018-05-15T22:23:15.353Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
+18:23:15 - info: {"clause":"copyright-license@0.0.3-ed96691079abc8d7017e5070ab9e3e901d04fc911ee6617fe181cefacf663010","request":{"$class":"org.accordproject.copyrightlicense.PaymentRequest"},"response":{"$class":"org.accordproject.copyrightlicense.PayOut","amount":100,"transactionId":"b27a6afc-8dd9-4620-bcc8-d063e5ffe5de","timestamp":"2018-05-15T22:23:15.353Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data
