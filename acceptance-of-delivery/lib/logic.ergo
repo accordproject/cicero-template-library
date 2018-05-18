@@ -1,0 +1,40 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.acceptanceofdelivery
+
+import org.accordproject.common.*
+import org.accordproject.acceptanceofdelivery.*
+
+contract AcceptanceOfDelivery over TemplateModel {
+  clause acceptanceofdelivery(request : InspectDeliverable) : InspectionResponse throws Error {
+    define variable received = request.deliverableReceivedAt;
+    enforce momentIsBefore(received,now()) else
+      throw new Error{ error : "Transaction time is before the deliverable date." }
+    ;
+
+    define variable status =
+      if momentIsAfter(now(), momentAdd(received, momentDuration(contract.businessDays, "day")))
+      then "OUTSIDE_INSPECTION_PERIOD"
+      else if request.inspectionPassed
+      then "PASSED_TESTING"
+      else "FAILED_TESTING"
+    ;
+    return new InspectionResponse{
+      status : status,
+      shipper : contract.shipper,   // This should be a relationship
+      receiver : contract.receiver  // This should be a relationship
+    }
+  }
+}
