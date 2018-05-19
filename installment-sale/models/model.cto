@@ -20,7 +20,7 @@ enum ContractStatus {
   o Fulfilled
 }
 
-asset InstallmentSaleState extends State {
+asset InstallmentSaleState extends ContractState {
   o ContractStatus status
   o Double balance_remaining
   o Integer next_payment_month
