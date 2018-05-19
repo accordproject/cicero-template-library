@@ -1,0 +1,83 @@
+namespace org.accordproject.perishablegoods
+
+import org.accordproject.contract.*
+import org.accordproject.perishablegoods.*
+
+// Auxiliary function calculating penalty from temperature readings
+define function calculateTempPenalty(minTemperature : Double,
+                                     maxTemperature : Double,
+                                     penaltyFactor : Double,
+                                     readings : sensorReading[]) : Double {
+  define variable tempReadings = foreach x in readings return x.centigrade;
+  // find the lowest temperature reading
+  define variable lowestReading = min(tempReadings);
+  // find the highest temperature reading
+  define variable highestReading = max(tempReadings);
+  if lowestReading < minTemperature  then 
+    return (minTemperature - lowestReading) * penaltyFactor
+  else if highestReading > maxTemperature then 
+    return (highestReading - maxTemperature) * penaltyFactor
+  else 
+    return 0.0
+}
+
+// Auxiliary function calculating penalty from humidity readings
+define function calculateHumPenalty(minHumidity : Double,
+                                    maxHumidity : Double,
+                                    penaltyFactor : Double,
+                                    readings : sensorReading[]) : Double {
+  define variable humReadings = foreach x in readings return x.humidity;
+  // find the lowest humidity reading
+  define variable lowestReading = min(humReadings);
+  // find the highest temperature reading
+  define variable highestReading = max(humReadings);
+  if lowestReading < minHumidity then 
+    return (minHumidity - lowestReading) * penaltyFactor
+  else if highestReading > maxHumidity then 
+    return (highestReading - maxHumidity) * penaltyFactor
+  else 
+    return 0.0
+}
+
+contract SupplyAgreement over TemplateModel {
+  clause perishableGoods(request : ShipmentReceived) : PriceCalculation throws Error {
+    // Guard against unitCount outside the bounds specified in the clause
+    // enforce request.unitCount >= contract.minUnits and request.unitCount <= contract.maxUnits
+    // else throw "Units received out of range for the contract.";
+    
+    // Guard against missing temperature readings
+    enforce count(request.shipment.sensorReadings) > 0.0
+    else throw "No temperature readings received.";
+
+    // // Guard against requests for payout after the dueDate
+    enforce momentIsAfter(request.timestamp, contract.dueDate)
+    else return new PriceCalculation{
+      shipment : request.shipment,
+			totalPrice : 0.0,
+			penalty : 0.0,
+			late : true
+    };
+
+    // Calculates payout
+    define variable payOut = contract.unitPrice * request.unitCount;
+    // Calculates penalty if any
+    define variable penalty =
+      calculateTempPenalty(contract.minTemperature,
+                           contract.maxTemperature,
+                           contract.penaltyFactor,
+                           request.shipment.sensorReadings)
+    + calculateHumPenalty(contract.minHumidity,
+                          contract.maxHumidity,
+                          contract.penaltyFactor,
+                          request.shipment.sensorReadings);
+
+    // Returns a Price calculation, applying any penalities
+    define variable totalPenalty = penalty * request.unitCount;
+    return new PriceCalculation{
+      shipment : request.shipment,
+      totalPrice : max([payOut - totalPenalty, 0.0]),
+      penalty : totalPenalty,
+      late : false
+    }
+  }
+}
