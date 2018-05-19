@@ -10,7 +10,7 @@ This clause contains:
 - *Some sample Clause Text* - [sample.txt](sample.txt)
 - *A template* - [grammar/template.tem](grammar/template.tem)
 - *A data model* - [models/model.cto](models/model.cto)
-- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+- *Contact logic* (in JavaScript) - [logic/logic.ero](lib/logic.ergo)
 
 ## Running this clause
 
