@@ -7,6 +7,7 @@ do
   echo "$template"
   cd "$template"
   npm install
+  ./node_modules/.bin/cicero parse --out contract.json
   npm test
   cd ..
 done
