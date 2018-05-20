@@ -51,7 +51,7 @@ concept PaymentObligation extends Obligation {
 /**
  * Defines the state of the contract
  */
-asset AgreementState extends State {
+asset AgreementState extends ContractState {
   o Obligation[] obligations
 }
 
