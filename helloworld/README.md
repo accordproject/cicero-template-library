@@ -43,7 +43,7 @@ mattmbp:helloworld matt$ cicero execute
 18:25:23 - info: Loading a default sample.txt file.
 18:25:23 - info: Loading a single default request.json file.
 18:25:23 - info: Loading a default state.json file.
-18:25:23 - info: {"clause":"helloworld@0.0.5-3119b65d48818b038883b0846738d34a61df5ac895093eb88003f07c96ee39c7","request":{"$class":"org.accordproject.helloworld.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworld.Response","output":"Hello Fred Blogs Accord Project","transactionId":"71013a48-dfd2-4e90-bbf4-c1cb744ac48c","timestamp":"2018-05-15T22:25:23.503Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
+18:25:23 - info: {"clause":"helloworld@0.0.5-3119b65d48818b038883b0846738d34a61df5ac895093eb88003f07c96ee39c7","request":{"$class":"org.accordproject.helloworld.Request","input":"Accord Project"},"response":{"$class":"org.accordproject.helloworld.Response","output":"Hello Fred Blogs Accord Project","transactionId":"71013a48-dfd2-4e90-bbf4-c1cb744ac48c","timestamp":"2018-05-15T22:25:23.503Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

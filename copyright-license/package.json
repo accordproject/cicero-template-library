@@ -5,8 +5,8 @@
     "author": "clause.io",
     "license": "Apache-2.0",
     "cicero": {
-        "template": "contract",
-        "version": "^0.3.0-0"
+      "template": "contract",
+      "version": "^0.3.0"
     },
     "repository": {
         "type": "git",

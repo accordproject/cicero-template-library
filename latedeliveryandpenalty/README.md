@@ -50,7 +50,7 @@ mattmbp:latedeliveryandpenalty matt$ cicero execute
 18:29:46 - info: CICERO-ENGINE diff:149
 18:29:46 - info: CICERO-ENGINE capped.
 18:29:46 - info: CICERO-ENGINE buyerMayTerminate.
-18:29:46 - info: {"clause":"latedeliveryandpenalty@0.0.4-a1c6d2f2e8f97d23244f73f21d67ffdac326b6f33425d56cef9f02a0177b5c0d","request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"December 17, 2017 03:24:00","deliveredAt":null,"goodsValue":200},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","penalty":110.00000000000001,"buyerMayTerminate":true,"transactionId":"c6eb6b44-bfe7-4b8e-8f3d-1e7b82638366","timestamp":"2018-05-15T22:29:46.333Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
+18:29:46 - info: {"clause":"latedeliveryandpenalty@0.0.4-a1c6d2f2e8f97d23244f73f21d67ffdac326b6f33425d56cef9f02a0177b5c0d","request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"December 17, 2017 03:24:00","deliveredAt":null,"goodsValue":200},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","penalty":110.00000000000001,"buyerMayTerminate":true,"transactionId":"c6eb6b44-bfe7-4b8e-8f3d-1e7b82638366","timestamp":"2018-05-15T22:29:46.333Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 This template provides additional sample clause text. You can execute the second sample with the command:

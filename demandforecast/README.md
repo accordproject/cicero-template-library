@@ -44,7 +44,7 @@ mattmbp:demandforecast matt$ cicero execute
 18:24:48 - info: Loading a default sample.txt file.
 18:24:48 - info: Loading a single default request.json file.
 18:24:48 - info: Loading a default state.json file.
-18:24:48 - info: {"clause":"demandforecast@0.0.6-33c2b992f58379853035778dff7ba160aee48558fc3462ca6252ecdab529e735","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"d813cd90-2ac2-4491-b866-8fee4a267f74","timestamp":"2018-05-15T22:24:48.495Z"},"state":{"$class":"org.accordproject.common.State","stateId":"org.accordproject.common.State#1"},"emit":[]}
+18:24:48 - info: {"clause":"demandforecast@0.0.6-33c2b992f58379853035778dff7ba160aee48558fc3462ca6252ecdab529e735","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"d813cd90-2ac2-4491-b866-8fee4a267f74","timestamp":"2018-05-15T22:24:48.495Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data

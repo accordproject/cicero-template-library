@@ -4,7 +4,7 @@
     "description": "A service level agreement that gives invoice credit based on service availability.",
     "cicero": {
         "template": "contract",
-        "version": "^0.3.0-0"
+        "version": "^0.3.0"
     },
     "scripts": {
         "test": "mocha"

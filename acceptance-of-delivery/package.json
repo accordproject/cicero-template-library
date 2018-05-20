@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "cicero": {
         "template": "clause",
-        "version": "^0.3.0-0"
+        "version": "^0.3.0"
     },
     "repository": {
         "type": "git",
