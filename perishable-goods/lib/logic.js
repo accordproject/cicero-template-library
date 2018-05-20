@@ -1,117 +1,79 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+namespace org.accordproject.perishablegoods
 
-'use strict';
+import org.accordproject.contract.*
+import org.accordproject.perishablegoods.*
 
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable no-var */
-
-/**
- * Execute the smart clause
- * @param {Context} context - the Accord context
- * @param {org.accordproject.perishablegoods.ShipmentReceived} context.request - the incoming request
- * @param {org.accordproject.perishablegoods.PriceCalculation} context.response - the response
- * @AccordClauseLogic
- */
-function payOut(context) {
-    var shipmentReceived = context.request;
-    var shipment = shipmentReceived.shipment;
-    var res = context.response;
-    res.shipment = shipment;
-    var contract = context.contract;
-    var payOut = contract.unitPrice * shipmentReceived.unitCount;
-    //logger.info(context);
-
-    logger.info('Base payOut: ' + payOut);
-    logger.info('Received at: ' + shipmentReceived.timestamp);
-    logger.info('Contract arrivalDateTime: ' + contract.dueDate);
-
-    if(shipmentReceived.unitCount < contract.minUnits || shipmentReceived.unitCount > contract.maxUnits) {
-        throw new Error('Units received out of range for the contract.');
-    }
-
-    // if the shipment did not arrive on time the payout is zero
-    if (shipmentReceived.timestamp > contract.dueDate) {
-        payOut = 0;
-        res.late = true;
-        logger.info('Late shipment');
-    } else {
-        res.late = false;       
-        // find the lowest temperature reading
-        if (shipment.sensorReadings) {
-            // sort the sensorReadings by centigrade
-            shipment.sensorReadings.sort(function (a, b) {
-                return (a.centigrade - b.centigrade);
-            });
-            var lowestReading = shipment.sensorReadings[0];
-            var highestReading = shipment.sensorReadings[shipment.sensorReadings.length - 1];
-            var penalty = 0;
-            logger.info('Lowest temp reading: ' + lowestReading.centigrade);
-            logger.info('Highest temp reading: ' + highestReading.centigrade);
-
-            // does the lowest temperature violate the contract?
-            if (lowestReading.centigrade < contract.minTemperature) {
-                penalty += (contract.minTemperature - lowestReading.centigrade) * contract.penaltyFactor;
-                logger.info('Min temp penalty: ' + penalty);
-            }
-
-            // does the highest temperature violate the contract?
-            if (highestReading.centigrade > contract.maxTemperature) {
-                penalty += (highestReading.centigrade - contract.maxTemperature) * contract.penaltyFactor;
-                logger.info('Max temp penalty: ' + penalty);
-            }
-
-            // sort the sensorReadings by humidity
-            shipment.sensorReadings.sort(function (a, b) {
-                return (a.humidity - b.humidity);
-            });
-            var lowestReading = shipment.sensorReadings[0];
-            var highestReading = shipment.sensorReadings[shipment.sensorReadings.length - 1];
-            logger.info('Lowest humidity reading: ' + lowestReading.humidity);
-            logger.info('Highest humidity reading: ' + highestReading.humidity);
-
-            // does the lowest humidity violate the contract?
-            if (lowestReading.humidity < contract.minHumidity) {
-                penalty += (contract.minHumidity - lowestReading.humidity) * contract.penaltyFactor;
-                logger.info('Min humidity penalty: ' + penalty);
-            }
-
-            // does the highest humidity violate the contract?
-            if (highestReading.humidity > contract.maxHumidity) {
-                penalty += (highestReading.humidity - contract.maxHumidity) * contract.penaltyFactor;
-                logger.info('Max humidity penalty: ' + penalty);
-            }
-            
-            // apply any penalities
-            var totalPenalty = penalty * shipmentReceived.unitCount;
-            res.penalty = totalPenalty;
-            payOut -= totalPenalty;
-
-            if (payOut < 0) {
-                payOut = 0;
-            }
-        }
-        else {
-            throw new Error('No temperature readings received.');
-        }
-    }
-
-    logger.info('Payout: ' + payOut);
-    res.totalPrice = payOut;
-    logger.info(context);
+// Auxiliary function calculating penalty from temperature readings
+define function calculateTempPenalty(minTemperature : Double,
+                                     maxTemperature : Double,
+                                     penaltyFactor : Double,
+                                     readings : sensorReading[]) : Double {
+  define variable tempReadings = foreach x in readings return x.centigrade;
+  // find the lowest temperature reading
+  define variable lowestReading = min(tempReadings);
+  // find the highest temperature reading
+  define variable highestReading = max(tempReadings);
+  if lowestReading < minTemperature
+  then return (minTemperature - lowestReading) * penaltyFactor
+  else if highestReading > maxTemperature
+  then return (highestReading - maxTemperature) * penaltyFactor
+  else return 0.0
 }
 
-/* eslint-enable no-unused-vars */
-/* eslint-enable no-undef */
+// Auxiliary function calculating penalty from humidity readings
+define function calculateHumPenalty(minHumidity : Double,
+                                    maxHumidity : Double,
+                                    penaltyFactor : Double,
+                                    readings : sensorReading[]) : Double {
+  define variable humReadings = foreach x in readings return x.humidity;
+  // find the lowest humidity reading
+  define variable lowestReading = min(humReadings);
+  // find the highest temperature reading
+  define variable highestReading = max(humReadings);
+  if lowestReading < minHumidity
+  then return (minHumidity - lowestReading) * penaltyFactor
+  else if highestReading > maxHumidity
+  then return (highestReading - maxHumidity) * penaltyFactor
+  else return 0.0
+}
+
+contract PerishableGoods over TemplateModel {
+  clause payout(request : ShipmentReceived) : PriceCalculation throws Error {
+    // Guard against unitCount outside the bounds specified in the clause
+    //enforce request.unitCount < contract.minUnits or request.unitCount > contract.maxUnits
+    //else throw new Error{ message : "Units received out of range for the contract." };
+
+    // Guard against requests for payout after the dueDate
+    enforce momentIsAfter(request.timestamp,contract.dueDate)
+    else return new PriceCalculation{
+      shipment : request.shipment,
+			totalPrice : 0.0,
+			penalty : 0.0,
+			late : true
+    };
+    // Guard against missing temperature readings
+    enforce count(request.shipment.sensorReadings) > 0.0
+    else throw new Error{ message : "No temperature readings received."};
+
+    // Calculates payout
+    define variable payOut = contract.unitPrice * request.unitCount;
+    // Calculates penalty if any
+    define variable penalty =
+      calculateTempPenalty(contract.minTemperature,
+                           contract.maxTemperature,
+                           contract.penaltyFactor,
+                           request.shipment.sensorReadings)
+    + calculateHumPenalty(contract.minHumidity,
+                          contract.maxHumidity,
+                          contract.penaltyFactor,
+                          request.shipment.sensorReadings);
+    // Returns a Price calculation, applying any penalities
+    define variable totalPenalty = penalty * request.unitCount;
+    return new PriceCalculation{
+      shipment : request.shipment,
+      totalPrice : max([payOut - totalPenalty, 0.0]),
+      penalty : totalPenalty,
+      late : false
+    }
+  }
+}
