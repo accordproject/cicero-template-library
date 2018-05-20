@@ -1,0 +1,1 @@
+{"$class":"org.accordproject.servicelevelagreement.TemplateModel","paymentPeriod":30,"monthlyCapPercentage":10,"yearlyCapPercentage":10,"availability1":99.8,"serviceCredit1":2,"availability2":98,"serviceCredit2":3}
