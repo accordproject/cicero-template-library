@@ -1,0 +1,1 @@
+{"$class":"org.accordproject.ippayment.TemplateModel","royaltyText":"four point five","royaltyRate":4.5,"sublicensingRoyaltyText":"five point two","sublicensingRoyaltyRate":5.2,"paymentPeriod":{"$class":"org.accordproject.base.Duration","amount":10,"unit":"DAY"},"paymentPeriodWithPermission":{"$class":"org.accordproject.base.Duration","amount":7,"unit":"DAY"}}
