@@ -10,7 +10,7 @@ transaction Response {
   o String output
 }
 
-asset HelloWorldState extends State {
+asset HelloWorldState extends ContractState {
   o Double counter
 }
 
