@@ -58,7 +58,7 @@ contract PerishableGoods over TemplateModel {
     //else throw new Error{ message : "Units received out of range for the contract." };
 
     // Guard against requests for payout after the dueDate
-    enforce momentIsAfter(request.timestamp,contract.dueDate)
+    enforce momentIsBefore(now(),contract.dueDate)
     else return new PriceCalculation{
       shipment : request.shipment,
 			totalPrice : 0.0,
