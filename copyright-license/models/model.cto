@@ -1,21 +1,17 @@
 namespace org.accordproject.copyrightlicense
 
-/**
- * Requesting a payment
- */
+import org.accordproject.common.ClauseModel
+
+/* Requesting a payment */
 transaction PaymentRequest {
 }
 
-/**
- * PayOut response
- */
+/* PayOut response */
 transaction PayOut {
   o Double amount
 }
 
-/**
- * The template model
- */
+/* The template model  */
 @AccordTemplateModel("copyright-license")
 concept TemplateModel {
   /* the effective date */
@@ -41,6 +37,10 @@ concept TemplateModel {
   o String workDescription
 
   /* payment */
+  o PaymentClauseModel paymentClause
+}
+
+asset PaymentClauseModel extends ClauseModel {
   o String amountText
 	o Double amount
 	o String paymentProcedure

@@ -15,13 +15,13 @@ function execute(context) {
     // logger.info(context);
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
 
     // Pre-conditions checking
-    if(data.availability1 < 0 
-        || data.serviceCredit1 < 0 
-        || data.availability2 < 0 
-        || data.serviceCredit2 < 0){
+    if(contract.availability1 < 0 
+        || contract.serviceCredit1 < 0 
+        || contract.availability2 < 0 
+        || contract.serviceCredit2 < 0){
             throw new Error('Template variables must not be negative.')
         }
 
@@ -39,18 +39,18 @@ function execute(context) {
     //
 
     // Annex 1, schedule - row 2
-    if(req.monthlyServiceLevel < data.availability2){
-        res.monthlyCredit = (data.serviceCredit2 / 100.0) * req.monthlyCharge;
+    if(req.monthlyServiceLevel < contract.availability2){
+        res.monthlyCredit = (contract.serviceCredit2 / 100.0) * req.monthlyCharge;
     // Annex 1, schedule - row 1
-    } else if (req.monthlyServiceLevel < data.availability1){
-        res.monthlyCredit = (data.serviceCredit1 / 100.0) * req.monthlyCharge;
+    } else if (req.monthlyServiceLevel < contract.availability1){
+        res.monthlyCredit = (contract.serviceCredit1 / 100.0) * req.monthlyCharge;
     }
 
     // Clause 3.3
-    res.monthlyCredit = Math.min(res.monthlyCredit, (data.monthlyCapPercentage  / 100.0 ) * req.monthlyCharge);
+    res.monthlyCredit = Math.min(res.monthlyCredit, (contract.monthlyCapPercentage  / 100.0 ) * req.monthlyCharge);
 
     // Clause 3.4
-    var yearlyCreditCap = ( data.yearlyCapPercentage / 100.0) * (req.last11MonthCharge+req.monthlyCharge);
+    var yearlyCreditCap = ( contract.yearlyCapPercentage / 100.0) * (req.last11MonthCharge+req.monthlyCharge);
     res.monthlyCredit = Math.min(res.monthlyCredit, yearlyCreditCap - req.last11MonthCredit);
 
     // Safety checking

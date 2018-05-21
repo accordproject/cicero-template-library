@@ -47,9 +47,12 @@ describe('Logic', () => {
         it('licensee fee should be payed to the amount of', async function() {
             const request = {};
             request.$class = 'org.accordproject.copyrightlicense.PaymentRequest';
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.amount.should.equal(1000.0);
+            result.response.amount.should.equal(100.0);
         });
     });
 });

@@ -29,25 +29,25 @@ function execute(context) {
     // logger.info(context);
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
 
-    res.amount = data.deliveryPrice;
+    res.amount = contract.deliveryPrice;
 
     req.accelerometerReadings.forEach(function(r){
-        if(r > data.accelerationMax){
-            res.amount -= data.accelerationBreachPenalty;
+        if(r > contract.accelerationMax){
+            res.amount -= contract.accelerationBreachPenalty;
         }
-        if(r < data.accelerationMin){
-            res.amount -= data.accelerationBreachPenalty;
+        if(r < contract.accelerationMin){
+            res.amount -= contract.accelerationBreachPenalty;
         }
     });
 
     if(req.status=='ARRIVED'){
-        switch(data.deliveryLimitDuration.unit){
+        switch(contract.deliveryLimitDuration.unit){
             case 'seconds':
                 var duration = req.finishTime.getTime() - req.startTime.getTime();
-                if((duration / 1000)>data.deliveryLimitDuration.amount){
-                    res.amount -=data.lateDeliveryPenalty;
+                if((duration / 1000)>contract.deliveryLimitDuration.amount){
+                    res.amount -=contract.lateDeliveryPenalty;
                 }
                 break;
             default:

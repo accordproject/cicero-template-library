@@ -15,9 +15,9 @@ function onLaunch(context) {
     logger.info(context);    
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
     res.tokenAmount = 100;
-    res.tokenAddress = data.purchaser;
+    res.tokenAddress = contract.purchaser;
 }
 
 /**
@@ -31,9 +31,9 @@ function onTerminate(context) {
     logger.info(context);    
     var req = context.request;
     var res = context.response;
-    var data = context.data;
+    var contract = context.contract;
     res.tokenAmount = 9;
-    res.tokenAddress = data.purchaser;
+    res.tokenAddress = contract.purchaser;
 }
 
 /*eslint-enable no-unused-vars*/

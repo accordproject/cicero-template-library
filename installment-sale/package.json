@@ -1,0 +1,28 @@
+{
+    "name": "installment-sale",
+    "version": "0.0.3",
+    "description": "This is a clause for a simple installment sale.",
+    "author": "clause.io",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "clause",
+        "version": "^0.3.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/accordproject/cicero-template-library.git"
+    },
+    "scripts": {
+        "test": "mocha"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "chai-as-promised": "^7.1.1",
+        "chai-things": "^0.2.0",
+        "@accordproject/cicero-core": "^0.3.9",
+        "@accordproject/cicero-engine": "^0.3.9",
+        "@accordproject/cicero-cli": "^0.3.9",
+        "mocha": "^5.1.1",
+        "moment": "^2.20.1"
+    }
+}

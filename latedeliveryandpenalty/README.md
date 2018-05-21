@@ -11,7 +11,7 @@ This clause contains:
 - *Some sample Clause Text* - [sample.txt](sample.txt), [shipping-noforcemajure.txt](sample-noforcemajure.txt)
 - *A template* - [grammar/template.tem](grammar/template.tem)
 - *Some data models* - [models/model.cto](models/model.cto), [models/contact.cto](models/contact.cto)
-- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+- *Contact logic* (in Ergo) - [logic/logic.ergo](lib/logic.ergo)
 
 ## Running this clause
 
@@ -27,7 +27,7 @@ cd latedeliveryandpenalty
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --dsl ./sample.txt --data ./data.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -39,17 +39,18 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:latedeliveryandpenalty matt$ cicero execute
-11:03:25 - info: Logging initialized. 2018-02-18T11:03:25.589Z
-11:03:26 - info: Using current directory as template folder
-11:03:26 - info: Loading a default sample.txt file.
-11:03:26 - info: Loading a default data.json file.
-11:03:26 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"2017-12-17T03:24:00.000Z","goodsValue":200,"transactionId":"2ca8c17c-1e02-4e65-af7f-0b06b8376049","timestamp":"2018-02-18T11:03:26.372Z"},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","transactionId":"92141ecd-3081-4fa6-938f-9f94917bcc47","timestamp":"2018-02-18T11:03:26.383Z"},"data":{"$class":"org.accordproject.latedeliveryandpenalty.TemplateModel","forceMajeure":true,"penaltyDuration":{"$class":"org.accordproject.base.Duration","amount":2,"unit":"DAY"},"penaltyPercentage":10.5,"capPercentage":55,"termination":{"$class":"org.accordproject.base.Duration","amount":15,"unit":"DAY"},"fractionalPart":"DAY"}}
-11:03:26 - info: CICERO-ENGINE late
-11:03:26 - info: CICERO-ENGINE penalty duration unit: DAY
-11:03:26 - info: CICERO-ENGINE penalty duration amount: 2
-11:03:26 - info: CICERO-ENGINE diff:63
-11:03:26 - info: CICERO-ENGINE capped.
-11:03:26 - info: {"clause":"latedeliveryandpenalty@0.0.4-a1c6d2f2e8f97d23244f73f21d67ffdac326b6f33425d56cef9f02a0177b5c0d","request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"December 17, 2017 03:24:00","deliveredAt":null,"goodsValue":200},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","penalty":110.00000000000001,"buyerMayTerminate":false,"transactionId":"92141ecd-3081-4fa6-938f-9f94917bcc47","timestamp":"2018-02-18T11:03:26.383Z"}}
+18:29:45 - info: Logging initialized. 2018-05-15T22:29:45.624Z
+18:29:46 - info: Using current directory as template folder
+18:29:46 - info: Loading a default sample.txt file.
+18:29:46 - info: Loading a single default request.json file.
+18:29:46 - info: Loading a default state.json file.
+18:29:46 - info: CICERO-ENGINE late
+18:29:46 - info: CICERO-ENGINE penalty duration unit: DAY
+18:29:46 - info: CICERO-ENGINE penalty duration amount: 2
+18:29:46 - info: CICERO-ENGINE diff:149
+18:29:46 - info: CICERO-ENGINE capped.
+18:29:46 - info: CICERO-ENGINE buyerMayTerminate.
+18:29:46 - info: {"clause":"latedeliveryandpenalty@0.0.4-a1c6d2f2e8f97d23244f73f21d67ffdac326b6f33425d56cef9f02a0177b5c0d","request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"December 17, 2017 03:24:00","deliveredAt":null,"goodsValue":200},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","penalty":110.00000000000001,"buyerMayTerminate":true,"transactionId":"c6eb6b44-bfe7-4b8e-8f3d-1e7b82638366","timestamp":"2018-05-15T22:29:46.333Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 This template provides additional sample clause text. You can execute the second sample with the command:
@@ -70,8 +71,7 @@ You should then see the following output.
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/latedeliveryandpenalty/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/latedeliveryandpenalty/request.json)
 ```json
 {
     "$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
@@ -125,12 +125,13 @@ mattmbp:latedeliveryandpenalty matt$ npm test
 
   Logic
     #LateDeliveryAndPenalty
-11:05:21 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest","forceMajeure":false,"agreedDelivery":"2017-10-07T16:38:01.412Z","goodsValue":200,"transactionId":"402c8f50-9e61-433e-a7c1-afe61c06ef00","timestamp":"2017-11-12T17:38:01.412Z"},"response":{"$class":"org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse","transactionId":"c0938cdb-641c-4cf9-89f7-781a8c9a3c72","timestamp":"2018-02-18T11:05:21.891Z"},"data":{"$class":"org.accordproject.latedeliveryandpenalty.TemplateModel","forceMajeure":true,"penaltyDuration":{"$class":"org.accordproject.base.Duration","amount":2,"unit":"DAY"},"penaltyPercentage":10.5,"capPercentage":55,"termination":{"$class":"org.accordproject.base.Duration","amount":15,"unit":"DAY"},"fractionalPart":"DAY"}}
-11:05:21 - info: CICERO-ENGINE late
-11:05:21 - info: CICERO-ENGINE penalty duration unit: DAY
-11:05:21 - info: CICERO-ENGINE penalty duration amount: 2
-11:05:21 - info: CICERO-ENGINE diff:36
-11:05:21 - info: CICERO-ENGINE capped.
+    #LateDeliveryAndPenalty
+00:57:38 - info: CICERO-ENGINE late
+00:57:38 - info: CICERO-ENGINE penalty duration unit: DAY
+00:57:38 - info: CICERO-ENGINE penalty duration amount: 2
+00:57:38 - info: CICERO-ENGINE diff:36
+00:57:38 - info: CICERO-ENGINE capped.
+00:57:38 - info: CICERO-ENGINE buyerMayTerminate.
       ✓ should execute a smart clause
 
 

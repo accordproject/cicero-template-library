@@ -48,7 +48,10 @@ describe('Logic', () => {
             const request = {};
             request.$class = 'org.accordproject.helloworld.Request';
             request.input = 'World'
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.output.should.equal('Hello Fred Blogs World');
         });

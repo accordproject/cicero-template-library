@@ -11,7 +11,7 @@ This clause contains:
 - *Sample Clause Text* - [sample.txt](sample.txt)
 - *A template* - [grammar/template.tem](grammar/template.tem)
 - *A data model* - [models/clause.cto](models/clause.cto)
-- *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
+- *Contact logic* (in Ergo) - [logic/logic.ergo](lib/logic.ergo)
 
 ## Running this clause
 
@@ -27,7 +27,7 @@ cd demandforecast
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --dsl ./sample.txt --data ./data.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -39,15 +39,17 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:demandforecast matt$ cicero execute
-12:09:22 - info: Logging initialized. 2018-04-10T16:09:22.503Z
-12:09:23 - info: CICERO-ENGINE {"request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200,"transactionId":"c45aa239-9d21-44fd-ac00-ac9374371cf5","timestamp":"2018-04-10T16:09:23.074Z"},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","transactionId":"1cfb50e0-e243-4f16-9491-f0939216a67b","timestamp":"2018-04-10T16:09:23.084Z"},"data":{"$class":"org.accordproject.demandforecast.TemplateModel","purchaser":"PETER","supplier":"DAN","effectiveDate":"04/02/2018","minimumPercentage":85}}
-12:09:23 - info: {"clause":"demandforecast@0.0.6-4e8927e99afa2d81afcc6ec5241225dd88ce1b72cfa2359dda195d4c2dc0adc8","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"1cfb50e0-e243-4f16-9491-f0939216a67b","timestamp":"2018-04-10T16:09:23.084Z"}}
+18:24:47 - info: Logging initialized. 2018-05-15T22:24:47.808Z
+18:24:48 - info: Using current directory as template folder
+18:24:48 - info: Loading a default sample.txt file.
+18:24:48 - info: Loading a single default request.json file.
+18:24:48 - info: Loading a default state.json file.
+18:24:48 - info: {"clause":"demandforecast@0.0.6-33c2b992f58379853035778dff7ba160aee48558fc3462ca6252ecdab529e735","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"d813cd90-2ac2-4491-b866-8fee4a267f74","timestamp":"2018-05-15T22:24:48.495Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/demandforecast/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/demandforecast/request.json)
 ```json
 {
     "$class": "org.accordproject.demandforecast.ForecastRequest",

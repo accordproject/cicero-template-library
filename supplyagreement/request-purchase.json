@@ -1,0 +1,24 @@
+{
+  "$class": "org.accordproject.supplyagreement.PurchaseRequest",
+  "purchaseOrder": {
+    "$class": "org.accordproject.purchaseorder.PurchaseOrder",
+    "products": [
+      {
+        "$class": "org.accordproject.purchaseorder.Product",
+        "partNumber": "PN-001",
+        "name": "Pink Umbrella",
+        "quantity": 180,
+        "unitPrice": 5.99
+      },
+      {
+        "$class": "org.accordproject.purchaseorder.Product",
+        "partNumber": "PN-002",
+        "name": "Blue Umbrella",
+        "quantity": 100,
+        "unitPrice": 4.99
+      }
+    ],
+    "deliveryDate": "2018/05/10",
+    "deliveryLocation": "555 Main Street"
+  }
+}

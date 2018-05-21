@@ -54,7 +54,10 @@ describe('Logic', () => {
                 "transactionId":"d8b14719-ae23-4867-a4c7-7c0199a74cc3",
                 "timestamp":"2018-01-02T08:28:42.248Z"
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.should.equal(790);
         });
@@ -69,7 +72,10 @@ describe('Logic', () => {
                 "transactionId":"d8b14719-ae23-4867-a4c7-7c0199a74cc3",
                 "timestamp":"2018-01-02T08:28:42.248Z"
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.should.equal(990);
         });
@@ -84,7 +90,10 @@ describe('Logic', () => {
                 "transactionId":"d8b14719-ae23-4867-a4c7-7c0199a74cc3",
                 "timestamp":"2018-01-02T08:28:42.248Z"
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.should.equal(990);
         });
@@ -99,7 +108,10 @@ describe('Logic', () => {
                 "transactionId":"d8b14719-ae23-4867-a4c7-7c0199a74cc3",
                 "timestamp":"2018-01-02T08:28:42.248Z"
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.should.equal(1000);
         });
