@@ -1,0 +1,17 @@
+{
+    "$class":"org.accordproject.perishablegoods.ShipmentReceived",
+    "unitCount":3502,
+    "shipment":{
+        "$class":"org.accordproject.perishablegoods.Shipment",
+        "shipmentId":"SHIP_001",
+        "sensorReadings":[
+            {
+                "$class":"org.accordproject.perishablegoods.SensorReading",
+                "centigrade":2,
+                "humidity":80,
+                "shipment":"resource:org.accordproject.perishablegoods.Shipment#SHIP_001",
+                "transactionId":"a"
+            }
+        ]
+    }
+}

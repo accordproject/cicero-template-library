@@ -2,9 +2,15 @@
     "name": "latedeliveryandpenalty",
     "version": "0.0.4",
     "description": "A sample Late Delivery And Penalty clause.",
+    "author": "clause.io",
+    "license": "Apache-2.0",
     "cicero": {
         "template": "clause",
         "version": "^0.3.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/accordproject/cicero-template-library.git"
     },
     "scripts": {
         "test": "mocha"

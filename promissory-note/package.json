@@ -1,0 +1,26 @@
+{
+  "name": "promissory-note",
+  "version": "0.0.1",
+  "description": "A promissory note",
+  "author": "clause.io",
+  "license": "Apache-2.0",
+  "engines": {
+    "cicero": "^0.2.54"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accordproject/cicero-template-library.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-things": "^0.2.0",
+    "@accordproject/cicero-core": "^0.2.54",
+    "@accordproject/cicero-engine": "^0.2.54",
+    "mocha": "^4.0.1",
+    "moment": "^2.19.2"
+  }
+}
