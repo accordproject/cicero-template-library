@@ -1,6 +1,6 @@
 {
     "$class":"org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount":3502,
+    "unitCount":3002,
     "shipment":{
         "$class":"org.accordproject.perishablegoods.Shipment",
         "shipmentId":"SHIP_001",
