@@ -48,7 +48,6 @@ describe('Logic', () => {
             const request = {};
             const NS = 'org.accordproject.perishablegoods';
             request.$class = `${NS}.ShipmentReceived`;
-            request.timestamp = new Date();
             request.unitCount = 3000;
             const shipment = {$class: `${NS}.Shipment`, shipmentId: 'SHIP_001'};
             const readingLow = {$class: `${NS}.SensorReading`, transactionId: 'a', shipment: 'SHIP_001', centigrade: 2, humidity: 80};
@@ -63,7 +62,7 @@ describe('Logic', () => {
             result.should.not.be.null;
             result.response.totalPrice.should.equal(300);
             result.response.penalty.should.equal(4200);
-            result.response.late.should.equal(false);            
+            result.response.late.should.equal(false);          
         });
     });
 });
