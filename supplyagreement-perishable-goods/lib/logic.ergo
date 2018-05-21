@@ -50,7 +50,7 @@ contract SupplyAgreement over TemplateModel {
     else throw "No temperature readings received.";
 
     // // Guard against requests for payout after the dueDate
-    enforce momentIsAfter(request.timestamp, contract.dueDate)
+    enforce momentIsBefore(request.timestamp, contract.dueDate)
     else return new PriceCalculation{
       shipment : request.shipment,
 			totalPrice : 0.0,
