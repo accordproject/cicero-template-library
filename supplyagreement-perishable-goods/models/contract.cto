@@ -1,0 +1,35 @@
+/**
+  * A business network for shipping perishable goods
+  * The cargo is temperature controlled and contracts
+  * can be negociated based on the temperature
+  * readings received for the cargo
+  */
+namespace org.accordproject.perishablegoods.contract
+
+import org.accordproject.perishablegoods.*
+
+/**
+ * Defines a contract between a Grower and an Importer to ship using
+ * a Shipper, paying a set unit price. The unit price is multiplied by
+ * a penality factor proportional to the deviation from the min and max
+ * negociated temperatures for the shipment.
+ */
+ @AccordTemplateModel("supplyagreement-perishable-goods")
+concept TemplateModel {
+  --> Grower grower
+  --> Importer importer
+  --> Shipment shipment
+  o DateTime dueDate
+  o Double unitPrice
+  o Unit unit
+  o Integer minUnits
+  o Integer maxUnits
+  o String product
+  o Integer sensorReadingFrequency
+  o Duration duration
+  o Double minTemperature
+  o Double maxTemperature
+  o Double minHumidity
+  o Double maxHumidity
+  o Double penaltyFactor
+}
