@@ -54,7 +54,7 @@ describe('Logic', () => {
 		        state.counter = 0;
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.output.should.equal('Hello Fred Blogs World(1)');
+            return result.response.output.should.equal('Hello Fred Blogs World(1)');
         });
     });
 
@@ -72,7 +72,7 @@ describe('Logic', () => {
             const result2 = await engine.execute(clause, request, result1.state);
             result2.should.not.be.null;
             result2.response.output.should.equal('Hello Fred Blogs World(2)');
-            result2.state.counter.should.equal(2);
+            return result2.state.counter.should.equal(2);
         });
     });
 
@@ -91,7 +91,7 @@ describe('Logic', () => {
             const result3 = await engine.execute(clause, request, result2.state);
             result3.should.not.be.null;
             result3.response.output.should.equal('Hello Fred Blogs World(3)');
-            result3.state.counter.should.equal(3);
+            return result3.state.counter.should.equal(3);
         });
     });
 });

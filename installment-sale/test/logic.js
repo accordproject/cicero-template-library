@@ -57,7 +57,7 @@ describe('Logic', () => {
             state.next_payment_month = 3;
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.balance.should.equal(7612.499999999999);
+            return result.response.balance.should.equal(7612.499999999999);
         });
     });
     
@@ -82,7 +82,7 @@ describe('Logic', () => {
             const result3 = await engine.execute(clause, request1, result2.state);
             const result4 = await engine.execute(clause, request2, result3.state);
             result4.should.not.be.null;
-            result4.response.balance.should.equal(0.00);
+            return result4.response.balance.should.equal(0.00);
         });
     });
 });

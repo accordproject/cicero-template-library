@@ -54,7 +54,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.tokenAmount.should.equal(21.855057260250017);
+            return result.response.tokenAmount.should.equal(21.855057260250017);
         });
     });
     
@@ -70,7 +70,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.equityAmount.should.equal(8.960573476702509);
+            return result.response.equityAmount.should.equal(8.960573476702509);
         });
     });
 
@@ -86,7 +86,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.amount.should.equal(25);
+            return result.response.amount.should.equal(25);
         });
     });
 });

@@ -63,7 +63,7 @@ describe('Logic', () => {
             result.should.not.be.null;
             result.response.totalPrice.should.equal(300);
             result.response.penalty.should.equal(4200);
-            result.response.late.should.equal(false);            
+            return result.response.late.should.equal(false);            
         });
     });
 });
