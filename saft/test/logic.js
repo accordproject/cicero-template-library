@@ -55,7 +55,7 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.tokenAmount.should.equal(100);
-            result.response.tokenAddress.should.equal("Daniel Charles Selman");
+            return result.response.tokenAddress.should.equal("Daniel Charles Selman");
         });
     });
 });

@@ -54,7 +54,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.outstandingBalance.should.greaterThan(200);
+            return result.response.outstandingBalance.should.greaterThan(200);
         });
     });
 });

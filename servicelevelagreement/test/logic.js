@@ -58,7 +58,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.monthlyCredit.should.equal(0);
+            return result.response.monthlyCredit.should.equal(0);
         });
 
         it('give some credit for 99.7% availability', async function () {
@@ -74,7 +74,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.monthlyCredit.should.equal(0.2);
+            return result.response.monthlyCredit.should.equal(0.2);
         });
 
         it('give more credit for 97.0% availability', async function () {
@@ -90,7 +90,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.monthlyCredit.should.equal(0.3);
+            return result.response.monthlyCredit.should.equal(0.3);
         });
 
         it('give more credit for 97.0% availability with monthly cap', async function () {
@@ -107,7 +107,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.monthlyCredit.should.equal(1);
+            return result.response.monthlyCredit.should.equal(1);
         });
 
         it('give credit capped at annual cap', async function () {
@@ -124,7 +124,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.monthlyCredit.should.equal(0.99);
+            return result.response.monthlyCredit.should.equal(0.99);
         });
 
         it('rejects bad request values', async function () {
@@ -138,7 +138,7 @@ describe('Logic', () => {
             const state = {};
             state.$class = 'org.accordproject.common.ContractState';
             state.stateId = 'org.accordproject.common.ContractState#1';
-            await engine.execute(clause, request, state).catch((e) => {
+            return await engine.execute(clause, request, state).catch((e) => {
                 e.message.should.equal('A service level must be at least 0% and at most 100%.');
             });
         });
