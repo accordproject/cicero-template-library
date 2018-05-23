@@ -16,7 +16,7 @@
         "url": "git+https://github.com/accordproject/cicero-template-library.git"
     },
     "scripts": {
-        "test": "mocha"
+        "test": "mocha --timeout 5000"
     },
     "devDependencies": {
         "chai": "^4.1.2",
