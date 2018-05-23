@@ -59,7 +59,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.amount.should.equal(790);
+            return result.response.amount.should.equal(790);
         });
 
         it('should execute an inflight delivery contract', async function () {
@@ -77,7 +77,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.amount.should.equal(990);
+            return result.response.amount.should.equal(990);
         });
 
         it('should execute a completed on-time delivery contract with breaches', async function () {
@@ -95,7 +95,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.amount.should.equal(990);
+            return result.response.amount.should.equal(990);
         });
 
         it('should execute a completed delivery contact with no deductions', async function () {
@@ -113,7 +113,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.common.ContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.amount.should.equal(1000);
+            return result.response.amount.should.equal(1000);
         });
     });
 });

@@ -56,7 +56,7 @@ describe('Logic', () => {
             result.should.not.be.null;
             result.response.status.should.equal('PASSED_TESTING');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            return result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
         });
 
         it('failed inspection within time limit', async function() {
@@ -71,7 +71,7 @@ describe('Logic', () => {
             result.should.not.be.null;
             result.response.status.should.equal('FAILED_TESTING');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            return result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
         });
 
         it('inspection outside time limit', async function() {
@@ -87,7 +87,7 @@ describe('Logic', () => {
             result.should.not.be.null;
             result.response.status.should.equal('OUTSIDE_INSPECTION_PERIOD');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            return result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
         });
 
         it('inspection before delivable should throw', async function() {
@@ -99,7 +99,7 @@ describe('Logic', () => {
             // deliverable was received tomorrow!
             request.deliverableReceivedAt = moment().add(1, 'days');
             request.inspectionPassed = true;
-            engine.execute(clause, request, state).should.be.rejectedWith(Error);
+            return engine.execute(clause, request, state).should.be.rejectedWith(Error);
         });
     });
 });

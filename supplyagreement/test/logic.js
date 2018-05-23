@@ -55,7 +55,7 @@ describe('Logic', () => {
             state.obligations = [];
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.state.obligations[0].requiredPurchase.should.equal(1020.0);
+            return result.state.obligations[0].requiredPurchase.should.equal(1020.0);
         });
     });
 });
