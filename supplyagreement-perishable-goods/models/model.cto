@@ -1,0 +1,125 @@
+/**
+  * A business network for shipping perishable goods
+  * The cargo is temperature controlled and contracts
+  * can be negociated based on the temperature
+  * readings received for the cargo
+  */
+namespace org.accordproject.perishablegoods
+
+/**
+ * The status of a shipment
+ */
+enum ShipmentStatus {
+  o CREATED
+  o IN_TRANSIT
+  o ARRIVED
+}
+
+enum Unit {
+  o KG
+  o BUSHEL
+  o TONNE
+  o BARREL
+  o CORD
+}
+
+enum Duration {
+  o WEEK
+  o HOUR
+  o DAY
+  o MONTH
+  o YEAR
+  o MINUTE
+}
+
+/**
+ * An abstract transaction that is related to a Shipment
+ */
+abstract transaction ShipmentTransaction {
+    --> Shipment shipment
+}
+
+/**
+ * An temperature reading for a shipment. E.g. received from a
+ * device within a temperature controlled shipping container
+ */
+transaction SensorReading extends ShipmentTransaction {
+  o Double centigrade
+  o Double humidity
+}
+
+/**
+ * A notification that a shipment has been received by the
+ * importer and that funds should be transferred from the importer
+ * to the grower to pay for the shipment.
+ */
+transaction ShipmentReceived extends ShipmentTransaction {
+    o Integer unitCount
+}
+
+/**
+ * The calculation of a price
+ */
+transaction PriceCalculation extends ShipmentTransaction {
+  o Double totalPrice
+  o Double penalty
+  o Boolean late
+}
+
+/**
+ * A shipment being tracked as an asset on the ledger
+ */
+asset Shipment identified by shipmentId {
+  o String shipmentId
+  o ShipmentStatus status
+  --> Grower grower
+  --> Importer importer
+  o SensorReading[] sensorReadings optional
+  /**
+   * the link to the smart clause for this shipment
+   */
+  o String smartClause
+}
+
+/**
+ * A concept for a simple street address
+ */
+concept Address {
+  o String city optional
+  o String country
+  o String street optional
+  o String zip optional
+}
+
+/**
+ * An abstract participant type in this business network
+ */
+abstract participant Business identified by email {
+  o String email
+  o Address address
+  o Double accountBalance
+}
+
+/**
+ * A Grower is a type of participant in the network
+ */
+participant Grower extends Business {
+}
+
+/**
+ * A Shipper is a type of participant in the network
+ */
+participant Shipper extends Business {
+}
+
+/**
+ * An Importer is a type of participant in the network
+ */
+participant Importer extends Business {
+}
+
+/**
+ * JUST FOR INITIALIZING A DEMO
+ */
+transaction SetupDemo {
+}

@@ -48,7 +48,6 @@ describe('Logic', () => {
             const request = {};
             const NS = 'org.accordproject.perishablegoods';
             request.$class = `${NS}.ShipmentReceived`;
-            request.timestamp = new Date();
             request.unitCount = 3000;
             const shipment = {$class: `${NS}.Shipment`, shipmentId: 'SHIP_001'};
             const readingLow = {$class: `${NS}.SensorReading`, transactionId: 'a', shipment: 'SHIP_001', centigrade: 2, humidity: 80};
@@ -56,11 +55,14 @@ describe('Logic', () => {
             const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};            
             shipment.sensorReadings = [readingLow, readingOk, readingHigh];
             request.shipment = shipment;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.totalPrice.should.equal(300);
             result.response.penalty.should.equal(4200);
-            result.response.late.should.equal(false);            
+            return result.response.late.should.equal(false);          
         });
     });
 });

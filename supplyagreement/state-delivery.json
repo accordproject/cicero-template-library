@@ -1,0 +1,23 @@
+{
+  "$class": "org.accordproject.supplyagreement.AgreementState",
+  "obligations": [
+    {
+      "$class": "org.accordproject.supplyagreement.DeliveryObligation",
+      "expectedDelivery": "2018-05-10T04:00:00.000Z",
+      "deliverables": [
+        {
+          "$class": "org.accordproject.purchaseorder.OrderItem",
+          "partNumber": "Pink Umbrella",
+          "quantity": 180
+        },
+        {
+          "$class": "org.accordproject.purchaseorder.OrderItem",
+          "partNumber": "Blue Umbrella",
+          "quantity": 100
+        }
+      ],
+      "party": "DAN"
+    }
+  ],
+  "stateId": "org.accordproject.supplyagreement.AgreementState#1"
+}

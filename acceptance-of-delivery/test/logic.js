@@ -49,11 +49,14 @@ describe('Logic', () => {
             request.$class = 'org.accordproject.acceptanceofdelivery.InspectDeliverable';
             request.deliverableReceivedAt = new Date();
             request.inspectionPassed = true;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('PASSED_TESTING');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            return result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
         });
 
         it('failed inspection within time limit', async function() {
@@ -61,11 +64,14 @@ describe('Logic', () => {
             request.$class = 'org.accordproject.acceptanceofdelivery.InspectDeliverable';
             request.deliverableReceivedAt = new Date();
             request.inspectionPassed = false;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('FAILED_TESTING');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            return result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
         });
 
         it('inspection outside time limit', async function() {
@@ -74,20 +80,26 @@ describe('Logic', () => {
             // deliverable was received 11 days ago
             request.deliverableReceivedAt = moment().subtract(11, 'days');
             request.inspectionPassed = true;
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('OUTSIDE_INSPECTION_PERIOD');
             result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            return result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
         });
 
         it('inspection before delivable should throw', async function() {
             const request = {};
             request.$class = 'org.accordproject.acceptanceofdelivery.InspectDeliverable';
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
             // deliverable was received tomorrow!
             request.deliverableReceivedAt = moment().add(1, 'days');
             request.inspectionPassed = true;
-            engine.execute(clause, request).should.be.rejectedWith(Error);
+            return engine.execute(clause, request, state).should.be.rejectedWith(Error);
         });
     });
 });

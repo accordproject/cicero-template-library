@@ -13,6 +13,7 @@ These templates can be parsed and executed by the [Cicero](https://github.com/ac
 | Template Name | Description | Type |
 |---------------|-------------|------|
 | [Hello World](helloworld/) | This is the Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string Hello prepended to text that is passed in the request. | Clause |
+| [Hello World State](helloworldstate/) | This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called. | Clause |
 
 ### Supply Chain
 
@@ -23,19 +24,29 @@ These templates can be parsed and executed by the [Cicero](https://github.com/ac
 | [Late Delivery and Penalty](latedeliveryandpenalty/) | A sample Late Delivery And Penalty clause. | Clause | 
 | [Perishable Goods](perishable-goods/) | This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached. | Clause |
 | [Demand Forecast](demandforecast/) | This clause specifies obligations for a demand forecast from a purchaser. | Clause |
+| [Supply Agreement](supplyagreement/) | A simple supply agreement. | Contract |
 
 ### Finance
 
 | Template Name | Description | Type |
 |---------------|-------------|------|
 | [Simple Agreement for Future Tokens](saft/) | The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches. | Contract |
+| [Simple Agreement for Future Tokens or Equity](safte/) | The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company. | Contract |
 | [Volume Discount](volumediscount/) | A sample volume discount clause. | Clause |
+| [Installment Sale](installment-sale) | A simple clause for a sale paid in installments. | Contract |
 
 ### Services
 
 | Template Name | Description | Type |
 |---------------|-------------|------|
 | [Service Level Agreement](servicelevelagreement/) | A service level agreement that gives invoice credit based on service availability. | Contract |
+
+### Intellectual Property
+
+| Template Name | Description | Type |
+|---------------|-------------|------|
+| [IP Payment](ip-payment/) | A payment clause for an IP agreement, such as a trademark or a copyright licenses aggreement. | Clause |
+| [Copyright License](copyright-license/) | This is a copyright license agreement. | Contract |
 
 ## Contributing
 

@@ -1,0 +1,31 @@
+{
+    "name": "supplyagreement-perishable-goods",
+    "version": "0.1.0",
+    "description": "This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+    "author": "clause.io",
+    "license": "Apache-2.0",
+    "engines": {
+        "cicero": "^0.2"
+    },
+    "cicero": {
+        "template": "contract",
+        "version": "^0.3.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/accordproject/cicero-template-library.git"
+    },
+    "scripts": {
+        "test": "mocha --timeout 5000"
+    },
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "chai-as-promised": "^7.1.1",
+        "chai-things": "^0.2.0",
+        "@accordproject/cicero-core": "^0.3.12",
+        "@accordproject/cicero-engine": "^0.3.12",
+        "@accordproject/cicero-cli": "^0.3.12",
+        "mocha": "^5.1.1",
+        "moment": "^2.20.1"
+    }
+}

@@ -1,0 +1,1 @@
+{"$class":"org.accordproject.safte.TemplateModel","companyName":"ACME","companyRegistrationNumber":555,"purchaser":"Dan","jurisdiction":"NY","purchaseAmount":25,"discount":7,"projectName":"Umbrella","projectDescription":"manages umbrella tokens","months":12,"monthsText":"twelve","amount":1000,"amountText":"one thousand"}

@@ -27,7 +27,7 @@ cd servicelevelagreement
 ```
 4. With the [Cicero command-line tool](https://github.com/accordproject/cicero#installation):
 ```
-cicero execute --template ./ --dsl ./sample.txt --data ./data.json
+cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
 ```
 > Note, all of the command-line flags (like `--template`) are optional.
 
@@ -39,17 +39,17 @@ cicero execute
 You should see the following output in your terminal:
 ```bash
 mattmbp:servicelevelagreement matt$ cicero execute
-12:08:30 - info: Logging initialized. 2018-03-01T12:08:30.214Z
-12:08:30 - info: Using current directory as template folder
-12:08:30 - info: Loading a default sample.txt file.
-12:08:30 - info: Loading a default data.json file.
-12:08:30 - info: {"clause":"servicelevelagreement@0.0.1-58c0a82b311c6ec6c1c3a994b13994fd11f7a138fae428fe752ef04ad3477bd3","request":{"$class":"org.accordproject.servicelevelagreement.MonthSummary","monthlyServiceLevel":99.7,"monthlyCharge":10,"last11MonthCredit":0,"last11MonthCharge":0},"response":{"$class":"org.accordproject.servicelevelagreement.InvoiceCredit","monthlyCredit":0.2,"transactionId":"0a63058b-bf16-4ff0-810c-5ceff005b3e8","timestamp":"2018-03-01T12:08:30.805Z"}}
+18:32:39 - info: Logging initialized. 2018-05-15T22:32:39.050Z
+18:32:39 - info: Using current directory as template folder
+18:32:39 - info: Loading a default sample.txt file.
+18:32:39 - info: Loading a single default request.json file.
+18:32:39 - info: Loading a default state.json file.
+18:32:39 - info: {"clause":"servicelevelagreement@0.0.1-58c0a82b311c6ec6c1c3a994b13994fd11f7a138fae428fe752ef04ad3477bd3","request":{"$class":"org.accordproject.servicelevelagreement.MonthSummary","monthlyServiceLevel":99.7,"monthlyCharge":10,"last11MonthCredit":0,"last11MonthCharge":0},"response":{"$class":"org.accordproject.servicelevelagreement.InvoiceCredit","monthlyCredit":0.2,"transactionId":"e74bde3f-df1d-4ced-be4c-c9bc6226ec91","timestamp":"2018-05-15T22:32:39.823Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 ```
 
 ### Sample Payload Data
 
-
-Request, as in [data.json](https://github.com/accordproject/cicero-template-library/blob/master/servicelevelagreement/data.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/servicelevelagreement/request.json)
 ```json
 {
     "$class": "org.accordproject.servicelevelagreement.MonthSummary",

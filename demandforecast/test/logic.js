@@ -49,9 +49,12 @@ describe('Logic', () => {
                 "$class": "org.accordproject.demandforecast.ForecastRequest",
                 "supplyForecast": 1200.0
             };
-            const result = await engine.execute(clause, request);
+            const state = {};
+            state.$class = 'org.accordproject.common.ContractState';
+            state.stateId = 'org.accordproject.common.ContractState#1';
+            const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.requiredPurchase.should.equal(1020.0);
+            return result.response.requiredPurchase.should.equal(1020.0);
         });
     });
 });
