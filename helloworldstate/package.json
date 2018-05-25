@@ -6,6 +6,9 @@
         "template": "clause",
         "version": "^0.3.0"
     },
+    "engines":{
+        "cicero": "^0.3"  
+    },
     "scripts": {
         "test": "mocha"
     },

@@ -8,6 +8,9 @@
     "template": "clause",
     "version": "^0.3.0"
   },
+  "engines":{
+      "cicero": "^0.3"  
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/accordproject/cicero-template-library.git"

@@ -4,6 +4,9 @@
     "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
     "author": "Matt Roberts, clause.io",
     "license": "Apache-2.0",
+    "engines":{
+        "cicero": "^0.3"  
+    },
     "cicero": {
         "template": "clause",
         "version": "^0.3.0"
