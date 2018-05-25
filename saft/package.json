@@ -5,8 +5,8 @@
     "scripts": {
         "test": "mocha"
     },
-    "engines":{
-        "cicero": "^0.3"  
+    "engines": {
+        "cicero": "^0.3"
     },
     "cicero": {
         "template": "contract",

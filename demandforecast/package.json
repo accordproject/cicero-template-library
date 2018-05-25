@@ -4,8 +4,8 @@
     "description": "A sample demandforecast clause.",
     "author": "Jerome Simeon, clause.io",
     "license": "Apache-2.0",
-    "engines":{
-        "cicero": "^0.3"  
+    "engines": {
+        "cicero": "^0.3"
     },
     "cicero": {
         "template": "clause",

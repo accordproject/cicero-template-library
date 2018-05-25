@@ -8,8 +8,8 @@
         "template": "clause",
         "version": "^0.3.0"
     },
-    "engines":{
-        "cicero": "^0.3"  
+    "engines": {
+        "cicero": "^0.3"
     },
     "repository": {
         "type": "git",
