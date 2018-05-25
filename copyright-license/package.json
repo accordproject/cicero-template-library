@@ -5,8 +5,8 @@
     "author": "clause.io",
     "license": "Apache-2.0",
     "cicero": {
-      "template": "contract",
-      "version": "^0.3.0"
+        "template": "contract",
+        "version": "^0.3.0"
     },
     "repository": {
         "type": "git",
@@ -19,8 +19,8 @@
         "chai": "^4.1.2",
         "chai-as-promised": "^7.1.1",
         "chai-things": "^0.2.0",
-        "@accordproject/cicero-core": "^0.3.0",
-        "@accordproject/cicero-engine": "^0.3.0",
+        "@accordproject/cicero-core": "^0.3.12",
+        "@accordproject/cicero-engine": "^0.3.12",
         "mocha": "^4.0.1",
         "moment": "^2.19.2"
     }
