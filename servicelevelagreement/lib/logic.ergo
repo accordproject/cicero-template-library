@@ -1,0 +1,59 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.servicelevelagreement
+
+// Safety checking
+define function toFixed(credit : Double) : Double {
+  return max([0.0,floor(credit * 100.00 + 0.5) / 100.00])
+}
+
+contract ServiceLevelAgreement over TempalteModel {
+  clause invoice(request : MonthSummary) : InvoiceCredit throws String {
+    // Pre-conditions checking
+    enforce contract.availability1 >= 0.0 
+      	and contract.serviceCredit1 >= 0.0 
+      	and contract.availability2 >= 0.0
+      	and contract.serviceCredit2 >= 0.0
+    else throw "Template variables must not be negative.";
+
+    enforce request.monthlyServiceLevel >= 0.0
+        and request.monthlyServiceLevel <= 100.0
+    else throw "A service level must be at least 0% and at most 100%.";
+    //
+    // Section 3
+    //
+
+    define variable monthlyCredit =
+      // Annex 1, schedule - row 2
+      if request.monthlyServiceLevel < contract.availability2
+      then (contract.serviceCredit2 / 100.0) * request.monthlyCharge
+      // Annex 1, schedule - row 1
+      else if (request.monthlyServiceLevel < contract.availability1)
+      then (contract.serviceCredit1 / 100.0) * request.monthlyCharge
+      else 0.0;
+
+    // Clause 3.3
+    define variable monthlyCredit = min([monthlyCredit, (contract.monthlyCapPercentage  / 100.0 ) * request.monthlyCharge]);
+
+    // Clause 3.4
+    define variable yearlyCreditCap = ( contract.yearlyCapPercentage / 100.0) * (request.last11MonthCharge + request.monthlyCharge);
+    define variable monthlyCredit = min([monthlyCredit, yearlyCreditCap - request.last11MonthCredit]);
+
+    return new InvoiceCredit{
+      monthlyCredit: toFixed(monthlyCredit)
+    }
+	}
+}
+

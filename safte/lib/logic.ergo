@@ -15,20 +15,20 @@
 namespace org.accordproject.safte
 
 contract Safte over TemplateModel {
-	clause tokenSale(request : TokenSale) : TokenShare {
-		define variable discountRate = (100.0 - contract.discount) / 100.00;
-		define variable discountPrice = request.tokenPrice * discountRate;
+  clause tokenSale(request : TokenSale) : TokenShare {
+    define variable discountRate = (100.0 - contract.discount) / 100.00;
+    define variable discountPrice = request.tokenPrice * discountRate;
     return new TokenShare{ tokenAmount : contract.purchaseAmount / discountPrice }
-	}
+  }
 
-	clause equityFinancing(request : EquityFinancing) : EquityShare {
-		define variable discountRate = (100.0 - contract.discount) / 100.00;
-		define variable discountPrice = request.sharePrice * discountRate;
+  clause equityFinancing(request : EquityFinancing) : EquityShare {
+    define variable discountRate = (100.0 - contract.discount) / 100.00;
+    define variable discountPrice = request.sharePrice * discountRate;
     return new EquityShare{ equityAmount : contract.purchaseAmount / discountPrice }
-	}
+  }
 
-	clause disolutionEvent(request : DissolutionEvent) : PayOut {
+  clause disolutionEvent(request : DissolutionEvent) : PayOut {
     return new PayOut{ amount : contract.purchaseAmount }
-	}
+  }
 }
 

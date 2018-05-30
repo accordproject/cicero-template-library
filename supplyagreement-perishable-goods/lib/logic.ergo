@@ -53,9 +53,9 @@ contract SupplyAgreement over TemplateModel {
     enforce momentIsBefore(now(), contract.dueDate)
     else return new PriceCalculation{
       shipment : request.shipment,
-			totalPrice : 0.0,
-			penalty : 0.0,
-			late : true
+      totalPrice : 0.0,
+      penalty : 0.0,
+      late : true
     };
 
     // Calculates payout

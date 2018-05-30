@@ -15,18 +15,18 @@
 namespace org.accordproject.saft
 
 contract Saft over TemplateModel {
-	clause onLaunch(request : Launch) : Payout {
+  clause onLaunch(request : Launch) : Payout {
     return new Payout{
-			tokenAmount: 100.0,
-			tokenAddress: contract.purchaser
-		}
-	}
+      tokenAmount: 100.0,
+      tokenAddress: contract.purchaser
+    }
+  }
 
-	clause onTerminate(request : Terminate) : Payout {
+  clause onTerminate(request : Terminate) : Payout {
     return new Payout{
-			tokenAmount: 9.0,
-			tokenAddress: contract.purchaser
-		}
-	}
+      tokenAmount: 9.0,
+      tokenAddress: contract.purchaser
+    }
+  }
 }
 
