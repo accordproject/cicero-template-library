@@ -43,8 +43,9 @@ function payOut(context) {
     }
 
     // if the shipment did not arrive on time the payout is zero
-    if (shipmentReceived.timestamp > contract.dueDate) {
+    if (moment(shipmentReceived.timestamp).isAfter(moment(contract.dueDate))) {
         payOut = 0;
+        res.penalty = 0;
         res.late = true;
         logger.info('Late shipment');
     } else {

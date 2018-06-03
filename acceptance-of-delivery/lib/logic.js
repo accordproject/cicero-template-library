@@ -47,8 +47,8 @@ function execute(context) {
         res.status = "FAILED_TESTING";        
     }
 
-    res.shipper = factory.newRelationship('org.hyperledger.composer.system', 'Participant', contract.shipper);
-    res.receiver = factory.newRelationship('org.hyperledger.composer.system', 'Participant', contract.receiver);
+    res.shipper = contract.shipper;
+    res.receiver = contract.receiver;
     // logger.info(context);
 }
 
