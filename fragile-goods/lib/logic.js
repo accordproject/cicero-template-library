@@ -31,23 +31,26 @@ function execute(context) {
     var res = context.response;
     var contract = context.contract;
 
-    res.amount = contract.deliveryPrice;
+    // contract data is read-only, so we need to clone
+    res.amount = factory.newConcept( contract.deliveryPrice.getNamespace(), contract.deliveryPrice.getType());
+    res.amount.doubleValue = contract.deliveryPrice.doubleValue;
+    res.amount.currencyCode = contract.deliveryPrice.currencyCode;
 
     req.accelerometerReadings.forEach(function(r){
-        if(r > contract.accelerationMax){
-            res.amount -= contract.accelerationBreachPenalty;
+        if(r > data.accelerationMax){
+            res.amount.doubleValue -= contract.accelerationBreachPenalty.doubleValue;
         }
-        if(r < contract.accelerationMin){
-            res.amount -= contract.accelerationBreachPenalty;
+        if(r < data.accelerationMin){
+            res.amount.doubleValue -= contract.accelerationBreachPenalty.doubleValue;
         }
     });
 
     if(req.status=='ARRIVED'){
-        switch(contract.deliveryLimitDuration.unit){
+        switch(data.deliveryLimitDuration.unit){
             case 'seconds':
                 var duration = req.finishTime.getTime() - req.startTime.getTime();
-                if((duration / 1000)>contract.deliveryLimitDuration.amount){
-                    res.amount -=contract.lateDeliveryPenalty;
+                if((duration / 1000) > contract.deliveryLimitDuration.amount){
+                    res.amount.doubleValue -= contract.lateDeliveryPenalty.doubleValue;
                 }
                 break;
             default:

@@ -25,11 +25,11 @@
  * @param {org.accordproject.copyrightlicense.PayOut} context.response - the response
  * @AccordClauseLogic
  */
-function paymentClause(context) {
+function execute(context) {
     var req = context.request;
     var res = context.response;
     var contract = context.contract;
-    res.amount = contract.paymentClause.amount;
+    res.amount = contract.paymentClause.amount
 }
 
 /* eslint-enable no-unused-vars */
