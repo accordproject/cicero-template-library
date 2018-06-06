@@ -1,24 +1,7 @@
 namespace io.clause.demo.fragileGoods
 
-/**
- * A duration. For example, 6 hours.
- */
-concept Duration {
-  o Long amount
-  o TemporalUnit unit
-}
-
-/**
- * Units for a duration. 24 hour days are assumed.
- */
-enum TemporalUnit {
-  o seconds
-  o minutes
-  o hours
-  o days
-  o weeks
-  o years
-}
+import org.accordproject.time.Duration from https://models.accordproject.org/time.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
 /**
  * The status of a shipment
@@ -37,7 +20,7 @@ transaction DeliveryUpdate {
 }
 
 transaction PayOut {
-  o Double amount
+  o MonetaryAmount amount
 }
 
 /**
@@ -45,10 +28,10 @@ transaction PayOut {
  */
 @AccordTemplateModel("fragile-goods")
 concept TemplateModel {
-  o Double deliveryPrice
+  o MonetaryAmount deliveryPrice
   o Double accelerationMin
   o Double accelerationMax
-  o Double accelerationBreachPenalty
+  o MonetaryAmount accelerationBreachPenalty
   o Duration deliveryLimitDuration
-  o Double lateDeliveryPenalty
+  o MonetaryAmount lateDeliveryPenalty
 }

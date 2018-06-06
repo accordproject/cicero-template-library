@@ -1,0 +1,68 @@
+{% extends "page.njk" %}
+
+{% block unfurl %}
+<!-— facebook open graph tags -->
+<meta property="og:url" content="{{serverRoot}}{{filePath}}.html" />
+<meta property="og:title" content="{{modelFile.getNamespace()}}" />
+<meta property="og:description" content="Accord Project models in the {{modelFile.getNamespace()}} namespace" />
+<meta property="og:image" content="{{umlURL}}" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" value="{{modelFile.getNamespace()}}" />
+<meta name="twitter:description" value="Accord Project models in the {{modelFile.getNamespace()}} namespace" />
+<meta name="twitter:image" content="{{umlURL}}" />
+<meta name="twitter:url" value="{{serverRoot}}{{filePath}}.html" />
+{% endblock %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Namespace {{modelFile.getNamespace()}}
+            </h1>
+            <p class="subtitle">
+                Found {{modelFile.getAllDeclarations().length}} declarations!
+            </p>
+
+            <p>
+                <a href="{{filePath}}.cto" class="button is-rounded">Download CTO</a>
+                <a href="{{filePath}}.puml" class="button is-rounded">Download UML</a>
+                <a href="{{filePath}}.json" class="button is-rounded">Download JSON Schema</a>
+                <a href="{{modelFile.getNamespace()}}.ts" class="button is-rounded">Download Typescript</a>
+                <a href="{{filePath}}.jar" class="button is-rounded">Download Java</a>
+                <a href="{{filePath}}.zip" class="button is-rounded">Download Go</a>
+            </p>
+
+            <img src="{{umlURL}}" />
+
+            <h2 class="title is-2">Declared Types</h2>
+            <div class="content">
+                <pre style="border: 0; background-color: transparent;">
+<code class="js">
+{% for decl in modelFile.getAllDeclarations() %}import {{decl.getFullyQualifiedName()}} from {{serverRoot}}{{filePath}}.cto
+{% endfor %}
+</code></pre>
+            </div>
+
+
+            <h2 class="title is-2">Dependencies</h2>
+            <div class="content">
+                <ul>
+                {% for ns, uri in modelFile.getExternalImports() %}
+                <li><a href="{{uri | replace(".cto", ".html")}}">{{ns}}</a></li>
+                {% else %}
+                  <li>None</li>
+                {% endfor %}
+                </ul>
+            </div>
+
+            <h2 class="title is-2">Source</h2>
+            <div class="content">
+            <pre style="border: 0; background-color: transparent;">
+            <code class="js">
+{{modelFile.getDefinitions()}}
+</code>
+</pre>
+        </div>
+    </section>
+{% endblock %}

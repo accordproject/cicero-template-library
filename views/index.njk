@@ -1,0 +1,46 @@
+{% extends "page.njk" %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Accord Project Template Repository
+            </h1>
+            <p class="subtitle">
+                Open Source Smart Legal Templates
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-2">Welcome!</h2>
+            This repository host all Accord Project contract and clause templates. Templates are captured using the
+            <a href="https://github.com/accordproject/cicero">Accord Project Cicero format</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-2">Contributing</h2>
+            To contribute new templates (or fix existing templates), you can fork this GitHub repository and submit
+            pull requests to the maintainers. Please join the
+            <a href="http://accordproject.org">Accord Project</a> Technology Working Group Slack channel.
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-2">Templates</h2>
+            <div class="content">
+                <ul>
+                    {% for e in templateIndex %}
+                    <li>
+                        <a href="{{e.id}}">{{e.id}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}
