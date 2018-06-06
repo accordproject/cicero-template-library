@@ -104,7 +104,7 @@ let modelFileIndex = [];
                 const archive = await template.toArchive();
                 const destPath = path.dirname(dest);
                 await fs.ensureDir(destPath);
-                const templateId = template.getIdentifier() + '.cta';
+                const templateId = `${template.getTemplateModel().getFullyQualifiedName()}@${template.getMetadata().getVersion()}.cta`;
                 await writeFile( `${destPath}/templateId`, archive);
                 console.log('Copied: ' + templateId );
                 index.push({id: templateId});
@@ -113,6 +113,9 @@ let modelFileIndex = [];
                 console.log(`Failed processing ${file} with ${err}`);
             }
         }
+
+        // write the index
+        await writeFile( './build/index.json', JSON.stringify(index));
 
         // generate the index html page
         const serverRoot = process.env.SERVER_ROOT;
