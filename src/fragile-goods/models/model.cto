@@ -1,7 +1,7 @@
 namespace io.clause.demo.fragileGoods
 
-import org.accordproject.time.Duration from github://accordproject/models/master/time.cto
-import org.accordproject.money.MonetaryAmount from github://accordproject/models/master/money.cto
+import org.accordproject.time.Duration from https://models.accordproject.org/time.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
 /**
  * The status of a shipment

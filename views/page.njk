@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" value="models.accordproject.org" />
+    <meta name="twitter:label1" value="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" value="on GitHub.com" />
+    <meta name="twitter:label2" value="Contribute" />
+    <meta name="twitter:data2" value="at AccordProject.org" />
+
+    {% block unfurl %}
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://models.accordproject.org" />
+    <meta property="og:title" content="Accord Project Model Repository" />
+    <meta property="og:description" content="Repository hosting all Accord Project models." />
+    <meta property="og:image" content="https://models.accordproject.org/accord_logo.png" />
+ 
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" value="Accord Project Model Repository" />
+    <meta name="twitter:description" value="Repository hosting all Accord Project models." />
+    <meta name="twitter:image" content="https://models.accordproject.org/accord_logo.png" />
+    <meta name="twitter:url" value="https://models.accordproject.org" />
+    {% endblock %}
+
+    <title>Accord Project Model Repository</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/models">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    {% block body %} {% endblock %}
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

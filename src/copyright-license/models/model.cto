@@ -1,11 +1,11 @@
 namespace org.accordproject.copyrightlicense
 
-import org.accordproject.cicero.contract.AccordClause from github://accordproject/models/master/cicero/contract.cto
-import org.accordproject.cicero.contract.AccordContract from github://accordproject/models/master/cicero/contract.cto
-import org.accordproject.cicero.runtime.Request from github://accordproject/models/master/cicero/runtime.cto
-import org.accordproject.cicero.runtime.Response from github://accordproject/models/master/cicero/runtime.cto
+import org.accordproject.cicero.contract.AccordClause from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.contract.AccordContract from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.Request from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.cicero.runtime.Response from https://models.accordproject.org/cicero/runtime.cto
 
-import org.accordproject.money.MonetaryAmount from github://accordproject/models/master/money.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
 /* Requesting a payment */
 transaction PaymentRequest extends Request {
