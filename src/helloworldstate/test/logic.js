@@ -46,7 +46,7 @@ describe('Logic', () => {
 
         it('should say hello once', async function() {
             const request = {};
-            request.$class = 'org.accordproject.helloworldstate.Request';
+            request.$class = 'org.accordproject.helloworldstate.MyRequest';
             request.input = 'World'
             const state = {};
             state.$class = 'org.accordproject.helloworldstate.HelloWorldState';
@@ -62,7 +62,7 @@ describe('Logic', () => {
 
         it('should say hello twice', async function() {
             const request = {};
-            request.$class = 'org.accordproject.helloworldstate.Request';
+            request.$class = 'org.accordproject.helloworldstate.MyRequest';
             request.input = 'World'
             const state = {};
             state.$class = 'org.accordproject.helloworldstate.HelloWorldState';
@@ -80,7 +80,7 @@ describe('Logic', () => {
 
         it('should say hello thrice', async function() {
             const request = {};
-            request.$class = 'org.accordproject.helloworldstate.Request';
+            request.$class = 'org.accordproject.helloworldstate.MyRequest';
             request.input = 'World'
             const state = {};
             state.$class = 'org.accordproject.helloworldstate.HelloWorldState';

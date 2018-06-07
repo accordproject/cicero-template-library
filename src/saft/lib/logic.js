@@ -16,7 +16,9 @@ function onLaunch(context) {
     var req = context.request;
     var res = context.response;
     var contract = context.contract;
-    res.tokenAmount = 100;
+    res.tokenAmount = factory.newConcept('org.accordproject.money', 'MonetaryAmount');
+    res.tokenAmount.doubleValue = 100;
+    res.tokenAmount.currencyCode = 'USD';
     res.tokenAddress = contract.purchaser;
 }
 
@@ -32,7 +34,9 @@ function onTerminate(context) {
     var req = context.request;
     var res = context.response;
     var contract = context.contract;
-    res.tokenAmount = 9;
+    res.tokenAmount = factory.newConcept('org.accordproject.money', 'MonetaryAmount');
+    res.tokenAmount.doubleValue = 9;
+    res.tokenAmount.currencyCode = 'USD';
     res.tokenAddress = contract.purchaser;
 }
 

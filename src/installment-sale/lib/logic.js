@@ -66,8 +66,7 @@ function payInstallment(context) {
     // Emit payment obligation
     emit.push(serializer.fromJSON({
         '$class': 'org.accordproject.installmentsale.PaymentObligation',
-        'from':contract.BUYER,
-        'to':contract.SELLER,
+        'party':contract.BUYER,
         'amount':req.amount
     }));
 }
@@ -110,8 +109,7 @@ function payLastInstallment(context) {
     // Emit payment obligation
     emit.push(serializer.fromJSON({
         '$class': 'org.accordproject.installmentsale.PaymentObligation',
-        'from':contract.BUYER,
-        'to':contract.SELLER,
+        'party':contract.BUYER,
         'amount':req.amount
     }));
 }

@@ -1,9 +1,7 @@
 namespace org.accordproject.copyrightlicense
 
-import org.accordproject.cicero.contract.AccordClause from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.contract.AccordContract from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.Request from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.cicero.runtime.Response from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 

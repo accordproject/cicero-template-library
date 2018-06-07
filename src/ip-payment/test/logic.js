@@ -51,8 +51,8 @@ describe('Logic', () => {
 						request.sublicensingRevenue = 450.00;
 						request.permissionGrantedBy = "04-05-2018";
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.totalAmount.should.equal(77.4);

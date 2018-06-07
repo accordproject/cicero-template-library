@@ -1,10 +1,14 @@
 namespace org.accordproject.acceptanceofdelivery
 
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+
 /**
  * Sent by the receiver of the goods, indicates when the goods were
  * received, as well as if they passed inspection
  */
-transaction InspectDeliverable {
+transaction InspectDeliverable extends Request {
   o DateTime deliverableReceivedAt
   o Boolean inspectionPassed
 }
@@ -21,7 +25,7 @@ enum InspectionStatus {
 /**
  * The clause response
  */
-transaction InspectionResponse {
+transaction InspectionResponse extends Response {
   o InspectionStatus status
   --> Participant shipper
   --> Participant receiver
@@ -30,8 +34,7 @@ transaction InspectionResponse {
 /**
  * The template model
  */
-@AccordTemplateModel("acceptance-of-delivery")
-concept TemplateModel {
+asset AcceptanceOfDeliveryClause extends AccordClause {
   /**
    * the shipper of the goods
    */

@@ -1,7 +1,9 @@
 namespace org.accordproject.demandforecast
 
-@AccordTemplateModel("demandforecast")
-concept TemplateModel {
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+asset DemandForecastClause extends AccordClause {
   o String purchaser
   o String supplier 
   o DateTime effectiveDate
@@ -11,14 +13,14 @@ concept TemplateModel {
 /**
  * Defines the output data required by the template
  */
-transaction ForecastRequest {
+transaction ForecastRequest extends Request {
 /**
  * How much is the forecast?
  */
   o Integer supplyForecast
 }
 
-transaction BindingResponse {
+transaction BindingResponse extends Response {
 /**
  * Amount must purchase.
  */

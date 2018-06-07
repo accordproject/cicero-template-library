@@ -46,12 +46,16 @@ describe('Logic', () => {
 
         it('should execute a smart clause', async function () {
             const request = {
-                "$class": "org.accordproject.promissorynote.Request",
-                "amountPaid": 100.0
+                "$class": "org.accordproject.promissorynote.Payment",
+                "amountPaid": {
+                    "$class": "org.accordproject.money.MonetaryAmount",
+                    "doubleValue": 100.0,
+                    "currencyCode": "USD"    
+                }
             };
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.outstandingBalance.should.greaterThan(200);

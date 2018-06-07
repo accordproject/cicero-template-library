@@ -1,9 +1,8 @@
-/**
- * Data Model for the SAFTE contract
- */
 namespace org.accordproject.safte
 
-import org.accordproject.us.state.*
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.usa.state.State from https://models.accordproject.org/usa/state.cto
 
 /**
  * Token are issued!
@@ -65,8 +64,7 @@ transaction PayOut {
 /**
  * Defines the data model for the Safte template.
  */
-@AccordTemplateModel("safte")
-concept TemplateModel {
+asset Safte extends AccordContract {
   /**
    * The name of the company selling the token
    */

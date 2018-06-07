@@ -50,8 +50,8 @@ describe('Logic', () => {
                 "supplyForecast": 1200.0
             };
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.requiredPurchase.should.equal(1020.0);

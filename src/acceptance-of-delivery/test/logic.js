@@ -50,8 +50,8 @@ describe('Logic', () => {
             request.deliverableReceivedAt = new Date();
             request.inspectionPassed = true;
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('PASSED_TESTING');
@@ -65,8 +65,8 @@ describe('Logic', () => {
             request.deliverableReceivedAt = new Date();
             request.inspectionPassed = false;
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('FAILED_TESTING');
@@ -81,8 +81,8 @@ describe('Logic', () => {
             request.deliverableReceivedAt = moment().subtract(11, 'days');
             request.inspectionPassed = true;
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('OUTSIDE_INSPECTION_PERIOD');
@@ -94,8 +94,8 @@ describe('Logic', () => {
             const request = {};
             request.$class = 'org.accordproject.acceptanceofdelivery.InspectDeliverable';
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             // deliverable was received tomorrow!
             request.deliverableReceivedAt = moment().add(1, 'days');
             request.inspectionPassed = true;

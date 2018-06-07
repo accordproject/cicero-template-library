@@ -1,5 +1,7 @@
 namespace io.clause.demo.fragileGoods
 
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.time.Duration from https://models.accordproject.org/time.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
@@ -12,22 +14,21 @@ enum ShipmentStatus {
   o ARRIVED
 }
 
-transaction DeliveryUpdate {
+transaction DeliveryUpdate extends Request {
   o DateTime startTime
   o DateTime finishTime optional
   o ShipmentStatus status
   o Double[] accelerometerReadings
 }
 
-transaction PayOut {
+transaction PayOut extends Response {
   o MonetaryAmount amount
 }
 
 /**
  * The template model
  */
-@AccordTemplateModel("fragile-goods")
-concept TemplateModel {
+asset FragileGoodsClause extends AccordClause {
   o MonetaryAmount deliveryPrice
   o Double accelerationMin
   o Double accelerationMax

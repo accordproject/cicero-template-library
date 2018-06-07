@@ -46,11 +46,11 @@ describe('Logic', () => {
 
         it('should produce correct result', async function() {
             const request = {};
-            request.$class = 'org.accordproject.helloworld.Request';
+            request.$class = 'org.accordproject.helloworld.MyRequest';
             request.input = 'World'
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.output.should.equal('Hello Fred Blogs World');

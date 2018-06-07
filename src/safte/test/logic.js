@@ -50,8 +50,8 @@ describe('Logic', () => {
             request.$class = `${NS}.TokenSale`;
             request.tokenPrice = 1.23;
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.tokenAmount.should.equal(21.855057260250017);
@@ -66,8 +66,8 @@ describe('Logic', () => {
             request.$class = `${NS}.EquityFinancing`;
             request.sharePrice = 3.00;
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.equityAmount.should.equal(8.960573476702509);
@@ -82,8 +82,8 @@ describe('Logic', () => {
             request.$class = `${NS}.DissolutionEvent`;
             request.cause = "Went Shopping";
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.should.equal(25);

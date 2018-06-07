@@ -1,4 +1,4 @@
-On receipt of the shipment [{shipment}] the importer [{importer}] pays the grower [{grower}] [{unitPrice}] USD per [{unit}]. The shipment must contain between [{minUnits}] and [{maxUnits}] [{unit}] of [{product}].
+On receipt of the shipment [{shipment}] the importer [{importer}] pays the grower [{grower}] [{unitPrice}] per [{unit}]. The shipment must contain between [{minUnits}] and [{maxUnits}] [{unit}] of [{product}].
 
 Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least [{sensorReadingFrequency}] per [{duration}].
 

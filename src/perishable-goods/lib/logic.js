@@ -31,7 +31,7 @@ function payOut(context) {
     var res = context.response;
     res.shipment = shipment;
     var contract = context.contract;
-    var payOut = contract.unitPrice * shipmentReceived.unitCount;
+    var payOut = contract.unitPrice.doubleValue * shipmentReceived.unitCount;
     //logger.info(context);
 
     logger.info('Base payOut: ' + payOut);

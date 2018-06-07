@@ -19,6 +19,7 @@ const Template = require('@accordproject/cicero-core').Template;
 const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
+const Mocha = require('mocha');
 
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
@@ -143,7 +144,31 @@ async function buildTemplates(preProcessor, postProcessor) {
  * @param {Template} template 
  */
 async function templateUnitTester(templatePath, template) {
-    // console.log('Testing ' + template.getIdentifier());
+    // Instantiate a Mocha instance.
+    var mocha = new Mocha({
+        timeout: 10000
+    });
+
+    var testDir = templatePath + '/test';
+
+    // Add each .js file to the mocha instance
+    fs.readdirSync(testDir).filter(function(file){
+        // Only keep the .js files
+        return file.substr(-3) === '.js';
+
+    }).forEach(function(file){
+        mocha.addFile(
+            path.join(testDir, file)
+        );
+    });
+
+    // Run the tests
+    mocha.run(function(failures){
+        if(failures) {
+            process.exitCode = failures ? -1 : 0;  // exit with non-zero status if there were failures
+            throw new Error('Test failed for ' + templatePath);
+        }
+    });
 }
 
 /**

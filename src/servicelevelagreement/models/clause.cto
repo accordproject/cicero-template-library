@@ -1,7 +1,9 @@
 namespace org.accordproject.servicelevelagreement
 
-@AccordTemplateModel("servicelevelagreement")
-concept TemplateModel {
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+asset ServiceLevelAgreement extends AccordContract {
  o Integer paymentPeriod 
  o Double monthlyCapPercentage
  o Double yearlyCapPercentage

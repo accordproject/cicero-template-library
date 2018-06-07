@@ -57,8 +57,8 @@ describe('Logic', () => {
             shipment.sensorReadings = [readingLow, readingOk, readingHigh];
             request.shipment = shipment;
             const state = {};
-            state.$class = 'org.accordproject.common.ContractState';
-            state.stateId = 'org.accordproject.common.ContractState#1';
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.totalPrice.should.equal(300);
