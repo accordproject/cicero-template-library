@@ -165,7 +165,6 @@ async function templatePageGenerator(templatePath, template) {
         serverRoot: serverRoot,
         umlURL : umlURL,
         filePath: templatePageHtml,
-        archiveFilePath: archiveFilePath,
         template: template,
         readmeHtml: readmeHtml
     });
