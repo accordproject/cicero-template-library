@@ -31,30 +31,37 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="title is-2">Contract Templates</h2>
-            <a href="contract-index.json">contract-index.json</a>
-            <div class="content">
-                <ul>
-                    {% for e in contractIndex %}
-                    <li>
-                        <a href="{{e.templateId | replace(".cta", ".html")}}">{{e.templateId}}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-            <div class="container">
-            <h2 class="title is-2">Clause Templates</h2>
-            <a href="clause-index.json">clause-index.json</a>
-            <div class="content">
-                <ul>
-                    {% for e in clauseIndex %}
-                    <li>
-                        <a href="{{e.templateId | replace(".cta", ".html")}}">{{e.templateId}}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+            <h2 class="title is-2">Templates</h2>
+            <table class="table">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cicero Version</th>
+                <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name, val in templateIndex %}
+                <tr>
+                <th><a href="{{name}}.html">{{name}}<a></th>
+                <td>{{val.description}}</td>
+                <td>{{val.ciceroVersion}}</td>
+                <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
+                {% endfor %}
+            </tbody>            
+            <tfoot>
+                <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cicero Version</th>
+                <th>Type</th>
+                </tr>
+            </tfoot>
+            </table>
         </div>
     </section>
+
+    <a href="Template Library Index">template-library.json</a>
+
 {% endblock %}

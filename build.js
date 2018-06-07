@@ -68,7 +68,18 @@ async function getFiles(dir) {
  */
 async function buildTemplates(preProcessor, postProcessor) {
 
+    // load the index
+    const templateLibraryPath = `${buildDir}/template-library.json`
+    let templateIndex = {};
+    const indexExists = await fs.pathExists(templateLibraryPath)
+
+    if(indexExists) {
+        const indexContent = fs.readFileSync(templateLibraryPath, 'utf8');
+        templateIndex = JSON.parse(indexContent);    
+    }
+
     const files = await getFiles(rootDir);
+
     const clauseIndex = [];
     const contractIndex = [];
 
@@ -99,15 +110,16 @@ async function buildTemplates(preProcessor, postProcessor) {
                 await writeFile(archiveFilePath, archive);
                 console.log('Copied: ' + archiveFileName);
 
-                const indexObj = {
-                    templateId: template.getIdentifier(),
-                    metadata: template.getMetadata()
-                };
-                if (template.getMetadata().getTemplateType() === 0) {
-                    contractIndex.push(indexObj);
-                } else {
-                    clauseIndex.push(indexObj);
+                // update the index
+                const m = template.getMetadata();
+                const indexData = {
+                    name : m.getName(),
+                    description : m.getDescription(),
+                    version: m.getVersion(),
+                    ciceroVersion: m.getTargetVersion(),
+                    type: m.getTemplateType()
                 }
+                templateIndex[template.getIdentifier()] = indexData;
 
                 // call the post template processor
                 await postProcessor(templatePath, template);
@@ -118,8 +130,11 @@ async function buildTemplates(preProcessor, postProcessor) {
         }
     }
 
-    // return the index
-    return {clauseIndex: clauseIndex, contractIndex: contractIndex };
+    // save the index
+    await writeFile(templateLibraryPath, JSON.stringify(templateIndex));
+
+    // return the updated index
+    return templateIndex;
 };
 
 /**
@@ -174,7 +189,7 @@ async function templatePageGenerator(templatePath, template) {
 (async function () {
     try {
         // delete build directory
-        rimraf.sync(buildDir);
+        // rimraf.sync(buildDir);
 
         nunjucks.configure('./views', {
             autoescape: false
@@ -189,25 +204,9 @@ async function templatePageGenerator(templatePath, template) {
         const serverRoot = process.env.SERVER_ROOT;
         const templateResult = nunjucks.render('index.njk', {
             serverRoot: serverRoot,
-            contractIndex: templateIndex.contractIndex,
-            clauseIndex: templateIndex.clauseIndex
+            templateIndex: templateIndex
         });
         await writeFile('./build/index.html', templateResult);
-
-        // generate the contract index json page
-        const contractResult = nunjucks.render('index-json.njk', {
-            serverRoot: serverRoot,
-            index: templateIndex.contractIndex
-        });
-        //console.log(contractResult);
-        await writeFile('./build/contract-index.json', contractResult.replace('(', '{').replace(')', '}'));
-
-        // generate the clause index json page
-        const clauseResult = nunjucks.render('index-json.njk', {
-            serverRoot: serverRoot,
-            index: templateIndex.clauseIndex
-        });
-        await writeFile('./build/clause-index.json', clauseResult.replace('(', '{').replace(')', '}'));
     }
     catch(err) {
         console.log(err);

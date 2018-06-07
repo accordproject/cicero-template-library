@@ -32,8 +32,8 @@ bower_components
 .lock-wscript
 
 # Dynamically created build output
-build/
-!build/archives
+build/index.html
+build/accord_logo.html
 
 # Dependency directories
 node_modules/
