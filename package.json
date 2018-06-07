@@ -3,10 +3,10 @@
     "build": "node build.js"
   },
   "dependencies": {
-    "@accordproject/cicero-core": "^0.3.17",
+    "@accordproject/cicero-core": "0.3.17",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
-    "composer-common": "^0.19.7",
+    "composer-common": "0.19.8-20180603041248",
     "fs-extra": "^6.0.1",
     "lodash": "^4.17.10",
     "mkdirp": "^0.5.1",

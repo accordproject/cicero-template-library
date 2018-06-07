@@ -14,14 +14,11 @@
 
 'use strict';
 
-const ModelManager = require('composer-common').ModelManager;
-const ModelFile = require('composer-common').ModelFile;
 const CodeGen = require('composer-common').CodeGen;
 const Template = require('@accordproject/cicero-core').Template;
 const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
-const AdmZip = require('adm-zip');
 
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
@@ -39,6 +36,20 @@ const stat = promisify(fs.stat);
 const mkdirp = require('mkdirp');
 const writeFile = promisify(fs.writeFile);
 
+
+/**
+ * GLOBALS
+ */
+const rootDir = resolve(__dirname, './src');
+const buildDir = resolve(__dirname, './build/');
+const archiveDir = resolve(__dirname, './build/archives');
+const stagingDir = resolve(__dirname, './archives');
+
+nunjucks.configure('./views', {
+    autoescape: false
+});
+
+
 async function getFiles(dir) {
     const subdirs = await readdir(dir);
     const files = await Promise.all(subdirs.map(async (subdir) => {
@@ -48,50 +59,15 @@ async function getFiles(dir) {
     return files.reduce((a, f) => a.concat(f), []);
 }
 
-async function generatePlantUML(buildDir, destPath, fileNameNoExt, modelFile) {
-    // generate the PlantUML for the ModelFile
-    try {
-        const generatedPumlFile = `${destPath}/${fileNameNoExt}.puml`;
-        const visitor = new CodeGen.PlantUMLVisitor();
-        const fileWriter = new CodeGen.FileWriter(buildDir);
-        fileWriter.openFile(generatedPumlFile);
-        fileWriter.writeLine(0, '@startuml');
-        const params = {
-            fileWriter: fileWriter
-        };
-        modelFile.accept(visitor, params);
-        fileWriter.writeLine(0, '@enduml');
-        fileWriter.closeFile();
-        // save the UML
-        const modelFilePlantUML = fs.readFileSync(generatedPumlFile, 'utf8');
-        const encoded = plantumlEncoder.encode(modelFilePlantUML)
-        return `http://www.plantuml.com/plantuml/svg/${encoded}`;
-    } catch (err) {
-        console.log(err.message);
-    }
-}
+/**
+ * Builds all the templates and copies the valid templates
+ * to the ./build/archives directory
+ * @param {Function} preProcessor - a function that is called for each valid template
+ * @param {Function} postProcessor - a function that is called for each valid template (after the preProcessor)
+ * @returns {Object} the index of clause and contract templates
+ */
+async function buildTemplates(preProcessor, postProcessor) {
 
-const rootDir = resolve(__dirname, './src');
-const buildDir = resolve(__dirname, './build/');
-const archiveDir = resolve(__dirname, './build/archives');
-let modelFileIndex = [];
-
-// console.log('build: ' + buildDir);
-// console.log('rootDir: ' + rootDir);
-
-(async function () {
-
-    // delete build directory
-    rimraf.sync(buildDir);
-
-    nunjucks.configure('./views', {
-        autoescape: false
-    });
-
-    // copy the logo to build directory
-    await fs.copy('accord_logo.png', './build/accord_logo.png');
-
-    // validate and copy all the files
     const files = await getFiles(rootDir);
     const clauseIndex = [];
     const contractIndex = [];
@@ -108,6 +84,10 @@ let modelFileIndex = [];
 
             try {
                 const template = await Template.fromDirectory(templatePath);
+
+                // call the pre template processor
+                await preProcessor(templatePath, template);
+
                 const archive = await template.toArchive();
                 const destPath = path.dirname(dest);
                 const relative = destPath.slice(buildDir.length);
@@ -129,37 +109,96 @@ let modelFileIndex = [];
                     clauseIndex.push(indexObj);
                 }
 
-                // generate the template html page
-                const converter = new showdown.Converter();
-                const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
-                const serverRoot = process.env.SERVER_ROOT;
-                const templatePageHtml = archiveFileName.replace('.cta', '.html');
-                const templateResult = nunjucks.render('template.njk', {
-                    serverRoot: serverRoot,
-                    filePath: templatePageHtml,
-                    archiveFilePath: archiveFilePath,
-                    template: template,
-                    readmeHtml: readmeHtml
-                });
-                await writeFile(`./build/${templatePageHtml}`, templateResult);
+                // call the post template processor
+                await postProcessor(templatePath, template);
             } catch (err) {
+                console.log(err);
                 console.log(`Failed processing ${file} with ${err}`);
             }
         }
+    }
+
+    // return the index
+    return {clauseIndex: clauseIndex, contractIndex: contractIndex };
+};
+
+/**
+ * Runs the unit tests for a template
+ * @param {String} templatePath - the location of the template on disk
+ * @param {Template} template 
+ */
+async function templateUnitTester(templatePath, template) {
+    // console.log('Testing ' + template.getIdentifier());
+}
+
+/**
+ * Generates assets from a valid template
+ * @param {String} templatePath - the location of the template on disk
+ * @param {Template} template 
+ */
+async function templatePageGenerator(templatePath, template) {
+
+    const archiveFileName = `${template.getIdentifier()}.cta`;
+    const archiveFilePath = `${archiveDir}/${archiveFileName}`;
+    const templatePageHtml = archiveFileName.replace('.cta', '.html');
+    const pumlFilePath = `${buildDir}/${template.getIdentifier()}.puml`;
+
+    // generate UML
+    const modelFile = template.getTemplateModel().getModelFile();
+    const visitor = new CodeGen.PlantUMLVisitor();
+    const fileWriter = new CodeGen.FileWriter(buildDir);
+
+    fileWriter.openFile(pumlFilePath);
+    fileWriter.writeLine(0, '@startuml');
+    const params = {fileWriter : fileWriter};
+    modelFile.accept(visitor, params);
+    fileWriter.writeLine(0, '@enduml');
+    fileWriter.closeFile();
+    const pumlContent = fs.readFileSync(pumlFilePath, 'utf8');
+    const encoded = plantumlEncoder.encode(pumlContent)
+    const umlURL = `http://www.plantuml.com/plantuml/svg/${encoded}`;
+
+    const converter = new showdown.Converter();
+    const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
+    const serverRoot = process.env.SERVER_ROOT;
+    const templateResult = nunjucks.render('template.njk', {
+        serverRoot: serverRoot,
+        umlURL : umlURL,
+        filePath: templatePageHtml,
+        archiveFilePath: archiveFilePath,
+        template: template,
+        readmeHtml: readmeHtml
+    });
+    await writeFile(`./build/${templatePageHtml}`, templateResult);
+}
+
+(async function () {
+    try {
+        // delete build directory
+        rimraf.sync(buildDir);
+
+        nunjucks.configure('./views', {
+            autoescape: false
+        });
+
+        // copy the logo to build directory
+        await fs.copy('accord_logo.png', './build/accord_logo.png');
+
+        const templateIndex = await buildTemplates(templateUnitTester, templatePageGenerator );
 
         // generate the index html page
         const serverRoot = process.env.SERVER_ROOT;
         const templateResult = nunjucks.render('index.njk', {
             serverRoot: serverRoot,
-            contractIndex: contractIndex,
-            clauseIndex: clauseIndex
+            contractIndex: templateIndex.contractIndex,
+            clauseIndex: templateIndex.clauseIndex
         });
         await writeFile('./build/index.html', templateResult);
 
         // generate the contract index json page
         const contractResult = nunjucks.render('index-json.njk', {
             serverRoot: serverRoot,
-            index: contractIndex
+            index: templateIndex.contractIndex
         });
         //console.log(contractResult);
         await writeFile('./build/contract-index.json', contractResult.replace('(', '{').replace(')', '}'));
@@ -167,8 +206,11 @@ let modelFileIndex = [];
         // generate the clause index json page
         const clauseResult = nunjucks.render('index-json.njk', {
             serverRoot: serverRoot,
-            index: clauseIndex
+            index: templateIndex.clauseIndex
         });
         await writeFile('./build/clause-index.json', clauseResult.replace('(', '{').replace(')', '}'));
+    }
+    catch(err) {
+        console.log(err);
     }
 })();
