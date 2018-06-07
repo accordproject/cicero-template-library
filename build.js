@@ -72,7 +72,8 @@ async function generatePlantUML(buildDir, destPath, fileNameNoExt, modelFile) {
 }
 
 const rootDir = resolve(__dirname, './src');
-const buildDir = resolve(__dirname, './build');
+const buildDir = resolve(__dirname, './build/');
+const archiveDir = resolve(__dirname, './build/archives');
 let modelFileIndex = [];
 
 // console.log('build: ' + buildDir);
@@ -103,6 +104,7 @@ let modelFileIndex = [];
             // read the parent directory as a template
             const templatePath = path.dirname(file);
             const dest = templatePath.replace('/src/', '/build/');
+            await fs.ensureDir(archiveDir);
 
             try {
                 const template = await Template.fromDirectory(templatePath);
@@ -112,12 +114,13 @@ let modelFileIndex = [];
                 const fileNameNoExt = path.parse(fileName).name;
 
                 await fs.ensureDir(destPath);
-                const templateId = `${template.getTemplateModel().getFullyQualifiedName()}@${template.getMetadata().getVersion()}.cta`;
-                await writeFile(`${destPath}/${templateId}`, archive);
-                console.log('Copied: ' + templateId);
+                const archiveFileName = `${template.getIdentifier()}.cta`;
+                const archiveFilePath = `${archiveDir}/${archiveFileName}`;
+                await writeFile(archiveFilePath, archive);
+                console.log('Copied: ' + archiveFileName);
 
                 const indexObj = {
-                    templateId: templateId,
+                    templateId: template.getIdentifier(),
                     metadata: template.getMetadata()
                 };
                 if (template.getMetadata().getTemplateType() === 0) {
@@ -130,10 +133,11 @@ let modelFileIndex = [];
                 const converter = new showdown.Converter();
                 const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
                 const serverRoot = process.env.SERVER_ROOT;
-                const templatePageHtml = `${template.getTemplateModel().getFullyQualifiedName()}@${template.getMetadata().getVersion()}.html`;
+                const templatePageHtml = archiveFileName.replace('.cta', '.html');
                 const templateResult = nunjucks.render('template.njk', {
                     serverRoot: serverRoot,
                     filePath: templatePageHtml,
+                    archiveFilePath: archiveFilePath,
                     template: template,
                     readmeHtml: readmeHtml
                 });
