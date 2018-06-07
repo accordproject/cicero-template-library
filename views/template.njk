@@ -30,6 +30,17 @@
 
             <img src="{{umlURL}}" />
 
+            <h2 class="title is-2">Model Dependencies</h2>
+            <div class="content">
+                <ul>
+                {% for ns, uri in template.getTemplateModel().getModelFile().getExternalImports() %}
+                <li><a href="{{uri | replace(".cto", ".html")}}">{{ns}}</a></li>
+                {% else %}
+                  <li>None</li>
+                {% endfor %}
+                </ul>
+            </div>
+
             <h2 class="title is-2">Sample</h2>
             <div class="content">
                 <pre>
