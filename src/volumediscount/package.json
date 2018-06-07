@@ -1,0 +1,9 @@
+{
+    "name": "volumediscount",
+    "version": "0.1.0",
+    "description": "A sample volume discount clause.",
+    "cicero": {
+        "template": "clause",
+        "version": "^0.4.1"
+    }
+}

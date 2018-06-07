@@ -1,0 +1,120 @@
+namespace org.accordproject.perishablegoods
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.time.* from https://models.accordproject.org/time.cto
+import org.accordproject.address.PostalAddress from https://models.accordproject.org/address.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.value.* from https://models.accordproject.org/value.cto
+
+/**
+ * Defines a contract between a Grower and an Importer to ship using
+ * a Shipper, paying a set unit price. The unit price is multiplied by
+ * a penality factor proportional to the deviation from the min and max
+ * negociated temperatures for the shipment.
+ */
+asset PerishableGoodsClause extends AccordClause {
+  --> Grower grower
+  --> Importer importer
+  --> Shipment shipment
+  o DateTime dueDate
+  o MonetaryAmount unitPrice
+  o UnitOfMass unit
+  o Integer minUnits
+  o Integer maxUnits
+  o String product
+  o Integer sensorReadingFrequency
+  o TemporalUnit duration
+  o Double minTemperature
+  o Double maxTemperature
+  o Double minHumidity
+  o Double maxHumidity
+  o Double penaltyFactor
+}
+
+/**
+ * The status of a shipment
+ */
+enum ShipmentStatus {
+  o CREATED
+  o IN_TRANSIT
+  o ARRIVED
+}
+
+/**
+ * An abstract transaction that is related to a Shipment
+ */
+abstract transaction ShipmentTransaction extends Request {
+    --> Shipment shipment
+}
+
+/**
+ * An temperature reading for a shipment. E.g. received from a
+ * device within a temperature controlled shipping container
+ */
+transaction SensorReading extends ShipmentTransaction {
+  o Double centigrade
+  o Double humidity
+}
+
+/**
+ * A notification that a shipment has been received by the
+ * importer and that funds should be transferred from the importer
+ * to the grower to pay for the shipment.
+ */
+transaction ShipmentReceived extends ShipmentTransaction {
+    o Integer unitCount
+}
+
+/**
+ * The calculation of a price
+ */
+transaction PriceCalculation extends ShipmentTransaction {
+  o Double totalPrice
+  o Double penalty
+  o Boolean late
+}
+
+/**
+ * A shipment being tracked as an asset on the ledger
+ */
+asset Shipment identified by shipmentId {
+  o String shipmentId
+  o ShipmentStatus status
+  --> Grower grower
+  --> Importer importer
+  o SensorReading[] sensorReadings optional
+  o String smartClause optional
+}
+
+/**
+ * An abstract participant type in this business network
+ */
+abstract participant Business extends Organization {
+  o MonetaryAmount accountBalance
+}
+
+/**
+ * A Grower is a type of participant in the network
+ */
+participant Grower extends Business {
+}
+
+/**
+ * A Shipper is a type of participant in the network
+ */
+participant Shipper extends Business {
+}
+
+/**
+ * An Importer is a type of participant in the network
+ */
+participant Importer extends Business {
+}
+
+/**
+ * JUST FOR INITIALIZING A DEMO
+ */
+transaction SetupDemo {
+}

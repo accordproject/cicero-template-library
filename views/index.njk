@@ -1,0 +1,67 @@
+{% extends "page.njk" %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Accord Project Template Library
+            </h1>
+            <p class="subtitle">
+                Open Source Smart Legal Templates
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-2">Welcome!</h2>
+            This library contains all Accord Project contract and clause templates. Templates are captured using the
+            <a href="https://github.com/accordproject/cicero">Accord Project Cicero format</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-2">Contributing</h2>
+            To contribute new templates (or fix existing templates), you can fork this GitHub repository and submit
+            pull requests to the maintainers. Please join the
+            <a href="http://accordproject.org">Accord Project</a> Technology Working Group Slack channel.
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title is-2">Templates</h2>
+            <table class="table">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cicero Version</th>
+                <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name, val in templateIndex %}
+                <tr>
+                <th><a href="{{name}}.html">{{name}}<a></th>
+                <td>{{val.description}}</td>
+                <td>{{val.ciceroVersion}}</td>
+                <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
+                {% endfor %}
+            </tbody>            
+            <tfoot>
+                <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Cicero Version</th>
+                <th>Type</th>
+                </tr>
+            </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <a href="Template Library Index">template-library.json</a>
+
+{% endblock %}
