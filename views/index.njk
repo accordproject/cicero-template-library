@@ -31,12 +31,26 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="title is-2">Templates</h2>
+            <h2 class="title is-2">Contract Templates</h2>
+            <a href="contract-index.json">contract-index.json</a>
             <div class="content">
                 <ul>
-                    {% for e in templateIndex %}
+                    {% for e in contractIndex %}
                     <li>
-                        <a href="{{e.id}}">{{e.id}}</a>
+                        <a href="{{e.templateId | replace(".cta", ".html")}}">{{e.templateId}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+            <div class="container">
+            <h2 class="title is-2">Clause Templates</h2>
+            <a href="clause-index.json">clause-index.json</a>
+            <div class="content">
+                <ul>
+                    {% for e in clauseIndex %}
+                    <li>
+                        <a href="{{e.templateId | replace(".cta", ".html")}}">{{e.templateId}}</a>
                     </li>
                     {% endfor %}
                 </ul>

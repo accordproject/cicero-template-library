@@ -24,6 +24,7 @@ const nunjucks = require('nunjucks');
 const AdmZip = require('adm-zip');
 
 const plantumlEncoder = require('plantuml-encoder');
+const showdown = require('showdown');
 
 const {
     promisify
@@ -55,16 +56,17 @@ async function generatePlantUML(buildDir, destPath, fileNameNoExt, modelFile) {
         const fileWriter = new CodeGen.FileWriter(buildDir);
         fileWriter.openFile(generatedPumlFile);
         fileWriter.writeLine(0, '@startuml');
-        const params = {fileWriter : fileWriter};
+        const params = {
+            fileWriter: fileWriter
+        };
         modelFile.accept(visitor, params);
         fileWriter.writeLine(0, '@enduml');
         fileWriter.closeFile();
         // save the UML
         const modelFilePlantUML = fs.readFileSync(generatedPumlFile, 'utf8');
         const encoded = plantumlEncoder.encode(modelFilePlantUML)
-        return `http://www.plantuml.com/plantuml/svg/${encoded}`;        
-    }
-    catch(err) {
+        return `http://www.plantuml.com/plantuml/svg/${encoded}`;
+    } catch (err) {
         console.log(err.message);
     }
 }
@@ -81,20 +83,23 @@ let modelFileIndex = [];
     // delete build directory
     rimraf.sync(buildDir);
 
-    nunjucks.configure('./views', { autoescape: true });
-    
+    nunjucks.configure('./views', {
+        autoescape: false
+    });
+
     // copy the logo to build directory
     await fs.copy('accord_logo.png', './build/accord_logo.png');
 
     // validate and copy all the files
     const files = await getFiles(rootDir);
-    const index = [];
+    const clauseIndex = [];
+    const contractIndex = [];
 
-    for( const file of files ) {
+    for (const file of files) {
         const fileName = path.basename(file);
         const filePath = path.dirname(fileName);
 
-        if(fileName === 'package.json' && file.indexOf('/node_modules/') === -1) {    
+        if (fileName === 'package.json' && file.indexOf('/node_modules/') === -1) {
             // read the parent directory as a template
             const templatePath = path.dirname(file);
             const dest = templatePath.replace('/src/', '/build/');
@@ -103,71 +108,63 @@ let modelFileIndex = [];
                 const template = await Template.fromDirectory(templatePath);
                 const archive = await template.toArchive();
                 const destPath = path.dirname(dest);
+                const relative = destPath.slice(buildDir.length);
+                const fileNameNoExt = path.parse(fileName).name;
+
                 await fs.ensureDir(destPath);
                 const templateId = `${template.getTemplateModel().getFullyQualifiedName()}@${template.getMetadata().getVersion()}.cta`;
-                await writeFile( `${destPath}/templateId`, archive);
-                console.log('Copied: ' + templateId );
-                index.push({id: templateId});
-            }
-            catch(err) {
+                await writeFile(`${destPath}/${templateId}`, archive);
+                console.log('Copied: ' + templateId);
+
+                const indexObj = {
+                    templateId: templateId,
+                    metadata: template.getMetadata()
+                };
+                if (template.getMetadata().getTemplateType() === 0) {
+                    contractIndex.push(indexObj);
+                } else {
+                    clauseIndex.push(indexObj);
+                }
+
+                // generate the template html page
+                const converter = new showdown.Converter();
+                const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
+                const serverRoot = process.env.SERVER_ROOT;
+                const templatePageHtml = `${template.getTemplateModel().getFullyQualifiedName()}@${template.getMetadata().getVersion()}.html`;
+                const templateResult = nunjucks.render('template.njk', {
+                    serverRoot: serverRoot,
+                    filePath: templatePageHtml,
+                    template: template,
+                    readmeHtml: readmeHtml
+                });
+                await writeFile(`./build/${templatePageHtml}`, templateResult);
+            } catch (err) {
                 console.log(`Failed processing ${file} with ${err}`);
             }
         }
 
-        // write the index
-        await writeFile( './build/index.json', JSON.stringify(index));
-
         // generate the index html page
         const serverRoot = process.env.SERVER_ROOT;
-        const templateResult = nunjucks.render('index.njk', { serverRoot: serverRoot, templateIndex: index });
-        await writeFile( './build/index.html', templateResult);
+        const templateResult = nunjucks.render('index.njk', {
+            serverRoot: serverRoot,
+            contractIndex: contractIndex,
+            clauseIndex: clauseIndex
+        });
+        await writeFile('./build/index.html', templateResult);
 
-        // const modelText = fs.readFileSync(file, 'utf8');
-        // const modelManager = new ModelManager();
-        // const modelFile  = new ModelFile(modelManager, modelText, file);     
-        // let modelFilePlantUML = '';
-        // // passed validation, so copy to build dir
-        // const dest = file.replace('/src/', '/build/');
-        // const destPath = path.dirname(dest);
-        // const relative = destPath.slice(buildDir.length);
-        // // console.log('dest: ' + dest);
-        // // console.log('destPath: ' + destPath);
-        // // console.log('relative: ' + relative);
-        
-        // const fileName = path.basename(file);
-        // const fileNameNoExt = path.parse(fileName).name;
+        // generate the contract index json page
+        const contractResult = nunjucks.render('index-json.njk', {
+            serverRoot: serverRoot,
+            index: contractIndex
+        });
+        //console.log(contractResult);
+        await writeFile('./build/contract-index.json', contractResult.replace('(', '{').replace(')', '}'));
 
-        // await fs.ensureDir(destPath);
-        // let umlURL = '';
-        // try {
-        //     modelManager.addModelFile(modelFile, modelFile.getName(), true);
-
-        //     // use the FORCE_PUBLISH flag to disable download of
-        //     // external models and model validation
-        //     if(!process.env.FORCE_PUBLISH) {
-        //         modelManager.updateExternalModels();
-        //     }
-
-        //     umlURL = await generatePlantUML(buildDir, destPath, fileNameNoExt, modelFile);
-        //     await generateTypescript(buildDir, destPath, fileNameNoExt, modelFile);
-        //     await generateJsonSchema(buildDir, destPath, fileNameNoExt, modelFile);
-        //     await generateJava(buildDir, destPath, fileNameNoExt, modelFile);
-        //     await generateGo(buildDir, destPath, fileNameNoExt, modelFile);
-            
-        //     // copy the CTO file to the build dir
-        //     await fs.copy(file, dest);
-        //     console.log('Copied ' + file);
-
-        //     // generate the html page for the model
-        //     const generatedHtmlFile = `${relative}/${fileNameNoExt}.html`;
-        //     const serverRoot = process.env.SERVER_ROOT;
-        //     const templateResult = nunjucks.render('model.njk', { serverRoot: serverRoot, modelFile: modelFile, filePath: `${relative}/${fileNameNoExt}`, umlURL: umlURL });
-        //     fs.writeFile( `./build/${generatedHtmlFile}`, templateResult, function (err) {
-        //         if (err) {
-        //             return console.log(err);
-        //         }
-        //     modelFileIndex.push( {htmlFile: generatedHtmlFile, modelFile: modelFile});
+        // generate the clause index json page
+        const clauseResult = nunjucks.render('index-json.njk', {
+            serverRoot: serverRoot,
+            index: clauseIndex
+        });
+        await writeFile('./build/clause-index.json', clauseResult.replace('(', '{').replace(')', '}'));
     }
-
-    // });
 })();

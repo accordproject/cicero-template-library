@@ -1,0 +1,8 @@
+(
+{% for e in index %}
+    "id": "{{e.templateId}}"
+    {%- if not loop.last -%}
+    ,
+    {% endif %}
+{% endfor %}
+)
