@@ -25,8 +25,8 @@ function onLaunch(context) {
 /**
  * Execute the smart clause
  * @param {Context} context - the Accord context
- * @param {io.clause.saft.Terminate} context.request - the incoming request
- * @param {io.clause.saft.Payout} context.response - the response
+ * @param {org.accordproject.saft.Terminate} context.request - the incoming request
+ * @param {org.accordproject.saft.Payout} context.response - the response
  * @AccordClauseLogic
  */
 function onTerminate(context) {

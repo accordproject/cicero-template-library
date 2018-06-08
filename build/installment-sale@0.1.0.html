@@ -73,20 +73,14 @@
 
             <img src="http://www.plantuml.com/plantuml/svg/jLPTRvim57tdL_Xnqrf-GHMLD6H2IY02ggcQ9kIOM-h9sEcrsOgs_VUP4DQGaOv4onFYVfzxEKVSQaFHLALmcA1Q4uM5InbJc6zGVGLcN2vjY10bIAEf03TuVIStD-HTUbM34EhxUpAPa1yE8UG3cQbgBO3GKbNIEB-SqwfUN_-S30p2E0DKBjgIl0GtXkSAj1azzvrGcijYHUl_FFf1uSjCFwM2IWR_6dlTXlLiHjbAsORoV1IShjE5hg2aGSfCOgYfz1QEVrKWrFjWFb5kx4Rd2kSSjPdHEdeCuSKiRV9J6pAln2CN0XfCOtilwsWjU44DLx9hbHYqdSZ6ag0-eTGC1Fy6E51mHWsaTZC4NZOs4_8kj7L7c0C61ihFNqZUUgWzaXvrce6kHwxq5lJH85SLiYUgOG1a-sMXFJv7oBl0rXb80mKWgO5Yt_9SsJK3Zi8wqFoYM5ls7eLwWXxyNUgIW-y9PsBV6rwrAk4rj0Avpwi3ykdjOqW_CeIISccPqJ-Wj2IqIhB5bvMlR3nFQGP7Vrjss0w1wssz-u3Wt9KTszPE6gRt3txSioJ-Oj6PTiY3C4W3Rv7Dxlq3U-h7Vf9ciPVsFMcKjl7Pr9z7iP_TBQ8a23_sWfP1cAsyXwKVfZrxa-QbVrBEMFPvUtPkGURDpy9l" />
 
-            <h2 class="title is-2">Model Dependencies</h2>
             <div class="content">
-                <ul>
-                
-                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-                
-                </ul>
+                <p>
+                <h1 id="installmentsale">Installment Sale</h1>
+<p>A simple clause for a sale paid in installments.</p>
+                </p>
             </div>
 
-            <h2 class="title is-2">Sample</h2>
+            <h4 class="title is-4">Sample</h4>
             <div class="content">
                 <pre>
 "Dan" agrees to pay to "Ned" the total sum e10000, in the manner following:
@@ -100,104 +94,122 @@ Monthly payments shall include both principal and interest with interest at the 
                 </pre>
             </div>
 
-            <h2 class="title is-2">README</h2>
+            <h4 class="title is-4">Model Dependencies</h4>
             <div class="content">
-                <p>
-                <h1 id="installmentsale">Installment Sale</h1>
-<p>This is a smart legal clause that conforms to the <a href="https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0">Accord Protocol Template Specification</a>, the protocol is managed by the open-source community of the <a href="https://accordproject.org">Accord Project</a>. The clause can be parsed and executed by the <a href="https://github.com/accordproject/cicero">Cicero</a> engine.</p>
-<h2 id="description">Description</h2>
-<blockquote>
-  <p>A simple clause for a sale paid in installments.</p>
-</blockquote>
-<p>This clause contains:</p>
-<ul>
-<li><em>Some sample Clause Text</em> - <a href="sample.txt">sample.txt</a></li>
-<li><em>A template</em> - <a href="grammar/template.tem">grammar/template.tem</a></li>
-<li><em>A data model</em> - <a href="models/model.cto">models/model.cto</a></li>
-<li><em>Contact logic</em> (in JavaScript) - <a href="lib/logic.js">logic/logic.js</a></li>
-</ul>
-<h2 id="runningthisclause">Running this clause</h2>
-<h3 id="onyourownmachine">On your own machine</h3>
-<ol>
-<li><p><a href="https://github.com/accordproject/installment-sale/archive/master.zip">Download the Cicero template library</a></p></li>
-<li><p>Unzip the library with your favourite tool</p></li>
-<li><p>Then from the command-line, change the current directory to the folder containing this README.md file.</p></li>
-</ol>
-<pre><code>cd installment-sale
-</code></pre>
-<ol start="4">
-<li>With the <a href="https://github.com/accordproject/cicero#installation">Cicero command-line tool</a>:</li>
-</ol>
-<pre><code>cicero execute --template ./ --sample ./sample.txt --request ./request.json --state./state.json
-</code></pre>
-<blockquote>
-  <p>Note, all of the command-line flags (like <code>--template</code>) are optional.</p>
-</blockquote>
-<p>Alternatively you can use the simpler command below if you want to use all of the default files.</p>
-<pre><code>cicero execute
-</code></pre>
-<p>You should see the following output in your terminal:</p>
-<pre><code class="bash language-bash">mattmbp:installment-sale matt$ cicero execute
-18:29:01 - info: Logging initialized. 2018-05-15T22:29:01.219Z
-18:29:01 - info: Using current directory as template folder
-18:29:01 - info: Loading a default sample.txt file.
-18:29:01 - info: Loading a single default request.json file.
-18:29:01 - info: Loading a default state.json file.
-18:29:01 - info: {"clause":"installment-sale@0.0.3-7018ffb6733ef40574833128bff20f82bd305f8db438256d6921409da08bec2c","request":{"$class":"org.accordproject.installmentsale.Installment","amount":2500},"response":{"$class":"org.accordproject.installmentsale.Balance","balance":7612.499999999999,"total_paid":2500,"transactionId":"99d68c6b-87df-43c2-b44f-3f409eef3480","timestamp":"2018-05-15T22:29:01.945Z"},"state":{"$class":"org.accordproject.installmentsale.InstallmentSaleState","status":"WaitingForFirstDayOfNextMonth","balance_remaining":7612.499999999999,"next_payment_month":4,"total_paid":2500,"stateId":"org.accordproject.installmentsale.InstallmentSaleState#1"},"emit":[{"$class":"org.accordproject.installmentsale.PaymentObligation","from":"Dan","to":"Ned","amount":2500,"eventId":"valid","timestamp":"2018-05-15T22:29:01.946Z"}]}
-</code></pre>
-<h3 id="samplepayloaddata">Sample Payload Data</h3>
-<p>Request, as in <a href="https://github.com/accordproject/cicero-template-library/blob/master/installment-sale/request.json">request.json</a></p>
-<pre><code class="json language-json">{
-    "$class": "org.accordproject.installmentsale.Installment",
-    "amount": 2500.00
-}
-</code></pre>
-<p>For the request above, you should see the following response:</p>
-<pre><code class="json language-json">{
-  "$class": "org.accordproject.installmentsale.Balance",
-  "balance": 7612.499999999999,
-  "total_paid": 2500,
-  "transactionId": "4c2c8861-6557-46e9-840e-b0e39e410e49",
-  "timestamp": "2018-05-08T15:24:04.434Z"
-}
-</code></pre>
-<h2 id="testingthisclause">Testing this clause</h2>
-<p>This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.</p>
-<p>You need npm and node to test a clause. You can download both from <a href="https://nodejs.org/">here</a>.</p>
-<blockquote>
-  <p>This clause was tested with Node v8.9.3 and NPM v5.6.0</p>
-</blockquote>
-<p>From the <code>installment-sale</code> directory.</p>
-<ol>
-<li>Install all of the dependencies.</li>
-</ol>
-<pre><code>npm install
-</code></pre>
-<ol start="2">
-<li>Run the tests</li>
-</ol>
-<pre><code>npm test
-</code></pre>
-<p>If successful, you should see the following output</p>
-<pre><code>mattmbp:installment-sale matt$ npm test
-
-&gt; installment-sale@0.0.3 test /Users/matt/dev/accordproject/cicero-template-library/installment-sale
-&gt; mocha
-
-21:57:31 - info: Logging initialized. 2018-02-17T21:57:31.074Z
-
-
-  Logic
-    #Installment
-      ✓ pay one installment
-    #Installment
-      ✓ pay in four installments
-
-
-  4 passing (458ms)
-</code></pre>
-                </p>
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                
+                </ul>
             </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/installment-sale">on GitHub.</a>
+    </div>
+
+    <h4 class="title is-4">Instance</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.installmentsale.InstallmentSale",
+    "BUYER": "Aliquip minim commodo.",
+    "SELLER": "Dolore mollit.",
+    "INITIAL_DUE": 243.777,
+    "INTEREST_RATE": 138.824,
+    "TOTAL_DUE_BEFORE_CLOSING": 198.244,
+    "MIN_PAYMENT": 70.456,
+    "DUE_AT_CLOSING": 69.754,
+    "contractId": "d50ab1d0-6b25-11e8-92f0-173f8ca0246a",
+    "parties": [
+        "resource:org.accordproject.cicero.contract.AccordParty#3033"
+    ]
+}</pre></code>
+
+    <h4 class="title is-4">State</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "state": "tbd"
+}</pre></code>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.installmentsale.ClosingPayment</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.installmentsale.ClosingPayment",
+    "amount": 44.501,
+    "transactionId": "d50ad8e1-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:26.702Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.installmentsale.Installment</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.installmentsale.Installment",
+    "amount": 149.476,
+    "transactionId": "d50ad8e0-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:26.702Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.installmentsale.Balance</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.installmentsale.Balance",
+    "balance": 254.765,
+    "total_paid": 146.824,
+    "transactionId": "d50afff1-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:26.703Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+    </table>
+</div>
+
         </div>
     </section>
 

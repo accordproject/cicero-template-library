@@ -73,18 +73,14 @@
 
             <img src="http://www.plantuml.com/plantuml/svg/fPFRQiCm38RlynI-t5WRIAzBQ4Xl2XiCsXTG7P5u-11a9yDiU_SvXvLcD2Dbbz8l8UdxxPrrGAvHCk8Ih6M6oXWuDrJKPDwGkzWYjOAZn1Obb8IeKBluE6IVkspsasNRBNl8Lbse7rcQie-8CVR43jfXYSHgy5tPAv8mnI3jJNEMo9JHhf8-Xpg8FDH0YPC2Zq1_wT22a70MKZYVJ9Hn_vom42wPRThCDssYh-X_NDRhp_G6MXugoSGy74yGugnNyp6yqv6N3k6nKGh8zqQSLXwbDE_NJannNozxquuAw1Vdi99BadxM06TM7NgNavliVm5M-Hf9OX6UJ-2aQXEQO-kjGnMV2BGDe8JHTx8wwDPSx5q8Qpnt-K7J8NTVj4DTTF_o6m00" />
 
-            <h2 class="title is-2">Model Dependencies</h2>
             <div class="content">
-                <ul>
-                
-                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-                
-                </ul>
+                <p>
+                <h1 id="servicelevelagreement">Service Level Agreement</h1>
+<p>A service level agreement that gives invoice credit based on service availability.</p>
+                </p>
             </div>
 
-            <h2 class="title is-2">Sample</h2>
+            <h4 class="title is-4">Sample</h4>
             <div class="content">
                 <pre>
 1	Definitions
@@ -154,109 +150,112 @@ Annex 1—Service levels
                 </pre>
             </div>
 
-            <h2 class="title is-2">README</h2>
+            <h4 class="title is-4">Model Dependencies</h4>
             <div class="content">
-                <p>
-                <h1 id="servicelevelagreement">Service Level Agreement</h1>
-<p>This is a smart legal clause that conforms to the <a href="https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0">Accord Protocol Template Specification</a>, the protocol is managed by the open-source community of the <a href="https://accordproject.org">Accord Project</a>. The clause can be parsed and executed by the <a href="https://github.com/accordproject/cicero">Cicero</a> engine.</p>
-<h2 id="description">Description</h2>
-<blockquote>
-  <p>A service level agreement that gives invoice credit based on service availability.</p>
-</blockquote>
-<p>This clause contains:</p>
-<ul>
-<li><em>Some sample Clause Text</em> - <a href="sample.txt">sample.txt</a></li>
-<li><em>A template</em> - <a href="grammar/template.tem">grammar/template.tem</a></li>
-<li><em>Some data models</em> - <a href="models/clause.cto">models/clause.cto</a></li>
-<li><em>Contact logic</em> (in JavaScript) - <a href="lib/logic.js">logic/logic.js</a></li>
-</ul>
-<h2 id="runningthisclause">Running this clause</h2>
-<h3 id="onyourownmachine">On your own machine</h3>
-<ol>
-<li><p><a href="https://github.com/accordproject/cicero-template-library/archive/master.zip">Download the Cicero template library</a></p></li>
-<li><p>Unzip the library with your favourite tool</p></li>
-<li><p>Then from the command-line, change the current directory to the folder containing this README.md file.</p></li>
-</ol>
-<pre><code>cd servicelevelagreement
-</code></pre>
-<ol start="4">
-<li>With the <a href="https://github.com/accordproject/cicero#installation">Cicero command-line tool</a>:</li>
-</ol>
-<pre><code>cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
-</code></pre>
-<blockquote>
-  <p>Note, all of the command-line flags (like <code>--template</code>) are optional.</p>
-</blockquote>
-<p>Alternatively you can use the simpler command below if you want to use all of the default files.</p>
-<pre><code>cicero execute
-</code></pre>
-<p>You should see the following output in your terminal:</p>
-<pre><code class="bash language-bash">mattmbp:servicelevelagreement matt$ cicero execute
-18:32:39 - info: Logging initialized. 2018-05-15T22:32:39.050Z
-18:32:39 - info: Using current directory as template folder
-18:32:39 - info: Loading a default sample.txt file.
-18:32:39 - info: Loading a single default request.json file.
-18:32:39 - info: Loading a default state.json file.
-18:32:39 - info: {"clause":"servicelevelagreement@0.0.1-58c0a82b311c6ec6c1c3a994b13994fd11f7a138fae428fe752ef04ad3477bd3","request":{"$class":"org.accordproject.servicelevelagreement.MonthSummary","monthlyServiceLevel":99.7,"monthlyCharge":10,"last11MonthCredit":0,"last11MonthCharge":0},"response":{"$class":"org.accordproject.servicelevelagreement.InvoiceCredit","monthlyCredit":0.2,"transactionId":"e74bde3f-df1d-4ced-be4c-c9bc6226ec91","timestamp":"2018-05-15T22:32:39.823Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
-</code></pre>
-<h3 id="samplepayloaddata">Sample Payload Data</h3>
-<p>Request, as in <a href="https://github.com/accordproject/cicero-template-library/blob/master/servicelevelagreement/request.json">request.json</a></p>
-<pre><code class="json language-json">{
-    "$class": "org.accordproject.servicelevelagreement.MonthSummary",
-    "monthlyServiceLevel": 99.7,
-    "monthlyCharge": 10,
-    "last11MonthCredit": 0,
-    "last11MonthCharge": 0
-}
-</code></pre>
-<p>For the request above, you should see the following response:</p>
-<pre><code class="json language-json">{
-    "$class":"org.accordproject.servicelevelagreement.InvoiceCredit",
-    "monthlyCredit":0.2,
-    "transactionId":"0a63058b-bf16-4ff0-810c-5ceff005b3e8",
-    "timestamp":"2018-03-01T12:08:30.805Z"
-}
-</code></pre>
-<h2 id="testingthisclause">Testing this clause</h2>
-<p>This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.</p>
-<p>You need npm and node to test a clause. You can download both from <a href="https://nodejs.org/">here</a>.</p>
-<blockquote>
-  <p>This clause was tested with Node v8.9.3 and NPM v5.6.0</p>
-</blockquote>
-<p>From the <code>servicelevelagreement</code> directory.</p>
-<ol>
-<li>Install all of the dependencies.</li>
-</ol>
-<pre><code>npm install
-</code></pre>
-<ol start="2">
-<li>Run the tests</li>
-</ol>
-<pre><code>npm test
-</code></pre>
-<p>If successful, you should see the following output</p>
-<pre><code>mattmbp:servicelevelagreement matt$ npm test
-
-&gt; servicelevelagreement@0.0.1 test /Users/matt/dev/accordproject/cicero-template-library/servicelevelagreement
-&gt; mocha
-
-12:06:56 - info: Logging initialized. 2018-03-01T12:06:56.032Z
-
-
-  Logic
-    #Service Level Agreement
-      ✓ give no credit for 100% availability
-      ✓ give some credit for 99.7% availability
-      ✓ give more credit for 97.0% availability
-      ✓ give more credit for 97.0% availability with monthly cap
-      ✓ give credit capped at annual cap
-      ✓ rejects bad request values
-
-
-  6 passing (972ms)
-</code></pre>
-                </p>
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                </ul>
             </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/servicelevelagreement">on GitHub.</a>
+    </div>
+
+    <h4 class="title is-4">Instance</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.servicelevelagreement.ServiceLevelAgreement",
+    "paymentPeriod": 59436,
+    "monthlyCapPercentage": 133.829,
+    "yearlyCapPercentage": 20.804,
+    "availability1": 180.657,
+    "serviceCredit1": 152.197,
+    "availability2": 209.376,
+    "serviceCredit2": 166.28,
+    "contractId": "dbf441a0-6b25-11e8-92f0-173f8ca0246a",
+    "parties": [
+        "resource:org.accordproject.cicero.contract.AccordParty#7135"
+    ]
+}</pre></code>
+
+    <h4 class="title is-4">State</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "state": "tbd"
+}</pre></code>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.servicelevelagreement.MonthSummary</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.servicelevelagreement.MonthSummary",
+    "monthlyServiceLevel": 96.666,
+    "monthlyCharge": 101.222,
+    "last11MonthCredit": 158.248,
+    "last11MonthCharge": 217.41,
+    "transactionId": "dbf468b0-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:38.299Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.servicelevelagreement.InvoiceCredit</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.servicelevelagreement.InvoiceCredit",
+    "monthlyCredit": 166.596,
+    "transactionId": "dbf468b1-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:38.299Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+    </table>
+</div>
+
         </div>
     </section>
 

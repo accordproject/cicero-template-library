@@ -1,0 +1,71 @@
+<div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/{{template.getMetadata().getName()}}">on GitHub.</a>
+    </div>
+
+    <h4 class="title is-4">Instance</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{{instance}}</pre></code>
+
+    <h4 class="title is-4">State</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{{state}}</pre></code>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for type, sample in requestTypes |dictsort%}
+        <tr>
+        <th>{{type}}</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{{sample}}</pre></code></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for type, sample in responseTypes |dictsort%}
+        <tr>
+        <th>{{type}}</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{{sample}}</pre></code></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for type, sample in eventTypes |dictsort%}
+        <tr>
+        <th>{{type}}</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{{sample}}</pre></code></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+</div>

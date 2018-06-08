@@ -17,7 +17,7 @@ transaction Result extends Response {
 /**
  * The template model
  */
-asset PromissoryNote extends AccordClause {
+asset PromissoryNote extends AccordContract {
   o MonetaryAmount amount
   o DateTime date
   o String maker

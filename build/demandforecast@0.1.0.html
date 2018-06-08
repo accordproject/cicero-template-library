@@ -73,7 +73,22 @@
 
             <img src="http://www.plantuml.com/plantuml/svg/dPBHJiCm34NV-nL-1B7r2wPgWmc9jsdi1q9oMuBIf7CIK0NyEzcQIdIQKCMZ7JlskTTh7mI7s9f26k4zEMvA8QLZrR5xWmobGYkigXr32X_AxJbypE634T63LYkwsImQ1kmjLHLz5aHqHy-1jMseYonVXGTFiZvsdT5ZSYi23he5eQxJLFsEKoQ_kVXYGAssketj3YnXWsXGV1V_MtUv_Agka4ejmQwKpWOMATwSNuUUkVACa_OuHlXmLkQmw66C-_WjpPCDQC232ltODOVeSiBVC1njIBAMkNeknhssAfcqX--SpGPVmyZMSFfTCzGkEprbx25ucZd6T7J9-XcubvlCnHtAYpMiEbtt3m00" />
 
-            <h2 class="title is-2">Model Dependencies</h2>
+            <div class="content">
+                <p>
+                <h1 id="demandforecast">Demand Forecast</h1>
+<p>A sample demand forecast clause.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre>
+On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
             <div class="content">
                 <ul>
                 
@@ -84,115 +99,94 @@
                 </ul>
             </div>
 
-            <h2 class="title is-2">Sample</h2>
-            <div class="content">
-                <pre>
-On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
 
-                </pre>
-            </div>
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/demandforecast">on GitHub.</a>
+    </div>
 
-            <h2 class="title is-2">README</h2>
-            <div class="content">
-                <p>
-                <h1 id="demandforecast">Demand Forecast</h1>
-<p>This is a smart legal clause that conforms to the <a href="https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0">Accord Protocol Template Specification</a>, the protocol is managed by the open-source community of the <a href="https://accordproject.org">Accord Project</a>. The clause can be parsed and executed by the <a href="https://github.com/accordproject/cicero">Cicero</a> engine.</p>
-<h2 id="description">Description</h2>
-<blockquote>
-  <p>A sample demand forecast clause.</p>
-</blockquote>
-<p>This clause contains:</p>
-<ul>
-<li><em>Sample Clause Text</em> - <a href="sample.txt">sample.txt</a></li>
-<li><em>A template</em> - <a href="grammar/template.tem">grammar/template.tem</a></li>
-<li><em>A data model</em> - <a href="models/clause.cto">models/clause.cto</a></li>
-<li><em>Contact logic</em> (in JavaScript) - <a href="lib/logic.js">logic/logic.js</a></li>
-</ul>
-<h2 id="runningthisclause">Running this clause</h2>
-<h3 id="onyourownmachine">On your own machine</h3>
-<ol>
-<li><p><a href="https://github.com/accordproject/cicero-template-library/archive/master.zip">Download the Cicero template library</a></p></li>
-<li><p>Unzip the library with your favourite tool</p></li>
-<li><p>Then from the command-line, change the current directory to the folder containing this README.md file.</p></li>
-</ol>
-<pre><code>cd demandforecast
-</code></pre>
-<ol start="4">
-<li>With the <a href="https://github.com/accordproject/cicero#installation">Cicero command-line tool</a>:</li>
-</ol>
-<pre><code>cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
-</code></pre>
-<blockquote>
-  <p>Note, all of the command-line flags (like <code>--template</code>) are optional.</p>
-</blockquote>
-<p>Alternatively you can use the simpler command below if you want to use all of the default files.</p>
-<pre><code>cicero execute
-</code></pre>
-<p>You should see the following output in your terminal:</p>
-<pre><code class="bash language-bash">mattmbp:demandforecast matt$ cicero execute
-18:24:47 - info: Logging initialized. 2018-05-15T22:24:47.808Z
-18:24:48 - info: Using current directory as template folder
-18:24:48 - info: Loading a default sample.txt file.
-18:24:48 - info: Loading a single default request.json file.
-18:24:48 - info: Loading a default state.json file.
-18:24:48 - info: {"clause":"demandforecast@0.0.6-33c2b992f58379853035778dff7ba160aee48558fc3462ca6252ecdab529e735","request":{"$class":"org.accordproject.demandforecast.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.demandforecast.BindingResponse","requiredPurchase":1020,"year":2018,"quarter":2,"transactionId":"d813cd90-2ac2-4491-b866-8fee4a267f74","timestamp":"2018-05-15T22:24:48.495Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
-</code></pre>
-<h3 id="samplepayloaddata">Sample Payload Data</h3>
-<p>Request, as in <a href="https://github.com/accordproject/cicero-template-library/blob/master/demandforecast/request.json">request.json</a></p>
-<pre><code class="json language-json">{
+    <h4 class="title is-4">Instance</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.demandforecast.DemandForecastClause",
+    "purchaser": "Magna deserunt aliquip.",
+    "supplier": "Qui adipisicing.",
+    "effectiveDate": "2018-06-08T14:11:22.868Z",
+    "minimumPercentage": 141.05,
+    "clauseId": "d2c1d340-6b25-11e8-92f0-173f8ca0246a"
+}</pre></code>
+
+    <h4 class="title is-4">State</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "state": "tbd"
+}</pre></code>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.demandforecast.ForecastRequest</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.demandforecast.ForecastRequest",
-    "supplyForecast": 1200.0
-}
-</code></pre>
-<p>For the request above, you should see the following response:</p>
-<pre><code class="json language-json">{
-  "$class": "org.accordproject.demandforecast.BindingResponse",
-  "requiredPurchase": 1020,
-  "year": 2018,
-  "quarter": 2,
-  "transactionId": "151aa717-096c-4300-8de3-72650325e599",
-  "timestamp": "2018-04-10T16:10:28.699Z"
-}
-</code></pre>
-<h2 id="testingthisclause">Testing this clause</h2>
-<p>This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.</p>
-<p>You need npm and node to test a clause. You can download both from <a href="https://nodejs.org/">here</a>.</p>
-<blockquote>
-  <p>This clause was tested with Node v8.9.3 and NPM v5.6.0</p>
-</blockquote>
-<p>From the <code>demandforecast</code> directory.</p>
-<ol>
-<li>Install all of the dependencies.</li>
-</ol>
-<pre><code>npm install
-</code></pre>
-<ol start="2">
-<li>Run the tests</li>
-</ol>
-<pre><code>npm test
-</code></pre>
-<p>If successful, you should see the following output</p>
-<pre><code>mattmbp:demandforecast matt$ npm test
+    "supplyForecast": 19681,
+    "transactionId": "d2c1d341-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:22.868Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
-&gt; demandforecast@0.0.6 test /Users/matt/dev/mttrbrts/cicero-template-library/demandforecast
-&gt; mocha
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.demandforecast.BindingResponse</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.demandforecast.BindingResponse",
+    "requiredPurchase": 148.621,
+    "year": 3667,
+    "quarter": 27106,
+    "transactionId": "d2c1fa50-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:22.869Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
-11:37:53 - info: Logging initialized. 2018-02-18T11:37:53.706Z
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+    </table>
+</div>
 
-
-  Logic
-    #DemandForecast
-...
-      ✓ should execute a smart clause (234ms)
-
-
-  1 passing (426ms)
-</code></pre>
-<blockquote>
-  <p>Output above is abbreviated for clarity at <code>...</code></p>
-</blockquote>
-                </p>
-            </div>
         </div>
     </section>
 

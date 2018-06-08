@@ -2,6 +2,7 @@ namespace org.accordproject.acceptanceofdelivery
 
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
 
 
 /**
@@ -27,8 +28,8 @@ enum InspectionStatus {
  */
 transaction InspectionResponse extends Response {
   o InspectionStatus status
-  --> Participant shipper
-  --> Participant receiver
+  --> Organization shipper
+  --> Organization receiver
 }
 
 /**
@@ -38,12 +39,12 @@ asset AcceptanceOfDeliveryClause extends AccordClause {
   /**
    * the shipper of the goods
    */
-  --> Participant shipper
+  --> Organization shipper
 
   /**
    * the receiver of the goods
    */
-  --> Participant receiver
+  --> Organization receiver
 
   /**
    * what are we delivering

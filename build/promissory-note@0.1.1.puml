@@ -1,0 +1,27 @@
+@startuml
+class org.accordproject.promissorynote.Payment << (T,yellow) >> {
+   + MonetaryAmount amountPaid
+}
+org.accordproject.promissorynote.Payment --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.promissorynote.Result << (T,yellow) >> {
+   + Double outstandingBalance
+}
+org.accordproject.promissorynote.Result --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.promissorynote.PromissoryNote << (A,green) >> {
+   + MonetaryAmount amount
+   + DateTime date
+   + String maker
+   + Double interestRate
+   + Boolean individual
+   + String makerAddress
+   + String lender
+   + BusinessEntity legalEntity
+   + String lenderAddress
+   + MonetaryAmount principal
+   + DateTime maturityDate
+   + Integer defaultDays
+   + Integer insolvencyDays
+   + String jurisdiction
+}
+org.accordproject.promissorynote.PromissoryNote --|> org.accordproject.cicero.contract.AccordContract
+@enduml

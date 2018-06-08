@@ -21,7 +21,8 @@
     "nunjucks": "^3.1.3",
     "plantuml-encoder": "^1.2.5",
     "rimraf": "^2.6.2",
-    "showdown": "^1.8.6"
+    "showdown": "^1.8.6",
+    "uuid": "^3.2.1"
   },
   "name": "@accordproject/cicero-template-library",
   "description": "This repository host all Accord Project Cicero templates.",
