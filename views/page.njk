@@ -20,11 +20,11 @@
     <!-— generic unfurl tags -->
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:domain" value="templates.accordproject.org" />
-    <meta name="twitter:label1" value="Apache 2.0 Licensed" />
-    <meta name="twitter:data1" value="on GitHub.com" />
-    <meta name="twitter:label2" value="Contribute" />
-    <meta name="twitter:data2" value="at AccordProject.org" />
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
 
     {% block unfurl %}
     <!-— facebook open graph tags -->
@@ -34,10 +34,12 @@
     <meta property="og:image" content="{{serverRoot}}/{{accord_logo}}" />
  
     <!-— twitter card tags additive with the og: tags -->
-    <meta name="twitter:title" value="{{title}}" />
-    <meta name="twitter:description" value="{{description}}" />
+    <meta name="twitter:title" content="{{title}}" />
+    <meta name="twitter:site" content="@AccordHQ" />
+    <meta name="twitter:description" content="{{description}}" />
     <meta name="twitter:image" content="{{serverRoot}}/{{accord_logo}}" />
-    <meta name="twitter:url" value="{{serverRoot}}" />
+    <meta name="twitter:image:alt" content="The Accord Project logo" />
+    <meta name="twitter:url" content="{{serverRoot}}" />
     {% endblock %}
 
     <title>Accord Project Template Library</title>
