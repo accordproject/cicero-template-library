@@ -8,10 +8,11 @@
 <meta property="og:image" content="{{umlCardURL}}" />
 
 <!-— twitter card tags additive with the og: tags -->
-<meta name="twitter:title" value="{{template.getIdentifier()}}" />
-<meta name="twitter:description" value="{{template.getMetadata().getDescription()}}" />
+<meta name="twitter:title" content="{{template.getIdentifier()}}" />
+<meta name="twitter:description" content="{{template.getMetadata().getDescription()}}" />
 <meta name="twitter:image" content="{{umlCardURL}}" />
-<meta name="twitter:url" value="{{serverRoot}}{{filePath}}" />
+<meta name="twitter:image:alt" content="UML diagram of {{template.getIdentifier()}} namespace." />
+<meta name="twitter:url" content="{{serverRoot}}{{filePath}}" />
 {% endblock %}
 
 {% block body %}

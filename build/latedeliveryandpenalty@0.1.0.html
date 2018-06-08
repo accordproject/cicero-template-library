@@ -20,11 +20,11 @@
     <!-— generic unfurl tags -->
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:domain" value="templates.accordproject.org" />
-    <meta name="twitter:label1" value="Apache 2.0 Licensed" />
-    <meta name="twitter:data1" value="on GitHub.com" />
-    <meta name="twitter:label2" value="Contribute" />
-    <meta name="twitter:data2" value="at AccordProject.org" />
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
 
     
 <!-— facebook open graph tags -->
@@ -34,10 +34,11 @@
 <meta property="og:image" content="http://www.plantuml.com/plantuml/png/hPF1JiCm38RlVOeSGMnzWcbQOSTDgb3XxYLUrScDYvE0Ak3TQTTKeZ2XIVGO_yaVv_kTZVCWFjIKQ0Bd54kPWjOifX4-eVOfWKU3LBsYj61DWnR8j-ckAszZERCc7yeF1C6XMgtKJROe1T7UglLQlITAgJjrpqm8LXrPDExXX45mKBP1m5TiLRGVrr7bS20SjHoxqzP3YHDLG_DB6LqzIbtPRuu5rWqBq9Ejl3eAw5u2oZiMoMSo3uJbycDzWQUkD0gdcgtlxqspipgScIU4Htm9wFmvXMBH8X6_NHb3vrTKDIheipEZzGynDe8cyvC4IcRZde42_f_X-8Q_8KgmlkieZRldmkSQjd6AB_6RZkEKwI6qA7jeYpXniw28_LpBOjYURD2Q_cD_0G00" />
 
 <!-— twitter card tags additive with the og: tags -->
-<meta name="twitter:title" value="latedeliveryandpenalty@0.1.0" />
-<meta name="twitter:description" value="A sample Late Delivery And Penalty clause." />
+<meta name="twitter:title" content="latedeliveryandpenalty@0.1.0" />
+<meta name="twitter:description" content="A sample Late Delivery And Penalty clause." />
 <meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/hPF1JiCm38RlVOeSGMnzWcbQOSTDgb3XxYLUrScDYvE0Ak3TQTTKeZ2XIVGO_yaVv_kTZVCWFjIKQ0Bd54kPWjOifX4-eVOfWKU3LBsYj61DWnR8j-ckAszZERCc7yeF1C6XMgtKJROe1T7UglLQlITAgJjrpqm8LXrPDExXX45mKBP1m5TiLRGVrr7bS20SjHoxqzP3YHDLG_DB6LqzIbtPRuu5rWqBq9Ejl3eAw5u2oZiMoMSo3uJbycDzWQUkD0gdcgtlxqspipgScIU4Htm9wFmvXMBH8X6_NHb3vrTKDIheipEZzGynDe8cyvC4IcRZde42_f_X-8Q_8KgmlkieZRldmkSQjd6AB_6RZkEKwI6qA7jeYpXniw28_LpBOjYURD2Q_cD_0G00" />
-<meta name="twitter:url" value="https://templates.accordproject.orglatedeliveryandpenalty@0.1.0.html" />
+<meta name="twitter:image:alt" content="UML diagram of latedeliveryandpenalty@0.1.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.orglatedeliveryandpenalty@0.1.0.html" />
 
 
     <title>Accord Project Template Library</title>
@@ -118,21 +119,21 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause",
-    "forceMajeure": true,
+    "forceMajeure": false,
     "penaltyDuration": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 1932401167,
-        "unit": "hours"
+        "amount": 936236513,
+        "unit": "minutes"
     },
-    "penaltyPercentage": 80.016,
-    "capPercentage": 210.855,
+    "penaltyPercentage": 224.854,
+    "capPercentage": 120.623,
     "termination": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 352533201,
-        "unit": "hours"
+        "amount": 692585751,
+        "unit": "years"
     },
-    "fractionalPart": "seconds",
-    "clauseId": "b80e59d0-6b64-11e8-b708-f1385e76d08e"
+    "fractionalPart": "weeks",
+    "clauseId": "57a322c0-6b68-11e8-9721-29834758953f"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
@@ -155,11 +156,11 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
     "forceMajeure": true,
-    "agreedDelivery": "2018-06-08T21:41:36.366Z",
-    "deliveredAt": "2018-06-08T21:41:36.366Z",
-    "goodsValue": 23.625,
-    "transactionId": "b80e80e0-6b64-11e8-b708-f1385e76d08e",
-    "timestamp": "2018-06-08T21:41:36.366Z"
+    "agreedDelivery": "2018-06-08T22:07:32.589Z",
+    "deliveredAt": "2018-06-08T22:07:32.589Z",
+    "goodsValue": 117.774,
+    "transactionId": "57a349d0-6b68-11e8-9721-29834758953f",
+    "timestamp": "2018-06-08T22:07:32.589Z"
 }</pre></code></td>
         </tr>
         
@@ -180,10 +181,10 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
-    "penalty": 108.883,
-    "buyerMayTerminate": true,
-    "transactionId": "b80e80e1-6b64-11e8-b708-f1385e76d08e",
-    "timestamp": "2018-06-08T21:41:36.366Z"
+    "penalty": 216.438,
+    "buyerMayTerminate": false,
+    "transactionId": "57a370e0-6b68-11e8-9721-29834758953f",
+    "timestamp": "2018-06-08T22:07:32.590Z"
 }</pre></code></td>
         </tr>
         
