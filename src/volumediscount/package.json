@@ -1,9 +1,9 @@
 {
     "name": "volumediscount",
-    "version": "0.1.0",
-    "description": "A sample volume discount clause.",
+    "version": "0.1.1",
+    "description": "A sample volume discount contract.",
     "cicero": {
-        "template": "clause",
+        "template": "contract",
         "version": "^0.4.1"
     }
 }
