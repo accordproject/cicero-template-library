@@ -20,7 +20,6 @@ const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
 const Mocha = require('mocha');
-
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
 
@@ -44,13 +43,60 @@ const writeFile = promisify(fs.writeFile);
 const rootDir = resolve(__dirname, './src');
 const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
-const stagingDir = resolve(__dirname, './archives');
 
 nunjucks.configure('./views', {
     autoescape: false
 });
 
+/**
+ * Generating a static website from a template library
+ * 
+ * - Scans the 'src' directory for templates
+ * - Loads each template using Template.fromDirectory
+ * - Runs any tests for the templates that are in the `test` directory for the template using Mocha
+ * - Generates an archive for the template and saves to the 'build/archives' directory
+ * - Generates HTML and other resources for the template
+ * - Generates an index.html and json file for all the templates
+ * 
+ * Options (environment variables):
+ * - SKIP_GENERATION : do not write anything to disk
+ * - SKIP_TESTS : do not run the unit tests
+ * - DELETE_ALL : clear the build directory. Use with extreme caution as all old versions of templates 
+ *                will be removed from the build archives folder!
+ */
+(async function () {
+    try {
+        if(process.env.DELETE_ALL) {
+            // delete build directory
+            rimraf.sync(buildDir);
+        }
 
+        const templateIndex = await buildTemplates(templateUnitTester, templatePageGenerator );
+
+        if(!process.env.SKIP_GENERATION) {
+            // copy the logo to build directory
+            await fs.copy('accord_logo.png', './build/accord_logo.png');
+
+            // generate the index html page
+            const serverRoot = process.env.SERVER_ROOT;
+            const templateResult = nunjucks.render('index.njk', {
+                serverRoot: serverRoot,
+                templateIndex: templateIndex
+            });
+            await writeFile('./build/index.html', templateResult);
+        }
+    }
+    catch(err) {
+        console.log(err);
+    }
+})();
+
+
+/**
+ * Get all the files beneath a subdirectory
+ * 
+ * @param {String} dir - the root directory
+ */
 async function getFiles(dir) {
     const subdirs = await readdir(dir);
     const files = await Promise.all(subdirs.map(async (subdir) => {
@@ -81,13 +127,10 @@ async function buildTemplates(preProcessor, postProcessor) {
 
     const files = await getFiles(rootDir);
 
-    const clauseIndex = [];
-    const contractIndex = [];
-
     for (const file of files) {
         const fileName = path.basename(file);
-        const filePath = path.dirname(fileName);
 
+        // assume all package.json files that are not inside node_modules are templates
         if (fileName === 'package.json' && file.indexOf('/node_modules/') === -1) {
             // read the parent directory as a template
             const templatePath = path.dirname(file);
@@ -100,30 +143,30 @@ async function buildTemplates(preProcessor, postProcessor) {
                 // call the pre template processor
                 await preProcessor(templatePath, template);
 
-                const archive = await template.toArchive();
-                const destPath = path.dirname(dest);
-                const relative = destPath.slice(buildDir.length);
-                const fileNameNoExt = path.parse(fileName).name;
-
-                await fs.ensureDir(destPath);
-                const archiveFileName = `${template.getIdentifier()}.cta`;
-                const archiveFilePath = `${archiveDir}/${archiveFileName}`;
-                await writeFile(archiveFilePath, archive);
-                console.log('Copied: ' + archiveFileName);
-
-                // update the index
-                const m = template.getMetadata();
-                const indexData = {
-                    name : m.getName(),
-                    description : m.getDescription(),
-                    version: m.getVersion(),
-                    ciceroVersion: m.getTargetVersion(),
-                    type: m.getTemplateType()
+                if(!process.env.SKIP_GENERATION) {
+                    const archive = await template.toArchive();
+                    const destPath = path.dirname(dest);
+    
+                    await fs.ensureDir(destPath);
+                    const archiveFileName = `${template.getIdentifier()}.cta`;
+                    const archiveFilePath = `${archiveDir}/${archiveFileName}`;
+                    await writeFile(archiveFilePath, archive);
+                    console.log('Copied: ' + archiveFileName);
+    
+                    // update the index
+                    const m = template.getMetadata();
+                    const indexData = {
+                        name : m.getName(),
+                        description : m.getDescription(),
+                        version: m.getVersion(),
+                        ciceroVersion: m.getTargetVersion(),
+                        type: m.getTemplateType()
+                    }
+                    templateIndex[template.getIdentifier()] = indexData;
+    
+                    // call the post template processor
+                    await postProcessor(templatePath, template);    
                 }
-                templateIndex[template.getIdentifier()] = indexData;
-
-                // call the post template processor
-                await postProcessor(templatePath, template);
             } catch (err) {
                 console.log(err);
                 console.log(`Failed processing ${file} with ${err}`);
@@ -177,7 +220,7 @@ async function templateUnitTester(templatePath, template) {
 }
 
 /**
- * Generates assets from a valid template
+ * Generates html and other resources from a valid template
  * @param {String} templatePath - the location of the template on disk
  * @param {Template} template 
  */
@@ -215,30 +258,3 @@ async function templatePageGenerator(templatePath, template) {
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }
-
-(async function () {
-    try {
-        // delete build directory
-        // rimraf.sync(buildDir);
-
-        nunjucks.configure('./views', {
-            autoescape: false
-        });
-
-        // copy the logo to build directory
-        await fs.copy('accord_logo.png', './build/accord_logo.png');
-
-        const templateIndex = await buildTemplates(templateUnitTester, templatePageGenerator );
-
-        // generate the index html page
-        const serverRoot = process.env.SERVER_ROOT;
-        const templateResult = nunjucks.render('index.njk', {
-            serverRoot: serverRoot,
-            templateIndex: templateIndex
-        });
-        await writeFile('./build/index.html', templateResult);
-    }
-    catch(err) {
-        console.log(err);
-    }
-})();

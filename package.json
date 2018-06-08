@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "build": "node build.js"
+    "build": "node run.js",
+    "test": "SKIP_GENERATION=true node run.js",
+    "generate": "SKIP_TESTS=true node run.js"
   },
   "dependencies": {
     "@accordproject/cicero-core": "0.4.1",
