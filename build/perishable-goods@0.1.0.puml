@@ -1,0 +1,20 @@
+@startuml
+class org.accordproject.perishablegoods.contract.TemplateModel {
+   + Grower grower
+   + Importer importer
+   + Shipment shipment
+   + DateTime dueDate
+   + Double unitPrice
+   + Unit unit
+   + Integer minUnits
+   + Integer maxUnits
+   + String product
+   + Integer sensorReadingFrequency
+   + Duration duration
+   + Double minTemperature
+   + Double maxTemperature
+   + Double minHumidity
+   + Double maxHumidity
+   + Double penaltyFactor
+}
+@enduml

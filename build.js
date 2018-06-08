@@ -144,6 +144,11 @@ async function buildTemplates(preProcessor, postProcessor) {
  * @param {Template} template 
  */
 async function templateUnitTester(templatePath, template) {
+
+    if(process.env.SKIP_TESTS) {
+        return;
+    }
+    
     // Instantiate a Mocha instance.
     var mocha = new Mocha({
         timeout: 10000

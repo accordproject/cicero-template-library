@@ -1,0 +1,13 @@
+@startuml
+class org.accordproject.helloworld.Request << (T,yellow) >> {
+   + String input
+}
+org.accordproject.helloworld.Request --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.helloworld.Response << (T,yellow) >> {
+   + String output
+}
+org.accordproject.helloworld.Response --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.helloworld.TemplateModel {
+   + String name
+}
+@enduml

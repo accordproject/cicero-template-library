@@ -1,0 +1,21 @@
+@startuml
+class org.accordproject.ippayment.PaymentRequest << (T,yellow) >> {
+   + Double netSaleRevenue
+   + Double sublicensingRevenue
+   + DateTime permissionGrantedBy
+}
+org.accordproject.ippayment.PaymentRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.ippayment.PayOut << (T,yellow) >> {
+   + Double totalAmount
+   + String dueBy
+}
+org.accordproject.ippayment.PayOut --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.ippayment.TemplateModel {
+   + String royaltyText
+   + Double royaltyRate
+   + String sublicensingRoyaltyText
+   + Double sublicensingRoyaltyRate
+   + Duration paymentPeriod
+   + Duration paymentPeriodWithPermission
+}
+@enduml

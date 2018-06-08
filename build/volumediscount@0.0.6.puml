@@ -1,0 +1,17 @@
+@startuml
+class org.accordproject.volumediscount.TemplateModel {
+   + Double firstVolume
+   + Double secondVolume
+   + Double firstRate
+   + Double secondRate
+   + Double thirdRate
+}
+class org.accordproject.volumediscount.VolumeDiscountRequest << (T,yellow) >> {
+   + Double netAnnualChargeVolume
+}
+org.accordproject.volumediscount.VolumeDiscountRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.volumediscount.VolumeDiscountResponse << (T,yellow) >> {
+   + Double discountRate
+}
+org.accordproject.volumediscount.VolumeDiscountResponse --|> org.hyperledger.composer.system.Transaction
+@enduml

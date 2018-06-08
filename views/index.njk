@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for name, val in templateIndex %}
+                {% for name, val in templateIndex |dictsort%}
                 <tr>
                 <th><a href="{{name}}.html">{{name}}<a></th>
                 <td>{{val.description}}</td>
@@ -59,9 +59,10 @@
                 </tr>
             </tfoot>
             </table>
+            <div class="content">
+                <a href="template-library.json">Template Library Index</a>
+            </div>
         </div>
     </section>
-
-    <a href="Template Library Index">template-library.json</a>
 
 {% endblock %}

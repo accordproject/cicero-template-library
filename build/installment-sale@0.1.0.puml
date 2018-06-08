@@ -1,0 +1,54 @@
+@startuml
+class org.accordproject.installmentsale.Installment << (T,yellow) >> {
+   + Double amount
+}
+org.accordproject.installmentsale.Installment --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.installmentsale.ClosingPayment << (T,yellow) >> {
+   + Double amount
+}
+org.accordproject.installmentsale.ClosingPayment --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.installmentsale.Balance << (T,yellow) >> {
+   + Double balance
+   + Double total_paid
+}
+org.accordproject.installmentsale.Balance --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.installmentsale.ContractStatus << (E,grey) >> {
+   + WaitingForFirstDayOfNextMonth
+   + Fulfilled
+}
+class org.accordproject.installmentsale.MyObligation {
+   + String party
+}
+class org.accordproject.installmentsale.DeliveryObligation {
+   + DateTime expectedDelivery
+   + OrderItem[] deliverables
+}
+org.accordproject.installmentsale.DeliveryObligation --|> org.accordproject.installmentsale.MyObligation
+class org.accordproject.installmentsale.PurchaseObligation {
+   + Double requiredPurchase
+   + Integer year
+   + Integer quarter
+}
+org.accordproject.installmentsale.PurchaseObligation --|> org.accordproject.installmentsale.MyObligation
+class org.accordproject.installmentsale.PaymentObligation {
+   + Double amount
+}
+org.accordproject.installmentsale.PaymentObligation --|> org.accordproject.installmentsale.MyObligation
+class org.accordproject.installmentsale.InstallmentSaleState << (A,green) >> {
+   + ContractStatus status
+   + Double balance_remaining
+   + Integer next_payment_month
+   + Double total_paid
+}
+org.accordproject.installmentsale.InstallmentSaleState --|> org.accordproject.cicero.contract.AccordContractState
+class org.accordproject.installmentsale.InstallmentSale << (A,green) >> {
+   + String BUYER
+   + String SELLER
+   + Double INITIAL_DUE
+   + Double INTEREST_RATE
+   + Double TOTAL_DUE_BEFORE_CLOSING
+   + Double MIN_PAYMENT
+   + Double DUE_AT_CLOSING
+}
+org.accordproject.installmentsale.InstallmentSale --|> org.accordproject.cicero.contract.AccordContract
+@enduml

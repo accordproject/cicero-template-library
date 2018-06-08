@@ -1,0 +1,41 @@
+@startuml
+class org.accordproject.installmentsale.Installment << (T,yellow) >> {
+   + Double amount
+}
+org.accordproject.installmentsale.Installment --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.installmentsale.ClosingPayment << (T,yellow) >> {
+   + Double amount
+}
+org.accordproject.installmentsale.ClosingPayment --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.installmentsale.Balance << (T,yellow) >> {
+   + Double balance
+   + Double total_paid
+}
+org.accordproject.installmentsale.Balance --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.installmentsale.ContractStatus << (E,grey) >> {
+   + WaitingForFirstDayOfNextMonth
+   + Fulfilled
+}
+class org.accordproject.installmentsale.InstallmentSaleState << (A,green) >> {
+   + ContractStatus status
+   + Double balance_remaining
+   + Integer next_payment_month
+   + Double total_paid
+}
+org.accordproject.installmentsale.InstallmentSaleState --|> org.accordproject.common.ContractState
+class org.accordproject.installmentsale.PaymentObligation {
+   + String from
+   + String to
+   + Double amount
+}
+org.accordproject.installmentsale.PaymentObligation --|> org.hyperledger.composer.system.Event
+class org.accordproject.installmentsale.TemplateModel {
+   + String BUYER
+   + String SELLER
+   + Double INITIAL_DUE
+   + Double INTEREST_RATE
+   + Double TOTAL_DUE_BEFORE_CLOSING
+   + Double MIN_PAYMENT
+   + Double DUE_AT_CLOSING
+}
+@enduml
