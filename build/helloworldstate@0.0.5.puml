@@ -1,0 +1,17 @@
+@startuml
+class org.accordproject.helloworldstate.Request << (T,yellow) >> {
+   + String input
+}
+org.accordproject.helloworldstate.Request --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.helloworldstate.Response << (T,yellow) >> {
+   + String output
+}
+org.accordproject.helloworldstate.Response --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.helloworldstate.HelloWorldState << (A,green) >> {
+   + Double counter
+}
+org.accordproject.helloworldstate.HelloWorldState --|> org.accordproject.common.ContractState
+class org.accordproject.helloworldstate.TemplateModel {
+   + String name
+}
+@enduml

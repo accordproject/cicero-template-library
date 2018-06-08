@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.demandforecast.TemplateModel {
+   + String purchaser
+   + String supplier
+   + DateTime effectiveDate
+   + Double minimumPercentage
+}
+class org.accordproject.demandforecast.ForecastRequest << (T,yellow) >> {
+   + Integer supplyForecast
+}
+org.accordproject.demandforecast.ForecastRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.demandforecast.BindingResponse << (T,yellow) >> {
+   + Double requiredPurchase
+   + Integer year
+   + Integer quarter
+}
+org.accordproject.demandforecast.BindingResponse --|> org.hyperledger.composer.system.Transaction
+@enduml

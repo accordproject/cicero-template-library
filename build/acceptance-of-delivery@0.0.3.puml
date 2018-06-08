@@ -1,0 +1,25 @@
+@startuml
+class org.accordproject.acceptanceofdelivery.InspectDeliverable << (T,yellow) >> {
+   + DateTime deliverableReceivedAt
+   + Boolean inspectionPassed
+}
+org.accordproject.acceptanceofdelivery.InspectDeliverable --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.acceptanceofdelivery.InspectionStatus << (E,grey) >> {
+   + PASSED_TESTING
+   + FAILED_TESTING
+   + OUTSIDE_INSPECTION_PERIOD
+}
+class org.accordproject.acceptanceofdelivery.InspectionResponse << (T,yellow) >> {
+   + InspectionStatus status
+   + Participant shipper
+   + Participant receiver
+}
+org.accordproject.acceptanceofdelivery.InspectionResponse --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.acceptanceofdelivery.TemplateModel {
+   + Participant shipper
+   + Participant receiver
+   + String deliverable
+   + Long businessDays
+   + String attachment
+}
+@enduml

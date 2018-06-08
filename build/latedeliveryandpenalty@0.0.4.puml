@@ -1,0 +1,22 @@
+@startuml
+class org.accordproject.latedeliveryandpenalty.TemplateModel {
+   + Boolean forceMajeure
+   + Duration penaltyDuration
+   + Double penaltyPercentage
+   + Double capPercentage
+   + Duration termination
+   + TemporalUnit fractionalPart
+}
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest << (T,yellow) >> {
+   + Boolean forceMajeure
+   + DateTime agreedDelivery
+   + DateTime deliveredAt
+   + Double goodsValue
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse << (T,yellow) >> {
+   + Double penalty
+   + Boolean buyerMayTerminate
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse --|> org.hyperledger.composer.system.Transaction
+@enduml

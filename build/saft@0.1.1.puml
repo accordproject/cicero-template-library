@@ -1,0 +1,44 @@
+@startuml
+class org.accordproject.saft.Launch << (T,yellow) >> {
+   + Double exchangeRate
+}
+org.accordproject.saft.Launch --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.saft.Terminate << (T,yellow) >> {
+   + Double remainingFunds
+   + Double totalInvested
+}
+org.accordproject.saft.Terminate --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.saft.Payout << (T,yellow) >> {
+   + Double tokenAmount
+   + String tokenAddress
+}
+org.accordproject.saft.Payout --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.saft.CompanyType << (E,grey) >> {
+   + Incorporated
+   + Limited
+   + SA
+}
+class org.accordproject.saft.Currency << (E,grey) >> {
+   + USD
+   + EUR
+}
+class org.accordproject.saft.TemplateModel {
+   + String token
+   + String company
+   + CompanyType companyType
+   + State state
+   + Boolean amendmentProvision
+   + Double purchaseAmount
+   + Currency currency
+   + Double netProceedLimit
+   + DateTime date
+   + DateTime deadlineDate
+   + Double discountRatePercentage
+   + String network
+   + String coin
+   + String exchanges
+   + String companyRepresentative
+   + String purchaser
+   + String description
+}
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+class org.accordproject.promissorynote.Request << (T,yellow) >> {
+   + Double amountPaid
+}
+org.accordproject.promissorynote.Request --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.promissorynote.Response << (T,yellow) >> {
+   + Double outstandingBalance
+}
+org.accordproject.promissorynote.Response --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.promissorynote.LegalEntity << (E,grey) >> {
+   + PLC
+   + LLC
+   + INC
+   + Corporation
+}
+class org.accordproject.promissorynote.TemplateModel {
+   + Double dollarAmount
+   + DateTime date
+   + String maker
+   + Double interestRate
+   + Boolean individual
+   + String makerAddress
+   + String lender
+   + LegalEntity legalEntity
+   + String lenderAddress
+   + Double principal
+   + DateTime maturityDate
+   + Integer defaultDays
+   + Integer insolvencyDays
+   + String jurisdiction
+}
+@enduml
