@@ -55,8 +55,8 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('PASSED_TESTING');
-            result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            result.response.shipper.should.equal('resource:org.accordproject.organization.Organization#Party%20A');
+            result.response.receiver.should.equal('resource:org.accordproject.organization.Organization#Party%20B');
         });
 
         it('failed inspection within time limit', async function() {
@@ -70,8 +70,8 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('FAILED_TESTING');
-            result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            result.response.shipper.should.equal('resource:org.accordproject.organization.Organization#Party%20A');
+            result.response.receiver.should.equal('resource:org.accordproject.organization.Organization#Party%20B');
         });
 
         it('inspection outside time limit', async function() {
@@ -86,8 +86,8 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.status.should.equal('OUTSIDE_INSPECTION_PERIOD');
-            result.response.shipper.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20A');
-            result.response.receiver.should.equal('resource:org.hyperledger.composer.system.Participant#Party%20B');
+            result.response.shipper.should.equal('resource:org.accordproject.organization.Organization#Party%20A');
+            result.response.receiver.should.equal('resource:org.accordproject.organization.Organization#Party%20B');
         });
 
         it('inspection before delivable should throw', async function() {

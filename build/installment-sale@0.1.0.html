@@ -73,34 +73,6 @@
 
             <img src="http://www.plantuml.com/plantuml/svg/jLPTRvim57tdL_Xnqrf-GHMLD6H2IY02ggcQ9kIOM-h9sEcrsOgs_VUP4DQGaOv4onFYVfzxEKVSQaFHLALmcA1Q4uM5InbJc6zGVGLcN2vjY10bIAEf03TuVIStD-HTUbM34EhxUpAPa1yE8UG3cQbgBO3GKbNIEB-SqwfUN_-S30p2E0DKBjgIl0GtXkSAj1azzvrGcijYHUl_FFf1uSjCFwM2IWR_6dlTXlLiHjbAsORoV1IShjE5hg2aGSfCOgYfz1QEVrKWrFjWFb5kx4Rd2kSSjPdHEdeCuSKiRV9J6pAln2CN0XfCOtilwsWjU44DLx9hbHYqdSZ6ag0-eTGC1Fy6E51mHWsaTZC4NZOs4_8kj7L7c0C61ihFNqZUUgWzaXvrce6kHwxq5lJH85SLiYUgOG1a-sMXFJv7oBl0rXb80mKWgO5Yt_9SsJK3Zi8wqFoYM5ls7eLwWXxyNUgIW-y9PsBV6rwrAk4rj0Avpwi3ykdjOqW_CeIISccPqJ-Wj2IqIhB5bvMlR3nFQGP7Vrjss0w1wssz-u3Wt9KTszPE6gRt3txSioJ-Oj6PTiY3C4W3Rv7Dxlq3U-h7Vf9ciPVsFMcKjl7Pr9z7iP_TBQ8a23_sWfP1cAsyXwKVfZrxa-QbVrBEMFPvUtPkGURDpy9l" />
 
-            <h2 class="title is-2">Model Dependencies</h2>
-            <div class="content">
-                <ul>
-                
-                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-                
-                </ul>
-            </div>
-
-            <h2 class="title is-2">Sample</h2>
-            <div class="content">
-                <pre>
-"Dan" agrees to pay to "Ned" the total sum e10000, in the manner following:
-
-E500 is to be paid at closing, and the remaining balance of E9500 shall be paid as follows:
-
-E500 or more per month on the first day of each and every month, and continuing until the entire balance, including both principal and interest, shall be paid in full -- provided, however, that the entire balance due plus accrued interest and any other amounts due here-under shall be paid in full on or before 24 months.
-
-Monthly payments shall include both principal and interest with interest at the rate of 1.5%, computed monthly on the remaining balance from time to time unpaid.
-
-                </pre>
-            </div>
-
-            <h2 class="title is-2">README</h2>
             <div class="content">
                 <p>
                 <h1 id="installmentsale">Installment Sale</h1>
@@ -198,6 +170,120 @@ Monthly payments shall include both principal and interest with interest at the 
 </code></pre>
                 </p>
             </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre>
+"Dan" agrees to pay to "Ned" the total sum e10000, in the manner following:
+
+E500 is to be paid at closing, and the remaining balance of E9500 shall be paid as follows:
+
+E500 or more per month on the first day of each and every month, and continuing until the entire balance, including both principal and interest, shall be paid in full -- provided, however, that the entire balance due plus accrued interest and any other amounts due here-under shall be paid in full on or before 24 months.
+
+Monthly payments shall include both principal and interest with interest at the rate of 1.5%, computed monthly on the remaining balance from time to time unpaid.
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    </div>
+
+    <h4 class="title is-4">State</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "state": "tbd"
+}</pre></code>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.installmentsale.ClosingPayment</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.installmentsale.ClosingPayment",
+    "amount": 155.658,
+    "transactionId": "0be89ec1-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:01.772Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.installmentsale.Installment</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.installmentsale.Installment",
+    "amount": 59.757,
+    "transactionId": "0be89ec0-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:01.772Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.installmentsale.Balance</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.installmentsale.Balance",
+    "balance": 22.93,
+    "total_paid": 181.774,
+    "transactionId": "0be8c5d1-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:01.773Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+    </table>
+</div>
+
         </div>
     </section>
 

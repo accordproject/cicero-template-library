@@ -4,6 +4,7 @@ import org.accordproject.cicero.contract.* from https://models.accordproject.org
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
 
 /* Requesting a payment */
 transaction PaymentRequest extends Request {

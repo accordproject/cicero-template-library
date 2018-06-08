@@ -22,6 +22,7 @@ const nunjucks = require('nunjucks');
 const Mocha = require('mocha');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
+const uuidv1 = require('uuid/v1');
 
 const {
     promisify
@@ -63,15 +64,25 @@ nunjucks.configure('./views', {
  * - SKIP_TESTS : do not run the unit tests
  * - DELETE_ALL : clear the build directory. Use with extreme caution as all old versions of templates 
  *                will be removed from the build archives folder!
+ * 
+ * Options (command line)
+ * - template name (only this template gets built)
  */
 (async function () {
     try {
+        let templateName = process.argv.slice(2);
+        if(templateName && templateName.length > 0) {
+            console.log('Only building template: ' + templateName);
+        } else {
+            templateName = null;
+        }
+
         if(process.env.DELETE_ALL) {
             // delete build directory
             rimraf.sync(buildDir);
         }
 
-        const templateIndex = await buildTemplates(templateUnitTester, templatePageGenerator );
+        const templateIndex = await buildTemplates(templateUnitTester, templatePageGenerator, templateName );
 
         if(!process.env.SKIP_GENERATION) {
             // copy the logo to build directory
@@ -111,9 +122,10 @@ async function getFiles(dir) {
  * to the ./build/archives directory
  * @param {Function} preProcessor - a function that is called for each valid template
  * @param {Function} postProcessor - a function that is called for each valid template (after the preProcessor)
+ * @param {String} [selectedTemplate] - optional name of a template. If specified this is the only template that is built
  * @returns {Object} the index of clause and contract templates
  */
-async function buildTemplates(preProcessor, postProcessor) {
+async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 
     // load the index
     const templateLibraryPath = `${buildDir}/template-library.json`
@@ -129,11 +141,26 @@ async function buildTemplates(preProcessor, postProcessor) {
 
     for (const file of files) {
         const fileName = path.basename(file);
+        let selected = false;
 
         // assume all package.json files that are not inside node_modules are templates
         if (fileName === 'package.json' && file.indexOf('/node_modules/') === -1) {
+            selected = true;
+        }
+
+        // unless a given template name has been specified
+        if(selected && selectedTemplate) {
+            const packageJson = fs.readFileSync(file, 'utf8');
+            const pkgJson = JSON.parse(packageJson);
+            if(pkgJson.name != selectedTemplate) {
+                selected = false;
+            }
+        }
+
+        if(selected) {
             // read the parent directory as a template
             const templatePath = path.dirname(file);
+            console.log(`Processing ${templatePath}`);
             const dest = templatePath.replace('/src/', '/build/');
             await fs.ensureDir(archiveDir);
 
@@ -189,8 +216,11 @@ async function buildTemplates(preProcessor, postProcessor) {
 async function templateUnitTester(templatePath, template) {
 
     if(process.env.SKIP_TESTS) {
+        console.log(`Skipping tests for ${templatePath}`);
         return;
     }
+
+    console.log(`Running tests for ${templatePath}`);
     
     // Instantiate a Mocha instance.
     var mocha = new Mocha({
@@ -226,6 +256,8 @@ async function templateUnitTester(templatePath, template) {
  */
 async function templatePageGenerator(templatePath, template) {
 
+    console.log(`Generating html for ${templatePath}`);
+
     const archiveFileName = `${template.getIdentifier()}.cta`;
     const archiveFilePath = `${archiveDir}/${archiveFileName}`;
     const templatePageHtml = archiveFileName.replace('.cta', '.html');
@@ -249,12 +281,44 @@ async function templatePageGenerator(templatePath, template) {
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
     const serverRoot = process.env.SERVER_ROOT;
+
+    // generate the sample json instances
+    const sampleGenerationOptions = {};
+    sampleGenerationOptions.generate = true;
+    sampleGenerationOptions.includeOptionalFields = true;
+
+    const classDecl = template.getTemplateModel();
+    const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+    const instance = JSON.stringify(sampleInstance, null, 4);
+
+    const requestTypes = {};
+    for(let type of template.getRequestTypes()) {
+        const classDecl = template.getModelManager().getType(type);
+        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+        requestTypes[type] = JSON.stringify(sampleInstance, null, 4);
+    }
+
+    const responseTypes = {};
+    for(let type of template.getResponseTypes()) {
+        const classDecl = template.getModelManager().getType(type);
+        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+        responseTypes[type] = JSON.stringify(sampleInstance, null, 4);
+    }
+
+    const state = JSON.stringify({ state: 'tbd'}, null, 4);
+    const eventTypes = {}
+
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL : umlURL,
         filePath: templatePageHtml,
         template: template,
-        readmeHtml: readmeHtml
+        readmeHtml: readmeHtml,
+        requestTypes: requestTypes,
+        responseTypes: responseTypes,
+        state: state,
+        instance: instance,
+        eventTypes: eventTypes
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }

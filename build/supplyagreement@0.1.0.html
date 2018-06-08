@@ -73,20 +73,108 @@
 
             <img src="http://www.plantuml.com/plantuml/svg/jLV1Rjim3BtdAtHSiJPVK0GD5WpeOKlGPXY6OGT5PXmDjgHIKZDZsx-FYkt4Tkp5Jk6JGr4Y-HuVPUV1EexEfyb49DnQfZ6USY4qHWRrJn1kQhqnISPZ14X1kUdpmPwNDhk_P-_cjy5KDsmsOxydZB7tRC4Th6KA3BPR2YDV8QpalcU7KiNi45a2rXOtFckis9r6jm0hK1edjLfkrpjOeOwyS3RV-QWSn81CQIS5V9KgqlkwHt0b84bu253rBxJV9C1IgMJgqnMW84myhXSQGKBr8wUTZOI59wk6h1_AvivniGjKrOzAPKqWfbvFSPXQ0CQ5chkE6oIaNqn4fBQVrrwvppxTDDX4xHqzoQEEhZAc0qo_0SS6I0G5UvvqU-e5K4KirWHTKPw3MVMyWlAGh_wT35VRtTsVMOj81P61UYgqSiZ9dX-y7mgpjxO_PSjD8kE3IaeX5xmP6fECIkuRQb6q_ppWQJ9-1G50L6xDtKkC01yTfDz_r8NNXwwMh1sC_GzwRv0hZsB7BRI0pESAuSLBXAZSM9TFHegghxnuefbasGThI_9HiV8iF3kXyZHCNB_ApqADMVXnUF81xBYlJu59T_fez9DT8yLLGvhV2Nr1VTG8WbltH083cx-5rhSPNV5wNuLL2Yi_Nvxg1QgPueXgbnd012AAIs1Ieotzi9cbcPskaIlBnQ06dH9PGun36vXX1HTnHgku7BrBx1z7DDnfp5IjGIC-UWjEYTxMWhCuerLStlGNMv1_AD5Gc_AJQSYBP7JcJudUnlnPdF6qaj_UbuY_-hKmljZBFDsCLn4OBgDXzL_RWGTGKVWhyWy0" />
 
-            <h2 class="title is-2">Model Dependencies</h2>
             <div class="content">
-                <ul>
-                
-                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/usa/state.html">org.accordproject.usa.state.State</a></li>
-                
-                </ul>
+                <p>
+                <h1 id="supplyagreement">Supply Agreement</h1>
+<p>This is a smart legal clause that conforms to the <a href="https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0">Accord Protocol Template Specification</a>, the protocol is managed by the open-source community of the <a href="https://accordproject.org">Accord Project</a>. The clause can be parsed and executed by the <a href="https://github.com/accordproject/cicero">Cicero</a> engine.</p>
+<h2 id="description">Description</h2>
+<blockquote>
+  <p>A simple supply agreement.</p>
+</blockquote>
+<p>This clause contains:</p>
+<ul>
+<li><em>Sample Clause Text</em> - <a href="sample.txt">sample.txt</a></li>
+<li><em>A template</em> - <a href="grammar/template.tem">grammar/template.tem</a></li>
+<li><em>A data model</em> - <a href="models/clause.cto">models/clause.cto</a></li>
+<li><em>Contact logic</em> (in JavaScript) - <a href="lib/logic.js">logic/logic.js</a></li>
+</ul>
+<h2 id="runningthisclause">Running this clause</h2>
+<h3 id="onyourownmachine">On your own machine</h3>
+<ol>
+<li><p><a href="https://github.com/accordproject/cicero-template-library/archive/master.zip">Download the Cicero template library</a></p></li>
+<li><p>Unzip the library with your favourite tool</p></li>
+<li><p>Then from the command-line, change the current directory to the folder containing this README.md file.</p></li>
+</ol>
+<pre><code>cd supplyagreement
+</code></pre>
+<ol start="4">
+<li>With the <a href="https://github.com/accordproject/cicero#installation">Cicero command-line tool</a>:</li>
+</ol>
+<pre><code>cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
+</code></pre>
+<blockquote>
+  <p>Note, all of the command-line flags (like <code>--template</code>) are optional.</p>
+</blockquote>
+<p>Alternatively you can use the simpler command below if you want to use all of the default files.</p>
+<pre><code>cicero execute
+</code></pre>
+<p>You should see the following output in your terminal:</p>
+<pre><code class="bash language-bash">mattmbp:supplyagreement matt$ cicero execute
+18:32:53 - info: Logging initialized. 2018-05-15T22:32:53.827Z
+18:32:54 - info: Using current directory as template folder
+18:32:54 - info: Loading a default sample.txt file.
+18:32:54 - info: Loading a single default request.json file.
+18:32:54 - info: Loading a default state.json file.
+18:32:55 - info: {"clause":"supplyagreement@0.0.6-21491f82e4ee4048cc4b22c8a46f9e1f9f9ea901454ab758ff4dbfc5b85bb36d","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.ForecastResponse","transactionId":"f73ef652-b7a3-4236-b20b-14d4ac2aad40","timestamp":"2018-05-15T22:32:55.080Z"},"state":{"$class":"org.accordproject.supplyagreement.AgreementState","obligations":[{"$class":"org.accordproject.supplyagreement.PurchaseObligation","requiredPurchase":1020,"year":2018,"quarter":2,"party":"PETER"}],"stateId":"org.accordproject.supplyagreement.AgreementState#1"},"emit":[]}
+</code></pre>
+<h3 id="samplepayloaddata">Sample Payload Data</h3>
+<p>Request, as in <a href="https://github.com/accordproject/cicero-template-library/blob/master/supplyagreement/request.json">request.json</a></p>
+<pre><code class="json language-json">{
+    "$class": "org.accordproject.supplyagreement.ForecastRequest",
+    "supplyForecast": 1200.0
+}
+</code></pre>
+<p>For the request above, you should see the following response:</p>
+<pre><code class="json language-json">{
+  "$class": "org.accordproject.supplyagreement.BindingResponse",
+  "requiredPurchase": 1020,
+  "year": 2018,
+  "quarter": 2,
+  "transactionId": "ee525721-7c99-4322-9a90-f9165466db28",
+  "timestamp": "2018-05-10T18:39:09.606Z"
+}
+</code></pre>
+<h2 id="testingthisclause">Testing this clause</h2>
+<p>This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.</p>
+<p>You need npm and node to test a clause. You can download both from <a href="https://nodejs.org/">here</a>.</p>
+<blockquote>
+  <p>This clause was tested with Node v8.9.3 and NPM v5.6.0</p>
+</blockquote>
+<p>From the <code>supplyagreement</code> directory.</p>
+<ol>
+<li>Install all of the dependencies.</li>
+</ol>
+<pre><code>npm install
+</code></pre>
+<ol start="2">
+<li>Run the tests</li>
+</ol>
+<pre><code>npm test
+</code></pre>
+<p>If successful, you should see the following output</p>
+<pre><code>mattmbp:supplyagreement matt$ npm test
+
+&gt; supplyagreement@0.0.6 test /Users/matt/dev/mttrbrts/cicero-template-library/supplyagreement
+&gt; mocha
+
+11:37:53 - info: Logging initialized. 2018-02-18T11:37:53.706Z
+
+
+  Logic
+    #Supplyagreement
+...
+      ✓ should execute a smart clause (234ms)
+
+
+  1 passing (426ms)
+</code></pre>
+<blockquote>
+  <p>Output above is abbreviated for clarity at <code>...</code></p>
+</blockquote>
+                </p>
             </div>
 
-            <h2 class="title is-2">Sample</h2>
+            <h4 class="title is-4">Sample</h4>
             <div class="content">
                 <pre>
 Supply Agreement
@@ -206,107 +294,152 @@ Routing Number: "YYY-YY"
                 </pre>
             </div>
 
-            <h2 class="title is-2">README</h2>
+            <h4 class="title is-4">Model Dependencies</h4>
             <div class="content">
-                <p>
-                <h1 id="supplyagreement">Supply Agreement</h1>
-<p>This is a smart legal clause that conforms to the <a href="https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0">Accord Protocol Template Specification</a>, the protocol is managed by the open-source community of the <a href="https://accordproject.org">Accord Project</a>. The clause can be parsed and executed by the <a href="https://github.com/accordproject/cicero">Cicero</a> engine.</p>
-<h2 id="description">Description</h2>
-<blockquote>
-  <p>A simple supply agreement.</p>
-</blockquote>
-<p>This clause contains:</p>
-<ul>
-<li><em>Sample Clause Text</em> - <a href="sample.txt">sample.txt</a></li>
-<li><em>A template</em> - <a href="grammar/template.tem">grammar/template.tem</a></li>
-<li><em>A data model</em> - <a href="models/clause.cto">models/clause.cto</a></li>
-<li><em>Contact logic</em> (in JavaScript) - <a href="lib/logic.js">logic/logic.js</a></li>
-</ul>
-<h2 id="runningthisclause">Running this clause</h2>
-<h3 id="onyourownmachine">On your own machine</h3>
-<ol>
-<li><p><a href="https://github.com/accordproject/cicero-template-library/archive/master.zip">Download the Cicero template library</a></p></li>
-<li><p>Unzip the library with your favourite tool</p></li>
-<li><p>Then from the command-line, change the current directory to the folder containing this README.md file.</p></li>
-</ol>
-<pre><code>cd supplyagreement
-</code></pre>
-<ol start="4">
-<li>With the <a href="https://github.com/accordproject/cicero#installation">Cicero command-line tool</a>:</li>
-</ol>
-<pre><code>cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
-</code></pre>
-<blockquote>
-  <p>Note, all of the command-line flags (like <code>--template</code>) are optional.</p>
-</blockquote>
-<p>Alternatively you can use the simpler command below if you want to use all of the default files.</p>
-<pre><code>cicero execute
-</code></pre>
-<p>You should see the following output in your terminal:</p>
-<pre><code class="bash language-bash">mattmbp:supplyagreement matt$ cicero execute
-18:32:53 - info: Logging initialized. 2018-05-15T22:32:53.827Z
-18:32:54 - info: Using current directory as template folder
-18:32:54 - info: Loading a default sample.txt file.
-18:32:54 - info: Loading a single default request.json file.
-18:32:54 - info: Loading a default state.json file.
-18:32:55 - info: {"clause":"supplyagreement@0.0.6-21491f82e4ee4048cc4b22c8a46f9e1f9f9ea901454ab758ff4dbfc5b85bb36d","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.ForecastResponse","transactionId":"f73ef652-b7a3-4236-b20b-14d4ac2aad40","timestamp":"2018-05-15T22:32:55.080Z"},"state":{"$class":"org.accordproject.supplyagreement.AgreementState","obligations":[{"$class":"org.accordproject.supplyagreement.PurchaseObligation","requiredPurchase":1020,"year":2018,"quarter":2,"party":"PETER"}],"stateId":"org.accordproject.supplyagreement.AgreementState#1"},"emit":[]}
-</code></pre>
-<h3 id="samplepayloaddata">Sample Payload Data</h3>
-<p>Request, as in <a href="https://github.com/accordproject/cicero-template-library/blob/master/supplyagreement/request.json">request.json</a></p>
-<pre><code class="json language-json">{
-    "$class": "org.accordproject.supplyagreement.ForecastRequest",
-    "supplyForecast": 1200.0
-}
-</code></pre>
-<p>For the request above, you should see the following response:</p>
-<pre><code class="json language-json">{
-  "$class": "org.accordproject.supplyagreement.BindingResponse",
-  "requiredPurchase": 1020,
-  "year": 2018,
-  "quarter": 2,
-  "transactionId": "ee525721-7c99-4322-9a90-f9165466db28",
-  "timestamp": "2018-05-10T18:39:09.606Z"
-}
-</code></pre>
-<h2 id="testingthisclause">Testing this clause</h2>
-<p>This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.</p>
-<p>You need npm and node to test a clause. You can download both from <a href="https://nodejs.org/">here</a>.</p>
-<blockquote>
-  <p>This clause was tested with Node v8.9.3 and NPM v5.6.0</p>
-</blockquote>
-<p>From the <code>supplyagreement</code> directory.</p>
-<ol>
-<li>Install all of the dependencies.</li>
-</ol>
-<pre><code>npm install
-</code></pre>
-<ol start="2">
-<li>Run the tests</li>
-</ol>
-<pre><code>npm test
-</code></pre>
-<p>If successful, you should see the following output</p>
-<pre><code>mattmbp:supplyagreement matt$ npm test
-
-&gt; supplyagreement@0.0.6 test /Users/matt/dev/mttrbrts/cicero-template-library/supplyagreement
-&gt; mocha
-
-11:37:53 - info: Logging initialized. 2018-02-18T11:37:53.706Z
-
-
-  Logic
-    #Supplyagreement
-...
-      ✓ should execute a smart clause (234ms)
-
-
-  1 passing (426ms)
-</code></pre>
-<blockquote>
-  <p>Output above is abbreviated for clarity at <code>...</code></p>
-</blockquote>
-                </p>
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/usa/state.html">org.accordproject.usa.state.State</a></li>
+                
+                </ul>
             </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    </div>
+
+    <h4 class="title is-4">State</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "state": "tbd"
+}</pre></code>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.supplyagreement.DeliveryRequest</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.supplyagreement.DeliveryRequest",
+    "products": [
+        {
+            "$class": "org.accordproject.purchaseorder.Product",
+            "partNumber": "9043",
+            "name": "In eiusmod magna.",
+            "quantity": 109.424,
+            "unitPrice": 145.681
+        }
+    ],
+    "transactionId": "10b34631-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:09.811Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.supplyagreement.ForecastRequest</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.supplyagreement.ForecastRequest",
+    "supplyForecast": 2513,
+    "transactionId": "10b31f20-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:09.810Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.supplyagreement.PurchaseRequest</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.supplyagreement.PurchaseRequest",
+    "purchaseOrder": {
+        "$class": "org.accordproject.purchaseorder.PurchaseOrder",
+        "products": [
+            {
+                "$class": "org.accordproject.purchaseorder.Product",
+                "partNumber": "4118",
+                "name": "Aliqua dolor veniam dolor.",
+                "quantity": 235.839,
+                "unitPrice": 19.64
+            }
+        ],
+        "deliveryLocation": "Et occaecat eu.",
+        "deliveryDate": "2018-06-08T13:30:09.811Z"
+    },
+    "transactionId": "10b34630-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:09.811Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.supplyagreement.DeliveryResponse</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.supplyagreement.DeliveryResponse",
+    "transactionId": "10b36d42-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:09.812Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.supplyagreement.ForecastResponse</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.supplyagreement.ForecastResponse",
+    "transactionId": "10b36d40-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:09.812Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.supplyagreement.PurchaseResponse</th>
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.supplyagreement.PurchaseResponse",
+    "transactionId": "10b36d41-6b20-11e8-b846-9787b297dffa",
+    "timestamp": "2018-06-08T13:30:09.812Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+    </table>
+</div>
+
         </div>
     </section>
 
