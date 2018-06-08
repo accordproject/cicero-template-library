@@ -1,14 +1,14 @@
 
 # Volume Discount
 
-This is a smart legal clause that conforms to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The clause can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
+This is a smart legal contract that conforms to the [Accord Protocol Template Specification](https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0), the protocol is managed by the open-source community of the [Accord Project](https://accordproject.org). The contract can be parsed and executed by the [Cicero](https://github.com/accordproject/cicero) engine.
 
 ## Description
 
 > A sample volume discount clause.
 
-This clause contains:
-- *Sample Clause Text* - [sample.txt](sample.txt)
+This contract contains:
+- *Sample Text* - [sample.txt](sample.txt)
 - *A template* - [grammar/template.tem](grammar/template.tem)
 - *A data model* - [models/clause.cto](models/clause.cto)
 - *Contact logic* (in JavaScript) - [logic/logic.js](lib/logic.js)
@@ -50,7 +50,7 @@ mattmbp:volumediscount matt$ cicero execute
 
 ### Sample Payload Data
 
-Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/perishable-goods/request.json)
+Request, as in [request.json](https://github.com/accordproject/cicero-template-library/blob/master/volumediscount/request.json)
 ```json
 {
     "$class": "org.accordproject.volumediscount.VolumeDiscountRequest",
