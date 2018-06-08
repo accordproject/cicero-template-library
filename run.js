@@ -224,7 +224,7 @@ async function templateUnitTester(templatePath, template) {
     
     // Instantiate a Mocha instance.
     var mocha = new Mocha({
-        timeout: 10000
+        timeout: 20000 // allow 20 seconds for tests
     });
 
     var testDir = templatePath + '/test';

@@ -76,101 +76,7 @@
             <div class="content">
                 <p>
                 <h1 id="supplyagreement">Supply Agreement</h1>
-<p>This is a smart legal clause that conforms to the <a href="https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0">Accord Protocol Template Specification</a>, the protocol is managed by the open-source community of the <a href="https://accordproject.org">Accord Project</a>. The clause can be parsed and executed by the <a href="https://github.com/accordproject/cicero">Cicero</a> engine.</p>
-<h2 id="description">Description</h2>
-<blockquote>
-  <p>A simple supply agreement.</p>
-</blockquote>
-<p>This clause contains:</p>
-<ul>
-<li><em>Sample Clause Text</em> - <a href="sample.txt">sample.txt</a></li>
-<li><em>A template</em> - <a href="grammar/template.tem">grammar/template.tem</a></li>
-<li><em>A data model</em> - <a href="models/clause.cto">models/clause.cto</a></li>
-<li><em>Contact logic</em> (in JavaScript) - <a href="lib/logic.js">logic/logic.js</a></li>
-</ul>
-<h2 id="runningthisclause">Running this clause</h2>
-<h3 id="onyourownmachine">On your own machine</h3>
-<ol>
-<li><p><a href="https://github.com/accordproject/cicero-template-library/archive/master.zip">Download the Cicero template library</a></p></li>
-<li><p>Unzip the library with your favourite tool</p></li>
-<li><p>Then from the command-line, change the current directory to the folder containing this README.md file.</p></li>
-</ol>
-<pre><code>cd supplyagreement
-</code></pre>
-<ol start="4">
-<li>With the <a href="https://github.com/accordproject/cicero#installation">Cicero command-line tool</a>:</li>
-</ol>
-<pre><code>cicero execute --template ./ --sample ./sample.txt --request ./request.json --state ./state.json
-</code></pre>
-<blockquote>
-  <p>Note, all of the command-line flags (like <code>--template</code>) are optional.</p>
-</blockquote>
-<p>Alternatively you can use the simpler command below if you want to use all of the default files.</p>
-<pre><code>cicero execute
-</code></pre>
-<p>You should see the following output in your terminal:</p>
-<pre><code class="bash language-bash">mattmbp:supplyagreement matt$ cicero execute
-18:32:53 - info: Logging initialized. 2018-05-15T22:32:53.827Z
-18:32:54 - info: Using current directory as template folder
-18:32:54 - info: Loading a default sample.txt file.
-18:32:54 - info: Loading a single default request.json file.
-18:32:54 - info: Loading a default state.json file.
-18:32:55 - info: {"clause":"supplyagreement@0.0.6-21491f82e4ee4048cc4b22c8a46f9e1f9f9ea901454ab758ff4dbfc5b85bb36d","request":{"$class":"org.accordproject.supplyagreement.ForecastRequest","supplyForecast":1200},"response":{"$class":"org.accordproject.supplyagreement.ForecastResponse","transactionId":"f73ef652-b7a3-4236-b20b-14d4ac2aad40","timestamp":"2018-05-15T22:32:55.080Z"},"state":{"$class":"org.accordproject.supplyagreement.AgreementState","obligations":[{"$class":"org.accordproject.supplyagreement.PurchaseObligation","requiredPurchase":1020,"year":2018,"quarter":2,"party":"PETER"}],"stateId":"org.accordproject.supplyagreement.AgreementState#1"},"emit":[]}
-</code></pre>
-<h3 id="samplepayloaddata">Sample Payload Data</h3>
-<p>Request, as in <a href="https://github.com/accordproject/cicero-template-library/blob/master/supplyagreement/request.json">request.json</a></p>
-<pre><code class="json language-json">{
-    "$class": "org.accordproject.supplyagreement.ForecastRequest",
-    "supplyForecast": 1200.0
-}
-</code></pre>
-<p>For the request above, you should see the following response:</p>
-<pre><code class="json language-json">{
-  "$class": "org.accordproject.supplyagreement.BindingResponse",
-  "requiredPurchase": 1020,
-  "year": 2018,
-  "quarter": 2,
-  "transactionId": "ee525721-7c99-4322-9a90-f9165466db28",
-  "timestamp": "2018-05-10T18:39:09.606Z"
-}
-</code></pre>
-<h2 id="testingthisclause">Testing this clause</h2>
-<p>This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.</p>
-<p>You need npm and node to test a clause. You can download both from <a href="https://nodejs.org/">here</a>.</p>
-<blockquote>
-  <p>This clause was tested with Node v8.9.3 and NPM v5.6.0</p>
-</blockquote>
-<p>From the <code>supplyagreement</code> directory.</p>
-<ol>
-<li>Install all of the dependencies.</li>
-</ol>
-<pre><code>npm install
-</code></pre>
-<ol start="2">
-<li>Run the tests</li>
-</ol>
-<pre><code>npm test
-</code></pre>
-<p>If successful, you should see the following output</p>
-<pre><code>mattmbp:supplyagreement matt$ npm test
-
-&gt; supplyagreement@0.0.6 test /Users/matt/dev/mttrbrts/cicero-template-library/supplyagreement
-&gt; mocha
-
-11:37:53 - info: Logging initialized. 2018-02-18T11:37:53.706Z
-
-
-  Logic
-    #Supplyagreement
-...
-      ✓ should execute a smart clause (234ms)
-
-
-  1 passing (426ms)
-</code></pre>
-<blockquote>
-  <p>Output above is abbreviated for clarity at <code>...</code></p>
-</blockquote>
+<p>A simple supply agreement.</p>
                 </p>
             </div>
 
@@ -315,7 +221,37 @@ Routing Number: "YYY-YY"
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement">on GitHub.</a>
     </div>
+
+    <h4 class="title is-4">Instance</h4>
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    "$class": "org.accordproject.supplyagreement.SupplyAgreement",
+    "effectiveDate": "2018-06-08T14:11:40.688Z",
+    "supplier": "Consequat velit culpa officia.",
+    "buyer": "Elit Lorem deserunt consectetur ut.",
+    "shortDescriptionOfTheProducts": "Ut deserunt.",
+    "noticeWindow": 13728,
+    "cancellationWindow": 54526,
+    "minimumPercentage": 139.299,
+    "deliverables": "Dolor ut enim ullamco exercitation.",
+    "deliveryWindow": 28502,
+    "deliveryAttachment": "Occaecat officia cillum magna.",
+    "inspectionWindow": 3113,
+    "acceptanceAttachment": "Nisi id dolore adipisicing ex.",
+    "priceUpdateWindow": 29234,
+    "accountNumber": "Enim nulla cillum.",
+    "routingNumnber": "Adipisicing do.",
+    "termYears": 5059,
+    "renewalYears": 29171,
+    "renewalWindow": 63000,
+    "governingState": "AL",
+    "venueState": "TX",
+    "contractId": "dd60f100-6b25-11e8-92f0-173f8ca0246a",
+    "parties": [
+        "resource:org.accordproject.cicero.contract.AccordParty#3407"
+    ]
+}</pre></code>
 
     <h4 class="title is-4">State</h4>
     <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
@@ -339,14 +275,14 @@ Routing Number: "YYY-YY"
     "products": [
         {
             "$class": "org.accordproject.purchaseorder.Product",
-            "partNumber": "9043",
-            "name": "In eiusmod magna.",
-            "quantity": 109.424,
-            "unitPrice": 145.681
+            "partNumber": "7087",
+            "name": "Elit tempor incididunt veniam nostrud.",
+            "quantity": 227.752,
+            "unitPrice": 114.423
         }
     ],
-    "transactionId": "10b34631-6b20-11e8-b846-9787b297dffa",
-    "timestamp": "2018-06-08T13:30:09.811Z"
+    "transactionId": "dd613f20-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:40.690Z"
 }</pre></code></td>
         </tr>
         
@@ -354,9 +290,9 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.ForecastRequest</th>
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.supplyagreement.ForecastRequest",
-    "supplyForecast": 2513,
-    "transactionId": "10b31f20-6b20-11e8-b846-9787b297dffa",
-    "timestamp": "2018-06-08T13:30:09.810Z"
+    "supplyForecast": 18901,
+    "transactionId": "dd611810-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:40.689Z"
 }</pre></code></td>
         </tr>
         
@@ -369,17 +305,17 @@ Routing Number: "YYY-YY"
         "products": [
             {
                 "$class": "org.accordproject.purchaseorder.Product",
-                "partNumber": "4118",
-                "name": "Aliqua dolor veniam dolor.",
-                "quantity": 235.839,
-                "unitPrice": 19.64
+                "partNumber": "5172",
+                "name": "Amet.",
+                "quantity": 39.47,
+                "unitPrice": 171.07
             }
         ],
-        "deliveryLocation": "Et occaecat eu.",
-        "deliveryDate": "2018-06-08T13:30:09.811Z"
+        "deliveryLocation": "In elit.",
+        "deliveryDate": "2018-06-08T14:11:40.689Z"
     },
-    "transactionId": "10b34630-6b20-11e8-b846-9787b297dffa",
-    "timestamp": "2018-06-08T13:30:09.811Z"
+    "transactionId": "dd611811-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:40.689Z"
 }</pre></code></td>
         </tr>
         
@@ -400,8 +336,8 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.DeliveryResponse</th>
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.supplyagreement.DeliveryResponse",
-    "transactionId": "10b36d42-6b20-11e8-b846-9787b297dffa",
-    "timestamp": "2018-06-08T13:30:09.812Z"
+    "transactionId": "dd616632-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:40.691Z"
 }</pre></code></td>
         </tr>
         
@@ -409,8 +345,8 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.ForecastResponse</th>
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.supplyagreement.ForecastResponse",
-    "transactionId": "10b36d40-6b20-11e8-b846-9787b297dffa",
-    "timestamp": "2018-06-08T13:30:09.812Z"
+    "transactionId": "dd616630-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:40.691Z"
 }</pre></code></td>
         </tr>
         
@@ -418,8 +354,8 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.PurchaseResponse</th>
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.supplyagreement.PurchaseResponse",
-    "transactionId": "10b36d41-6b20-11e8-b846-9787b297dffa",
-    "timestamp": "2018-06-08T13:30:09.812Z"
+    "transactionId": "dd616631-6b25-11e8-92f0-173f8ca0246a",
+    "timestamp": "2018-06-08T14:11:40.691Z"
 }</pre></code></td>
         </tr>
         
