@@ -13,6 +13,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    {%set accord_logo="accord_logo_large.png"%}
+    {%set title="Accord Project Template Library"%}
+    {%set description="Library hosting all Accord Project templates."%}
+
     <!-— generic unfurl tags -->
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image">
@@ -25,15 +29,15 @@
     {% block unfurl %}
     <!-— facebook open graph tags -->
     <meta property="og:url" content="https://templates.accordproject.org" />
-    <meta property="og:title" content="Accord Project Template Library" />
-    <meta property="og:description" content="Library hosting all Accord Project templates." />
-    <meta property="og:image" content="https://templates.accordproject.org/accord_logo.png" />
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:image" content="{{serverRoot}}/{{accord_logo}}" />
  
     <!-— twitter card tags additive with the og: tags -->
-    <meta name="twitter:title" value="Accord Project Template Library" />
-    <meta name="twitter:description" value="Library hosting all Accord Project templates." />
-    <meta name="twitter:image" content="https://templates.accordproject.org/accord_logo.png" />
-    <meta name="twitter:url" value="https://templates.accordproject.org" />
+    <meta name="twitter:title" value="{{title}}" />
+    <meta name="twitter:description" value="{{description}}" />
+    <meta name="twitter:image" content="{{serverRoot}}/{{accord_logo}}" />
+    <meta name="twitter:url" value="{{serverRoot}}" />
     {% endblock %}
 
     <title>Accord Project Template Library</title>
