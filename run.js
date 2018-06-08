@@ -277,6 +277,7 @@ async function templatePageGenerator(templatePath, template) {
     const pumlContent = fs.readFileSync(pumlFilePath, 'utf8');
     const encoded = plantumlEncoder.encode(pumlContent)
     const umlURL = `http://www.plantuml.com/plantuml/svg/${encoded}`;
+    const umlCardURL = `http://www.plantuml.com/plantuml/png/${encoded}`;
 
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
@@ -311,6 +312,7 @@ async function templatePageGenerator(templatePath, template) {
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL : umlURL,
+        umlCardURL : umlCardURL,
         filePath: templatePageHtml,
         template: template,
         readmeHtml: readmeHtml,
