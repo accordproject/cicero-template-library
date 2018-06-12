@@ -1,12 +1,12 @@
 @startuml
-class org.accordproject.volumediscount.VolumeDiscount << (A,green) >> {
+class org.accordproject.volumediscount.VolumeDiscountContract << (A,green) >> {
    + Double firstVolume
    + Double secondVolume
    + Double firstRate
    + Double secondRate
    + Double thirdRate
 }
-org.accordproject.volumediscount.VolumeDiscount --|> org.accordproject.cicero.contract.AccordContract
+org.accordproject.volumediscount.VolumeDiscountContract --|> org.accordproject.cicero.contract.AccordContract
 class org.accordproject.volumediscount.VolumeDiscountRequest << (T,yellow) >> {
    + Double netAnnualChargeVolume
 }
