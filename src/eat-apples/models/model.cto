@@ -1,0 +1,24 @@
+namespace org.accordproject.canteen
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+transaction Food {
+  o String produce
+  o Double price
+}
+
+transaction Outcome {
+  o String notice
+}
+
+event Bill {
+  o String billTo
+  o Double amount
+}
+
+asset CanteenClause extends AccordClause {
+  o String employee
+  o String company
+  o Double tax
+}
