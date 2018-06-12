@@ -1,0 +1,23 @@
+@startuml
+class org.accordproject.servicelevelagreement.ServiceLevelAgreementContract << (A,green) >> {
+   + Integer paymentPeriod
+   + Double monthlyCapPercentage
+   + Double yearlyCapPercentage
+   + Double availability1
+   + Double serviceCredit1
+   + Double availability2
+   + Double serviceCredit2
+}
+org.accordproject.servicelevelagreement.ServiceLevelAgreementContract --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.servicelevelagreement.MonthSummary << (T,yellow) >> {
+   + Double monthlyServiceLevel
+   + Double monthlyCharge
+   + Double last11MonthCredit
+   + Double last11MonthCharge
+}
+org.accordproject.servicelevelagreement.MonthSummary --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.servicelevelagreement.InvoiceCredit << (T,yellow) >> {
+   + Double monthlyCredit
+}
+org.accordproject.servicelevelagreement.InvoiceCredit --|> org.hyperledger.composer.system.Transaction
+@enduml
