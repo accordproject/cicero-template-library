@@ -10,12 +10,12 @@ class io.clause.demo.fragileGoods.DeliveryUpdate << (T,yellow) >> {
    + ShipmentStatus status
    + Double[] accelerometerReadings
 }
-io.clause.demo.fragileGoods.DeliveryUpdate --|> org.hyperledger.composer.system.Transaction
+io.clause.demo.fragileGoods.DeliveryUpdate --|> org.accordproject.cicero.runtime.Request
 class io.clause.demo.fragileGoods.PayOut << (T,yellow) >> {
    + MonetaryAmount amount
 }
-io.clause.demo.fragileGoods.PayOut --|> org.hyperledger.composer.system.Transaction
-class io.clause.demo.fragileGoods.TemplateModel {
+io.clause.demo.fragileGoods.PayOut --|> org.accordproject.cicero.runtime.Response
+class io.clause.demo.fragileGoods.FragileGoodsClause << (A,green) >> {
    + MonetaryAmount deliveryPrice
    + Double accelerationMin
    + Double accelerationMax
@@ -23,4 +23,5 @@ class io.clause.demo.fragileGoods.TemplateModel {
    + Duration deliveryLimitDuration
    + MonetaryAmount lateDeliveryPenalty
 }
+io.clause.demo.fragileGoods.FragileGoodsClause --|> org.accordproject.cicero.contract.AccordClause
 @enduml
