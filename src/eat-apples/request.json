@@ -1,0 +1,5 @@
+{
+    "$class": "org.accordproject.canteen.Food",
+    "produce": "apple",
+    "price": 1.49
+}

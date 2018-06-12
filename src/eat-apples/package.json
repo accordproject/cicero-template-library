@@ -1,0 +1,11 @@
+{
+    "name": "eat-apples",
+    "version": "0.0.1",
+    "description": "This is a close enforcing healthy eating habits in employees.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "clause",
+        "version": "^0.4.1"
+    }
+}
