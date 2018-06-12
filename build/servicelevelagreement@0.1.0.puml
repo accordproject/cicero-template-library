@@ -1,5 +1,5 @@
 @startuml
-class org.accordproject.servicelevelagreement.ServiceLevelAgreement << (A,green) >> {
+class org.accordproject.servicelevelagreement.ServiceLevelAgreementContract << (A,green) >> {
    + Integer paymentPeriod
    + Double monthlyCapPercentage
    + Double yearlyCapPercentage
@@ -8,7 +8,7 @@ class org.accordproject.servicelevelagreement.ServiceLevelAgreement << (A,green)
    + Double availability2
    + Double serviceCredit2
 }
-org.accordproject.servicelevelagreement.ServiceLevelAgreement --|> org.accordproject.cicero.contract.AccordContract
+org.accordproject.servicelevelagreement.ServiceLevelAgreementContract --|> org.accordproject.cicero.contract.AccordContract
 class org.accordproject.servicelevelagreement.MonthSummary << (T,yellow) >> {
    + Double monthlyServiceLevel
    + Double monthlyCharge
