@@ -1,0 +1,70 @@
+@startuml
+class org.accordproject.perishablegoods.PerishableGoodsClause << (A,green) >> {
+   + Grower grower
+   + Importer importer
+   + Shipment shipment
+   + DateTime dueDate
+   + MonetaryAmount unitPrice
+   + UnitOfMass unit
+   + Integer minUnits
+   + Integer maxUnits
+   + String product
+   + Integer sensorReadingFrequency
+   + TemporalUnit duration
+   + Double minTemperature
+   + Double maxTemperature
+   + Double minHumidity
+   + Double maxHumidity
+   + Double penaltyFactor
+}
+org.accordproject.perishablegoods.PerishableGoodsClause --|> org.accordproject.cicero.contract.AccordClause
+class org.accordproject.perishablegoods.ShipmentStatus << (E,grey) >> {
+   + CREATED
+   + IN_TRANSIT
+   + ARRIVED
+}
+class org.accordproject.perishablegoods.ShipmentTransaction << (T,yellow) >> {
+   + Shipment shipment
+}
+org.accordproject.perishablegoods.ShipmentTransaction --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.perishablegoods.SensorReading << (T,yellow) >> {
+   + Double centigrade
+   + Double humidity
+}
+org.accordproject.perishablegoods.SensorReading --|> org.accordproject.perishablegoods.ShipmentTransaction
+class org.accordproject.perishablegoods.ShipmentReceived << (T,yellow) >> {
+   + Integer unitCount
+}
+org.accordproject.perishablegoods.ShipmentReceived --|> org.accordproject.perishablegoods.ShipmentTransaction
+class org.accordproject.perishablegoods.PriceCalculation << (T,yellow) >> {
+   + Double totalPrice
+   + Double penalty
+   + Boolean late
+}
+org.accordproject.perishablegoods.PriceCalculation --|> org.accordproject.perishablegoods.ShipmentTransaction
+class org.accordproject.perishablegoods.Shipment << (A,green) >> {
+   + String shipmentId
+   + ShipmentStatus status
+   + Grower grower
+   + Importer importer
+   + SensorReading[] sensorReadings
+   + String smartClause
+}
+org.accordproject.perishablegoods.Shipment --|> org.hyperledger.composer.system.Asset
+class org.accordproject.perishablegoods.Business << (P,lightblue) >> {
+   + MonetaryAmount accountBalance
+}
+org.accordproject.perishablegoods.Business --|> org.accordproject.organization.Organization
+class org.accordproject.perishablegoods.Grower << (P,lightblue) >> {
+}
+org.accordproject.perishablegoods.Grower --|> org.accordproject.perishablegoods.Business
+class org.accordproject.perishablegoods.Shipper << (P,lightblue) >> {
+}
+org.accordproject.perishablegoods.Shipper --|> org.accordproject.perishablegoods.Business
+class org.accordproject.perishablegoods.Importer << (P,lightblue) >> {
+}
+org.accordproject.perishablegoods.Importer --|> org.accordproject.perishablegoods.Business
+class org.accordproject.perishablegoods.SetupDemo << (T,yellow) >> {
+}
+org.accordproject.perishablegoods.SetupDemo --|> org.hyperledger.composer.system.Transaction
+@enduml
