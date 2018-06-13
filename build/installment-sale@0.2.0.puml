@@ -19,6 +19,7 @@ class org.accordproject.installmentsale.ContractStatus << (E,grey) >> {
 class org.accordproject.installmentsale.MyObligation {
    + String party
 }
+org.accordproject.installmentsale.MyObligation --|> org.hyperledger.composer.system.Event
 class org.accordproject.installmentsale.DeliveryObligation {
    + DateTime expectedDelivery
    + OrderItem[] deliverables

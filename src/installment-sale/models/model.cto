@@ -27,19 +27,19 @@ enum ContractStatus {
 /**
  * Defines contract obligations
  */
-concept MyObligation {
+event MyObligation {
   o String party
 }
-concept DeliveryObligation extends MyObligation {
+event DeliveryObligation extends MyObligation {
   o DateTime expectedDelivery
   o OrderItem[] deliverables
 }
-concept PurchaseObligation extends MyObligation {
+event PurchaseObligation extends MyObligation {
   o Double requiredPurchase
   o Integer year
   o Integer quarter
 }
-concept PaymentObligation extends MyObligation {
+event PaymentObligation extends MyObligation {
   o Double amount
 }
 
