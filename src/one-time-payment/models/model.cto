@@ -13,10 +13,10 @@ transaction MyResponse extends Response {
 /**
  * Defines contract obligations
  */
-concept MyObligation {
+event MyObligation {
   o String party
 }
-concept PaymentObligation extends MyObligation {
+event PaymentObligation extends MyObligation {
   o MonetaryAmount amount
 }
 

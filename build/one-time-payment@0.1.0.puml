@@ -8,6 +8,7 @@ org.accordproject.payment.onetime.MyResponse --|> org.accordproject.cicero.runti
 class org.accordproject.payment.onetime.MyObligation {
    + String party
 }
+org.accordproject.payment.onetime.MyObligation --|> org.hyperledger.composer.system.Event
 class org.accordproject.payment.onetime.PaymentObligation {
    + MonetaryAmount amount
 }
