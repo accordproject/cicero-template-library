@@ -1,0 +1,27 @@
+@startuml
+class io.clause.demo.fragileGoods.ShipmentStatus << (E,grey) >> {
+   + CREATED
+   + IN_TRANSIT
+   + ARRIVED
+}
+class io.clause.demo.fragileGoods.DeliveryUpdate << (T,yellow) >> {
+   + DateTime startTime
+   + DateTime finishTime
+   + ShipmentStatus status
+   + Double[] accelerometerReadings
+}
+io.clause.demo.fragileGoods.DeliveryUpdate --|> org.accordproject.cicero.runtime.Request
+class io.clause.demo.fragileGoods.PayOut << (T,yellow) >> {
+   + MonetaryAmount amount
+}
+io.clause.demo.fragileGoods.PayOut --|> org.accordproject.cicero.runtime.Response
+class io.clause.demo.fragileGoods.FragileGoodsClause << (A,green) >> {
+   + MonetaryAmount deliveryPrice
+   + Double accelerationMin
+   + Double accelerationMax
+   + MonetaryAmount accelerationBreachPenalty
+   + Duration deliveryLimitDuration
+   + MonetaryAmount lateDeliveryPenalty
+}
+io.clause.demo.fragileGoods.FragileGoodsClause --|> org.accordproject.cicero.contract.AccordClause
+@enduml
