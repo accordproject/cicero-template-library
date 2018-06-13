@@ -53,7 +53,7 @@ transaction Payout {
 /**
  * Defines the data model for the Saft template.
  */
-asset Saft extends AccordContract {
+asset SaftContract extends AccordContract {
   /**
    * The name of the token to be sold
    */
