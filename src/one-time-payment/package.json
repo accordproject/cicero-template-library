@@ -1,0 +1,9 @@
+{
+    "name": "one-time-payment",
+    "version": "0.1.0",
+    "description": "This is a one time payment clause applicable at execution of the contract.",
+    "cicero": {
+        "template": "clause",
+        "version": "^0.4.2"
+    }
+}
