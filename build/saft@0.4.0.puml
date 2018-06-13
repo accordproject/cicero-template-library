@@ -1,0 +1,36 @@
+@startuml
+class org.accordproject.saft.Launch << (T,yellow) >> {
+   + Double exchangeRate
+}
+org.accordproject.saft.Launch --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.saft.Terminate << (T,yellow) >> {
+   + MonetaryAmount remainingFunds
+   + MonetaryAmount totalInvested
+}
+org.accordproject.saft.Terminate --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.saft.Payout << (T,yellow) >> {
+   + MonetaryAmount tokenAmount
+   + String tokenAddress
+}
+org.accordproject.saft.Payout --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.saft.SaftContract << (A,green) >> {
+   + String token
+   + String company
+   + BusinessEntity companyType
+   + State state
+   + Boolean amendmentProvision
+   + MonetaryAmount purchaseAmount
+   + CurrencyCode currency
+   + MonetaryAmount netProceedLimit
+   + DateTime date
+   + DateTime deadlineDate
+   + Double discountRatePercentage
+   + String network
+   + String coin
+   + String exchanges
+   + String companyRepresentative
+   + String purchaser
+   + String description
+}
+org.accordproject.saft.SaftContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml
