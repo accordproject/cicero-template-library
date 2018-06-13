@@ -187,7 +187,8 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                         description : m.getDescription(),
                         version: m.getVersion(),
                         ciceroVersion: m.getTargetVersion(),
-                        type: m.getTemplateType()
+                        type: m.getTemplateType(),
+                        language: m.getLanguage()
                     }
                     templateIndex[template.getIdentifier()] = indexData;
     
@@ -309,9 +310,11 @@ async function templatePageGenerator(templatePath, template) {
     const state = JSON.stringify({ state: 'tbd'}, null, 4);
     const eventTypes = {}
     for(let type of template.getEmitTypes()) {
-        const classDecl = template.getModelManager().getType(type);
-        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-        eventTypes[type] = JSON.stringify(sampleInstance, null, 4);
+        if (type !== 'Event') {
+            const classDecl = template.getModelManager().getType(type);
+            const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+            eventTypes[type] = JSON.stringify(sampleInstance, null, 4);
+        }
     }
 
     const templateResult = nunjucks.render('template.njk', {

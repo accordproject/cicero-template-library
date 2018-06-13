@@ -119,21 +119,21 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause",
-    "forceMajeure": false,
+    "forceMajeure": true,
     "penaltyDuration": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 3509466697,
-        "unit": "hours"
-    },
-    "penaltyPercentage": 165.804,
-    "capPercentage": 127.156,
-    "termination": {
-        "$class": "org.accordproject.time.Duration",
-        "amount": 2761892456,
+        "amount": 347344266,
         "unit": "seconds"
     },
-    "fractionalPart": "weeks",
-    "clauseId": "473165d0-6e0d-11e8-a28f-69b603e41bbb"
+    "penaltyPercentage": 248.205,
+    "capPercentage": 94.28,
+    "termination": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 1248234180,
+        "unit": "minutes"
+    },
+    "fractionalPart": "hours",
+    "clauseId": "ba4f6ee0-6f43-11e8-b7e9-65803c847837"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
@@ -156,11 +156,11 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
     "forceMajeure": false,
-    "agreedDelivery": "2018-06-12T06:53:14.286Z",
-    "deliveredAt": "2018-06-12T06:53:14.286Z",
-    "goodsValue": 55.359,
-    "transactionId": "47318ce0-6e0d-11e8-a28f-69b603e41bbb",
-    "timestamp": "2018-06-12T06:53:14.286Z"
+    "agreedDelivery": "2018-06-13T19:55:31.407Z",
+    "deliveredAt": "2018-06-13T19:55:31.407Z",
+    "goodsValue": 152.204,
+    "transactionId": "ba4f95f0-6f43-11e8-b7e9-65803c847837",
+    "timestamp": "2018-06-13T19:55:31.407Z"
 }</pre></code></td>
         </tr>
         
@@ -181,10 +181,10 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
         <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
-    "penalty": 244.489,
-    "buyerMayTerminate": false,
-    "transactionId": "47318ce1-6e0d-11e8-a28f-69b603e41bbb",
-    "timestamp": "2018-06-12T06:53:14.286Z"
+    "penalty": 19.185,
+    "buyerMayTerminate": true,
+    "transactionId": "ba4f95f1-6f43-11e8-b7e9-65803c847837",
+    "timestamp": "2018-06-13T19:55:31.407Z"
 }</pre></code></td>
         </tr>
         
