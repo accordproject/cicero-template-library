@@ -11,19 +11,9 @@ transaction MyResponse extends Response {
 }
 
 /**
- * Defines contract obligations
- */
-event MyObligation {
-  o String party
-}
-event PaymentObligation extends MyObligation {
-  o MonetaryAmount amount
-}
-
-/**
  * The template model
  */
-asset OneTimePaymentClause extends AccordClause {
+asset OneTimePaymentContract extends AccordContract {
   o String partyA
   o String partyB
   o MonetaryAmount initialAmount

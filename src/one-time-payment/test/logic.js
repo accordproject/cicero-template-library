@@ -52,6 +52,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
             result.emit[0].amount.doubleValue.should.equal(0.01);
             result.emit[0].amount.currencyCode.should.equal("USD");
         });

@@ -1,3 +1,4 @@
-# One Time Payment Clause 
+# One Time Payment Contract
 
-This is a one time payment clause applicable at execution of the contract.
+This is a one time payment contract applicable at execution of that contract.
+
