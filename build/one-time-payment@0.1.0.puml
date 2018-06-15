@@ -5,18 +5,10 @@ org.accordproject.payment.onetime.MyRequest --|> org.accordproject.cicero.runtim
 class org.accordproject.payment.onetime.MyResponse << (T,yellow) >> {
 }
 org.accordproject.payment.onetime.MyResponse --|> org.accordproject.cicero.runtime.Response
-class org.accordproject.payment.onetime.MyObligation {
-   + String party
-}
-org.accordproject.payment.onetime.MyObligation --|> org.hyperledger.composer.system.Event
-class org.accordproject.payment.onetime.PaymentObligation {
-   + MonetaryAmount amount
-}
-org.accordproject.payment.onetime.PaymentObligation --|> org.accordproject.payment.onetime.MyObligation
-class org.accordproject.payment.onetime.OneTimePaymentClause << (A,green) >> {
+class org.accordproject.payment.onetime.OneTimePaymentContract << (A,green) >> {
    + String partyA
    + String partyB
    + MonetaryAmount initialAmount
 }
-org.accordproject.payment.onetime.OneTimePaymentClause --|> org.accordproject.cicero.contract.AccordClause
+org.accordproject.payment.onetime.OneTimePaymentContract --|> org.accordproject.cicero.contract.AccordContract
 @enduml
