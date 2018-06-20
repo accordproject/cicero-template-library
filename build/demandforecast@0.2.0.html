@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="demandforecast@0.2.0.html" class="dropdown-item is-active">
+                                demandforecast@0.2.0
+                            </a>
+                        
+                            <a href="demandforecast@0.1.0.html" class="dropdown-item ">
+                                demandforecast@0.1.0
+                            </a>
+                        
+                            <a href="demandforecast@0.0.6.html" class="dropdown-item ">
+                                demandforecast@0.0.6
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/demandforecast@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
 
                 </pre>
@@ -116,17 +159,17 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.DemandForecastClause",
-    "purchaser": "Adipisicing adipisicing ipsum.",
-    "supplier": "Adipisicing labore.",
-    "effectiveDate": "2018-06-15T05:33:58.655Z",
-    "minimumPercentage": 100.355,
-    "clauseId": "b3db18f0-705d-11e8-8de1-21f5a797773f"
+    "clauseId": "656099de-4283-4173-85f2-ba7b61abd83a",
+    "purchaser": "PETER",
+    "supplier": "DAN",
+    "effectiveDate": "2018-04-02",
+    "minimumPercentage": 85
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -142,11 +185,11 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
         
         <tr>
         <th>org.accordproject.demandforecast.ForecastRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.ForecastRequest",
-    "supplyForecast": 38153,
-    "transactionId": "b3db4000-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:33:58.656Z"
+    "supplyForecast": 20009,
+    "transactionId": "97965fc0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:10.716Z"
 }</pre></code></td>
         </tr>
         
@@ -165,13 +208,13 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
         
         <tr>
         <th>org.accordproject.demandforecast.BindingResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.BindingResponse",
-    "requiredPurchase": 250.531,
-    "year": 31527,
-    "quarter": 30149,
-    "transactionId": "b3db6710-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:33:58.657Z"
+    "requiredPurchase": 136.76,
+    "year": 12628,
+    "quarter": 14778,
+    "transactionId": "979686d0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:10.717Z"
 }</pre></code></td>
         </tr>
         

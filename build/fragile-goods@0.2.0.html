@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="fragile-goods@0.2.0.html" class="dropdown-item is-active">
+                                fragile-goods@0.2.0
+                            </a>
+                        
+                            <a href="fragile-goods@0.1.0.html" class="dropdown-item ">
+                                fragile-goods@0.1.0
+                            </a>
+                        
+                            <a href="fragile-goods@0.0.4.html" class="dropdown-item ">
+                                fragile-goods@0.0.4
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/fragile-goods@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 6.1.7 Liquidated Damages for Delayed Delivery. 
 In the event the EXW delivery date of the Equipment is delayed beyond the delivery schedule as indicated in Annex A, solely through the fault of the Seller, and unless the parties mutually agreed to an extension thereto, the Buyer is entitled to claim liquidated damages in an amount equivalent to 200.00 USD. 
 Prior to implementing the provisions of Article 16.4 pursuant to this section, Buyer agrees that it shall discuss with Seller alternate remedies in good faith.. . . . 
@@ -132,35 +175,35 @@ Delivery Schedule: no later than 10 seconds after initiation.
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.FragileGoodsClause",
+    "clauseId": "1f9f0cf9-331d-45cf-8b08-b915fecd806e",
     "deliveryPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 18.204,
-        "currencyCode": "DJF"
+        "doubleValue": 1000,
+        "currencyCode": "USD"
     },
-    "accelerationMin": 178.307,
-    "accelerationMax": 215.962,
+    "accelerationMin": -0.5,
+    "accelerationMax": 0.5,
     "accelerationBreachPenalty": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 37.563,
-        "currencyCode": "XBD"
+        "doubleValue": 5,
+        "currencyCode": "USD"
     },
     "deliveryLimitDuration": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 3833536835,
+        "amount": 10,
         "unit": "seconds"
     },
     "lateDeliveryPenalty": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 186.284,
-        "currencyCode": "NZD"
-    },
-    "clauseId": "b64a6b40-705d-11e8-8de1-21f5a797773f"
+        "doubleValue": 200,
+        "currencyCode": "USD"
+    }
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -176,16 +219,16 @@ Delivery Schedule: no later than 10 seconds after initiation.
         
         <tr>
         <th>io.clause.demo.fragileGoods.DeliveryUpdate</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.DeliveryUpdate",
-    "startTime": "2018-06-15T05:34:02.742Z",
-    "finishTime": "2018-06-15T05:34:02.742Z",
-    "status": "IN_TRANSIT",
+    "startTime": "2018-06-20T13:41:12.603Z",
+    "finishTime": "2018-06-20T13:41:12.603Z",
+    "status": "ARRIVED",
     "accelerometerReadings": [
-        59.89
+        141.805
     ],
-    "transactionId": "b64ab960-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:02.742Z"
+    "transactionId": "98b64eb0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:12.603Z"
 }</pre></code></td>
         </tr>
         
@@ -204,15 +247,15 @@ Delivery Schedule: no later than 10 seconds after initiation.
         
         <tr>
         <th>io.clause.demo.fragileGoods.PayOut</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.PayOut",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 10.655,
-        "currencyCode": "RWF"
+        "doubleValue": 60.54,
+        "currencyCode": "XSU"
     },
-    "transactionId": "b64ae070-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:02.743Z"
+    "transactionId": "98b675c0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:12.604Z"
 }</pre></code></td>
         </tr>
         

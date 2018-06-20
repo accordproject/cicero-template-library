@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,41 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="volumediscount@0.3.0.html" class="dropdown-item is-active">
+                                volumediscount@0.3.0
+                            </a>
+                        
+                            <a href="volumediscount@0.2.0.html" class="dropdown-item ">
+                                volumediscount@0.2.0
+                            </a>
+                        
+                            <a href="volumediscount@0.1.1.html" class="dropdown-item ">
+                                volumediscount@0.1.1
+                            </a>
+                        
+                            <a href="volumediscount@0.1.0.html" class="dropdown-item ">
+                                volumediscount@0.1.0
+                            </a>
+                        
+                            <a href="volumediscount@0.0.6.html" class="dropdown-item ">
+                                volumediscount@0.0.6
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/volumediscount@0.3.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +138,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Volume-Based Card Acceptance Agreement [Abbreviated]
 
 This Agreement is by and between Card, Inc., a New York corporation, and you, the Merchant. By accepting the Card, you agree to be bound by the Agreement. 
@@ -143,21 +194,18 @@ _______________________					_____________________
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountContract",
-    "firstVolume": 20.485,
-    "secondVolume": 214.314,
-    "firstRate": 80.132,
-    "secondRate": 146.707,
-    "thirdRate": 88.903,
-    "contractId": "cce52980-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#9318"
-    ]
+    "contractId": "5a8dd426-2a66-4cd5-838b-a86656b51811",
+    "firstVolume": 1,
+    "secondVolume": 10,
+    "firstRate": 3,
+    "secondRate": 2.9,
+    "thirdRate": 2.8
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -173,11 +221,11 @@ _______________________					_____________________
         
         <tr>
         <th>org.accordproject.volumediscount.VolumeDiscountRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountRequest",
-    "netAnnualChargeVolume": 138.929,
-    "transactionId": "cce577a0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:40.666Z"
+    "netAnnualChargeVolume": 148.376,
+    "transactionId": "a2d9fae0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:29.614Z"
 }</pre></code></td>
         </tr>
         
@@ -196,11 +244,11 @@ _______________________					_____________________
         
         <tr>
         <th>org.accordproject.volumediscount.VolumeDiscountResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountResponse",
-    "discountRate": 135.928,
-    "transactionId": "cce577a1-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:40.666Z"
+    "discountRate": 144.48,
+    "transactionId": "a2d9fae1-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:29.614Z"
 }</pre></code></td>
         </tr>
         

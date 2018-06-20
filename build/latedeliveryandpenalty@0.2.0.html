@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="latedeliveryandpenalty@0.2.0.html" class="dropdown-item is-active">
+                                latedeliveryandpenalty@0.2.0
+                            </a>
+                        
+                            <a href="latedeliveryandpenalty@0.1.0.html" class="dropdown-item ">
+                                latedeliveryandpenalty@0.1.0
+                            </a>
+                        
+                            <a href="latedeliveryandpenalty@0.0.4.html" class="dropdown-item ">
+                                latedeliveryandpenalty@0.0.4
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/latedeliveryandpenalty@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Late Delivery and Penalty. In case of delayed delivery except for Force Majeure cases, the Seller shall pay to the Buyer for every 2 days of delay penalty amounting to 10.5% of the total value of the Equipment whose delivery has been delayed. Any fractional part of a days is to be considered a full days. The total amount of penalty shall not however, exceed 55% of the total value of the Equipment involved in late delivery. If the delay is more than 15 days, the Buyer is entitled to terminate this Contract.
                 </pre>
             </div>
@@ -117,27 +160,27 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause",
+    "clauseId": "239fa511-3745-428c-8ff8-d8d9608d6778",
     "forceMajeure": true,
     "penaltyDuration": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 2178669850,
-        "unit": "hours"
+        "amount": 2,
+        "unit": "days"
     },
-    "penaltyPercentage": 37.989,
-    "capPercentage": 28.852,
+    "penaltyPercentage": 10.5,
+    "capPercentage": 55,
     "termination": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 509211196,
-        "unit": "weeks"
+        "amount": 15,
+        "unit": "days"
     },
-    "fractionalPart": "hours",
-    "clauseId": "bc036a50-705d-11e8-8de1-21f5a797773f"
+    "fractionalPart": "days"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -153,14 +196,14 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         
         <tr>
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
     "forceMajeure": true,
-    "agreedDelivery": "2018-06-15T05:34:12.342Z",
-    "deliveredAt": "2018-06-15T05:34:12.342Z",
-    "goodsValue": 155.523,
-    "transactionId": "bc039160-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:12.342Z"
+    "agreedDelivery": "2018-06-20T13:41:16.796Z",
+    "deliveredAt": "2018-06-20T13:41:16.796Z",
+    "goodsValue": 149.752,
+    "transactionId": "9b361bc0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:16.796Z"
 }</pre></code></td>
         </tr>
         
@@ -179,12 +222,12 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         
         <tr>
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
-    "penalty": 169.204,
+    "penalty": 130.751,
     "buyerMayTerminate": false,
-    "transactionId": "bc039161-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:12.342Z"
+    "transactionId": "9b3642d0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:16.797Z"
 }</pre></code></td>
         </tr>
         

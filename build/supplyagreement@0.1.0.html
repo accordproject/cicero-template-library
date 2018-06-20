@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,29 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="supplyagreement@0.1.0.html" class="dropdown-item is-active">
+                                supplyagreement@0.1.0
+                            </a>
+                        
+                            <a href="supplyagreement@0.0.6.html" class="dropdown-item ">
+                                supplyagreement@0.0.6
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/supplyagreement@0.1.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +126,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Supply Agreement
 
 This Supply Sales Agreement is made on 04/02/2018 (the "Effective Date") between "DAN" and "PETER".
@@ -230,36 +269,33 @@ Routing Number: "YYY-YY"
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.SupplyAgreement",
-    "effectiveDate": "2018-06-15T05:34:31.163Z",
-    "supplier": "Aute officia officia exercitation quis.",
-    "buyer": "Duis quis minim id.",
-    "shortDescriptionOfTheProducts": "Mollit.",
-    "noticeWindow": 21710,
-    "cancellationWindow": 6019,
-    "minimumPercentage": 129.752,
-    "deliverables": "Sunt fugiat eiusmod.",
-    "deliveryWindow": 42851,
-    "deliveryAttachment": "Consectetur commodo aute fugiat.",
-    "inspectionWindow": 62088,
-    "acceptanceAttachment": "Culpa dolor cillum ex ea.",
-    "priceUpdateWindow": 40837,
-    "accountNumber": "Aute.",
-    "routingNumnber": "Laborum ad sit aliquip.",
-    "termYears": 30661,
-    "renewalYears": 2139,
-    "renewalWindow": 43423,
-    "governingState": "MI",
-    "venueState": "MS",
-    "contractId": "c73b6cb0-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#4462"
-    ]
+    "contractId": "e0aadbab-aa35-447e-b3d9-3f6922c68a30",
+    "effectiveDate": "2018-04-02",
+    "supplier": "DAN",
+    "buyer": "PETER",
+    "shortDescriptionOfTheProducts": "Umbrellas",
+    "noticeWindow": 2,
+    "cancellationWindow": 10,
+    "minimumPercentage": 85,
+    "deliverables": "Colorful Umbrellas",
+    "deliveryWindow": 1,
+    "deliveryAttachment": "Annex A",
+    "inspectionWindow": 3,
+    "acceptanceAttachment": "Annex B",
+    "priceUpdateWindow": 15,
+    "accountNumber": "XXX-XX",
+    "routingNumnber": "YYY-YY",
+    "termYears": 2,
+    "renewalYears": 1,
+    "renewalWindow": 30,
+    "governingState": "NY",
+    "venueState": "NY"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -275,52 +311,52 @@ Routing Number: "YYY-YY"
         
         <tr>
         <th>org.accordproject.supplyagreement.DeliveryRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.DeliveryRequest",
     "products": [
         {
             "$class": "org.accordproject.purchaseorder.Product",
-            "partNumber": "9227",
-            "name": "Culpa.",
-            "quantity": 207.066,
-            "unitPrice": 247.192
+            "partNumber": "1464",
+            "name": "Enim incididunt commodo sint aliqua.",
+            "quantity": 160.757,
+            "unitPrice": 211.686
         }
     ],
-    "transactionId": "c73bbad0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:31.165Z"
+    "transactionId": "a09b0760-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:25.846Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.supplyagreement.ForecastRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.ForecastRequest",
-    "supplyForecast": 9452,
-    "transactionId": "c73b93c0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:31.164Z"
+    "supplyForecast": 540,
+    "transactionId": "a09ae050-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:25.845Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.supplyagreement.PurchaseRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.PurchaseRequest",
     "purchaseOrder": {
         "$class": "org.accordproject.purchaseorder.PurchaseOrder",
         "products": [
             {
                 "$class": "org.accordproject.purchaseorder.Product",
-                "partNumber": "0820",
-                "name": "Velit tempor adipisicing dolor.",
-                "quantity": 0.657,
-                "unitPrice": 90.362
+                "partNumber": "5302",
+                "name": "Eiusmod nulla est.",
+                "quantity": 181.758,
+                "unitPrice": 241.443
             }
         ],
-        "deliveryLocation": "Nisi consequat laboris esse.",
-        "deliveryDate": "2018-06-15T05:34:31.164Z"
+        "deliveryLocation": "Ad nisi non.",
+        "deliveryDate": "2018-06-20T13:41:25.845Z"
     },
-    "transactionId": "c73b93c1-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:31.164Z"
+    "transactionId": "a09ae051-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:25.845Z"
 }</pre></code></td>
         </tr>
         
@@ -339,28 +375,28 @@ Routing Number: "YYY-YY"
         
         <tr>
         <th>org.accordproject.supplyagreement.DeliveryResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.DeliveryResponse",
-    "transactionId": "c73be1e1-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:31.166Z"
+    "transactionId": "a09b2e70-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:25.847Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.supplyagreement.ForecastResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.ForecastResponse",
-    "transactionId": "c73bbad1-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:31.165Z"
+    "transactionId": "a09b0761-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:25.846Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.supplyagreement.PurchaseResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.PurchaseResponse",
-    "transactionId": "c73be1e0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:31.166Z"
+    "transactionId": "a09b0762-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:25.846Z"
 }</pre></code></td>
         </tr>
         

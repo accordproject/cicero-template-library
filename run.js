@@ -23,6 +23,7 @@ const nunjucks = require('nunjucks');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
 const uuidv1 = require('uuid/v1');
+const semver = require('semver')
 
 const {
     promisify
@@ -88,11 +89,14 @@ nunjucks.configure('./views', {
             // copy the logo to build directory
             await fs.copy('accord_logo.png', './build/accord_logo.png');
 
+            // get the latest versions of each template
+            const latestIndex = filterTemplateIndex(templateIndex);
+
             // generate the index html page
             const serverRoot = process.env.SERVER_ROOT;
             const templateResult = nunjucks.render('index.njk', {
                 serverRoot: serverRoot,
-                templateIndex: templateIndex
+                templateIndex: latestIndex
             });
             await writeFile('./build/index.html', templateResult);
         }
@@ -102,6 +106,38 @@ nunjucks.configure('./views', {
     }
 })();
 
+/**
+ * Returns a template index that only contains the latest version
+ * of each template
+ * 
+ * @param {object} templateIndex - the template index
+ * @returns {object} a new template index that only contains the latest version of each template
+ */
+function filterTemplateIndex(templateIndex) {
+    const result = {};
+    const nameToVersion = {};
+
+    // build a map of the latest version of each template
+    for(let template of Object.keys(templateIndex)) {
+        const atIndex = template.indexOf('@');
+        const name = template.substring(0,atIndex);
+        const version  = template.substring(atIndex+1);
+
+        const existingVersion = nameToVersion[name];
+
+        if(!existingVersion || semver.lt(existingVersion, version)) {
+            nameToVersion[name] = version;
+        }
+    }
+
+    // now build the result
+    for(let name in nameToVersion) {
+        const id = `${name}@${nameToVersion[name]}`;
+        result[id] = templateIndex[id];
+    }
+
+    return result;
+}
 
 /**
  * Get all the files beneath a subdirectory
@@ -193,7 +229,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     templateIndex[template.getIdentifier()] = indexData;
     
                     // call the post template processor
-                    await postProcessor(templatePath, template);    
+                    await postProcessor(templateIndex, templatePath, template);    
                 }
             } catch (err) {
                 console.log(err);
@@ -203,7 +239,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
     }
 
     // save the index
-    await writeFile(templateLibraryPath, JSON.stringify(templateIndex));
+    await writeFile(templateLibraryPath, JSON.stringify(templateIndex, null, 4));
 
     // return the updated index
     return templateIndex;
@@ -231,10 +267,11 @@ async function templateUnitTester(templatePath, template) {
 
 /**
  * Generates html and other resources from a valid template
+ * @param {object} templateIndex - the existing template index
  * @param {String} templatePath - the location of the template on disk
  * @param {Template} template 
  */
-async function templatePageGenerator(templatePath, template) {
+async function templatePageGenerator(templateIndex, templatePath, template) {
 
     console.log(`Generating html for ${templatePath}`);
 
@@ -308,6 +345,13 @@ async function templatePageGenerator(templatePath, template) {
         }
     }
 
+    // get all the versions of the template
+    const templateVersions = Object.keys(templateIndex).filter((item) => {
+        const atIndex = item.indexOf('@');
+        const name = item.substring(0,atIndex);
+        return name == template.getName();
+    });
+
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL : umlURL,
@@ -319,7 +363,8 @@ async function templatePageGenerator(templatePath, template) {
         responseTypes: responseTypes,
         state: state,
         instance: sampleInstanceText,
-        eventTypes: eventTypes
+        eventTypes: eventTypes,
+        templateVersions: templateVersions
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }

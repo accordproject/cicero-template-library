@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="copyright-license@0.3.0.html" class="dropdown-item is-active">
+                                copyright-license@0.3.0
+                            </a>
+                        
+                            <a href="copyright-license@0.2.0.html" class="dropdown-item ">
+                                copyright-license@0.2.0
+                            </a>
+                        
+                            <a href="copyright-license@0.1.0.html" class="dropdown-item ">
+                                copyright-license@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/copyright-license@0.3.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Copyright License Agreement
 
 This COPYRIGHT LICENSE AGREEMENT (the "Agreement"), dated as of 01/01/2018 (the "Effective Date"), is made by and between "Me" ("Licensee"), a "NY" "Company" with offices located at "1 Broadway", and "Myself" ("Licensor"), a "NY" "Company" with offices located at "2 Broadway".
@@ -147,39 +190,36 @@ NOW, THEREFORE, in consideration of the mutual covenants, terms, and conditions 
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.copyrightlicense.CopyrightLicenseContract",
-    "effectiveDate": "2018-06-15T05:33:57.781Z",
-    "licenseeName": "Excepteur pariatur labore incididunt.",
-    "licenseeState": "Exercitation velit est velit.",
-    "licenseeEntityType": "Elit occaecat.",
-    "licenseeAddress": "Anim quis adipisicing in.",
-    "licensorName": "Officia occaecat dolore ullamco magna.",
-    "licensorState": "In consequat velit.",
-    "licensorEntityType": "Consectetur ad reprehenderit sit.",
-    "licensorAddress": "Eu sint labore.",
-    "territory": "Voluptate veniam eu.",
-    "purposeDescription": "Dolor pariatur pariatur dolor laborum.",
-    "workDescription": "Labore laboris.",
+    "contractId": "bb339af1-9d3a-4ec2-9082-5cfbdefdb454",
+    "effectiveDate": "2018-01-01",
+    "licenseeName": "Me",
+    "licenseeState": "NY",
+    "licenseeEntityType": "Company",
+    "licenseeAddress": "1 Broadway",
+    "licensorName": "Myself",
+    "licensorState": "NY",
+    "licensorEntityType": "Company",
+    "licensorAddress": "2 Broadway",
+    "territory": "United States",
+    "purposeDescription": "stuff",
+    "workDescription": "other stuff",
     "paymentClause": {
         "$class": "org.accordproject.copyrightlicense.PaymentClause",
-        "amountText": "Sit nisi sunt aliqua culpa.",
+        "clauseId": "7ecec691-c81a-4ca6-9b1d-20cb93590db4",
+        "amountText": "one hundred US Dollars",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
-            "doubleValue": 110.192,
-            "currencyCode": "TRY"
+            "doubleValue": 100,
+            "currencyCode": "USD"
         },
-        "paymentProcedure": "Adipisicing laborum tempor.",
-        "clauseId": "2095"
-    },
-    "contractId": "b355bc50-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#1204"
-    ]
+        "paymentProcedure": "bank transfer"
+    }
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -195,10 +235,10 @@ NOW, THEREFORE, in consideration of the mutual covenants, terms, and conditions 
         
         <tr>
         <th>org.accordproject.copyrightlicense.PaymentRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.copyrightlicense.PaymentRequest",
-    "transactionId": "b3560a70-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:33:57.783Z"
+    "transactionId": "972156d0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:09.949Z"
 }</pre></code></td>
         </tr>
         
@@ -217,15 +257,15 @@ NOW, THEREFORE, in consideration of the mutual covenants, terms, and conditions 
         
         <tr>
         <th>org.accordproject.copyrightlicense.PayOut</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.copyrightlicense.PayOut",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 221.968,
-        "currencyCode": "BIF"
+        "doubleValue": 64.737,
+        "currencyCode": "CLF"
     },
-    "transactionId": "b3560a71-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:33:57.783Z"
+    "transactionId": "97217de0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:09.950Z"
 }</pre></code></td>
         </tr>
         

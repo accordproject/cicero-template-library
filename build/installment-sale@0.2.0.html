@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="installment-sale@0.2.0.html" class="dropdown-item is-active">
+                                installment-sale@0.2.0
+                            </a>
+                        
+                            <a href="installment-sale@0.1.0.html" class="dropdown-item ">
+                                installment-sale@0.1.0
+                            </a>
+                        
+                            <a href="installment-sale@0.0.3.html" class="dropdown-item ">
+                                installment-sale@0.0.3
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/installment-sale@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 "Dan" agrees to pay to "Ned" the total sum e10000, in the manner following:
 
 E500 is to be paid at closing, and the remaining balance of E9500 shall be paid as follows:
@@ -124,23 +167,20 @@ Monthly payments shall include both principal and interest with interest at the 
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.InstallmentSaleContract",
-    "BUYER": "Consectetur dolore qui.",
-    "SELLER": "Fugiat.",
-    "INITIAL_DUE": 145.256,
-    "INTEREST_RATE": 102.135,
-    "TOTAL_DUE_BEFORE_CLOSING": 239.47,
-    "MIN_PAYMENT": 194.393,
-    "DUE_AT_CLOSING": 63.928,
-    "contractId": "b9372af0-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#8481"
-    ]
+    "contractId": "24173c00-721a-45b8-8fea-44201b48eff5",
+    "BUYER": "Dan",
+    "SELLER": "Ned",
+    "INITIAL_DUE": 10000,
+    "INTEREST_RATE": 1.5,
+    "TOTAL_DUE_BEFORE_CLOSING": 9500,
+    "MIN_PAYMENT": 500,
+    "DUE_AT_CLOSING": 500
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -156,21 +196,21 @@ Monthly payments shall include both principal and interest with interest at the 
         
         <tr>
         <th>org.accordproject.installmentsale.ClosingPayment</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.ClosingPayment",
-    "amount": 42.863,
-    "transactionId": "b9377911-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:07.649Z"
+    "amount": 89.894,
+    "transactionId": "9a43a570-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:15.207Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.installmentsale.Installment</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.Installment",
-    "amount": 140.682,
-    "transactionId": "b9377910-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:07.649Z"
+    "amount": 201.842,
+    "transactionId": "9a437e60-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:15.207Z"
 }</pre></code></td>
         </tr>
         
@@ -189,12 +229,12 @@ Monthly payments shall include both principal and interest with interest at the 
         
         <tr>
         <th>org.accordproject.installmentsale.Balance</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.Balance",
-    "balance": 143.218,
-    "total_paid": 177.521,
-    "transactionId": "b937a021-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:07.650Z"
+    "balance": 159.405,
+    "total_paid": 24.243,
+    "transactionId": "9a43cc80-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:15.208Z"
 }</pre></code></td>
         </tr>
         
@@ -213,12 +253,12 @@ Monthly payments shall include both principal and interest with interest at the 
         
         <tr>
         <th>org.accordproject.installmentsale.PaymentObligation</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.PaymentObligation",
-    "amount": 119.072,
-    "party": "Ad id ex dolore.",
-    "eventId": "b937c730-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:07.651Z"
+    "amount": 8.025,
+    "party": "Quis nostrud sint.",
+    "eventId": "9a43f390-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:15.209Z"
 }</pre></code></td>
         </tr>
         

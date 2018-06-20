@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,25 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="eat-apples@0.0.1.html" class="dropdown-item is-active">
+                                eat-apples@0.0.1
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/eat-apples@0.0.1.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +122,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Eating healthy clause between "Dan" (the Employee) and "ACME" (the Company). The canteen only sells apple products. Apples, apple juice, apple flapjacks, toffee apples. Employee gets fired if caught eating anything without apples in it. THE EMPLOYEE, IF ALLERGIC TO APPLES, SHALL ALWAYS BE HUNGRY. Apple products at the canteen are subject to a 4.5% tax.
                 </pre>
             </div>
@@ -115,16 +150,16 @@ Eating healthy clause between "Dan" (the Employee) and "ACME" (the Company). The
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.canteen.CanteenClause",
-    "employee": "Consectetur labore ut.",
-    "company": "Veniam dolore ex.",
-    "tax": 210.896,
-    "clauseId": "b4eb0250-705d-11e8-8de1-21f5a797773f"
+    "clauseId": "7a2bc19d-e032-47ca-9fd1-df86bb420312",
+    "employee": "Dan",
+    "company": "ACME",
+    "tax": 4.5
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -140,12 +175,12 @@ Eating healthy clause between "Dan" (the Employee) and "ACME" (the Company). The
         
         <tr>
         <th>org.accordproject.canteen.Food</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.canteen.Food",
-    "produce": "Id.",
-    "price": 23.68,
-    "transactionId": "b4eb2960-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:00.438Z"
+    "produce": "Incididunt.",
+    "price": 226.983,
+    "transactionId": "980e9d00-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:11.504Z"
 }</pre></code></td>
         </tr>
         
@@ -164,11 +199,11 @@ Eating healthy clause between "Dan" (the Employee) and "ACME" (the Company). The
         
         <tr>
         <th>org.accordproject.canteen.Outcome</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.canteen.Outcome",
-    "notice": "Aliquip excepteur non velit.",
-    "transactionId": "b4eb2961-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:00.438Z"
+    "notice": "Ea duis consequat aliquip.",
+    "transactionId": "980e9d01-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:11.504Z"
 }</pre></code></td>
         </tr>
         

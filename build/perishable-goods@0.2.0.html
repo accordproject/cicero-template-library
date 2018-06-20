@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="perishable-goods@0.2.0.html" class="dropdown-item is-active">
+                                perishable-goods@0.2.0
+                            </a>
+                        
+                            <a href="perishable-goods@0.1.1.html" class="dropdown-item ">
+                                perishable-goods@0.1.1
+                            </a>
+                        
+                            <a href="perishable-goods@0.1.0.html" class="dropdown-item ">
+                                perishable-goods@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/perishable-goods@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 On receipt of the shipment "SHIP_001" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".
 
 Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per hours.
@@ -139,33 +182,33 @@ Formula for Breach Penalty Calculation:
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PerishableGoodsClause",
-    "grower": "resource:org.accordproject.perishablegoods.Grower#6884",
-    "importer": "resource:org.accordproject.perishablegoods.Importer#9389",
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#7823",
-    "dueDate": "2018-06-15T05:34:16.095Z",
+    "clauseId": "274df2b0-a5a1-430e-8134-a1922e1758bc",
+    "grower": "PETER",
+    "importer": "DAN",
+    "shipment": "SHIP_001",
+    "dueDate": "2018-07-02",
     "unitPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 139.328,
-        "currencyCode": "AOA"
+        "doubleValue": 1.5,
+        "currencyCode": "USD"
     },
-    "unit": "GRAM",
-    "minUnits": 14077,
-    "maxUnits": 42223,
-    "product": "Exercitation.",
-    "sensorReadingFrequency": 44802,
+    "unit": "KG",
+    "minUnits": 3000,
+    "maxUnits": 3500,
+    "product": "Grade I, Size 4, Zutano Mexican Avocados",
+    "sensorReadingFrequency": 1,
     "duration": "hours",
-    "minTemperature": 181.953,
-    "maxTemperature": 37.166,
-    "minHumidity": 60.75,
-    "maxHumidity": 124.132,
-    "penaltyFactor": 206.892,
-    "clauseId": "be403af0-705d-11e8-8de1-21f5a797773f"
+    "minTemperature": 2,
+    "maxTemperature": 13,
+    "minHumidity": 70,
+    "maxHumidity": 90,
+    "penaltyFactor": 0.2
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -181,12 +224,12 @@ Formula for Breach Penalty Calculation:
         
         <tr>
         <th>org.accordproject.perishablegoods.ShipmentReceived</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 51017,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#2207",
-    "transactionId": "be406200-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:16.096Z"
+    "unitCount": 26204,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#6589",
+    "transactionId": "9cb0d4e0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:19.278Z"
 }</pre></code></td>
         </tr>
         
@@ -205,14 +248,14 @@ Formula for Breach Penalty Calculation:
         
         <tr>
         <th>org.accordproject.perishablegoods.PriceCalculation</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
-    "totalPrice": 213.154,
-    "penalty": 152.701,
-    "late": true,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#9282",
-    "transactionId": "be412550-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:16.101Z"
+    "totalPrice": 207.224,
+    "penalty": 195.128,
+    "late": false,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#2493",
+    "transactionId": "9cb0fbf0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:19.279Z"
 }</pre></code></td>
         </tr>
         

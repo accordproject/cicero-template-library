@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="servicelevelagreement@0.2.0.html" class="dropdown-item is-active">
+                                servicelevelagreement@0.2.0
+                            </a>
+                        
+                            <a href="servicelevelagreement@0.1.0.html" class="dropdown-item ">
+                                servicelevelagreement@0.1.0
+                            </a>
+                        
+                            <a href="servicelevelagreement@0.0.1.html" class="dropdown-item ">
+                                servicelevelagreement@0.0.1
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/servicelevelagreement@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 1	Definitions
 
 1.1	In this Schedule:
@@ -178,23 +221,20 @@ Annex 1—Service levels
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.ServiceLevelAgreementContract",
-    "paymentPeriod": 61721,
-    "monthlyCapPercentage": 240.415,
-    "yearlyCapPercentage": 224.364,
-    "availability1": 157.09,
-    "serviceCredit1": 81.2,
-    "availability2": 107.725,
-    "serviceCredit2": 150.94,
-    "contractId": "c3d1b4d0-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#8825"
-    ]
+    "contractId": "6a5334c2-1a5e-4ae9-a7c8-a5a642054c0b",
+    "paymentPeriod": 30,
+    "monthlyCapPercentage": 10,
+    "yearlyCapPercentage": 10,
+    "availability1": 99.8,
+    "serviceCredit1": 2,
+    "availability2": 98,
+    "serviceCredit2": 3
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -210,14 +250,14 @@ Annex 1—Service levels
         
         <tr>
         <th>org.accordproject.servicelevelagreement.MonthSummary</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.MonthSummary",
-    "monthlyServiceLevel": 189.053,
-    "monthlyCharge": 100.636,
-    "last11MonthCredit": 223.661,
-    "last11MonthCharge": 58.037,
-    "transactionId": "c3d25110-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:25.441Z"
+    "monthlyServiceLevel": 200.965,
+    "monthlyCharge": 49.136,
+    "last11MonthCredit": 235.813,
+    "last11MonthCharge": 215.895,
+    "transactionId": "9fd6f410-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:24.561Z"
 }</pre></code></td>
         </tr>
         
@@ -236,11 +276,11 @@ Annex 1—Service levels
         
         <tr>
         <th>org.accordproject.servicelevelagreement.InvoiceCredit</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.InvoiceCredit",
-    "monthlyCredit": 82.187,
-    "transactionId": "c3d25111-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:25.441Z"
+    "monthlyCredit": 113.529,
+    "transactionId": "9fd6f411-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:24.561Z"
 }</pre></code></td>
         </tr>
         
