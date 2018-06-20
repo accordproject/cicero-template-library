@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +31,7 @@
 
     
 <!-— facebook open graph tags -->
-<meta property="og:url" content="https://templates.accordproject.orgsaft@0.3.0.html" />
+<meta property="og:url" content="saft@0.3.0.html" />
 <meta property="og:title" content="saft@0.3.0" />
 <meta property="og:description" content="The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches." />
 <meta property="og:image" content="http://www.plantuml.com/plantuml/png/hLJ1Rjim3BtxAtJSqDPVK0JDaXKeq091wX_G9CxHQf4UAQKrkltxwCHfui49TjZ1WaIQv7kFbEuaMKuvDeLhh8WXhalh7B5lcNw0IwNOxwbyj1dTnjpUca_LTGTDGw-VpMnctWjZp9LPKlxMW84tjx5OmzecA7uNbtFTtFoQJPHpmG5JoHbJY52kuMS6IPVHLS0ne1Oz2_2949HeDu-aYGr3j043rlSPlKp-aYZPvW6tMXpyUJB7ql-HpyfsbDE_aadq0hZVx_tFYPNQOFUUGUGyWQ7M1_fDrm8tu6lWqb5iINGZdQeGouejYdKf45ucyApB3lxykcO0F4L_YcvawQjPxFQsBra2Al2lAblg3hvAmHrYUisbNuS0eWOi6Xi1lNvfnRGDqaET4gtDhBCgSAhR8ZC3kcv17emR3fFHUj3q3i0_XXY6yALYgRJ7nd-0Efh0-aO9BO-k_PNnGLoVihyoAs2dm6qD8rsqs2lnorzQXR5uXwidKvAkeTKXw5Edi1qdF-Z08wi7SHpQNQFFJiwkoPUdtX4cre4fvpllOZWMTzgZ_itv0m00" />
@@ -38,7 +41,7 @@
 <meta name="twitter:description" content="The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches." />
 <meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/hLJ1Rjim3BtxAtJSqDPVK0JDaXKeq091wX_G9CxHQf4UAQKrkltxwCHfui49TjZ1WaIQv7kFbEuaMKuvDeLhh8WXhalh7B5lcNw0IwNOxwbyj1dTnjpUca_LTGTDGw-VpMnctWjZp9LPKlxMW84tjx5OmzecA7uNbtFTtFoQJPHpmG5JoHbJY52kuMS6IPVHLS0ne1Oz2_2949HeDu-aYGr3j043rlSPlKp-aYZPvW6tMXpyUJB7ql-HpyfsbDE_aadq0hZVx_tFYPNQOFUUGUGyWQ7M1_fDrm8tu6lWqb5iINGZdQeGouejYdKf45ucyApB3lxykcO0F4L_YcvawQjPxFQsBra2Al2lAblg3hvAmHrYUisbNuS0eWOi6Xi1lNvfnRGDqaET4gtDhBCgSAhR8ZC3kcv17emR3fFHUj3q3i0_XXY6yALYgRJ7nd-0Efh0-aO9BO-k_PNnGLoVihyoAs2dm6qD8rsqs2lnorzQXR5uXwidKvAkeTKXw5Edi1qdF-Z08wi7SHpQNQFFJiwkoPUdtX4cre4fvpllOZWMTzgZ_itv0m00" />
 <meta name="twitter:image:alt" content="UML diagram of saft@0.3.0 namespace." />
-<meta name="twitter:url" content="https://templates.accordproject.orgsaft@0.3.0.html" />
+<meta name="twitter:url" content="saft@0.3.0.html" />
 
 
     <title>Accord Project Template Library</title>
@@ -87,7 +90,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 NOTICE TO RESIDENTS OF THE UNITED STATES
 
 THE OFFER AND SALE OF THIS SECURITY INSTRUMENT HAS NOT BEEN REGISTERED UNDER THE U.S. SECURITIES ACT OF 1933, AS AMENDED (THE “SECURITIES ACT”), OR UNDER THE SECURITIES LAWS OF CERTAIN STATES.  THIS SECURITY MAY NOT BE OFFERED, SOLD OR OTHERWISE TRANSFERRED, PLEDGED OR HYPOTHECATED EXCEPT AS PERMITTED UNDER THE ACT AND APPLICABLE STATE SECURITIES LAWS PURSUANT TO AN EFFECTIVE REGISTRATION STATEMENT OR AN EXEMPTION THEREFROM.
@@ -214,41 +217,38 @@ By: Daniel Charles Selman
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.Saft",
-    "token": "Dolor id reprehenderit duis.",
-    "company": "Eu non enim.",
-    "companyType": "PC",
-    "state": "CT",
-    "amendmentProvision": false,
+    "contractId": "253111f2-d109-4b64-b296-8f2cc278efab",
+    "token": "Clause Token",
+    "company": "Clause",
+    "companyType": "CORP",
+    "state": "NY",
+    "amendmentProvision": true,
     "purchaseAmount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 87.337,
-        "currencyCode": "XAU"
+        "doubleValue": 25,
+        "currencyCode": "USD"
     },
-    "currency": "JMD",
+    "currency": "EUR",
     "netProceedLimit": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 236.587,
-        "currencyCode": "BBD"
+        "doubleValue": 3000000,
+        "currencyCode": "USD"
     },
-    "date": "2018-06-08T22:07:40.523Z",
-    "deadlineDate": "2018-06-08T22:07:40.523Z",
-    "discountRatePercentage": 215.522,
-    "network": "Occaecat exercitation ex id.",
-    "coin": "Sunt.",
-    "exchanges": "Magna deserunt.",
-    "companyRepresentative": "Irure.",
-    "purchaser": "Est consequat.",
-    "description": "Sunt adipisicing fugiat.",
-    "contractId": "5c5debb0-6b68-11e8-9721-29834758953f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#4725"
-    ]
+    "date": "2017-10-04",
+    "deadlineDate": "2018-04-20",
+    "discountRatePercentage": 38,
+    "network": "Clause Network",
+    "coin": "Ether",
+    "exchanges": "itBit",
+    "companyRepresentative": "Peter Hunn",
+    "purchaser": "Daniel Charles Selman",
+    "description": "happiness and intergalactic equality"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -264,30 +264,30 @@ By: Daniel Charles Selman
         
         <tr>
         <th>org.accordproject.saft.Launch</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.Launch",
-    "exchangeRate": 219.906,
-    "transactionId": "5c5e39d0-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:40.525Z"
+    "exchangeRate": 46.87,
+    "transactionId": "a2d9a530-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:38:06.723Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.saft.Terminate</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.Terminate",
     "remainingFunds": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 98.958,
-        "currencyCode": "GBP"
+        "doubleValue": 109.664,
+        "currencyCode": "CUP"
     },
     "totalInvested": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 182.123,
-        "currencyCode": "TOP"
+        "doubleValue": 135.521,
+        "currencyCode": "ISK"
     },
-    "transactionId": "5c5e39d1-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:40.525Z"
+    "transactionId": "a2d9a531-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:38:06.723Z"
 }</pre></code></td>
         </tr>
         
@@ -306,16 +306,16 @@ By: Daniel Charles Selman
         
         <tr>
         <th>org.accordproject.saft.Payout</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.Payout",
     "tokenAmount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 121.923,
-        "currencyCode": "NGN"
+        "doubleValue": 228.689,
+        "currencyCode": "NOK"
     },
-    "tokenAddress": "Ullamco.",
-    "transactionId": "5c5e60e1-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:40.526Z"
+    "tokenAddress": "Deserunt officia sit.",
+    "transactionId": "a2d9cc41-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:38:06.724Z"
 }</pre></code></td>
         </tr>
         

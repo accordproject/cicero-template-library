@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +31,7 @@
 
     
 <!-— facebook open graph tags -->
-<meta property="og:url" content="https://templates.accordproject.orgpromissory-note@0.2.0.html" />
+<meta property="og:url" content="promissory-note@0.2.0.html" />
 <meta property="og:title" content="promissory-note@0.2.0" />
 <meta property="og:description" content="A promissory note" />
 <meta property="og:image" content="http://www.plantuml.com/plantuml/png/ZLFBJiCm4BpdAtm4qUOBggefvS01L9N-m68laOkp6_meie1_PsdJeF3CoLxFUZmpjXSXWe-fSOLs489YNvUWDNlJUjwXZgMCZGs1VIQEMAuXDqXHpMRgR3l9w1m_dwlvNBqKIgaBTSE4GfchXfEqmM5OWpN5Mp6QV3fzdVyWHLkDdailZBR1SeDF2KCSgto38RdVXQyutJjKdA94GiPIlGG7f76Cy8vxhExGCWKS7NbVtafvC51DQez8_mRVMOE8MpbP6PaSb-wY5uUgWKVq0_-M8df9TTEtBfaT0WbYxDwQ1EuxHMMCR0e3m26P4_ao1KlIS2K9n2nG3Uuu_s7BWEoBhLRwj6rF6dfd3SJaXMxLoxuM8pLwPV01v6vMaCCGi1JOxP5q_iGw7JlX2iRgQ9b6lTlX3Vtz33HJz21rTK0lkx9OYFcFZ_WE" />
@@ -38,7 +41,7 @@
 <meta name="twitter:description" content="A promissory note" />
 <meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/ZLFBJiCm4BpdAtm4qUOBggefvS01L9N-m68laOkp6_meie1_PsdJeF3CoLxFUZmpjXSXWe-fSOLs489YNvUWDNlJUjwXZgMCZGs1VIQEMAuXDqXHpMRgR3l9w1m_dwlvNBqKIgaBTSE4GfchXfEqmM5OWpN5Mp6QV3fzdVyWHLkDdailZBR1SeDF2KCSgto38RdVXQyutJjKdA94GiPIlGG7f76Cy8vxhExGCWKS7NbVtafvC51DQez8_mRVMOE8MpbP6PaSb-wY5uUgWKVq0_-M8df9TTEtBfaT0WbYxDwQ1EuxHMMCR0e3m26P4_ao1KlIS2K9n2nG3Uuu_s7BWEoBhLRwj6rF6dfd3SJaXMxLoxuM8pLwPV01v6vMaCCGi1JOxP5q_iGw7JlX2iRgQ9b6lTlX3Vtz33HJz21rTK0lkx9OYFcFZ_WE" />
 <meta name="twitter:image:alt" content="UML diagram of promissory-note@0.2.0 namespace." />
-<meta name="twitter:url" content="https://templates.accordproject.orgpromissory-note@0.2.0.html" />
+<meta name="twitter:url" content="promissory-note@0.2.0.html" />
 
 
     <title>Accord Project Template Library</title>
@@ -87,7 +90,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 PROMISSORY NOTE 
 1000 USD 01/30/2018
 
@@ -148,38 +151,35 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.PromissoryNote",
+    "contractId": "0aa9e94f-100f-430c-90ec-49a0390805db",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 233.317,
-        "currencyCode": "CRC"
+        "doubleValue": 1000,
+        "currencyCode": "USD"
     },
-    "date": "2018-06-08T22:07:37.350Z",
-    "maker": "Reprehenderit tempor occaecat.",
-    "interestRate": 15.259,
-    "individual": false,
-    "makerAddress": "Eu dolore.",
-    "lender": "Do in voluptate.",
-    "legalEntity": "LP",
-    "lenderAddress": "Incididunt deserunt reprehenderit.",
+    "date": "2018-01-30",
+    "maker": "Daniel Selman",
+    "interestRate": 3.8,
+    "individual": true,
+    "makerAddress": "1 Main Street",
+    "lender": "Clause",
+    "legalEntity": "CORP",
+    "lenderAddress": "246 5th Ave, 3rd Fl, New York, NY 10001",
     "principal": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 125.215,
-        "currencyCode": "RWF"
+        "doubleValue": 500,
+        "currencyCode": "USD"
     },
-    "maturityDate": "2018-06-08T22:07:37.350Z",
-    "defaultDays": 14016,
-    "insolvencyDays": 20174,
-    "jurisdiction": "Enim ipsum dolore consequat.",
-    "contractId": "5a79c260-6b68-11e8-9721-29834758953f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#4699"
-    ]
+    "maturityDate": "2019-01-20",
+    "defaultDays": 90,
+    "insolvencyDays": 90,
+    "jurisdiction": "New York, NY"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -195,15 +195,15 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
         
         <tr>
         <th>org.accordproject.promissorynote.Payment</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.Payment",
     "amountPaid": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 89.802,
-        "currencyCode": "MRU"
+        "doubleValue": 154.983,
+        "currencyCode": "BMD"
     },
-    "transactionId": "5a7a1080-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:37.352Z"
+    "transactionId": "a21766a0-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:38:05.450Z"
 }</pre></code></td>
         </tr>
         
@@ -222,11 +222,11 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
         
         <tr>
         <th>org.accordproject.promissorynote.Result</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.Result",
-    "outstandingBalance": 225.143,
-    "transactionId": "5a7a1081-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:37.352Z"
+    "outstandingBalance": 55.512,
+    "transactionId": "a21766a1-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:38:05.450Z"
 }</pre></code></td>
         </tr>
         

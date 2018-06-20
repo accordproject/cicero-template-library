@@ -36,6 +36,10 @@ function execute(context) {
     res.amount.doubleValue = contract.deliveryPrice.doubleValue;
     res.amount.currencyCode = contract.deliveryPrice.currencyCode;
 
+    if(contract.deliveryPrice.currencyCode === 'XYZ') {
+        throw new Error("What!");
+    }
+
     req.accelerometerReadings.forEach(function(r){
         if(r > data.accelerationMax){
             res.amount.doubleValue -= contract.accelerationBreachPenalty.doubleValue;

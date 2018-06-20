@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +31,7 @@
 
     
 <!-— facebook open graph tags -->
-<meta property="og:url" content="https://templates.accordproject.orgacceptance-of-delivery@0.2.0.html" />
+<meta property="og:url" content="acceptance-of-delivery@0.2.0.html" />
 <meta property="og:title" content="acceptance-of-delivery@0.2.0" />
 <meta property="og:description" content="This clause allows the receiver of goods to inspect them for a given time period after delivery." />
 <meta property="og:image" content="http://www.plantuml.com/plantuml/png/dLDTRu8m57tdL_HnovHVO8nCs49YX01xDhLSiKjjMNlPmZx--mer6zkSKP_WddDfpaUP6QGQcvtmcA364AKhdpAcT5bhzGWCkmbgf9A1sfGW-3Fere-bgIqPkfck1P39X5mLenQ4K2_NP3ebRnuXv8Q45A7WEo3bzt863Enx6Q3RkLLA09M4ksEvagaL0wNtuLqkQ3n-dnxmmpW3hNpTIBIg_0oU6Z1uaNshCqUAZUdDHwDAGpkqdWPv7eMh8igBU7dliBiWNlp6aeSYZyDe5I_pD9eNSR9SfL4M9w7rVw6k34ojfFc_bZyMJF_O2z8LbVoLTZGnMrxNe0ymsjMepwvfAF3KcjpwUNa4Ns2osL-DTYveiyybw1e3EOpbNESzbQFciXfUS8Slb4NNZU4IZ0bfQtwiKqJAjZkGU7f-HmmTpv4fYPhQEUXPzuqt0rbs__ud" />
@@ -38,7 +41,7 @@
 <meta name="twitter:description" content="This clause allows the receiver of goods to inspect them for a given time period after delivery." />
 <meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/dLDTRu8m57tdL_HnovHVO8nCs49YX01xDhLSiKjjMNlPmZx--mer6zkSKP_WddDfpaUP6QGQcvtmcA364AKhdpAcT5bhzGWCkmbgf9A1sfGW-3Fere-bgIqPkfck1P39X5mLenQ4K2_NP3ebRnuXv8Q45A7WEo3bzt863Enx6Q3RkLLA09M4ksEvagaL0wNtuLqkQ3n-dnxmmpW3hNpTIBIg_0oU6Z1uaNshCqUAZUdDHwDAGpkqdWPv7eMh8igBU7dliBiWNlp6aeSYZyDe5I_pD9eNSR9SfL4M9w7rVw6k34ojfFc_bZyMJF_O2z8LbVoLTZGnMrxNe0ymsjMepwvfAF3KcjpwUNa4Ns2osL-DTYveiyybw1e3EOpbNESzbQFciXfUS8Slb4NNZU4IZ0bfQtwiKqJAjZkGU7f-HmmTpv4fYPhQEUXPzuqt0rbs__ud" />
 <meta name="twitter:image:alt" content="UML diagram of acceptance-of-delivery@0.2.0 namespace." />
-<meta name="twitter:url" content="https://templates.accordproject.orgacceptance-of-delivery@0.2.0.html" />
+<meta name="twitter:url" content="acceptance-of-delivery@0.2.0.html" />
 
 
     <title>Accord Project Template Library</title>
@@ -87,10 +90,10 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Acceptance of Delivery. "Party A" will be deemed to have completed its delivery obligations if in "Party B"'s opinion, the "Widgets" satisfies the Acceptance Criteria, and "Party B" notifies "Party A" in writing that it is accepting the "Widgets".
 
-Inspection and Notice. "Party A" will have 10 Business Days' to inspect and evaluate the "Widgets" on the delivery date before notifying "Party A" that it is either accepting or rejecting the "Widgets".
+Inspection and Notice. "Party B" will have 10 Business Days' to inspect and evaluate the "Widgets" on the delivery date before notifying "Party A" that it is either accepting or rejecting the "Widgets".
 
 Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widgets" must meet for the "Party A" to comply with its requirements and obligations under this agreement, detailed in "Attachment X", attached to this agreement.
                 </pre>
@@ -121,18 +124,18 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
-    "shipper": "resource:org.accordproject.organization.Organization#1429",
-    "receiver": "resource:org.accordproject.organization.Organization#8011",
-    "deliverable": "Amet non eu labore.",
-    "businessDays": 2275702977,
-    "attachment": "Non tempor.",
-    "clauseId": "51040970-6b68-11e8-9721-29834758953f"
+    "clauseId": "f68da431-7c5c-4fa9-88ec-d7656ab1b00b",
+    "shipper": "Party A",
+    "receiver": "Party B",
+    "deliverable": "Widgets",
+    "businessDays": 10,
+    "attachment": "Attachment X"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -148,12 +151,12 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         
         <tr>
         <th>org.accordproject.acceptanceofdelivery.InspectDeliverable</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
-    "deliverableReceivedAt": "2018-06-08T22:07:21.486Z",
+    "deliverableReceivedAt": "2018-06-20T09:37:57.503Z",
     "inspectionPassed": false,
-    "transactionId": "5104f3d0-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:21.486Z"
+    "transactionId": "9d5ac8f0-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:37:57.503Z"
 }</pre></code></td>
         </tr>
         
@@ -172,13 +175,13 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         
         <tr>
         <th>org.accordproject.acceptanceofdelivery.InspectionResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectionResponse",
     "status": "PASSED_TESTING",
-    "shipper": "resource:org.accordproject.organization.Organization#8112",
-    "receiver": "resource:org.accordproject.organization.Organization#3506",
-    "transactionId": "51051ae0-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:21.486Z"
+    "shipper": "resource:org.accordproject.organization.Organization#5651",
+    "receiver": "resource:org.accordproject.organization.Organization#0302",
+    "transactionId": "9d5b1710-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:37:57.506Z"
 }</pre></code></td>
         </tr>
         

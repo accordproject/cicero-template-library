@@ -16,10 +16,10 @@
 
 const CodeGen = require('composer-common').CodeGen;
 const Template = require('@accordproject/cicero-core').Template;
+const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
-const Mocha = require('mocha');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
 const uuidv1 = require('uuid/v1');
@@ -209,44 +209,23 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 };
 
 /**
- * Runs the unit tests for a template
+ * Runs the standard tests for a template
  * @param {String} templatePath - the location of the template on disk
  * @param {Template} template 
  */
 async function templateUnitTester(templatePath, template) {
+    // check that all the samples parse
+    const samples = template.getMetadata().getSamples();
+    if(samples) {
+        const sampleValues = Object.values(samples);
+        
+        // should be TemplateInstance
+        const instance = new Clause(template);
 
-    if(process.env.SKIP_TESTS) {
-        console.log(`Skipping tests for ${templatePath}`);
-        return;
-    }
-
-    console.log(`Running tests for ${templatePath}`);
-    
-    // Instantiate a Mocha instance.
-    var mocha = new Mocha({
-        timeout: 20000 // allow 20 seconds for tests
-    });
-
-    var testDir = templatePath + '/test';
-
-    // Add each .js file to the mocha instance
-    fs.readdirSync(testDir).filter(function(file){
-        // Only keep the .js files
-        return file.substr(-3) === '.js';
-
-    }).forEach(function(file){
-        mocha.addFile(
-            path.join(testDir, file)
-        );
-    });
-
-    // Run the tests
-    mocha.run(function(failures){
-        if(failures) {
-            process.exitCode = failures ? -1 : 0;  // exit with non-zero status if there were failures
-            throw new Error('Test failed for ' + templatePath);
+        for(const s of sampleValues ) {
+            instance.parse(s);
         }
-    });
+    }    
 }
 
 /**
@@ -287,10 +266,22 @@ async function templatePageGenerator(templatePath, template) {
     const sampleGenerationOptions = {};
     sampleGenerationOptions.generate = true;
     sampleGenerationOptions.includeOptionalFields = true;
+    let sampleInstanceText = null
 
-    const classDecl = template.getTemplateModel();
-    const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-    const instance = JSON.stringify(sampleInstance, null, 4);
+    // parse the default sample and use it as the sample instance
+    const samples = template.getMetadata().getSamples();
+    if(samples.default) {
+        // should be TemplateInstance
+        const instance = new Clause(template);
+        instance.parse(samples.default);
+        sampleInstanceText = JSON.stringify(instance.getData(), null, 4);
+    }
+    else {
+        // no sample was found, so we generate one
+        const classDecl = template.getTemplateModel();
+        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+        sampleInstanceText = JSON.stringify(sampleInstance, null, 4);    
+    }
 
     const requestTypes = {};
     for(let type of template.getRequestTypes()) {
@@ -319,7 +310,7 @@ async function templatePageGenerator(templatePath, template) {
         requestTypes: requestTypes,
         responseTypes: responseTypes,
         state: state,
-        instance: instance,
+        instance: sampleInstanceText,
         eventTypes: eventTypes
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);

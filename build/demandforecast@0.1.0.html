@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +31,7 @@
 
     
 <!-— facebook open graph tags -->
-<meta property="og:url" content="https://templates.accordproject.orgdemandforecast@0.1.0.html" />
+<meta property="og:url" content="demandforecast@0.1.0.html" />
 <meta property="og:title" content="demandforecast@0.1.0" />
 <meta property="og:description" content="A sample demandforecast clause." />
 <meta property="og:image" content="http://www.plantuml.com/plantuml/png/dPBHJiCm34NV-nL-1B7r2wPgWmc9jsdi1q9oMuBIf7CIK0NyEzcQIdIQKCMZ7JlskTTh7mI7s9f26k4zEMvA8QLZrR5xWmobGYkigXr32X_AxJbypE634T63LYkwsImQ1kmjLHLz5aHqHy-1jMseYonVXGTFiZvsdT5ZSYi23he5eQxJLFsEKoQ_kVXYGAssketj3YnXWsXGV1V_MtUv_Agka4ejmQwKpWOMATwSNuUUkVACa_OuHlXmLkQmw66C-_WjpPCDQC232ltODOVeSiBVC1njIBAMkNeknhssAfcqX--SpGPVmyZMSFfTCzGkEprbx25ucZd6T7J9-XcubvlCnHtAYpMiEbtt3m00" />
@@ -38,7 +41,7 @@
 <meta name="twitter:description" content="A sample demandforecast clause." />
 <meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/dPBHJiCm34NV-nL-1B7r2wPgWmc9jsdi1q9oMuBIf7CIK0NyEzcQIdIQKCMZ7JlskTTh7mI7s9f26k4zEMvA8QLZrR5xWmobGYkigXr32X_AxJbypE634T63LYkwsImQ1kmjLHLz5aHqHy-1jMseYonVXGTFiZvsdT5ZSYi23he5eQxJLFsEKoQ_kVXYGAssketj3YnXWsXGV1V_MtUv_Agka4ejmQwKpWOMATwSNuUUkVACa_OuHlXmLkQmw66C-_WjpPCDQC232ltODOVeSiBVC1njIBAMkNeknhssAfcqX--SpGPVmyZMSFfTCzGkEprbx25ucZd6T7J9-XcubvlCnHtAYpMiEbtt3m00" />
 <meta name="twitter:image:alt" content="UML diagram of demandforecast@0.1.0 namespace." />
-<meta name="twitter:url" content="https://templates.accordproject.orgdemandforecast@0.1.0.html" />
+<meta name="twitter:url" content="demandforecast@0.1.0.html" />
 
 
     <title>Accord Project Template Library</title>
@@ -87,7 +90,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
 
                 </pre>
@@ -116,17 +119,17 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.DemandForecastClause",
-    "purchaser": "Nulla.",
-    "supplier": "Sunt nisi occaecat incididunt.",
-    "effectiveDate": "2018-06-08T22:07:28.915Z",
-    "minimumPercentage": 9.844,
-    "clauseId": "5572ae30-6b68-11e8-9721-29834758953f"
+    "clauseId": "78430b8a-7948-4aa9-abf6-10a9027a94f0",
+    "purchaser": "PETER",
+    "supplier": "DAN",
+    "effectiveDate": "2018-04-02",
+    "minimumPercentage": 85
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -142,11 +145,11 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
         
         <tr>
         <th>org.accordproject.demandforecast.ForecastRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.ForecastRequest",
-    "supplyForecast": 54892,
-    "transactionId": "5572d540-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:28.916Z"
+    "supplyForecast": 47723,
+    "transactionId": "9e6dbf90-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:37:59.305Z"
 }</pre></code></td>
         </tr>
         
@@ -165,13 +168,13 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
         
         <tr>
         <th>org.accordproject.demandforecast.BindingResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.BindingResponse",
-    "requiredPurchase": 140.912,
-    "year": 45106,
-    "quarter": 37088,
-    "transactionId": "5572d541-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:28.916Z"
+    "requiredPurchase": 90.716,
+    "year": 62316,
+    "quarter": 40182,
+    "transactionId": "9e6de6a0-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:37:59.306Z"
 }</pre></code></td>
         </tr>
         

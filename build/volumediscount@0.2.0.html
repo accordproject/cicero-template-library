@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +31,7 @@
 
     
 <!-— facebook open graph tags -->
-<meta property="og:url" content="https://templates.accordproject.orgvolumediscount@0.2.0.html" />
+<meta property="og:url" content="volumediscount@0.2.0.html" />
 <meta property="og:title" content="volumediscount@0.2.0" />
 <meta property="og:description" content="A sample volume discount contract." />
 <meta property="og:image" content="http://www.plantuml.com/plantuml/png/dPBHJiCm34NV-nLvP6BB5qpLgkqBfedtB35jK1eNsm5LmByJscuIeX9gttAlOzdd9WSMGvBQKDXWc1LIhOsrIAuZV04h-Wr3Qi5vjfYYwAT1dYQfzdlrK6rh0eWRLPRger1AFQeJfci0zUo9PUpuvJDOZ6wcC3ISZSnT_sDBusbqlugbU-zsd-KChFKM27KU9sIoheRgSPBhCZh3Qm8UexfiUmW1tsUoYY1LZCc4OsEeXYcSnMItQNV0fk-00hWQA7Er7N8-SCy2hRwGYPp1FCQrRDnXPFWFxjQ-xhNkKnP37I2wdy_z3G00" />
@@ -38,7 +41,7 @@
 <meta name="twitter:description" content="A sample volume discount contract." />
 <meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/dPBHJiCm34NV-nLvP6BB5qpLgkqBfedtB35jK1eNsm5LmByJscuIeX9gttAlOzdd9WSMGvBQKDXWc1LIhOsrIAuZV04h-Wr3Qi5vjfYYwAT1dYQfzdlrK6rh0eWRLPRger1AFQeJfci0zUo9PUpuvJDOZ6wcC3ISZSnT_sDBusbqlugbU-zsd-KChFKM27KU9sIoheRgSPBhCZh3Qm8UexfiUmW1tsUoYY1LZCc4OsEeXYcSnMItQNV0fk-00hWQA7Er7N8-SCy2hRwGYPp1FCQrRDnXPFWFxjQ-xhNkKnP37I2wdy_z3G00" />
 <meta name="twitter:image:alt" content="UML diagram of volumediscount@0.2.0 namespace." />
-<meta name="twitter:url" content="https://templates.accordproject.orgvolumediscount@0.2.0.html" />
+<meta name="twitter:url" content="volumediscount@0.2.0.html" />
 
 
     <title>Accord Project Template Library</title>
@@ -87,7 +90,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Volume-Based Card Acceptance Agreement [Abbreviated]
 
 This Agreement is by and between Card, Inc., a New York corporation, and you, the Merchant. By accepting the Card, you agree to be bound by the Agreement. 
@@ -143,21 +146,18 @@ _______________________					_____________________
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscount",
-    "firstVolume": 204.459,
-    "secondVolume": 246.731,
-    "firstRate": 104.73,
-    "secondRate": 62.742,
-    "thirdRate": 14.669,
-    "contractId": "5f7a6df0-6b68-11e8-9721-29834758953f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#1417"
-    ]
+    "contractId": "5e9ce5fd-76d3-4868-9fce-916af28c7619",
+    "firstVolume": 1,
+    "secondVolume": 10,
+    "firstRate": 3,
+    "secondRate": 2.9,
+    "thirdRate": 2.8
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -173,11 +173,11 @@ _______________________					_____________________
         
         <tr>
         <th>org.accordproject.volumediscount.VolumeDiscountRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountRequest",
-    "netAnnualChargeVolume": 239.269,
-    "transactionId": "5f7a6df1-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:45.743Z"
+    "netAnnualChargeVolume": 245.105,
+    "transactionId": "a53b14d0-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:38:10.717Z"
 }</pre></code></td>
         </tr>
         
@@ -196,11 +196,11 @@ _______________________					_____________________
         
         <tr>
         <th>org.accordproject.volumediscount.VolumeDiscountResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountResponse",
-    "discountRate": 117.505,
-    "transactionId": "5f7a9500-6b68-11e8-9721-29834758953f",
-    "timestamp": "2018-06-08T22:07:45.744Z"
+    "discountRate": 241.305,
+    "transactionId": "a53b3be0-746d-11e8-8260-d364b0ca1709",
+    "timestamp": "2018-06-20T09:38:10.718Z"
 }</pre></code></td>
         </tr>
         
