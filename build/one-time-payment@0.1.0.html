@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,25 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="one-time-payment@0.1.0.html" class="dropdown-item is-active">
+                                one-time-payment@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/one-time-payment@0.1.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +122,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution of this Agreement.
 
                 </pre>
@@ -118,23 +153,20 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.OneTimePaymentContract",
-    "partyA": "Tempor id velit.",
-    "partyB": "Nulla aliqua.",
+    "contractId": "376fe27b-bccd-47ef-a911-823921ab68f9",
+    "partyA": "Dan",
+    "partyB": "Steve",
     "initialAmount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 94.647,
-        "currencyCode": "KGS"
-    },
-    "contractId": "bcdd9db0-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#5914"
-    ]
+        "doubleValue": 0.01,
+        "currencyCode": "USD"
+    }
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -150,10 +182,10 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
         
         <tr>
         <th>org.accordproject.payment.onetime.MyRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.MyRequest",
-    "transactionId": "bcddc4c0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:13.772Z"
+    "transactionId": "9babc0f0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:17.567Z"
 }</pre></code></td>
         </tr>
         
@@ -172,10 +204,10 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
         
         <tr>
         <th>org.accordproject.payment.onetime.MyResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.MyResponse",
-    "transactionId": "bcddebd0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:13.773Z"
+    "transactionId": "9babc0f1-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:17.567Z"
 }</pre></code></td>
         </tr>
         
@@ -194,20 +226,20 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
         
         <tr>
         <th>org.accordproject.cicero.runtime.PaymentObligation</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 235.796,
-        "currencyCode": "CUC"
+        "doubleValue": 240.595,
+        "currencyCode": "TJS"
     },
-    "description": "Elit commodo irure velit.",
-    "contract": "resource:org.accordproject.payment.onetime.OneTimePaymentContract#6946",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#1424",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6386",
-    "deadline": "2018-06-15T05:34:13.773Z",
-    "eventId": "bcddebd1-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:13.773Z"
+    "description": "Adipisicing.",
+    "contract": "resource:org.accordproject.payment.onetime.OneTimePaymentContract#6213",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#6597",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6967",
+    "deadline": "2018-06-20T13:41:17.567Z",
+    "eventId": "9babc0f2-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:17.567Z"
 }</pre></code></td>
         </tr>
         

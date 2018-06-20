@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="acceptance-of-delivery@0.2.0.html" class="dropdown-item is-active">
+                                acceptance-of-delivery@0.2.0
+                            </a>
+                        
+                            <a href="acceptance-of-delivery@0.1.0.html" class="dropdown-item ">
+                                acceptance-of-delivery@0.1.0
+                            </a>
+                        
+                            <a href="acceptance-of-delivery@0.0.3.html" class="dropdown-item ">
+                                acceptance-of-delivery@0.0.3
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/acceptance-of-delivery@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,10 +130,10 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Acceptance of Delivery. "Party A" will be deemed to have completed its delivery obligations if in "Party B"'s opinion, the "Widgets" satisfies the Acceptance Criteria, and "Party B" notifies "Party A" in writing that it is accepting the "Widgets".
 
-Inspection and Notice. "Party A" will have 10 Business Days' to inspect and evaluate the "Widgets" on the delivery date before notifying "Party A" that it is either accepting or rejecting the "Widgets".
+Inspection and Notice. "Party B" will have 10 Business Days' to inspect and evaluate the "Widgets" on the delivery date before notifying "Party A" that it is either accepting or rejecting the "Widgets".
 
 Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widgets" must meet for the "Party A" to comply with its requirements and obligations under this agreement, detailed in "Attachment X", attached to this agreement.
                 </pre>
@@ -121,18 +164,18 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
-    "shipper": "resource:org.accordproject.organization.Organization#5993",
-    "receiver": "resource:org.accordproject.organization.Organization#3896",
-    "deliverable": "Sint non nostrud duis.",
-    "businessDays": 1680675505,
-    "attachment": "Consectetur magna quis sit consectetur.",
-    "clauseId": "b2074350-705d-11e8-8de1-21f5a797773f"
+    "clauseId": "fefeafa3-46ef-4276-b13b-471aa971f719",
+    "shipper": "Party A",
+    "receiver": "Party B",
+    "deliverable": "Widgets",
+    "businessDays": 10,
+    "attachment": "Attachment X"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -148,12 +191,12 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         
         <tr>
         <th>org.accordproject.acceptanceofdelivery.InspectDeliverable</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
-    "deliverableReceivedAt": "2018-06-15T05:33:55.595Z",
+    "deliverableReceivedAt": "2018-06-20T13:41:08.390Z",
     "inspectionPassed": true,
-    "transactionId": "b2082db0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:33:55.595Z"
+    "transactionId": "96337460-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:08.390Z"
 }</pre></code></td>
         </tr>
         
@@ -172,13 +215,13 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         
         <tr>
         <th>org.accordproject.acceptanceofdelivery.InspectionResponse</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectionResponse",
-    "status": "OUTSIDE_INSPECTION_PERIOD",
-    "shipper": "resource:org.accordproject.organization.Organization#4128",
-    "receiver": "resource:org.accordproject.organization.Organization#3266",
-    "transactionId": "b2082db1-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:33:55.595Z"
+    "status": "FAILED_TESTING",
+    "shipper": "resource:org.accordproject.organization.Organization#3844",
+    "receiver": "resource:org.accordproject.organization.Organization#0395",
+    "transactionId": "9633c280-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:08.393Z"
 }</pre></code></td>
         </tr>
         

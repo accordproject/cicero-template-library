@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,37 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="promissory-note@0.2.0.html" class="dropdown-item is-active">
+                                promissory-note@0.2.0
+                            </a>
+                        
+                            <a href="promissory-note@0.1.1.html" class="dropdown-item ">
+                                promissory-note@0.1.1
+                            </a>
+                        
+                            <a href="promissory-note@0.1.0.html" class="dropdown-item ">
+                                promissory-note@0.1.0
+                            </a>
+                        
+                            <a href="promissory-note@0.0.4.html" class="dropdown-item ">
+                                promissory-note@0.0.4
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/promissory-note@0.2.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +134,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 PROMISSORY NOTE 
 1000 USD 01/30/2018
 
@@ -148,38 +195,35 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.PromissoryNote",
+    "contractId": "7e872e6a-8a8e-48c4-a7a6-aac6c7892d72",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 8.057,
-        "currencyCode": "DKK"
+        "doubleValue": 1000,
+        "currencyCode": "USD"
     },
-    "date": "2018-06-15T05:34:17.499Z",
-    "maker": "Adipisicing pariatur dolore deserunt.",
-    "interestRate": 35.883,
+    "date": "2018-01-30",
+    "maker": "Daniel Selman",
+    "interestRate": 3.8,
     "individual": true,
-    "makerAddress": "Ipsum dolore quis anim.",
-    "lender": "Sunt sit amet.",
-    "legalEntity": "LLLP",
-    "lenderAddress": "Cillum ad exercitation aute.",
+    "makerAddress": "1 Main Street",
+    "lender": "Clause",
+    "legalEntity": "CORP",
+    "lenderAddress": "246 5th Ave, 3rd Fl, New York, NY 10001",
     "principal": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 28.526,
-        "currencyCode": "KZT"
+        "doubleValue": 500,
+        "currencyCode": "USD"
     },
-    "maturityDate": "2018-06-15T05:34:17.499Z",
-    "defaultDays": 23070,
-    "insolvencyDays": 30304,
-    "jurisdiction": "Duis nulla veniam.",
-    "contractId": "bf1676b0-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#4283"
-    ]
+    "maturityDate": "2019-01-20",
+    "defaultDays": 90,
+    "insolvencyDays": 90,
+    "jurisdiction": "New York, NY"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -195,15 +239,15 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
         
         <tr>
         <th>org.accordproject.promissorynote.Payment</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.Payment",
     "amountPaid": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 138.457,
-        "currencyCode": "PAB"
+        "doubleValue": 106.358,
+        "currencyCode": "SBD"
     },
-    "transactionId": "bf16c4d0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:17.501Z"
+    "transactionId": "9d6530c0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:20.460Z"
 }</pre></code></td>
         </tr>
         
@@ -222,11 +266,11 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
         
         <tr>
         <th>org.accordproject.promissorynote.Result</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.Result",
-    "outstandingBalance": 224.929,
-    "transactionId": "bf16ebe0-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:17.502Z"
+    "outstandingBalance": 189.857,
+    "transactionId": "9d6557d0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:20.461Z"
 }</pre></code></td>
         </tr>
         

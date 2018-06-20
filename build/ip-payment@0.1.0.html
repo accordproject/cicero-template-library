@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,29 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="ip-payment@0.1.0.html" class="dropdown-item is-active">
+                                ip-payment@0.1.0
+                            </a>
+                        
+                            <a href="ip-payment@0.0.3.html" class="dropdown-item ">
+                                ip-payment@0.0.3
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/ip-payment@0.1.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +126,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Payments.
 
 1.  Royalty. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor a royalty of "four point five" percent (4.5%) of the Net Sales Price for the respective preceding Quarterly Period.
@@ -133,27 +172,27 @@ Payments.
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.ippayment.IntellectualPropertyPaymentClause",
-    "royaltyText": "Exercitation elit.",
-    "royaltyRate": 131.76,
-    "sublicensingRoyaltyText": "Ipsum officia.",
-    "sublicensingRoyaltyRate": 181.562,
+    "clauseId": "64eed582-16d6-465a-b53f-8ab16f23c393",
+    "royaltyText": "four point five",
+    "royaltyRate": 4.5,
+    "sublicensingRoyaltyText": "five point two",
+    "sublicensingRoyaltyRate": 5.2,
     "paymentPeriod": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 2676849767,
-        "unit": "years"
+        "amount": 10,
+        "unit": "days"
     },
     "paymentPeriodWithPermission": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 1800144811,
-        "unit": "seconds"
-    },
-    "clauseId": "ba772500-705d-11e8-8de1-21f5a797773f"
+        "amount": 7,
+        "unit": "days"
+    }
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -169,13 +208,13 @@ Payments.
         
         <tr>
         <th>org.accordproject.ippayment.PaymentRequest</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.ippayment.PaymentRequest",
-    "netSaleRevenue": 139.97,
-    "sublicensingRevenue": 154.914,
-    "permissionGrantedBy": "2018-06-15T05:34:09.745Z",
-    "transactionId": "ba774c10-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:09.745Z"
+    "netSaleRevenue": 109.929,
+    "sublicensingRevenue": 139.376,
+    "permissionGrantedBy": "2018-06-20T13:41:15.907Z",
+    "transactionId": "9aae4e20-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:15.907Z"
 }</pre></code></td>
         </tr>
         
@@ -194,12 +233,12 @@ Payments.
         
         <tr>
         <th>org.accordproject.ippayment.PayOut</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.ippayment.PayOut",
-    "totalAmount": 82.157,
-    "dueBy": "Velit laboris incididunt ex mollit.",
-    "transactionId": "ba774c11-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:09.746Z"
+    "totalAmount": 220.388,
+    "dueBy": "Anim.",
+    "transactionId": "9aae7530-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:15.907Z"
 }</pre></code></td>
         </tr>
         

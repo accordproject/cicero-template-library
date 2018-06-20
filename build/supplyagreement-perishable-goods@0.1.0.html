@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,25 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="supplyagreement-perishable-goods@0.1.0.html" class="dropdown-item is-active">
+                                supplyagreement-perishable-goods@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/supplyagreement-perishable-goods@0.1.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +122,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 Supply Agreement
 
 This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of 06/30/2018 (the “Execution Date”) between "SUPPLIER CORPORATION", a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and "BUYER CORPORATION", a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.
@@ -249,32 +284,29 @@ Formula for Breach Penalty Calculation:
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.contract.SupplyAgreementPerishableGoodsContract",
-    "grower": "resource:org.accordproject.perishablegoods.Grower#6048",
-    "importer": "resource:org.accordproject.perishablegoods.Importer#0266",
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#8730",
-    "dueDate": "2018-06-15T05:34:38.864Z",
-    "unitPrice": 141.353,
+    "contractId": "49573a18-8c78-41fe-83e0-189a101e1f5f",
+    "grower": "SUPPLIER CORPORATION",
+    "importer": "BUYER CORPORATION",
+    "shipment": "SHIP_001",
+    "dueDate": "2018-06-30",
+    "unitPrice": 1.5,
     "unit": "KG",
-    "minUnits": 33473,
-    "maxUnits": 24218,
-    "product": "Magna ex officia mollit irure.",
-    "sensorReadingFrequency": 54453,
-    "duration": "weeks",
-    "minTemperature": 62.796,
-    "maxTemperature": 176.862,
-    "minHumidity": 14.225,
-    "maxHumidity": 228.759,
-    "penaltyFactor": 62.707,
-    "contractId": "cbd28100-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#6728"
-    ]
+    "minUnits": 2995,
+    "maxUnits": 3005,
+    "product": "Grade I, Size 4, Zutano Mexican Avocados",
+    "sensorReadingFrequency": 1,
+    "duration": "hours",
+    "minTemperature": 2,
+    "maxTemperature": 13,
+    "minHumidity": 70,
+    "maxHumidity": 90,
+    "penaltyFactor": 0.2
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -290,12 +322,12 @@ Formula for Breach Penalty Calculation:
         
         <tr>
         <th>org.accordproject.perishablegoods.ShipmentReceived</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 48366,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#9787",
-    "transactionId": "cbd2cf20-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:38.866Z"
+    "unitCount": 37885,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#6146",
+    "transactionId": "a257f9a0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:28.762Z"
 }</pre></code></td>
         </tr>
         
@@ -314,14 +346,14 @@ Formula for Breach Penalty Calculation:
         
         <tr>
         <th>org.accordproject.perishablegoods.PriceCalculation</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
-    "totalPrice": 86.817,
-    "penalty": 149.328,
+    "totalPrice": 176.494,
+    "penalty": 100.191,
     "late": true,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#8612",
-    "transactionId": "cbd2cf21-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:38.866Z"
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#7969",
+    "transactionId": "a25820b0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:28.763Z"
 }</pre></code></td>
         </tr>
         

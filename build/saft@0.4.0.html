@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,37 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="saft@0.4.0.html" class="dropdown-item is-active">
+                                saft@0.4.0
+                            </a>
+                        
+                            <a href="saft@0.3.0.html" class="dropdown-item ">
+                                saft@0.3.0
+                            </a>
+                        
+                            <a href="saft@0.2.0.html" class="dropdown-item ">
+                                saft@0.2.0
+                            </a>
+                        
+                            <a href="saft@0.1.1.html" class="dropdown-item ">
+                                saft@0.1.1
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/saft@0.4.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +134,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 NOTICE TO RESIDENTS OF THE UNITED STATES
 
 THE OFFER AND SALE OF THIS SECURITY INSTRUMENT HAS NOT BEEN REGISTERED UNDER THE U.S. SECURITIES ACT OF 1933, AS AMENDED (THE “SECURITIES ACT”), OR UNDER THE SECURITIES LAWS OF CERTAIN STATES.  THIS SECURITY MAY NOT BE OFFERED, SOLD OR OTHERWISE TRANSFERRED, PLEDGED OR HYPOTHECATED EXCEPT AS PERMITTED UNDER THE ACT AND APPLICABLE STATE SECURITIES LAWS PURSUANT TO AN EFFECTIVE REGISTRATION STATEMENT OR AN EXEMPTION THEREFROM.
@@ -214,41 +261,38 @@ By: Daniel Charles Selman
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.SaftContract",
-    "token": "Anim ad exercitation.",
-    "company": "Anim eu do esse occaecat.",
-    "companyType": "GENERAL_PARTNERSHIP",
-    "state": "SC",
-    "amendmentProvision": false,
+    "contractId": "680c63ab-08b0-48d6-85aa-19892b0a2d18",
+    "token": "Clause Token",
+    "company": "Clause",
+    "companyType": "CORP",
+    "state": "NY",
+    "amendmentProvision": true,
     "purchaseAmount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 7.757,
-        "currencyCode": "MKD"
+        "doubleValue": 25,
+        "currencyCode": "USD"
     },
-    "currency": "MVR",
+    "currency": "EUR",
     "netProceedLimit": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 54.319,
-        "currencyCode": "NZD"
+        "doubleValue": 3000000,
+        "currencyCode": "USD"
     },
-    "date": "2018-06-15T05:34:21.121Z",
-    "deadlineDate": "2018-06-15T05:34:21.121Z",
-    "discountRatePercentage": 190.391,
-    "network": "Tempor cupidatat voluptate.",
-    "coin": "Duis.",
-    "exchanges": "Cillum minim reprehenderit.",
-    "companyRepresentative": "Mollit cupidatat cupidatat.",
-    "purchaser": "Qui.",
-    "description": "Est pariatur culpa aute cillum.",
-    "contractId": "c13f2310-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#7985"
-    ]
+    "date": "2017-10-04",
+    "deadlineDate": "2018-04-20",
+    "discountRatePercentage": 38,
+    "network": "Clause Network",
+    "coin": "Ether",
+    "exchanges": "itBit",
+    "companyRepresentative": "Peter Hunn",
+    "purchaser": "Daniel Charles Selman",
+    "description": "happiness and intergalactic equality"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -264,30 +308,30 @@ By: Daniel Charles Selman
         
         <tr>
         <th>org.accordproject.saft.Launch</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.Launch",
-    "exchangeRate": 57.389,
-    "transactionId": "c13f7130-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:21.123Z"
+    "exchangeRate": 78.896,
+    "transactionId": "9e40eac0-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:21.900Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.saft.Terminate</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.Terminate",
     "remainingFunds": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 23.658,
-        "currencyCode": "BAM"
+        "doubleValue": 243.594,
+        "currencyCode": "COU"
     },
     "totalInvested": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 175.943,
-        "currencyCode": "AWG"
+        "doubleValue": 152.627,
+        "currencyCode": "MGA"
     },
-    "transactionId": "c13f9840-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:21.124Z"
+    "transactionId": "9e40eac1-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:21.900Z"
 }</pre></code></td>
         </tr>
         
@@ -306,16 +350,16 @@ By: Daniel Charles Selman
         
         <tr>
         <th>org.accordproject.saft.Payout</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.saft.Payout",
     "tokenAmount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 180.699,
-        "currencyCode": "KHR"
+        "doubleValue": 206.968,
+        "currencyCode": "MKD"
     },
-    "tokenAddress": "Enim.",
-    "transactionId": "c13fbf50-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:21.125Z"
+    "tokenAddress": "Sit fugiat nostrud sit eiusmod.",
+    "transactionId": "9e4111d1-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:21.901Z"
 }</pre></code></td>
         </tr>
         

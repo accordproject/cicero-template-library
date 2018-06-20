@@ -16,13 +16,14 @@
 
 const CodeGen = require('composer-common').CodeGen;
 const Template = require('@accordproject/cicero-core').Template;
+const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
-const Mocha = require('mocha');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
 const uuidv1 = require('uuid/v1');
+const semver = require('semver')
 
 const {
     promisify
@@ -88,11 +89,14 @@ nunjucks.configure('./views', {
             // copy the logo to build directory
             await fs.copy('accord_logo.png', './build/accord_logo.png');
 
+            // get the latest versions of each template
+            const latestIndex = filterTemplateIndex(templateIndex);
+
             // generate the index html page
             const serverRoot = process.env.SERVER_ROOT;
             const templateResult = nunjucks.render('index.njk', {
                 serverRoot: serverRoot,
-                templateIndex: templateIndex
+                templateIndex: latestIndex
             });
             await writeFile('./build/index.html', templateResult);
         }
@@ -102,6 +106,38 @@ nunjucks.configure('./views', {
     }
 })();
 
+/**
+ * Returns a template index that only contains the latest version
+ * of each template
+ * 
+ * @param {object} templateIndex - the template index
+ * @returns {object} a new template index that only contains the latest version of each template
+ */
+function filterTemplateIndex(templateIndex) {
+    const result = {};
+    const nameToVersion = {};
+
+    // build a map of the latest version of each template
+    for(let template of Object.keys(templateIndex)) {
+        const atIndex = template.indexOf('@');
+        const name = template.substring(0,atIndex);
+        const version  = template.substring(atIndex+1);
+
+        const existingVersion = nameToVersion[name];
+
+        if(!existingVersion || semver.lt(existingVersion, version)) {
+            nameToVersion[name] = version;
+        }
+    }
+
+    // now build the result
+    for(let name in nameToVersion) {
+        const id = `${name}@${nameToVersion[name]}`;
+        result[id] = templateIndex[id];
+    }
+
+    return result;
+}
 
 /**
  * Get all the files beneath a subdirectory
@@ -193,7 +229,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     templateIndex[template.getIdentifier()] = indexData;
     
                     // call the post template processor
-                    await postProcessor(templatePath, template);    
+                    await postProcessor(templateIndex, templatePath, template);    
                 }
             } catch (err) {
                 console.log(err);
@@ -203,59 +239,39 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
     }
 
     // save the index
-    await writeFile(templateLibraryPath, JSON.stringify(templateIndex));
+    await writeFile(templateLibraryPath, JSON.stringify(templateIndex, null, 4));
 
     // return the updated index
     return templateIndex;
 };
 
 /**
- * Runs the unit tests for a template
+ * Runs the standard tests for a template
  * @param {String} templatePath - the location of the template on disk
  * @param {Template} template 
  */
 async function templateUnitTester(templatePath, template) {
+    // check that all the samples parse
+    const samples = template.getMetadata().getSamples();
+    if(samples) {
+        const sampleValues = Object.values(samples);
+        
+        // should be TemplateInstance
+        const instance = new Clause(template);
 
-    if(process.env.SKIP_TESTS) {
-        console.log(`Skipping tests for ${templatePath}`);
-        return;
-    }
-
-    console.log(`Running tests for ${templatePath}`);
-    
-    // Instantiate a Mocha instance.
-    var mocha = new Mocha({
-        timeout: 20000 // allow 20 seconds for tests
-    });
-
-    var testDir = templatePath + '/test';
-
-    // Add each .js file to the mocha instance
-    fs.readdirSync(testDir).filter(function(file){
-        // Only keep the .js files
-        return file.substr(-3) === '.js';
-
-    }).forEach(function(file){
-        mocha.addFile(
-            path.join(testDir, file)
-        );
-    });
-
-    // Run the tests
-    mocha.run(function(failures){
-        if(failures) {
-            process.exitCode = failures ? -1 : 0;  // exit with non-zero status if there were failures
-            throw new Error('Test failed for ' + templatePath);
+        for(const s of sampleValues ) {
+            instance.parse(s);
         }
-    });
+    }    
 }
 
 /**
  * Generates html and other resources from a valid template
+ * @param {object} templateIndex - the existing template index
  * @param {String} templatePath - the location of the template on disk
  * @param {Template} template 
  */
-async function templatePageGenerator(templatePath, template) {
+async function templatePageGenerator(templateIndex, templatePath, template) {
 
     console.log(`Generating html for ${templatePath}`);
 
@@ -288,10 +304,22 @@ async function templatePageGenerator(templatePath, template) {
     const sampleGenerationOptions = {};
     sampleGenerationOptions.generate = true;
     sampleGenerationOptions.includeOptionalFields = true;
+    let sampleInstanceText = null
 
-    const classDecl = template.getTemplateModel();
-    const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-    const instance = JSON.stringify(sampleInstance, null, 4);
+    // parse the default sample and use it as the sample instance
+    const samples = template.getMetadata().getSamples();
+    if(samples.default) {
+        // should be TemplateInstance
+        const instance = new Clause(template);
+        instance.parse(samples.default);
+        sampleInstanceText = JSON.stringify(instance.getData(), null, 4);
+    }
+    else {
+        // no sample was found, so we generate one
+        const classDecl = template.getTemplateModel();
+        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+        sampleInstanceText = JSON.stringify(sampleInstance, null, 4);    
+    }
 
     const requestTypes = {};
     for(let type of template.getRequestTypes()) {
@@ -317,6 +345,13 @@ async function templatePageGenerator(templatePath, template) {
         }
     }
 
+    // get all the versions of the template
+    const templateVersions = Object.keys(templateIndex).filter((item) => {
+        const atIndex = item.indexOf('@');
+        const name = item.substring(0,atIndex);
+        return name == template.getName();
+    });
+
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL : umlURL,
@@ -327,8 +362,9 @@ async function templatePageGenerator(templatePath, template) {
         requestTypes: requestTypes,
         responseTypes: responseTypes,
         state: state,
-        instance: instance,
-        eventTypes: eventTypes
+        instance: sampleInstanceText,
+        eventTypes: eventTypes,
+        templateVersions: templateVersions
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }

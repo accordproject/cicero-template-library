@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,19 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
     </script>
     
     <meta charset="utf-8">
@@ -73,6 +89,33 @@
             </p>
 
             <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="safte@0.3.0.html" class="dropdown-item is-active">
+                                safte@0.3.0
+                            </a>
+                        
+                            <a href="safte@0.2.0.html" class="dropdown-item ">
+                                safte@0.2.0
+                            </a>
+                        
+                            <a href="safte@0.1.1.html" class="dropdown-item ">
+                                safte@0.1.1
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
                 <a href="./archives/safte@0.3.0.cta" class="button is-rounded">Download Archive</a>
             </p>
 
@@ -87,7 +130,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre>
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
 "ACME"
 
 SAFTE 
@@ -189,28 +232,25 @@ Executed and delivered as a deed by "ACME".
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.safte.SafteContract",
-    "companyName": "Tempor ad nisi aliquip.",
-    "companyRegistrationNumber": 3336489292,
-    "purchaser": "Nisi pariatur est sunt nostrud.",
-    "jurisdiction": "SC",
-    "purchaseAmount": 60.876,
-    "discount": 178.69,
-    "projectName": "Officia velit sunt minim pariatur.",
-    "projectDescription": "Ullamco ex.",
-    "months": 51320,
-    "monthsText": "Occaecat.",
-    "amount": 181.379,
-    "amountText": "Magna occaecat ad cupidatat pariatur.",
-    "contractId": "c26b4700-705d-11e8-8de1-21f5a797773f",
-    "parties": [
-        "resource:org.accordproject.cicero.contract.AccordParty#1984"
-    ]
+    "contractId": "0961b571-eb1a-4922-95c9-4a7ef71c5419",
+    "companyName": "ACME",
+    "companyRegistrationNumber": 555,
+    "purchaser": "Dan",
+    "jurisdiction": "NY",
+    "purchaseAmount": 25,
+    "discount": 7,
+    "projectName": "Umbrella",
+    "projectDescription": "manages umbrella tokens",
+    "months": 12,
+    "monthsText": "twelve",
+    "amount": 1000,
+    "amountText": "one thousand"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "state": "tbd"
 }</pre></code>
 
@@ -226,31 +266,31 @@ Executed and delivered as a deed by "ACME".
         
         <tr>
         <th>org.accordproject.safte.DissolutionEvent</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.safte.DissolutionEvent",
-    "cause": "Fugiat duis ipsum voluptate minim.",
-    "transactionId": "c26b9521-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:23.090Z"
+    "cause": "Ut voluptate labore excepteur.",
+    "transactionId": "9f4d0390-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:23.657Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.safte.EquityFinancing</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.safte.EquityFinancing",
-    "sharePrice": 241.767,
-    "transactionId": "c26b9520-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:23.090Z"
+    "sharePrice": 79.718,
+    "transactionId": "9f4cdc81-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:23.657Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.safte.TokenSale</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.safte.TokenSale",
-    "tokenPrice": 152.568,
-    "transactionId": "c26b6e10-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:23.089Z"
+    "tokenPrice": 4.399,
+    "transactionId": "9f4cdc80-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:23.656Z"
 }</pre></code></td>
         </tr>
         
@@ -269,31 +309,31 @@ Executed and delivered as a deed by "ACME".
         
         <tr>
         <th>org.accordproject.safte.EquityShare</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.safte.EquityShare",
-    "equityAmount": 64.321,
-    "transactionId": "c26b9523-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:23.090Z"
+    "equityAmount": 195.319,
+    "transactionId": "9f4d0392-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:23.657Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.safte.PayOut</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.safte.PayOut",
-    "amount": 128.775,
-    "transactionId": "c26b9524-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:23.090Z"
+    "amount": 172.433,
+    "transactionId": "9f4d0393-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:23.657Z"
 }</pre></code></td>
         </tr>
         
         <tr>
         <th>org.accordproject.safte.TokenShare</th>
-        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.safte.TokenShare",
-    "tokenAmount": 133.615,
-    "transactionId": "c26b9522-705d-11e8-8de1-21f5a797773f",
-    "timestamp": "2018-06-15T05:34:23.090Z"
+    "tokenAmount": 249.68,
+    "transactionId": "9f4d0391-748f-11e8-bd9a-f3ef533384e7",
+    "timestamp": "2018-06-20T13:41:23.657Z"
 }</pre></code></td>
         </tr>
         
