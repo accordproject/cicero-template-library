@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "node run.js",
-    "test": "nyc --exclude-after-remap=false mocha ---timeout 20000 ./src/**/test/*.js",
+    "test": "nyc --exclude-after-remap=false mocha ---timeout=20000 ./src/**/test/*.js",
     "generate": "SKIP_TESTS=true node run.js"
   },
   "nyc": {
