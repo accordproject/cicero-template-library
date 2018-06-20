@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +87,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+                <pre>
 On receipt of the shipment "SHIP_001" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".
 
 Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per hours.
@@ -142,33 +139,33 @@ Formula for Breach Penalty Calculation:
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.perishablegoods.PerishableGoodsClause",
-    "clauseId": "8bd8740f-ecb1-4570-86d7-bef0d679c665",
-    "grower": "PETER",
-    "importer": "DAN",
-    "shipment": "SHIP_001",
-    "dueDate": "2018-07-02",
+    "grower": "resource:org.accordproject.perishablegoods.Grower#5414",
+    "importer": "resource:org.accordproject.perishablegoods.Importer#8061",
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#5224",
+    "dueDate": "2018-06-12T04:49:59.701Z",
     "unitPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 1.5,
-        "currencyCode": "USD"
+        "doubleValue": 239.187,
+        "currencyCode": "CHF"
     },
-    "unit": "KG",
-    "minUnits": 3000,
-    "maxUnits": 3500,
-    "product": "Grade I, Size 4, Zutano Mexican Avocados",
-    "sensorReadingFrequency": 1,
-    "duration": "hours",
-    "minTemperature": 2,
-    "maxTemperature": 13,
-    "minHumidity": 70,
-    "maxHumidity": 90,
-    "penaltyFactor": 0.2
+    "unit": "TONNE",
+    "minUnits": 2623,
+    "maxUnits": 28736,
+    "product": "Ipsum.",
+    "sensorReadingFrequency": 59873,
+    "duration": "days",
+    "minTemperature": 55.268,
+    "maxTemperature": 91.389,
+    "minHumidity": 191.86,
+    "maxHumidity": 52.108,
+    "penaltyFactor": 74.592,
+    "clauseId": "0fad4540-6dfc-11e8-a721-c707466e2b12"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "state": "tbd"
 }</pre></code>
 
@@ -184,12 +181,12 @@ Formula for Breach Penalty Calculation:
         
         <tr>
         <th>org.accordproject.perishablegoods.ShipmentReceived</th>
-        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 32896,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#7254",
-    "transactionId": "a16f66d0-746d-11e8-8260-d364b0ca1709",
-    "timestamp": "2018-06-20T09:38:04.350Z"
+    "unitCount": 5596,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#3040",
+    "transactionId": "0faef2f0-6dfc-11e8-a721-c707466e2b12",
+    "timestamp": "2018-06-12T04:49:59.711Z"
 }</pre></code></td>
         </tr>
         
@@ -208,14 +205,14 @@ Formula for Breach Penalty Calculation:
         
         <tr>
         <th>org.accordproject.perishablegoods.PriceCalculation</th>
-        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
-    "totalPrice": 86.114,
-    "penalty": 173.122,
+    "totalPrice": 115.23,
+    "penalty": 24.523,
     "late": false,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#3580",
-    "transactionId": "a16f8de0-746d-11e8-8260-d364b0ca1709",
-    "timestamp": "2018-06-20T09:38:04.350Z"
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#3200",
+    "transactionId": "0faf1a00-6dfc-11e8-a721-c707466e2b12",
+    "timestamp": "2018-06-12T04:49:59.712Z"
 }</pre></code></td>
         </tr>
         

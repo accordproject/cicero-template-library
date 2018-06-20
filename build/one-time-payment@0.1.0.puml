@@ -1,0 +1,14 @@
+@startuml
+class org.accordproject.payment.onetime.MyRequest << (T,yellow) >> {
+}
+org.accordproject.payment.onetime.MyRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.payment.onetime.MyResponse << (T,yellow) >> {
+}
+org.accordproject.payment.onetime.MyResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.payment.onetime.OneTimePaymentContract << (A,green) >> {
+   + String partyA
+   + String partyB
+   + MonetaryAmount initialAmount
+}
+org.accordproject.payment.onetime.OneTimePaymentContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml

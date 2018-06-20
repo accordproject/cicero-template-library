@@ -1,0 +1,12 @@
+{
+    "name": "eat-apples",
+    "version": "0.0.1",
+    "description": "This is a clause enforcing healthy eating habits in employees.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "clause",
+        "language": "ergo",
+        "version": "^0.4.4"
+    }
+}

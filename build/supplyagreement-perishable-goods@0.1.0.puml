@@ -1,0 +1,21 @@
+@startuml
+class org.accordproject.perishablegoods.contract.SupplyAgreementPerishableGoodsContract << (A,green) >> {
+   + Grower grower
+   + Importer importer
+   + Shipment shipment
+   + DateTime dueDate
+   + Double unitPrice
+   + Unit unit
+   + Integer minUnits
+   + Integer maxUnits
+   + String product
+   + Integer sensorReadingFrequency
+   + TemporalUnit duration
+   + Double minTemperature
+   + Double maxTemperature
+   + Double minHumidity
+   + Double maxHumidity
+   + Double penaltyFactor
+}
+org.accordproject.perishablegoods.contract.SupplyAgreementPerishableGoodsContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml

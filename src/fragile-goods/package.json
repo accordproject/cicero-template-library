@@ -1,0 +1,12 @@
+{
+  "name": "fragile-goods",
+  "version": "0.2.0",
+  "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
+  "author": "Accord Project",
+  "license": "Apache-2.0",
+  "cicero": {
+    "template": "clause",
+    "language": "ergo",
+    "version": "^0.4.4"
+  }
+}

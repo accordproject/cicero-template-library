@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,12 +123,12 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
-    "clauseId": "f68da431-7c5c-4fa9-88ec-d7656ab1b00b",
-    "shipper": "Party A",
-    "receiver": "Party B",
-    "deliverable": "Widgets",
-    "businessDays": 10,
-    "attachment": "Attachment X"
+    "shipper": "resource:org.accordproject.organization.Organization#5993",
+    "receiver": "resource:org.accordproject.organization.Organization#3896",
+    "deliverable": "Sint non nostrud duis.",
+    "businessDays": 1680675505,
+    "attachment": "Consectetur magna quis sit consectetur.",
+    "clauseId": "b2074350-705d-11e8-8de1-21f5a797773f"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
@@ -153,10 +150,10 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         <th>org.accordproject.acceptanceofdelivery.InspectDeliverable</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
-    "deliverableReceivedAt": "2018-06-20T09:37:57.503Z",
-    "inspectionPassed": false,
-    "transactionId": "9d5ac8f0-746d-11e8-8260-d364b0ca1709",
-    "timestamp": "2018-06-20T09:37:57.503Z"
+    "deliverableReceivedAt": "2018-06-15T05:33:55.595Z",
+    "inspectionPassed": true,
+    "transactionId": "b2082db0-705d-11e8-8de1-21f5a797773f",
+    "timestamp": "2018-06-15T05:33:55.595Z"
 }</pre></code></td>
         </tr>
         
@@ -177,11 +174,11 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         <th>org.accordproject.acceptanceofdelivery.InspectionResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectionResponse",
-    "status": "PASSED_TESTING",
-    "shipper": "resource:org.accordproject.organization.Organization#5651",
-    "receiver": "resource:org.accordproject.organization.Organization#0302",
-    "transactionId": "9d5b1710-746d-11e8-8260-d364b0ca1709",
-    "timestamp": "2018-06-20T09:37:57.506Z"
+    "status": "OUTSIDE_INSPECTION_PERIOD",
+    "shipper": "resource:org.accordproject.organization.Organization#4128",
+    "receiver": "resource:org.accordproject.organization.Organization#3266",
+    "transactionId": "b2082db1-705d-11e8-8de1-21f5a797773f",
+    "timestamp": "2018-06-15T05:33:55.595Z"
 }</pre></code></td>
         </tr>
         

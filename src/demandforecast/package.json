@@ -1,11 +1,12 @@
 {
     "name": "demandforecast",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "A sample demandforecast clause.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "cicero": {
         "template": "clause",
-        "version": "^0.4.1"
+        "language": "ergo",
+        "version": "^0.4.4"
     }
 }

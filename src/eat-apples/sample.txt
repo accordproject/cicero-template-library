@@ -1,0 +1,1 @@
+Eating healthy clause between "Dan" (the Employee) and "ACME" (the Company). The canteen only sells apple products. Apples, apple juice, apple flapjacks, toffee apples. Employee gets fired if caught eating anything without apples in it. THE EMPLOYEE, IF ALLERGIC TO APPLES, SHALL ALWAYS BE HUNGRY. Apple products at the canteen are subject to a 4.5% tax.

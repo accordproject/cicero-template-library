@@ -1,9 +1,10 @@
 {
     "name": "servicelevelagreement",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "A service level agreement that gives invoice credit based on service availability.",
     "cicero": {
         "template": "contract",
-        "version": "^0.4.1"
+        "language": "ergo",
+        "version": "^0.4.4"
     }
 }

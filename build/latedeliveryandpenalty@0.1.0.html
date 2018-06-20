@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +87,7 @@
 
             <h4 class="title is-4">Sample</h4>
             <div class="content">
-                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+                <pre>
 Late Delivery and Penalty. In case of delayed delivery except for Force Majeure cases, the Seller shall pay to the Buyer for every 2 days of delay penalty amounting to 10.5% of the total value of the Equipment whose delivery has been delayed. Any fractional part of a days is to be considered a full days. The total amount of penalty shall not however, exceed 55% of the total value of the Equipment involved in late delivery. If the delay is more than 15 days, the Buyer is entitled to terminate this Contract.
                 </pre>
             </div>
@@ -120,27 +117,27 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause",
-    "clauseId": "b8452bb4-7e65-4e36-b60f-071ce1c1e177",
     "forceMajeure": true,
     "penaltyDuration": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 2,
-        "unit": "days"
+        "amount": 537704789,
+        "unit": "hours"
     },
-    "penaltyPercentage": 10.5,
-    "capPercentage": 55,
+    "penaltyPercentage": 160.789,
+    "capPercentage": 63.475,
     "termination": {
         "$class": "org.accordproject.time.Duration",
-        "amount": 15,
-        "unit": "days"
+        "amount": 4149649232,
+        "unit": "minutes"
     },
-    "fractionalPart": "days"
+    "fractionalPart": "seconds",
+    "clauseId": "427c99b0-6df4-11e8-bb3b-67a2e79acc24"
 }</pre></code>
 
     <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    <pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "state": "tbd"
 }</pre></code>
 
@@ -156,14 +153,14 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         
         <tr>
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest</th>
-        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
     "forceMajeure": true,
-    "agreedDelivery": "2018-06-20T09:38:03.098Z",
-    "deliveredAt": "2018-06-20T09:38:03.098Z",
-    "goodsValue": 205.789,
-    "transactionId": "a0b083a0-746d-11e8-8260-d364b0ca1709",
-    "timestamp": "2018-06-20T09:38:03.098Z"
+    "agreedDelivery": "2018-06-12T03:54:08.972Z",
+    "deliveredAt": "2018-06-12T03:54:08.972Z",
+    "goodsValue": 191.055,
+    "transactionId": "427cc0c0-6df4-11e8-bb3b-67a2e79acc24",
+    "timestamp": "2018-06-12T03:54:08.972Z"
 }</pre></code></td>
         </tr>
         
@@ -182,12 +179,12 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         
         <tr>
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
-        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+        <td><pre style="white-space: pre-wrap border: 0; background-color: transparent;"><code>{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
-    "penalty": 168.466,
+    "penalty": 202.228,
     "buyerMayTerminate": false,
-    "transactionId": "a0b083a1-746d-11e8-8260-d364b0ca1709",
-    "timestamp": "2018-06-20T09:38:03.098Z"
+    "transactionId": "427ce7d0-6df4-11e8-bb3b-67a2e79acc24",
+    "timestamp": "2018-06-12T03:54:08.973Z"
 }</pre></code></td>
         </tr>
         

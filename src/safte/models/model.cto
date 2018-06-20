@@ -64,7 +64,7 @@ transaction PayOut {
 /**
  * Defines the data model for the Safte template.
  */
-asset Safte extends AccordContract {
+asset SafteContract extends AccordContract {
   /**
    * The name of the company selling the token
    */

@@ -1,0 +1,12 @@
+{
+    "name": "supplyagreement-perishable-goods",
+    "version": "0.1.0",
+    "description": "This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "ergo",
+        "version": "^0.4.4"
+    }
+}

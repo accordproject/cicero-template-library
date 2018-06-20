@@ -1,0 +1,20 @@
+namespace org.accordproject.payment.onetime
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
+transaction MyRequest extends Request {
+}
+
+transaction MyResponse extends Response {
+}
+
+/**
+ * The template model
+ */
+asset OneTimePaymentContract extends AccordContract {
+  o String partyA
+  o String partyB
+  o MonetaryAmount initialAmount
+}
