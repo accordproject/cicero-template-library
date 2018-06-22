@@ -4,17 +4,17 @@ import org.accordproject.cicero.contract.* from https://models.accordproject.org
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
-transaction MyRequest extends Request {
+transaction InitPaymentRequest extends Request {
 }
 
-transaction MyResponse extends Response {
+transaction InitPaymentResponse extends Response {
 }
 
 /**
  * The template model
  */
 asset OneTimePaymentContract extends AccordContract {
-  o String partyA
-  o String partyB
+  o AccordParty buyer
+  o AccordParty seller
   o MonetaryAmount initialAmount
 }
