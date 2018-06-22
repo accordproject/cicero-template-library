@@ -45,6 +45,7 @@ const writeFile = promisify(fs.writeFile);
 const rootDir = resolve(__dirname, './src');
 const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
+const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.accordproject.org';
 
 nunjucks.configure('./views', {
     autoescape: false
@@ -93,7 +94,6 @@ nunjucks.configure('./views', {
             const latestIndex = filterTemplateIndex(templateIndex);
 
             // generate the index html page
-            const serverRoot = process.env.SERVER_ROOT;
             const templateResult = nunjucks.render('index.njk', {
                 serverRoot: serverRoot,
                 templateIndex: latestIndex
@@ -218,7 +218,10 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
     
                     // update the index
                     const m = template.getMetadata();
+                    const templateHash = `deadbeef`; // template.getHash()
                     const indexData = {
+                        uri: `ap://${template.getIdentifier()}#${templateHash}`,
+                        url: `${serverRoot}/archives/${archiveFileName}`,
                         name : m.getName(),
                         description : m.getDescription(),
                         version: m.getVersion(),
@@ -298,7 +301,6 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
 
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
-    const serverRoot = process.env.SERVER_ROOT;
 
     // generate the sample json instances
     const sampleGenerationOptions = {};
