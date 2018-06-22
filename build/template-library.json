@@ -424,5 +424,15 @@
         "ciceroVersion": "^0.4.4",
         "type": 1,
         "language": 0
+    },
+    "one-time-payment@0.2.0": {
+        "uri": "ap://one-time-payment@0.2.0#deadbeef",
+        "url": "https://templates.accordproject.org/archives/one-time-payment@0.2.0.cta",
+        "name": "one-time-payment",
+        "description": "This is a one time payment contract applicable at execution of that contract.",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.4.4",
+        "type": 0,
+        "language": 0
     }
 }

@@ -46,7 +46,7 @@ describe('Logic', () => {
 
         it('should produce correct result', async function() {
             const request = {};
-            request.$class = 'org.accordproject.payment.onetime.MyRequest';
+            request.$class = 'org.accordproject.payment.onetime.InitPaymentRequest';
             const state = {};
             state.$class = 'org.accordproject.cicero.contract.AccordContractState';
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
