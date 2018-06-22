@@ -2,7 +2,7 @@
 
 {% block unfurl %}
 <!-— facebook open graph tags -->
-<meta property="og:url" content="{{serverRoot}}{{filePath}}" />
+<meta property="og:url" content="{{serverRoot}}/{{filePath}}" />
 <meta property="og:title" content="{{template.getIdentifier()}}" />
 <meta property="og:description" content="{{template.getMetadata().getDescription()}}" />
 <meta property="og:image" content="{{umlCardURL}}" />
@@ -12,7 +12,7 @@
 <meta name="twitter:description" content="{{template.getMetadata().getDescription()}}" />
 <meta name="twitter:image" content="{{umlCardURL}}" />
 <meta name="twitter:image:alt" content="UML diagram of {{template.getIdentifier()}} namespace." />
-<meta name="twitter:url" content="{{serverRoot}}{{filePath}}" />
+<meta name="twitter:url" content="{{serverRoot}}/{{filePath}}" />
 {% endblock %}
 
 {% block body %}
