@@ -25,6 +25,7 @@
                 <span class="tag">{% if template.getMetadata().getTemplateType() === 0 %}Contract{% else %}Clause{% endif %}</span>
                 <span class="tag">{% if template.getMetadata().getLanguage() === 0 %}Ergo{% else %}JavaScript{% endif %}</span>
                 <span class="tag">{{template.getMetadata().getTargetVersion()}}</span>
+                <span class="tag">{{template.getHash()}}</span>
             </div>
             <p class="subtitle">
                 {{template.getMetadata().getDescription()}}

@@ -218,7 +218,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
     
                     // update the index
                     const m = template.getMetadata();
-                    const templateHash = `deadbeef`; // template.getHash()
+                    const templateHash = template.getHash();
                     const indexData = {
                         uri: `ap://${template.getIdentifier()}#${templateHash}`,
                         url: `${serverRoot}/archives/${archiveFileName}`,

@@ -147,7 +147,7 @@
         "type": 0
     },
     "ip-payment@0.1.0": {
-        "uri": "ap://ip-payment@0.1.0#deadbeef",
+        "uri": "ap://ip-payment@0.1.0#35a6f8c10920368320ded4b8fb26edf2019a4bf6912266f47ee58bf274a297b2",
         "url": "https://templates.accordproject.org/archives/ip-payment@0.1.0.cta",
         "name": "ip-payment",
         "description": "This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements.",
@@ -198,7 +198,7 @@
         "type": 0
     },
     "supplyagreement@0.1.0": {
-        "uri": "ap://supplyagreement@0.1.0#deadbeef",
+        "uri": "ap://supplyagreement@0.1.0#afbac507661deaef8c4cef2f5b1632f78974935194a116bd2f206d61f83482bc",
         "url": "https://templates.accordproject.org/archives/supplyagreement@0.1.0.cta",
         "name": "supplyagreement",
         "description": "A sample supply agreement.",
@@ -235,7 +235,7 @@
         "type": 0
     },
     "acceptance-of-delivery@0.2.0": {
-        "uri": "ap://acceptance-of-delivery@0.2.0#deadbeef",
+        "uri": "ap://acceptance-of-delivery@0.2.0#5a93d704e8b2b51b5dcfd3064d2122927940a9456f92ad985c42575d6846a697",
         "url": "https://templates.accordproject.org/archives/acceptance-of-delivery@0.2.0.cta",
         "name": "acceptance-of-delivery",
         "description": "This clause allows the receiver of goods to inspect them for a given time period after delivery.",
@@ -252,7 +252,7 @@
         "type": 0
     },
     "promissory-note@0.2.0": {
-        "uri": "ap://promissory-note@0.2.0#deadbeef",
+        "uri": "ap://promissory-note@0.2.0#16234496605b2dc320c99f78b5d1ef45b80931c48f2a3e180a574c81588f7a26",
         "url": "https://templates.accordproject.org/archives/promissory-note@0.2.0.cta",
         "name": "promissory-note",
         "description": "A promissory note",
@@ -276,7 +276,7 @@
         "type": 0
     },
     "copyright-license@0.3.0": {
-        "uri": "ap://copyright-license@0.3.0#deadbeef",
+        "uri": "ap://copyright-license@0.3.0#48b61989846648f8b91a6b1d7507fa05650fa8b78c0434b6318bc30d26ee8da2",
         "url": "https://templates.accordproject.org/archives/copyright-license@0.3.0.cta",
         "name": "copyright-license",
         "description": "This clause is a copyright license agreement.",
@@ -286,7 +286,7 @@
         "language": 0
     },
     "demandforecast@0.2.0": {
-        "uri": "ap://demandforecast@0.2.0#deadbeef",
+        "uri": "ap://demandforecast@0.2.0#7a296780f660425cad265022e225bf871fd6d2d60f04d75ee3c0e7d82cea56f7",
         "url": "https://templates.accordproject.org/archives/demandforecast@0.2.0.cta",
         "name": "demandforecast",
         "description": "A sample demandforecast clause.",
@@ -306,7 +306,7 @@
         "language": 0
     },
     "helloworldstate@0.2.0": {
-        "uri": "ap://helloworldstate@0.2.0#deadbeef",
+        "uri": "ap://helloworldstate@0.2.0#e1005469b25cc7068c19a12aedf2a8b8e1e111d63acae1cd34c562a5474a3a29",
         "url": "https://templates.accordproject.org/archives/helloworldstate@0.2.0.cta",
         "name": "helloworldstate",
         "description": "This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.",
@@ -316,7 +316,7 @@
         "language": 0
     },
     "eat-apples@0.0.1": {
-        "uri": "ap://eat-apples@0.0.1#deadbeef",
+        "uri": "ap://eat-apples@0.0.1#dfdc60b900820f4c2d374ddb260ff7d3d78584e5fb0f7bad2f8afef85dac45c0",
         "url": "https://templates.accordproject.org/archives/eat-apples@0.0.1.cta",
         "name": "eat-apples",
         "description": "This is a clause enforcing healthy eating habits in employees.",
@@ -326,7 +326,7 @@
         "language": 0
     },
     "latedeliveryandpenalty@0.2.0": {
-        "uri": "ap://latedeliveryandpenalty@0.2.0#deadbeef",
+        "uri": "ap://latedeliveryandpenalty@0.2.0#8559cd9df4540e4e57fcf30b4d3ffcd2b6722e3fb77b092c61e2d97537f3ecd4",
         "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.2.0.cta",
         "name": "latedeliveryandpenalty",
         "description": "A sample Late Delivery And Penalty clause.",
@@ -336,7 +336,7 @@
         "language": 0
     },
     "installment-sale@0.2.0": {
-        "uri": "ap://installment-sale@0.2.0#deadbeef",
+        "uri": "ap://installment-sale@0.2.0#7e38a8a846ce3d04ba1c7e477897eac8edbac21fa57d014d7ef8b3abff46bb38",
         "url": "https://templates.accordproject.org/archives/installment-sale@0.2.0.cta",
         "name": "installment-sale",
         "description": "This is a clause for a simple installment sale.",
@@ -346,7 +346,7 @@
         "language": 0
     },
     "perishable-goods@0.2.0": {
-        "uri": "ap://perishable-goods@0.2.0#deadbeef",
+        "uri": "ap://perishable-goods@0.2.0#b8bee41f1211a22484dfbe40f319bae6334ad93a48888ce43ec9051e659693c1",
         "url": "https://templates.accordproject.org/archives/perishable-goods@0.2.0.cta",
         "name": "perishable-goods",
         "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
@@ -356,7 +356,7 @@
         "language": 0
     },
     "safte@0.3.0": {
-        "uri": "ap://safte@0.3.0#deadbeef",
+        "uri": "ap://safte@0.3.0#2417be7c6914063bdccdbd913805bb65a74281e88f57772280b3c46a228514e0",
         "url": "https://templates.accordproject.org/archives/safte@0.3.0.cta",
         "name": "safte",
         "description": "The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company.",
@@ -366,7 +366,7 @@
         "language": 0
     },
     "servicelevelagreement@0.2.0": {
-        "uri": "ap://servicelevelagreement@0.2.0#deadbeef",
+        "uri": "ap://servicelevelagreement@0.2.0#a749cf34f2676580c4196282c410dbbe81bc7fa630812c6432927a29749b3bcd",
         "url": "https://templates.accordproject.org/archives/servicelevelagreement@0.2.0.cta",
         "name": "servicelevelagreement",
         "description": "A service level agreement that gives invoice credit based on service availability.",
@@ -376,7 +376,7 @@
         "language": 0
     },
     "volumediscount@0.3.0": {
-        "uri": "ap://volumediscount@0.3.0#deadbeef",
+        "uri": "ap://volumediscount@0.3.0#cebdbabb9dd01b1becea9e658a7c411de1d887fd851a4613be2979e1901b73f5",
         "url": "https://templates.accordproject.org/archives/volumediscount@0.3.0.cta",
         "name": "volumediscount",
         "description": "A sample volume discount contract.",
@@ -386,7 +386,7 @@
         "language": 0
     },
     "supplyagreement-perishable-goods@0.1.0": {
-        "uri": "ap://supplyagreement-perishable-goods@0.1.0#deadbeef",
+        "uri": "ap://supplyagreement-perishable-goods@0.1.0#943cdcd7e2d00dd23f9857040548617c02365f1dd959e501a90b2ae751195e90",
         "url": "https://templates.accordproject.org/archives/supplyagreement-perishable-goods@0.1.0.cta",
         "name": "supplyagreement-perishable-goods",
         "description": "This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
@@ -406,7 +406,7 @@
         "language": 0
     },
     "saft@0.4.0": {
-        "uri": "ap://saft@0.4.0#deadbeef",
+        "uri": "ap://saft@0.4.0#ee4be45d9790d398b04002bc29639f076ae17a0499e182ba9a8a19523c60fa06",
         "url": "https://templates.accordproject.org/archives/saft@0.4.0.cta",
         "name": "saft",
         "description": "The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.",
@@ -416,7 +416,7 @@
         "language": 0
     },
     "fragile-goods@0.2.0": {
-        "uri": "ap://fragile-goods@0.2.0#deadbeef",
+        "uri": "ap://fragile-goods@0.2.0#67c2ef912cfc06f11e4a1723e3e3c12e9e269c4cf0f2a4ff01c1c4f9a1bb9b1a",
         "url": "https://templates.accordproject.org/archives/fragile-goods@0.2.0.cta",
         "name": "fragile-goods",
         "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
@@ -426,7 +426,7 @@
         "language": 0
     },
     "helloworld@0.2.1": {
-        "uri": "ap://helloworld@0.2.1#deadbeef",
+        "uri": "ap://helloworld@0.2.1#add55f0b83b969f39f0d5547404b652b96a4bc2bf04303ed00183f592554f8a4",
         "url": "https://templates.accordproject.org/archives/helloworld@0.2.1.cta",
         "name": "helloworld",
         "description": "This is the Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
@@ -436,7 +436,7 @@
         "language": 0
     },
     "one-time-payment@0.2.0": {
-        "uri": "ap://one-time-payment@0.2.0#deadbeef",
+        "uri": "ap://one-time-payment@0.2.0#22528bb9eeb82596612d30dce8960252c093b12f94d0aafe841e7ca351431241",
         "url": "https://templates.accordproject.org/archives/one-time-payment@0.2.0.cta",
         "name": "one-time-payment",
         "description": "This is a one time payment contract applicable at execution of that contract.",
