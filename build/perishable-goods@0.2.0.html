@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template perishable-goods@0.2.0
             </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.
             </p>
@@ -178,13 +183,15 @@ Formula for Breach Penalty Calculation:
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/perishable-goods">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PerishableGoodsClause",
-    "clauseId": "ab21e10f-ac3d-44ca-93ff-e099ebb3b7f7",
+    "clauseId": "9f2ea60b-4e35-4ccd-86b7-b13c5ea8c7ae",
     "grower": "PETER",
     "importer": "DAN",
     "shipment": "SHIP_001",
@@ -207,10 +214,26 @@ Formula for Breach Penalty Calculation:
     "penaltyFactor": 0.2
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "ca23e150-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -226,10 +249,10 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.perishablegoods.ShipmentReceived</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 59119,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#1680",
-    "transactionId": "72af4730-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:14.980Z"
+    "unitCount": 8455,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#6289",
+    "transactionId": "ca239330-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:16.067Z"
 }</pre></code></td>
         </tr>
         
@@ -250,12 +273,12 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.perishablegoods.PriceCalculation</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
-    "totalPrice": 87.152,
-    "penalty": 33.104,
+    "totalPrice": 171.277,
+    "penalty": 193.102,
     "late": false,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#7245",
-    "transactionId": "72af6e40-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:14.980Z"
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#7750",
+    "transactionId": "ca23ba40-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:16.068Z"
 }</pre></code></td>
         </tr>
         
@@ -271,6 +294,13 @@ Formula for Breach Penalty Calculation:
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

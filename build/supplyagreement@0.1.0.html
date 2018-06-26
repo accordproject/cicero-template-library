@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template supplyagreement@0.1.0
             </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 A sample supply agreement.
             </p>
@@ -265,13 +270,15 @@ Routing Number: "YYY-YY"
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.SupplyAgreement",
-    "contractId": "f99c8e0c-0162-4b56-8662-0a1eeb337dcb",
+    "contractId": "d741adf0-8500-4c6a-b804-ef9cf5b58125",
     "effectiveDate": "2018-04-02",
     "supplier": "DAN",
     "buyer": "PETER",
@@ -294,10 +301,43 @@ Routing Number: "YYY-YY"
     "venueState": "NY"
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.supplyagreement.AgreementState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.AgreementState",
+    "obligations": [
+        {
+            "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+            "amount": {
+                "$class": "org.accordproject.money.MonetaryAmount",
+                "doubleValue": 53.062,
+                "currencyCode": "EGP"
+            },
+            "description": "Quis velit nostrud dolor enim.",
+            "contract": "resource:org.accordproject.supplyagreement.SupplyAgreement#9666",
+            "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5413",
+            "promisee": "resource:org.accordproject.cicero.contract.AccordParty#5484",
+            "deadline": "2018-06-26T14:11:28.343Z",
+            "eventId": "8276",
+            "timestamp": "2018-06-26T14:11:28.343Z"
+        }
+    ],
+    "stateId": "d174be70-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -316,14 +356,14 @@ Routing Number: "YYY-YY"
     "products": [
         {
             "$class": "org.accordproject.purchaseorder.Product",
-            "partNumber": "7351",
-            "name": "Consectetur laborum velit exercitation pariatur.",
-            "quantity": 10.858,
-            "unitPrice": 195.04
+            "partNumber": "7278",
+            "name": "Tempor deserunt.",
+            "quantity": 250.381,
+            "unitPrice": 168.876
         }
     ],
-    "transactionId": "79af1e20-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:26.722Z"
+    "transactionId": "d1742230-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:28.339Z"
 }</pre></code></td>
         </tr>
         
@@ -331,9 +371,9 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.ForecastRequest</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.ForecastRequest",
-    "supplyForecast": 20203,
-    "transactionId": "79aef710-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:26.721Z"
+    "supplyForecast": 31026,
+    "transactionId": "d173d410-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:28.337Z"
 }</pre></code></td>
         </tr>
         
@@ -346,17 +386,17 @@ Routing Number: "YYY-YY"
         "products": [
             {
                 "$class": "org.accordproject.purchaseorder.Product",
-                "partNumber": "0724",
-                "name": "Proident consequat do dolore mollit.",
-                "quantity": 246.43,
-                "unitPrice": 31.527
+                "partNumber": "1474",
+                "name": "Sint velit ut excepteur esse.",
+                "quantity": 50.971,
+                "unitPrice": 172.85
             }
         ],
-        "deliveryLocation": "Nulla proident non.",
-        "deliveryDate": "2018-06-22T13:59:26.721Z"
+        "deliveryLocation": "Do adipisicing veniam.",
+        "deliveryDate": "2018-06-26T14:11:28.338Z"
     },
-    "transactionId": "79aef711-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:26.721Z"
+    "transactionId": "d173fb20-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:28.338Z"
 }</pre></code></td>
         </tr>
         
@@ -377,8 +417,8 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.DeliveryResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.DeliveryResponse",
-    "transactionId": "79af4532-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:26.723Z"
+    "transactionId": "d1744941-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:28.340Z"
 }</pre></code></td>
         </tr>
         
@@ -386,8 +426,8 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.ForecastResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.ForecastResponse",
-    "transactionId": "79af4530-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:26.723Z"
+    "transactionId": "d1742231-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:28.339Z"
 }</pre></code></td>
         </tr>
         
@@ -395,8 +435,8 @@ Routing Number: "YYY-YY"
         <th>org.accordproject.supplyagreement.PurchaseResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.supplyagreement.PurchaseResponse",
-    "transactionId": "79af4531-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:26.723Z"
+    "transactionId": "d1744940-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:28.340Z"
 }</pre></code></td>
         </tr>
         
@@ -412,6 +452,13 @@ Routing Number: "YYY-YY"
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

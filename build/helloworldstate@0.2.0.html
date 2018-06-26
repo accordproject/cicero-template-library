@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template helloworldstate@0.2.0
             </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.
             </p>
@@ -155,20 +160,38 @@ Thank you!
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/helloworldstate">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.helloworldstate.HelloWorldClause",
-    "clauseId": "831435ca-1565-4750-9309-090fe537e3c7",
+    "clauseId": "b9d8dbcf-41b0-46b4-89f2-0dae5187e157",
     "name": "Fred Blogs"
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "c39bab61-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -184,9 +207,9 @@ Thank you!
         <th>org.accordproject.helloworldstate.MyRequest</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.helloworldstate.MyRequest",
-    "input": "Nostrud officia.",
-    "transactionId": "6c4fa7e0-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:04.286Z"
+    "input": "Enim in elit eu amet.",
+    "transactionId": "c39b8450-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:05.109Z"
 }</pre></code></td>
         </tr>
         
@@ -207,9 +230,9 @@ Thank you!
         <th>org.accordproject.helloworldstate.MyResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.helloworldstate.MyResponse",
-    "output": "Ea amet dolor eiusmod duis.",
-    "transactionId": "6c4fa7e1-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:04.286Z"
+    "output": "Sunt aute quis ullamco.",
+    "transactionId": "c39bab60-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:05.110Z"
 }</pre></code></td>
         </tr>
         
@@ -225,6 +248,13 @@ Thank you!
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

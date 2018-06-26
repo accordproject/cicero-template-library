@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template one-time-payment@0.1.0
             </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 This is a one time payment contract applicable at execution of that contract.
             </p>
@@ -149,13 +154,15 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/one-time-payment">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.OneTimePaymentContract",
-    "contractId": "42d30602-f89b-437b-913f-7aab06a31a42",
+    "contractId": "49d9e135-07da-4a3f-bde1-0727250c349b",
     "partyA": "Dan",
     "partyB": "Steve",
     "initialAmount": {
@@ -165,10 +172,26 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
     }
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "c81dd820-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -184,8 +207,8 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
         <th>org.accordproject.payment.onetime.MyRequest</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.MyRequest",
-    "transactionId": "70abfd20-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:11.602Z"
+    "transactionId": "c81db110-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:12.673Z"
 }</pre></code></td>
         </tr>
         
@@ -206,8 +229,8 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
         <th>org.accordproject.payment.onetime.MyResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.MyResponse",
-    "transactionId": "70abfd21-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:11.602Z"
+    "transactionId": "c81db111-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:12.673Z"
 }</pre></code></td>
         </tr>
         
@@ -230,16 +253,16 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 2.205,
-        "currencyCode": "JMD"
+        "doubleValue": 143.054,
+        "currencyCode": "ZWL"
     },
-    "description": "Do mollit.",
-    "contract": "resource:org.accordproject.payment.onetime.OneTimePaymentContract#7514",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5755",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0283",
-    "deadline": "2018-06-22T13:59:11.602Z",
-    "eventId": "70abfd22-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:11.602Z"
+    "description": "Quis.",
+    "contract": "resource:org.accordproject.payment.onetime.OneTimePaymentContract#5881",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#8846",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2298",
+    "deadline": "2018-06-26T14:11:12.674Z",
+    "eventId": "c81dd821-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:12.674Z"
 }</pre></code></td>
         </tr>
         
