@@ -162,7 +162,7 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause",
-    "clauseId": "6bc52094-3fbb-4971-a19b-a7a20e431cd4",
+    "clauseId": "6cbb354d-fdc2-4ecb-822e-6dcca0cbd5f5",
     "forceMajeure": true,
     "penaltyDuration": {
         "$class": "org.accordproject.time.Duration",
@@ -179,10 +179,26 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     "fractionalPart": "days"
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "6d52bdc0-794a-11e8-9f13-ddb7dfc27dc0"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -199,11 +215,11 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
     "forceMajeure": true,
-    "agreedDelivery": "2018-06-22T13:59:09.853Z",
-    "deliveredAt": "2018-06-22T13:59:09.853Z",
-    "goodsValue": 163.63,
-    "transactionId": "6fa11cd0-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:09.853Z"
+    "agreedDelivery": "2018-06-26T14:08:40.347Z",
+    "deliveredAt": "2018-06-26T14:08:40.347Z",
+    "goodsValue": 78.738,
+    "transactionId": "6d5296b0-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:40.347Z"
 }</pre></code></td>
         </tr>
         
@@ -224,10 +240,10 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
-    "penalty": 88.73,
-    "buyerMayTerminate": false,
-    "transactionId": "6fa11cd1-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:09.853Z"
+    "penalty": 178.984,
+    "buyerMayTerminate": true,
+    "transactionId": "6d5296b1-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:40.347Z"
 }</pre></code></td>
         </tr>
         

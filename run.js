@@ -325,25 +325,25 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
 
     const requestTypes = {};
     for(let type of template.getRequestTypes()) {
-        const classDecl = template.getModelManager().getType(type);
-        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-        requestTypes[type] = JSON.stringify(sampleInstance, null, 4);
+        requestTypes[type] = generateSampleJSON(type);
     }
 
     const responseTypes = {};
     for(let type of template.getResponseTypes()) {
-        const classDecl = template.getModelManager().getType(type);
-        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-        responseTypes[type] = JSON.stringify(sampleInstance, null, 4);
+        responseTypes[type] = generateSampleJSON(type);
     }
 
-    const state = JSON.stringify({ state: 'tbd'}, null, 4);
+    const stateTypes = {}
+    for(let type of template.getStateTypes()) {
+        if(type){
+            stateTypes[type] = generateSampleJSON(type);
+        }
+    }
+
     const eventTypes = {}
     for(let type of template.getEmitTypes()) {
-        if (type !== 'Event') {
-            const classDecl = template.getModelManager().getType(type);
-            const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-            eventTypes[type] = JSON.stringify(sampleInstance, null, 4);
+        if (type !== 'org.hyperledger.composer.system.Event' && type !== 'Event') {
+            eventTypes[type] = generateSampleJSON(type);
         }
     }
 
@@ -363,10 +363,16 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         readmeHtml: readmeHtml,
         requestTypes: requestTypes,
         responseTypes: responseTypes,
-        state: state,
+        stateTypes: stateTypes,
         instance: sampleInstanceText,
         eventTypes: eventTypes,
         templateVersions: templateVersions
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
+
+    function generateSampleJSON(type) {
+        const classDecl = template.getModelManager().getType(type);
+        const sampleInstance = template.getFactory().newResource(classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+        return JSON.stringify(sampleInstance, null, 4);
+    }
 }
