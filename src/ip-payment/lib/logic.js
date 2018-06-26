@@ -23,7 +23,8 @@
  * @param {Context} context - the Accord context
  * @param {org.accordproject.ippayment.PaymentRequest} context.request - the incoming request
  * @param {org.accordproject.ippayment.PayOut} context.response - the response
- * @param {Event} context.emit - the emitted events
+ * @param {org.hyperledger.composer.system.Event} context.emit - the emitted events
+  @param {org.accordproject.cicero.contract.AccordContractState} content.state - the state
  * @AccordClauseLogic
  */
 function execute(context) {

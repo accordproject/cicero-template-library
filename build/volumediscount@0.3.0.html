@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template volumediscount@0.3.0
             </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 A sample volume discount contract.
             </p>
@@ -190,13 +195,15 @@ _______________________					_____________________
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/volumediscount">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountContract",
-    "contractId": "dc63be65-e0e1-46d6-bb53-9aed48ff60ec",
+    "contractId": "951e2dff-db02-4f63-9d8d-562bf6600764",
     "firstVolume": 1,
     "secondVolume": 10,
     "firstRate": 3,
@@ -204,10 +211,26 @@ _______________________					_____________________
     "thirdRate": 2.8
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "d52431e2-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -223,9 +246,9 @@ _______________________					_____________________
         <th>org.accordproject.volumediscount.VolumeDiscountRequest</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountRequest",
-    "netAnnualChargeVolume": 2.337,
-    "transactionId": "7d362200-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:32.640Z"
+    "netAnnualChargeVolume": 171.6,
+    "transactionId": "d52431e0-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:34.526Z"
 }</pre></code></td>
         </tr>
         
@@ -246,9 +269,9 @@ _______________________					_____________________
         <th>org.accordproject.volumediscount.VolumeDiscountResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.volumediscount.VolumeDiscountResponse",
-    "discountRate": 223.783,
-    "transactionId": "7d362201-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:32.641Z"
+    "discountRate": 183.483,
+    "transactionId": "d52431e1-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:34.526Z"
 }</pre></code></td>
         </tr>
         
@@ -264,6 +287,13 @@ _______________________					_____________________
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

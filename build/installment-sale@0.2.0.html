@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template installment-sale@0.2.0
             </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 This is a clause for a simple installment sale.
             </p>
@@ -163,13 +168,15 @@ Monthly payments shall include both principal and interest with interest at the 
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/installment-sale">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.InstallmentSaleContract",
-    "contractId": "3403b2d8-343e-4bb8-b73f-2b18b72486d0",
+    "contractId": "b4bb03a6-c1e6-4f52-980e-db1e11ad164f",
     "BUYER": "Dan",
     "SELLER": "Ned",
     "INITIAL_DUE": 10000,
@@ -179,10 +186,26 @@ Monthly payments shall include both principal and interest with interest at the 
     "DUE_AT_CLOSING": 500
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "c4e123b3-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -198,9 +221,9 @@ Monthly payments shall include both principal and interest with interest at the 
         <th>org.accordproject.installmentsale.ClosingPayment</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.ClosingPayment",
-    "amount": 205.884,
-    "transactionId": "6d8541b1-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:06.315Z"
+    "amount": 115.557,
+    "transactionId": "c4e0fca1-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:07.242Z"
 }</pre></code></td>
         </tr>
         
@@ -208,9 +231,9 @@ Monthly payments shall include both principal and interest with interest at the 
         <th>org.accordproject.installmentsale.Installment</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.Installment",
-    "amount": 56.923,
-    "transactionId": "6d8541b0-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:06.315Z"
+    "amount": 135.988,
+    "transactionId": "c4e0fca0-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:07.242Z"
 }</pre></code></td>
         </tr>
         
@@ -231,10 +254,10 @@ Monthly payments shall include both principal and interest with interest at the 
         <th>org.accordproject.installmentsale.Balance</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.Balance",
-    "balance": 155.448,
-    "total_paid": 25.183,
-    "transactionId": "6d8568c0-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:06.316Z"
+    "balance": 214.573,
+    "total_paid": 95.679,
+    "transactionId": "c4e123b1-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:07.243Z"
 }</pre></code></td>
         </tr>
         
@@ -255,10 +278,10 @@ Monthly payments shall include both principal and interest with interest at the 
         <th>org.accordproject.installmentsale.PaymentObligation</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.PaymentObligation",
-    "amount": 4.341,
-    "party": "Culpa pariatur mollit.",
-    "eventId": "6d8568c2-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:06.316Z"
+    "amount": 202.541,
+    "party": "Est in dolore consectetur id.",
+    "eventId": "c4e14ac1-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:07.244Z"
 }</pre></code></td>
         </tr>
         

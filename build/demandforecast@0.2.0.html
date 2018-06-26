@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template demandforecast@0.2.0
             </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 A sample demandforecast clause.
             </p>
@@ -155,23 +160,41 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/demandforecast">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.DemandForecastClause",
-    "clauseId": "e6b55cc8-3d9b-488d-91fb-9d10ed9896f8",
+    "clauseId": "78b94d88-b2b7-4984-8765-fe31ea3c92bb",
     "purchaser": "PETER",
     "supplier": "DAN",
     "effectiveDate": "2018-04-02",
     "minimumPercentage": 85
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "bf51a5a1-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -187,9 +210,9 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
         <th>org.accordproject.demandforecast.ForecastRequest</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.ForecastRequest",
-    "supplyForecast": 34547,
-    "transactionId": "68367620-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:58:57.410Z"
+    "supplyForecast": 53765,
+    "transactionId": "bf517e90-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:10:57.913Z"
 }</pre></code></td>
         </tr>
         
@@ -210,11 +233,11 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
         <th>org.accordproject.demandforecast.BindingResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.demandforecast.BindingResponse",
-    "requiredPurchase": 184.005,
-    "year": 57797,
-    "quarter": 46156,
-    "transactionId": "68367621-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:58:57.410Z"
+    "requiredPurchase": 172.63,
+    "year": 19311,
+    "quarter": 17219,
+    "transactionId": "bf51a5a0-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:10:57.914Z"
 }</pre></code></td>
         </tr>
         
@@ -230,6 +253,13 @@ On or before the 04/02/2018, and thereafter on or before the last day of each ca
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

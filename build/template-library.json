@@ -425,6 +425,16 @@
         "type": 1,
         "language": 0
     },
+    "helloworld@0.2.1": {
+        "uri": "ap://helloworld@0.2.1#deadbeef",
+        "url": "https://templates.accordproject.org/archives/helloworld@0.2.1.cta",
+        "name": "helloworld",
+        "description": "This is the Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
+        "version": "0.2.1",
+        "ciceroVersion": "^0.4.4-0",
+        "type": 1,
+        "language": 0
+    },
     "one-time-payment@0.2.0": {
         "uri": "ap://one-time-payment@0.2.0#deadbeef",
         "url": "https://templates.accordproject.org/archives/one-time-payment@0.2.0.cta",

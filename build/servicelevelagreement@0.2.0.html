@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template servicelevelagreement@0.2.0
             </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 A service level agreement that gives invoice credit based on service availability.
             </p>
@@ -217,13 +222,15 @@ Annex 1—Service levels
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/servicelevelagreement">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.ServiceLevelAgreementContract",
-    "contractId": "3d3dd2a0-fb04-45d5-97bc-dc824d2147f7",
+    "contractId": "022c0681-4314-40ee-ad35-6d4ec83be23f",
     "paymentPeriod": 30,
     "monthlyCapPercentage": 10,
     "yearlyCapPercentage": 10,
@@ -233,10 +240,26 @@ Annex 1—Service levels
     "serviceCredit2": 3
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "cff12bb0-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -252,12 +275,12 @@ Annex 1—Service levels
         <th>org.accordproject.servicelevelagreement.MonthSummary</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.MonthSummary",
-    "monthlyServiceLevel": 219.69,
-    "monthlyCharge": 122.291,
-    "last11MonthCredit": 46.302,
-    "last11MonthCharge": 58.024,
-    "transactionId": "783d1790-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:24.297Z"
+    "monthlyServiceLevel": 184.279,
+    "monthlyCharge": 201.779,
+    "last11MonthCredit": 161.021,
+    "last11MonthCharge": 31.895,
+    "transactionId": "cff104a0-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:25.802Z"
 }</pre></code></td>
         </tr>
         
@@ -278,9 +301,9 @@ Annex 1—Service levels
         <th>org.accordproject.servicelevelagreement.InvoiceCredit</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.InvoiceCredit",
-    "monthlyCredit": 138.243,
-    "transactionId": "783d1791-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:24.297Z"
+    "monthlyCredit": 198.035,
+    "transactionId": "cff104a1-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:11:25.802Z"
 }</pre></code></td>
         </tr>
         
@@ -296,6 +319,13 @@ Annex 1—Service levels
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

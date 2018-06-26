@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template promissory-note@0.2.0
             </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 A promissory note
             </p>
@@ -191,7 +196,9 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/promissory-note">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
@@ -222,10 +229,26 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
     "jurisdiction": "New York, NY"
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "cb7da4f1-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -286,6 +309,13 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

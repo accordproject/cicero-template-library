@@ -84,6 +84,11 @@
             <h1 class="title">
                 Template acceptance-of-delivery@0.2.0
             </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.4.4</span>
+            </div>
             <p class="subtitle">
                 This clause allows the receiver of goods to inspect them for a given time period after delivery.
             </p>
@@ -160,13 +165,15 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
     for details and examples of how to integrate a call to a Cicero template into your application.
     <p>
+    <p>
     View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/acceptance-of-delivery">on GitHub.</a>
+    </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
-    "clauseId": "109dccf1-8653-4ab1-9faf-7a5ab7d41e69",
+    "clauseId": "cce0153c-9fef-4d2d-a56b-e8b66d3ef223",
     "shipper": "Party A",
     "receiver": "Party B",
     "deliverable": "Widgets",
@@ -174,10 +181,26 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     "attachment": "Attachment X"
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "bc876210-794a-11e8-8ca1-7d833b1ca035"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -193,10 +216,10 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         <th>org.accordproject.acceptanceofdelivery.InspectDeliverable</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
-    "deliverableReceivedAt": "2018-06-22T13:58:52.905Z",
-    "inspectionPassed": true,
-    "transactionId": "65870d90-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:58:52.905Z"
+    "deliverableReceivedAt": "2018-06-26T14:10:53.228Z",
+    "inspectionPassed": false,
+    "transactionId": "bc869ec0-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:10:53.228Z"
 }</pre></code></td>
         </tr>
         
@@ -217,11 +240,11 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         <th>org.accordproject.acceptanceofdelivery.InspectionResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectionResponse",
-    "status": "PASSED_TESTING",
-    "shipper": "resource:org.accordproject.organization.Organization#6161",
-    "receiver": "resource:org.accordproject.organization.Organization#2719",
-    "transactionId": "65875bb0-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:58:52.907Z"
+    "status": "FAILED_TESTING",
+    "shipper": "resource:org.accordproject.organization.Organization#3480",
+    "receiver": "resource:org.accordproject.organization.Organization#4849",
+    "transactionId": "bc8713f0-794a-11e8-8ca1-7d833b1ca035",
+    "timestamp": "2018-06-26T14:10:53.231Z"
 }</pre></code></td>
         </tr>
         
@@ -237,6 +260,13 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         </tr>
     </thead>
     <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
         
     </tbody>
     </table>

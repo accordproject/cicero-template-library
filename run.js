@@ -269,6 +269,30 @@ async function templateUnitTester(templatePath, template) {
 }
 
 /**
+ * Generate a sample instance for a template's type
+ * @param {Template} template the template
+ * @param {string} type the fully qualified type name
+ */
+function sampleInstance(template, type) {
+
+    // generate the sample json instances
+    const sampleGenerationOptions = {};
+    sampleGenerationOptions.generate = true;
+    sampleGenerationOptions.includeOptionalFields = true;
+    
+    const classDecl = template.getModelManager().getType(type);
+
+    let result = {};
+    result.abstract = 'this is an abstract type';
+
+    if (!classDecl.isAbstract()) {
+        result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+    }
+
+    return result;
+}
+
+/**
  * Generates html and other resources from a valid template
  * @param {object} templateIndex - the existing template index
  * @param {String} templatePath - the location of the template on disk
@@ -302,10 +326,6 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
 
-    // generate the sample json instances
-    const sampleGenerationOptions = {};
-    sampleGenerationOptions.generate = true;
-    sampleGenerationOptions.includeOptionalFields = true;
     let sampleInstanceText = null
 
     // parse the default sample and use it as the sample instance
@@ -319,32 +339,27 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     else {
         // no sample was found, so we generate one
         const classDecl = template.getTemplateModel();
-        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-        sampleInstanceText = JSON.stringify(sampleInstance, null, 4);    
+        sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);    
     }
 
     const requestTypes = {};
     for(let type of template.getRequestTypes()) {
-        const classDecl = template.getModelManager().getType(type);
-        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-        requestTypes[type] = JSON.stringify(sampleInstance, null, 4);
+        requestTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
     }
 
     const responseTypes = {};
     for(let type of template.getResponseTypes()) {
-        const classDecl = template.getModelManager().getType(type);
-        const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-        responseTypes[type] = JSON.stringify(sampleInstance, null, 4);
+        responseTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
     }
 
-    const state = JSON.stringify({ state: 'tbd'}, null, 4);
+    const stateTypes = {}
+    for(let type of template.getStateTypes()) {
+        stateTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+    }
+
     const eventTypes = {}
     for(let type of template.getEmitTypes()) {
-        if (type !== 'Event') {
-            const classDecl = template.getModelManager().getType(type);
-            const sampleInstance = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
-            eventTypes[type] = JSON.stringify(sampleInstance, null, 4);
-        }
+        eventTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
     }
 
     // get all the versions of the template
@@ -363,7 +378,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         readmeHtml: readmeHtml,
         requestTypes: requestTypes,
         responseTypes: responseTypes,
-        state: state,
+        stateTypes: stateTypes,
         instance: sampleInstanceText,
         eventTypes: eventTypes,
         templateVersions: templateVersions
