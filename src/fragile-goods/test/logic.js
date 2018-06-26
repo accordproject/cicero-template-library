@@ -115,5 +115,23 @@ describe('Logic', () => {
             result.should.not.be.null;
             result.response.amount.doubleValue.should.equal(1000);
         });
+
+        it('should execute a completed delivery contact with no accelerometer readings', async function () {
+            const request = {
+                "$class":"io.clause.demo.fragileGoods.DeliveryUpdate",
+                "startTime":"2018-01-01T16:34:00.000Z",
+                "finishTime":"2018-01-01T16:34:09.000Z",
+                "status":"ARRIVED",
+                "accelerometerReadings":[],
+                "transactionId":"d8b14719-ae23-4867-a4c7-7c0199a74cc3",
+                "timestamp":"2018-01-02T08:28:42.248Z"
+            };
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.amount.doubleValue.should.equal(1000);
+        });
     });
 });

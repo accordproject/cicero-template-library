@@ -16,14 +16,14 @@ namespace org.accordproject.payment.onetime
 
 contract OneTimeUSDPayment over OneTimeUSDPaymentClause {
   // Simple Clause
-  clause init(request : MyRequest) : MyResponse emits org.accordproject.cicero.runtime.PaymentObligation {
+  clause init(request : InitPaymentRequest) : InitPaymentResponse emits org.accordproject.cicero.runtime.PaymentObligation {
 		emit new org.accordproject.cicero.runtime.PaymentObligation{
 			contract: contract.contractId,
-			promisor: nil, // TBD
-			promisee: nil, // TBD
+			promisor: contract.buyer,
+			promisee: contract.seller,
 			amount: contract.initialAmount,
 			description: contract.partyA ++ " should pay contract amount to " ++ contract.partyB
 		};
-    return new MyResponse{}
+    return new InitPaymentResponse{}
   }
 }
