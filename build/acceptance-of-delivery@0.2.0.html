@@ -166,7 +166,7 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
-    "clauseId": "109dccf1-8653-4ab1-9faf-7a5ab7d41e69",
+    "clauseId": "d63ae3fa-d911-4a38-a50f-19f64f261365",
     "shipper": "Party A",
     "receiver": "Party B",
     "deliverable": "Widgets",
@@ -174,10 +174,26 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     "attachment": "Attachment X"
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "681b98e0-794a-11e8-9f13-ddb7dfc27dc0"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -193,10 +209,10 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         <th>org.accordproject.acceptanceofdelivery.InspectDeliverable</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
-    "deliverableReceivedAt": "2018-06-22T13:58:52.905Z",
-    "inspectionPassed": true,
-    "transactionId": "65870d90-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:58:52.905Z"
+    "deliverableReceivedAt": "2018-06-26T14:08:31.592Z",
+    "inspectionPassed": false,
+    "transactionId": "681aae80-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:31.592Z"
 }</pre></code></td>
         </tr>
         
@@ -218,10 +234,10 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectionResponse",
     "status": "PASSED_TESTING",
-    "shipper": "resource:org.accordproject.organization.Organization#6161",
-    "receiver": "resource:org.accordproject.organization.Organization#2719",
-    "transactionId": "65875bb0-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:58:52.907Z"
+    "shipper": "resource:org.accordproject.organization.Organization#0625",
+    "receiver": "resource:org.accordproject.organization.Organization#6020",
+    "transactionId": "681b23b0-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:31.595Z"
 }</pre></code></td>
         </tr>
         

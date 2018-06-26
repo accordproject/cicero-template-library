@@ -184,7 +184,7 @@ Formula for Breach Penalty Calculation:
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PerishableGoodsClause",
-    "clauseId": "ab21e10f-ac3d-44ca-93ff-e099ebb3b7f7",
+    "clauseId": "08707dfc-ec81-4b3c-bbb9-c32a7612bf5b",
     "grower": "PETER",
     "importer": "DAN",
     "shipment": "SHIP_001",
@@ -207,10 +207,26 @@ Formula for Breach Penalty Calculation:
     "penaltyFactor": 0.2
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "6ede8de1-794a-11e8-9f13-ddb7dfc27dc0"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -226,10 +242,10 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.perishablegoods.ShipmentReceived</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 59119,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#1680",
-    "transactionId": "72af4730-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:14.980Z"
+    "unitCount": 18307,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#4218",
+    "transactionId": "6ede66d0-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:42.941Z"
 }</pre></code></td>
         </tr>
         
@@ -250,12 +266,12 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.perishablegoods.PriceCalculation</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
-    "totalPrice": 87.152,
-    "penalty": 33.104,
-    "late": false,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#7245",
-    "transactionId": "72af6e40-7624-11e8-b40c-afeb84922002",
-    "timestamp": "2018-06-22T13:59:14.980Z"
+    "totalPrice": 154.846,
+    "penalty": 222.546,
+    "late": true,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#3170",
+    "transactionId": "6ede8de0-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:42.942Z"
 }</pre></code></td>
         </tr>
         

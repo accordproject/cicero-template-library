@@ -159,7 +159,7 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.OneTimePaymentContract",
-    "contractId": "a495593f-3f5d-478c-bf4c-0d304f911fa6",
+    "contractId": "f5b5f6e0-0ef1-4b2e-a001-4714811da689",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dan"
@@ -175,10 +175,26 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
     }
 }</pre></code>
 
-    <h4 class="title is-4">State</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
-    "state": "tbd"
-}</pre></code>
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "6dd38680-794a-11e8-9f13-ddb7dfc27dc0"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
 
     <h4 class="title is-4">Request Types</h4>
     <table class="table">
@@ -194,8 +210,8 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
         <th>org.accordproject.payment.onetime.InitPaymentRequest</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.InitPaymentRequest",
-    "transactionId": "3adfe1a0-7667-11e8-a95e-29b5b1d37e15",
-    "timestamp": "2018-06-22T21:57:17.626Z"
+    "transactionId": "6dd35f70-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:41.191Z"
 }</pre></code></td>
         </tr>
         
@@ -216,8 +232,8 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
         <th>org.accordproject.payment.onetime.InitPaymentResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.onetime.InitPaymentResponse",
-    "transactionId": "3ae02fc0-7667-11e8-a95e-29b5b1d37e15",
-    "timestamp": "2018-06-22T21:57:17.628Z"
+    "transactionId": "6dd35f71-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:41.191Z"
 }</pre></code></td>
         </tr>
         
@@ -240,16 +256,16 @@ An initial payment of 0.01 USD shall be made by "Dan" to "Steve" upon execution 
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 119.724,
-        "currencyCode": "XAF"
+        "doubleValue": 110.649,
+        "currencyCode": "DOP"
     },
-    "description": "Et cillum consectetur nostrud anim.",
-    "contract": "resource:org.accordproject.payment.onetime.OneTimePaymentContract#7421",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5646",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4130",
-    "deadline": "2018-06-22T21:57:17.629Z",
-    "eventId": "3ae02fc1-7667-11e8-a95e-29b5b1d37e15",
-    "timestamp": "2018-06-22T21:57:17.629Z"
+    "description": "Nostrud laborum cillum.",
+    "contract": "resource:org.accordproject.payment.onetime.OneTimePaymentContract#2790",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#8990",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0063",
+    "deadline": "2018-06-26T14:08:41.192Z",
+    "eventId": "6dd38681-794a-11e8-9f13-ddb7dfc27dc0",
+    "timestamp": "2018-06-26T14:08:41.192Z"
 }</pre></code></td>
         </tr>
         
