@@ -6,6 +6,8 @@
   */
 namespace org.accordproject.perishablegoods
 
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
 /**
  * The status of a shipment
  */
@@ -61,8 +63,8 @@ transaction ShipmentReceived extends ShipmentTransaction {
  * The calculation of a price
  */
 transaction PriceCalculation extends ShipmentTransaction {
-  o Double totalPrice
-  o Double penalty
+  o MonetaryAmount totalPrice
+  o MonetaryAmount penalty
   o Boolean late
 }
 

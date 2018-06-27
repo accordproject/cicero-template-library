@@ -59,7 +59,7 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
     };
 
     // Calculates payout
-    define variable payOut = contract.unitPrice * request.unitCount;
+    define variable payOut = contract.unitPrice.doubleValue * request.unitCount;
     // Calculates penalty if any
     define variable penalty =
       calculateTempPenalty(contract.minTemperature,
@@ -72,10 +72,24 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
                           request.shipment.sensorReadings);
 
     // Returns a Price calculation, applying any penalities
-    define variable totalPenalty = penalty * request.unitCount;
+    define variable totalPenalty = new org.accordproject.money.MonetaryAmount {
+      doubleValue: penalty * request.unitCount,
+      currencyCode: contract.unitPrice.currencyCode
+    };
+    define variable totalPrice = new org.accordproject.money.MonetaryAmount {
+      doubleValue: max([payOut - totalPenalty.doubleValue, 0.0]),
+      currencyCode: contract.unitPrice.currencyCode
+    };
+    emit new org.accordproject.cicero.runtime.PaymentObligation {
+      contract: contract.contractId,
+      promisor: contract.importer,
+      promisee: contract.grower,
+      amount: totalPrice,
+      description: contract.grower ++ " must pay " ++ contract.importer ++ " " ++ totalPrice
+    };
     return new PriceCalculation{
       shipment : request.shipment,
-      totalPrice : max([payOut - totalPenalty, 0.0]),
+      totalPrice : totalPrice,
       penalty : totalPenalty,
       late : false
     }

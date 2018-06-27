@@ -60,6 +60,9 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.doubleValue.should.equal(790);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.doubleValue.should.equal(790);
+            result.emit[0].amount.currencyCode.should.equal("USD");
         });
 
         it('should execute an inflight delivery contract', async function () {
@@ -96,6 +99,9 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.doubleValue.should.equal(990);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.doubleValue.should.equal(990);
+            result.emit[0].amount.currencyCode.should.equal("USD");
         });
 
         it('should execute a completed delivery contact with no deductions', async function () {
@@ -114,6 +120,9 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.doubleValue.should.equal(1000);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.doubleValue.should.equal(1000);
+            result.emit[0].amount.currencyCode.should.equal("USD");
         });
 
         it('should execute a completed delivery contact with no accelerometer readings', async function () {
@@ -132,6 +141,9 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.amount.doubleValue.should.equal(1000);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.doubleValue.should.equal(1000);
+            result.emit[0].amount.currencyCode.should.equal("USD");
         });
     });
 });

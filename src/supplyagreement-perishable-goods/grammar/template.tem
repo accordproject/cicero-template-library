@@ -110,7 +110,7 @@ Routing Number: "YYY-YY"
 (c) Counterparts Form One Document. Together, all counterparts form one single document.
 
 Schedule A.
-[{shipment}] [{unitPrice}] USD per [{unit}]
+[{shipment}] [{unitPrice}] per [{unit}]
 
 Annex A. Delivery Method
 Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least [{sensorReadingFrequency}] per [{duration}].

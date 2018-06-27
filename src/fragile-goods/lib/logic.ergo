@@ -15,7 +15,7 @@
 namespace io.clause.demo.fragileGoods
 
 contract FragileGoods over FragileGoodsClause {
-  clause fragilegoods(request : DeliveryUpdate) : PayOut {
+  clause fragilegoods(request : DeliveryUpdate) : PayOut emits org.accordproject.cicero.runtime.PaymentObligation {
     define variable amount = contract.deliveryPrice.doubleValue;
     define variable currency = contract.deliveryPrice.currencyCode;
     define variable shocks =
@@ -28,7 +28,7 @@ contract FragileGoods over FragileGoodsClause {
 
     enforce request.status = "ARRIVED" and request.finishTime != nil
     else return new PayOut{
-		  amount: new org.accordproject.money.MonetaryAmount{
+		  amount: new org.accordproject.money.MonetaryAmount {
 				doubleValue: amount,
 				currencyCode: currency
 			}
@@ -39,19 +39,36 @@ contract FragileGoods over FragileGoodsClause {
       if contract.deliveryLimitDuration.unit = "seconds"
       then
         define variable duration = momentDiffSeconds(finishTime, request.startTime);
-        if (duration) > contract.deliveryLimitDuration.amount
-        then return new PayOut{
-		      amount: new org.accordproject.money.MonetaryAmount{
-						doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,
-						currencyCode: currency
-					}
-				}
-        else return new PayOut{ 
-		      amount: new org.accordproject.money.MonetaryAmount{
-						doubleValue: amount,
-						currencyCode: currency
-					}
-				}
+        if (duration) > contract.deliveryLimitDuration.amount then
+          define variable monetaryAmount = new org.accordproject.money.MonetaryAmount {
+            doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,
+            currencyCode: currency
+          };
+          emit new org.accordproject.cicero.runtime.PaymentObligation {
+            contract: "NOT_SET",
+            promisor: "Buyer",
+            promisee: "Supplier",
+            amount: monetaryAmount,
+            description: "Buyer should pay contract amount to the Supplier"
+          };
+          return new PayOut{
+            amount: monetaryAmount
+          }
+        else 
+          define variable monetaryAmount = new org.accordproject.money.MonetaryAmount {
+            doubleValue: amount,
+            currencyCode: currency
+          };
+          emit new org.accordproject.cicero.runtime.PaymentObligation {
+            contract: "NOT_SET",
+            promisor: "Buyer",
+            promisee: "Supplier",
+            amount: monetaryAmount,
+            description: "Buyer should pay contract amount to the Supplier"
+          };
+          return new PayOut { 
+            amount: monetaryAmount
+          }
       else throw new Error{ message: "Unit not implemented" }
     else throw new Error{ message: "Finish time not present" }
   }
