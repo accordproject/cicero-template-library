@@ -34,6 +34,9 @@ describe('Logic', () => {
     let template;
     let clause;
     let engine;    
+    let state = {};
+    state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+    state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
 
     beforeEach( async function() {
         template = await Template.fromDirectory(rootDir);
@@ -46,15 +49,24 @@ describe('Logic', () => {
 
         it('should produce correct result', async function() {
             const request = {};
-            request.$class = 'org.accordproject.payment.onetime.InitPaymentRequest';
-            const state = {};
-            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
-            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            request.$class = 'org.accordproject.payment.onetime.InitRequest';
+
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
             result.emit[0].amount.doubleValue.should.equal(0.01);
             result.emit[0].amount.currencyCode.should.equal("USD");
+            state = result.state;
+            state.status.should.equal("OBLIGATION_EMITTED");
+        });
+
+        it('should complete once the payment is acknowledged', async function() {
+            const request = {};
+            request.$class = 'org.accordproject.payment.onetime.PaymentReceivedRequest';
+
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.state.status.should.equal("COMPLETED")
         });
     });
 });
