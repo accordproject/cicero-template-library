@@ -54,8 +54,8 @@ define function calculateHumPenalty(minHumidity : Double,
 contract PerishableGoods over PerishableGoodsClause {
   clause payout(request : ShipmentReceived) : PriceCalculation throws Error {
     // Guard against unitCount outside the bounds specified in the clause
-    //enforce request.unitCount < contract.minUnits or request.unitCount > contract.maxUnits
-    //else throw new Error{ message : "Units received out of range for the contract." };
+    enforce request.unitCount <= contract.minUnits or request.unitCount >= contract.maxUnits
+    else throw new Error{ message : "Units received out of range for the contract." };
 
     // Guard against requests for payout after the dueDate
     enforce momentIsBefore(now(),moment(contract.dueDate))

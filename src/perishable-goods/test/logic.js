@@ -27,9 +27,24 @@ chai.use(require('chai-as-promised'));
 const moment = require('moment');
 
 describe('Logic', () => {
-
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + 2);
     const rootDir = path.resolve(__dirname, '..');
-    const clauseText = fs.readFileSync(path.resolve(rootDir, 'sample.txt'), 'utf8');
+    const clauseText = `On receipt of the shipment "SHIP_001" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".
+
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per hours.
+
+Shipments that arrive after ${dueDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })} are to be considered spoiled and must be arranged to be returned to or disposed of by grower at cost to grower.
+
+Temperature readings for the shipment must be between 2 and 13.
+
+Humidity readings for the shipment must be between 70 and 90.
+
+Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is 0.2.
+
+Formula for Breach Penalty Calculation:
+   penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor
+`;
 
     let template;
     let clause;
