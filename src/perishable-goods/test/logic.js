@@ -76,8 +76,8 @@ Formula for Breach Penalty Calculation:
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.totalPrice.should.equal(300);
-            result.response.penalty.should.equal(4200);
+            result.response.totalPrice.doubleValue.should.equal(300);
+            result.response.penalty.doubleValue.should.equal(4200);
             result.response.late.should.equal(false);            
         });
     });

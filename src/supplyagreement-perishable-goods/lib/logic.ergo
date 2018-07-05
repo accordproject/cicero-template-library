@@ -49,12 +49,16 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
     enforce count(request.shipment.sensorReadings) > 0.0
     else throw "No temperature readings received.";
 
-    // // Guard against requests for payout after the dueDate
+    define variable zeroMoney = new org.accordproject.money.MonetaryAmount {
+      doubleValue: 0.0,
+      currencyCode: contract.unitPrice.currencyCode
+    };
+    // Guard against requests for payout after the dueDate
     enforce momentIsBefore(now(), moment(contract.dueDate))
     else return new PriceCalculation{
       shipment : request.shipment,
-      totalPrice : 0.0,
-      penalty : 0.0,
+      totalPrice : zeroMoney,
+      penalty : zeroMoney,
       late : true
     };
 
