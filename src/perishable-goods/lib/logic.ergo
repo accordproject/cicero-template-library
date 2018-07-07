@@ -54,15 +54,20 @@ define function calculateHumPenalty(minHumidity : Double,
 contract PerishableGoods over PerishableGoodsClause {
   clause payout(request : ShipmentReceived) : PriceCalculation throws Error {
     // Guard against unitCount outside the bounds specified in the clause
-    //enforce request.unitCount < contract.minUnits or request.unitCount > contract.maxUnits
-    //else throw new Error{ message : "Units received out of range for the contract." };
+    enforce request.unitCount <= contract.minUnits or request.unitCount >= contract.maxUnits
+    else throw new Error{ message : "Units received out of range for the contract." };
+    
+    define variable zeroMoney = new org.accordproject.money.MonetaryAmount {
+      doubleValue: 0.0,
+      currencyCode: contract.unitPrice.currencyCode
+    };
 
     // Guard against requests for payout after the dueDate
     enforce momentIsBefore(now(),moment(contract.dueDate))
     else return new PriceCalculation{
       shipment : request.shipment,
-      totalPrice : 0.0,
-      penalty : 0.0,
+      totalPrice : zeroMoney,
+      penalty : zeroMoney,
       late : true
     };
     // Guard against missing temperature readings
@@ -82,10 +87,17 @@ contract PerishableGoods over PerishableGoodsClause {
                           contract.penaltyFactor,
                           request.shipment.sensorReadings);
     // Returns a Price calculation, applying any penalities
-    define variable totalPenalty = penalty * request.unitCount;
+    define variable totalPenalty = new org.accordproject.money.MonetaryAmount {
+      doubleValue: penalty * request.unitCount,
+      currencyCode: contract.unitPrice.currencyCode
+    };
+    define variable totalPrice = new org.accordproject.money.MonetaryAmount {
+      doubleValue: max([payOut - totalPenalty.doubleValue, 0.0]),
+      currencyCode: contract.unitPrice.currencyCode
+    };
     return new PriceCalculation{
       shipment : request.shipment,
-      totalPrice : max([payOut - totalPenalty, 0.0]),
+      totalPrice : totalPrice,
       penalty : totalPenalty,
       late : false
     }

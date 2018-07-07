@@ -27,7 +27,7 @@ asset SupplyAgreementPerishableGoodsContract extends AccordContract {
   --> Importer importer
   --> Shipment shipment
   o DateTime dueDate
-  o Double unitPrice
+  o MonetaryAmount unitPrice
   o Unit unit
   o Integer minUnits
   o Integer maxUnits

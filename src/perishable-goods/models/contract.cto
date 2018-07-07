@@ -71,8 +71,8 @@ transaction ShipmentReceived extends ShipmentTransaction {
  * The calculation of a price
  */
 transaction PriceCalculation extends ShipmentTransaction {
-  o Double totalPrice
-  o Double penalty
+  o MonetaryAmount totalPrice
+  o MonetaryAmount penalty
   o Boolean late
 }
 

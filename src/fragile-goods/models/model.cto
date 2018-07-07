@@ -28,7 +28,7 @@ transaction PayOut extends Response {
 /**
  * The template model
  */
-asset FragileGoodsClause extends AccordClause {
+asset FragileGoodsClause extends AccordContract {
   o MonetaryAmount deliveryPrice
   o Double accelerationMin
   o Double accelerationMax
