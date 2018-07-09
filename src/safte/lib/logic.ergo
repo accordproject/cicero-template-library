@@ -16,14 +16,14 @@ namespace org.accordproject.safte
 
 contract Safte over SafteContract {
   clause tokenSale(request : TokenSale) : TokenShare {
-    define variable discountRate = (100.0 - contract.discount) / 100.00;
-    define variable discountPrice = request.tokenPrice * discountRate;
+    let discountRate = (100.0 - contract.discount) / 100.00;
+    let discountPrice = request.tokenPrice * discountRate;
     return new TokenShare{ tokenAmount : contract.purchaseAmount / discountPrice }
   }
 
   clause equityFinancing(request : EquityFinancing) : EquityShare {
-    define variable discountRate = (100.0 - contract.discount) / 100.00;
-    define variable discountPrice = request.sharePrice * discountRate;
+    let discountRate = (100.0 - contract.discount) / 100.00;
+    let discountPrice = request.sharePrice * discountRate;
     return new EquityShare{ equityAmount : contract.purchaseAmount / discountPrice }
   }
 

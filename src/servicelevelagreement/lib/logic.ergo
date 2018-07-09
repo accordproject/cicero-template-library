@@ -35,7 +35,7 @@ contract ServiceLevelAgreement over ServiceLevelAgreementContract {
     // Section 3
     //
 
-    define variable monthlyCredit =
+    let monthlyCredit =
       // Annex 1, schedule - row 2
       if request.monthlyServiceLevel < contract.availability2
       then (contract.serviceCredit2 / 100.0) * request.monthlyCharge
@@ -45,11 +45,11 @@ contract ServiceLevelAgreement over ServiceLevelAgreementContract {
       else 0.0;
 
     // Clause 3.3
-    define variable monthlyCredit = min([monthlyCredit, (contract.monthlyCapPercentage  / 100.0 ) * request.monthlyCharge]);
+    let monthlyCredit = min([monthlyCredit, (contract.monthlyCapPercentage  / 100.0 ) * request.monthlyCharge]);
 
     // Clause 3.4
-    define variable yearlyCreditCap = ( contract.yearlyCapPercentage / 100.0) * (request.last11MonthCharge + request.monthlyCharge);
-    define variable monthlyCredit = min([monthlyCredit, yearlyCreditCap - request.last11MonthCredit]);
+    let yearlyCreditCap = ( contract.yearlyCapPercentage / 100.0) * (request.last11MonthCharge + request.monthlyCharge);
+    let monthlyCredit = min([monthlyCredit, yearlyCreditCap - request.last11MonthCredit]);
 
     return new InvoiceCredit{
       monthlyCredit: toFixed(monthlyCredit)

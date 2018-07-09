@@ -14,8 +14,6 @@
 
 namespace org.accordproject.copyrightlicense
 
-import org.accordproject.copyrightlicense.*
-
 contract CopyrightLicense over CopyrightLicenseContract {
    // Clause for volume discount
   clause paymentClause(request : PaymentRequest) : PayOut {

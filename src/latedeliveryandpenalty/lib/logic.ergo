@@ -14,12 +14,14 @@
 
 namespace org.accordproject.latedeliveryandpenalty
 
+import org.accordproject.cicero.runtime.*
+
 contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyClause {
-  clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse throws Error {
+  clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse throws ErrorResponse {
     // Guard against calling late delivery clause too early
-    define variable agreed = request.agreedDelivery;
+    let agreed = request.agreedDelivery;
     enforce momentIsBefore(agreed,now()) else
-    throw new Error{ message : "Cannot exercise late delivery before delivery date" };
+    throw new ErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
     
     enforce !contract.forceMajeure or !request.forceMajeure else
     return new LateDeliveryAndPenaltyResponse{
@@ -29,12 +31,12 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyClause {
     ;
 
     // Calculate the time difference between current date and agreed upon date
-    define variable diff = momentDiffDays(now,agreed);
+    let diff = momentDiffDays(now,agreed);
     // Penalty formula
-    define variable penalty =
+    let penalty =
       (diff / contract.penaltyDuration.amount) * contract.penaltyPercentage/100.0 * request.goodsValue;
     // Penalty may be capped
-    define variable capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
+    let capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
     // Return the response with the penalty and termination determination
     return new LateDeliveryAndPenaltyResponse{
       penalty: capped,
