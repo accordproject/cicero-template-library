@@ -320,8 +320,8 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     fileWriter.closeFile();
     const pumlContent = fs.readFileSync(pumlFilePath, 'utf8');
     const encoded = plantumlEncoder.encode(pumlContent)
-    const umlURL = `http://www.plantuml.com/plantuml/svg/${encoded}`;
-    const umlCardURL = `http://www.plantuml.com/plantuml/png/${encoded}`;
+    const umlURL = `https://www.plantuml.com/plantuml/svg/${encoded}`;
+    const umlCardURL = `https://www.plantuml.com/plantuml/png/${encoded}`;
 
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
