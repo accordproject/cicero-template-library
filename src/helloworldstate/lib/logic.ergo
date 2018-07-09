@@ -14,8 +14,6 @@
 
 namespace org.accordproject.helloworldstate
 
-import org.accordproject.helloworldstate.*
-
 contract HelloWorldState over HelloWorldState {
   // Simple Clause
   clause helloworldstate(request : MyRequest) : MyResponse {

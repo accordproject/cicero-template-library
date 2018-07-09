@@ -14,17 +14,19 @@
 
 namespace io.clause.demo.fragileGoods
 
+import org.accordproject.cicero.runtime.*
+
 contract FragileGoods over FragileGoodsClause {
-  clause fragilegoods(request : DeliveryUpdate) : PayOut emits org.accordproject.cicero.runtime.PaymentObligation {
-    define variable amount = contract.deliveryPrice.doubleValue;
-    define variable currency = contract.deliveryPrice.currencyCode;
-    define variable shocks =
+  clause fragilegoods(request : DeliveryUpdate) : PayOut throws ErrorResponse emits PaymentObligation {
+    let amount = contract.deliveryPrice.doubleValue;
+    let currency = contract.deliveryPrice.currencyCode;
+    let shocks =
       count(
         foreach r in request.accelerometerReadings
         where r > contract.accelerationMax or r < contract.accelerationMin
         return r
       );
-    define variable amount = amount - shocks * contract.accelerationBreachPenalty.doubleValue;
+    let amount = amount - shocks * contract.accelerationBreachPenalty.doubleValue;
 
     enforce request.status = "ARRIVED" and request.finishTime != nil
     else return new PayOut{
@@ -38,9 +40,9 @@ contract FragileGoods over FragileGoodsClause {
     with let finishTime? then
       if contract.deliveryLimitDuration.unit = "seconds"
       then
-        define variable duration = momentDiffSeconds(finishTime, request.startTime);
+        let duration = momentDiffSeconds(finishTime, request.startTime);
         if (duration) > contract.deliveryLimitDuration.amount then
-          define variable monetaryAmount = new org.accordproject.money.MonetaryAmount {
+          let monetaryAmount = new org.accordproject.money.MonetaryAmount {
             doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,
             currencyCode: currency
           };
@@ -55,7 +57,7 @@ contract FragileGoods over FragileGoodsClause {
             amount: monetaryAmount
           }
         else 
-          define variable monetaryAmount = new org.accordproject.money.MonetaryAmount {
+          let monetaryAmount = new org.accordproject.money.MonetaryAmount {
             doubleValue: amount,
             currencyCode: currency
           };
@@ -69,8 +71,8 @@ contract FragileGoods over FragileGoodsClause {
           return new PayOut { 
             amount: monetaryAmount
           }
-      else throw new Error{ message: "Unit not implemented" }
-    else throw new Error{ message: "Finish time not present" }
+      else throw new ErrorResponse{ message: "Unit not implemented" }
+    else throw new ErrorResponse{ message: "Finish time not present" }
   }
 }
 
