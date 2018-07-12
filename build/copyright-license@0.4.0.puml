@@ -1,0 +1,31 @@
+@startuml
+class org.accordproject.copyrightlicense.PaymentRequest << (T,yellow) >> {
+}
+org.accordproject.copyrightlicense.PaymentRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.copyrightlicense.PayOut << (T,yellow) >> {
+   + MonetaryAmount amount
+}
+org.accordproject.copyrightlicense.PayOut --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.copyrightlicense.CopyrightLicenseContract << (A,green) >> {
+   + DateTime effectiveDate
+   + String licenseeName
+   + String licenseeState
+   + String licenseeEntityType
+   + String licenseeAddress
+   + String licensorName
+   + String licensorState
+   + String licensorEntityType
+   + String licensorAddress
+   + String territory
+   + String purposeDescription
+   + String workDescription
+   + PaymentClause paymentClause
+}
+org.accordproject.copyrightlicense.CopyrightLicenseContract --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.copyrightlicense.PaymentClause << (A,green) >> {
+   + String amountText
+   + MonetaryAmount amount
+   + String paymentProcedure
+}
+org.accordproject.copyrightlicense.PaymentClause --|> org.accordproject.cicero.contract.AccordClause
+@enduml

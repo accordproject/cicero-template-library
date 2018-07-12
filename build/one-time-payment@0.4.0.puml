@@ -1,0 +1,29 @@
+@startuml
+class org.accordproject.payment.onetime.InitRequest << (T,yellow) >> {
+}
+org.accordproject.payment.onetime.InitRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.payment.onetime.InitResponse << (T,yellow) >> {
+}
+org.accordproject.payment.onetime.InitResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.payment.onetime.PaymentReceivedRequest << (T,yellow) >> {
+}
+org.accordproject.payment.onetime.PaymentReceivedRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.payment.onetime.PaymentReceivedResponse << (T,yellow) >> {
+}
+org.accordproject.payment.onetime.PaymentReceivedResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.payment.onetime.OneTimePaymentState << (A,green) >> {
+   + ContractLifecycleStatus status
+}
+org.accordproject.payment.onetime.OneTimePaymentState --|> org.accordproject.cicero.contract.AccordContractState
+class org.accordproject.payment.onetime.ContractLifecycleStatus << (E,grey) >> {
+   + UNINITIALIZED
+   + OBLIGATION_EMITTED
+   + COMPLETED
+}
+class org.accordproject.payment.onetime.OneTimePaymentContract << (A,green) >> {
+   + AccordParty buyer
+   + AccordParty seller
+   + MonetaryAmount initialAmount
+}
+org.accordproject.payment.onetime.OneTimePaymentContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml
