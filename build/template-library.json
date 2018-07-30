@@ -584,5 +584,15 @@
         "ciceroVersion": "^0.4.6",
         "type": 0,
         "language": 0
+    },
+    "fragile-goods@0.3.1": {
+        "uri": "ap://fragile-goods@0.3.1#70f8b7fec9e31785bbaec67c7cd150e6044cec00eb8f6a756cb2b7553cf31fdd",
+        "url": "https://templates.accordproject.org/archives/fragile-goods@0.3.1.cta",
+        "name": "fragile-goods",
+        "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
+        "version": "0.3.1",
+        "ciceroVersion": "^0.4.7",
+        "type": 0,
+        "language": 0
     }
 }
