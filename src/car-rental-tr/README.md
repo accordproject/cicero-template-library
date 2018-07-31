@@ -1,7 +1,7 @@
 
 # Accord Protocol Template: car-rental-tr
 
-This is a Simple Car Rental Contract in Turkish Language.
+The is a Simple Car Rental Contract in Turkish Language.
 
 ### Parse
 Use the `cicero parse` command to load a template from a directory on disk and then use it to parse input text, echoing the result of parsing. If the input text is valid the parsing result will be a JSON serialized instance of the Template Mode:
