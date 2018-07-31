@@ -1,0 +1,24 @@
+namespace org.accordru.salescontract
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+transaction MyRequest extends Request {
+  o String input
+}
+
+transaction MyResponse extends Response {
+  o String output
+}
+
+asset MyContract extends AccordContract {
+
+  // Lessor //
+  o String buyer
+  o String seller
+  o String refundPeriod
+  o String counterparty
+  o String currencyType
+  o String appealPeriod
+  o String countryLegislation
+}
