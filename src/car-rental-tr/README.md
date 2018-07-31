@@ -54,7 +54,7 @@ Sample.txt:
     2.5 Renk "Kırmızı"
     2.6 Şase No "WVWZZZ3CZXW000001"
 
-    3.1 "İki Yüz On Yedi Amerikan Doları" (217.00 USD) "bank transfer".
+    3.1 "İki Yüz On Yedi Amerikan Doları" (217.99 USD) "bank transfer".
     3.2 Kiralama Başlangıç Tarihi "13.07.2018"
     3.3 Kiralama Bitiş Tarihi "17.07.2018"
     3.4 Teslimat Noktası "Acme Car Rental Merkez Ofis"
