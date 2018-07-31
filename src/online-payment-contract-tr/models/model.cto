@@ -1,0 +1,26 @@
+namespace org.accordtr.onlinepayment
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+transaction MyRequest extends Request {
+  o String input
+}
+
+transaction MyResponse extends Response {
+  o String output
+}
+
+/**
+ * The model for the contract
+ */
+asset MyContract extends AccordContract {
+  /**
+   * The name for the contract
+   */
+  o String buyer
+  o String seller
+  o String softwareID
+  o String userCount
+  o String authorizedCourt
+}
