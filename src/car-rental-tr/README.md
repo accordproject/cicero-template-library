@@ -110,4 +110,3 @@ The results of execution (a JSON serialized object) are displayed. They include:
   },
   "emit": []
 }
-```
