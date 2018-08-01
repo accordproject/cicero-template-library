@@ -75,7 +75,7 @@ Use the `cicero execute` command to load a template from a directory on disk, in
 ```
 data.json:
 {
-   "$class": "com.tr.carrental.PaymentRequest",
+   "$class": "org.accordtr.carrental.PaymentRequest",
 }
 ```
 
