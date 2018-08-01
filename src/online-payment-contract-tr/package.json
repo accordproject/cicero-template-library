@@ -1,0 +1,10 @@
+{
+    "name": "car-rental-tr",
+    "version": "0.0.0",
+    "description": "Name of the person to greet: \"Dan\".\nThank you!",
+    "cicero": {
+      "version": "^0.4.6",
+      "language": "ergo",
+      "template": "contract"
+    }
+  }
