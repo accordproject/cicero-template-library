@@ -596,10 +596,10 @@
         "language": 0
     },
     "car-rental-tr@0.1.0": {
-        "uri": "ap://car-rental-tr@0.1.0#9fc56d564993b9296c6baab3d286ca60022db39122107887e0d225cad8f98719",
+        "uri": "ap://car-rental-tr@0.1.0#7ea0c0ba466d1a0cf4423b13a53362b7a83835cf96ee6ceed83d5c8b88604388",
         "url": "https://templates.accordproject.org/archives/car-rental-tr@0.1.0.cta",
         "name": "car-rental-tr",
-        "description": "Name of the person to greet: \"Dan\".\nThank you!",
+        "description": "a Simple Car Rental Contract in Turkish Language",
         "version": "0.1.0",
         "ciceroVersion": "^0.5.0",
         "type": 0,
@@ -789,6 +789,26 @@
         "name": "volumediscount",
         "description": "A sample volume discount contract.",
         "version": "0.5.0",
+        "ciceroVersion": "^0.5.0",
+        "type": 0,
+        "language": 0
+    },
+    "online-payment-contract-tr@0.1.0": {
+        "uri": "ap://online-payment-contract-tr@0.1.0#2679c86ed44f2d2d87647098380961e045009c7659aa642156df06872e182da8",
+        "url": "https://templates.accordproject.org/archives/online-payment-contract-tr@0.1.0.cta",
+        "name": "online-payment-contract-tr",
+        "description": "This is an Online Payment Contract prepared in Turkish Language.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.5.0",
+        "type": 0,
+        "language": 0
+    },
+    "sales-contract-ru@0.1.0": {
+        "uri": "ap://sales-contract-ru@0.1.0#d310e0964211f36dc81e5a93cf52ab5488ddc7921a3be589d868cd71c2aa4d5f",
+        "url": "https://templates.accordproject.org/archives/sales-contract-ru@0.1.0.cta",
+        "name": "sales-contract-ru",
+        "description": "This is a Sales Contract prepared in Russian Language.",
+        "version": "0.1.0",
         "ciceroVersion": "^0.5.0",
         "type": 0,
         "language": 0

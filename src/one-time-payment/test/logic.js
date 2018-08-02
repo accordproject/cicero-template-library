@@ -47,7 +47,7 @@ describe('Logic', () => {
     
     describe('#OneTimePayment', async function() {
 
-        it('should produce correct result', async function() {
+        it('should produce correct payment in USD', async function() {
             const request = {};
             request.$class = 'org.accordproject.payment.onetime.InitRequest';
 
