@@ -1,20 +1,35 @@
 @startuml
-class org.accordru.salescontract.MyRequest << (T,yellow) >> {
-   + String input
+class org.accordtr.carrental.PaymentRequest << (T,yellow) >> {
 }
-org.accordru.salescontract.MyRequest --|> org.accordproject.cicero.runtime.Request
-class org.accordru.salescontract.MyResponse << (T,yellow) >> {
-   + String output
+org.accordtr.carrental.PaymentRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordtr.carrental.PayOut << (T,yellow) >> {
+   + MonetaryAmount amount
 }
-org.accordru.salescontract.MyResponse --|> org.accordproject.cicero.runtime.Response
-class org.accordru.salescontract.MyContract << (A,green) >> {
-   + String buyer
-   + String seller
-   + String refundPeriod
-   + String counterparty
-   + String currencyType
-   + String appealPeriod
-   + String countryLegislation
+org.accordtr.carrental.PayOut --|> org.accordproject.cicero.runtime.Response
+class org.accordtr.carrental.CarRentalContract << (A,green) >> {
+   + String lessorName
+   + String lessorAddress
+   + String lessorPhone
+   + String lesseeName
+   + String lesseeAddress
+   + String lesseePhone
+   + String authorizedCourt
+   + String plateID
+   + String carBrand
+   + String model
+   + String modelYear
+   + String color
+   + String vechileID
+   + String startDate
+   + String endDate
+   + String deliveryStation
+   + PaymentClause paymentClause
 }
-org.accordru.salescontract.MyContract --|> org.accordproject.cicero.contract.AccordContract
+org.accordtr.carrental.CarRentalContract --|> org.accordproject.cicero.contract.AccordContract
+class org.accordtr.carrental.PaymentClause << (A,green) >> {
+   + String amountText
+   + MonetaryAmount amount
+   + String paymentProcedure
+}
+org.accordtr.carrental.PaymentClause --|> org.accordproject.cicero.contract.AccordClause
 @enduml
