@@ -1,0 +1,10 @@
+{
+    "name": "car-rental-tr",
+    "version": "0.0.0",
+    "description": "a Simple Car Rental Contract in Turkish Language",
+    "cicero": {
+      "version": "^0.4.6",
+      "language": "ergo",
+      "template": "contract"
+    }
+  }
