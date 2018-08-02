@@ -17,7 +17,7 @@ namespace org.accordproject.copyrightlicense
 contract CopyrightLicense over CopyrightLicenseContract {
    // Clause for volume discount
   clause paymentClause(request : PaymentRequest) : PayOut {
-    return new PayOut{ amount: clause.amount }
+    return PayOut{ amount: clause.amount }
   }
 }
 

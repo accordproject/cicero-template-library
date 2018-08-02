@@ -21,7 +21,7 @@ contract AcceptanceOfDelivery over AcceptanceOfDeliveryClause {
 
 		let received = request.deliverableReceivedAt;
     enforce momentIsBefore(received,now()) else
-      throw new ErrorResponse{ error : "Transaction time is before the deliverable date." }
+      throw ErrorResponse{ error : "Transaction time is before the deliverable date." }
     ;
 
     let status =
@@ -31,7 +31,7 @@ contract AcceptanceOfDelivery over AcceptanceOfDeliveryClause {
       then "PASSED_TESTING"
       else "FAILED_TESTING"
     ;
-    return new InspectionResponse{
+    return InspectionResponse{
       status : status,
       shipper : contract.shipper,   // This should be a relationship
       receiver : contract.receiver  // This should be a relationship

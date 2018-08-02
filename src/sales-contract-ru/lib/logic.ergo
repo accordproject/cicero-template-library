@@ -18,6 +18,6 @@ contract MyContract over AccordContract {
 
   // Simple Clause
   clause salescontract(request : MyRequest) : MyResponse {
-    return new MyResponse{ output: request.input }
+    return MyResponse{ output: request.input }
   }
 }

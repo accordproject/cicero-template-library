@@ -4,8 +4,6 @@ import org.accordproject.cicero.contract.* from https://models.accordproject.org
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
-import org.accordproject.purchaseorder.*
-
 transaction Installment extends Request {
   o Double amount
 }
@@ -29,15 +27,6 @@ enum ContractStatus {
  */
 event MyObligation {
   o String party
-}
-event DeliveryObligation extends MyObligation {
-  o DateTime expectedDelivery
-  o OrderItem[] deliverables
-}
-event PurchaseObligation extends MyObligation {
-  o Double requiredPurchase
-  o Integer year
-  o Integer quarter
 }
 event PaymentObligation extends MyObligation {
   o Double amount
