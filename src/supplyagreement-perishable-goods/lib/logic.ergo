@@ -49,13 +49,13 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
     enforce count(request.shipment.sensorReadings) > 0.0
     else throw "No temperature readings received.";
 
-    let zeroMoney = new org.accordproject.money.MonetaryAmount {
+    let zeroMoney = MonetaryAmount{
       doubleValue: 0.0,
       currencyCode: contract.unitPrice.currencyCode
     };
     // Guard against requests for payout after the dueDate
     enforce momentIsBefore(now(), moment(contract.dueDate))
-    else return new PriceCalculation{
+    else return PriceCalculation{
       shipment : request.shipment,
       totalPrice : zeroMoney,
       penalty : zeroMoney,
@@ -76,22 +76,22 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
                           request.shipment.sensorReadings);
 
     // Returns a Price calculation, applying any penalities
-    let totalPenalty = new org.accordproject.money.MonetaryAmount {
+    let totalPenalty = MonetaryAmount{
       doubleValue: penalty * request.unitCount,
       currencyCode: contract.unitPrice.currencyCode
     };
-    let totalPrice = new org.accordproject.money.MonetaryAmount {
+    let totalPrice = MonetaryAmount{
       doubleValue: max([payOut - totalPenalty.doubleValue, 0.0]),
       currencyCode: contract.unitPrice.currencyCode
     };
-    emit new org.accordproject.cicero.runtime.PaymentObligation {
+    emit PaymentObligation{
       contract: contract.contractId,
       promisor: contract.importer,
       promisee: contract.grower,
       amount: totalPrice,
       description: contract.grower ++ " must pay " ++ contract.importer ++ " " ++ totalPrice
     };
-    return new PriceCalculation{
+    return PriceCalculation{
       shipment : request.shipment,
       totalPrice : totalPrice,
       penalty : totalPenalty,

@@ -18,6 +18,6 @@ contract carRental over CarRentalContract {
 
   // Simple Clause
   clause paymentClause(request : PaymentRequest) : PayOut {
-    return new PayOut{ amount: clause.amount }
+    return PayOut{ amount: clause.amount }
   }
 }

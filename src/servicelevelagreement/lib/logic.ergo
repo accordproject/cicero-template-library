@@ -51,7 +51,7 @@ contract ServiceLevelAgreement over ServiceLevelAgreementContract {
     let yearlyCreditCap = ( contract.yearlyCapPercentage / 100.0) * (request.last11MonthCharge + request.monthlyCharge);
     let monthlyCredit = min([monthlyCredit, yearlyCreditCap - request.last11MonthCredit]);
 
-    return new InvoiceCredit{
+    return InvoiceCredit{
       monthlyCredit: toFixed(monthlyCredit)
     }
   }

@@ -17,7 +17,7 @@ namespace org.accordtr.onlinepayment
 contract MyContract over AccordContract {
   // Simple Clause
   clause onlinepayment(request : MyRequest) : MyResponse {
-    return new MyResponse{ output: request.input }
+    return MyResponse{ output: request.input }
   }
 }
 

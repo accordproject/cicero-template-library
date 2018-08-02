@@ -54,16 +54,16 @@ contract PerishableGoods over PerishableGoodsClause {
   clause payout(request : ShipmentReceived) : PriceCalculation throws ErrorResponse {
     // Guard against unitCount outside the bounds specified in the clause
     enforce request.unitCount <= contract.minUnits or request.unitCount >= contract.maxUnits
-    else throw new ErrorResponse{ message : "Units received out of range for the contract." };
+    else throw ErrorResponse{ message : "Units received out of range for the contract." };
     
-    let zeroMoney = new org.accordproject.money.MonetaryAmount {
+    let zeroMoney = MonetaryAmount {
       doubleValue: 0.0,
       currencyCode: contract.unitPrice.currencyCode
     };
 
     // Guard against requests for payout after the dueDate
     enforce momentIsBefore(now(),moment(contract.dueDate))
-    else return new PriceCalculation{
+    else return PriceCalculation{
       shipment : request.shipment,
       totalPrice : zeroMoney,
       penalty : zeroMoney,
@@ -71,7 +71,7 @@ contract PerishableGoods over PerishableGoodsClause {
     };
     // Guard against missing temperature readings
     enforce count(request.shipment.sensorReadings) > 0.0
-    else throw new ErrorResponse{ message : "No temperature readings received."};
+    else throw ErrorResponse{ message : "No temperature readings received."};
 
     // Calculates payout
     let payOut = contract.unitPrice.doubleValue * request.unitCount;
@@ -86,15 +86,15 @@ contract PerishableGoods over PerishableGoodsClause {
                           contract.penaltyFactor,
                           request.shipment.sensorReadings);
     // Returns a Price calculation, applying any penalities
-    let totalPenalty = new org.accordproject.money.MonetaryAmount {
+    let totalPenalty = MonetaryAmount {
       doubleValue: penalty * request.unitCount,
       currencyCode: contract.unitPrice.currencyCode
     };
-    let totalPrice = new org.accordproject.money.MonetaryAmount {
+    let totalPrice = MonetaryAmount {
       doubleValue: max([payOut - totalPenalty.doubleValue, 0.0]),
       currencyCode: contract.unitPrice.currencyCode
     };
-    return new PriceCalculation{
+    return PriceCalculation{
       shipment : request.shipment,
       totalPrice : totalPrice,
       penalty : totalPenalty,

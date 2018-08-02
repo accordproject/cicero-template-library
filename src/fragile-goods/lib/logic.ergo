@@ -29,8 +29,8 @@ contract FragileGoods over FragileGoodsClause {
     let amount = amount - shocks * contract.accelerationBreachPenalty.doubleValue;
 
     enforce request.status = "ARRIVED" and request.finishTime != nil
-    else return new PayOut{
-		  amount: new org.accordproject.money.MonetaryAmount {
+    else return PayOut{
+		  amount: MonetaryAmount{
 				doubleValue: amount,
 				currencyCode: currency
 			}
@@ -42,37 +42,37 @@ contract FragileGoods over FragileGoodsClause {
       then
         let duration = momentDiffSeconds(finishTime, request.startTime);
         if (duration) > contract.deliveryLimitDuration.amount then
-          let monetaryAmount = new org.accordproject.money.MonetaryAmount {
+          let monetaryAmount = MonetaryAmount{
             doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,
             currencyCode: currency
           };
-          emit new org.accordproject.cicero.runtime.PaymentObligation {
+          emit PaymentObligation{
             contract: "NOT_SET",
             promisor: "Buyer",
             promisee: "Supplier",
             amount: monetaryAmount,
             description: "Buyer should pay contract amount to the Supplier"
           };
-          return new PayOut{
+          return PayOut{
             amount: monetaryAmount
           }
         else 
-          let monetaryAmount = new org.accordproject.money.MonetaryAmount {
+          let monetaryAmount = MonetaryAmount{
             doubleValue: amount,
             currencyCode: currency
           };
-          emit new org.accordproject.cicero.runtime.PaymentObligation {
+          emit PaymentObligation{
             contract: "NOT_SET",
             promisor: "Buyer",
             promisee: "Supplier",
             amount: monetaryAmount,
             description: "Buyer should pay contract amount to the Supplier"
           };
-          return new PayOut { 
+          return PayOut{ 
             amount: monetaryAmount
           }
-      else throw new ErrorResponse{ message: "Unit not implemented" }
-    else throw new ErrorResponse{ message: "Finish time not present" }
+      else throw ErrorResponse{ message: "Unit not implemented" }
+    else throw ErrorResponse{ message: "Finish time not present" }
   }
 }
 

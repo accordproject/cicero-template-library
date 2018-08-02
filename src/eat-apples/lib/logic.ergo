@@ -17,12 +17,12 @@ namespace org.accordproject.canteen
 contract EatApples over CanteenClause {
   clause eathealthy(request : Food) : Outcome {
     enforce request.produce = "apple"
-    else return new Outcome{ notice : "You're fired!" };
+    else return Outcome{ notice : "You're fired!" };
 
-    emit new Bill{
+    emit Bill{
       billTo: contract.employee,
       amount: request.price * (1.0 + contract.tax / 100.0)
     };
-    return new Outcome{ notice : "Very healthy!" }
+    return Outcome{ notice : "Very healthy!" }
   }
 }

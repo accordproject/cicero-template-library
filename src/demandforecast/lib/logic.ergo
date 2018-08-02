@@ -24,12 +24,12 @@ define function isLastDayOfQuarter(timestamp : DateTime) : Boolean {
 contract DemandForecast over DemandForecastClause {
   clause demandforecast(request : ForecastRequest) : BindingResponse throws ErrorResponse {
 //    enforce momentIsBefore(contract.effectiveDate,now())
-//    else throw new Error{ message: "Forecast was received before the effective date" };
+//    else throw Error{ message: "Forecast was received before the effective date" };
 
     enforce isLastDayOfQuarter(now())
-    else throw new ErrorResponse{ message: "Forecast was not received on last day of quarter" };
+    else throw ErrorResponse{ message: "Forecast was not received on last day of quarter" };
     
-    return new BindingResponse{
+    return BindingResponse{
       requiredPurchase : request.supplyForecast * (contract.minimumPercentage / 100.0),
       year : momentYear(now()),
       quarter : momentQuarter(now())

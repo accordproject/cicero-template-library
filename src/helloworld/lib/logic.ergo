@@ -17,6 +17,6 @@ namespace org.accordproject.helloworld
 contract HelloWorld over HelloWorldClause {
   // Simple Clause
   clause helloworld(request : MyRequest) : MyResponse {
-    return new MyResponse{ output: "Hello " ++ contract.name ++ " " ++ request.input }
+    return MyResponse{ output: "Hello " ++ contract.name ++ " " ++ request.input }
   }
 }

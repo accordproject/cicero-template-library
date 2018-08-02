@@ -18,17 +18,17 @@ contract Safte over SafteContract {
   clause tokenSale(request : TokenSale) : TokenShare {
     let discountRate = (100.0 - contract.discount) / 100.00;
     let discountPrice = request.tokenPrice * discountRate;
-    return new TokenShare{ tokenAmount : contract.purchaseAmount / discountPrice }
+    return TokenShare{ tokenAmount : contract.purchaseAmount / discountPrice }
   }
 
   clause equityFinancing(request : EquityFinancing) : EquityShare {
     let discountRate = (100.0 - contract.discount) / 100.00;
     let discountPrice = request.sharePrice * discountRate;
-    return new EquityShare{ equityAmount : contract.purchaseAmount / discountPrice }
+    return EquityShare{ equityAmount : contract.purchaseAmount / discountPrice }
   }
 
   clause disolutionEvent(request : DissolutionEvent) : PayOut {
-    return new PayOut{ amount : contract.purchaseAmount }
+    return PayOut{ amount : contract.purchaseAmount }
   }
 }
 
