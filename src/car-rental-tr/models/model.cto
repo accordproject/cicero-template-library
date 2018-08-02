@@ -1,0 +1,65 @@
+namespace org.accordtr.carrental
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+
+// transaction MyRequest extends Request {
+//   o String input
+// }
+
+// transaction MyResponse extends Response {
+//   o String output
+// }
+
+/* Requesting a payment */
+transaction PaymentRequest extends Request {
+}
+
+/* PayOut response */
+transaction PayOut extends Response {
+  o MonetaryAmount amount
+}
+
+asset CarRentalContract extends AccordContract {
+
+  // Lessor //
+  o String lessorName
+  o String lessorAddress
+  o String lessorPhone
+
+  // Lessee //
+  o String lesseeName
+  o String lesseeAddress
+  o String lesseePhone
+
+  // Domestic Court //
+  o String authorizedCourt
+  
+  // Vechile Details //
+  o String plateID
+  o String carBrand
+  o String model
+  o String modelYear
+  o String color
+  o String vechileID
+
+  // Date Details //
+  o String startDate
+  o String endDate
+
+  // Payment Details //
+  //o String charge
+  o String deliveryStation
+  
+  /* payment */
+  o PaymentClause paymentClause
+}
+
+asset PaymentClause extends AccordClause {
+  o String amountText
+	o MonetaryAmount amount
+	o String paymentProcedure
+}
