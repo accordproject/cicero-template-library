@@ -1,0 +1,293 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/demandforecast@0.4.0.html" />
+<meta property="og:title" content="demandforecast@0.4.0" />
+<meta property="og:description" content="A sample demandforecast clause." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/dPBHJiCm34NV-nL-1B7r2wPgWmc9jsdi1q9oMuBIf7CIK0NyEzcQIdIQKCMZ7JlskTTh7mI7s9f26k4zEMvA8QLZrR5xWmobGYkigXr32X_AxJbypE634T63LYkwsImQ1kmjLHLz5aHqHy-1jMseYonVXGTFiZvsdT5ZSYi23he5eQxJLFsEKoQ_kVXYGAssketj3YnXWsXGV1V_MtUv_Agka4ejmQwKpWOMATwSNuUUkVACa_OuHlXmLkQmw66C-_WjpPCDQC232ltODOVeSiBVC1njIBAMkNeknhssAfcqX--SpGPVmyZMSFfTCzGkEprbx25ucZd6T7J9-XcubvlCnHtAYpMiEbtt3m00" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="demandforecast@0.4.0" />
+<meta name="twitter:description" content="A sample demandforecast clause." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/dPBHJiCm34NV-nL-1B7r2wPgWmc9jsdi1q9oMuBIf7CIK0NyEzcQIdIQKCMZ7JlskTTh7mI7s9f26k4zEMvA8QLZrR5xWmobGYkigXr32X_AxJbypE634T63LYkwsImQ1kmjLHLz5aHqHy-1jMseYonVXGTFiZvsdT5ZSYi23he5eQxJLFsEKoQ_kVXYGAssketj3YnXWsXGV1V_MtUv_Agka4ejmQwKpWOMATwSNuUUkVACa_OuHlXmLkQmw66C-_WjpPCDQC232ltODOVeSiBVC1njIBAMkNeknhssAfcqX--SpGPVmyZMSFfTCzGkEprbx25ucZd6T7J9-XcubvlCnHtAYpMiEbtt3m00" />
+<meta name="twitter:image:alt" content="UML diagram of demandforecast@0.4.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/demandforecast@0.4.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template demandforecast@0.4.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.5.0</span>
+                <span class="tag">9e5c858fe5bd3bbd10a09afc789bd43af0ae467947b0a3cd088592f7c37bddd5</span>
+            </div>
+            <p class="subtitle">
+                A sample demandforecast clause.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="demandforecast@0.4.0.html" class="dropdown-item is-active">
+                                demandforecast@0.4.0
+                            </a>
+                        
+                            <a href="demandforecast@0.3.0.html" class="dropdown-item ">
+                                demandforecast@0.3.0
+                            </a>
+                        
+                            <a href="demandforecast@0.2.0.html" class="dropdown-item ">
+                                demandforecast@0.2.0
+                            </a>
+                        
+                            <a href="demandforecast@0.1.0.html" class="dropdown-item ">
+                                demandforecast@0.1.0
+                            </a>
+                        
+                            <a href="demandforecast@0.0.6.html" class="dropdown-item ">
+                                demandforecast@0.0.6
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/demandforecast@0.4.0.cta" class="button is-rounded">Download Archive</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/dPBHJiCm34NV-nL-1B7r2wPgWmc9jsdi1q9oMuBIf7CIK0NyEzcQIdIQKCMZ7JlskTTh7mI7s9f26k4zEMvA8QLZrR5xWmobGYkigXr32X_AxJbypE634T63LYkwsImQ1kmjLHLz5aHqHy-1jMseYonVXGTFiZvsdT5ZSYi23he5eQxJLFsEKoQ_kVXYGAssketj3YnXWsXGV1V_MtUv_Agka4ejmQwKpWOMATwSNuUUkVACa_OuHlXmLkQmw66C-_WjpPCDQC232ltODOVeSiBVC1njIBAMkNeknhssAfcqX--SpGPVmyZMSFfTCzGkEprbx25ucZd6T7J9-XcubvlCnHtAYpMiEbtt3m00" />
+
+            <div class="content">
+                <p>
+                <h1 id="demandforecast">Demand Forecast</h1>
+<p>A sample demand forecast clause.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/demandforecast">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.demandforecast.DemandForecastClause",
+    "clauseId": "9109549b-936c-4c7e-9db5-dd103c041303",
+    "purchaser": "PETER",
+    "supplier": "DAN",
+    "effectiveDate": "2018-04-02",
+    "minimumPercentage": 85
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "f0fc2c20-966d-11e8-91eb-632e912d28eb"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.demandforecast.ForecastRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.demandforecast.ForecastRequest",
+    "supplyForecast": 62269,
+    "transactionId": "f0fbb6f0-966d-11e8-91eb-632e912d28eb",
+    "timestamp": "2018-08-02T16:05:57.343Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.demandforecast.BindingResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.demandforecast.BindingResponse",
+    "requiredPurchase": 122.429,
+    "year": 23658,
+    "quarter": 33995,
+    "transactionId": "f0fc0510-966d-11e8-91eb-632e912d28eb",
+    "timestamp": "2018-08-02T16:05:57.345Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
