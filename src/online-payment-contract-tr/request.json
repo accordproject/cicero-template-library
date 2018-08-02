@@ -1,0 +1,4 @@
+{
+    "$class": "org.accordtr.onlinepayment.MyRequest",
+    "input": "Payment Valid"
+}
