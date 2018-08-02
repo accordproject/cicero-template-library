@@ -46,6 +46,7 @@
   "version": "0.1.0",
   "main": "build.js",
   "devDependencies": {
+    "lerna": "^3.0.0-rc.0",
     "mkdirp": "^0.5.1",
     "nyc": "^12.0.2"
   },
