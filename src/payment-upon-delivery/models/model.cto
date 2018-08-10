@@ -1,0 +1,18 @@
+namespace org.accordproject.payment.upondelivery
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
+/**
+ * The template model
+ */
+asset PaymentUponDeliveryContract extends AccordContract {
+  o AccordParty buyer
+  o AccordParty seller
+  o MonetaryAmount costOfGoods
+  o MonetaryAmount deliveryFee  
+}
+
+transaction DeliveryAcceptedRequest extends Request {}
+transaction DeliveryAcceptedResponse extends Response {}
