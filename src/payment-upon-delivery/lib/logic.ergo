@@ -1,0 +1,40 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.payment.upondelivery
+
+import org.accordproject.cicero.runtime.*
+
+contract PaymentUponDelivery over PaymentUponDeliveryContract {
+  /**
+	 * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
+	 */
+  clause delivered(request : DeliveryAcceptedRequest) : DeliveryAcceptedResponse emits PaymentObligation {
+	  enforce (contract.costOfGoods.currencyCode = contract.deliveryFee.currencyCode);
+		let totalAmount = MonetaryAmount{
+				doubleValue: contract.costOfGoods.doubleValue + contract.deliveryFee.doubleValue,
+				currencyCode: contract.costOfGoods.currencyCode
+			};
+    emit PaymentObligation{
+			contract: contract.contractId,
+			promisor: contract.buyer,
+			promisee: contract.seller,
+			amount: totalAmount,
+			description: contract.buyer.partyId ++ " should pay cost of goods and delivery fee to " ++ contract.seller.partyId
+		};
+
+    return DeliveryAcceptedResponse{}
+  }
+
+}
