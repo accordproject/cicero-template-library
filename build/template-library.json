@@ -812,5 +812,15 @@
         "ciceroVersion": "^0.5.0",
         "type": 0,
         "language": 0
+    },
+    "payment-upon-delivery@0.1.0": {
+        "uri": "ap://payment-upon-delivery@0.1.0#d3208e8b2bce3a6312ed5879a040bb87001e1c98cd76f4d8785cc9094224015c",
+        "url": "https://templates.accordproject.org/archives/payment-upon-delivery@0.1.0.cta",
+        "name": "payment-upon-delivery",
+        "description": "This is a one time payment contract upon acceptance of delivery.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.5.0",
+        "type": 0,
+        "language": 0
     }
 }
