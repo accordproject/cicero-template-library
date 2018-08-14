@@ -15,7 +15,7 @@ Accord Project Template Library, hosted at https://templates.accordproject.org.
 
 Can't find a something? Then why not make a new template yourself? 
 
-[Follow the instuctions in the docs.](http://accordcicero.readthedocs.io/en/latest/tutorial_001.html#creating-a-new-template)
+[Follow the instuctions in the docs.](https://docs.accordproject.org/docs/cicero-tutorial_001.html#creating-a-new-template)
 
 ## License
 
