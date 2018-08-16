@@ -1050,5 +1050,15 @@
         "ciceroVersion": "^0.6.0",
         "type": 0,
         "language": 0
+    },
+    "helloworld@0.4.0": {
+        "uri": "ap://helloworld@0.4.0#fb1b0a1df819c59991cadf9699cae9767cc057f72015d0d3ed3a436d697bb7ad",
+        "url": "https://templates.accordproject.org/archives/helloworld@0.4.0.cta",
+        "name": "helloworld",
+        "description": "This is the Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
+        "version": "0.4.0",
+        "ciceroVersion": "^0.6.0",
+        "type": 1,
+        "language": 0
     }
 }
