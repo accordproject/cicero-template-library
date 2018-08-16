@@ -1,0 +1,444 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/online-payment-contract-tr@0.2.0.html" />
+<meta property="og:title" content="online-payment-contract-tr@0.2.0" />
+<meta property="og:description" content="This is an Online Payment Contract prepared in Turkish Language." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/ZPB1JiCm38RlUGeVcRRb2QPgqxXms0LuWP2Q4fJQnN4qTMplli8AeWYnN7__jZ__yZgf4yrjD3wwb82biSvxbbh5CiL0sBc-HLAxw-_nBMDIMAtWvd7HOuoydq5LmRi1W3ayg0Hg852NrPnCqQpbybZzsDe9lw9NwuD7OIkPDBHeHtSPPEgO4bwZvAn5cEEqKiwBlGHqowJY_2NEpQ8HHFg3yodtA1Cb3IVzblXPzqxmxdOYvuIovO5jehgiBopXWFLGawiHV7F-7u4VRNRpMVtgCcka-kE_pW00" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="online-payment-contract-tr@0.2.0" />
+<meta name="twitter:description" content="This is an Online Payment Contract prepared in Turkish Language." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/ZPB1JiCm38RlUGeVcRRb2QPgqxXms0LuWP2Q4fJQnN4qTMplli8AeWYnN7__jZ__yZgf4yrjD3wwb82biSvxbbh5CiL0sBc-HLAxw-_nBMDIMAtWvd7HOuoydq5LmRi1W3ayg0Hg852NrPnCqQpbybZzsDe9lw9NwuD7OIkPDBHeHtSPPEgO4bwZvAn5cEEqKiwBlGHqowJY_2NEpQ8HHFg3yodtA1Cb3IVzblXPzqxmxdOYvuIovO5jehgiBopXWFLGawiHV7F-7u4VRNRpMVtgCcka-kE_pW00" />
+<meta name="twitter:image:alt" content="UML diagram of online-payment-contract-tr@0.2.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/online-payment-contract-tr@0.2.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template online-payment-contract-tr@0.2.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.6.0</span>
+                <span class="tag">50bc3dd7788250c52e79ac500526cdbe3573525e35fdd883a6b06da6dddc8a45</span>
+            </div>
+            <p class="subtitle">
+                This is an Online Payment Contract prepared in Turkish Language.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="online-payment-contract-tr@0.2.0.html" class="dropdown-item is-active">
+                                online-payment-contract-tr@0.2.0
+                            </a>
+                        
+                            <a href="online-payment-contract-tr@0.1.0.html" class="dropdown-item ">
+                                online-payment-contract-tr@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/online-payment-contract-tr@0.2.0.cta" class="button is-rounded">Download Archive</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/ZPB1JiCm38RlUGeVcRRb2QPgqxXms0LuWP2Q4fJQnN4qTMplli8AeWYnN7__jZ__yZgf4yrjD3wwb82biSvxbbh5CiL0sBc-HLAxw-_nBMDIMAtWvd7HOuoydq5LmRi1W3ayg0Hg852NrPnCqQpbybZzsDe9lw9NwuD7OIkPDBHeHtSPPEgO4bwZvAn5cEEqKiwBlGHqowJY_2NEpQ8HHFg3yodtA1Cb3IVzblXPzqxmxdOYvuIovO5jehgiBopXWFLGawiHV7F-7u4VRNRpMVtgCcka-kE_pW00" />
+
+            <div class="content">
+                <p>
+                <h1 id="accordprotocoltemplatecarrentaltr">Accord Protocol Template: car-rental-tr</h1>
+<p>This is an Online Payment Contract prepared in Turkish Language.</p>
+<h3 id="parse">Parse</h3>
+<p>Use the <code>cicero parse</code> command to load a template from a directory on disk and then use it to parse input text, echoing the result of parsing. If the input text is valid the parsing result will be a JSON serialized instance of the Template Mode:</p>
+<p>Sample template.tem:</p>
+<pre><code>            1.1  [{buyer}] (Bundan sonra ALICI olarak anılacaktır)
+
+            1.2. [{seller}]  (Bundan sonra SATICI olarak anılacaktır)
+
+            Program: [{softwareID}]          
+
+            Kullanıcı Sayısı: [{userCount}]
+
+            10. Bu sözleşmeden doğan anlaşmazlıkların çözümde [{authorizedCourt}] yetkilidir.
+</code></pre>
+<p>Sample.txt:</p>
+<pre><code>            1.1  "Umut" (Bundan sonra ALICI olarak anılacaktır)
+
+            1.2. "Serkan"  (Bundan sonra SATICI olarak anılacaktır)
+
+            Program: "AcmeSoftware-1.0"          
+
+            Kullanıcı Sayısı: "2" 
+
+            10. Bu sözleşmeden doğan anlaşmazlıkların çözümde "ANKARA 1.Bölge İdare Mahkemesi" yetkilidir.
+</code></pre>
+<pre><code>cicero parse --template ./car-rental-tr/ --dsl ./car-rental-tr/sample.txt
+Setting clause data: {"$class": "org.accordtr.onlinepayment.MyRequest","input": "Payment Valid"}
+</code></pre>
+<h3 id="execute">Execute</h3>
+<p>Use the <code>cicero execute</code> command to load a template from a directory on disk, instantiate a clause based on input text, and then invoke the clause using an incoming JSON payload.</p>
+<pre><code>data.json:
+{
+    "$class": "org.accordtr.onlinepayment.MyRequest",
+    "input": "Payment Valid"
+}
+</code></pre>
+<pre><code>cicero execute --template ./onlinepayment/ --dsl ./onlinepayment/sample.txt --data ./onlinepayment/data.json 
+</code></pre>
+<p>The results of execution (a JSON serialized object) are displayed. They include:</p>
+<ul>
+<li>Details of the clause executed (name, version, SHA256 hash of clause data)</li>
+<li>The incoming request object</li>
+<li>The output response object</li>
+</ul>
+<pre><code>{
+  "clause": "car-rental-tr@0.0.0-ff89c948d7499cf12b3319b2e2d809cd7485a6ee0c819b6ce7b643bc49579bd1",
+  "request": {
+    "$class": "org.accordtr.onlinepayment.MyRequest",
+    "input": "Payment Valid"
+  },
+  "response": {
+    "$class": "org.accordtr.onlinepayment.MyResponse",
+    "output": "Payment Valid",
+    "transactionId": "e041f21a-0557-432d-bac9-0b32070787dd",
+    "timestamp": "2018-07-31T11:44:57.748Z"
+  },
+  "state": {
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "b71ed0bf-56b1-4b27-8574-3d20f64b5896"
+  },
+  "emit": []
+}
+</code></pre>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+DLK BİLİŞİM TEKNOLOJİLERİ SATIŞ SÖZLEŞMESİ
+
+
+1. TARAFLAR :
+
+            1.1  "Umut" (Bundan sonra ALICI olarak anılacaktır)
+
+            1.2. "Serkan"  (Bundan sonra SATICI olarak anılacaktır)
+
+2. SATILAN ÜRÜNLER:
+
+Program: "AcmeSoftware-1.0"          
+
+Kullanıcı Sayısı: "2" 
+
+3.KONU
+
+            3.1.SATICI, bu sözleşmeyle satışı yapılan yazılımların (bilgisayar programlarının) kullanım hak ve yetkisini ALICI’ya verir.
+
+
+4. KARŞILIKLI TAAHHÜTLER:
+
+4.1.Sözleşmenin tarafları olarak hareket eden SATICI  ve ALICI aşağıda belirten hak ve yükümlülüklerini karşılıklı olarak taahhüt edip kabul ve imza etmişlerdir.
+
+            4.2 SATICI ;
+
+4.2.1.İkinci Maddede belirtilen ürünleri, ALICInın bilgisayarına yüklemek, yazılım hatalarına karşı çıkabilecek sorunlarda ekteki garanti belgesinde belirlenen koşul ve süreler içinde ücretsiz, daha sonrasında ise ücret karşılığı da olsa ALICI'ya destek sağlamak ve verilmesi zorunlu olan program eğitimini vermekle sorumludur.
+
+            4.2.2.Eğitim:
+
+4.2.2.1.ALICI, ikinci maddede belirtilen ürünler için, standart program eğitimi ya da ek eğitim taleplerinde bulunabilir. SATICI , ALICIDAN gelecek eğitim taleplerini en kısa sürede karşılamakla yükümlüdür.  Eğitim karşılıklı anlaşmaya bağlı olarak, ALICI’nın iş yerinde veya SATICI ’nın eğitim merkezinde olabilir. Eğitimin, ne zaman, ne sürede ve hangi kapsamda olacağı SATICI ve ALICI tarafından birlikte belirlenir.
+
+4.2.2.2. ALICI, çalışanların eğitiminin sürekliliğini sağlamakla sorumludur. Eğitim amaçlı olarak ALICI’nın iş yerine gelen, eğiticiye yeteri kadar zaman ayrılmaması veya geldiği halde eğitimi verememesi gibi durumlarda, eğitim çalışması yapılmış sayılır.
+
+4.2.2.3. Eğitim hizmetleri, destek sözleşmelerinde belirtilen fiyatlar ile ücretlendirilir.
+
+
+            4.3 ALICI:
+
+            4.3.1. Bu sözleşme ile kendisine tanınmış hak, sorumluluk ve yetkileri, hiç bir şekilde başka kişi veya kuruluşlara devremedez. SATICI adına ya da hesabına üçüncü bir şahısla bir işlem ya da anlaşma yapamaz. Herhangi bir taahhütte bulunamaz.
+
+            4.3.2. ALICI, hiçbir şekilde ürünleri oluşturan yazılım ve diğer belgeleri (CD, kitap, kullanım kılavuzu v.b. gibi) kiralayamaz, kopyalayamaz, ücretli ya da ücretsiz bir şekilde dağıtamaz.
+
+ 
+
+5. ÖDEME:
+
+5.1. İkinci maddede belirtilen ürünler, aşağıdaki ödeme tablosundaki bilgilere göre ALICI’ya satılmıştır.
+
+6. ÖDEMENİN YAPILMAMASI YA DA GECİKMESİ DURUMUNDA
+
+            6.1. Beşinci maddede belirtilen ödemelerin her hangi birisinin yapılmaması durumunda SATICI  geriye kalan tüm ödemelerin tahsilatını isteyebilir.
+
+            6.2. Beşinci Maddede belirtilen ödemelere uyulmaması durumunda SATICI ’nın garanti destek ve eğitim yükümlülükleri ödemeler tamamlanana kadar kalkar. Bu arada geçen süreler garanti ve destek srelerine eklenmez.
+
+            6.3. ALICI’nın ödemelerini geciktirmesi durumunda, gecikme süresi için, aylık % 7 gecikme faizi işletilerek ödeme miktarına eklenir.
+
+            6.4. Satışı yapılmış olan yazılımların hiçbir şekilde iadesi yapılamaz. Yazılımın kullanılmasından vazgeçilse dahi tüm ödemelerin vadesinde tamamlanması zorunludur.
+
+ 
+
+7. DİĞER HÜKÜMLER
+
+            7.1. SATICI , ürünlerin kullanımından kaynaklanacak hatalardan sorumlu değildir. ALICI, yazılımdaki raporların ya da verilerin hatalı olduğunu; bu verilere bakarak yanlış kararlar aldığını ve zarara uğradığını öne süremez.
+
+            7.2. SATICI , hiçbir şekilde ürünlerle birlikte depolanan bilgileri garanti etmez. Bilgilerin güvenliğini sağlamak kullanıcının sorumluluğundadır.
+
+            7.3.  SATICI , ALICInın ürünleri, yasalara aykırı biçimde kullanmasından sorumlu değildir.
+
+            7.4. Yazılım sisteminin konusuna giren yasa, yönetmelik veya diğer mevzuat, uygulama ve raporlarda değişiklik olması ya da çeşitli nedenlerle ALICI tarafından programda değişiklik ya da programa ek yapılmasının istenmesi durumunda, bu işlemlerin gerçekleştirilip gerçekleştirilmeyeceğine SATICI  karar verir.  Yapılacak değişiklik ve ekler ayrıca fiyatlandırılır.
+
+ 
+
+8. FESİH
+
+            8.1. Taraflar aşağıda belirtilen sebeplerin varlığında sözleşmeyi fesh etme hakkına sahiptir.
+
+            8.1.1. ALICInın SATICI ya olan borçları ile ilgili temerrüde düşmesi halinde,
+
+            8.1.2. Tarafların sözleşme hükümlerine aykırı davranması halinde,
+
+            8.1.3. ALICI’nın ticari işletmesini devretmesi halinde,
+
+            8.1.4.SATICI ’nın, ticari faaliyetlerinin T.T.K.’da belirtilen biçimlerde sona ermesi halinde.
+
+ 
+
+9. EKLER
+
+Garanti Belgesi
+Destek Sözleşmesi
+ 
+
+10. Bu sözleşmeden doğan anlaşmazlıkların çözümde "ANKARA 1.Bölge İdare Mahkemesi" yetkilidir.
+
+ 
+
+11. 11 (0nbir) ana maddeden oluşan bu sözleşme aşağıda belirtilen tarihte, 2 (iki) nüsha halinde düzenlenmiş olup, taraflarca imzalanıp teslim alınmıştır.
+
+ 
+
+ 
+
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/online-payment-contract-tr">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordtr.onlinepayment.MyContract",
+    "contractId": "1b75f047-7d9d-4d60-83ce-d73a558f5e0d",
+    "buyer": "Umut",
+    "seller": "Serkan",
+    "softwareID": "AcmeSoftware-1.0",
+    "userCount": "2",
+    "authorizedCourt": "ANKARA 1.Bölge İdare Mahkemesi"
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "dc97c241-a157-11e8-bed5-15302d68d0b1"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordtr.onlinepayment.MyRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordtr.onlinepayment.MyRequest",
+    "input": "Incididunt voluptate mollit.",
+    "transactionId": "dc979b30-a157-11e8-bed5-15302d68d0b1",
+    "timestamp": "2018-08-16T13:25:36.995Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordtr.onlinepayment.MyResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordtr.onlinepayment.MyResponse",
+    "output": "Aliqua tempor.",
+    "transactionId": "dc97c240-a157-11e8-bed5-15302d68d0b1",
+    "timestamp": "2018-08-16T13:25:36.996Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

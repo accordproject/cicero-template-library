@@ -62,7 +62,7 @@ contract PerishableGoods over PerishableGoodsClause {
     };
 
     // Guard against requests for payout after the dueDate
-    enforce momentIsBefore(now(),moment(contract.dueDate))
+    enforce dateTimeIsBefore(now(),dateTime(contract.dueDate))
     else return PriceCalculation{
       shipment : request.shipment,
       totalPrice : zeroMoney,
