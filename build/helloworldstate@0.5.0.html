@@ -1,0 +1,292 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/helloworldstate@0.5.0.html" />
+<meta property="og:title" content="helloworldstate@0.5.0" />
+<meta property="og:description" content="This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/dPFDRi8m48JlVeezWWf-0XI1w84B5q3Yx3ghD9NZ3Ukr4A9zzoQk3rNLdxZ7qSwElz7Awo269NPEMMT20E966sk9wvxf1QtePtIEhiIk7go2Udyxu2LY45YjO7PQtD9y3bK5TmK03t0KRdq3hU-Zg3TL4hbSlbRVCDZM8fFcwANjK6Tt4NBeoGVyYvcYb43dqAdK7_R9sBjHdqTz77LYtomQHlIVqHyfFZa4IyCxo9FOloR_Ni2I5pQ3tgJfDikq-eyoMsTY-B5DFeGt7HPMoRbbNTAEMgElnp_m3W00" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="helloworldstate@0.5.0" />
+<meta name="twitter:description" content="This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/dPFDRi8m48JlVeezWWf-0XI1w84B5q3Yx3ghD9NZ3Ukr4A9zzoQk3rNLdxZ7qSwElz7Awo269NPEMMT20E966sk9wvxf1QtePtIEhiIk7go2Udyxu2LY45YjO7PQtD9y3bK5TmK03t0KRdq3hU-Zg3TL4hbSlbRVCDZM8fFcwANjK6Tt4NBeoGVyYvcYb43dqAdK7_R9sBjHdqTz77LYtomQHlIVqHyfFZa4IyCxo9FOloR_Ni2I5pQ3tgJfDikq-eyoMsTY-B5DFeGt7HPMoRbbNTAEMgElnp_m3W00" />
+<meta name="twitter:image:alt" content="UML diagram of helloworldstate@0.5.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/helloworldstate@0.5.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template helloworldstate@0.5.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.6.0</span>
+                <span class="tag">44db8adc6de168998fc6dd2ad56e4231659770a0eb38ea736ca5afee5ce2573a</span>
+            </div>
+            <p class="subtitle">
+                This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="helloworldstate@0.5.0.html" class="dropdown-item is-active">
+                                helloworldstate@0.5.0
+                            </a>
+                        
+                            <a href="helloworldstate@0.4.0.html" class="dropdown-item ">
+                                helloworldstate@0.4.0
+                            </a>
+                        
+                            <a href="helloworldstate@0.3.0.html" class="dropdown-item ">
+                                helloworldstate@0.3.0
+                            </a>
+                        
+                            <a href="helloworldstate@0.2.0.html" class="dropdown-item ">
+                                helloworldstate@0.2.0
+                            </a>
+                        
+                            <a href="helloworldstate@0.1.0.html" class="dropdown-item ">
+                                helloworldstate@0.1.0
+                            </a>
+                        
+                            <a href="helloworldstate@0.0.5.html" class="dropdown-item ">
+                                helloworldstate@0.0.5
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/helloworldstate@0.5.0.cta" class="button is-rounded">Download Archive</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/dPFDRi8m48JlVeezWWf-0XI1w84B5q3Yx3ghD9NZ3Ukr4A9zzoQk3rNLdxZ7qSwElz7Awo269NPEMMT20E966sk9wvxf1QtePtIEhiIk7go2Udyxu2LY45YjO7PQtD9y3bK5TmK03t0KRdq3hU-Zg3TL4hbSlbRVCDZM8fFcwANjK6Tt4NBeoGVyYvcYb43dqAdK7_R9sBjHdqTz77LYtomQHlIVqHyfFZa4IyCxo9FOloR_Ni2I5pQ3tgJfDikq-eyoMsTY-B5DFeGt7HPMoRbbNTAEMgElnp_m3W00" />
+
+            <div class="content">
+                <p>
+                <h1 id="helloworldstate">Hello World State</h1>
+<p>This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string <code>Hello</code> prepended to text that is passed in the request along with the number of times the clause has been called.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Name of the person to greet: "Fred Blogs".
+Thank you!
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/helloworldstate">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.helloworldstate.HelloWorldClause",
+    "clauseId": "df0d8795-e1c6-4878-98d3-4141545f03d6",
+    "name": "Fred Blogs"
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "d8d933a2-a157-11e8-bed5-15302d68d0b1"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.helloworldstate.MyRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.helloworldstate.MyRequest",
+    "input": "Irure.",
+    "transactionId": "d8d933a0-a157-11e8-bed5-15302d68d0b1",
+    "timestamp": "2018-08-16T13:25:30.714Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.helloworldstate.MyResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.helloworldstate.MyResponse",
+    "output": "Dolor aute nulla laboris.",
+    "transactionId": "d8d933a1-a157-11e8-bed5-15302d68d0b1",
+    "timestamp": "2018-08-16T13:25:30.714Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

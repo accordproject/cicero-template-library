@@ -1,0 +1,23 @@
+@startuml
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause << (A,green) >> {
+   + Boolean forceMajeure
+   + Duration penaltyDuration
+   + Double penaltyPercentage
+   + Double capPercentage
+   + Duration termination
+   + TemporalUnit fractionalPart
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause --|> org.accordproject.cicero.contract.AccordClause
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest << (T,yellow) >> {
+   + Boolean forceMajeure
+   + DateTime agreedDelivery
+   + DateTime deliveredAt
+   + Double goodsValue
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse << (T,yellow) >> {
+   + Double penalty
+   + Boolean buyerMayTerminate
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse --|> org.accordproject.cicero.runtime.Response
+@enduml

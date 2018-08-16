@@ -20,7 +20,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyClause {
   clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse throws ErrorResponse {
     // Guard against calling late delivery clause too early
     let agreed = request.agreedDelivery;
-    enforce momentIsBefore(agreed,now()) else
+    enforce dateTimeIsBefore(agreed,now()) else
     throw ErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
     
     enforce !contract.forceMajeure or !request.forceMajeure else
@@ -31,7 +31,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyClause {
     ;
 
     // Calculate the time difference between current date and agreed upon date
-    let diff = momentDiffDays(now,agreed);
+    let diff = dateTimeDiffDays(now,agreed);
     // Penalty formula
     let penalty =
       (diff / contract.penaltyDuration.amount) * contract.penaltyPercentage/100.0 * request.goodsValue;

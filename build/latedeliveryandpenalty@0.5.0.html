@@ -1,0 +1,310 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/latedeliveryandpenalty@0.5.0.html" />
+<meta property="og:title" content="latedeliveryandpenalty@0.5.0" />
+<meta property="og:description" content="A sample Late Delivery And Penalty clause." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/hPF1JiCm38RlVOeSGMnzWcbQOSTDgb3XxYLUrScDYvE0Ak3TQTTKeZ2XIVGO_yaVv_kTZVCWFjIKQ0Bd54kPWjOifX4-eVOfWKU3LBsYj61DWnR8j-ckAszZERCc7yeF1C6XMgtKJROe1T7UglLQlITAgJjrpqm8LXrPDExXX45mKBP1m5TiLRGVrr7bS20SjHoxqzP3YHDLG_DB6LqzIbtPRuu5rWqBq9Ejl3eAw5u2oZiMoMSo3uJbycDzWQUkD0gdcgtlxqspipgScIU4Htm9wFmvXMBH8X6_NHb3vrTKDIheipEZzGynDe8cyvC4IcRZde42_f_X-8Q_8KgmlkieZRldmkSQjd6AB_6RZkEKwI6qA7jeYpXniw28_LpBOjYURD2Q_cD_0G00" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="latedeliveryandpenalty@0.5.0" />
+<meta name="twitter:description" content="A sample Late Delivery And Penalty clause." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hPF1JiCm38RlVOeSGMnzWcbQOSTDgb3XxYLUrScDYvE0Ak3TQTTKeZ2XIVGO_yaVv_kTZVCWFjIKQ0Bd54kPWjOifX4-eVOfWKU3LBsYj61DWnR8j-ckAszZERCc7yeF1C6XMgtKJROe1T7UglLQlITAgJjrpqm8LXrPDExXX45mKBP1m5TiLRGVrr7bS20SjHoxqzP3YHDLG_DB6LqzIbtPRuu5rWqBq9Ejl3eAw5u2oZiMoMSo3uJbycDzWQUkD0gdcgtlxqspipgScIU4Htm9wFmvXMBH8X6_NHb3vrTKDIheipEZzGynDe8cyvC4IcRZde42_f_X-8Q_8KgmlkieZRldmkSQjd6AB_6RZkEKwI6qA7jeYpXniw28_LpBOjYURD2Q_cD_0G00" />
+<meta name="twitter:image:alt" content="UML diagram of latedeliveryandpenalty@0.5.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/latedeliveryandpenalty@0.5.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template latedeliveryandpenalty@0.5.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.6.0</span>
+                <span class="tag">821121efd244342c3401738d1fdf5d0f68420408bf623390fa7eb87663bdcd9d</span>
+            </div>
+            <p class="subtitle">
+                A sample Late Delivery And Penalty clause.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="latedeliveryandpenalty@0.5.0.html" class="dropdown-item is-active">
+                                latedeliveryandpenalty@0.5.0
+                            </a>
+                        
+                            <a href="latedeliveryandpenalty@0.4.0.html" class="dropdown-item ">
+                                latedeliveryandpenalty@0.4.0
+                            </a>
+                        
+                            <a href="latedeliveryandpenalty@0.3.0.html" class="dropdown-item ">
+                                latedeliveryandpenalty@0.3.0
+                            </a>
+                        
+                            <a href="latedeliveryandpenalty@0.2.0.html" class="dropdown-item ">
+                                latedeliveryandpenalty@0.2.0
+                            </a>
+                        
+                            <a href="latedeliveryandpenalty@0.1.0.html" class="dropdown-item ">
+                                latedeliveryandpenalty@0.1.0
+                            </a>
+                        
+                            <a href="latedeliveryandpenalty@0.0.4.html" class="dropdown-item ">
+                                latedeliveryandpenalty@0.0.4
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/latedeliveryandpenalty@0.5.0.cta" class="button is-rounded">Download Archive</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/hPF1JiCm38RlVOeSGMnzWcbQOSTDgb3XxYLUrScDYvE0Ak3TQTTKeZ2XIVGO_yaVv_kTZVCWFjIKQ0Bd54kPWjOifX4-eVOfWKU3LBsYj61DWnR8j-ckAszZERCc7yeF1C6XMgtKJROe1T7UglLQlITAgJjrpqm8LXrPDExXX45mKBP1m5TiLRGVrr7bS20SjHoxqzP3YHDLG_DB6LqzIbtPRuu5rWqBq9Ejl3eAw5u2oZiMoMSo3uJbycDzWQUkD0gdcgtlxqspipgScIU4Htm9wFmvXMBH8X6_NHb3vrTKDIheipEZzGynDe8cyvC4IcRZde42_f_X-8Q_8KgmlkieZRldmkSQjd6AB_6RZkEKwI6qA7jeYpXniw28_LpBOjYURD2Q_cD_0G00" />
+
+            <div class="content">
+                <p>
+                <h1 id="latedeliveryandpenalty">Late Delivery And Penalty</h1>
+<p>A sample Late Delivery And Penalty clause.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Late Delivery and Penalty. In case of delayed delivery except for Force Majeure cases, the Seller shall pay to the Buyer for every 2 days of delay penalty amounting to 10.5% of the total value of the Equipment whose delivery has been delayed. Any fractional part of a days is to be considered a full days. The total amount of penalty shall not however, exceed 55% of the total value of the Equipment involved in late delivery. If the delay is more than 15 days, the Buyer is entitled to terminate this Contract.
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/time.html">org.accordproject.time.*</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/latedeliveryandpenalty">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyClause",
+    "clauseId": "5b627f3a-45cc-47a3-a449-cf5a1f753a78",
+    "forceMajeure": true,
+    "penaltyDuration": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 2,
+        "unit": "days"
+    },
+    "penaltyPercentage": 10.5,
+    "capPercentage": 55,
+    "termination": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 15,
+        "unit": "days"
+    },
+    "fractionalPart": "days"
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "dac26602-a157-11e8-bed5-15302d68d0b1"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
+    "forceMajeure": false,
+    "agreedDelivery": "2018-08-16T13:25:33.920Z",
+    "deliveredAt": "2018-08-16T13:25:33.920Z",
+    "goodsValue": 181.126,
+    "transactionId": "dac26600-a157-11e8-bed5-15302d68d0b1",
+    "timestamp": "2018-08-16T13:25:33.920Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
+    "penalty": 223.079,
+    "buyerMayTerminate": true,
+    "transactionId": "dac26601-a157-11e8-bed5-15302d68d0b1",
+    "timestamp": "2018-08-16T13:25:33.920Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

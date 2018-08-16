@@ -28,7 +28,7 @@ contract FragileGoods over FragileGoodsClause {
       );
     let amount = amount - shocks * contract.accelerationBreachPenalty.doubleValue;
 
-    enforce request.status = "ARRIVED" and request.finishTime != nil
+    enforce request.status = "ARRIVED" and request.finishTime != none
     else return PayOut{
 		  amount: MonetaryAmount{
 				doubleValue: amount,
@@ -40,7 +40,7 @@ contract FragileGoods over FragileGoodsClause {
     with let finishTime? then
       if contract.deliveryLimitDuration.unit = "seconds"
       then
-        let duration = momentDiffSeconds(finishTime, request.startTime);
+        let duration = dateTimeDiffSeconds(finishTime, request.startTime);
         if (duration) > contract.deliveryLimitDuration.amount then
           let monetaryAmount = MonetaryAmount{
             doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,
