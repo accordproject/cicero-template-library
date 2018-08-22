@@ -1060,5 +1060,25 @@
         "ciceroVersion": "^0.6.0",
         "type": 1,
         "language": 0
+    },
+    "one-time-payment@0.7.0": {
+        "uri": "ap://one-time-payment@0.7.0#ce73ddcaa6e9ecdc1910f31095a3828528d04c1a28575faed94e20add05ddb19",
+        "url": "https://templates.accordproject.org/archives/one-time-payment@0.7.0.cta",
+        "name": "one-time-payment",
+        "description": "This is a one time payment contract applicable at execution of that contract.",
+        "version": "0.7.0",
+        "ciceroVersion": "^0.6.0",
+        "type": 0,
+        "language": 0
+    },
+    "one-time-payment-tr@0.3.0": {
+        "uri": "ap://one-time-payment-tr@0.3.0#8f98605b08e457d0c34b7f93c2cb4043f0fb65b635102546201d7dcf1cc3713c",
+        "url": "https://templates.accordproject.org/archives/one-time-payment-tr@0.3.0.cta",
+        "name": "one-time-payment-tr",
+        "description": "This is an One-Time Payment Protocol prepared in Turkish Language.",
+        "version": "0.3.0",
+        "ciceroVersion": "^0.6.0",
+        "type": 0,
+        "language": 0
     }
 }
