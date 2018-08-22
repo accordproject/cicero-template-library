@@ -49,7 +49,7 @@ describe('Logic', () => {
 
         it('should produce correct payment in USD', async function() {
             const request = {};
-            request.$class = 'org.accordproject.payment.onetime.InitRequest';
+            request.$class = 'org.accordproject.cicero.runtime.Request';
 
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;

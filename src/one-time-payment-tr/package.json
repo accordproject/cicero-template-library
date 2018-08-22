@@ -1,6 +1,6 @@
 {
     "name": "one-time-payment-tr",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "This is an One-Time Payment Protocol prepared in Turkish Language.",
     "cicero": {
       "version": "^0.6.0",

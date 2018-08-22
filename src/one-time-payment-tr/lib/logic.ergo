@@ -20,7 +20,7 @@ contract onetimepayment over OneTimePaymentContract {
   /**
 	 * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
 	 */
-  clause init(request : InitRequest) : InitResponse emits PaymentObligation {
+  clause init(request : Request) : Response emits PaymentObligation {
 	  // enforce (state.status = "UNINTIALIZED") 
     // else throw "This contract has already been initialized. Current state is " ++ state.status;
 		
@@ -35,7 +35,7 @@ contract onetimepayment over OneTimePaymentContract {
 			stateId: "1",
 			status: "OBLIGATION_EMITTED"
 		};
-    return InitResponse{}
+    return Response{}
   }
 
   /**

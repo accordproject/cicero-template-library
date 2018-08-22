@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@accordproject/cicero-core@0.5.0", "@accordproject/cicero-core@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@accordproject/cicero-core/-/cicero-core-0.5.0.tgz#ee9f209f6a4e6c83dace1165d29b4636892c963c"
+"@accordproject/cicero-core@0.6.0", "@accordproject/cicero-core@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/@accordproject/cicero-core/-/cicero-core-0.6.0.tgz#aa22ef9f38f1598c083ff4b147645f476bd0b67d"
   dependencies:
-    "@accordproject/ergo-compiler" "0.2.0"
+    "@accordproject/ergo-compiler" "0.3.1"
     axios "0.17.1"
     composer-common "0.19.12"
     debug "2.6.2"
@@ -29,18 +29,18 @@
     winston "3.0.0"
     xregexp "4.1.1"
 
-"@accordproject/cicero-engine@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@accordproject/cicero-engine/-/cicero-engine-0.5.0.tgz#f4beb5b5d979e2ae24da2ff67d15d81c0ea71767"
+"@accordproject/cicero-engine@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.npmjs.org/@accordproject/cicero-engine/-/cicero-engine-0.6.0.tgz#120a5f98e04d9468f45f9ecb4875c1b025f7bc57"
   dependencies:
-    "@accordproject/cicero-core" "0.5.0"
+    "@accordproject/cicero-core" "0.6.0"
     composer-common "0.19.12"
     moment "2.20.1"
     vm2 "3.5.0"
 
-"@accordproject/ergo-compiler@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@accordproject/ergo-compiler/-/ergo-compiler-0.2.0.tgz#5bc29bd5755b6584a60f92f668cc9a10c4824d75"
+"@accordproject/ergo-compiler@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/@accordproject/ergo-compiler/-/ergo-compiler-0.3.1.tgz#afc6798ddc9c9210552b78a632faf23631d4c67a"
   dependencies:
     composer-common "0.19.12"
     yargs "9.0.1"
@@ -628,34 +628,6 @@ component-emitter@^1.2.1:
 composer-common@0.19.12:
   version "0.19.12"
   resolved "https://registry.yarnpkg.com/composer-common/-/composer-common-0.19.12.tgz#2e050abebd2c55bffb3fc09e5f84bfdb24f601b8"
-  dependencies:
-    acorn "5.1.2"
-    axios "0.17.1"
-    comment-parser "0.4.0"
-    config "1.24.0"
-    debug "2.6.2"
-    doctrine "2.0.0"
-    fs-extra "1.0.0"
-    js-yaml "3.10.0"
-    jsrsasign "8.0.3"
-    jszip "3.1.3"
-    lodash.clonedeep "4.5.0"
-    lodash.padstart "4.5.0"
-    lorem-ipsum "1.0.4"
-    minimatch "3.0.3"
-    mkdirp "0.5.1"
-    npm-paths "0.1.3"
-    semver "5.3.0"
-    sprintf-js "1.0.3"
-    thenify "3.2.1"
-    thenify-all "1.6.0"
-    urijs "1.19.1"
-    uuid "3.0.1"
-    winston "2.3.1"
-
-composer-common@^0.19.12:
-  version "0.19.14"
-  resolved "https://registry.yarnpkg.com/composer-common/-/composer-common-0.19.14.tgz#034d7120ea12cc5008746e529c268cb72c39e7b9"
   dependencies:
     acorn "5.1.2"
     axios "0.17.1"
