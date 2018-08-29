@@ -41,7 +41,7 @@ contract OneTimePayment over OneTimePaymentContract {
   /**
 	 * Update the contract state once we've recieved a payment
 	 */
-  clause paymentReceived(request : PaymentReceivedRequest): PaymentReceivedResponse {
+  clause paymentReceived(request : PaymentReceivedRequest) : PaymentReceivedResponse {
     enforce (state.status = "OBLIGATION_EMITTED") 
     else throw "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received";
 		set state OneTimePaymentState {

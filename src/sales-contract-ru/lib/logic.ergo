@@ -14,7 +14,9 @@
 
 namespace org.accordru.salescontract
 
-contract MyContract over AccordContract {
+import org.accordproject.cicero.contract.*
+
+contract Contract over MyContract {
 
   // Simple Clause
   clause salescontract(request : MyRequest) : MyResponse {

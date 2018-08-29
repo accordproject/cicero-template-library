@@ -20,7 +20,7 @@ define function toFixed(credit : Double) : Double {
 }
 
 contract ServiceLevelAgreement over ServiceLevelAgreementContract {
-  clause invoice(request : MonthSummary) : InvoiceCredit throws String {
+  clause invoice(request : MonthSummary) : InvoiceCredit {
     // Pre-conditions checking
     enforce contract.availability1 >= 0.0 
         and contract.serviceCredit1 >= 0.0 

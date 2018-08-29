@@ -824,7 +824,7 @@
         "language": 0
     },
     "acceptance-of-delivery@0.5.0": {
-        "uri": "ap://acceptance-of-delivery@0.5.0#dcd4280d9300ecea11f85d8356f762e048f76dbccb94644af059ff67231a7035",
+        "uri": "ap://acceptance-of-delivery@0.5.0#0f2b97d4d27982e7b228728332cf07d7783ad19e6fddf9f21feead3f8fc97626",
         "url": "https://templates.accordproject.org/archives/acceptance-of-delivery@0.5.0.cta",
         "name": "acceptance-of-delivery",
         "description": "This clause allows the receiver of goods to inspect them for a given time period after delivery.",
@@ -854,7 +854,7 @@
         "language": 0
     },
     "demandforecast@0.5.0": {
-        "uri": "ap://demandforecast@0.5.0#bc8d1d755c48a3052359b54686ffc8d7b7d45784bb51b38449dabd171390136b",
+        "uri": "ap://demandforecast@0.5.0#bae621841c07c3d6a2b4107f275702ec2221e1add05eacc8396b87824ed9a89f",
         "url": "https://templates.accordproject.org/archives/demandforecast@0.5.0.cta",
         "name": "demandforecast",
         "description": "A sample demandforecast clause.",
@@ -874,7 +874,7 @@
         "language": 0
     },
     "fragile-goods@0.5.0": {
-        "uri": "ap://fragile-goods@0.5.0#f8ff682dd34abbf79ffc0bf480a16aeffcef8199fcc650456b246824ddb79d61",
+        "uri": "ap://fragile-goods@0.5.0#8c87058a3cbd822697c5c00fec99c7d88c8b4e7a8109d4806fce4c7fec7f0316",
         "url": "https://templates.accordproject.org/archives/fragile-goods@0.5.0.cta",
         "name": "fragile-goods",
         "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
@@ -913,7 +913,7 @@
         "type": 1
     },
     "latedeliveryandpenalty@0.5.0": {
-        "uri": "ap://latedeliveryandpenalty@0.5.0#821121efd244342c3401738d1fdf5d0f68420408bf623390fa7eb87663bdcd9d",
+        "uri": "ap://latedeliveryandpenalty@0.5.0#edc8fa921e38c61444b6f65e8eb6fece088c763c0f34d4fe44bb3316ae2c9675",
         "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.5.0.cta",
         "name": "latedeliveryandpenalty",
         "description": "A sample Late Delivery And Penalty clause.",
@@ -943,7 +943,7 @@
         "language": 0
     },
     "online-payment-contract-tr@0.2.0": {
-        "uri": "ap://online-payment-contract-tr@0.2.0#50bc3dd7788250c52e79ac500526cdbe3573525e35fdd883a6b06da6dddc8a45",
+        "uri": "ap://online-payment-contract-tr@0.2.0#9439015e9f655917ca3a33b9a32d40ab41726296e99be41b3aeb10a255458779",
         "url": "https://templates.accordproject.org/archives/online-payment-contract-tr@0.2.0.cta",
         "name": "online-payment-contract-tr",
         "description": "This is an Online Payment Contract prepared in Turkish Language.",
@@ -953,7 +953,7 @@
         "language": 0
     },
     "payment-upon-delivery@0.2.0": {
-        "uri": "ap://payment-upon-delivery@0.2.0#ba865522088da6420fb0b939b04221de7c21a7fc28234bc7397031b8a755880a",
+        "uri": "ap://payment-upon-delivery@0.2.0#239bca14fabb9f93ab89b9908f19d045138acbf020df872f3c9e8949e295b2c7",
         "url": "https://templates.accordproject.org/archives/payment-upon-delivery@0.2.0.cta",
         "name": "payment-upon-delivery",
         "description": "This is a one time payment contract upon acceptance of delivery.",
@@ -963,7 +963,7 @@
         "language": 0
     },
     "perishable-goods@0.5.0": {
-        "uri": "ap://perishable-goods@0.5.0#8e443ac7052e799e8fdcbf053b119d953ecb3382b41ecd12fed578293ed47c94",
+        "uri": "ap://perishable-goods@0.5.0#53fc98bcc636438f571df84c95e8aac4a4efb98ce9842dc12955aa27a8579a11",
         "url": "https://templates.accordproject.org/archives/perishable-goods@0.5.0.cta",
         "name": "perishable-goods",
         "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
@@ -983,7 +983,7 @@
         "language": 0
     },
     "saft@0.6.0": {
-        "uri": "ap://saft@0.6.0#783688f16dbdf0e9f3a6f1893820b4c3d4c502ab2c2b0ebdcf01190a597a7b63",
+        "uri": "ap://saft@0.6.0#45b10ab9a84fe9932d21c35ad51d6f0447b9d896394c5aba796c7664090c7d3f",
         "url": "https://templates.accordproject.org/archives/saft@0.6.0.cta",
         "name": "saft",
         "description": "The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.",
@@ -1003,7 +1003,7 @@
         "language": 0
     },
     "sales-contract-ru@0.2.0": {
-        "uri": "ap://sales-contract-ru@0.2.0#ff248e93a789ffb55d94e5b8bc5fc3afff2c810db2c23532f94ea17edc16cf92",
+        "uri": "ap://sales-contract-ru@0.2.0#86a97fb30357bb9eea25eb175de75a436b27bc0a69cb7c9933fba482d7617c06",
         "url": "https://templates.accordproject.org/archives/sales-contract-ru@0.2.0.cta",
         "name": "sales-contract-ru",
         "description": "This is a Sales Contract prepared in Russian Language.",
@@ -1032,7 +1032,7 @@
         "type": 0
     },
     "supplyagreement-perishable-goods@0.6.0": {
-        "uri": "ap://supplyagreement-perishable-goods@0.6.0#45640d347ae5b016a1a676e680217c8fa333a32adb156a2ff0c20a104bc90ebe",
+        "uri": "ap://supplyagreement-perishable-goods@0.6.0#512a2e02e1946a050b2c39fb0046dac9332274bedff70a12f09618b615afbe3b",
         "url": "https://templates.accordproject.org/archives/supplyagreement-perishable-goods@0.6.0.cta",
         "name": "supplyagreement-perishable-goods",
         "description": "This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
