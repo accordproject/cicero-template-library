@@ -22,7 +22,7 @@ contract OneTimePayment over OneTimePaymentContract {
 	 */
   clause init(request : Request) : Response emits PaymentObligation {
 	  // enforce (state.status = "UNINTIALIZED") 
-    // else throw "This contract has already been initialized. Current state is " ++ state.status;
+    // else throw ErgoErrorResponse{ message: "This contract has already been initialized. Current state is " ++ state.status };
 		
     emit PaymentObligation{
 			contract: contract.contractId,
@@ -43,7 +43,7 @@ contract OneTimePayment over OneTimePaymentContract {
 	 */
   clause paymentReceived(request : PaymentReceivedRequest): PaymentReceivedResponse {
     enforce (state.status = "OBLIGATION_EMITTED") 
-    else throw "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received";
+    else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
 		set state OneTimePaymentState {
 			stateId: state.stateId,
 			status: "COMPLETED"

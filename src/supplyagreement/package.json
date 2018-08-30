@@ -1,12 +1,12 @@
 {
     "name": "supplyagreement",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "A sample supply agreement.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "javascript",
-        "version": "^0.6.0"
+        "version": "^0.7.1"
     }
 }
