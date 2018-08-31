@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.volumediscount.VolumeDiscountContract << (A,green) >> {
+   + Double firstVolume
+   + Double secondVolume
+   + Double firstRate
+   + Double secondRate
+   + Double thirdRate
+}
+org.accordproject.volumediscount.VolumeDiscountContract --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.volumediscount.VolumeDiscountRequest << (T,yellow) >> {
+   + Double netAnnualChargeVolume
+}
+org.accordproject.volumediscount.VolumeDiscountRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.volumediscount.VolumeDiscountResponse << (T,yellow) >> {
+   + Double discountRate
+}
+org.accordproject.volumediscount.VolumeDiscountResponse --|> org.hyperledger.composer.system.Transaction
+@enduml

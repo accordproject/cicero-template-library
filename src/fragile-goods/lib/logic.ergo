@@ -15,9 +15,10 @@
 namespace io.clause.demo.fragileGoods
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.money.MonetaryAmount
 
 contract FragileGoods over FragileGoodsClause {
-  clause fragilegoods(request : DeliveryUpdate) : PayOut throws ErrorResponse emits PaymentObligation {
+  clause fragilegoods(request : DeliveryUpdate) : PayOut emits PaymentObligation {
     let amount = contract.deliveryPrice.doubleValue;
     let currency = contract.deliveryPrice.currencyCode;
     let shocks =
@@ -71,8 +72,8 @@ contract FragileGoods over FragileGoodsClause {
           return PayOut{ 
             amount: monetaryAmount
           }
-      else throw ErrorResponse{ message: "Unit not implemented" }
-    else throw ErrorResponse{ message: "Finish time not present" }
+      else throw ErgoErrorResponse{ message: "Unit not implemented" }
+    else throw ErgoErrorResponse{ message: "Finish time not present" }
   }
 }
 

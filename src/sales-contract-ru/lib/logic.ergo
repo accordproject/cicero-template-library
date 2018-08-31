@@ -14,7 +14,7 @@
 
 namespace org.accordru.salescontract
 
-contract MyContract over AccordContract {
+contract SalesContract over MyContract {
 
   // Simple Clause
   clause salescontract(request : MyRequest) : MyResponse {

@@ -2,6 +2,7 @@ namespace org.accordproject.perishablegoods
 
 import org.accordproject.perishablegoods.contract.*
 import org.accordproject.cicero.runtime.*
+import org.accordproject.money.MonetaryAmount
 
 // Auxiliary function calculating penalty from temperature readings
 define function calculateTempPenalty(minTemperature : Double,
@@ -40,14 +41,14 @@ define function calculateHumPenalty(minHumidity : Double,
 }
 
 contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
-  clause perishableGoods(request : ShipmentReceived) : PriceCalculation throws ErrorResponse {
+  clause perishableGoods(request : ShipmentReceived) : PriceCalculation {
     // Guard against unitCount outside the bounds specified in the clause
     enforce (request.unitCount >= contract.minUnits) and (request.unitCount <= contract.maxUnits)
-    else throw "Units received out of range for the contract.";
+    else throw ErgoErrorResponse{ message: "Units received out of range for the contract." };
     
     // Guard against missing temperature readings
     enforce count(request.shipment.sensorReadings) > 0.0
-    else throw "No temperature readings received.";
+    else throw ErgoErrorResponse{ message: "No temperature readings received." };
 
     let zeroMoney = MonetaryAmount{
       doubleValue: 0.0,

@@ -1,0 +1,15 @@
+@startuml
+class org.accordproject.payment.upondelivery.PaymentUponDeliveryContract << (A,green) >> {
+   + AccordParty buyer
+   + AccordParty seller
+   + MonetaryAmount costOfGoods
+   + MonetaryAmount deliveryFee
+}
+org.accordproject.payment.upondelivery.PaymentUponDeliveryContract --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.payment.upondelivery.DeliveryAcceptedRequest << (T,yellow) >> {
+}
+org.accordproject.payment.upondelivery.DeliveryAcceptedRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.payment.upondelivery.DeliveryAcceptedResponse << (T,yellow) >> {
+}
+org.accordproject.payment.upondelivery.DeliveryAcceptedResponse --|> org.accordproject.cicero.runtime.Response
+@enduml

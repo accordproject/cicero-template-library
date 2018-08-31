@@ -1,0 +1,22 @@
+@startuml
+class org.accordproject.canteen.Food << (T,yellow) >> {
+   + String produce
+   + Double price
+}
+org.accordproject.canteen.Food --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.canteen.Outcome << (T,yellow) >> {
+   + String notice
+}
+org.accordproject.canteen.Outcome --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.canteen.Bill {
+   + String billTo
+   + Double amount
+}
+org.accordproject.canteen.Bill --|> org.hyperledger.composer.system.Event
+class org.accordproject.canteen.CanteenClause << (A,green) >> {
+   + String employee
+   + String company
+   + Double tax
+}
+org.accordproject.canteen.CanteenClause --|> org.accordproject.cicero.contract.AccordClause
+@enduml

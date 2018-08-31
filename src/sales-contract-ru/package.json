@@ -1,9 +1,9 @@
 {
     "name": "sales-contract-ru",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "This is a Sales Contract prepared in Russian Language.",
     "cicero": {
-      "version": "^0.6.0",
+      "version": "^0.7.1",
       "language": "ergo",
       "template": "contract"
     }

@@ -17,12 +17,12 @@ namespace org.accordproject.latedeliveryandpenalty
 import org.accordproject.cicero.runtime.*
 
 contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyClause {
-  clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse throws ErrorResponse {
+  clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse {
     // Guard against calling late delivery clause too early
     let agreed = request.agreedDelivery;
     enforce dateTimeIsBefore(agreed,now()) else
-    throw ErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
-    
+    throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
+
     enforce !contract.forceMajeure or !request.forceMajeure else
     return LateDeliveryAndPenaltyResponse{
       penalty: 0.0,
