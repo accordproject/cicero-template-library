@@ -17,7 +17,7 @@ transaction ForecastRequest extends Request {
 /**
  * How much is the forecast?
  */
-  o Integer supplyForecast
+  o Double supplyForecast
 }
 
 transaction BindingResponse extends Response {

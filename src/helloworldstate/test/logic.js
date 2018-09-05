@@ -42,7 +42,7 @@ describe('Logic', () => {
         engine = new Engine();    
     });
     
-    describe('#Hello', async function() {
+    describe('#HelloStateOnce', async function() {
 
         it('should say hello once', async function() {
             const request = {};
@@ -54,11 +54,11 @@ describe('Logic', () => {
 		        state.counter = 0;
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.output.should.equal('Hello Fred Blogs World(1)');
+            result.response.output.should.equal('Hello Fred Blogs World(1.0)');
         });
     });
 
-    describe('#Hello', async function() {
+    describe('#HelloStateTwice', async function() {
 
         it('should say hello twice', async function() {
             const request = {};
@@ -71,12 +71,12 @@ describe('Logic', () => {
             const result1 = await engine.execute(clause, request, state);
             const result2 = await engine.execute(clause, request, result1.state);
             result2.should.not.be.null;
-            result2.response.output.should.equal('Hello Fred Blogs World(2)');
+            result2.response.output.should.equal('Hello Fred Blogs World(2.0)');
             result2.state.counter.should.equal(2);
         });
     });
 
-    describe('#Hello', async function() {
+    describe('#HelloStateThrice', async function() {
 
         it('should say hello thrice', async function() {
             const request = {};
@@ -90,7 +90,7 @@ describe('Logic', () => {
             const result2 = await engine.execute(clause, request, result1.state);
             const result3 = await engine.execute(clause, request, result2.state);
             result3.should.not.be.null;
-            result3.response.output.should.equal('Hello Fred Blogs World(3)');
+            result3.response.output.should.equal('Hello Fred Blogs World(3.0)');
             result3.state.counter.should.equal(3);
         });
     });

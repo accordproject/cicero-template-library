@@ -54,7 +54,7 @@ define function calculateHumPenalty(minHumidity : Double,
 contract PerishableGoods over PerishableGoodsClause {
   clause payout(request : ShipmentReceived) : PriceCalculation {
     // Guard against unitCount outside the bounds specified in the clause
-    enforce request.unitCount <= contract.minUnits or request.unitCount >= contract.maxUnits
+    enforce request.unitCount <=i contract.minUnits or request.unitCount >=i contract.maxUnits
     else throw ErgoErrorResponse{ message : "Units received out of range for the contract." };
     
     let zeroMoney = MonetaryAmount {
