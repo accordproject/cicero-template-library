@@ -26,11 +26,11 @@ contract ServiceLevelAgreement over ServiceLevelAgreementContract {
         and contract.serviceCredit1 >= 0.0 
         and contract.availability2 >= 0.0
         and contract.serviceCredit2 >= 0.0
-    else throw "Template variables must not be negative.";
+    else throw ErgoErrorResponse{ message: "Template variables must not be negative." };
 
     enforce request.monthlyServiceLevel >= 0.0
         and request.monthlyServiceLevel <= 100.0
-    else throw "A service level must be at least 0% and at most 100%.";
+    else throw ErgoErrorResponse{ message: "A service level must be at least 0% and at most 100%." };
     //
     // Section 3
     //

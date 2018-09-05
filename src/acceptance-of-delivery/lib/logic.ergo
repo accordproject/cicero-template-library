@@ -21,7 +21,7 @@ contract AcceptanceOfDelivery over AcceptanceOfDeliveryClause {
 
 		let received = request.deliverableReceivedAt;
     enforce dateTimeIsBefore(received,now()) else
-      throw ErgoErrorResponse{ error : "Transaction time is before the deliverable date." }
+      throw ErgoErrorResponse{ message : "Transaction time is before the deliverable date." }
     ;
 
     let status =
