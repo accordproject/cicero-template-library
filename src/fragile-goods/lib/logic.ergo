@@ -15,6 +15,7 @@
 namespace io.clause.demo.fragileGoods
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.cicero.contract.*
 import org.accordproject.money.MonetaryAmount
 
 contract FragileGoods over FragileGoodsClause {
@@ -49,8 +50,8 @@ contract FragileGoods over FragileGoodsClause {
           };
           emit PaymentObligation{
             contract: contract,
-            promisor: some("Buyer"),
-            promisee: some("Supplier"),
+            promisor: some(AccordParty{partyId:"Buyer"}),
+            promisee: some(AccordParty{partyId:"Supplier"}),
 						deadline: none,
             amount: monetaryAmount,
             description: "Buyer should pay contract amount to the Supplier"
@@ -65,8 +66,8 @@ contract FragileGoods over FragileGoodsClause {
           };
           emit PaymentObligation{
             contract: contract,
-            promisor: some("Buyer"),
-            promisee: some("Supplier"),
+            promisor: some(AccordParty{partyId:"Buyer"}),
+            promisee: some(AccordParty{partyId:"Supplier"}),
 						deadline: none,
             amount: monetaryAmount,
             description: "Buyer should pay contract amount to the Supplier"

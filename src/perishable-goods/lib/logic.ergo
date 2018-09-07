@@ -55,15 +55,14 @@ contract PerishableGoods over PerishableGoodsClause {
   clause payout(request : ShipmentReceived) : PriceCalculation {
     // Guard against unitCount outside the bounds specified in the clause
     enforce request.unitCount <=i contract.minUnits or request.unitCount >=i contract.maxUnits
-    else throw ErgoErrorResponse{ message : "Units received out of range for the contract." };
+    else throw ErgoErrorResponse{ message: "Units received out of range for the contract." };
     
-    let zeroMoney = MonetaryAmount {
+    let zeroMoney = MonetaryAmount{
       doubleValue: 0.0,
       currencyCode: contract.unitPrice.currencyCode
     };
-
     // Guard against requests for payout after the dueDate
-    enforce dateTimeIsBefore(now(),dateTime(contract.dueDate))
+    enforce dateTimeIsBefore(now(),contract.dueDate)
     else return PriceCalculation{
       shipment : request.shipment,
       totalPrice : zeroMoney,
@@ -71,27 +70,28 @@ contract PerishableGoods over PerishableGoodsClause {
       late : true
     };
     // Guard against missing temperature readings
-    enforce count(request.shipment.sensorReadings) > 0.0
+		let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
+    enforce readings != []
     else throw ErgoErrorResponse{ message : "No temperature readings received."};
 
     // Calculates payout
-    let payOut = contract.unitPrice.doubleValue * request.unitCount;
+    let payOut = contract.unitPrice.doubleValue * integerToDouble(request.unitCount);
     // Calculates penalty if any
     let penalty =
       calculateTempPenalty(contract.minTemperature,
                            contract.maxTemperature,
                            contract.penaltyFactor,
-                           request.shipment.sensorReadings)
+                           readings)
     + calculateHumPenalty(contract.minHumidity,
                           contract.maxHumidity,
                           contract.penaltyFactor,
-                          request.shipment.sensorReadings);
+                          readings);
     // Returns a Price calculation, applying any penalities
-    let totalPenalty = MonetaryAmount {
-      doubleValue: penalty * request.unitCount,
+    let totalPenalty = MonetaryAmount{
+      doubleValue: penalty * integerToDouble(request.unitCount),
       currencyCode: contract.unitPrice.currencyCode
     };
-    let totalPrice = MonetaryAmount {
+    let totalPrice = MonetaryAmount{
       doubleValue: max([payOut - totalPenalty.doubleValue, 0.0]),
       currencyCode: contract.unitPrice.currencyCode
     };
