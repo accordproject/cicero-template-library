@@ -139,7 +139,7 @@ describe('Logic', () => {
             state.$class = 'org.accordproject.cicero.contract.AccordContractState';
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             await engine.execute(clause, request, state).catch((e) => {
-                e.message.should.deep.equal({ 'message' : 'A service level must be at least 0% and at most 100%.' });
+                e.message.should.equal('A service level must be at least 0% and at most 100%.');
             });
         });
     });
