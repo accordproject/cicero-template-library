@@ -3,7 +3,7 @@
     "version": "0.4.0",
     "description": "This is an One-Time Payment Protocol prepared in Turkish Language.",
     "cicero": {
-      "version": "^0.7.1",
+      "version": "^0.7.1-20180907025755",
       "language": "ergo",
       "template": "contract"
     }

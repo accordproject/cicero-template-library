@@ -3,7 +3,7 @@
     "version": "0.3.0",
     "description": "This is a Sales Contract prepared in Russian Language.",
     "cicero": {
-      "version": "^0.7.1",
+      "version": "^0.7.1-20180907025755",
       "language": "ergo",
       "template": "contract"
     }
