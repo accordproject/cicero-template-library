@@ -1,4 +1,4 @@
-# One Time Payment Contract
+# Full Payment Upon Signature
 
-This is a one time payment contract applicable at execution of that contract.
+This is a one-time full payment contract applicable at signature of the contract.
 

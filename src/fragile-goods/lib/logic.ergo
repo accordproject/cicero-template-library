@@ -15,6 +15,7 @@
 namespace io.clause.demo.fragileGoods
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.cicero.contract.*
 import org.accordproject.money.MonetaryAmount
 
 contract FragileGoods over FragileGoodsClause {
@@ -22,11 +23,11 @@ contract FragileGoods over FragileGoodsClause {
     let amount = contract.deliveryPrice.doubleValue;
     let currency = contract.deliveryPrice.currencyCode;
     let shocks =
-      count(
+      integerToDouble(count(
         foreach r in request.accelerometerReadings
         where r > contract.accelerationMax or r < contract.accelerationMin
         return r
-      );
+		));
     let amount = amount - shocks * contract.accelerationBreachPenalty.doubleValue;
 
     enforce request.status = "ARRIVED" and request.finishTime != none
@@ -38,7 +39,7 @@ contract FragileGoods over FragileGoodsClause {
 		};
 
     match request.finishTime
-    with let finishTime? then
+    with let? finishTime then
       if contract.deliveryLimitDuration.unit = "seconds"
       then
         let duration = dateTimeDiffSeconds(finishTime, request.startTime);
@@ -48,9 +49,10 @@ contract FragileGoods over FragileGoodsClause {
             currencyCode: currency
           };
           emit PaymentObligation{
-            contract: "NOT_SET",
-            promisor: "Buyer",
-            promisee: "Supplier",
+            contract: contract,
+            promisor: some(AccordParty{partyId:"Buyer"}),
+            promisee: some(AccordParty{partyId:"Supplier"}),
+						deadline: none,
             amount: monetaryAmount,
             description: "Buyer should pay contract amount to the Supplier"
           };
@@ -63,9 +65,10 @@ contract FragileGoods over FragileGoodsClause {
             currencyCode: currency
           };
           emit PaymentObligation{
-            contract: "NOT_SET",
-            promisor: "Buyer",
-            promisee: "Supplier",
+            contract: contract,
+            promisor: some(AccordParty{partyId:"Buyer"}),
+            promisee: some(AccordParty{partyId:"Supplier"}),
+						deadline: none,
             amount: monetaryAmount,
             description: "Buyer should pay contract amount to the Supplier"
           };

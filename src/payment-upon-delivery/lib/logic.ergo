@@ -15,6 +15,7 @@
 namespace org.accordproject.payment.upondelivery
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.cicero.contract.*
 import org.accordproject.money.MonetaryAmount
 
 contract PaymentUponDelivery over PaymentUponDeliveryContract {
@@ -28,9 +29,10 @@ contract PaymentUponDelivery over PaymentUponDeliveryContract {
 				currencyCode: contract.costOfGoods.currencyCode
 			};
     emit PaymentObligation{
-			contract: contract.contractId,
-			promisor: contract.buyer,
-			promisee: contract.seller,
+			contract: contract,
+			promisor: some(contract.buyer),
+			promisee: some(contract.seller),
+			deadline: none,
 			amount: totalAmount,
 			description: contract.buyer.partyId ++ " should pay cost of goods and delivery fee to " ++ contract.seller.partyId
 		};

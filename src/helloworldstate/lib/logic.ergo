@@ -14,15 +14,23 @@
 
 namespace org.accordproject.helloworldstate
 
-contract HelloWorldState over HelloWorldState {
+contract HelloWorldState over HelloWorldClause state HelloWorldState {
+  clause init(request : MyRequest) : Unit {
+    set state HelloWorldState{
+      stateId: "org.accordproject.helloworldstate.HelloWorldState#0.0",
+      counter: 0.0
+    };
+    return
+  }
+
   // Simple Clause
   clause helloworldstate(request : MyRequest) : MyResponse {
     set state HelloWorldState{
-      stateId: "org.accordproject.helloworldstate.HelloWorldState#" ++ state.counter,
+      stateId: "org.accordproject.helloworldstate.HelloWorldState#" ++ toString(state.counter),
       counter: state.counter + 1.0
     };
     return MyResponse{
-      output: "Hello " ++ contract.name ++ " " ++ request.input ++ "(" ++ state.counter ++ ")"
+      output: "Hello " ++ contract.name ++ " " ++ request.input ++ "(" ++ toString(state.counter) ++ ")"
     }
   }
 }

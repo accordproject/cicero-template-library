@@ -1,9 +1,9 @@
 {
     "name": "online-payment-contract-tr",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "This is an Online Payment Contract prepared in Turkish Language.",
     "cicero": {
-      "version": "^0.7.1",
+      "version": "^0.8.0",
       "language": "ergo",
       "template": "contract"
     }

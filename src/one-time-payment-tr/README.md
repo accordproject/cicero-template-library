@@ -1,7 +1,7 @@
 
 # Accord Protocol Template: one-time-payment-tr
 
-This is an One-Time Payment Protocol prepared in Turkish Language.
+This is an Full Payment Upon Signature Protocol prepared in Turkish Language.
 
 ### Parse
 Use the `cicero parse` command to load a template from a directory on disk and then use it to parse input text, echoing the result of parsing. If the input text is valid the parsing result will be a JSON serialized instance of the Template Mode:
@@ -12,7 +12,7 @@ Sample template.tem:
         1.1 Banka [{seller}]
         1.2 Müşteri [{buyer}]
 
-        7. An initial payment of [{initialAmount}] shall be made by [{buyer}] to [{seller}] upon execution of this Agreement.
+        7. Upon the signing of this Agreement, [{buyer}] shall pay the total purchase price to [{seller}] in the amount of [{totalPurchasePrice}].
 ```
 
 Sample.txt:
@@ -21,7 +21,7 @@ Sample.txt:
         1.1 Banka "ACME Corp."
         1.2 Müşteri "Can Doğan"
 
-        7. An initial payment of 1922.99 TRY shall be made by "ACME Corp." to "Can Doğan" upon execution of this Agreement.
+        7. Upon the signing of this Agreement, "Umut" shall pay the total purchase price to "Serkan" in the amount of 1922.99 TRY.
 ```
 
 ```
