@@ -23,5 +23,5 @@ enum ContractLifecycleStatus {
 asset OneTimePaymentContract extends AccordContract {
   o AccordParty buyer
   o AccordParty seller
-  o MonetaryAmount initialAmount
+  o MonetaryAmount totalPurchasePrice
 }

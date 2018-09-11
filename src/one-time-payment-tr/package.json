@@ -1,7 +1,7 @@
 {
     "name": "one-time-payment-tr",
     "version": "0.5.0",
-    "description": "This is an One-Time Payment Protocol prepared in Turkish Language.",
+    "description": "This is an Full Payment Upon Signature Protocol prepared in Turkish Language.",
     "cicero": {
       "version": "^0.8.0",
       "language": "ergo",
