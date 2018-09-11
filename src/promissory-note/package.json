@@ -1,12 +1,12 @@
 {
   "name": "promissory-note",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A promissory note",
   "author": "Accord Project",
   "license": "Apache-2.0",
   "cicero": {
     "template": "contract",
     "language": "ergo",
-    "version": "^0.7.1-20180907025755"
+    "version": "^0.8.0"
   }
 }

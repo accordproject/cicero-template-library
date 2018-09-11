@@ -15,7 +15,7 @@
 namespace org.accordproject.helloworldstate
 
 contract HelloWorldState over HelloWorldClause state HelloWorldState {
-  clause init(request : MyRequest) {
+  clause init(request : MyRequest) : Unit {
     set state HelloWorldState{
       stateId: "org.accordproject.helloworldstate.HelloWorldState#0.0",
       counter: 0.0
