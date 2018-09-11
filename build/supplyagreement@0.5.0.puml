@@ -1,0 +1,76 @@
+@startuml
+class org.accordproject.supplyagreement.SupplyAgreement << (A,green) >> {
+   + DateTime effectiveDate
+   + String supplier
+   + String buyer
+   + String shortDescriptionOfTheProducts
+   + Integer noticeWindow
+   + Integer cancellationWindow
+   + Double minimumPercentage
+   + String deliverables
+   + Integer deliveryWindow
+   + String deliveryAttachment
+   + Integer inspectionWindow
+   + String acceptanceAttachment
+   + Integer priceUpdateWindow
+   + String accountNumber
+   + String routingNumnber
+   + Integer termYears
+   + Integer renewalYears
+   + Integer renewalWindow
+   + State governingState
+   + State venueState
+}
+org.accordproject.supplyagreement.SupplyAgreement --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.supplyagreement.MyObligation {
+   + String party
+}
+class org.accordproject.supplyagreement.DeliveryObligation {
+   + DateTime expectedDelivery
+   + OrderItem[] deliverables
+}
+org.accordproject.supplyagreement.DeliveryObligation --|> org.accordproject.supplyagreement.MyObligation
+class org.accordproject.supplyagreement.PurchaseObligation {
+   + Double requiredPurchase
+   + Integer year
+   + Integer quarter
+}
+org.accordproject.supplyagreement.PurchaseObligation --|> org.accordproject.supplyagreement.MyObligation
+class org.accordproject.supplyagreement.PaymentObligation {
+   + Double amount
+}
+org.accordproject.supplyagreement.PaymentObligation --|> org.accordproject.supplyagreement.MyObligation
+class org.accordproject.supplyagreement.AgreementState << (A,green) >> {
+   + Obligation[] obligations
+}
+org.accordproject.supplyagreement.AgreementState --|> org.accordproject.cicero.contract.AccordContractState
+class org.accordproject.supplyagreement.ForecastRequest << (T,yellow) >> {
+   + Integer supplyForecast
+}
+org.accordproject.supplyagreement.ForecastRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.supplyagreement.ForecastResponse << (T,yellow) >> {
+}
+org.accordproject.supplyagreement.ForecastResponse --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.supplyagreement.PurchaseRequest << (T,yellow) >> {
+   + PurchaseOrder purchaseOrder
+}
+org.accordproject.supplyagreement.PurchaseRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.supplyagreement.PurchaseResponse << (T,yellow) >> {
+}
+org.accordproject.supplyagreement.PurchaseResponse --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.supplyagreement.DeliveryRequest << (T,yellow) >> {
+   + Product[] products
+}
+org.accordproject.supplyagreement.DeliveryRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.supplyagreement.DeliveryResponse << (T,yellow) >> {
+}
+org.accordproject.supplyagreement.DeliveryResponse --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.supplyagreement.PaymentRequest << (T,yellow) >> {
+   + Double amount
+}
+org.accordproject.supplyagreement.PaymentRequest --|> org.hyperledger.composer.system.Transaction
+class org.accordproject.supplyagreement.PaymentResponse << (T,yellow) >> {
+   + Double paid
+}
+org.accordproject.supplyagreement.PaymentResponse --|> org.hyperledger.composer.system.Transaction
+@enduml

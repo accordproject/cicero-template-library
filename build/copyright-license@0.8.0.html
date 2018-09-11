@@ -1,0 +1,356 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/copyright-license@0.8.0.html" />
+<meta property="og:title" content="copyright-license@0.8.0" />
+<meta property="og:description" content="This clause is a copyright license agreement." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/bLJRRi8m37tdA_AuQT0lG8WAzhOB6ls1A3LTjZRE76SislRl2pH8eBMeVQhgOvzpxDfTEfR4lgadgfRE2QGgaqeXbPRm3HHd2cqWNRrohHKO1zb6XWOCly271yTYFXStnJH0NUF-LYmMudloEnbFCvlzBBhKOpPXHjwmRY1BsQFCFljEaqA8E_681k80GjvWL13o-1Zi_y0yrBUp6Ak66r-T0WzjO8M6IQgsbNnQ4O0vxsGj6Oee9M2tYuJw4mwH5jioQLE9H0rFika6jjnNSX_Ru504smtdPKdWN0U6rAE6rAU6T5KDgKkDWKWpKhY8MayM7Qp1ATAMDPeBU8_q_WzBUxcgfNSWxFdRiCNe_NBNLqMbj2m_egUgqNUPZFUiIUgyNVG2llZQ7LoCicNV42eeFS6e8q-UnWsW7VaIJ7duFVq1" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="copyright-license@0.8.0" />
+<meta name="twitter:description" content="This clause is a copyright license agreement." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bLJRRi8m37tdA_AuQT0lG8WAzhOB6ls1A3LTjZRE76SislRl2pH8eBMeVQhgOvzpxDfTEfR4lgadgfRE2QGgaqeXbPRm3HHd2cqWNRrohHKO1zb6XWOCly271yTYFXStnJH0NUF-LYmMudloEnbFCvlzBBhKOpPXHjwmRY1BsQFCFljEaqA8E_681k80GjvWL13o-1Zi_y0yrBUp6Ak66r-T0WzjO8M6IQgsbNnQ4O0vxsGj6Oee9M2tYuJw4mwH5jioQLE9H0rFika6jjnNSX_Ru504smtdPKdWN0U6rAE6rAU6T5KDgKkDWKWpKhY8MayM7Qp1ATAMDPeBU8_q_WzBUxcgfNSWxFdRiCNe_NBNLqMbj2m_egUgqNUPZFUiIUgyNVG2llZQ7LoCicNV42eeFS6e8q-UnWsW7VaIJ7duFVq1" />
+<meta name="twitter:image:alt" content="UML diagram of copyright-license@0.8.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/copyright-license@0.8.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template copyright-license@0.8.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.8.0</span>
+                <span class="tag">ffefbfcc0897a97f91fc8b432e19d50508e99bff38dd758368070a893319ad0c</span>
+            </div>
+            <p class="subtitle">
+                This clause is a copyright license agreement.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="copyright-license@0.8.0.html" class="dropdown-item is-active">
+                                copyright-license@0.8.0
+                            </a>
+                        
+                            <a href="copyright-license@0.7.0.html" class="dropdown-item ">
+                                copyright-license@0.7.0
+                            </a>
+                        
+                            <a href="copyright-license@0.6.0.html" class="dropdown-item ">
+                                copyright-license@0.6.0
+                            </a>
+                        
+                            <a href="copyright-license@0.5.0.html" class="dropdown-item ">
+                                copyright-license@0.5.0
+                            </a>
+                        
+                            <a href="copyright-license@0.4.0.html" class="dropdown-item ">
+                                copyright-license@0.4.0
+                            </a>
+                        
+                            <a href="copyright-license@0.3.0.html" class="dropdown-item ">
+                                copyright-license@0.3.0
+                            </a>
+                        
+                            <a href="copyright-license@0.2.0.html" class="dropdown-item ">
+                                copyright-license@0.2.0
+                            </a>
+                        
+                            <a href="copyright-license@0.1.0.html" class="dropdown-item ">
+                                copyright-license@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/copyright-license@0.8.0.cta" class="button is-rounded">Download Archive</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/bLJRRi8m37tdA_AuQT0lG8WAzhOB6ls1A3LTjZRE76SislRl2pH8eBMeVQhgOvzpxDfTEfR4lgadgfRE2QGgaqeXbPRm3HHd2cqWNRrohHKO1zb6XWOCly271yTYFXStnJH0NUF-LYmMudloEnbFCvlzBBhKOpPXHjwmRY1BsQFCFljEaqA8E_681k80GjvWL13o-1Zi_y0yrBUp6Ak66r-T0WzjO8M6IQgsbNnQ4O0vxsGj6Oee9M2tYuJw4mwH5jioQLE9H0rFika6jjnNSX_Ru504smtdPKdWN0U6rAE6rAU6T5KDgKkDWKWpKhY8MayM7Qp1ATAMDPeBU8_q_WzBUxcgfNSWxFdRiCNe_NBNLqMbj2m_egUgqNUPZFUiIUgyNVG2llZQ7LoCicNV42eeFS6e8q-UnWsW7VaIJ7duFVq1" />
+
+            <div class="content">
+                <p>
+                <h1 id="copyrightlicense">Copyright License</h1>
+<p>This is a copyright license agreement.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Copyright License Agreement
+
+This COPYRIGHT LICENSE AGREEMENT (the "Agreement"), dated as of 01/01/2018 (the "Effective Date"), is made by and between "Me" ("Licensee"), a "NY" "Company" with offices located at "1 Broadway", and "Myself" ("Licensor"), a "NY" "Company" with offices located at "2 Broadway".
+
+WHEREAS, Licensor solely and exclusively owns or controls the Work (as defined below) and wishes to grant to Licensee a license to the Work, and Licensee wishes to obtain a license to the Work for the uses and purposes described herein, each subject to the terms and conditions set forth herein.
+
+NOW, THEREFORE, in consideration of the mutual covenants, terms, and conditions set forth herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties agree as follows:
+
+1. License.
+
+1.1. Grant of Rights. Subject to the terms and conditions of this Agreement, Licensor hereby grants to Licensee and its affiliates during the Term (as defined below) an exclusive, transferable right and license in the "United States" (the "Territory"), to reproduce, publicly perform, display, transmit, and distribute the Work, including translate, alter, modify, and create derivative works of the Work, through all media now known or hereinafter developed for purposes of "stuff". The "Work" is defined as "other stuff".
+
+1.2. Permissions. Licensor has obtained from all persons and entities who are, or whose trademark or other property is, identified, depicted, or otherwise referred to in the Work, such written and signed licenses, permissions, waivers, and consents (collectively, "Permissions" and each, individually, a "Permission"), including those relating to publicity, privacy, and any intellectual property rights, as are or reasonably may be expected to be necessary for Licensee to exercise its rights in the Work as permitted under this Agreement, without incurring any payment or other obligation to, or otherwise violating any right of, any such person or entity.
+
+2. Copyright Notices. Licensee shall ensure that its use of the Work is marked with the appropriate copyright notices specified by Licensor in a reasonably prominent position in the order and manner provided by Licensor. Licensee shall abide by the copyright laws and what are considered to be sound practices for copyright notice provisions in the Territory. Licensee shall not use any copyright notices that conflict with, confuse, or negate the notices Licensor provides and requires hereunder.
+
+3. Payment. As consideration in full for the rights granted herein, Licensee shall pay Licensor a one-time fee in the amount of "one hundred US Dollars" (100.0 USD) upon execution of this Agreement, payable as follows: "bank transfer".  
+
+4. General.
+
+4.1. Interpretation. For purposes of this Agreement, (a) the words "include," "includes," and "including" are deemed to be followed by the words "without limitation"; (b) the word "or" is not exclusive; and (c) the words "herein," "hereof," "hereby," "hereto," and "hereunder" refer to this Agreement as a whole. This Agreement is intended to be construed without regard to any presumption or rule requiring construction or interpretation against the party drafting an instrument or causing any instrument to be drafted.
+
+4.2. Entire Agreement. This Agreement, including and together with any related attachments, constitutes the sole and entire agreement of the parties with respect to the subject matter contained herein, and supersedes all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, with respect to such subject matter. 
+
+4.3. Severability. If any term or provision of this Agreement is invalid, illegal, or unenforceable in any jurisdiction, such invalidity, illegality, or unenforceability will not affect the enforceability of any other term or provision of this Agreement, or invalidate or render unenforceable such term or provision in any other jurisdiction. [Upon a determination that any term or provision is invalid, illegal, or unenforceable, [the parties shall negotiate in good faith to/the court may] modify this Agreement to effect the original intent of the parties as closely as possible in order that the transactions contemplated hereby be consummated as originally contemplated to the greatest extent possible.]
+
+4.4. Assignment. Licensee may freely assign or otherwise transfer all or any of its rights, or delegate or otherwise transfer all or any of its obligations or performance, under this Agreement without Licensor's consent. This Agreement is binding upon and inures to the benefit of the parties hereto and their respective permitted successors and assigns.
+
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                
+                <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/copyright-license">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.copyrightlicense.CopyrightLicenseContract",
+    "contractId": "b09255a5-38fe-42ec-b387-a87180357abc",
+    "effectiveDate": "2018-01-01",
+    "licenseeName": "Me",
+    "licenseeState": "NY",
+    "licenseeEntityType": "Company",
+    "licenseeAddress": "1 Broadway",
+    "licensorName": "Myself",
+    "licensorState": "NY",
+    "licensorEntityType": "Company",
+    "licensorAddress": "2 Broadway",
+    "territory": "United States",
+    "purposeDescription": "stuff",
+    "workDescription": "other stuff",
+    "paymentClause": {
+        "$class": "org.accordproject.copyrightlicense.PaymentClause",
+        "clauseId": "f3b5431e-4a23-4629-8ed7-bd8a41bb913f",
+        "amountText": "one hundred US Dollars",
+        "amount": {
+            "$class": "org.accordproject.money.MonetaryAmount",
+            "doubleValue": 100,
+            "currencyCode": "USD"
+        },
+        "paymentProcedure": "bank transfer"
+    }
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "05db1920-b5f5-11e8-98f1-f70046c609b7"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.copyrightlicense.PaymentRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.copyrightlicense.PaymentRequest",
+    "transactionId": "05dacb00-b5f5-11e8-98f1-f70046c609b7",
+    "timestamp": "2018-09-11T19:01:00.464Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.copyrightlicense.PayOut</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.copyrightlicense.PayOut",
+    "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 205.576,
+        "currencyCode": "LYD"
+    },
+    "transactionId": "05daf210-b5f5-11e8-98f1-f70046c609b7",
+    "timestamp": "2018-09-11T19:01:00.465Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.hyperledger.composer.system.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
