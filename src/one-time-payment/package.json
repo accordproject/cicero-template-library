@@ -1,7 +1,7 @@
 {
     "name": "one-time-payment",
     "version": "0.9.0",
-    "description": "This is a one time payment contract applicable at execution of that contract.",
+    "description": "Full Payment Upon Signature",
     "cicero": {
         "template": "contract",
         "language": "ergo",

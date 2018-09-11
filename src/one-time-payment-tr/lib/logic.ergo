@@ -29,7 +29,7 @@ contract onetimepayment over OneTimePaymentContract state OneTimePaymentState {
 			promisor: some(contract.buyer),
 			promisee: some(contract.seller),
 			deadline: none,
-			amount: contract.initialAmount,
+			amount: contract.totalPurchasePrice,
 			description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
 		};
 		set state OneTimePaymentState {
