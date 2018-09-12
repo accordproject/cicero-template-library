@@ -1556,5 +1556,15 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "full-payment-upon-signature@0.1.0": {
+        "uri": "ap://full-payment-upon-signature@0.1.0#90a447d7d01be271b0b1f727efa18f76309185419d38ec6a7dfea4b845356d9e",
+        "url": "https://templates.accordproject.org/archives/full-payment-upon-signature@0.1.0.cta",
+        "name": "full-payment-upon-signature",
+        "description": "This is a one-time full payment clause applicable at the signature of the contract.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
     }
 }
