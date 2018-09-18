@@ -24,6 +24,7 @@ const chai = require('chai');
 chai.should();
 chai.use(require('chai-things'));
 chai.use(require('chai-as-promised'));
+var expect = chai.expect;
 const moment = require('moment');
 
 describe('Logic', () => {
@@ -79,6 +80,57 @@ Formula for Breach Penalty Calculation:
             result.response.totalPrice.doubleValue.should.equal(300);
             result.response.penalty.doubleValue.should.equal(4200);
             result.response.late.should.equal(false);            
+        });
+
+        it('shipment units below agreeed upon bounds', async function() {
+            const request = {};
+            const NS = 'org.accordproject.perishablegoods';
+            request.$class = `${NS}.ShipmentReceived`;
+            request.timestamp = new Date();
+            request.unitCount = 2990;
+            const shipment = {$class: `${NS}.Shipment`, shipmentId: 'SHIP_001'};
+            const readingLow = {$class: `${NS}.SensorReading`, transactionId: 'a', shipment: 'SHIP_001', centigrade: 2, humidity: 80};
+            const readingOk = {$class: `${NS}.SensorReading`, transactionId: 'b', shipment: 'SHIP_001', centigrade: 5, humidity: 90};
+            const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};            
+            shipment.sensorReadings = [readingLow, readingOk, readingHigh];
+            request.shipment = shipment;
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            await expect(engine.execute(clause, request, state)).to.eventually.be.rejectedWith('Units received out of range for the contract');
+        });
+
+        it('shipment units above agreeed upon bounds', async function() {
+            const request = {};
+            const NS = 'org.accordproject.perishablegoods';
+            request.$class = `${NS}.ShipmentReceived`;
+            request.timestamp = new Date();
+            request.unitCount = 3590;
+            const shipment = {$class: `${NS}.Shipment`, shipmentId: 'SHIP_001'};
+            const readingLow = {$class: `${NS}.SensorReading`, transactionId: 'a', shipment: 'SHIP_001', centigrade: 2, humidity: 80};
+            const readingOk = {$class: `${NS}.SensorReading`, transactionId: 'b', shipment: 'SHIP_001', centigrade: 5, humidity: 90};
+            const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};            
+            shipment.sensorReadings = [readingLow, readingOk, readingHigh];
+            request.shipment = shipment;
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            await expect(engine.execute(clause, request, state)).to.eventually.be.rejectedWith('Units received out of range for the contract');
+        });
+
+        it('shipment does not include temperature readings', async function() {
+            const request = {};
+            const NS = 'org.accordproject.perishablegoods';
+            request.$class = `${NS}.ShipmentReceived`;
+            request.timestamp = new Date();
+            request.unitCount = 3300;
+            const shipment = {$class: `${NS}.Shipment`, shipmentId: 'SHIP_001'};
+            shipment.sensorReadings = [];
+            request.shipment = shipment;
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            await expect(engine.execute(clause, request, state)).to.eventually.be.rejectedWith('No temperature readings received');
         });
     });
 });

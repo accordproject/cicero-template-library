@@ -51,12 +51,17 @@ define function calculateHumPenalty(minHumidity : Double,
   else return 0.0
 }
 
+define function unitsWithinBounds(units : Integer, min : Integer, max : Integer) : Boolean {
+  return min <=i units
+     and units <=i max
+}
+
 contract PerishableGoods over PerishableGoodsClause {
   clause payout(request : ShipmentReceived) : PriceCalculation {
     // Guard against unitCount outside the bounds specified in the clause
-    enforce request.unitCount <=i contract.minUnits or request.unitCount >=i contract.maxUnits
-    else throw ErgoErrorResponse{ message: "Units received out of range for the contract." };
-    
+    enforce unitsWithinBounds(request.unitCount, contract.minUnits, contract.maxUnits)
+    else throw ErgoErrorResponse{ message: "Units received out of range for the contract" };
+
     let zeroMoney = MonetaryAmount{
       doubleValue: 0.0,
       currencyCode: contract.unitPrice.currencyCode
@@ -70,9 +75,9 @@ contract PerishableGoods over PerishableGoodsClause {
       late : true
     };
     // Guard against missing temperature readings
-		let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
+    let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
     enforce readings != []
-    else throw ErgoErrorResponse{ message : "No temperature readings received."};
+    else throw ErgoErrorResponse{ message : "No temperature readings received"};
 
     // Calculates payout
     let payOut = contract.unitPrice.doubleValue * integerToDouble(request.unitCount);
