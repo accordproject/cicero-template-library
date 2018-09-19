@@ -1,0 +1,58 @@
+namespace org.accordproject.isda.irs
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+
+/**
+ * The specification for how the number of days between two dates is calculated for purposes of calculation of a fixed or floating payment amount and the basis for how many days are assumed to be in a year. Day Count Fraction is an ISDA term. The equivalent AFB (Association Francaise de Banques) term is Calculation Basis.
+ */
+concept DayCountFraction {
+o String
+ value optional
+o String
+ dayCountFractionScheme optional
+}
+
+transaction RateObservation extends Request {
+}
+
+transaction Result extends Response {
+  o Double outstandingBalance
+}
+
+/**
+ * The template model for a simple ISDA Interest Rate Swap
+ */
+asset InterestRateSwapContract extends AccordContract {
+ --> Organization bank
+ o DateTime letterDate
+ --> Organization counterparty
+ o String bankReference
+ o MonetaryAmount notionalAmount
+ o DateTime tradeDate
+ o DateTime effectiveDate
+ o DateTime terminationDate
+
+ --> Organization fixedRatePayer
+ o String fixedRatePayerPeriodEndDates
+ o String fixedRatePayerPaymentDates
+ o Double fixedRate
+ o DayCountFraction fixedRateDayCountFraction
+ o String fixedRatePayerBusinessDays
+ o String fixedRatePayerBusinessDayConvention
+
+ --> Organization floatingRatePayer
+ o String floatingRatePayerPeriodEndDates
+ o String floatingRatePayerPaymentDates
+ o Double floatingRateForInitialCalculationPeriod
+ o String floatingRateOption
+ o String designatedMaturity
+ o String spread
+ o DayCountFraction floatingRateDayCountFraction
+ o String resetDates
+ o String compounding
+ o String floatingRatePayerBusinessDays
+ o String floatingRatePayerBusinessDayConvention
+}
