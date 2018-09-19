@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@accordproject/cicero-core@0.6.0", "@accordproject/cicero-core@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.npmjs.org/@accordproject/cicero-core/-/cicero-core-0.6.0.tgz#aa22ef9f38f1598c083ff4b147645f476bd0b67d"
+"@accordproject/cicero-core@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@accordproject/cicero-core/-/cicero-core-0.8.0.tgz#3d28aaf4d2127edfb46038088f2da9b2bfd215f3"
   dependencies:
-    "@accordproject/ergo-compiler" "0.3.1"
+    "@accordproject/ergo-compiler" "0.4.0"
     axios "0.17.1"
     composer-common "0.19.12"
     debug "2.6.2"
@@ -29,18 +29,18 @@
     winston "3.0.0"
     xregexp "4.1.1"
 
-"@accordproject/cicero-engine@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.npmjs.org/@accordproject/cicero-engine/-/cicero-engine-0.6.0.tgz#120a5f98e04d9468f45f9ecb4875c1b025f7bc57"
+"@accordproject/cicero-engine@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@accordproject/cicero-engine/-/cicero-engine-0.8.0.tgz#5104f2c2f628b67b45921926a82405f749fbaf45"
   dependencies:
-    "@accordproject/cicero-core" "0.6.0"
+    "@accordproject/cicero-core" "0.8.0"
     composer-common "0.19.12"
     moment "2.20.1"
     vm2 "3.5.0"
 
-"@accordproject/ergo-compiler@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.npmjs.org/@accordproject/ergo-compiler/-/ergo-compiler-0.3.1.tgz#afc6798ddc9c9210552b78a632faf23631d4c67a"
+"@accordproject/ergo-compiler@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@accordproject/ergo-compiler/-/ergo-compiler-0.4.0.tgz#2f4225154d10d900c8c7350c00a4bd0346ee400b"
   dependencies:
     composer-common "0.19.12"
     yargs "9.0.1"

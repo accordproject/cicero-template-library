@@ -42,23 +42,18 @@ describe('Logic', () => {
         engine = new Engine();
     });
     
-    describe('#PromissoryNote', async function() {
+    describe('#InterestRateSwap', async function() {
 
         it('should execute a smart clause', async function () {
             const request = {
-                "$class": "org.accordproject.promissorynote.Payment",
-                "amountPaid": {
-                    "$class": "org.accordproject.money.MonetaryAmount",
-                    "doubleValue": 100.0,
-                    "currencyCode": "USD"    
-                }
+                "$class": "org.accordproject.isda.irs.RateObservation",
             };
             const state = {};
             state.$class = 'org.accordproject.cicero.contract.AccordContractState';
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
-            result.response.outstandingBalance.should.greaterThan(200);
+            result.response.outstandingBalance.should.greaterThan(1);
         });
     });
 });
