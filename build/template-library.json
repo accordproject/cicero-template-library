@@ -1626,5 +1626,15 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "helloworldstate@0.7.1": {
+        "uri": "ap://helloworldstate@0.7.1#2661f983c8163036e54a7f238750e9a28abad5c1a7c9774c18a32cf1b295f79f",
+        "url": "https://templates.accordproject.org/archives/helloworldstate@0.7.1.cta",
+        "name": "helloworldstate",
+        "description": "This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.",
+        "version": "0.7.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 1,
+        "language": 0
     }
 }
