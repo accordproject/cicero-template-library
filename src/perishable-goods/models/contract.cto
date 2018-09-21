@@ -14,9 +14,9 @@ import org.accordproject.value.* from https://models.accordproject.org/value.cto
  * a penality factor proportional to the deviation from the min and max
  * negociated temperatures for the shipment.
  */
-asset PerishableGoodsClause extends AccordClause {
-  --> Grower grower
-  --> Importer importer
+asset PerishableGoodsContract extends AccordContract {
+  o AccordParty grower
+  o AccordParty importer
   --> Shipment shipment
   o DateTime dueDate
   o MonetaryAmount unitPrice
@@ -82,8 +82,8 @@ transaction PriceCalculation extends ShipmentTransaction {
 asset Shipment identified by shipmentId {
   o String shipmentId
   o ShipmentStatus status
-  --> Grower grower
-  --> Importer importer
+  o AccordParty grower
+  o AccordParty importer
   o SensorReading[] sensorReadings optional
   o String smartClause optional
 }

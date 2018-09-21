@@ -14,6 +14,7 @@
 
 namespace org.accordproject.perishablegoods
 
+import org.accordproject.cicero.contract.*
 import org.accordproject.cicero.runtime.*
 import org.accordproject.money.MonetaryAmount
 
@@ -56,7 +57,7 @@ define function unitsWithinBounds(units : Integer, min : Integer, max : Integer)
      and units <=i max
 }
 
-contract PerishableGoods over PerishableGoodsClause {
+contract PerishableGoods over PerishableGoodsContract {
   clause payout(request : ShipmentReceived) : PriceCalculation {
     // Guard against unitCount outside the bounds specified in the clause
     enforce unitsWithinBounds(request.unitCount, contract.minUnits, contract.maxUnits)
@@ -68,12 +69,13 @@ contract PerishableGoods over PerishableGoodsClause {
     };
     // Guard against requests for payout after the dueDate
     enforce dateTimeIsBefore(now(),contract.dueDate)
-    else return PriceCalculation{
-      shipment : request.shipment,
-      totalPrice : zeroMoney,
-      penalty : zeroMoney,
-      late : true
-    };
+    else
+			return PriceCalculation{
+    	  shipment : request.shipment,
+    	  totalPrice : zeroMoney,
+    	  penalty : zeroMoney,
+    	  late : true
+    	};
     // Guard against missing temperature readings
     let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
     enforce readings != []
@@ -100,6 +102,14 @@ contract PerishableGoods over PerishableGoodsClause {
       doubleValue: max([payOut - totalPenalty.doubleValue, 0.0]),
       currencyCode: contract.unitPrice.currencyCode
     };
+    emit PaymentObligation{
+			contract: contract,
+			promisor: some(contract.importer),
+			promisee: some(contract.grower),
+			deadline: none,
+			amount: totalPrice,
+			description: contract.importer.partyId ++ " should pay shipment amount to " ++ contract.grower.partyId
+		};
     return PriceCalculation{
       shipment : request.shipment,
       totalPrice : totalPrice,

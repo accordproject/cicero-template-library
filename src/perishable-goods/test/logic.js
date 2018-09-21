@@ -80,6 +80,12 @@ Formula for Breach Penalty Calculation:
             result.response.totalPrice.doubleValue.should.equal(300);
             result.response.penalty.doubleValue.should.equal(4200);
             result.response.late.should.equal(false);            
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 300,
+                'currencyCode': 'USD'
+            });
         });
 
         it('shipment units below agreeed upon bounds', async function() {
@@ -91,7 +97,7 @@ Formula for Breach Penalty Calculation:
             const shipment = {$class: `${NS}.Shipment`, shipmentId: 'SHIP_001'};
             const readingLow = {$class: `${NS}.SensorReading`, transactionId: 'a', shipment: 'SHIP_001', centigrade: 2, humidity: 80};
             const readingOk = {$class: `${NS}.SensorReading`, transactionId: 'b', shipment: 'SHIP_001', centigrade: 5, humidity: 90};
-            const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};            
+            const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};
             shipment.sensorReadings = [readingLow, readingOk, readingHigh];
             request.shipment = shipment;
             const state = {};
@@ -109,7 +115,7 @@ Formula for Breach Penalty Calculation:
             const shipment = {$class: `${NS}.Shipment`, shipmentId: 'SHIP_001'};
             const readingLow = {$class: `${NS}.SensorReading`, transactionId: 'a', shipment: 'SHIP_001', centigrade: 2, humidity: 80};
             const readingOk = {$class: `${NS}.SensorReading`, transactionId: 'b', shipment: 'SHIP_001', centigrade: 5, humidity: 90};
-            const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};            
+            const readingHigh = {$class: `${NS}.SensorReading`, transactionId: 'c', shipment: 'SHIP_001', centigrade: 15, humidity: 65};
             shipment.sensorReadings = [readingLow, readingOk, readingHigh];
             request.shipment = shipment;
             const state = {};
