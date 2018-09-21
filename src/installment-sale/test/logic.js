@@ -58,6 +58,12 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.balance.should.equal(7612.499999999999);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 2500,
+                'currencyCode': 'USD'
+            });
         });
     });
     

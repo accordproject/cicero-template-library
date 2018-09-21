@@ -14,16 +14,19 @@
 
 namespace org.accordproject.installmentsale
 
+import org.accordproject.cicero.runtime.*
+import org.accordproject.money.MonetaryAmount
+
 contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState {
-  clause init(request : InitializeRequest) : InitializeResponse {
+  clause init(request : Request) : Response {
     set state InstallmentSaleState{
 			stateId: "#1",
       status: "WaitingForFirstDayOfNextMonth",
       balance_remaining: contract.INITIAL_DUE,
       total_paid: 0.0,
-      next_payment_month: doubleToInteger(request.firstMonth)
+      next_payment_month: contract.FIRST_MONTH
     };
-    return InitializeResponse{}
+    return Response{}
   }
 
   clause PayInstallment(request : Installment) : Balance emits PaymentObligation {
@@ -44,9 +47,13 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
       next_payment_month: state.next_payment_month +i 1
     };
     emit PaymentObligation{
-      party: contract.BUYER,
-      amount: request.amount
-    };
+			contract: contract,
+			promisor: some(contract.BUYER),
+			promisee: some(contract.SELLER),
+			deadline: none,
+			amount: MonetaryAmount{ doubleValue : request.amount, currencyCode : "USD" },
+			description: contract.BUYER.partyId ++ " should pay installment to " ++ contract.SELLER.partyId
+		};
     return Balance{
       balance: balance,
       total_paid: total_paid
@@ -64,9 +71,13 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
       next_payment_month: 0
     };
     emit PaymentObligation{
-      party: contract.BUYER,
-      amount: request.amount
-    };
+			contract: contract,
+			promisor: some(contract.BUYER),
+			promisee: some(contract.SELLER),
+			deadline: none,
+			amount: MonetaryAmount{ doubleValue : request.amount, currencyCode : "USD" },
+			description: contract.BUYER.partyId ++ " should pay installment to " ++ contract.SELLER.partyId
+		};
     return Balance{
       balance: balance,
       total_paid: total_paid

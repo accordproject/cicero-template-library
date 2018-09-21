@@ -4,12 +4,6 @@ import org.accordproject.cicero.contract.* from https://models.accordproject.org
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 
-transaction InitializeRequest {
-  o Double firstMonth
-}
-transaction InitializeResponse {
-}
-
 transaction Installment extends Request {
   o Double amount
 }
@@ -28,16 +22,6 @@ enum ContractStatus {
   o Fulfilled
 }
 
-/**
- * Defines contract obligations
- */
-event MyObligation {
-  o String party
-}
-event PaymentObligation extends MyObligation {
-  o Double amount
-}
-
 asset InstallmentSaleState extends AccordContractState {
   o ContractStatus status
   o Double balance_remaining
@@ -49,11 +33,12 @@ asset InstallmentSaleState extends AccordContractState {
  * The template model
  */
 asset InstallmentSaleContract extends AccordContract {
-  o String BUYER
-	o String SELLER
+  o AccordParty BUYER
+	o AccordParty SELLER
   o Double INITIAL_DUE
   o Double INTEREST_RATE
   o Double TOTAL_DUE_BEFORE_CLOSING
   o Double MIN_PAYMENT
   o Double DUE_AT_CLOSING
+  o Integer FIRST_MONTH
 }
