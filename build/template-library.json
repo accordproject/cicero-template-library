@@ -1586,5 +1586,15 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "copyright-license@0.8.1": {
+        "uri": "ap://copyright-license@0.8.1#a553653b694097f1386f76b028775e1f95de2af83418450697f541b58aeaf632",
+        "url": "https://templates.accordproject.org/archives/copyright-license@0.8.1.cta",
+        "name": "copyright-license",
+        "description": "This clause is a copyright license agreement.",
+        "version": "0.8.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
     }
 }
