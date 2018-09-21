@@ -1606,5 +1606,25 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "installment-sale@0.7.1": {
+        "uri": "ap://installment-sale@0.7.1#797e97f0ba3619da0e0ef8e48ff51f10a37fc4eb03ac02a9dacb930c7abe4dd5",
+        "url": "https://templates.accordproject.org/archives/installment-sale@0.7.1.cta",
+        "name": "installment-sale",
+        "description": "This is a clause for a simple installment sale.",
+        "version": "0.7.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
+    },
+    "volumediscount@0.8.1": {
+        "uri": "ap://volumediscount@0.8.1#a1922438201a4315bc36c05be62f20864bebce0b8468e7ab4b6342261b227f2f",
+        "url": "https://templates.accordproject.org/archives/volumediscount@0.8.1.cta",
+        "name": "volumediscount",
+        "description": "A sample volume discount contract.",
+        "version": "0.8.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
     }
 }
