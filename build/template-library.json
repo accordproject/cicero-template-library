@@ -1646,5 +1646,15 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "perishable-goods@0.7.3": {
+        "uri": "ap://perishable-goods@0.7.3#c19520127e86ed2e378514938d4bc013972e1366d9ce8cf954a706c4b721119e",
+        "url": "https://templates.accordproject.org/archives/perishable-goods@0.7.3.cta",
+        "name": "perishable-goods",
+        "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+        "version": "0.7.3",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
     }
 }
