@@ -21,13 +21,13 @@ asset CopyrightLicenseContract extends AccordContract {
   o DateTime effectiveDate
 
   /* licensee */
-  o String licenseeName
+  o AccordParty licensee
   o String licenseeState
   o String licenseeEntityType
   o String licenseeAddress
 
   /* licensor */
-  o String licensorName
+  o AccordParty licensor
   o String licensorState
   o String licensorEntityType
   o String licensorAddress

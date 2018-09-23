@@ -14,9 +14,19 @@
 
 namespace org.accordproject.copyrightlicense
 
+import org.accordproject.cicero.runtime.*
+
 contract CopyrightLicense over CopyrightLicenseContract {
    // Clause for volume discount
-  clause paymentClause(request : PaymentRequest) : PayOut {
+  clause paymentClause(request : PaymentRequest) : PayOut emits PaymentObligation {
+    emit PaymentObligation{
+			contract: contract,
+			promisor: some(contract.licensee),
+			promisee: some(contract.licensor),
+			deadline: none,
+			amount: clause.amount,
+			description: contract.licensee.partyId ++ " should pay contract amount to " ++ contract.licensor.partyId
+		};
     return PayOut{ amount: clause.amount }
   }
 }

@@ -1586,5 +1586,65 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "copyright-license@0.8.1": {
+        "uri": "ap://copyright-license@0.8.1#a553653b694097f1386f76b028775e1f95de2af83418450697f541b58aeaf632",
+        "url": "https://templates.accordproject.org/archives/copyright-license@0.8.1.cta",
+        "name": "copyright-license",
+        "description": "This clause is a copyright license agreement.",
+        "version": "0.8.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
+    },
+    "promissory-note@0.7.1": {
+        "uri": "ap://promissory-note@0.7.1#57f4d306e7231974a6b2b3dcfe0f220a238231fdf7e9b4dfa905f1c8803d5f62",
+        "url": "https://templates.accordproject.org/archives/promissory-note@0.7.1.cta",
+        "name": "promissory-note",
+        "description": "A promissory note",
+        "version": "0.7.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
+    },
+    "installment-sale@0.7.1": {
+        "uri": "ap://installment-sale@0.7.1#4a0c546401ed8f0258da1a0ec6e746039081b61a1b97e99c84b215bfcc2a836e",
+        "url": "https://templates.accordproject.org/archives/installment-sale@0.7.1.cta",
+        "name": "installment-sale",
+        "description": "This is a clause for a simple installment sale.",
+        "version": "0.7.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
+    },
+    "volumediscount@0.8.1": {
+        "uri": "ap://volumediscount@0.8.1#a1922438201a4315bc36c05be62f20864bebce0b8468e7ab4b6342261b227f2f",
+        "url": "https://templates.accordproject.org/archives/volumediscount@0.8.1.cta",
+        "name": "volumediscount",
+        "description": "A sample volume discount contract.",
+        "version": "0.8.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
+    },
+    "helloworldstate@0.7.1": {
+        "uri": "ap://helloworldstate@0.7.1#2661f983c8163036e54a7f238750e9a28abad5c1a7c9774c18a32cf1b295f79f",
+        "url": "https://templates.accordproject.org/archives/helloworldstate@0.7.1.cta",
+        "name": "helloworldstate",
+        "description": "This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.",
+        "version": "0.7.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 1,
+        "language": 0
+    },
+    "perishable-goods@0.7.2": {
+        "uri": "ap://perishable-goods@0.7.2#415086baacf407aadb01bba2234851b9179972f0a773fcbcc9bbb77510ce14fe",
+        "url": "https://templates.accordproject.org/archives/perishable-goods@0.7.2.cta",
+        "name": "perishable-goods",
+        "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+        "version": "0.7.2",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
     }
 }
