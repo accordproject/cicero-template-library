@@ -46,7 +46,7 @@ describe('Logic', () => {
     
     describe('#LateDeliveryAndPenalty', async function() {
 
-        it('should execute a smart clause', async function () {
+        it('should compute penalty amount', async function () {
             const request = {
                 '$class': 'org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest',
                 'forceMajeure': false,
@@ -61,6 +61,12 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.penalty.should.equal(110.00000000000001);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 110.00000000000001,
+                'currencyCode': 'USD'
+            });
         });
     });
 });

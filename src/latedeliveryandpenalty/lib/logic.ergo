@@ -15,9 +15,10 @@
 namespace org.accordproject.latedeliveryandpenalty
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.money.MonetaryAmount
 
-contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyClause {
-  clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse {
+contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
+  clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse emits PaymentObligation {
     // Guard against calling late delivery clause too early
     let agreed = request.agreedDelivery;
     enforce dateTimeIsBefore(agreed,now()) else
@@ -37,7 +38,16 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyClause {
       (diff / contract.penaltyDuration.amount) * contract.penaltyPercentage/100.0 * request.goodsValue;
     // Penalty may be capped
     let capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
+    // Return a Payment Obligation
     // Return the response with the penalty and termination determination
+    emit PaymentObligation{
+			contract: contract,
+			promisor: some(contract.buyer),
+			promisee: some(contract.seller),
+			deadline: none,
+			amount: MonetaryAmount{ doubleValue: capped, currencyCode: "USD" },
+			description: contract.buyer.partyId ++ " should pay penalty amount to " ++ contract.seller.partyId
+		};
     return LateDeliveryAndPenaltyResponse{
       penalty: capped,
       buyerMayTerminate: diff > contract.termination.amount
