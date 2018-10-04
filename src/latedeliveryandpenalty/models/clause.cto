@@ -9,7 +9,17 @@ import org.accordproject.time.* from https://models.accordproject.org/time.cto
  * This defines the structure of the abstract syntax tree that the parser for the template
  * must generate from input source text.
  */
-asset LateDeliveryAndPenaltyClause extends AccordClause {
+asset LateDeliveryAndPenaltyContract extends AccordContract {
+  /**
+   * The buyer
+   */
+  o AccordParty buyer
+
+  /**
+   * The seller
+   */
+  o AccordParty seller
+
   /**
    * Does the clause include a force majeure provision?
    */

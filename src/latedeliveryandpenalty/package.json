@@ -1,9 +1,9 @@
 {
     "name": "latedeliveryandpenalty",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "description": "A sample Late Delivery And Penalty clause.",
     "cicero": {
-        "template": "clause",
+        "template": "contract",
         "language": "ergo",
         "version": "^0.8.0"
     }

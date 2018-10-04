@@ -1656,5 +1656,15 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "latedeliveryandpenalty@0.7.1": {
+        "uri": "ap://latedeliveryandpenalty@0.7.1#555579971366bc34a4f8f51baf5ac1c778354fc918dc8cf768e73ec126a37eae",
+        "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.7.1.cta",
+        "name": "latedeliveryandpenalty",
+        "description": "A sample Late Delivery And Penalty clause.",
+        "version": "0.7.1",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
     }
 }
