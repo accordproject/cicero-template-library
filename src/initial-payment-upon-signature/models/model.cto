@@ -1,0 +1,27 @@
+namespace org.accordproject.payment.initialuponsignature
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
+transaction PaymentReceivedRequest extends Request {}
+transaction PaymentReceivedResponse extends Response {}
+
+asset InitialPaymentUponSignatureState extends AccordContractState {
+  o ContractLifecycleStatus status default = "UNINITIALIZED"
+}
+
+enum ContractLifecycleStatus {
+  o UNINITIALIZED
+  o OBLIGATION_EMITTED
+  o COMPLETED
+}
+
+/**
+ * The template model
+ */
+asset InitialPaymentUponSignatureContract extends AccordContract {
+  o AccordParty buyer
+  o AccordParty seller
+  o MonetaryAmount InitialPayment
+}
