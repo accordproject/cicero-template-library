@@ -1,7 +1,7 @@
 {
     "name": "simplelatedeliveryandpenalty",
     "version": "0.1.0",
-    "description": "A simpler Late Delivery And Penalty clause.",
+    "description": "A Late Delivery And Penalty clause (simple).",
     "cicero": {
         "template": "contract",
         "language": "ergo",
