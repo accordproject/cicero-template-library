@@ -1,3 +1,3 @@
-# A Simpler Late Delivery And Penalty
+# A Late Delivery And Penalty (Simple)
 
-A simpler Late Delivery And Penalty clause.
+A Late Delivery And Penalty clause (simple).
