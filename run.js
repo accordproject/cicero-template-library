@@ -14,7 +14,7 @@
 
 'use strict';
 
-const CodeGen = require('composer-common').CodeGen;
+const CodeGen = require('composer-concerto').CodeGen;
 const Template = require('@accordproject/cicero-core').Template;
 const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
