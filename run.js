@@ -14,7 +14,7 @@
 
 'use strict';
 
-const CodeGen = require('composer-common').CodeGen;
+const CodeGen = require('composer-concerto').CodeGen;
 const Template = require('@accordproject/cicero-core').Template;
 const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
@@ -208,7 +208,14 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 await preProcessor(templatePath, template);
 
                 if(!process.env.SKIP_GENERATION) {
-                    const archive = await template.toArchive();
+                    const language = template.getMetadata().getLanguage();
+                    let archive;
+                    // Keeps produced archives in the same language as their source from directory
+                    if (language === 0) {
+                        archive = await template.toArchive('ergo');
+                    } else {
+                        archive = await template.toArchive('javascript');
+                    }
                     const destPath = path.dirname(dest);
     
                     await fs.ensureDir(destPath);
