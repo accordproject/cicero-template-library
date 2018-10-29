@@ -1,0 +1,22 @@
+@startuml
+class org.accordproject.ippayment.PaymentRequest << (T,yellow) >> {
+   + Double netSaleRevenue
+   + Double sublicensingRevenue
+   + DateTime permissionGrantedBy
+}
+org.accordproject.ippayment.PaymentRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.ippayment.PayOut << (T,yellow) >> {
+   + Double totalAmount
+   + String dueBy
+}
+org.accordproject.ippayment.PayOut --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.ippayment.IntellectualPropertyPaymentClause << (A,green) >> {
+   + String royaltyText
+   + Double royaltyRate
+   + String sublicensingRoyaltyText
+   + Double sublicensingRoyaltyRate
+   + Duration paymentPeriod
+   + Duration paymentPeriodWithPermission
+}
+org.accordproject.ippayment.IntellectualPropertyPaymentClause --|> org.accordproject.cicero.contract.AccordClause
+@enduml
