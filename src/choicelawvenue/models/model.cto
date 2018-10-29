@@ -9,4 +9,4 @@ asset ChoiceLawVenueContract extends AccordContract {
    * The state choice of law & venue
    */
   o State state
-}
+} 
