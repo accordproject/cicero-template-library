@@ -16,4 +16,4 @@ namespace org.accordproject.choicelawvenue
 
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.usa.state.State* from https://models.accordproject.org/usa/state.cto
+import org.accordproject.usa.state.State* from https://models.accordproject.org/usa/state.cto 
