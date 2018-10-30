@@ -1946,5 +1946,15 @@
         "ciceroVersion": "^0.9.1",
         "type": 0,
         "language": 0
+    },
+    "empty@0.1.0": {
+        "uri": "ap://empty@0.1.0#3e83464bb4f7229bb068790d9663fe7ff53724ed4d2b27ab38d4f45d0c6a1912",
+        "url": "https://templates.accordproject.org/archives/empty@0.1.0.cta",
+        "name": "empty",
+        "description": "This is an empty template to get you started.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
     }
 }
