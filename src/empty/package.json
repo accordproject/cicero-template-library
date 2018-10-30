@@ -1,0 +1,10 @@
+{
+    "name": "empty",
+    "version": "0.1.0",
+    "description": "This is an empty template to get you started.",
+    "cicero": {
+        "template": "clause",
+        "language": "ergo",
+        "version": "^0.9.1"
+    }
+}
