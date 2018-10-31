@@ -88,7 +88,7 @@
                 <span class="tag">Contract</span>
                 <span class="tag">Ergo</span>
                 <span class="tag">^0.9.1</span>
-                <span class="tag">d12faec85bed52047eaedc57c6a5ce40338274d4a419420d52c610b4f90665d3</span>
+                <span class="tag">132887c492665215a7d22b248d069316c817746837a2d6a7621e2a61cd0f7042</span>
             </div>
             <p class="subtitle">
                 A sample Late Delivery And Penalty clause.
@@ -151,6 +151,7 @@
                     </div>
                 </div>
                 <a href="./archives/latedeliveryandpenalty@0.8.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Flatedeliveryandpenalty%400.8.0%23hash" class="button is-rounded">Open in Template Studio</a>
             </p>
 
             <img src="https://www.plantuml.com/plantuml/svg/hLH1JiCm4Bpd5Jw2QFE2gcgWnrQgKE2-jRTHAiSRrZOe0lwEqzXIGw528aVFhCVZ6IShwu2TRtGcDLWhYAiSf2HMBTCHfSirE5IewrVa3engqO1sNRu9y3h2XL6x0NuWunYa4uk5k2bc5IEQMx5SYlTC274dYfFqBXpPYRtla2zXYred_9v88nXn89QuXIDwne5PUmPNan7HJrf7blnUO-9s67OR1nMEM0dj1PDK7N9JcpF54fkM6FIJgPquz5SC5EZUSlQPJPNQVFwn_A42MKjaocKSouUuqgvfcdl45uzsAAwSTQ44UZjlxaeLGQ-i6nJGrwsIz3So6a5Lk54B5P6opw0z_Z_7T8VhCR8tBZZAu_HKyTcMZCLVyni_oN6cfozX2rqPNzqaKKG_VyrY6CzMQ5J_D_W2" />
@@ -198,7 +199,7 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract",
-    "contractId": "86a06d18-2084-4b62-99c5-659e7d628083",
+    "contractId": "e9ba3574-920e-4c90-8907-bb905b9af3d1",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Steve"
@@ -237,7 +238,7 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <th>org.accordproject.cicero.contract.AccordContractState</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "11a4e9d1-d958-11e8-bf99-b939ea4c50ac"
+    "stateId": "6024e932-dd3f-11e8-a95c-95b9dbcf241c"
 }</pre></code></td>
         </tr>
         
@@ -259,11 +260,11 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
     "forceMajeure": false,
-    "agreedDelivery": "2018-10-26T19:48:11.117Z",
-    "deliveredAt": "2018-10-26T19:48:11.117Z",
-    "goodsValue": 151.182,
-    "transactionId": "11a4c2c0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:11.117Z"
+    "agreedDelivery": "2018-10-31T19:01:30.051Z",
+    "deliveredAt": "2018-10-31T19:01:30.051Z",
+    "goodsValue": 196.19,
+    "transactionId": "6024e930-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:30.051Z"
 }</pre></code></td>
         </tr>
         
@@ -284,10 +285,10 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
-    "penalty": 155.586,
+    "penalty": 209.472,
     "buyerMayTerminate": true,
-    "transactionId": "11a4e9d0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:11.117Z"
+    "transactionId": "6024e931-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:30.051Z"
 }</pre></code></td>
         </tr>
         
@@ -310,16 +311,16 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 177.093,
-        "currencyCode": "AMD"
+        "doubleValue": 3.033,
+        "currencyCode": "GHS"
     },
-    "description": "Ex occaecat.",
-    "contract": "resource:org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract#6947",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9399",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#8046",
-    "deadline": "2018-10-26T19:48:11.117Z",
-    "eventId": "11a4e9d2-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:11.117Z"
+    "description": "Commodo dolor officia elit reprehenderit.",
+    "contract": "resource:org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract#5167",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#8715",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#5629",
+    "deadline": "2018-10-31T19:01:30.052Z",
+    "eventId": "60251040-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:30.052Z"
 }</pre></code></td>
         </tr>
         

@@ -88,7 +88,7 @@
                 <span class="tag">Contract</span>
                 <span class="tag">Ergo</span>
                 <span class="tag">^0.9.1</span>
-                <span class="tag">2329801764ebd3d919eb6345bc8aa58cabcf178eac0907776437029716041ce2</span>
+                <span class="tag">1502c75f8da68f17719cbad16bee93dba79f2bc3a6ed39e5a7ecf1b1567391c8</span>
             </div>
             <p class="subtitle">
                 This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.
@@ -139,6 +139,7 @@
                     </div>
                 </div>
                 <a href="./archives/supplyagreement-perishable-goods@0.9.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fsupplyagreement-perishable-goods%400.9.0%23hash" class="button is-rounded">Open in Template Studio</a>
             </p>
 
             <img src="https://www.plantuml.com/plantuml/svg/hP9DJiCm48NtESKiGT2SeAeQWLfO85Mq7C3OezGedZ5ZMpG2xewTXB-gx5XbyhqtVfgnbo4gYSbrbUvK2C3Irafh5kE5dr37sgFOi5UF7RRC9jIQAOhAmZPvt_LDAuWEAMw-VElYkvfiC9_3MNDPN7GEYmMyLW1m0MlX5nHeXy-8RfrdYHdQgHZnTczz2O0m5IE-LX5trY6OXAKUwHqJvedwnd7ABObit8ZLa_gGVmSs1LB4DkSvIqK9HrGTVj1j54ijvAsOf8_w0r9WkKTbicKb-9oGT3zwTbY6KTqGRPAeQ9cc2JZbRPNqOi8i9S7VaZhyALcwISuQ6_lZbfFS8wakzgjy9IpLU_N_5psRlIrEl1-Tjo_yVLepg9zTrHB9bEVt0G00" />
@@ -318,7 +319,7 @@ Formula for Breach Penalty Calculation:
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.contract.SupplyAgreementPerishableGoodsContract",
-    "contractId": "344ab2c8-1414-4414-b185-31eb2c7cb392",
+    "contractId": "ce6d2fdf-a7f3-49b0-97ec-f2b619e1cc81",
     "grower": "SUPPLIER CORPORATION",
     "importer": "BUYER CORPORATION",
     "shipment": "SHIP_001",
@@ -355,7 +356,7 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.cicero.contract.AccordContractState</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "179350c0-d958-11e8-bf99-b939ea4c50ac"
+    "stateId": "6876e2a0-dd3f-11e8-a95c-95b9dbcf241c"
 }</pre></code></td>
         </tr>
         
@@ -376,10 +377,10 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.perishablegoods.ShipmentReceived</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 41889,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#9390",
-    "transactionId": "179329b0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:21.067Z"
+    "unitCount": 22841,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#1663",
+    "transactionId": "6876bb90-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:44.009Z"
 }</pre></code></td>
         </tr>
         
@@ -402,18 +403,18 @@ Formula for Breach Penalty Calculation:
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
     "totalPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 209.86,
-        "currencyCode": "ZAR"
+        "doubleValue": 216.823,
+        "currencyCode": "SVC"
     },
     "penalty": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 30.161,
-        "currencyCode": "TMT"
+        "doubleValue": 120.776,
+        "currencyCode": "BIF"
     },
     "late": true,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#0624",
-    "transactionId": "179329b1-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:21.067Z"
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#5133",
+    "transactionId": "6876bb91-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:44.009Z"
 }</pre></code></td>
         </tr>
         

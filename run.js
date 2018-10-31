@@ -46,6 +46,7 @@ const rootDir = resolve(__dirname, './src');
 const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
 const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.accordproject.org';
+const studioRoot = 'https://studio.accordproject.org';
 
 nunjucks.configure('./views', {
     autoescape: false
@@ -330,6 +331,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const encoded = plantumlEncoder.encode(pumlContent)
     const umlURL = `https://www.plantuml.com/plantuml/svg/${encoded}`;
     const umlCardURL = `https://www.plantuml.com/plantuml/png/${encoded}`;
+    const studioURL = `${studioRoot}/?template=${encodeURIComponent('ap://' + template.getIdentifier() + '#hash')}`;
 
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
@@ -381,6 +383,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         serverRoot: serverRoot,
         umlURL : umlURL,
         umlCardURL : umlCardURL,
+        studioURL : studioURL,
         filePath: templatePageHtml,
         template: template,
         readmeHtml: readmeHtml,

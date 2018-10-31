@@ -88,7 +88,7 @@
                 <span class="tag">Contract</span>
                 <span class="tag">Ergo</span>
                 <span class="tag">^0.9.1</span>
-                <span class="tag">25e98b1edbc48aafdd1d580a6e1ed308c5903dfd3a59bd8ad3e6623125a4bfad</span>
+                <span class="tag">14ef6bf72aeab745a4fcbd1e51b75a49d475631afc9269ee25f2b6716e331ba7</span>
             </div>
             <p class="subtitle">
                 This clause specifies penalties for shocks caused to a fragile package in transport.
@@ -151,6 +151,7 @@
                     </div>
                 </div>
                 <a href="./archives/fragile-goods@0.8.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Ffragile-goods%400.8.0%23hash" class="button is-rounded">Open in Template Studio</a>
             </p>
 
             <img src="https://www.plantuml.com/plantuml/svg/bLFBJiCm4BptAtm4qVeBgggXBQWIBL4Qk224N7kR6Zbsy0EmW7_7pGEYqa8usRlZpCxERiR64crTBdfK46CGLpXSd07C85Tueqd61LmgnGnURNcHWxGhIwmpQ3X49xD-fi6Vej48lVKGGcTeaioYT3QjWldo8KsYvMgULd6K9FFR07vqg3O5mPz1-vk24GjbjRJlGGZrqgut3M3ASq1b8xlRNdx39JVRRs2l2rCUzJVAhGNStID2AGZGAWSBEW72kCnCKFqFlOF1-mWfdU70fJGhj7e4QZ7bDF1YxQGDYd02JmwCxM17JForiqTjM2W9mG0VvIfG8r8UVoYkARigDOMI1Zf8lMW5a_9HAJlQxGh8jkgeh1Y7mNcqTXxqpxG9hJRvlIPPxNYiWzJs19lv4SkLN71v72ElX-rhlJdNGEWs1ac4zJMJgw0l1LSyvxR97cGKOIUQ3McuVf_E0HT_dnHLqceIuig-IHtsnY3PxWV_1000" />
@@ -213,7 +214,7 @@ Delivery Schedule: no later than 10 seconds after initiation.
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.FragileGoodsClause",
-    "contractId": "470d5f81-9c17-4380-be18-0df990c4c972",
+    "contractId": "88199131-bf75-40dd-8134-9394861152f0",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Steve"
@@ -260,7 +261,7 @@ Delivery Schedule: no later than 10 seconds after initiation.
         <th>org.accordproject.cicero.contract.AccordContractState</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "0f9d5a00-d958-11e8-bf99-b939ea4c50ac"
+    "stateId": "5d2fec20-dd3f-11e8-a95c-95b9dbcf241c"
 }</pre></code></td>
         </tr>
         
@@ -281,14 +282,14 @@ Delivery Schedule: no later than 10 seconds after initiation.
         <th>io.clause.demo.fragileGoods.DeliveryUpdate</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.DeliveryUpdate",
-    "startTime": "2018-10-26T19:48:07.711Z",
-    "finishTime": "2018-10-26T19:48:07.711Z",
-    "status": "IN_TRANSIT",
+    "startTime": "2018-10-31T19:01:25.089Z",
+    "finishTime": "2018-10-31T19:01:25.089Z",
+    "status": "ARRIVED",
     "accelerometerReadings": [
-        221.277
+        34.926
     ],
-    "transactionId": "0f9d32f0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:07.711Z"
+    "transactionId": "5d2fc510-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:25.089Z"
 }</pre></code></td>
         </tr>
         
@@ -311,11 +312,11 @@ Delivery Schedule: no later than 10 seconds after initiation.
     "$class": "io.clause.demo.fragileGoods.PayOut",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 0.213,
-        "currencyCode": "PLN"
+        "doubleValue": 95.913,
+        "currencyCode": "UYU"
     },
-    "transactionId": "0f9d32f1-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:07.712Z"
+    "transactionId": "5d2fc511-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:25.090Z"
 }</pre></code></td>
         </tr>
         
@@ -338,16 +339,16 @@ Delivery Schedule: no later than 10 seconds after initiation.
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 153.87,
-        "currencyCode": "ZMW"
+        "doubleValue": 97.365,
+        "currencyCode": "TMT"
     },
-    "description": "Est aliqua.",
-    "contract": "resource:io.clause.demo.fragileGoods.FragileGoodsClause#0553",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9906",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6836",
-    "deadline": "2018-10-26T19:48:07.712Z",
-    "eventId": "0f9d5a01-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:07.712Z"
+    "description": "Quis.",
+    "contract": "resource:io.clause.demo.fragileGoods.FragileGoodsClause#9213",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5060",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#9551",
+    "deadline": "2018-10-31T19:01:25.090Z",
+    "eventId": "5d2fec21-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:25.090Z"
 }</pre></code></td>
         </tr>
         
