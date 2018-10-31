@@ -88,7 +88,7 @@
                 <span class="tag">Contract</span>
                 <span class="tag">Ergo</span>
                 <span class="tag">^0.9.1</span>
-                <span class="tag">4b5f6a720099eddbeccbc51e616f131b2e2cb3fb9d50d746f547d4850e8c1402</span>
+                <span class="tag">c2b551d459bbe58a2aedf41c900413cbc3f960a0c2ecca9397b79874e1df4b37</span>
             </div>
             <p class="subtitle">
                 This is a clause for a simple installment sale.
@@ -151,6 +151,7 @@
                     </div>
                 </div>
                 <a href="./archives/installment-sale@0.8.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Finstallment-sale%400.8.0%23hash" class="button is-rounded">Open in Template Studio</a>
             </p>
 
             <img src="https://www.plantuml.com/plantuml/svg/jPJTJi8m5CVlznIzrAXx0aCOqEaIsCXMOhnQQZbYJTTYsqKNzTtjc2X3L5pagkdv_9t_QTetbcfR5i9ZWXg3b5xub36bvqkjxe5PdqiN8aG1qXegm8y-x-Zy71sHqmg4K8_7gDT3pnv2w0IDL7aZ0D52bT9whzxVgfwTlVHsW33EG2jVkvAy03-5XnACtPjxA9JXSZ6brJ-ZRnK-3Fs02YeP_8PzquIrR5QvIlcIylbUuwmx7MWBIbfDcSqijQLPZODF5nggpM6kABTEqL3fa6jZHxHARcDuiXENVDU4XAMuvK90FLE7bvkvUutG21hK120t4ROupUhO9NMkeQ1SEjp66qaB2z18Ebud-kfDvCKdUBUbx4J_UKFiVG8_M7at1uAkagsBVATQqshgVfGA3MRNEFrgpl1ulBQ_Qn754Oc2SJwQuIqxmIdEI9u6fEqX2MdYym4EanJdmt6IHV55AsWInVaqk9xWcBJiTLf0sYdhhOLHwlfDafXSTjdBXpwTLkFrGSxhh_WD" />
@@ -205,7 +206,7 @@ Monthly payments shall start on month 3 include both principal and interest with
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.InstallmentSaleContract",
-    "contractId": "49430180-da67-4def-8358-a2409aeb8820",
+    "contractId": "e3f0194f-eca2-49e3-8f02-7a10603fa457",
     "BUYER": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dan"
@@ -236,11 +237,11 @@ Monthly payments shall start on month 3 include both principal and interest with
         <th>org.accordproject.installmentsale.InstallmentSaleState</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.InstallmentSaleState",
-    "status": "Fulfilled",
-    "balance_remaining": 9.68,
-    "next_payment_month": 32692,
-    "total_paid": 61.624,
-    "stateId": "10a41ba0-d958-11e8-bf99-b939ea4c50ac"
+    "status": "WaitingForFirstDayOfNextMonth",
+    "balance_remaining": 220.952,
+    "next_payment_month": 20381,
+    "total_paid": 6.641,
+    "stateId": "5ea8f793-dd3f-11e8-a95c-95b9dbcf241c"
 }</pre></code></td>
         </tr>
         
@@ -261,8 +262,8 @@ Monthly payments shall start on month 3 include both principal and interest with
         <th>org.accordproject.cicero.runtime.Request</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.Request",
-    "transactionId": "10a3cd80-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:09.432Z"
+    "transactionId": "5ea8d080-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:27.560Z"
 }</pre></code></td>
         </tr>
         
@@ -270,9 +271,9 @@ Monthly payments shall start on month 3 include both principal and interest with
         <th>org.accordproject.installmentsale.ClosingPayment</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.ClosingPayment",
-    "amount": 91.818,
-    "transactionId": "10a3cd82-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:09.432Z"
+    "amount": 246.117,
+    "transactionId": "5ea8d082-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:27.560Z"
 }</pre></code></td>
         </tr>
         
@@ -280,9 +281,9 @@ Monthly payments shall start on month 3 include both principal and interest with
         <th>org.accordproject.installmentsale.Installment</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.Installment",
-    "amount": 136.037,
-    "transactionId": "10a3cd81-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:09.432Z"
+    "amount": 137.277,
+    "transactionId": "5ea8d081-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:27.560Z"
 }</pre></code></td>
         </tr>
         
@@ -303,8 +304,8 @@ Monthly payments shall start on month 3 include both principal and interest with
         <th>org.accordproject.cicero.runtime.Response</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.Response",
-    "transactionId": "10a3f490-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:09.433Z"
+    "transactionId": "5ea8d083-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:27.560Z"
 }</pre></code></td>
         </tr>
         
@@ -312,10 +313,10 @@ Monthly payments shall start on month 3 include both principal and interest with
         <th>org.accordproject.installmentsale.Balance</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.Balance",
-    "balance": 162.888,
-    "total_paid": 103.655,
-    "transactionId": "10a3f492-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:09.433Z"
+    "balance": 241.644,
+    "total_paid": 18.652,
+    "transactionId": "5ea8f790-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:27.561Z"
 }</pre></code></td>
         </tr>
         
@@ -345,16 +346,16 @@ Monthly payments shall start on month 3 include both principal and interest with
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 188.549,
-        "currencyCode": "XTS"
+        "doubleValue": 173.569,
+        "currencyCode": "BBD"
     },
-    "description": "Est sunt nostrud enim quis.",
-    "contract": "resource:org.accordproject.installmentsale.InstallmentSaleContract#6586",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#8548",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#5237",
-    "deadline": "2018-10-26T19:48:09.435Z",
-    "eventId": "10a442b0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:09.435Z"
+    "description": "Officia consectetur laborum ut aliquip.",
+    "contract": "resource:org.accordproject.installmentsale.InstallmentSaleContract#5452",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9725",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#7925",
+    "deadline": "2018-10-31T19:01:27.562Z",
+    "eventId": "5ea91ea1-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:27.562Z"
 }</pre></code></td>
         </tr>
         

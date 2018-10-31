@@ -88,7 +88,7 @@
                 <span class="tag">Contract</span>
                 <span class="tag">Ergo</span>
                 <span class="tag">^0.9.1</span>
-                <span class="tag">44619cb41f0d5befb367c3fea3c4d77a1b2a1c25a1a03114aec70eb870b33252</span>
+                <span class="tag">8cec2e20bdd883436dacf894ee5e20d670f71409361b67bc1cfbf2ac75563036</span>
             </div>
             <p class="subtitle">
                 A Late Delivery And Penalty clause (simple).
@@ -119,6 +119,7 @@
                     </div>
                 </div>
                 <a href="./archives/simplelatedeliveryandpenalty@0.2.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fsimplelatedeliveryandpenalty%400.2.0%23hash" class="button is-rounded">Open in Template Studio</a>
             </p>
 
             <img src="https://www.plantuml.com/plantuml/svg/jPJ1JiCm343l_OeSGMpzWcbQOSSXJJ1nznAh2ahYuYH01FmxsPf8Z07Yi1thvzZESzI53y0XMjD80zuBuhu5AOdLmFI8ChHUsy6WWO0AZNv6Jk3KW0vCIEtz7guoN1ROERKUuGsvm223cCt4HJVf6T5TYlbSl3L2Y2lHxTkiS_iajZ4X7uSz6bFZoyWGD3bHUjVlGYbk3LQsHfRe0lHuG2KCHwHMjV2gRRJv6f2QZ-OS7gRJz_aFWgMMoDJAajQE0kgfq-_b3fyY-d4jcqdAYkdbwrwM-TH6MnImMvcg1Rx1qXHL5muSzqJAFu29U5gBTUg_9N9q8K_NbknpoFC3EO-_spjuY6FiciWWkF6LtqBQ85ljSlrJAogp_TVHcDuiqAdT7-0J" />
@@ -167,7 +168,7 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyContract",
-    "contractId": "033b08f8-da04-48fa-8395-2a9443b2374d",
+    "contractId": "8562d6bf-6890-44c8-8e3c-bea6c254cf11",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Betty Buyer"
@@ -204,7 +205,7 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
         <th>org.accordproject.cicero.contract.AccordContractState</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "15c128d1-d958-11e8-bf99-b939ea4c50ac"
+    "stateId": "66117b61-dd3f-11e8-a95c-95b9dbcf241c"
 }</pre></code></td>
         </tr>
         
@@ -225,11 +226,11 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
         <th>org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest",
-    "agreedDelivery": "2018-10-26T19:48:18.013Z",
-    "deliveredAt": "2018-10-26T19:48:18.013Z",
-    "goodsValue": 236.226,
-    "transactionId": "15c101c0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:18.013Z"
+    "agreedDelivery": "2018-10-31T19:01:39.989Z",
+    "deliveredAt": "2018-10-31T19:01:39.989Z",
+    "goodsValue": 97.451,
+    "transactionId": "66115450-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:39.989Z"
 }</pre></code></td>
         </tr>
         
@@ -250,10 +251,10 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
         <th>org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyResponse</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyResponse",
-    "penalty": 135.975,
+    "penalty": 37.912,
     "buyerMayTerminate": true,
-    "transactionId": "15c128d0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:18.013Z"
+    "transactionId": "66117b60-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:39.990Z"
 }</pre></code></td>
         </tr>
         
@@ -276,16 +277,16 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 233.518,
-        "currencyCode": "KMF"
+        "doubleValue": 23.688,
+        "currencyCode": "CLF"
     },
-    "description": "Sint qui.",
-    "contract": "resource:org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyContract#3364",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#6978",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#3576",
-    "deadline": "2018-10-26T19:48:18.013Z",
-    "eventId": "15c128d2-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:18.013Z"
+    "description": "Aute do eu proident.",
+    "contract": "resource:org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyContract#4878",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#4287",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2997",
+    "deadline": "2018-10-31T19:01:39.990Z",
+    "eventId": "66117b62-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:39.990Z"
 }</pre></code></td>
         </tr>
         

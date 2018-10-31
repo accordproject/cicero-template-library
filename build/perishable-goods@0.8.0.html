@@ -88,7 +88,7 @@
                 <span class="tag">Contract</span>
                 <span class="tag">Ergo</span>
                 <span class="tag">^0.9.1</span>
-                <span class="tag">4eca20ada65f250fd8fb35862c7506d6b6e8fcada7f25a56aa416dac7b504661</span>
+                <span class="tag">9c4b7f4dc3f58a8c1c701f1d9ccedefd076a05c91c866414e4ddcd4d02861f61</span>
             </div>
             <p class="subtitle">
                 This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.
@@ -159,6 +159,7 @@
                     </div>
                 </div>
                 <a href="./archives/perishable-goods@0.8.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fperishable-goods%400.8.0%23hash" class="button is-rounded">Open in Template Studio</a>
             </p>
 
             <img src="https://www.plantuml.com/plantuml/svg/lLRDRjim3BxdANHSiTHFK0HrVjhbq3Pml5s6eL1apb4XIvv-rdfRttsIBGUs6mTsY_PaYPH8VkH7ofTAOwbDnYQ4OQMGa6c02H4ooQLu0AA372HLUxnZa0gHg61ps5-x_K9mBJ7HwE82VGgdgGJWPsWsGtyd2A7FA2oDRQoJ0gLIF89yAQTPBgIkDTizpJFW6Yc_gCHBh26c6Q34W5jNqXl1mI8emamOUyLmgZUI4g_zQhTtFsySCAUfX6kk8GM9CigTNdMa-AaXtMf9UOfiBX93ElSLS2La13YnHwua_3B0IL6TYS51mioPiW5BhAdW7eSmDdVEkpi4LcKaj5NugLT5-HUJqOJgedlbg3m7Zfakhco1X9myJrvVtlFpVxCZx20srr84n1yBghBMjmQJggxvLblCgkJIod6fQ59f4Qt2UBNqLRYzZwFmThkEFP-YQFtDAfz7-umbvie6QojKEewd1J0c7fkkNt9oI2wFUJYTHsb9R3aUH8vDQaJ-cbpiHU59GMn8D9KuQNDhNnDe4BIMmnvG0_8nkbeH4A2_8Ua5MRUdQ_Y56mgZIdKm_m6Goa6rm8mOXa-ohpFajD2ODQPSH-rxljBDXM20EM9kOWxg_svG7rZRlZV4J-6wzzP9kodzq53bvzMlJfFGtt-qftlxDL2PlRzWs2WOnQs-LEwmWY1K2eRt-zmeoa5Lat8pPJJTwnqpS88rpg3zpZ73d0mB_E2b9t0hmPp-ANaIt3KsWt5SbxNfGJ4aH6zW84bhGAEOcRyfmDh2UqMuzYn-GuW74--MHT0cNq8cZasuOQzDRU1K2pL7poNmnFtL_WS0" />
@@ -228,7 +229,7 @@ Formula for Breach Penalty Calculation:
     <h4 class="title is-4">Sample Instance</h4>
     <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PerishableGoodsContract",
-    "contractId": "8e69c8cf-9282-40e0-8d7a-97bb2b79ad5c",
+    "contractId": "4956004a-aa99-4a57-a142-7d1b68186231",
     "grower": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "PETER"
@@ -271,7 +272,7 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.cicero.contract.AccordContractState</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "13504fe1-d958-11e8-bf99-b939ea4c50ac"
+    "stateId": "62bd2041-dd3f-11e8-a95c-95b9dbcf241c"
 }</pre></code></td>
         </tr>
         
@@ -292,10 +293,10 @@ Formula for Breach Penalty Calculation:
         <th>org.accordproject.perishablegoods.ShipmentReceived</th>
         <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 15519,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#2506",
-    "transactionId": "135028d0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:13.917Z"
+    "unitCount": 36541,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#6421",
+    "transactionId": "62bcf930-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:34.403Z"
 }</pre></code></td>
         </tr>
         
@@ -318,18 +319,18 @@ Formula for Breach Penalty Calculation:
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
     "totalPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 243.997,
-        "currencyCode": "AED"
+        "doubleValue": 66.187,
+        "currencyCode": "WST"
     },
     "penalty": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 82.572,
-        "currencyCode": "BZD"
+        "doubleValue": 86.355,
+        "currencyCode": "CHE"
     },
     "late": true,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#0597",
-    "transactionId": "13504fe0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:13.918Z"
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#5886",
+    "transactionId": "62bd2040-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:34.404Z"
 }</pre></code></td>
         </tr>
         
@@ -352,16 +353,16 @@ Formula for Breach Penalty Calculation:
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 148.042,
-        "currencyCode": "MNT"
+        "doubleValue": 113.257,
+        "currencyCode": "GBP"
     },
-    "description": "Eu.",
-    "contract": "resource:org.accordproject.perishablegoods.PerishableGoodsContract#9426",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9674",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2020",
-    "deadline": "2018-10-26T19:48:13.919Z",
-    "eventId": "135076f0-d958-11e8-bf99-b939ea4c50ac",
-    "timestamp": "2018-10-26T19:48:13.919Z"
+    "description": "Sit fugiat sunt.",
+    "contract": "resource:org.accordproject.perishablegoods.PerishableGoodsContract#7924",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#0086",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#8173",
+    "deadline": "2018-10-31T19:01:34.404Z",
+    "eventId": "62bd2042-dd3f-11e8-a95c-95b9dbcf241c",
+    "timestamp": "2018-10-31T19:01:34.404Z"
 }</pre></code></td>
         </tr>
         
