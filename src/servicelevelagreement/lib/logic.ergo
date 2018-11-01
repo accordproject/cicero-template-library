@@ -48,9 +48,9 @@ contract ServiceLevelAgreement over ServiceLevelAgreementContract {
   clause invoice(request : MonthSummary) : InvoiceCredit emits PaymentObligation {
    // Pre-conditions checking
     enforce contract.availability1 >= 0.0 
-        and contract.serviceCredit1 >= 0.0 
+        and contract.serviceCredit1.doubleValue >= 0.0 
         and contract.availability2 >= 0.0
-        and contract.serviceCredit2 >= 0.0
+        and contract.serviceCredit2.doubleValue >= 0.0
     else throw ErgoErrorResponse{ message: "Template variables must not be negative." };
 
     enforce request.monthlyServiceLevel >= 0.0
@@ -63,10 +63,10 @@ contract ServiceLevelAgreement over ServiceLevelAgreementContract {
     let monthlyCredit =
       // Annex 1, schedule - row 2
       if request.monthlyServiceLevel < contract.availability2
-      then (contract.serviceCredit2 / 100.0) * request.monthlyCharge
+      then (contract.serviceCredit2.doubleValue / 100.0) * request.monthlyCharge
       // Annex 1, schedule - row 1
       else if (request.monthlyServiceLevel < contract.availability1)
-      then (contract.serviceCredit1 / 100.0) * request.monthlyCharge
+      then (contract.serviceCredit1.doubleValue / 100.0) * request.monthlyCharge
       else 0.0;
 
     // Clause 3.3
@@ -84,7 +84,7 @@ contract ServiceLevelAgreement over ServiceLevelAgreementContract {
     
     let monetaryAmount = MonetaryAmount{
         doubleValue : monthlyCredit,
-        currencyCode : "GBP"
+        currencyCode : contract.serviceCredit1.currencyCode
     };
     emit createPaymentObligation(contract,contract.serviceProvider,contract.serviceConsumer,monetaryAmount);
     return InvoiceCredit{
