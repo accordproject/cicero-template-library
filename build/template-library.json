@@ -1666,5 +1666,295 @@
         "ciceroVersion": "^0.8.0",
         "type": 0,
         "language": 0
+    },
+    "simplelatedeliveryandpenalty@0.1.0": {
+        "uri": "ap://simplelatedeliveryandpenalty@0.1.0#04847bd3a6b72f05c4414fe57c905438d074dafdbd35d334e5d45e2c5519b301",
+        "url": "https://templates.accordproject.org/archives/simplelatedeliveryandpenalty@0.1.0.cta",
+        "name": "simplelatedeliveryandpenalty",
+        "description": "A Late Delivery And Penalty clause (simple).",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.8.0",
+        "type": 0,
+        "language": 0
+    },
+    "acceptance-of-delivery@0.8.0": {
+        "uri": "ap://acceptance-of-delivery@0.8.0#77d8395363d56fe6d37de1e960cb8dac673ffd4f82f18dfc924e95ab97dce38d",
+        "url": "https://templates.accordproject.org/archives/acceptance-of-delivery@0.8.0.cta",
+        "name": "acceptance-of-delivery",
+        "description": "This clause allows the receiver of goods to inspect them for a given time period after delivery.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "car-rental-tr@0.5.0": {
+        "uri": "ap://car-rental-tr@0.5.0#27a289b376ce93e8e3af914b2aa9097e6f37e0a7b7cabb633f1389967760947b",
+        "url": "https://templates.accordproject.org/archives/car-rental-tr@0.5.0.cta",
+        "name": "car-rental-tr",
+        "description": "a Simple Car Rental Contract in Turkish Language",
+        "version": "0.5.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "copyright-license@0.9.0": {
+        "uri": "ap://copyright-license@0.9.0#e4d1e753ff73d6ced9a9b7c1db2df8ee0a0c820e46db0131a1193c6ad3d7c4e7",
+        "url": "https://templates.accordproject.org/archives/copyright-license@0.9.0.cta",
+        "name": "copyright-license",
+        "description": "This clause is a copyright license agreement.",
+        "version": "0.9.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "demandforecast@0.8.0": {
+        "uri": "ap://demandforecast@0.8.0#c7b8a7ac155628f9b4cfe40abffbd4991fc2b98183d31a795505fa24a2b1f346",
+        "url": "https://templates.accordproject.org/archives/demandforecast@0.8.0.cta",
+        "name": "demandforecast",
+        "description": "A sample demandforecast clause.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "eat-apples@0.5.0": {
+        "uri": "ap://eat-apples@0.5.0#31142713101ba0267a8582ce24f830fd971152fef1d75e32cc804000b2bf14e4",
+        "url": "https://templates.accordproject.org/archives/eat-apples@0.5.0.cta",
+        "name": "eat-apples",
+        "description": "This is a clause enforcing healthy eating habits in employees.",
+        "version": "0.5.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "fragile-goods@0.8.0": {
+        "uri": "ap://fragile-goods@0.8.0#14ef6bf72aeab745a4fcbd1e51b75a49d475631afc9269ee25f2b6716e331ba7",
+        "url": "https://templates.accordproject.org/archives/fragile-goods@0.8.0.cta",
+        "name": "fragile-goods",
+        "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "full-payment-upon-signature@0.2.0": {
+        "uri": "ap://full-payment-upon-signature@0.2.0#014abb2426c76f427bea58ffff5aa58ea6ceb6596c72f89fccca7e95bf60eef4",
+        "url": "https://templates.accordproject.org/archives/full-payment-upon-signature@0.2.0.cta",
+        "name": "full-payment-upon-signature",
+        "description": "This is a one-time full payment clause applicable at the signature of the contract.",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "helloworld@0.7.0": {
+        "uri": "ap://helloworld@0.7.0#1392378416725ff45d421aac1cba35a80d47725de2550660f4244d2c01b59e81",
+        "url": "https://templates.accordproject.org/archives/helloworld@0.7.0.cta",
+        "name": "helloworld",
+        "description": "This is the Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
+        "version": "0.7.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "helloworldstate@0.8.0": {
+        "uri": "ap://helloworldstate@0.8.0#b7fafd957988d8b1ecb4ab7f64703f6a2873e1cc30a41a23f8e66eef737f4929",
+        "url": "https://templates.accordproject.org/archives/helloworldstate@0.8.0.cta",
+        "name": "helloworldstate",
+        "description": "This is the stateful Hello World of Accord Protocol Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "installment-sale@0.8.0": {
+        "uri": "ap://installment-sale@0.8.0#c2b551d459bbe58a2aedf41c900413cbc3f960a0c2ecca9397b79874e1df4b37",
+        "url": "https://templates.accordproject.org/archives/installment-sale@0.8.0.cta",
+        "name": "installment-sale",
+        "description": "This is a clause for a simple installment sale.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "interest-rate-swap@0.1.0": {
+        "uri": "ap://interest-rate-swap@0.1.0#3490cfd5cd5c6de50ea30719a8c0eaacd4647e40c4517236c7f46cafc3cb93c5",
+        "url": "https://templates.accordproject.org/archives/interest-rate-swap@0.1.0.cta",
+        "name": "interest-rate-swap",
+        "description": "A simple ISDA Interest Rate Swap",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "ip-payment@0.6.0": {
+        "uri": "ap://ip-payment@0.6.0#a1dc9b970d439c6707b48e383031724f44c8ad37a41e9b0749ae8fdd38f37ae3",
+        "url": "https://templates.accordproject.org/archives/ip-payment@0.6.0.cta",
+        "name": "ip-payment",
+        "description": "This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements.",
+        "version": "0.6.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 1
+    },
+    "latedeliveryandpenalty@0.8.0": {
+        "uri": "ap://latedeliveryandpenalty@0.8.0#132887c492665215a7d22b248d069316c817746837a2d6a7621e2a61cd0f7042",
+        "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.8.0.cta",
+        "name": "latedeliveryandpenalty",
+        "description": "A sample Late Delivery And Penalty clause.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "one-time-payment@0.10.0": {
+        "uri": "ap://one-time-payment@0.10.0#363fe03c7d3a80b903343fd112b00028c1451ee4e7e025f050cdf0606fb45d4a",
+        "url": "https://templates.accordproject.org/archives/one-time-payment@0.10.0.cta",
+        "name": "one-time-payment",
+        "description": "Full Payment Upon Signature",
+        "version": "0.10.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "one-time-payment-tr@0.6.0": {
+        "uri": "ap://one-time-payment-tr@0.6.0#6eb84a554b98fbc3cd0c32bc6c73133dd5d39d509dc6418afb4d1060351a32af",
+        "url": "https://templates.accordproject.org/archives/one-time-payment-tr@0.6.0.cta",
+        "name": "one-time-payment-tr",
+        "description": "This is an Full Payment Upon Signature Protocol prepared in Turkish Language.",
+        "version": "0.6.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "online-payment-contract-tr@0.5.0": {
+        "uri": "ap://online-payment-contract-tr@0.5.0#98651ce632956c12117b46615b26b31ddc0afb4242033f52ef9d90402960a179",
+        "url": "https://templates.accordproject.org/archives/online-payment-contract-tr@0.5.0.cta",
+        "name": "online-payment-contract-tr",
+        "description": "This is an Online Payment Contract prepared in Turkish Language.",
+        "version": "0.5.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "payment-upon-delivery@0.5.0": {
+        "uri": "ap://payment-upon-delivery@0.5.0#41aabb0c5185a0a076413571fccc3c3d96831ab18c9b01f07c36410bb7d61abe",
+        "url": "https://templates.accordproject.org/archives/payment-upon-delivery@0.5.0.cta",
+        "name": "payment-upon-delivery",
+        "description": "This is a one time payment contract upon acceptance of delivery.",
+        "version": "0.5.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "perishable-goods@0.8.0": {
+        "uri": "ap://perishable-goods@0.8.0#9c4b7f4dc3f58a8c1c701f1d9ccedefd076a05c91c866414e4ddcd4d02861f61",
+        "url": "https://templates.accordproject.org/archives/perishable-goods@0.8.0.cta",
+        "name": "perishable-goods",
+        "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "promissory-note@0.8.0": {
+        "uri": "ap://promissory-note@0.8.0#185435609373eb6b38e08a8ef019fd5006b234b3d0f1cac0abbde6d9d8757a6a",
+        "url": "https://templates.accordproject.org/archives/promissory-note@0.8.0.cta",
+        "name": "promissory-note",
+        "description": "A promissory note",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "saft@0.9.0": {
+        "uri": "ap://saft@0.9.0#990e392dfd728c864f85704e633f288f54dcd016564f5eccc715b5c094323b5c",
+        "url": "https://templates.accordproject.org/archives/saft@0.9.0.cta",
+        "name": "saft",
+        "description": "The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.",
+        "version": "0.9.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "safte@0.9.0": {
+        "uri": "ap://safte@0.9.0#dc9488ed340dcc6d14bbd82c1c5ebd33244916ed29afb3f650f59f3e3b686f94",
+        "url": "https://templates.accordproject.org/archives/safte@0.9.0.cta",
+        "name": "safte",
+        "description": "The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company.",
+        "version": "0.9.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "sales-contract-ru@0.5.0": {
+        "uri": "ap://sales-contract-ru@0.5.0#45dba156588b221d7660abb8a735a48630fc3d9d242a2cca749043f4236ac660",
+        "url": "https://templates.accordproject.org/archives/sales-contract-ru@0.5.0.cta",
+        "name": "sales-contract-ru",
+        "description": "This is a Sales Contract prepared in Russian Language.",
+        "version": "0.5.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "servicelevelagreement@0.8.0": {
+        "uri": "ap://servicelevelagreement@0.8.0#3e7b5d4d1064adcfa3977fe595bb3d824f335553b4589dce1da237dfb4f527b3",
+        "url": "https://templates.accordproject.org/archives/servicelevelagreement@0.8.0.cta",
+        "name": "servicelevelagreement",
+        "description": "A service level agreement that gives invoice credit based on service availability.",
+        "version": "0.8.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "simplelatedeliveryandpenalty@0.2.0": {
+        "uri": "ap://simplelatedeliveryandpenalty@0.2.0#8cec2e20bdd883436dacf894ee5e20d670f71409361b67bc1cfbf2ac75563036",
+        "url": "https://templates.accordproject.org/archives/simplelatedeliveryandpenalty@0.2.0.cta",
+        "name": "simplelatedeliveryandpenalty",
+        "description": "A Late Delivery And Penalty clause (simple).",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "supplyagreement@0.6.0": {
+        "uri": "ap://supplyagreement@0.6.0#1ac28a086919c74900093c5c80d6831d9f00581813945fbba8cbb35067830cdd",
+        "url": "https://templates.accordproject.org/archives/supplyagreement@0.6.0.cta",
+        "name": "supplyagreement",
+        "description": "A sample supply agreement.",
+        "version": "0.6.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 1
+    },
+    "supplyagreement-perishable-goods@0.9.0": {
+        "uri": "ap://supplyagreement-perishable-goods@0.9.0#1502c75f8da68f17719cbad16bee93dba79f2bc3a6ed39e5a7ecf1b1567391c8",
+        "url": "https://templates.accordproject.org/archives/supplyagreement-perishable-goods@0.9.0.cta",
+        "name": "supplyagreement-perishable-goods",
+        "description": "This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+        "version": "0.9.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "volumediscount@0.9.0": {
+        "uri": "ap://volumediscount@0.9.0#04a075e424f859994756b0471d1dfd56f0ebee00df5ed8d32591719a52c2304a",
+        "url": "https://templates.accordproject.org/archives/volumediscount@0.9.0.cta",
+        "name": "volumediscount",
+        "description": "A sample volume discount contract.",
+        "version": "0.9.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "empty@0.1.0": {
+        "uri": "ap://empty@0.1.0#ea622cc0cfa6df467b57b8f4dde40361809e236aa18eebbb3e90cacd442c7dd2",
+        "url": "https://templates.accordproject.org/archives/empty@0.1.0.cta",
+        "name": "empty",
+        "description": "This is an empty template to get you started.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
     }
 }
