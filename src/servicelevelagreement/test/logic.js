@@ -127,6 +127,41 @@ describe('Logic', () => {
             result.response.monthlyCredit.should.equal(0.99);
         });
 
+        it('should produce correct payment in GBP', async function () {
+            clause.parse(clauseTextHighCredit);
+            const request = {
+                "$class": "org.accordproject.servicelevelagreement.MonthSummary",
+                "monthlyServiceLevel": 97,
+                "monthlyCharge": 10,
+                "last11MonthCredit": 0,
+                "last11MonthCharge": 0
+            };
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.monthlyCredit.should.equal(1);
+            result.emit[0].amount.currencyCode.should.equal("GBP");
+        });
+
+        it('should return the correct monthly credit', async function () {
+            clause.parse(clauseTextHighCredit);
+            const request = {
+                "$class": "org.accordproject.servicelevelagreement.MonthSummary",
+                "monthlyServiceLevel": 100,
+                "monthlyCharge": 10,
+                "last11MonthCredit": 0,
+                "last11MonthCharge": 0
+            };
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.monthlyCredit.should.equal(0.0);
+        });
+
         it('rejects bad request values', async function () {
             const request = {
                 "$class": "org.accordproject.servicelevelagreement.MonthSummary",

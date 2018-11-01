@@ -11,6 +11,8 @@ asset ServiceLevelAgreementContract extends AccordContract {
  o Double serviceCredit1
  o Double availability2
  o Double serviceCredit2
+ o AccordParty serviceProvider
+ o AccordParty serviceConsumer
 }
 
 transaction MonthSummary {
