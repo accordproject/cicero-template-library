@@ -1,0 +1,16 @@
+namespace org.accordproject.empty
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+// Template model
+asset EmptyClause extends AccordClause {
+}
+
+// Request
+transaction EmptyRequest extends Request {
+}
+
+// Response
+transaction EmptyResponse extends Response {
+}

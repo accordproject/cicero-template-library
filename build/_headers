@@ -1,2 +1,4 @@
 /*.cta
 	Access-Control-Allow-Origin: *
+/template-library.json
+	Access-Control-Allow-Origin: *
