@@ -1,0 +1,5 @@
+{
+    "$class":"org.accordproject.payment.fullupondemand.FullPaymentUponDemandState",
+    "status": "INITIALIZED",
+    "stateId": "1"
+}

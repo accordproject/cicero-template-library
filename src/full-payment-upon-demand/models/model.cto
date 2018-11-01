@@ -1,0 +1,30 @@
+namespace org.accordproject.payment.fullupondemand
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
+// Template model
+asset FullPaymentUponDemandTemplate extends AccordContract {
+  o AccordParty buyer
+  o AccordParty seller
+  o MonetaryAmount value
+}
+
+// Request
+transaction PaymentDemand extends Request {
+}
+
+// Other Request
+transaction PaymentReceived extends Request {
+}
+
+asset FullPaymentUponDemandState extends AccordContractState {
+  o ContractLifecycleStatus status default = "INITIALIZED"
+}
+
+enum ContractLifecycleStatus {
+  o INITIALIZED
+  o OBLIGATION_EMITTED
+  o COMPLETED
+}
