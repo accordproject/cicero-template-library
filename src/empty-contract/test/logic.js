@@ -42,7 +42,7 @@ describe('Logic', () => {
         engine = new Engine();    
     });
     
-    describe('#EmptyClause', async function() {
+    describe('#EmptyContract', async function() {
 
         it('should return empty response on empty request', async function() {
             const request = {};

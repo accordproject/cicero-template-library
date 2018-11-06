@@ -1956,5 +1956,25 @@
         "ciceroVersion": "^0.9.1",
         "type": 1,
         "language": 0
+    },
+    "empty@0.2.0": {
+        "uri": "ap://empty@0.2.0#de60295ae24a6077d17bd78bf18a39b9c6a2a19fca46b12222e4883082f747c1",
+        "url": "https://templates.accordproject.org/archives/empty@0.2.0.cta",
+        "name": "empty",
+        "description": "This is an empty clause template to get you started.",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "empty-contract@0.1.0": {
+        "uri": "ap://empty-contract@0.1.0#949992455c90b2d85ab1e5d8f95c93b098ccbaf289028d3c46c6d15e7476da0a",
+        "url": "https://templates.accordproject.org/archives/empty-contract@0.1.0.cta",
+        "name": "empty-contract",
+        "description": "This is an empty contract template to get you started.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
     }
 }
