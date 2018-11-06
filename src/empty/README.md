@@ -1,4 +1,4 @@
-# Empty template
+# Empty clause template
 
-This is an empty template to get you started.
+This is an empty clause template to get you started.
 

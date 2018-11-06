@@ -1,7 +1,7 @@
 {
     "name": "empty",
-    "version": "0.1.0",
-    "description": "This is an empty template to get you started.",
+    "version": "0.2.0",
+    "description": "This is an empty clause template to get you started.",
     "cicero": {
         "template": "clause",
         "language": "ergo",
