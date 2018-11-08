@@ -1,6 +1,6 @@
 {
     "name": "full-payment-upon-signature",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "This is a one-time full payment clause applicable at the signature of the contract.",
     "cicero": {
         "template": "contract",
