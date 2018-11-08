@@ -15,21 +15,37 @@
 namespace org.accordproject.payment.fulluponsignature
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.signature.ContractSigned
 
+/**
+ * This smart clause emits a payment obligation when the contract is signed
+ */
 contract FullPaymentUponSignature over FullPaymentUponSignatureContract state FullPaymentUponSignatureState {
-  /**
-	 * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
+  
+	/**
+	 * Sets the initial state for the clause
 	 */
-  clause init(request : Request) : Response emits PaymentObligation {
-	  // enforce (state.status = "UNINTIALIZED") 
-    // else throw ErgoErrorResponse{ message: "This contract has already been initialized. Current state is " ++ state.status };
+  clause init(request : Request) : Response {		
+		set state FullPaymentUponSignatureState {
+			stateId: "1",
+			status: "INITIALIZED"
+		};
+    return Response{}
+  }
+
+	/**
+	 * When the contract is signed a payment obligation is emitted
+	 */
+  clause contractSigned(request : ContractSigned) : Response emits PaymentObligation {
+	  enforce (state.status = "INTIALIZED") 
+	    else throw ErgoErrorResponse{ message: "Contract state is invalid " ++ state.status };
 		
     emit PaymentObligation{
 			contract: contract,
 			promisor: some(contract.buyer),
 			promisee: some(contract.seller),
 			deadline: none,
-			amount: contract.totalPurchasePrice,
+			amount: contract.amount,
 			description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
 		};
 		set state FullPaymentUponSignatureState {
@@ -40,7 +56,7 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
   }
 
   /**
-	 * Update the contract state once we've recieved a payment
+	 * Complete the contract when payment is received.
 	 */
   clause paymentReceived(request : PaymentReceivedRequest): PaymentReceivedResponse {
     enforce (state.status = "OBLIGATION_EMITTED") 
@@ -51,5 +67,4 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 		};
 		return PaymentReceivedResponse{}
   }
-
 }

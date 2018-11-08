@@ -3,16 +3,17 @@ namespace org.accordproject.payment.fulluponsignature
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature.cto
 
 transaction PaymentReceivedRequest extends Request {}
 transaction PaymentReceivedResponse extends Response {}
 
 asset FullPaymentUponSignatureState extends AccordContractState {
-  o ContractLifecycleStatus status default = "UNINITIALIZED"
+  o ContractLifecycleStatus status
 }
 
 enum ContractLifecycleStatus {
-  o UNINITIALIZED
+  o INITIALIZED
   o OBLIGATION_EMITTED
   o COMPLETED
 }
@@ -23,5 +24,5 @@ enum ContractLifecycleStatus {
 asset FullPaymentUponSignatureContract extends AccordContract {
   o AccordParty buyer
   o AccordParty seller
-  o MonetaryAmount totalPurchasePrice
+  o MonetaryAmount amount
 }
