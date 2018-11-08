@@ -1,0 +1,1 @@
+After execution of this Agreement, "Dan" shall pay the full purchase price to "Jerome" in the amount of 3.14 EUR upon demand by "Jerome".

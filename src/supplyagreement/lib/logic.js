@@ -44,7 +44,7 @@ function deliveryMatches(delivery,po) {
  * @param {Context} context - the Accord context
  * @param {org.accordproject.supplyagreement.ForecastRequest} context.request - the incoming request
  * @param {org.accordproject.supplyagreement.ForecastResponse} context.response - the response
- * @param {org.hyperledger.composer.system.Event} context.emit - the emitted events
+ * @param {org.accordproject.base.Event} context.emit - the emitted events
  * @param {org.accordproject.supplyagreement.AgreementState} context.state - the state
  * @AccordClauseLogic
  */
@@ -84,7 +84,7 @@ function demandforecast(context) {
  * @param {Context} context - the Accord context
  * @param {org.accordproject.supplyagreement.PurchaseRequest} context.request - the incoming request
  * @param {org.accordproject.supplyagreement.PurchaseResponse} context.response - the response
- * @param {org.hyperledger.composer.system.Event} context.emit - the emitted events
+ * @param {org.accordproject.base.Event} context.emit - the emitted events
  * @param {org.accordproject.supplyagreement.AgreementState} context.state - the contract state
  * @AccordClauseLogic
  */
@@ -129,7 +129,7 @@ function purchase(context) {
  * @param {Context} context - the Accord context
  * @param {org.accordproject.supplyagreement.DeliveryRequest} context.request - the incoming request
  * @param {org.accordproject.supplyagreement.DeliveryResponse} context.response - the response
- * @param {org.hyperledger.composer.system.Event} context.emit - the emitted events
+ * @param {org.accordproject.base.Event} context.emit - the emitted events
  * @param {org.accordproject.supplyagreement.AgreementState} context.state - the contract state
  * @AccordClauseLogic
  */
