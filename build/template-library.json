@@ -1976,5 +1976,45 @@
         "ciceroVersion": "^0.9.1",
         "type": 0,
         "language": 0
+    },
+    "full-payment-upon-demand@0.1.0": {
+        "uri": "ap://full-payment-upon-demand@0.1.0#9c2b7831ce22f23166f762876f626bbad1207e2091ba91fe0c6059d510fde100",
+        "url": "https://templates.accordproject.org/archives/full-payment-upon-demand@0.1.0.cta",
+        "name": "full-payment-upon-demand",
+        "description": "This is a one-time full payment clause applicable on demand.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.9.0",
+        "type": 0,
+        "language": 0
+    },
+    "full-payment-upon-signature@0.3.0": {
+        "uri": "ap://full-payment-upon-signature@0.3.0#f5ca48104de50d8c53bcbfeda8c3d1d76d0b2b7e40efac2269bce6a3ab166c1d",
+        "url": "https://templates.accordproject.org/archives/full-payment-upon-signature@0.3.0.cta",
+        "name": "full-payment-upon-signature",
+        "description": "This is a one-time full payment clause applicable at the signature of the contract.",
+        "version": "0.3.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "payment-upon-signature@0.2.0": {
+        "uri": "ap://payment-upon-signature@0.2.0#85ffaebed885fb7696ecfa70cdf51a13ff4d4e6c78b9aeceaabed8e6acf45065",
+        "url": "https://templates.accordproject.org/archives/payment-upon-signature@0.2.0.cta",
+        "name": "payment-upon-signature",
+        "description": "This is a generic payment clause applicable to any type of contract that requires some payment at the time of signature.",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "servicelevelagreement@0.9.0": {
+        "uri": "ap://servicelevelagreement@0.9.0#e269667e972b4123aa2925c8b5c3b889020475a8c8fb595bf11783f3dfc7007a",
+        "url": "https://templates.accordproject.org/archives/servicelevelagreement@0.9.0.cta",
+        "name": "servicelevelagreement",
+        "description": "A service level agreement that gives invoice credit based on service availability.",
+        "version": "0.9.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
     }
 }
