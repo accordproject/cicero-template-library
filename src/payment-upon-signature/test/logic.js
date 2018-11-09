@@ -53,7 +53,7 @@ describe('Logic', () => {
         result.state.status.should.equal("INITIALIZED");        
     });
     
-    describe.only('#PaymentUponSignature', async function() {
+    describe('#PaymentUponSignature', async function() {
 
         it('should emit PaymentObligation on ContractSigned', async function() {
             // contract signed
