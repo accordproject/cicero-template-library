@@ -1,0 +1,1 @@
+Upon the signing of this Agreement, "Dave" shall pay 50 USD to "Dan".
