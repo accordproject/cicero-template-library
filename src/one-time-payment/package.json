@@ -1,7 +1,8 @@
 {
     "name": "one-time-payment",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "description": "Full Payment Upon Signature",
+    "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",

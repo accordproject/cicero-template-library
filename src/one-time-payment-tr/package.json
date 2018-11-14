@@ -1,7 +1,8 @@
 {
     "name": "one-time-payment-tr",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "description": "This is an Full Payment Upon Signature Protocol prepared in Turkish Language.",
+    "license": "Apache-2.0",
     "cicero": {
       "version": "^0.9.1",
       "language": "ergo",
