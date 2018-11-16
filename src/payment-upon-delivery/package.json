@@ -1,7 +1,8 @@
 {
     "name": "payment-upon-delivery",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "This is a one time payment contract upon acceptance of delivery.",
+    "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",
