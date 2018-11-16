@@ -2016,5 +2016,15 @@
         "ciceroVersion": "^0.9.1",
         "type": 0,
         "language": 0
+    },
+    "hellomodule@0.1.0": {
+        "uri": "ap://hellomodule@0.1.0#6692dedcea0f13d1d91abfbfc9bc677c772883e5dd3c0b58894752051c653e4f",
+        "url": "https://templates.accordproject.org/archives/hellomodule@0.1.0.cta",
+        "name": "hellomodule",
+        "description": "This is the Hello World of Accord Protocol Templates, with two Ergo modules.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.9.7",
+        "type": 1,
+        "language": 0
     }
 }
