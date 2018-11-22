@@ -3,6 +3,7 @@ namespace org.accordproject.payment.fullupondemand
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment.cto
 
 // Template model
 asset FullPaymentUponDemandTemplate extends AccordContract {
@@ -13,10 +14,6 @@ asset FullPaymentUponDemandTemplate extends AccordContract {
 
 // Request
 transaction PaymentDemand extends Request {
-}
-
-// Other Request
-transaction PaymentReceived extends Request {
 }
 
 asset FullPaymentUponDemandState extends AccordContractState {
