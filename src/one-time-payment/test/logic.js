@@ -62,7 +62,7 @@ describe('Logic', () => {
 
         it('should complete once the payment is acknowledged', async function() {
             const request = {};
-            request.$class = 'org.accordproject.payment.onetime.PaymentReceivedRequest';
+            request.$class = 'org.accordproject.payment.PaymentReceived';
 
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;

@@ -61,7 +61,7 @@ describe('Logic', () => {
 
         it('should complete once the payment is acknowledged', async function() {
             const request = {};
-            request.$class = 'org.accordproject.payment.fullupondemand.PaymentReceived';
+            request.$class = 'org.accordproject.payment.PaymentReceived';
 
             const state1 = Object.assign({}, state);
             state1.status = "OBLIGATION_EMITTED";
@@ -85,7 +85,7 @@ describe('Logic', () => {
 
         it('should not complete if obligation hasnt been emitted', async function() {
             const request = {};
-            request.$class = 'org.accordproject.payment.fullupondemand.PaymentReceived';
+            request.$class = 'org.accordproject.payment.PaymentReceived';
 
             const state1 = Object.assign({}, state);
             state1.status = "INITIALIZED";

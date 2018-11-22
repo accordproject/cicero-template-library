@@ -1,0 +1,18 @@
+@startuml
+class org.accordtr.onlinepayment.MyRequest << (T,yellow) >> {
+   + String input
+}
+org.accordtr.onlinepayment.MyRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordtr.onlinepayment.MyResponse << (T,yellow) >> {
+   + String output
+}
+org.accordtr.onlinepayment.MyResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordtr.onlinepayment.MyContract << (A,green) >> {
+   + String buyer
+   + String seller
+   + String softwareID
+   + String userCount
+   + String authorizedCourt
+}
+org.accordtr.onlinepayment.MyContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml

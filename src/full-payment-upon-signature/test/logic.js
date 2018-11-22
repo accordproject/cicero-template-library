@@ -74,7 +74,7 @@ describe('Logic', () => {
 
             // payment received
             const request = {};
-            request.$class = 'org.accordproject.payment.fulluponsignature.PaymentReceivedRequest';
+            request.$class = 'org.accordproject.payment.PaymentReceived';
             const state = {};
             state.$class = 'org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureState';
             state.stateId = '1';

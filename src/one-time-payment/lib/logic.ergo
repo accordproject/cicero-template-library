@@ -15,15 +15,13 @@
 namespace org.accordproject.payment.onetime
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.payment.PaymentReceived
 
 contract OneTimePayment over OneTimePaymentContract state OneTimePaymentState {
   /**
 	 * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
 	 */
-  clause init(request : Request) : Response emits PaymentObligation {
-	  // enforce (state.status = "UNINTIALIZED") 
-    // else throw ErgoErrorResponse{ message: "This contract has already been initialized. Current state is " ++ state.status };
-		
+  clause init(request : Request) : Response emits PaymentObligation {		
     emit PaymentObligation{
 			contract: contract,
 			promisor: some(contract.buyer),
@@ -42,14 +40,14 @@ contract OneTimePayment over OneTimePaymentContract state OneTimePaymentState {
   /**
 	 * Update the contract state once we've recieved a payment
 	 */
-  clause paymentReceived(request : PaymentReceivedRequest): PaymentReceivedResponse {
+  clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = "OBLIGATION_EMITTED") 
     else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
 		set state OneTimePaymentState {
 			stateId: state.stateId,
 			status: "COMPLETED"
 		};
-		return PaymentReceivedResponse{}
+		return Response{}
   }
 
 }

@@ -16,6 +16,7 @@ namespace org.accordproject.payment.fulluponsignature
 
 import org.accordproject.cicero.runtime.*
 import org.accordproject.signature.ContractSigned
+import org.accordproject.payment.PaymentReceived
 
 /**
  * This smart clause emits a payment obligation when the contract is signed
@@ -58,13 +59,13 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
   /**
 	 * Complete the contract when payment is received.
 	 */
-  clause paymentReceived(request : PaymentReceivedRequest): PaymentReceivedResponse {
+  clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = "OBLIGATION_EMITTED") 
     else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
 		set state FullPaymentUponSignatureState {
 			stateId: state.stateId,
 			status: "COMPLETED",
 		};
-		return PaymentReceivedResponse{}
+		return Response{}
   }
 }

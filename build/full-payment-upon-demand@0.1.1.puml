@@ -1,0 +1,23 @@
+@startuml
+class org.accordproject.payment.fullupondemand.FullPaymentUponDemandTemplate << (A,green) >> {
+   + AccordParty buyer
+   + AccordParty seller
+   + MonetaryAmount value
+}
+org.accordproject.payment.fullupondemand.FullPaymentUponDemandTemplate --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.payment.fullupondemand.PaymentDemand << (T,yellow) >> {
+}
+org.accordproject.payment.fullupondemand.PaymentDemand --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.payment.fullupondemand.PaymentReceived << (T,yellow) >> {
+}
+org.accordproject.payment.fullupondemand.PaymentReceived --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.payment.fullupondemand.FullPaymentUponDemandState << (A,green) >> {
+   + ContractLifecycleStatus status
+}
+org.accordproject.payment.fullupondemand.FullPaymentUponDemandState --|> org.accordproject.cicero.contract.AccordContractState
+class org.accordproject.payment.fullupondemand.ContractLifecycleStatus << (E,grey) >> {
+   + INITIALIZED
+   + OBLIGATION_EMITTED
+   + COMPLETED
+}
+@enduml

@@ -15,6 +15,7 @@
 namespace org.accordproject.payment.fullupondemand
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.payment.PaymentReceived
 
 contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state FullPaymentUponDemandState {
   
