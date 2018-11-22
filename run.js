@@ -67,6 +67,8 @@ nunjucks.configure('./views', {
  * - SKIP_TESTS : do not run the unit tests
  * - DELETE_ALL : clear the build directory. Use with extreme caution as all old versions of templates 
  *                will be removed from the build archives folder!
+ * - FORCE_CREATE_ARCHIVE : regenerate an existing archive even if it exists. Warning the new archive
+ *                          may change because it will re-download external dependencies
  * 
  * Options (command line)
  * - template name (only this template gets built)
@@ -209,39 +211,47 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 await preProcessor(templatePath, template);
 
                 if(!process.env.SKIP_GENERATION) {
-                    const language = template.getMetadata().getLanguage();
-                    let archive;
-                    // Keeps produced archives in the same language as their source from directory
-                    if (language === 0) {
-                        archive = await template.toArchive('ergo');
-                    } else {
-                        archive = await template.toArchive('javascript');
-                    }
-                    const destPath = path.dirname(dest);
-    
+
+                    // get the name of the generated archive
+                    const destPath = path.dirname(dest);    
                     await fs.ensureDir(destPath);
                     const archiveFileName = `${template.getIdentifier()}.cta`;
                     const archiveFilePath = `${archiveDir}/${archiveFileName}`;
-                    await writeFile(archiveFilePath, archive);
-                    console.log('Copied: ' + archiveFileName);
-    
-                    // update the index
-                    const m = template.getMetadata();
-                    const templateHash = template.getHash();
-                    const indexData = {
-                        uri: `ap://${template.getIdentifier()}#${templateHash}`,
-                        url: `${serverRoot}/archives/${archiveFileName}`,
-                        name : m.getName(),
-                        description : m.getDescription(),
-                        version: m.getVersion(),
-                        ciceroVersion: m.getTargetVersion(),
-                        type: m.getTemplateType(),
-                        language: m.getLanguage()
+                    const archiveFileExists = await fs.pathExists(archiveFilePath)
+
+                    if(!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                        const language = template.getMetadata().getLanguage();
+                        let archive;
+                        // Keeps produced archives in the same language as their source from directory
+                        if (language === 0) {
+                            archive = await template.toArchive('ergo');
+                        } else {
+                            archive = await template.toArchive('javascript');
+                        }
+                        await writeFile(archiveFilePath, archive);
+                        console.log('Copied: ' + archiveFileName);
+        
+                        // update the index
+                        const m = template.getMetadata();
+                        const templateHash = template.getHash();
+                        const indexData = {
+                            uri: `ap://${template.getIdentifier()}#${templateHash}`,
+                            url: `${serverRoot}/archives/${archiveFileName}`,
+                            name : m.getName(),
+                            description : m.getDescription(),
+                            version: m.getVersion(),
+                            ciceroVersion: m.getTargetVersion(),
+                            type: m.getTemplateType(),
+                            language: m.getLanguage()
+                        }
+                        templateIndex[template.getIdentifier()] = indexData;
+        
+                        // call the post template processor
+                        await postProcessor(templateIndex, templatePath, template);
                     }
-                    templateIndex[template.getIdentifier()] = indexData;
-    
-                    // call the post template processor
-                    await postProcessor(templateIndex, templatePath, template);    
+                    else {
+                        console.log(`Skipped: ${archiveFileName} (already exists).`);
+                    }
                 }
             } catch (err) {
                 console.log(err);
