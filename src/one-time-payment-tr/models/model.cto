@@ -1,11 +1,9 @@
-namespace org.accordtr.onetimepayment
+namespace org.accordproject.onetimepayment
 
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
-
-transaction PaymentReceivedRequest extends Request {}
-transaction PaymentReceivedResponse extends Response {}
+import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment.cto
 
 asset OneTimePaymentState extends AccordContractState {
   o ContractLifecycleStatus status default = "UNINITIALIZED"

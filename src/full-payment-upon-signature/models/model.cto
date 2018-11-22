@@ -4,9 +4,7 @@ import org.accordproject.cicero.contract.* from https://models.accordproject.org
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
 import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature.cto
-
-transaction PaymentReceivedRequest extends Request {}
-transaction PaymentReceivedResponse extends Response {}
+import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment.cto
 
 asset FullPaymentUponSignatureState extends AccordContractState {
   o ContractLifecycleStatus status
