@@ -1,1 +1,1 @@
-{"$class":"org.accordproject.payment.uponsignature.PaymentReceivedRequest"}
+{"$class":"org.accordproject.payment.PaymentReceived"}

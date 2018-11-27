@@ -1,0 +1,429 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/one-time-payment-tr@0.7.0.html" />
+<meta property="og:title" content="one-time-payment-tr@0.7.0" />
+<meta property="og:description" content="This is an Full Payment Upon Signature Protocol prepared in Turkish Language." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/dLBBJiCm4BpdA_O8WkOBggYXHCXINXBXmWMPxLA27BkoDmSB-k_42K58KAdaPCsihPdPySQnjDntAa8bdGDZzx54D7PtiEQDa6EZYTkE3j9tf3ckD3K3h2Tupv89rckuIA_tbaXVGfB0UmG0Lx0rcgr4pjiNGe-AmktUWHkFw1Wj4bkjFf8_R6ABP4sCNvfnEavd2-FJSoEUyXrYPY6c_vdoeHIbQ4IQYyViTgAgcrpSfOseogUi44qpyzkggFCimEEoTS_EJcry2bqFZNfuxZtPtxGZfMQ-26BI-hGplMPWmrBLlSLNwQYsmqB_tz6tmqKrHHlIk_0PFm40" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="one-time-payment-tr@0.7.0" />
+<meta name="twitter:description" content="This is an Full Payment Upon Signature Protocol prepared in Turkish Language." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/dLBBJiCm4BpdA_O8WkOBggYXHCXINXBXmWMPxLA27BkoDmSB-k_42K58KAdaPCsihPdPySQnjDntAa8bdGDZzx54D7PtiEQDa6EZYTkE3j9tf3ckD3K3h2Tupv89rckuIA_tbaXVGfB0UmG0Lx0rcgr4pjiNGe-AmktUWHkFw1Wj4bkjFf8_R6ABP4sCNvfnEavd2-FJSoEUyXrYPY6c_vdoeHIbQ4IQYyViTgAgcrpSfOseogUi44qpyzkggFCimEEoTS_EJcry2bqFZNfuxZtPtxGZfMQ-26BI-hGplMPWmrBLlSLNwQYsmqB_tz6tmqKrHHlIk_0PFm40" />
+<meta name="twitter:image:alt" content="UML diagram of one-time-payment-tr@0.7.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/one-time-payment-tr@0.7.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template one-time-payment-tr@0.7.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.9.1</span>
+                <span class="tag">9657cb00b16e165825e0af2e45a7d6e8de5246aa9bd7dabc4640c1837020a07f</span>
+            </div>
+            <p class="subtitle">
+                This is an Full Payment Upon Signature Protocol prepared in Turkish Language.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="one-time-payment-tr@0.7.0.html" class="dropdown-item is-active">
+                                one-time-payment-tr@0.7.0
+                            </a>
+                        
+                            <a href="one-time-payment-tr@0.6.1.html" class="dropdown-item ">
+                                one-time-payment-tr@0.6.1
+                            </a>
+                        
+                            <a href="one-time-payment-tr@0.6.0.html" class="dropdown-item ">
+                                one-time-payment-tr@0.6.0
+                            </a>
+                        
+                            <a href="one-time-payment-tr@0.5.0.html" class="dropdown-item ">
+                                one-time-payment-tr@0.5.0
+                            </a>
+                        
+                            <a href="one-time-payment-tr@0.4.0.html" class="dropdown-item ">
+                                one-time-payment-tr@0.4.0
+                            </a>
+                        
+                            <a href="one-time-payment-tr@0.3.0.html" class="dropdown-item ">
+                                one-time-payment-tr@0.3.0
+                            </a>
+                        
+                            <a href="one-time-payment-tr@0.2.0.html" class="dropdown-item ">
+                                one-time-payment-tr@0.2.0
+                            </a>
+                        
+                            <a href="one-time-payment-tr@0.1.0.html" class="dropdown-item ">
+                                one-time-payment-tr@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/one-time-payment-tr@0.7.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fone-time-payment-tr%400.7.0%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/dLBBJiCm4BpdA_O8WkOBggYXHCXINXBXmWMPxLA27BkoDmSB-k_42K58KAdaPCsihPdPySQnjDntAa8bdGDZzx54D7PtiEQDa6EZYTkE3j9tf3ckD3K3h2Tupv89rckuIA_tbaXVGfB0UmG0Lx0rcgr4pjiNGe-AmktUWHkFw1Wj4bkjFf8_R6ABP4sCNvfnEavd2-FJSoEUyXrYPY6c_vdoeHIbQ4IQYyViTgAgcrpSfOseogUi44qpyzkggFCimEEoTS_EJcry2bqFZNfuxZtPtxGZfMQ-26BI-hGplMPWmrBLlSLNwQYsmqB_tz6tmqKrHHlIk_0PFm40" />
+
+            <div class="content">
+                <p>
+                <h1 id="accordprotocoltemplateonetimepaymenttr">Accord Protocol Template: one-time-payment-tr</h1>
+<p>This is an Full Payment Upon Signature Protocol prepared in Turkish Language.</p>
+<h3 id="parse">Parse</h3>
+<p>Use the <code>cicero parse</code> command to load a template from a directory on disk and then use it to parse input text, echoing the result of parsing. If the input text is valid the parsing result will be a JSON serialized instance of the Template Mode:</p>
+<p>Sample template.tem:</p>
+<pre><code>        1.1 Banka [{seller}]
+        1.2 Müşteri [{buyer}]
+
+        7. Upon the signing of this Agreement, [{buyer}] shall pay the total purchase price to [{seller}] in the amount of [{totalPurchasePrice}].
+</code></pre>
+<p>Sample.txt:</p>
+<pre><code>        1.1 Banka "ACME Corp."
+        1.2 Müşteri "Can Doğan"
+
+        7. Upon the signing of this Agreement, "Umut" shall pay the total purchase price to "Serkan" in the amount of 1922.99 TRY.
+</code></pre>
+<pre><code>cicero parse --template ./one-time-payment-tr/ --dsl ./one-time-payment-tr/sample.txt
+Setting clause data: {"$class": "org.accordtr.onetimepayment.InitRequest"}
+</code></pre>
+<h3 id="execute">Execute</h3>
+<p>Use the <code>cicero execute</code> command to load a template from a directory on disk, instantiate a clause based on input text, and then invoke the clause using an incoming JSON payload.</p>
+<pre><code>data.json:
+{
+   "$class": "org.accordtr.onetimepayment.InitRequest"
+}
+</code></pre>
+<pre><code>cicero execute --template ./one-time-payment-tr/ --dsl ./one-time-payment-tr/sample.txt --data ./one-time-payment-tr/data.json 
+</code></pre>
+<p>The results of execution (a JSON serialized object) are displayed. They include:</p>
+<ul>
+<li>Details of the clause executed (name, version, SHA256 hash of clause data)</li>
+<li>The incoming request object</li>
+<li>The output response object</li>
+</ul>
+<pre><code>    {
+      "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+      "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 1922.00,
+        "currencyCode": "TRY"
+      },
+      "description": "[object Object] should pay contract amount to [object Object]",
+      "contract": "resource:org.accordproject.cicero.contract.AccordContract#608991e1-4d47-4f52-8c3d-dab7ad003ac9",
+      "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Can%20Do%C4%9Fan",
+      "promisee": "resource:org.accordproject.cicero.contract.AccordParty#ACME%20Corp.",
+      "eventId": "valid",
+      "timestamp": "2018-07-31T08:46:18.749Z"
+      }
+    ]
+  }
+</code></pre>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+TEK SEFERLİK ÖDEME HİZMETİ SÖZLEŞMESİ
+
+İşbu tek seferlik ödeme hizmeti sözleşmesi ("Sözleşme"), aşağıda adı ve ünvanı belirtilen Taraflar arasında "12/07/2018" tarihinde imzalanmıştır.
+
+1. TARAFLAR
+
+        1.1 Banka "ACME Corp."
+        1.2 Müşteri "Can Doğan"
+
+2. SÖZLEŞMENİN KONUSU
+
+        İşbu Sözleşme uyarınca Banka tarafından Müşteri’ye Müşteri’nin yürütmekte olduğu "ithalat ihracat" faaliyetleri kapsamında, Taraflar’ca kararlaştırılan ücret karşılığında,
+        tek seferlik elektronik fon transferi, havale veya virman işlemi sunulacaktır.
+
+3. ÖDEME EMRİNİN ALINMA ZAMANI
+
+        Müşteri tarafından gönderilen ödeme emri Banka’nın iş saatleri içinde ve her halükarda saat 17.00’dan geç olmamak üzere Banka’ya ulaştığı an alınmış sayılır.
+        Saat 17:00’dan sonra alınan ödeme emri Banka tarafından ertesi iş günü alınmış sayılır. Ödeme emri, Banka tarafından alınmasından itibaren incelenir ve aynı
+        gün sonuna kadar ödeme emrinin reddi sebeplerinin varlığı halinde Müşteri’ye red gerekçelerini bildirir.
+
+4. ÖDEMENİN GERÇEKLEŞTİRİLMESİ
+
+        4.1. Ödeme emrinin Banka’ya verilmesi anından itibaren, Banka işlemi yapmadan önce Müşteri emrinden dönebilir. Ancak Banka işlemi tamamladıktan sonra işlemin geri
+        alınması mümkün olmayan durumlarda Banka’nın sorumluluğu söz konusu olmaz. Müşterinin Banka’ya vereceği ödeme emrinde hangi döviz cinsi üzerinden işlem yapacağını
+        belirtmekle yükümlüdür. Döviz cinsi üzerinden yapılacak işlemlerde bankanın cari döviz kurları üzerinden işlem yapılacağını Müşteri kabul ve beyan eder.
+
+        4.2. Müşteri, hata veya kusuru sonucu Banka’nın ödeme işlemini gerçekleştirememesi veya hatalı gerçekleştirmesi halinde Banka’nın sorumlu tutulmayacağını kabul ve taahhüt eder.
+
+5. ÖDEME HİZMETİNE İLİŞKİN ÜCRET
+
+        Müşteri, işbu Sözleşme kapsamında gerçekleştirilecek ödemeyle ilgili Banka’nın sağlamış olduğu hizmetler için Banka’ya ücret ödemeyi kabul ve taahhüt eder.
+
+6. ÖDEME İŞLEMLERİNE İLİŞKİN BİLGİLENDİRME
+
+        Müşteri, Banka’nın kendisini işbu Sözleşme’nin hükümleri hakkında işbu Sözleşme imzalanmadan önce bilgilendirdiğini, Banka’nın internet sitesinde taslak sözleşme örneğini
+        incelediği ve kendisine sözleşmenin imzalı bir kopyasını verdiğini beyan ve kabul eder.
+
+7. Upon the signing of this Agreement, "Umut" shall pay the total purchase price to "Serkan" in the amount of 1922.99 TRY.
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                
+                <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/one-time-payment-tr">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.onetimepayment.OneTimePaymentContract",
+    "contractId": "3df6a497-410f-410f-ab03-03c80530555a",
+    "buyer": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Can Doğan"
+    },
+    "seller": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "ACME Corp."
+    },
+    "totalPurchasePrice": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 1922.99,
+        "currencyCode": "TRY"
+    }
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.onetimepayment.OneTimePaymentState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.onetimepayment.OneTimePaymentState",
+    "status": "UNINITIALIZED",
+    "stateId": "1ccc6e20-ee64-11e8-9a8e-a749c1ceabc2"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.Request</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.Request",
+    "transactionId": "1ccc4710-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:18.209Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.payment.PaymentReceived</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.payment.PaymentReceived",
+    "transactionId": "1ccc4711-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:18.209Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.Response</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.Response",
+    "transactionId": "1ccc4713-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:18.209Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.base.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.PaymentObligation</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 154.666,
+        "currencyCode": "KRW"
+    },
+    "description": "Laborum.",
+    "contract": "resource:org.accordproject.onetimepayment.OneTimePaymentContract#8988",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#1320",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#5062",
+    "deadline": "2018-11-22T14:37:18.210Z",
+    "eventId": "1ccc6e21-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:18.210Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

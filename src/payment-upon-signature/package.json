@@ -1,6 +1,6 @@
 {
     "name": "payment-upon-signature",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "description": "This is a generic payment clause applicable to any type of contract that requires some payment at the time of signature.",
     "license": "Apache-2.0",
     "cicero": {
