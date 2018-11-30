@@ -1,0 +1,115 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.supplyagreement
+
+import org.accordproject.cicero.runtime.*
+import org.accordproject.money.MonetaryAmount
+import org.accordproject.purchaseorder.*
+
+// Auxiliary function to compute the last day of the current quarter
+define function isLastDayOfQuarter(t:DateTime) : Boolean {
+    // Keep always true for testing
+    return true
+}
+
+// Auxiliary function to check if delivery matches the order
+define function deliveryMatches(delivery:DeliveryObligation,po:Product[]) {
+    // TBD
+    return true
+}
+
+// Auxiliary function to compute the price of a purchase order
+define function purchaseOrderPrice(products:Product[]) : Double {
+  return sum(
+		foreach p in products return
+		p.quantity * p.unitPrice
+	)
+}
+
+contract SupplyAgreement over SupplyAgreementContract state AgreementState {
+  clause init(request : Request) : Response{
+    set state AgreementState{
+			stateId: "1",
+			purchaseObligation: none,
+			deliveryObligation: none,
+			paymentObligation: none
+		};
+		return Response{}
+	}
+
+  clause demandforecast(request : ForecastRequest) : ForecastResponse {
+		enforce dateTimeIsBefore(contract.effectiveDate, now());
+		enforce isLastDayOfQuarter(now())
+		else throw failure("Forecast was received before the effective date");
+
+    let requiredPurchase = integerToDouble(request.supplyForecast) * (contract.minimumPercentage / 100.0);
+
+    set state AgreementState{
+			stateId: state.stateId,
+			purchaseObligation: some(PurchaseObligation{
+				party: contract.buyer,
+				requiredPurchase: requiredPurchase,
+				year: dateTimeYear(now()),
+				quarter: dateTimeQuarter(now())
+			}),
+			deliveryObligation: none,
+			paymentObligation: none
+		};
+		return ForecastResponse{}
+  }
+
+	clause purchase(request : PurchaseRequest) : PurchaseResponse {
+		match state.purchaseObligation
+		with let? purchaseObligation then
+     	let products =
+		  foreach p in request.purchaseOrder.products return
+     	  OrderItem{
+					partNumber: p.name,
+					quantity: p.quantity
+				};
+
+    	set state AgreementState{
+				stateId: state.stateId,
+				purchaseObligation: none,
+				deliveryObligation: some(DeliveryObligation{
+					party: contract.supplier,
+					expectedDelivery: request.purchaseOrder.deliveryDate,
+					deliverables: products
+				}),
+				paymentObligation: none
+			};
+		return PurchaseResponse{}
+		else throw failure("Cannot purchase without having submitted a demand forecast")
+	}
+
+  clause delivery(request: DeliveryRequest) : DeliveryResponse {
+		match state.deliveryObligation
+		with let? deliveryObligation then
+		  enforce deliveryMatches(deliveryObligation,request.products)
+		  else throw failure("Delivery does not match the purchase order");
+
+    	set state AgreementState{
+				stateId: state.stateId,
+				purchaseObligation: none,
+				deliveryObligation: none,
+				paymentObligation: some(PaymentObligation{
+					party: contract.buyer,
+					amount: purchaseOrderPrice(request.products)
+				})
+			};
+		  return DeliveryResponse{}
+		else throw failure("Cannot deliver without having submitted a purchase order")
+	}
+}
