@@ -1,0 +1,334 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/ip-payment@0.7.0.html" />
+<meta property="og:title" content="ip-payment@0.7.0" />
+<meta property="og:description" content="This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/bPF1JiCm38RlVGeVGMnzWcbQOHBYHBLDucnIQmIbSN4Se0BUdMohWAAnbakYs8xjxtUo28gYiNQPSHW2i6npD8QbQeGVoMXkcmRRchpcvM5VqLEae32RmTbcqf9p_78EypcyPG1m0KkEzux0awxHqOgUoKVgkK9QhI4VhD_s_QYqiJL1GrBR42pxQq6lL5sssKVsZ-Qcq_Vv4HYJoWhd4hscCdaNFOxzDWuoAokwekQK_XTG5MaCmgx6sDP3mpxGYDvlae3E9Lj4LmedRRNjvBfo60FjiOh9LeZyJwgrIfeG2BVejDtGg_PeE_igCVRYU-Fzu-wHcEyyooYeQVRG4PGabgjJlZkh3-NNcndGULYFqoCmx5KmdOkzzt0dMv2lTl_e4m00" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="ip-payment@0.7.0" />
+<meta name="twitter:description" content="This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bPF1JiCm38RlVGeVGMnzWcbQOHBYHBLDucnIQmIbSN4Se0BUdMohWAAnbakYs8xjxtUo28gYiNQPSHW2i6npD8QbQeGVoMXkcmRRchpcvM5VqLEae32RmTbcqf9p_78EypcyPG1m0KkEzux0awxHqOgUoKVgkK9QhI4VhD_s_QYqiJL1GrBR42pxQq6lL5sssKVsZ-Qcq_Vv4HYJoWhd4hscCdaNFOxzDWuoAokwekQK_XTG5MaCmgx6sDP3mpxGYDvlae3E9Lj4LmedRRNjvBfo60FjiOh9LeZyJwgrIfeG2BVejDtGg_PeE_igCVRYU-Fzu-wHcEyyooYeQVRG4PGabgjJlZkh3-NNcndGULYFqoCmx5KmdOkzzt0dMv2lTl_e4m00" />
+<meta name="twitter:image:alt" content="UML diagram of ip-payment@0.7.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/ip-payment@0.7.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template ip-payment@0.7.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.9.1</span>
+                <span class="tag">2fe33ff164f4fff00db8d4a74a7091ae613cf3e475312ab72740b9d5acd68297</span>
+            </div>
+            <p class="subtitle">
+                This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="ip-payment@0.7.0.html" class="dropdown-item is-active">
+                                ip-payment@0.7.0
+                            </a>
+                        
+                            <a href="ip-payment@0.6.0.html" class="dropdown-item ">
+                                ip-payment@0.6.0
+                            </a>
+                        
+                            <a href="ip-payment@0.5.0.html" class="dropdown-item ">
+                                ip-payment@0.5.0
+                            </a>
+                        
+                            <a href="ip-payment@0.4.0.html" class="dropdown-item ">
+                                ip-payment@0.4.0
+                            </a>
+                        
+                            <a href="ip-payment@0.3.0.html" class="dropdown-item ">
+                                ip-payment@0.3.0
+                            </a>
+                        
+                            <a href="ip-payment@0.2.0.html" class="dropdown-item ">
+                                ip-payment@0.2.0
+                            </a>
+                        
+                            <a href="ip-payment@0.1.0.html" class="dropdown-item ">
+                                ip-payment@0.1.0
+                            </a>
+                        
+                            <a href="ip-payment@0.0.3.html" class="dropdown-item ">
+                                ip-payment@0.0.3
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/ip-payment@0.7.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fip-payment%400.7.0%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/bPF1JiCm38RlVGeVGMnzWcbQOHBYHBLDucnIQmIbSN4Se0BUdMohWAAnbakYs8xjxtUo28gYiNQPSHW2i6npD8QbQeGVoMXkcmRRchpcvM5VqLEae32RmTbcqf9p_78EypcyPG1m0KkEzux0awxHqOgUoKVgkK9QhI4VhD_s_QYqiJL1GrBR42pxQq6lL5sssKVsZ-Qcq_Vv4HYJoWhd4hscCdaNFOxzDWuoAokwekQK_XTG5MaCmgx6sDP3mpxGYDvlae3E9Lj4LmedRRNjvBfo60FjiOh9LeZyJwgrIfeG2BVejDtGg_PeE_igCVRYU-Fzu-wHcEyyooYeQVRG4PGabgjJlZkh3-NNcndGULYFqoCmx5KmdOkzzt0dMv2lTl_e4m00" />
+
+            <div class="content">
+                <p>
+                <h1 id="ippaymentclause">IP Payment Clause</h1>
+<p>A payment clause for an IP agreement, such as a trademark or a copyright licenses agreement.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Payments.
+
+1.  Royalty. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor a royalty of "four point five" percent (4.5%) of the Net Sales Price for the respective preceding Quarterly Period.
+
+2. Sublicensing Revenue. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor "five point two" percent (5.2%) of any royalties and fees received by Licensee from sublicensing any rights granted to it under this Agreement during the respective preceding Quarterly Period.
+
+3. Taxes. If Licensee is required by applicable Law to withhold taxes in connection with any sums payable to Licensor under this Agreement, Licensee may deduct the amount of the withholding from the payment it otherwise would have made to Licensor under this Agreement.
+
+4. Manner of Payment.
+
+(a) Royalties and any other sums payable under this Section shall be paid within 10 days following the end of each Quarterly Period in US dollars.
+
+(b) If Licensee is prohibited by a governmental authority in any country from making any payment due under this Section, then within the prescribed period for making the payment Licensee shall request permission from the governmental authority to make the payment and shall make the payment within 7 days business days after receiving permission. If such permission is not received within 7 days business days after Licensee's request, then Licensee, at Licensor's option, shall either deposit the payment in the currency of the relevant country in a bank account within that country designated by Licensor or make the payment to an associated company of Licensor designated by Licensor and having an office in the relevant country or in another country designated by Licensor.
+
+5. Royalty Statements. At the same time as payments are made under Section 4., Licensee shall submit a statement showing the total Net Sales Price of Licensed Product[s] received by Licensee and its Affiliates and sublicensees and the total amount of any sublicense royalties and other fees received by Licensee in the relevant Quarterly Period.
+
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/time.html">org.accordproject.time.*</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/ip-payment">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.ippayment.IntellectualPropertyPaymentClause",
+    "clauseId": "129f9f39-50fc-4f25-824b-b5a217a75eed",
+    "royaltyText": "four point five",
+    "royaltyRate": 4.5,
+    "sublicensingRoyaltyText": "five point two",
+    "sublicensingRoyaltyRate": 5.2,
+    "paymentPeriod": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 10,
+        "unit": "days"
+    },
+    "paymentPeriodWithPermission": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 7,
+        "unit": "days"
+    }
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "8ff8b3f0-f4bc-11e8-8c14-e56992f09c13"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.ippayment.PaymentRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.ippayment.PaymentRequest",
+    "netSaleRevenue": 208.284,
+    "sublicensingRevenue": 17.923,
+    "permissionGrantedBy": "2018-11-30T16:25:34.124Z",
+    "transactionId": "8ff83ec0-f4bc-11e8-8c14-e56992f09c13",
+    "timestamp": "2018-11-30T16:25:34.124Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.ippayment.PayOut</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.ippayment.PayOut",
+    "totalAmount": 255.191,
+    "dueBy": "2018-11-30T16:25:34.126Z",
+    "transactionId": "8ff88ce0-f4bc-11e8-8c14-e56992f09c13",
+    "timestamp": "2018-11-30T16:25:34.126Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.base.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
