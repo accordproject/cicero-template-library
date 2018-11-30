@@ -2276,5 +2276,25 @@
         "ciceroVersion": "^0.9.1",
         "type": 0,
         "language": 0
+    },
+    "ip-payment@0.7.0": {
+        "uri": "ap://ip-payment@0.7.0#2fe33ff164f4fff00db8d4a74a7091ae613cf3e475312ab72740b9d5acd68297",
+        "url": "https://templates.accordproject.org/archives/ip-payment@0.7.0.cta",
+        "name": "ip-payment",
+        "description": "This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements.",
+        "version": "0.7.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "supplyagreement@0.7.0": {
+        "uri": "ap://supplyagreement@0.7.0#8aefc3bc6f19f5bc18d6f5ce54671aef0ea2ba3974d02daebeda0de48560c963",
+        "url": "https://templates.accordproject.org/archives/supplyagreement@0.7.0.cta",
+        "name": "supplyagreement",
+        "description": "A sample supply agreement.",
+        "version": "0.7.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
     }
 }
