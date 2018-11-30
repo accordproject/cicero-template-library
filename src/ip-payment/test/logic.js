@@ -56,7 +56,7 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.totalAmount.should.equal(77.4);
-            result.response.dueBy.should.equal("04-12-2018");
+            result.response.dueBy.should.equal("2018-04-12T04:00:00.000Z");
         });
     });
 });
