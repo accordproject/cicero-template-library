@@ -6,7 +6,7 @@ import org.accordproject.usa.state.State from https://models.accordproject.org/u
 
 import org.accordproject.purchaseorder.*
 
-asset SupplyAgreement extends AccordContract {
+asset SupplyAgreementContract extends AccordContract {
   o DateTime effectiveDate
   o String supplier 
   o String buyer
@@ -53,7 +53,9 @@ concept PaymentObligation extends MyObligation {
  * Defines the state of the contract
  */
 asset AgreementState extends AccordContractState {
-  o Obligation[] obligations
+  o PurchaseObligation purchaseObligation optional
+  o DeliveryObligation deliveryObligation optional
+  o PaymentObligation paymentObligation optional
 }
 
 /**
