@@ -47,10 +47,10 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
 	    else throw ErgoErrorResponse{ message: "Contract state is invalid " ++ state.status };
 		
 		set state CounterState {
-			stateId: state.stateId,
+			stateId: "1",
 			status: "RUNNING",
-			counter: state.counter,
-			paymentCount: state.paymentCount,
+			counter: 0,
+			paymentCount: 0,
 		};
     return Response{}
   }
