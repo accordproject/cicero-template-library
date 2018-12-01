@@ -26,7 +26,7 @@ chai.use(require('chai-things'));
 chai.use(require('chai-as-promised'));
 const moment = require('moment');
 
-describe.only('Logic', () => {
+describe('Logic', () => {
 
     const rootDir = path.resolve(__dirname, '..');
     const clauseText = fs.readFileSync(path.resolve(rootDir, 'sample.txt'), 'utf8');
