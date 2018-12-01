@@ -100,8 +100,8 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
 			promisee: some(contract.seller),
 			deadline: none,
 			amount: MonetaryAmount { 
-				doubleValue: contract.amount.doubleValue * integerToDouble(state.counter),
-				currencyCode: contract.amount.currencyCode 
+				doubleValue: contract.amountPerUnit.doubleValue * integerToDouble(state.counter),
+				currencyCode: contract.amountPerUnit.currencyCode 
 			},
 			description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
 		};

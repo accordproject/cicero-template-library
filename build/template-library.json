@@ -2306,5 +2306,15 @@
         "ciceroVersion": "^0.9.9",
         "type": 1,
         "language": 0
+    },
+    "payment-upon-iot@0.1.0": {
+        "uri": "ap://payment-upon-iot@0.1.0#97543f59f8dc433f48307f9828a6d4563be7bf7f5f18c42abdbbc783fb43db7a",
+        "url": "https://templates.accordproject.org/archives/payment-upon-iot@0.1.0.cta",
+        "name": "payment-upon-iot",
+        "description": "This is a payment contract that pays out a fixed amount each time a button is pressed.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
     }
 }

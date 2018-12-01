@@ -29,6 +29,6 @@ enum ContractLifecycleStatus {
 asset PaymentUponButtonContract extends AccordContract {
   o AccordParty buyer
   o AccordParty seller
-  o MonetaryAmount amount
+  o MonetaryAmount amountPerUnit
   o Integer paymentCount
 }
