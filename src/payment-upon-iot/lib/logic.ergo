@@ -1,0 +1,140 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.payment.iot
+
+import org.accordproject.cicero.runtime.*
+import org.accordproject.iot.*
+
+import org.accordproject.signature.ContractSigned
+import org.accordproject.payment.PaymentReceived
+import org.accordproject.money.MonetaryAmount
+
+/**
+ * This smart clause emits a payment obligation when the contract is signed
+ */
+contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
+  
+	/**
+	 * Sets the initial state for the clause
+	 */
+  clause init(request : Request) : Response {		
+		set state CounterState {
+			stateId: "1",
+			status: "INITIALIZED",
+			counter: 0,
+			paymentCount: 0
+		};
+    return Response{}
+  }
+
+	/**
+	 * When the contract is signed a payment obligation is emitted
+	 */
+  clause contractSigned(request : ContractSigned) : Response emits PaymentObligation {
+	  enforce (state.status = "INITIALIZED") 
+	    else throw ErgoErrorResponse{ message: "Contract state is invalid " ++ state.status };
+		
+		set state CounterState {
+			stateId: state.stateId,
+			status: "RUNNING",
+			counter: state.counter,
+			paymentCount: state.paymentCount,
+		};
+    return Response{}
+  }
+
+  /**
+	 * When a single button press is received we increment the counter
+	 */
+  clause increment(request : SingleButtonPress): Response {
+    enforce (state.status = "RUNNING") 
+    else throw ErgoErrorResponse{ message: "Contract is not running." };
+
+		set state CounterState {
+			stateId: state.stateId,
+			status: state.status,
+			paymentCount: state.paymentCount,
+			counter: state.counter +i 1
+		};
+		return Response{}
+  }
+
+  /**
+	 * When a double button press is received we decrement the counter
+	 */
+  clause decrement(request : DoubleButtonPress): Response {
+    enforce (state.status = "RUNNING") 
+    else throw ErgoErrorResponse{ message: "Contract is not running." };
+
+		set state CounterState {
+			stateId: state.stateId,
+			status: state.status,
+			counter: integerMax(0, state.counter -i 1),
+			paymentCount: state.paymentCount,
+		};
+		return Response{}
+  }
+
+  /**
+	 * When a long press on a button we emit a payment obligation and reset the counter to zero.
+	 */
+  clause requestForPayment(request : LongButtonPress): Response {
+    enforce (state.status = "RUNNING") 
+    else throw ErgoErrorResponse{ message: "Contract is not running." };
+
+		emit PaymentObligation{
+			contract: contract,
+			promisor: some(contract.buyer),
+			promisee: some(contract.seller),
+			deadline: none,
+			amount: MonetaryAmount { 
+				doubleValue: contract.amount.doubleValue * integerToDouble(state.counter),
+				currencyCode: contract.amount.currencyCode 
+			},
+			description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
+		};
+
+		set state CounterState {
+			stateId: state.stateId,
+			status: state.status,
+			counter: 0,
+			paymentCount: state.paymentCount,
+		};
+
+		return Response{}
+  }
+
+  /**
+	 * When a payment is received we log it
+	 */
+  clause paymentReceived(request : PaymentReceived): Response {
+    enforce (state.status = "RUNNING") 
+    else throw ErgoErrorResponse{ message: "Contract is not running." };
+		
+	let status : String =
+      if integerToDouble(state.paymentCount) >= integerToDouble(contract.paymentCount)
+      	then "COMPLETED"
+      else "RUNNING";
+
+		set state CounterState {
+			stateId: state.stateId,
+			status: status,
+			counter: state.counter,
+			paymentCount: state.paymentCount +i 1,
+		};
+		
+		return Response{}
+  }
+}
