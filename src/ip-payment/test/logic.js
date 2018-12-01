@@ -42,7 +42,7 @@ describe('Logic', () => {
         engine = new Engine();    
     });
     
-    describe('#RequestPayment', async function() {
+    describe('#IPPayment', async function() {
 
         it('Payment should be payed to the amount of', async function() {
             const request = {};
@@ -56,7 +56,8 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.totalAmount.should.equal(77.4);
-            result.response.dueBy.should.equal("04-12-2018");
+            const date = moment(result.response.dueBy);
+            date.format('YYYY-MM-DD').should.equal("2018-04-12");
         });
     });
 });
