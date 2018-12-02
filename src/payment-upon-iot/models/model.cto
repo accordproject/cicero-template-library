@@ -13,8 +13,8 @@ import org.accordproject.iot.LongButtonPress from https://models.accordproject.o
 
 asset CounterState extends AccordContractState {
   o ContractLifecycleStatus status
-  o Integer counter
-  o Integer paymentCount
+  o Double counter
+  o Double paymentCount
 }
 
 enum ContractLifecycleStatus {

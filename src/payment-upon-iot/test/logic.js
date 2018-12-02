@@ -26,7 +26,7 @@ chai.use(require('chai-things'));
 chai.use(require('chai-as-promised'));
 const moment = require('moment');
 
-describe('Logic', () => {
+describe.only('Logic', () => {
 
     const rootDir = path.resolve(__dirname, '..');
     const clauseText = fs.readFileSync(path.resolve(rootDir, 'sample.txt'), 'utf8');
@@ -38,8 +38,8 @@ describe('Logic', () => {
     state.$class = 'org.accordproject.payment.iot.CounterState';
     state.stateId = '1';
     state.status = 'INITIALIZED';
-    state.counter = 0;
-    state.paymentCount = 0;
+    state.counter = 0.0;
+    state.paymentCount = 0.0;
 
     beforeEach( async function() {
         template = await Template.fromDirectory(rootDir);
@@ -52,7 +52,9 @@ describe('Logic', () => {
         request.$class = 'org.accordproject.cicero.runtime.Request';
         const result = await engine.execute(clause, request, state);
         result.should.not.be.null;
-        result.state.status.should.equal("INITIALIZED");        
+        result.state.status.should.equal("INITIALIZED");
+        result.state.counter.should.equal(0);
+        result.state.paymentCount.should.equal(0);
     });
     
     describe('#PaymentUponIoT', async function() {
@@ -67,6 +69,7 @@ describe('Logic', () => {
             // check emitted payment obligation
             result.should.not.be.null;
             result.state.status.should.equal("RUNNING");
+            result.state.counter.should.equal(0);
         });
 
         it('should increment counter on short press', async function() {
