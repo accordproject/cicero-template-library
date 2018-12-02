@@ -28,6 +28,10 @@ transaction CounterResponse extends Response {
   o Double paymentCount
 }
 
+transaction MonetaryAmountPayment extends PaymentReceived {
+  o MonetaryAmount amount
+}
+
 /**
  * The template model
  */
