@@ -23,6 +23,11 @@ enum ContractLifecycleStatus {
   o COMPLETED
 }
 
+transaction CounterResponse extends Response {
+  o Double counter
+  o Double paymentCount
+}
+
 /**
  * The template model
  */

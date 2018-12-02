@@ -52,6 +52,8 @@ describe.only('Logic', () => {
         request.$class = 'org.accordproject.cicero.runtime.Request';
         const result = await engine.execute(clause, request, state);
         result.should.not.be.null;
+        result.response.counter.should.equal(0);
+        result.response.paymentCount.should.equal(0);
         result.state.status.should.equal("INITIALIZED");
         result.state.counter.should.equal(0);
         result.state.paymentCount.should.equal(0);
@@ -68,6 +70,8 @@ describe.only('Logic', () => {
 
             // check emitted payment obligation
             result.should.not.be.null;
+            result.response.counter.should.equal(0);
+            result.response.paymentCount.should.equal(0);    
             result.state.status.should.equal("RUNNING");
             result.state.counter.should.equal(0);
         });
@@ -80,6 +84,8 @@ describe.only('Logic', () => {
             
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
+            result.response.counter.should.equal(1);
+            result.response.paymentCount.should.equal(0);    
             result.state.counter.should.equal(1)
         });
 
@@ -92,6 +98,8 @@ describe.only('Logic', () => {
             
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
+            result.response.counter.should.equal(2);
+            result.response.paymentCount.should.equal(0);    
             result.state.counter.should.equal(2)
         });
 
@@ -104,6 +112,8 @@ describe.only('Logic', () => {
             
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
+            result.response.counter.should.equal(0);
+            result.response.paymentCount.should.equal(0);    
             result.state.counter.should.equal(0)
         });
 
@@ -115,6 +125,8 @@ describe.only('Logic', () => {
             
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
+            result.response.counter.should.equal(1);
+            result.response.paymentCount.should.equal(0);
             result.state.counter.should.equal(1)
 
             const request2 = {};
@@ -122,6 +134,8 @@ describe.only('Logic', () => {
 
             const result2 = await engine.execute(clause, request2, result.state);
             result2.should.not.be.null;
+            result2.response.counter.should.equal(0);
+            result2.response.paymentCount.should.equal(0);
             result2.state.status.should.equal("RUNNING")
             result2.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
             result2.emit[0].amount.doubleValue.should.equal(10.00);
@@ -136,6 +150,8 @@ describe.only('Logic', () => {
             
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
+            result.response.counter.should.equal(0);
+            result.response.paymentCount.should.equal(1);
             result.state.paymentCount.should.equal(1)
         });
 
@@ -148,6 +164,8 @@ describe.only('Logic', () => {
             
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
+            result.response.counter.should.equal(0);
+            result.response.paymentCount.should.equal(5);
             result.state.paymentCount.should.equal(5);
             result.state.status.should.equal('COMPLETED');
         });

@@ -1,6 +1,6 @@
 {
     "name": "payment-upon-iot",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "This is a payment contract that pays out a fixed amount each time a button is pressed.",
     "license": "Apache-2.0",
     "cicero": {
