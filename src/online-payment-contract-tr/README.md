@@ -1,5 +1,4 @@
-
-# Accord Protocol Template: car-rental-tr
+# Accord Project Template: car-rental-tr
 
 This is an Online Payment Contract prepared in Turkish Language.
 

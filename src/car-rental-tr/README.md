@@ -1,4 +1,3 @@
-
-# Accord Protocol Template: car-rental-tr
+# Accord Project Template: car-rental-tr
 
 This is a Simple Car Rental Contract in Turkish Language.
