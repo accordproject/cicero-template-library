@@ -1,0 +1,355 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/one-time-payment@0.11.0.html" />
+<meta property="og:title" content="one-time-payment@0.11.0" />
+<meta property="og:description" content="Full Payment Upon Signature" />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/dLBDIiGm4BxtAUQewEO9bh9rBHBe7rWlNYHcnxMI9ijaUWYwx-wcjIBeWlGqv9k4xoyRpufuw4sYZV8U7Es5qjhHxa3k3JMBWmezMXRE8dSzYjfYUvhD1D-pOeJr6YwowpqXsaj8KtXF0E0AjiuoASr5zu8wQ8Fnzk31ZoCv9ilOLgkFz0-XkjD8JkWlKf6Dsrd3-FJV9iyfZqRpQ3JyzFbGoKgsCYlaOtuxGVLD8U-oLjRLKrxAjftnRLqsHHwFnuM9pzBEXJxPRawj1dWU0j9lsACnCrv65aKXwzrW6TYnCir0-bLvREWKwOAQlYKkQYhPeDt57_a9" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="one-time-payment@0.11.0" />
+<meta name="twitter:description" content="Full Payment Upon Signature" />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/dLBDIiGm4BxtAUQewEO9bh9rBHBe7rWlNYHcnxMI9ijaUWYwx-wcjIBeWlGqv9k4xoyRpufuw4sYZV8U7Es5qjhHxa3k3JMBWmezMXRE8dSzYjfYUvhD1D-pOeJr6YwowpqXsaj8KtXF0E0AjiuoASr5zu8wQ8Fnzk31ZoCv9ilOLgkFz0-XkjD8JkWlKf6Dsrd3-FJV9iyfZqRpQ3JyzFbGoKgsCYlaOtuxGVLD8U-oLjRLKrxAjftnRLqsHHwFnuM9pzBEXJxPRawj1dWU0j9lsACnCrv65aKXwzrW6TYnCir0-bLvREWKwOAQlYKkQYhPeDt57_a9" />
+<meta name="twitter:image:alt" content="UML diagram of one-time-payment@0.11.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/one-time-payment@0.11.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template one-time-payment@0.11.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.9.1</span>
+                <span class="tag">515e31445c483c79d9b6861f95e30be457a332d48cd071a4d1011304b88ebbeb</span>
+            </div>
+            <p class="subtitle">
+                Full Payment Upon Signature
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="one-time-payment@0.9.0.html" class="dropdown-item ">
+                                one-time-payment@0.9.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.8.0.html" class="dropdown-item ">
+                                one-time-payment@0.8.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.7.0.html" class="dropdown-item ">
+                                one-time-payment@0.7.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.6.0.html" class="dropdown-item ">
+                                one-time-payment@0.6.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.5.0.html" class="dropdown-item ">
+                                one-time-payment@0.5.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.4.0.html" class="dropdown-item ">
+                                one-time-payment@0.4.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.2.0.html" class="dropdown-item ">
+                                one-time-payment@0.2.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.11.0.html" class="dropdown-item is-active">
+                                one-time-payment@0.11.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.10.1.html" class="dropdown-item ">
+                                one-time-payment@0.10.1
+                            </a>
+                        
+                            <a href="one-time-payment@0.10.0.html" class="dropdown-item ">
+                                one-time-payment@0.10.0
+                            </a>
+                        
+                            <a href="one-time-payment@0.1.0.html" class="dropdown-item ">
+                                one-time-payment@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/one-time-payment@0.11.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fone-time-payment%400.11.0%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/dLBDIiGm4BxtAUQewEO9bh9rBHBe7rWlNYHcnxMI9ijaUWYwx-wcjIBeWlGqv9k4xoyRpufuw4sYZV8U7Es5qjhHxa3k3JMBWmezMXRE8dSzYjfYUvhD1D-pOeJr6YwowpqXsaj8KtXF0E0AjiuoASr5zu8wQ8Fnzk31ZoCv9ilOLgkFz0-XkjD8JkWlKf6Dsrd3-FJV9iyfZqRpQ3JyzFbGoKgsCYlaOtuxGVLD8U-oLjRLKrxAjftnRLqsHHwFnuM9pzBEXJxPRawj1dWU0j9lsACnCrv65aKXwzrW6TYnCir0-bLvREWKwOAQlYKkQYhPeDt57_a9" />
+
+            <div class="content">
+                <p>
+                <h1 id="fullpaymentuponsignature">Full Payment Upon Signature</h1>
+<p>This is a one-time full payment contract applicable at signature of the contract.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Upon the signing of this Agreement, "Dan" shall pay the total purchase price to "Steve" in the amount of 0.01 USD.
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                
+                <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/one-time-payment">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.payment.onetime.OneTimePaymentContract",
+    "contractId": "1f3a4329-6a99-4c2d-86b5-febe0815823a",
+    "buyer": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Dan"
+    },
+    "seller": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Steve"
+    },
+    "totalPurchasePrice": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 0.01,
+        "currencyCode": "USD"
+    }
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.payment.onetime.OneTimePaymentState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.payment.onetime.OneTimePaymentState",
+    "status": "UNINITIALIZED",
+    "stateId": "1c69dbc2-ee64-11e8-9a8e-a749c1ceabc2"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.Request</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.Request",
+    "transactionId": "1c69b4b0-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:17.563Z"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.payment.PaymentReceived</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.payment.PaymentReceived",
+    "transactionId": "1c69b4b1-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:17.563Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.Response</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.Response",
+    "transactionId": "1c69dbc0-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:17.564Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.base.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.PaymentObligation</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 43.411,
+        "currencyCode": "CHE"
+    },
+    "description": "Est in elit in ullamco.",
+    "contract": "resource:org.accordproject.payment.onetime.OneTimePaymentContract#9717",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5376",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6901",
+    "deadline": "2018-11-22T14:37:17.565Z",
+    "eventId": "1c69dbc3-ee64-11e8-9a8e-a749c1ceabc2",
+    "timestamp": "2018-11-22T14:37:17.565Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

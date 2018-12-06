@@ -1,0 +1,167 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.payment.iot
+
+import org.accordproject.cicero.runtime.*
+import org.accordproject.iot.*
+
+import org.accordproject.signature.ContractSigned
+import org.accordproject.payment.PaymentReceived
+import org.accordproject.money.MonetaryAmount
+
+/**
+ * This smart clause emits a payment obligation when the contract is signed
+ */
+contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
+  
+	/**
+	 * Sets the initial state for the clause
+	 */
+  clause init(request : Request) : Response {		
+		set state CounterState {
+			stateId: "1",
+			status: "INITIALIZED",
+			counter: 0.0,
+			paymentCount: 0.0
+		};
+
+    return CounterResponse{
+		counter: state.counter,
+		paymentCount: state.paymentCount,
+	}
+  }
+
+	/**
+	 * When the contract is signed a payment obligation is emitted
+	 */
+  clause contractSigned(request : ContractSigned) : Response {
+	enforce (state.status = "INITIALIZED") 
+		else throw ErgoErrorResponse{ message: "Contract state is invalid " ++ state.status };
+		
+	set state CounterState {
+		stateId: state.stateId,
+		status: "RUNNING",
+		counter: state.counter,
+		paymentCount: state.paymentCount,
+	};
+
+    return CounterResponse{
+		counter: state.counter,
+		paymentCount: state.paymentCount,
+	}
+  }
+
+  /**
+	 * When a single button press is received we increment the counter
+	 */
+  clause increment(request : SingleButtonPress): Response {
+    enforce (state.status = "RUNNING") 
+    else throw ErgoErrorResponse{ message: "Contract is not running." };
+
+	set state CounterState {
+		stateId: state.stateId,
+		status: state.status,
+		paymentCount: state.paymentCount,
+		counter: state.counter + 1.0
+	};
+
+    return CounterResponse{
+		counter: state.counter,
+		paymentCount: state.paymentCount,
+	}
+  }
+
+  /**
+	 * When a double button press is received we decrement the counter
+	 */
+  clause decrement(request : DoubleButtonPress): Response {
+	enforce (state.status = "RUNNING") 
+    	else throw ErgoErrorResponse{ message: "Contract is not running." };
+
+	set state CounterState {
+		stateId: state.stateId,
+		status: state.status,
+		counter: maxPair(0.0, state.counter - 1.0),
+		paymentCount: state.paymentCount
+	};
+
+    return CounterResponse{
+		counter: state.counter,
+		paymentCount: state.paymentCount,
+	}
+  }
+
+  /**
+	 * When a long press on a button we emit a payment obligation
+	 */
+  clause requestForPayment(request : LongButtonPress): Response emits PaymentObligation {
+    enforce (state.status = "RUNNING") 
+    	else throw ErgoErrorResponse{ message: "Contract is not running." };
+
+		emit PaymentObligation{
+			contract: contract,
+			promisor: some(contract.buyer),
+			promisee: some(contract.seller),
+			deadline: none,
+			amount: MonetaryAmount { 
+				doubleValue: contract.amountPerUnit.doubleValue * state.counter,
+				currencyCode: contract.amountPerUnit.currencyCode 
+			},
+			description: contract.buyer.partyId ++ " should pay outstanding balance to " ++ contract.seller.partyId
+		};
+
+		return CounterResponse{
+			counter: state.counter,
+			paymentCount: state.paymentCount,
+		}
+  }
+
+  /**
+	 * When a payment is received we decrement the counter by the amount
+	 * of the payment. If contract.paymentCount payments have been made then the
+	 * contract is completed.
+	 */
+  clause paymentReceived(payment : MonetaryAmountPayment): Response {
+    
+		enforce (state.status = "RUNNING") 
+				else throw ErgoErrorResponse{ message: "Contract is not running." };
+
+		enforce (payment.amount.doubleValue >= 0.0) 
+				else throw ErgoErrorResponse{ message: "Payment must be positive." };
+
+		enforce (payment.amount.currencyCode = contract.amountPerUnit.currencyCode) 
+				else throw ErgoErrorResponse{ message: "Payments must be in the currency of the contract." };
+
+		let status : String =
+				if state.paymentCount + 1.0 >= integerToDouble(contract.paymentCount)
+					then "COMPLETED"
+				else "RUNNING";
+
+		let unitsPaid = doubleToInteger(maxPair(0.0, payment.amount.doubleValue / contract.amountPerUnit.doubleValue));
+		let newCounter = maxPair(0.0, state.counter - integerToDouble(unitsPaid));
+
+		set state CounterState {
+			stateId: state.stateId,
+			status: status,
+			counter: newCounter,
+			paymentCount: state.paymentCount + 1.0
+		};
+			
+		return CounterResponse {
+			counter: state.counter,
+			paymentCount: state.paymentCount,
+		}
+  }
+}

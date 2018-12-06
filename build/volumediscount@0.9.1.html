@@ -1,0 +1,351 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/volumediscount@0.9.1.html" />
+<meta property="og:title" content="volumediscount@0.9.1" />
+<meta property="og:description" content="A sample volume discount contract." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/dP9DJiD038NtEOMN8DevGHKrQazGLUodZac3fdPhUq08k3kG7oH4492bd_ta-PvdRHxLyoaLcA8PY3OX8ehMPvLxGWyFalA9wjPGCdkuxShjK6w4NICwh5PmLIqQ9U9hA4juBW3W1hQI3udWhbNptlb5DqBXUgBH6NRHfyQ_oNvijLTVYxdlNovVoWbuR95K0WvZeUgwesjUPZkwPB8-iltYYLAInudCcBnYpZ5jZb4R6aBwD-6uxGV0GpGAUurixpojy5maEmiR_SOqskSTwtFBNrdMnFN7rtu3" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="volumediscount@0.9.1" />
+<meta name="twitter:description" content="A sample volume discount contract." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/dP9DJiD038NtEOMN8DevGHKrQazGLUodZac3fdPhUq08k3kG7oH4492bd_ta-PvdRHxLyoaLcA8PY3OX8ehMPvLxGWyFalA9wjPGCdkuxShjK6w4NICwh5PmLIqQ9U9hA4juBW3W1hQI3udWhbNptlb5DqBXUgBH6NRHfyQ_oNvijLTVYxdlNovVoWbuR95K0WvZeUgwesjUPZkwPB8-iltYYLAInudCcBnYpZ5jZb4R6aBwD-6uxGV0GpGAUurixpojy5maEmiR_SOqskSTwtFBNrdMnFN7rtu3" />
+<meta name="twitter:image:alt" content="UML diagram of volumediscount@0.9.1 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/volumediscount@0.9.1.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template volumediscount@0.9.1
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.9.1</span>
+                <span class="tag">72e4a00625cc14ee5c9fe8b06bba1f32e62477b2207e9e83f971b1cbe2e4f3e9</span>
+            </div>
+            <p class="subtitle">
+                A sample volume discount contract.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="volumediscount@0.9.1.html" class="dropdown-item is-active">
+                                volumediscount@0.9.1
+                            </a>
+                        
+                            <a href="volumediscount@0.9.0.html" class="dropdown-item ">
+                                volumediscount@0.9.0
+                            </a>
+                        
+                            <a href="volumediscount@0.8.1.html" class="dropdown-item ">
+                                volumediscount@0.8.1
+                            </a>
+                        
+                            <a href="volumediscount@0.8.0.html" class="dropdown-item ">
+                                volumediscount@0.8.0
+                            </a>
+                        
+                            <a href="volumediscount@0.7.0.html" class="dropdown-item ">
+                                volumediscount@0.7.0
+                            </a>
+                        
+                            <a href="volumediscount@0.6.0.html" class="dropdown-item ">
+                                volumediscount@0.6.0
+                            </a>
+                        
+                            <a href="volumediscount@0.5.0.html" class="dropdown-item ">
+                                volumediscount@0.5.0
+                            </a>
+                        
+                            <a href="volumediscount@0.4.0.html" class="dropdown-item ">
+                                volumediscount@0.4.0
+                            </a>
+                        
+                            <a href="volumediscount@0.3.0.html" class="dropdown-item ">
+                                volumediscount@0.3.0
+                            </a>
+                        
+                            <a href="volumediscount@0.2.0.html" class="dropdown-item ">
+                                volumediscount@0.2.0
+                            </a>
+                        
+                            <a href="volumediscount@0.1.1.html" class="dropdown-item ">
+                                volumediscount@0.1.1
+                            </a>
+                        
+                            <a href="volumediscount@0.1.0.html" class="dropdown-item ">
+                                volumediscount@0.1.0
+                            </a>
+                        
+                            <a href="volumediscount@0.0.6.html" class="dropdown-item ">
+                                volumediscount@0.0.6
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/volumediscount@0.9.1.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fvolumediscount%400.9.1%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/dP9DJiD038NtEOMN8DevGHKrQazGLUodZac3fdPhUq08k3kG7oH4492bd_ta-PvdRHxLyoaLcA8PY3OX8ehMPvLxGWyFalA9wjPGCdkuxShjK6w4NICwh5PmLIqQ9U9hA4juBW3W1hQI3udWhbNptlb5DqBXUgBH6NRHfyQ_oNvijLTVYxdlNovVoWbuR95K0WvZeUgwesjUPZkwPB8-iltYYLAInudCcBnYpZ5jZb4R6aBwD-6uxGV0GpGAUurixpojy5maEmiR_SOqskSTwtFBNrdMnFN7rtu3" />
+
+            <div class="content">
+                <p>
+                <h1 id="volumediscount">Volume Discount</h1>
+<p>A sample volume discount clause.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Volume-Based Card Acceptance Agreement [Abbreviated]
+
+This Agreement is by and between Card, Inc., a New York corporation, and you, the Merchant. By accepting the Card, you agree to be bound by the Agreement. 
+Discount means an amount that we charge you for accepting the Card, which amount is: 
+(i) a percentage (Discount Rate) of the face amount of the Charge that you submit, or a flat per-
+Transaction fee, or a combination of both; and/or 
+(ii) a Monthly Flat Fee (if you meet our requirements).
+
+Transaction Processing and Payments. Our Card acceptance, processing, and payment requirements are set forth in the Merchant Regulations. Some requirements are summarized here for ease of reference, but do not supersede the provisions in the Merchant Regulations.
+Payment for Charges. We will pay you, through our agent, according to your payment plan in US dollars for the face amount of Charges submitted from your Establishments less all applicable deductions, rejections, and withholdings, which include: 
+(i) the Discount, 
+(ii) any amounts you owe us or our Affiliates, 
+(iii) any amounts for which we have Chargebacks and 
+(iv) any Credits you submit. Your initial Discount is indicated in the Agreement or otherwise provided to you in writing by us. In addition to your Discount we may charge you additional fees and assessments, as listed in the Merchant Regulations or as otherwise provided to you in writing by us. We may adjust any of these amounts and may change any other amount we charge you for accepting the Card.
+
+SETTLEMENT
+a) Settlement Amount. Our agent will pay you according to your payment plan, as described below, in US dollars for the face amount of Charges submitted from your Establishments less all applicable deductions, rejections, and withholdings, which include: 
+    (i) the Discount, 
+    (ii) any amounts you owe us or our Affiliates, 
+    (iii) any amounts for which we have Chargebacks, and (iv) any Credits you submit. Our agent will subtract the full amount of all applicable deductions, rejections, and withholdings, from this payment to you (or debit your Bank Account), but if it cannot, then you must pay it promptly upon demand.
+b) Discount. The Discount is determined according to the following table:
+
+| Annual Dollar Volume      | Discount             |
+| Less than $1 million      | 3.00%                |
+| $1 million to $10 million | 2.90%                |
+| Greater than $10 million  | 2.80%                |
+
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/volumediscount">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.volumediscount.VolumeDiscountContract",
+    "contractId": "2c2f857e-f58b-4e65-ad3f-a2d0080b622a",
+    "firstVolume": 1,
+    "secondVolume": 10,
+    "firstRate": 3,
+    "secondRate": 2.9,
+    "thirdRate": 2.8
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "30471d21-ee63-11e8-90b2-8532f3de0ed9"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.volumediscount.VolumeDiscountRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.volumediscount.VolumeDiscountRequest",
+    "netAnnualChargeVolume": 83.874,
+    "transactionId": "3046cf00-ee63-11e8-90b2-8532f3de0ed9",
+    "timestamp": "2018-11-22T14:30:41.392Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.volumediscount.VolumeDiscountResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.volumediscount.VolumeDiscountResponse",
+    "discountRate": 43.099,
+    "transactionId": "30471d20-ee63-11e8-90b2-8532f3de0ed9",
+    "timestamp": "2018-11-22T14:30:41.394Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.base.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

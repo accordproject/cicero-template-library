@@ -1,0 +1,322 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/payment-upon-delivery@0.5.1.html" />
+<meta property="og:title" content="payment-upon-delivery@0.5.1" />
+<meta property="og:description" content="This is a one time payment contract upon acceptance of delivery." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/hPB1JiCm44Jl_eezWcZz1LNK24HFY0h11nXdg88SRrZR80luTmnnJXHKHA-puzcT9wz3D1BJu9Hr9WHYsMbZBKit2Z_2HZsQFC17dKRs7Lp_3CbwEubtHRkesZdxACP6Mgtef5ti1F2dr3JqgeZeZDglr6tPbka-PSXtES2vMRzYZt9QRWTEFfBb4AyVDinTs3kVBxi4rBiwGelbygtPGyFs5iBQLfkUpfzV_GtYlBDaO8peRl2K42Q0jujSOF1B9NXmfPyoVwyZ1M4_G5VtVsk4CWuuSeyQUcYHoQxMyDtdx_u0" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="payment-upon-delivery@0.5.1" />
+<meta name="twitter:description" content="This is a one time payment contract upon acceptance of delivery." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hPB1JiCm44Jl_eezWcZz1LNK24HFY0h11nXdg88SRrZR80luTmnnJXHKHA-puzcT9wz3D1BJu9Hr9WHYsMbZBKit2Z_2HZsQFC17dKRs7Lp_3CbwEubtHRkesZdxACP6Mgtef5ti1F2dr3JqgeZeZDglr6tPbka-PSXtES2vMRzYZt9QRWTEFfBb4AyVDinTs3kVBxi4rBiwGelbygtPGyFs5iBQLfkUpfzV_GtYlBDaO8peRl2K42Q0jujSOF1B9NXmfPyoVwyZ1M4_G5VtVsk4CWuuSeyQUcYHoQxMyDtdx_u0" />
+<meta name="twitter:image:alt" content="UML diagram of payment-upon-delivery@0.5.1 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/payment-upon-delivery@0.5.1.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+    <a href="https://github.com/accordproject/cicero-template-library">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+            alt="Fork me on GitHub">
+    </a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template payment-upon-delivery@0.5.1
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">Ergo</span>
+                <span class="tag">^0.9.1</span>
+                <span class="tag">537fe30c82e7b33f0480c220a1caba421b6f79eac07027ae21fa7fd26ca22979</span>
+            </div>
+            <p class="subtitle">
+                This is a one time payment contract upon acceptance of delivery.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="payment-upon-delivery@0.5.1.html" class="dropdown-item is-active">
+                                payment-upon-delivery@0.5.1
+                            </a>
+                        
+                            <a href="payment-upon-delivery@0.5.0.html" class="dropdown-item ">
+                                payment-upon-delivery@0.5.0
+                            </a>
+                        
+                            <a href="payment-upon-delivery@0.4.0.html" class="dropdown-item ">
+                                payment-upon-delivery@0.4.0
+                            </a>
+                        
+                            <a href="payment-upon-delivery@0.3.0.html" class="dropdown-item ">
+                                payment-upon-delivery@0.3.0
+                            </a>
+                        
+                            <a href="payment-upon-delivery@0.2.0.html" class="dropdown-item ">
+                                payment-upon-delivery@0.2.0
+                            </a>
+                        
+                            <a href="payment-upon-delivery@0.1.0.html" class="dropdown-item ">
+                                payment-upon-delivery@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/payment-upon-delivery@0.5.1.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fpayment-upon-delivery%400.5.1%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/hPB1JiCm44Jl_eezWcZz1LNK24HFY0h11nXdg88SRrZR80luTmnnJXHKHA-puzcT9wz3D1BJu9Hr9WHYsMbZBKit2Z_2HZsQFC17dKRs7Lp_3CbwEubtHRkesZdxACP6Mgtef5ti1F2dr3JqgeZeZDglr6tPbka-PSXtES2vMRzYZt9QRWTEFfBb4AyVDinTs3kVBxi4rBiwGelbygtPGyFs5iBQLfkUpfzV_GtYlBDaO8peRl2K42Q0jujSOF1B9NXmfPyoVwyZ1M4_G5VtVsk4CWuuSeyQUcYHoQxMyDtdx_u0" />
+
+            <div class="content">
+                <p>
+                <h1 id="paymentupondelivery">Payment upon delivery</h1>
+<p>This is a one time payment contract upon acceptance of delivery.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Upon delivery and acceptance, "Michael" shall pay to "Diana" the cost of goods (9.99 USD) and the delivery fee (1.99 USD).
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/payment-upon-delivery">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.payment.upondelivery.PaymentUponDeliveryContract",
+    "contractId": "c593dd8a-416d-4edd-bec2-fe887e25413e",
+    "buyer": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Michael"
+    },
+    "seller": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Diana"
+    },
+    "costOfGoods": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 9.99,
+        "currencyCode": "USD"
+    },
+    "deliveryFee": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 1.99,
+        "currencyCode": "USD"
+    }
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "2a89ff60-ee63-11e8-90b2-8532f3de0ed9"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.payment.upondelivery.DeliveryAcceptedRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.payment.upondelivery.DeliveryAcceptedRequest",
+    "transactionId": "2a89d850-ee63-11e8-90b2-8532f3de0ed9",
+    "timestamp": "2018-11-22T14:30:31.765Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.payment.upondelivery.DeliveryAcceptedResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.payment.upondelivery.DeliveryAcceptedResponse",
+    "transactionId": "2a89d851-ee63-11e8-90b2-8532f3de0ed9",
+    "timestamp": "2018-11-22T14:30:31.765Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.PaymentObligation</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 33.657,
+        "currencyCode": "ZMW"
+    },
+    "description": "Consequat reprehenderit officia qui laboris.",
+    "contract": "resource:org.accordproject.payment.upondelivery.PaymentUponDeliveryContract#0280",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9082",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#9670",
+    "deadline": "2018-11-22T14:30:31.766Z",
+    "eventId": "2a89ff61-ee63-11e8-90b2-8532f3de0ed9",
+    "timestamp": "2018-11-22T14:30:31.766Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

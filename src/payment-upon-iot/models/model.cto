@@ -1,0 +1,43 @@
+namespace org.accordproject.payment.iot
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
+import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment.cto
+import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature.cto
+
+import org.accordproject.iot.SingleButtonPress from https://models.accordproject.org/iot/iot.cto
+import org.accordproject.iot.DoubleButtonPress from https://models.accordproject.org/iot/iot.cto
+import org.accordproject.iot.LongButtonPress from https://models.accordproject.org/iot/iot.cto
+
+asset CounterState extends AccordContractState {
+  o ContractLifecycleStatus status
+  o Double counter
+  o Double paymentCount
+}
+
+enum ContractLifecycleStatus {
+  o INITIALIZED
+  o RUNNING
+  o COMPLETED
+}
+
+transaction CounterResponse extends Response {
+  o Double counter
+  o Double paymentCount
+}
+
+transaction MonetaryAmountPayment extends PaymentReceived {
+  o MonetaryAmount amount
+}
+
+/**
+ * The template model
+ */
+asset PaymentUponButtonContract extends AccordContract {
+  o AccordParty buyer
+  o AccordParty seller
+  o MonetaryAmount amountPerUnit
+  o Integer paymentCount
+}

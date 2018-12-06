@@ -1,0 +1,11 @@
+{
+  "$class": "org.accordproject.supplyagreement.AgreementState",
+  "purchaseObligation": {
+    "$class": "org.accordproject.supplyagreement.PurchaseObligation",
+    "requiredPurchase": 1020,
+    "year": 2018,
+    "quarter": 4,
+    "party": "PETER"
+  },
+  "stateId": "org.accordproject.supplyagreement.AgreementState#1"
+}
