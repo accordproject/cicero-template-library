@@ -2307,22 +2307,72 @@
         "type": 1,
         "language": 0
     },
-    "payment-upon-iot@0.1.0": {
-        "uri": "ap://payment-upon-iot@0.1.0#97543f59f8dc433f48307f9828a6d4563be7bf7f5f18c42abdbbc783fb43db7a",
-        "url": "https://templates.accordproject.org/archives/payment-upon-iot@0.1.0.cta",
-        "name": "payment-upon-iot",
-        "description": "This is a payment contract that pays out a fixed amount each time a button is pressed.",
-        "version": "0.1.0",
+    "car-rental-tr@0.5.3": {
+        "uri": "ap://car-rental-tr@0.5.3#0c2bbd82bc83128bc9bcc43805b72c67a6c4bfcd924dc63e20ee0bead543b7b1",
+        "url": "https://templates.accordproject.org/archives/car-rental-tr@0.5.3.cta",
+        "name": "car-rental-tr",
+        "description": "a Simple Car Rental Contract in Turkish Language",
+        "version": "0.5.3",
         "ciceroVersion": "^0.9.1",
         "type": 0,
         "language": 0
     },
-    "payment-upon-iot@0.1.1": {
-        "uri": "ap://payment-upon-iot@0.1.1#c1cf574f4ff5d9ccf84e504f686f52eb8d9f0cbefa9adf14a303699b77fcb78e",
-        "url": "https://templates.accordproject.org/archives/payment-upon-iot@0.1.1.cta",
-        "name": "payment-upon-iot",
-        "description": "This is a payment contract that pays out a fixed amount each time a button is pressed.",
+    "hellomodule@0.1.1": {
+        "uri": "ap://hellomodule@0.1.1#48b7f5d2b6bcbd9528fc20dc2d37655ff180bcf5a8a95982ed4f2bcab4669aef",
+        "url": "https://templates.accordproject.org/archives/hellomodule@0.1.1.cta",
+        "name": "hellomodule",
+        "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
         "version": "0.1.1",
+        "ciceroVersion": "^0.9.7",
+        "type": 1,
+        "language": 0
+    },
+    "helloworld@0.7.2": {
+        "uri": "ap://helloworld@0.7.2#413eeb3db28b837e188e129486a71d35a1a18801451b920a76fb6210bee4f5b4",
+        "url": "https://templates.accordproject.org/archives/helloworld@0.7.2.cta",
+        "name": "helloworld",
+        "description": "This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
+        "version": "0.7.2",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "helloworldstate@0.8.2": {
+        "uri": "ap://helloworldstate@0.8.2#d7e30e8e24440651b0fa17b527a18c76eaed165645a285d53ff0a3dec09dc326",
+        "url": "https://templates.accordproject.org/archives/helloworldstate@0.8.2.cta",
+        "name": "helloworldstate",
+        "description": "This is the stateful Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.",
+        "version": "0.8.2",
+        "ciceroVersion": "^0.9.1",
+        "type": 1,
+        "language": 0
+    },
+    "one-time-payment-tr@0.7.1": {
+        "uri": "ap://one-time-payment-tr@0.7.1#a3c441a0582532da8b5651e2e7e9f9327d2365fb24fc8a7e8631999c7ffb3bf5",
+        "url": "https://templates.accordproject.org/archives/one-time-payment-tr@0.7.1.cta",
+        "name": "one-time-payment-tr",
+        "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
+        "version": "0.7.1",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "online-payment-contract-tr@0.5.2": {
+        "uri": "ap://online-payment-contract-tr@0.5.2#50b68b9808c540382f2f2be7a818a197c6c44ed74eefd3fc1c28780814ee6d1c",
+        "url": "https://templates.accordproject.org/archives/online-payment-contract-tr@0.5.2.cta",
+        "name": "online-payment-contract-tr",
+        "description": "This is an Online Payment Contract prepared in Turkish Language.",
+        "version": "0.5.2",
+        "ciceroVersion": "^0.9.1",
+        "type": 0,
+        "language": 0
+    },
+    "sales-contract-ru@0.5.2": {
+        "uri": "ap://sales-contract-ru@0.5.2#9a9bcfe1b4500b63ab85fbdcbda140982c8c5fffa69fdca27854150b91f15e1f",
+        "url": "https://templates.accordproject.org/archives/sales-contract-ru@0.5.2.cta",
+        "name": "sales-contract-ru",
+        "description": "This is a Sales Contract prepared in Russian Language.",
+        "version": "0.5.2",
         "ciceroVersion": "^0.9.1",
         "type": 0,
         "language": 0

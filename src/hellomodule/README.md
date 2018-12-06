@@ -1,3 +1,3 @@
 # Hello Module
 
-This is the Hello World of Accord Protocol Templates, with two Ergo modules.
+This is the Hello World of Accord Project Templates, with two Ergo modules.
