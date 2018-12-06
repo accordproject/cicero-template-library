@@ -46,7 +46,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
 	/**
 	 * When the contract is signed a payment obligation is emitted
 	 */
-  clause contractSigned(request : ContractSigned) : Response emits PaymentObligation {
+  clause contractSigned(request : ContractSigned) : Response {
 	enforce (state.status = "INITIALIZED") 
 		else throw ErgoErrorResponse{ message: "Contract state is invalid " ++ state.status };
 		
@@ -106,7 +106,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
   /**
 	 * When a long press on a button we emit a payment obligation
 	 */
-  clause requestForPayment(request : LongButtonPress): Response {
+  clause requestForPayment(request : LongButtonPress): Response emits PaymentObligation {
     enforce (state.status = "RUNNING") 
     	else throw ErgoErrorResponse{ message: "Contract is not running." };
 
