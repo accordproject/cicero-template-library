@@ -1,0 +1,11 @@
+{
+    "name": "payment-upon-iot",
+    "version": "0.1.5",
+    "description": "This is a payment contract that pays out a fixed amount each time a button is pressed.",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "ergo",
+        "version": "^0.9.1"
+    }
+}
