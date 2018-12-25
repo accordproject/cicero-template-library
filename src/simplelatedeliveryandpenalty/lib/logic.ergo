@@ -15,20 +15,22 @@
 namespace org.accordproject.simplelatedeliveryandpenalty
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 
 contract SimpleLateDeliveryAndPenalty over SimpleLateDeliveryAndPenaltyContract {
   clause latedeliveryandpenalty(request : SimpleLateDeliveryAndPenaltyRequest) : SimpleLateDeliveryAndPenaltyResponse emits PaymentObligation {
     // Guard against calling late delivery clause too early
     let agreed = request.agreedDelivery;
-    enforce dateTimeIsBefore(agreed,now()) else
+    enforce isBefore(agreed,now()) else
     throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
 
     // Calculate the time difference between current date and agreed upon date
-    let diff = dateTimeDiffDays(now,agreed);
+    let diff = diffWithUnit(now,agreed,"days").amount;
     // Penalty formula
     let penalty =
-      (diff / contract.penaltyDuration.amount) * contract.penaltyPercentage/100.0 * request.goodsValue;
+      (integerToDouble(diff) / integerToDouble(contract.penaltyDuration.amount))
+		* contract.penaltyPercentage/100.0 * request.goodsValue;
     // Penalty may be capped
     let capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
     // Return a Payment Obligation
@@ -43,7 +45,7 @@ contract SimpleLateDeliveryAndPenalty over SimpleLateDeliveryAndPenaltyContract 
 		};
     return SimpleLateDeliveryAndPenaltyResponse{
       penalty: capped,
-      buyerMayTerminate: diff > contract.maximumDelay.amount
+      buyerMayTerminate: diff >i contract.maximumDelay.amount
     }
   }
 }

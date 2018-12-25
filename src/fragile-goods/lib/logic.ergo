@@ -17,6 +17,7 @@ namespace io.clause.demo.fragileGoods
 import org.accordproject.cicero.runtime.*
 import org.accordproject.cicero.contract.*
 import org.accordproject.money.MonetaryAmount
+import org.accordproject.time.*
 
 define function createPaymentObligation(
     acontract:AccordContract,
@@ -63,8 +64,8 @@ contract FragileGoods over FragileGoodsClause {
     with let? finishTime then
       if contract.deliveryLimitDuration.unit = "seconds"
       then
-        let duration = dateTimeDiffSeconds(finishTime, request.startTime);
-        if (duration) > contract.deliveryLimitDuration.amount then
+        let duration = diffWithUnit(finishTime, request.startTime, "seconds");
+        if duration.amount >i contract.deliveryLimitDuration.amount then
           let monetaryAmount = MonetaryAmount{
             doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,
             currencyCode: currency

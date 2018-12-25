@@ -15,6 +15,7 @@
 namespace org.accordproject.supplyagreement
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 import org.accordproject.purchaseorder.*
 
@@ -50,7 +51,7 @@ contract SupplyAgreement over SupplyAgreementContract state AgreementState {
 	}
 
   clause demandforecast(request : ForecastRequest) : ForecastResponse {
-		enforce dateTimeIsBefore(contract.effectiveDate, now());
+		enforce isBefore(contract.effectiveDate, now());
 		enforce isLastDayOfQuarter(now())
 		else throw failure("Forecast was received before the effective date");
 
@@ -61,8 +62,8 @@ contract SupplyAgreement over SupplyAgreementContract state AgreementState {
 			purchaseObligation: some(PurchaseObligation{
 				party: contract.buyer,
 				requiredPurchase: requiredPurchase,
-				year: dateTimeYear(now()),
-				quarter: dateTimeQuarter(now())
+				year: getYear(now()),
+				quarter: getQuarter(now())
 			}),
 			deliveryObligation: none,
 			paymentObligation: none

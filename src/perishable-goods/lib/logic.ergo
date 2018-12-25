@@ -16,6 +16,7 @@ namespace org.accordproject.perishablegoods
 
 import org.accordproject.cicero.contract.*
 import org.accordproject.cicero.runtime.*
+import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 
 // Auxiliary function calculating penalty from temperature readings
@@ -68,7 +69,7 @@ contract PerishableGoods over PerishableGoodsContract {
       currencyCode: contract.unitPrice.currencyCode
     };
     // Guard against requests for payout after the dueDate
-    enforce dateTimeIsBefore(now(),contract.dueDate)
+    enforce isBefore(now(),contract.dueDate)
     else
 			return PriceCalculation{
     	  shipment : request.shipment,
