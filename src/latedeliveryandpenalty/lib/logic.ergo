@@ -52,7 +52,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
 		};
     return LateDeliveryAndPenaltyResponse{
       penalty: capped,
-      buyerMayTerminate: diff >i contract.termination.amount
+      buyerMayTerminate: diff > contract.termination.amount
     }
   }
 }

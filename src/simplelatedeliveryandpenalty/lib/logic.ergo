@@ -45,7 +45,7 @@ contract SimpleLateDeliveryAndPenalty over SimpleLateDeliveryAndPenaltyContract 
 		};
     return SimpleLateDeliveryAndPenaltyResponse{
       penalty: capped,
-      buyerMayTerminate: diff >i contract.maximumDelay.amount
+      buyerMayTerminate: diff > contract.maximumDelay.amount
     }
   }
 }

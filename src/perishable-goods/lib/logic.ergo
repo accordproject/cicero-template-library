@@ -54,8 +54,8 @@ define function calculateHumPenalty(minHumidity : Double,
 }
 
 define function unitsWithinBounds(units : Integer, min : Integer, max : Integer) : Boolean {
-  return min <=i units
-     and units <=i max
+  return min <= units
+     and units <= max
 }
 
 contract PerishableGoods over PerishableGoodsContract {
