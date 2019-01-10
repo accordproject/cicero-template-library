@@ -64,7 +64,7 @@ contract FragileGoods over FragileGoodsClause {
     with let? finishTime then
       if contract.deliveryLimitDuration.unit = "seconds"
       then
-        let duration = diffWithUnit(finishTime, request.startTime, "seconds");
+        let duration = diffDurationAs(finishTime, request.startTime, "seconds");
         if duration.amount > contract.deliveryLimitDuration.amount then
           let monetaryAmount = MonetaryAmount{
             doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,

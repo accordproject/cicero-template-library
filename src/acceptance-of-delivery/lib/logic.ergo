@@ -26,7 +26,7 @@ contract AcceptanceOfDelivery over AcceptanceOfDeliveryClause {
     ;
 
     let status =
-      if isAfter(now(), add(received, Duration{ amount: contract.businessDays, unit: "days"}))
+      if isAfter(now(), addDuration(received, Duration{ amount: contract.businessDays, unit: "days"}))
       then "OUTSIDE_INSPECTION_PERIOD"
       else if request.inspectionPassed
       then "PASSED_TESTING"
