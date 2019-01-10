@@ -26,11 +26,10 @@ contract SimpleLateDeliveryAndPenalty over SimpleLateDeliveryAndPenaltyContract 
     throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
 
     // Calculate the time difference between current date and agreed upon date
-    let diff = diffDurationAs(now,agreed,"days").amount;
+    let diff : Duration = diffDurationAs(now,agreed,"days");
+    let diffRatio : Double = divideDuration(diff,durationAs(contract.penaltyDuration,"days"));
     // Penalty formula
-    let penalty =
-      (integerToDouble(diff) / integerToDouble(contract.penaltyDuration.amount))
-		* contract.penaltyPercentage/100.0 * request.goodsValue;
+    let penalty = diffRatio * contract.penaltyPercentage/100.0 * request.goodsValue;
     // Penalty may be capped
     let capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
     // Return a Payment Obligation
@@ -45,7 +44,7 @@ contract SimpleLateDeliveryAndPenalty over SimpleLateDeliveryAndPenaltyContract 
 		};
     return SimpleLateDeliveryAndPenaltyResponse{
       penalty: capped,
-      buyerMayTerminate: diff > contract.maximumDelay.amount
+      buyerMayTerminate: diff.amount > durationAs(contract.maximumDelay,"days").amount
     }
   }
 }
