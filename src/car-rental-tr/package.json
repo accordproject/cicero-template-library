@@ -1,10 +1,10 @@
 {
     "name": "car-rental-tr",
-    "version": "0.5.3",
+    "version": "0.6.0",
     "description": "a Simple Car Rental Contract in Turkish Language",
     "license": "Apache-2.0",
     "cicero": {
-      "version": "^0.9.1",
+      "version": "^0.10.0",
       "language": "ergo",
       "template": "contract"
     }

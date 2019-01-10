@@ -1,11 +1,11 @@
 {
     "name": "helloworld",
-    "version": "0.7.2",
+    "version": "0.8.0",
     "description": "This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
     "license": "Apache-2.0",
     "cicero": {
         "template": "clause",
         "language": "ergo",
-        "version": "^0.9.1"
+        "version": "^0.10.0"
     }
 }
