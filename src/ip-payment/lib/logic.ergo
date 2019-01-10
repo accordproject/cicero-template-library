@@ -17,10 +17,6 @@ namespace org.accordproject.ippayment
 import org.accordproject.cicero.runtime.*
 import org.accordproject.time.*
 
-define function calculateDueDate(initialDate:DateTime, amount:Long) : DateTime {
-  return addDuration(initialDate, Duration{amount:amount, unit:"days"})
-}
-
 contract IPPayment over IntellectualPropertyPaymentClause {
   clause execute(request : PaymentRequest) : PayOut {
     let royaltiesAmount = request.netSaleRevenue * contract.royaltyRate / 100.00;
@@ -31,12 +27,12 @@ contract IPPayment over IntellectualPropertyPaymentClause {
     with let? grantedBy then
       return PayOut{
         totalAmount: totalAmount,
-        dueBy: calculateDueDate(grantedBy,contract.paymentPeriodWithPermission.amount)
+        dueBy: addDuration(grantedBy,contract.paymentPeriodWithPermission)
       }
     else 
       return PayOut{
         totalAmount: totalAmount,
-        dueBy: calculateDueDate(endOf(now(), "quarters"), contract.paymentPeriod.amount)
+        dueBy: addDuration(endOf(now(), "quarters"), contract.paymentPeriod)
       }
   }
 }
