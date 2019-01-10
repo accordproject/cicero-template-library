@@ -30,15 +30,19 @@ describe('Logic', () => {
 
     const rootDir = path.resolve(__dirname, '..');
     const clauseText = fs.readFileSync(path.resolve(rootDir, 'sample.txt'), 'utf8');
+    const clauseTextAlt = fs.readFileSync(path.resolve(rootDir, 'sample-minutes.txt'), 'utf8');
     
     let template;
     let clause;
+    let clauseAlt;
     let engine;    
 
     beforeEach( async function() {
         template = await Template.fromDirectory(rootDir);
         clause = new Clause(template);
         clause.parse(clauseText);
+        clauseAlt = new Clause(template);
+        clauseAlt.parse(clauseTextAlt);
         engine = new Engine();
     });
     
@@ -58,6 +62,27 @@ describe('Logic', () => {
             state.$class = 'org.accordproject.cicero.contract.AccordContractState';
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.amount.doubleValue.should.equal(790);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.doubleValue.should.equal(790);
+            result.emit[0].amount.currencyCode.should.equal("USD");
+        });
+
+        it('should execute a completed delivery contract with all deductions (using minutes)', async function () {
+            const request = {
+                "$class":"io.clause.demo.fragileGoods.DeliveryUpdate",
+                "startTime":"2018-01-01T16:34:30.000Z",
+                "finishTime":"2018-01-01T16:44:31.000Z",
+                "status":"ARRIVED",
+                "accelerometerReadings":[0.2,0.6,-0.3,-0.7,0.1],
+                "transactionId":"d8b14719-ae23-4867-a4c7-7c0199a74cc3",
+                "timestamp":"2018-01-02T08:28:42.248Z"
+            };
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            const result = await engine.execute(clauseAlt, request, state);
             result.should.not.be.null;
             result.response.amount.doubleValue.should.equal(790);
             result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
@@ -122,6 +147,27 @@ describe('Logic', () => {
             result.response.amount.doubleValue.should.equal(1000);
             result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
             result.emit[0].amount.doubleValue.should.equal(1000);
+            result.emit[0].amount.currencyCode.should.equal("USD");
+        });
+
+        it('should execute a completed delivery contract with no late delivery deduction (using minutes)', async function () {
+            const request = {
+                "$class":"io.clause.demo.fragileGoods.DeliveryUpdate",
+                "startTime":"2018-01-01T16:34:30.000Z",
+                "finishTime":"2018-01-01T16:44:29.000Z",
+                "status":"ARRIVED",
+                "accelerometerReadings":[0.2,0.6,-0.3,-0.7,0.1],
+                "transactionId":"d8b14719-ae23-4867-a4c7-7c0199a74cc3",
+                "timestamp":"2018-01-02T08:28:42.248Z"
+            };
+            const state = {};
+            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            const result = await engine.execute(clauseAlt, request, state);
+            result.should.not.be.null;
+            result.response.amount.doubleValue.should.equal(990);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.doubleValue.should.equal(990);
             result.emit[0].amount.currencyCode.should.equal("USD");
         });
 
