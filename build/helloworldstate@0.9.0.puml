@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.helloworldstate.MyRequest << (T,yellow) >> {
+   + String input
+}
+org.accordproject.helloworldstate.MyRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.helloworldstate.MyResponse << (T,yellow) >> {
+   + String output
+}
+org.accordproject.helloworldstate.MyResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.helloworldstate.HelloWorldState << (A,green) >> {
+   + Double counter
+}
+org.accordproject.helloworldstate.HelloWorldState --|> org.accordproject.cicero.contract.AccordContractState
+class org.accordproject.helloworldstate.HelloWorldClause << (A,green) >> {
+   + String name
+}
+org.accordproject.helloworldstate.HelloWorldClause --|> org.accordproject.cicero.contract.AccordClause
+@enduml
