@@ -2766,5 +2766,15 @@
         "ciceroVersion": "^0.10.0",
         "type": 0,
         "language": 0
+    },
+    "promissory-note@0.9.1": {
+        "uri": "ap://promissory-note@0.9.1#002582e7c4caa771b231a62f0a1fc0f4f37a7a5d0f7012506307c58a3f9bbd8e",
+        "url": "https://templates.accordproject.org/archives/promissory-note@0.9.1.cta",
+        "name": "promissory-note",
+        "description": "A promissory note",
+        "version": "0.9.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 0
     }
 }
