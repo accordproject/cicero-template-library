@@ -2706,5 +2706,65 @@
         "ciceroVersion": "^0.10.0",
         "type": 0,
         "language": 0
+    },
+    "fragile-goods@0.9.1": {
+        "uri": "ap://fragile-goods@0.9.1#57cd64ae227cc2fc27abb4308eb38f9224945aa1c90c2dc3aa217215639af877",
+        "url": "https://templates.accordproject.org/archives/fragile-goods@0.9.1.cta",
+        "name": "fragile-goods",
+        "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
+        "version": "0.9.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 0
+    },
+    "ip-payment@0.8.1": {
+        "uri": "ap://ip-payment@0.8.1#17673fccee1f8e6a79d399e16aaf8228e70f3cb4c2ec6ab334133162114be4bb",
+        "url": "https://templates.accordproject.org/archives/ip-payment@0.8.1.cta",
+        "name": "ip-payment",
+        "description": "This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements.",
+        "version": "0.8.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 1,
+        "language": 0
+    },
+    "latedeliveryandpenalty@0.9.1": {
+        "uri": "ap://latedeliveryandpenalty@0.9.1#d2894e88fc41961e6b7e37421f552716dcf3b59678bdd523e696a15126e66986",
+        "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.9.1.cta",
+        "name": "latedeliveryandpenalty",
+        "description": "A sample Late Delivery And Penalty clause.",
+        "version": "0.9.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 0
+    },
+    "perishable-goods@0.9.1": {
+        "uri": "ap://perishable-goods@0.9.1#50bae344e90649943de7c34164626812689e3f07b7ace314f1d12a3422c96312",
+        "url": "https://templates.accordproject.org/archives/perishable-goods@0.9.1.cta",
+        "name": "perishable-goods",
+        "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+        "version": "0.9.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 0
+    },
+    "simplelatedeliveryandpenalty@0.3.1": {
+        "uri": "ap://simplelatedeliveryandpenalty@0.3.1#2d2b370c5423782e3ba6a65d3855469f868f6f397c7e61d14ced2e9d2dcb80a8",
+        "url": "https://templates.accordproject.org/archives/simplelatedeliveryandpenalty@0.3.1.cta",
+        "name": "simplelatedeliveryandpenalty",
+        "description": "A Late Delivery And Penalty clause (simple).",
+        "version": "0.3.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 0
+    },
+    "supplyagreement-perishable-goods@0.10.1": {
+        "uri": "ap://supplyagreement-perishable-goods@0.10.1#68f451ec6d680e7bee8e2c8ffe1228df7f96536057d3856afe6fd0e8d8fa3355",
+        "url": "https://templates.accordproject.org/archives/supplyagreement-perishable-goods@0.10.1.cta",
+        "name": "supplyagreement-perishable-goods",
+        "description": "This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+        "version": "0.10.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 0
     }
 }
