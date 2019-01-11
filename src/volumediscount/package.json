@@ -1,11 +1,11 @@
 {
     "name": "volumediscount",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "description": "A sample volume discount contract.",
     "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",
-        "version": "^0.9.1"
+        "version": "^0.10.0"
     }
 }

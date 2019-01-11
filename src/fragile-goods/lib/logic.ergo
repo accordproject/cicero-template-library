@@ -17,6 +17,7 @@ namespace io.clause.demo.fragileGoods
 import org.accordproject.cicero.runtime.*
 import org.accordproject.cicero.contract.*
 import org.accordproject.money.MonetaryAmount
+import org.accordproject.time.*
 
 define function createPaymentObligation(
     acontract:AccordContract,
@@ -61,28 +62,20 @@ contract FragileGoods over FragileGoodsClause {
 
     match request.finishTime
     with let? finishTime then
-      if contract.deliveryLimitDuration.unit = "seconds"
-      then
-        let duration = dateTimeDiffSeconds(finishTime, request.startTime);
-        if (duration) > contract.deliveryLimitDuration.amount then
-          let monetaryAmount = MonetaryAmount{
-            doubleValue: amount - contract.lateDeliveryPenalty.doubleValue,
-            currencyCode: currency
-          };
-          emit createPaymentObligation(contract,contract.seller,contract.buyer,monetaryAmount);
-          return PayOut{
-            amount: monetaryAmount
-          }
-        else 
-          let monetaryAmount = MonetaryAmount{
-            doubleValue: amount,
-            currencyCode: currency
-          };
-          emit createPaymentObligation(contract,contract.seller,contract.buyer,monetaryAmount);
-          return PayOut{ 
-            amount: monetaryAmount
-          }
-      else throw ErgoErrorResponse{ message: "Unit not implemented" }
+      let deliveryDuration = diffDurationAs(finishTime, request.startTime, "seconds");
+      let limitDuration = durationAs(contract.deliveryLimitDuration, "seconds");
+      let latePenalty =
+        if deliveryDuration.amount > limitDuration.amount
+        then contract.lateDeliveryPenalty.doubleValue
+        else 0.0;
+      let monetaryAmount = MonetaryAmount{
+        doubleValue: amount - latePenalty,
+        currencyCode: currency
+      };
+      emit createPaymentObligation(contract,contract.seller,contract.buyer,monetaryAmount);
+      return PayOut{
+        amount: monetaryAmount
+      }
     else throw ErgoErrorResponse{ message: "Finish time not present" }
   }
 }

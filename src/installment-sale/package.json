@@ -1,12 +1,12 @@
 {
     "name": "installment-sale",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "description": "This is a clause for a simple installment sale.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",
-        "version": "^0.9.1"
+        "version": "^0.10.0"
     }
 }

@@ -39,7 +39,6 @@
                 <th>Description</th>
                 <th>Cicero Version</th>
                 <th>Type</th>
-                <th>Language</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +48,6 @@
                 <td>{{val.description}}</td>
                 <td>{{val.ciceroVersion}}</td>
                 <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
-                <td>{% if val.language === 0 %}Ergo{% else %}JavaScript{% endif %}</td>
                 {% endfor %}
             </tbody>            
             <tfoot>
@@ -58,7 +56,6 @@
                 <th>Description</th>
                 <th>Cicero Version</th>
                 <th>Type</th>
-                <th>Language</th>
                 </tr>
             </tfoot>
             </table>

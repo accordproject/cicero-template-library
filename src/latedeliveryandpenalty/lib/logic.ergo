@@ -15,13 +15,14 @@
 namespace org.accordproject.latedeliveryandpenalty
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 
 contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
   clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse emits PaymentObligation {
     // Guard against calling late delivery clause too early
     let agreed = request.agreedDelivery;
-    enforce dateTimeIsBefore(agreed,now()) else
+    enforce isBefore(agreed,now()) else
     throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
 
     enforce !contract.forceMajeure or !request.forceMajeure else
@@ -32,10 +33,10 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
     ;
 
     // Calculate the time difference between current date and agreed upon date
-    let diff = dateTimeDiffDays(now,agreed);
+    let diff = diffDurationAs(now,agreed,"days");
+    let diffRatio = divideDuration(diff,durationAs(contract.penaltyDuration,"days"));
     // Penalty formula
-    let penalty =
-      (diff / contract.penaltyDuration.amount) * contract.penaltyPercentage/100.0 * request.goodsValue;
+    let penalty = diffRatio * contract.penaltyPercentage/100.0 * request.goodsValue;
     // Penalty may be capped
     let capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
     // Return a Payment Obligation
@@ -50,7 +51,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
 		};
     return LateDeliveryAndPenaltyResponse{
       penalty: capped,
-      buyerMayTerminate: diff > contract.termination.amount
+      buyerMayTerminate: diff.amount > durationAs(contract.termination,"days").amount
     }
   }
 }

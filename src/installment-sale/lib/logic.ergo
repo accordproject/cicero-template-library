@@ -31,7 +31,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
 
   clause PayInstallment(request : Installment) : Balance emits PaymentObligation {
     //enforce (state.status = "WaitingForFirstDayOfNextMonth"); // Make sure this is only called in the right state
-    enforce (contract.MIN_PAYMENT <= state.balance_remaining) and (state.next_payment_month <i 23);
+    enforce (contract.MIN_PAYMENT <= state.balance_remaining) and (state.next_payment_month < 23);
     enforce (contract.MIN_PAYMENT <= request.amount); // Underpaying is forbidden
     enforce (request.amount <= state.balance_remaining); // overpaying is forbidden. this is NOT checked statically.
 
@@ -44,7 +44,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
       status: "WaitingForFirstDayOfNextMonth",
       balance_remaining: balance,
       total_paid: total_paid,
-      next_payment_month: state.next_payment_month +i 1
+      next_payment_month: state.next_payment_month + 1
     };
     emit PaymentObligation{
 			contract: contract,

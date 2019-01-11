@@ -15,6 +15,7 @@
 namespace org.accordproject.demandforecast
 
 import org.accordproject.cicero.runtime.*
+import org.accordproject.time.*
 
 define function isLastDayOfQuarter(timestamp : DateTime) : Boolean {
     // Keep always true for testing
@@ -28,8 +29,8 @@ contract DemandForecast over DemandForecastClause {
     
     return BindingResponse{
       requiredPurchase : request.supplyForecast * (contract.minimumPercentage / 100.0),
-      year : dateTimeYear(now()),
-      quarter : dateTimeQuarter(now())
+      year : getYear(now()),
+      quarter : getQuarter(now())
     }
   }
 }
