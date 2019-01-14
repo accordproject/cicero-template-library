@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "node run.js",
-    "test": "nyc --exclude-after-remap=false mocha ./src/**/test/*.js --timeout 20000 ",
+    "test": "nyc --exclude-after-remap=false mocha ./src/**/test/*.js ",
     "generate": "SKIP_TESTS=true node run.js"
   },
   "nyc": {
@@ -22,8 +22,8 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.10.0",
-    "@accordproject/cicero-engine": "0.10.0",
+    "@accordproject/cicero-core": "0.10.1",
+    "@accordproject/cicero-engine": "0.10.1",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "^4.1.2",
