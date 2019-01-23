@@ -1,0 +1,8 @@
+{
+  "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceRequest",
+  "invoiceDue": "January 17, 2018 03:24:00",
+    "amountDue": {
+        "doubleValue": 200,
+        "currencyCode": "USD"
+    }
+}
