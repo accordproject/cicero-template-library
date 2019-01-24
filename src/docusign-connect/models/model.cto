@@ -1,0 +1,24 @@
+namespace com.docusign.connect.counter
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import com.docusign.connect.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect.cto
+
+transaction MyResponse extends Response {
+  o String output
+  o Integer counter
+}
+
+asset DocuSignEnvelopeCounterState extends AccordContractState {
+  o Integer counter
+}
+
+/**
+ * The template model
+ */
+asset DocuSignEnvelopeCounterClause extends AccordContract {
+  /**
+   * The status of the envelope
+   */
+  o String status
+}
