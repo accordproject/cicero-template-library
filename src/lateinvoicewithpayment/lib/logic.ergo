@@ -1,0 +1,52 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.lateinvoicewithpayment
+
+import org.accordproject.cicero.runtime.*
+import org.accordproject.time.*
+import org.accordproject.money.MonetaryAmount
+
+define function lateMessage(d:Duration) : String {
+  return "Invoice was received " ++ toString(d.amount) ++ " " ++ d.unit ++ " late"
+}
+
+contract LateInvoice over LateInvoiceContract {
+  clause lateinvoice(request : LateInvoiceRequest) : LateInvoiceResponse emits PaymentObligation {
+    
+    // Calculate the time difference between current date and invoice due date
+    let diff = diffDurationAs(now(),request.invoiceDue,contract.maximumDelay.unit);
+
+    // Enforce that the invoice has been recieved on time, otherwise terminate
+    enforce diff.amount <= contract.maximumDelay.amount
+    else
+      return LateInvoiceResponse{
+        paymentRequired: false,
+        cause: some(lateMessage(diff))
+    };
+
+    emit PaymentObligation{
+      contract: contract,
+      promisor: some(contract.purchaser),
+      promisee: some(contract.supplier),
+      deadline: none,
+      amount: request.amountDue,
+      description: contract.purchaser.partyId ++ " should pay invoice amount to " ++ contract.supplier.partyId
+    };
+    return LateInvoiceResponse{
+      paymentRequired: true,
+      cause: none
+    }
+  }
+}

@@ -2776,5 +2776,15 @@
         "ciceroVersion": "^0.10.0",
         "type": 0,
         "language": 0
+    },
+    "lateinvoicewithpayment@0.1.0": {
+        "uri": "ap://lateinvoicewithpayment@0.1.0#3681762e6d7414225d2fe85759c502dcab145b03373f45877efeda39d62f6164",
+        "url": "https://templates.accordproject.org/archives/lateinvoicewithpayment@0.1.0.cta",
+        "name": "lateinvoicewithpayment",
+        "description": "A sample Late invoice clause which emits a payment obligation.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 0
     }
 }

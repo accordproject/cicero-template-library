@@ -1,0 +1,1 @@
+2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".
