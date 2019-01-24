@@ -1,0 +1,54 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace com.docusign.connect.counter
+
+import org.accordproject.cicero.runtime.*
+import com.docusign.connect.DocuSignEnvelopeInformation
+
+contract DocuSignEnvelopeCounter over DocuSignEnvelopeCounterClause state DocuSignEnvelopeCounterState {
+
+  // initialize the state counter
+  clause init(request : Request) : Response {
+    set state DocuSignEnvelopeCounterState {
+      stateId: "com.docusign.connect.clause.DocuSignEnvelopeCounterState",
+      counter: 0
+    };
+    return Response{}
+  }
+
+  // count envelopes with a given status
+  clause connectEvent(request : DocuSignEnvelopeInformation) : MyResponse emits NotificationObligation {
+
+    let newCounter = if request.envelopeStatus.status = contract.status then state.counter+1 else state.counter;
+    set state DocuSignEnvelopeCounterState {
+      stateId: "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
+      counter: newCounter
+    };
+
+      emit NotificationObligation {
+        title: "Contracts with status " ++ contract.status,
+        message: "Have received " ++ toString(state.counter) ++ " contracts with status " ++ contract.status,
+        contract: contract,
+        promisor: none,
+        promisee: none,
+        deadline: none,
+      };
+
+    return MyResponse {
+      output: "Have received " ++ toString(state.counter) ++ " contracts with status " ++ contract.status,
+      counter: state.counter
+    }
+  }
+}
