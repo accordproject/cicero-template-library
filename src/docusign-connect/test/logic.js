@@ -44,7 +44,7 @@ describe('Logic', () => {
     
     describe('#Count', async function() {
 
-        it('should count completed envelopes', async function() {
+        it('should count completed envelopes and emit a notification', async function() {
             const request =
             {
                 "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
@@ -63,9 +63,13 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.output.should.equal('Have received 1.0 contracts with status Completed');
+            result.emit.length.should.equal(1);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.NotificationObligation');
+            result.emit[0].title.should.equal('Contracts with status Completed');
+            result.emit[0].message.should.equal('Have received 1.0 contracts with status Completed');
         });
 
-        it('should not count voided envelopes', async function() {
+        it('should not count voided envelopes and not emit a notification', async function() {
             const request =
             {
                 "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
@@ -84,6 +88,33 @@ describe('Logic', () => {
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.output.should.equal('Have received 1.0 contracts with status Completed');
+            result.emit.length.should.equal(0);
         });
+
+        it('should count one more completed envelopes and emit a notification', async function() {
+            const request =
+            {
+                "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
+                "envelopeStatus": {
+                    "$class" : "com.docusign.connect.EnvelopeStatus",
+                    "status" : "Completed"
+                    }
+            }
+            
+            const state = {
+                "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
+                "stateId": "0",
+                "counter" : 1
+            }
+            
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.output.should.equal('Have received 2.0 contracts with status Completed');
+            result.emit.length.should.equal(1);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.NotificationObligation');
+            result.emit[0].title.should.equal('Contracts with status Completed');
+            result.emit[0].message.should.equal('Have received 2.0 contracts with status Completed');
+        });
+
     });
 });
