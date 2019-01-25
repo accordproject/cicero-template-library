@@ -2786,5 +2786,15 @@
         "ciceroVersion": "^0.10.0",
         "type": 0,
         "language": 0
+    },
+    "docusign-connect@0.1.0": {
+        "uri": "ap://docusign-connect@0.1.0#526632f99e9cafb1fb5121f31da8776b68cb9793e70a4dd29c9db3fe3469dd58",
+        "url": "https://templates.accordproject.org/archives/docusign-connect@0.1.0.cta",
+        "name": "docusign-connect",
+        "description": "Counts events from DocuSign connect with a given envelope status.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.10.1",
+        "type": 0,
+        "language": 0
     }
 }

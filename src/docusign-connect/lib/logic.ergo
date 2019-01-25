@@ -17,6 +17,17 @@ namespace com.docusign.connect.counter
 import org.accordproject.cicero.runtime.*
 import com.docusign.connect.DocuSignEnvelopeInformation
 
+define function buildMessage(counter: Integer, status: String) {
+  return "Have received " ++ toString(counter) ++ " contracts with status " ++ status
+}
+
+define function buildResponse(counter: Integer, status: String) {
+  return MyResponse {
+    output: buildMessage(counter, status),
+    counter: counter
+  }
+}
+
 contract DocuSignEnvelopeCounter over DocuSignEnvelopeCounterClause state DocuSignEnvelopeCounterState {
 
   // initialize the state counter
@@ -31,24 +42,24 @@ contract DocuSignEnvelopeCounter over DocuSignEnvelopeCounterClause state DocuSi
   // count envelopes with a given status
   clause connectEvent(request : DocuSignEnvelopeInformation) : MyResponse emits NotificationObligation {
 
-    let newCounter = if request.envelopeStatus.status = contract.status then state.counter+1 else state.counter;
+    enforce request.envelopeStatus.status = contract.status
+    else return buildResponse(state.counter, contract.status);
+    
+    let newCounter = state.counter+1;
     set state DocuSignEnvelopeCounterState {
       stateId: "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
       counter: newCounter
     };
 
-      emit NotificationObligation {
-        title: "Contracts with status " ++ contract.status,
-        message: "Have received " ++ toString(state.counter) ++ " contracts with status " ++ contract.status,
-        contract: contract,
-        promisor: none,
-        promisee: none,
-        deadline: none,
-      };
+    emit NotificationObligation {
+      title: "Contracts with status " ++ contract.status,
+      message: buildMessage(state.counter, contract.status),
+      contract: contract,
+      promisor: none,
+      promisee: none,
+      deadline: none,
+    };
 
-    return MyResponse {
-      output: "Have received " ++ toString(state.counter) ++ " contracts with status " ++ contract.status,
-      counter: state.counter
-    }
+    return buildResponse(state.counter, contract.status)
   }
 }
