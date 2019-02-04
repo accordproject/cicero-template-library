@@ -1,0 +1,11 @@
+{
+    "name": "full-contract",
+    "version": "0.10.0",
+    "description": "An example full contract template.",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "ergo",
+        "version": "^0.10.0"
+    }
+}

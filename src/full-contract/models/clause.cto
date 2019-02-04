@@ -1,0 +1,29 @@
+namespace org.accordproject.servicelevelagreement
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.time.Period from https://models.accordproject.org/v2.0/time.cto
+
+asset TwoPartyDefinition extends AccordClause {
+  o AccordParty partyA
+  o AccordParty partyB
+}
+
+asset Term extends AccordClause {
+  o Period timePeriod
+}
+
+asset SignatureBlock extends AccordClause {
+    o AccordParty signatory
+}
+
+asset TwoPartySignatureBlock extends AccordClause {
+    o TwoPartyDefinition twoPartyDefinition
+}
+
+asset ServiceLevelAgreementContract extends AccordContract {
+  o TwoPartyDefinition twoPartyDefinition
+  o Term term
+  o TwoPartySignatureBlock twoPartySignatureBlock
+}

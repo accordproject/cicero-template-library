@@ -1,0 +1,95 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.servicelevelagreement
+
+import org.accordproject.cicero.runtime.*
+import org.accordproject.cicero.contract.*
+import org.accordproject.money.MonetaryAmount
+
+// Safety checking
+define function toFixed(credit : Double) : Double {
+  return max([0.0,floor(credit * 100.00 + 0.5) / 100.00])
+}
+// Function for Payment Obligations
+define function createPaymentObligation(
+    acontract:AccordContract,
+    serviceProvider:AccordParty,
+    serviceConsumer:AccordParty,
+    amount: MonetaryAmount
+  ) : PaymentObligation {
+  return
+  
+    PaymentObligation{
+      contract: acontract,
+      promisor: some(serviceProvider),
+      promisee: some(serviceConsumer),
+      deadline: none,
+      amount: amount,
+      description:
+        "payment owed by "
+          ++ serviceProvider.partyId
+          ++ " to " ++ serviceConsumer.partyId
+          ++ " for delivery of service downtimes"
+    }
+  }
+contract ServiceLevelAgreement over ServiceLevelAgreementContract {
+  clause invoice(request : MonthSummary) : InvoiceCredit emits PaymentObligation {
+   // Pre-conditions checking
+    enforce contract.availability1 >= 0.0 
+        and contract.serviceCredit1.doubleValue >= 0.0 
+        and contract.availability2 >= 0.0
+        and contract.serviceCredit2.doubleValue >= 0.0
+    else throw ErgoErrorResponse{ message: "Template variables must not be negative." };
+
+    enforce request.monthlyServiceLevel >= 0.0
+        and request.monthlyServiceLevel <= 100.0
+    else throw ErgoErrorResponse{ message: "A service level must be at least 0% and at most 100%." };
+    //
+    // Section 3
+    //
+
+    let monthlyCredit =
+      // Annex 1, schedule - row 2
+      if request.monthlyServiceLevel < contract.availability2
+      then (contract.serviceCredit2.doubleValue / 100.0) * request.monthlyCharge
+      // Annex 1, schedule - row 1
+      else if (request.monthlyServiceLevel < contract.availability1)
+      then (contract.serviceCredit1.doubleValue / 100.0) * request.monthlyCharge
+      else 0.0;
+
+    // Clause 3.3
+    let monthlyCredit = min([monthlyCredit, (contract.monthlyCapPercentage  / 100.0 ) * request.monthlyCharge]);
+
+    // Clause 3.4
+    let yearlyCreditCap = ( contract.yearlyCapPercentage / 100.0) * (request.last11MonthCharge + request.monthlyCharge);
+    let monthlyCredit = min([monthlyCredit, yearlyCreditCap - request.last11MonthCredit]);
+
+    // Payment Obligations
+    enforce (monthlyCredit > 0.0)
+      else return InvoiceCredit{
+        monthlyCredit: 0.0
+      };
+    
+    let monetaryAmount = MonetaryAmount{
+        doubleValue : monthlyCredit,
+        currencyCode : contract.serviceCredit1.currencyCode
+    };
+    emit createPaymentObligation(contract,contract.serviceProvider,contract.serviceConsumer,monetaryAmount);
+    return InvoiceCredit{
+      monthlyCredit: toFixed(monthlyCredit)    
+    }
+  }
+}
+
