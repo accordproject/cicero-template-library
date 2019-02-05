@@ -40,7 +40,6 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
     // Penalty may be capped
     let capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
     // Return a Payment Obligation
-    // Return the response with the penalty and termination determination
     emit PaymentObligation{
 			contract: contract,
 			promisor: some(contract.buyer),
@@ -49,6 +48,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
 			amount: MonetaryAmount{ doubleValue: capped, currencyCode: "USD" },
 			description: contract.buyer.partyId ++ " should pay penalty amount to " ++ contract.seller.partyId
 		};
+    // Return the response with the penalty and termination determination
     return LateDeliveryAndPenaltyResponse{
       penalty: capped,
       buyerMayTerminate: diff.amount > durationAs(contract.termination,"days").amount
