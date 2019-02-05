@@ -1,11 +1,17 @@
 {
     "name": "docusign-connect",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Counts events from DocuSign connect with a given envelope status.",
     "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",
         "version": "^0.10.1"
+    },
+    "devDependencies": {
+        "mocha": "5.2.0"
+    },
+    "scripts": {
+        "test": "mocha"
     }
 }

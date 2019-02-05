@@ -1,11 +1,17 @@
 {
-  "name": "full-payment-upon-demand",
-  "version": "0.3.0",
-  "description": "This is a one-time full payment clause applicable on demand.",
-  "license": "Apache-2.0",
-  "cicero": {
-    "template": "contract",
-    "language": "ergo",
-    "version": "^0.10.0"
-  }
+    "name": "full-payment-upon-demand",
+    "version": "0.3.1",
+    "description": "This is a one-time full payment clause applicable on demand.",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "ergo",
+        "version": "^0.10.0"
+    },
+    "devDependencies": {
+        "mocha": "5.2.0"
+    },
+    "scripts": {
+        "test": "mocha"
+    }
 }
