@@ -8,9 +8,18 @@
         "version": "^0.10.0"
     },
     "devDependencies": {
+<<<<<<< HEAD
         "cucumber": "^5.1.0"
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
     }
 }
+=======
+        "mocha": "5.2.0"
+    },
+    "scripts": {
+        "test": "mocha"
+    }
+}
+>>>>>>> (chore) Enable back mocha for all the not-yet-cucumber templates
