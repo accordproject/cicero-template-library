@@ -22,8 +22,82 @@ asset TwoPartySignatureBlock extends AccordClause {
     o TwoPartyDefinition twoPartyDefinition
 }
 
+concept CompanyDetails {
+  o String name
+  o String companyAddress
+  o String addressLine2
+  o String addressLine3
+  o String keyContactName
+  o String telephone
+  o String email
+}
+
+enum Priority {
+  o HIGH
+  o MEDIUM
+  o LOW
+}
+
+concept CoverageItem {
+  o String itemType
+  o Integer count
+  o Priority priority
+  o Boolean uptime
+  o String exclusions
+}
+
+concept UptimeLevel {
+  o Priority priority
+  o Double uptimePercentage
+}
+
+concept Penalty {
+    o Priority priority
+    o Double penaltyPercentage
+}
+
+enum IssueSeverity {
+  o Fatal
+  o Severe
+  o Medium
+  o Minor
+}
+
+concept ResponseTime {
+  o IssueSeverity severity
+  o Priority priority
+  o Integer responseTimeMinutes
+}
+
+concept PriorityPenalty {
+    o Priority priority
+    o Double penaltyPerHour
+}
+
+concept Signature {
+  o String name
+  o String position
+  o DateTime date
+}
+
+@clauses("https://templates.accordproject.org/archives/hellomodule@0.2.0.cta")
 asset ServiceLevelAgreementContract extends AccordContract {
   o TwoPartyDefinition twoPartyDefinition
   o Term term
   o TwoPartySignatureBlock twoPartySignatureBlock
+
+  o String clientName
+  o String supplierName
+  o CompanyDetails clientDetails
+  o CompanyDetails supplierDetails
+  o DateTime contractStart
+  o Integer months
+  o CoverageItem[] coverageItems
+  o UptimeLevel[] uptimeLevels
+  o Penalty[] penalties
+  o Double penaltyCap
+  o ResponseTime[] responseTime
+  o PriorityPenalty[] priorityPenalty
+  o Signature clientSignature
+  o Signature supplierSignature
 }
