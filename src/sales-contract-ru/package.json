@@ -1,11 +1,17 @@
 {
     "name": "sales-contract-ru",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "description": "This is a Sales Contract prepared in Russian Language.",
     "license": "Apache-2.0",
     "cicero": {
       "version": "^0.10.0",
       "language": "ergo",
       "template": "contract"
+    },
+    "devDependencies": {
+        "mocha": "5.2.0"
+    },
+    "scripts": {
+        "test": "mocha"
     }
 }

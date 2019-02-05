@@ -21,6 +21,7 @@ const Engine = require('@accordproject/cicero-engine').Engine;
 const fs = require('fs');
 const path = require('path');
 const chai = require('chai');
+chai.should();
 chai.use(require('chai-things'));
 chai.use(require('chai-as-promised'));
 const moment = require('moment');

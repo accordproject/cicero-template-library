@@ -1,11 +1,17 @@
 {
     "name": "servicelevelagreement",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "description": "A service level agreement that gives invoice credit based on service availability.",
     "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",
         "version": "^0.10.0"
+    },
+    "devDependencies": {
+        "mocha": "5.2.0"
+    },
+    "scripts": {
+        "test": "mocha"
     }
 }
