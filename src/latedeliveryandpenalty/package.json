@@ -1,6 +1,6 @@
 {
     "name": "latedeliveryandpenalty",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "description": "A sample Late Delivery And Penalty clause.",
     "license": "Apache-2.0",
     "cicero": {
