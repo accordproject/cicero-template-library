@@ -1,6 +1,6 @@
 {
     "name": "simplelatedeliveryandpenalty",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "description": "A Late Delivery And Penalty clause (simple).",
     "license": "Apache-2.0",
     "cicero": {
@@ -9,9 +9,9 @@
         "version": "^0.10.0"
     },
     "devDependencies": {
-        "mocha": "5.2.0"
+        "cucumber": "^5.1.0"
     },
     "scripts": {
-        "test": "mocha --timeout 10000"
+        "test": "cucumber-js test -r .cucumber.js"
     }
 }
