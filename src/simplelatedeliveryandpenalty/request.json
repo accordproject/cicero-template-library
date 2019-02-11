@@ -2,6 +2,5 @@
     "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest",
     "agreedDelivery": "2017-12-17T03:24:00-05:00",
     "deliveredAt": null,
-    "goodsValue": 200.00,
-    "timestamp": "2017-12-19T03:24:00Z"
+    "goodsValue": 200.00
 }

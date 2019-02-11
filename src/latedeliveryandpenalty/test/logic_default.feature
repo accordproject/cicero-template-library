@@ -5,7 +5,8 @@ Feature: Late delivery contract (default)
     Given the default contract
 
   Scenario: The contract should not allow the late delivery clause to be triggered when the delivery is on time
-    When it receives the default request
+    When the current time is "2017-12-19T03:24:00Z"
+    And it receives the default request
     Then it should respond with
 """
 {
