@@ -4,15 +4,15 @@ Feature: Late delivery contract
   Background:
     Given that the contract says
 """
-Late Delivery and Penalty. In case of delayed delivery except for Force Majeure cases, "Dan" (the Seller) shall pay to "Steve" (the Buyer) for every 2 days of delay penalty amounting to 10.5% of the total value of the Equipment whose delivery has been delayed. Any fractional part of a days is to be considered a full days. The total amount of penalty shall not however, exceed 55% of the total value of the Equipment involved in late delivery. If the delay is more than 15 days, the Buyer is entitled to terminate this Contract.
+Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" shall pay to "Steve Seller" a penalty amounting to 10.5% of the total value of the Goods for every 2 days of delay. The total amount of penalty shall not, however, exceed 55% of the total value of the delayed goods. If the delay is more than 15 days, the Buyer is entitled to terminate this Contract.
+
 """
 
   Scenario: The contract should not allow the late delivery clause to be triggered when the delivery is on time
     When it receives the request
 """
 {
-    "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
-    "forceMajeure": false,
+    "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest",
     "agreedDelivery": "2019-01-31 03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
@@ -25,8 +25,7 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     When it receives the request
 """
 {
-    "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
-    "forceMajeure": false,
+    "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest",
     "agreedDelivery": "2019-01-11T03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
@@ -36,7 +35,7 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     Then it should respond with
 """
 {
-  "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
+  "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyResponse",
   "buyerMayTerminate": false,
   "penalty": 52.5
 }
@@ -46,8 +45,7 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     When it receives the request
 """
 {
-    "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
-    "forceMajeure": false,
+    "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest",
     "agreedDelivery": "2018-01-31 03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
@@ -57,7 +55,7 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
     Then it should respond with
 """
 {
-  "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
+  "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyResponse",
   "buyerMayTerminate": true,
   "penalty": 110.00000000000001
 }
@@ -72,9 +70,9 @@ Late Delivery and Penalty. In case of delayed delivery except for Force Majeure 
         "doubleValue": 110.00000000000001,
         "currencyCode": "USD"
       },
-      "description": "Dan should pay penalty amount to Steve",
-      "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Dan",
-      "promisee": "resource:org.accordproject.cicero.contract.AccordParty#Steve",
+      "description": "Steve Seller should pay penalty amount to Betty Buyer",
+      "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Steve%20Seller",
+      "promisee": "resource:org.accordproject.cicero.contract.AccordParty#Betty%20Buyer",
       "eventId": "valid"
     }
 ]
