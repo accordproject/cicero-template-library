@@ -5,7 +5,8 @@ Feature: Acceptance of Delivery
     Given the default contract
 
   Scenario: The delivery was received and passed testing
-    When it receives the default request
+    When the current time is "2018-01-02T16:34:00Z"
+    And it receives the default request
     Then it should respond with
 """
 {
