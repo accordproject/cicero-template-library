@@ -12,13 +12,13 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
 """
 
   Scenario: The delivery was received and passed testing
-    When it receives the request
+    When the current time is "2019-01-31T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
     "deliverableReceivedAt": "2019-01-22 03:24:00Z",
-    "inspectionPassed": true,
-    "timestamp": "2019-01-31T16:34:00-05:00"
+    "inspectionPassed": true
 }
 """
     Then it should respond with
@@ -32,13 +32,13 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
 """
 
   Scenario: The delivery was received but failed testing
-    When it receives the request
+    When the current time is "2019-01-31T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
     "deliverableReceivedAt": "2019-01-22 03:24:00Z",
-    "inspectionPassed": false,
-    "timestamp": "2019-01-31T16:34:00-05:00"
+    "inspectionPassed": false
 }
 """
     Then it should respond with
@@ -52,13 +52,13 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
 """
 
   Scenario: The delivery was received but outside the testing period
-    When it receives the request
+    When the current time is "2019-01-31T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
     "deliverableReceivedAt": "2019-01-12 03:24:00Z",
-    "inspectionPassed": true,
-    "timestamp": "2019-01-31T16:34:00-05:00"
+    "inspectionPassed": true
 }
 """
     Then it should respond with
@@ -72,13 +72,13 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
 """
 
   Scenario: The delivery was received in the future!
-    When it receives the request
+    When the current time is "2019-01-11T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
     "deliverableReceivedAt": "2019-01-12 03:24:00Z",
-    "inspectionPassed": true,
-    "timestamp": "2019-01-11T16:34:00-05:00"
+    "inspectionPassed": true
 }
 """
     Then it should reject the request with the error "Transaction time is before the deliverable date."
