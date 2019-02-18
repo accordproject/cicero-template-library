@@ -198,3 +198,87 @@ Formula for Breach Penalty Calculation:
   }
 ]
 """
+
+ Scenario: The contract recieve a shipment with units below the agreed bounds
+    When it receives the request
+"""
+{
+	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
+	"timestamp": "2019-02-16T12:06:36.172Z",
+	"unitCount": 2500,
+	"shipment": {
+		"$class": "org.accordproject.perishablegoods.Shipment",
+		"shipmentId": "SHIP_001",
+		"sensorReadings": [{
+			"$class": "org.accordproject.perishablegoods.SensorReading",
+			"transactionId": "a",
+			"shipment": "SHIP_001",
+			"centigrade": 2,
+			"humidity": 80
+		}, {
+			"$class": "org.accordproject.perishablegoods.SensorReading",
+			"transactionId": "b",
+			"shipment": "SHIP_001",
+			"centigrade": 5,
+			"humidity": 90
+		}, {
+			"$class": "org.accordproject.perishablegoods.SensorReading",
+			"transactionId": "c",
+			"shipment": "SHIP_001",
+			"centigrade": 15,
+			"humidity": 65
+		}]
+	}
+}
+"""
+    Then it should reject the request with the error "Units received out of range for the contract."
+
+	Scenario: The contract recieve a shipment with units above the agreed bounds
+    When it receives the request
+"""
+{
+	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
+	"timestamp": "2019-02-16T12:06:36.172Z",
+	"unitCount": 4000,
+	"shipment": {
+		"$class": "org.accordproject.perishablegoods.Shipment",
+		"shipmentId": "SHIP_001",
+		"sensorReadings": [{
+			"$class": "org.accordproject.perishablegoods.SensorReading",
+			"transactionId": "a",
+			"shipment": "SHIP_001",
+			"centigrade": 2,
+			"humidity": 80
+		}, {
+			"$class": "org.accordproject.perishablegoods.SensorReading",
+			"transactionId": "b",
+			"shipment": "SHIP_001",
+			"centigrade": 5,
+			"humidity": 90
+		}, {
+			"$class": "org.accordproject.perishablegoods.SensorReading",
+			"transactionId": "c",
+			"shipment": "SHIP_001",
+			"centigrade": 15,
+			"humidity": 65
+		}]
+	}
+}
+"""
+    Then it should reject the request with the error "Units received out of range for the contract."
+
+	Scenario: The contract recieve a shipment with units above the agreed bounds
+    When it receives the request
+"""
+{
+	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
+	"timestamp": "2019-02-16T12:06:36.172Z",
+	"unitCount": 3000,
+	"shipment": {
+		"$class": "org.accordproject.perishablegoods.Shipment",
+		"shipmentId": "SHIP_001",
+		"sensorReadings": []
+	}
+}
+"""
+  Then it should reject the request with the error "No temperature readings received."
