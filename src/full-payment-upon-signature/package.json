@@ -7,12 +7,5 @@
         "template": "contract",
         "language": "ergo",
         "version": "^0.10.0"
-    },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
-    "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "dependencies": {}
+    }
 }
