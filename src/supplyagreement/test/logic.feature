@@ -171,8 +171,12 @@ Scenario: The contract should execute a purchase order
   "paymentObligation" : null
 }
 """
+<<<<<<< HEAD
     When the current time is "2019-01-31T16:34:00-05:00"
     And it receives the request
+=======
+    When it receives the request
+>>>>>>> (test) migrate supplyagreement tests to cucumber
 """
 {
     "$class": "org.accordproject.supplyagreement.PurchaseRequest",
@@ -194,7 +198,11 @@ Scenario: The contract should execute a purchase order
                 "unitPrice": 4.99
             }
         ],
+<<<<<<< HEAD
         "deliveryDate": "2018-05-10T00:00:00-05:00",
+=======
+        "deliveryDate": "2018/05/10",
+>>>>>>> (test) migrate supplyagreement tests to cucumber
         "deliveryLocation": "555 Main Street"
     }
 }
@@ -205,7 +213,11 @@ Scenario: The contract should execute a purchase order
   "$class": "org.accordproject.supplyagreement.AgreementState",
   "deliveryObligation" : {
     "$class": "org.accordproject.supplyagreement.DeliveryObligation",
+<<<<<<< HEAD
     "expectedDelivery": "2018-05-10T05:00:00.000Z",
+=======
+    "expectedDelivery": "2018-05-10T04:00:00.000Z",
+>>>>>>> (test) migrate supplyagreement tests to cucumber
     "deliverables": [
             {
                 "$class": "org.accordproject.purchaseorder.OrderItem",
@@ -250,8 +262,12 @@ Scenario: The contract should execute a delivery
     "paymentObligation" : null
 }
 """
+<<<<<<< HEAD
     When the current time is "2019-01-31T16:34:00-05:00"
     And it receives the request
+=======
+    When it receives the request
+>>>>>>> (test) migrate supplyagreement tests to cucumber
 """
 {
     "$class": "org.accordproject.supplyagreement.DeliveryRequest",
@@ -284,4 +300,8 @@ Scenario: The contract should execute a delivery
     },
     "stateId": "org.accordproject.supplyagreement.AgreementState#1"
 }
+<<<<<<< HEAD
 """
+=======
+"""
+>>>>>>> (test) migrate supplyagreement tests to cucumber
