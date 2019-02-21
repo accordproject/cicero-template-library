@@ -24,7 +24,7 @@ For the purpose of this Confirmation, all references in the Definitions or the A
 1. This Confirmation evidences a complete and binding agreement between "Deutsche Bank" (“Party A”) and Counterparty (“Party B”) as to the terms of the Transaction to which this Confirmation relates. In addition, Party A and Party B agree to use all reasonable efforts to negotiate, execute and deliver an agreement in the form of the ISDA 2002 Master Agreement with such modifications as Party A and Party B will in good faith agree (the “ISDA Form” or the “Agreement”). Upon execution by the parties of such Agreement, this Confirmation will supplement, form a part of and be subject to the Agreement. All provisions contained or incorporated by reference in such Agreement upon its execution shall govern this Confirmation except as expressly modified below. Until Party A and Party B execute and deliver the Agreement, this Confirmation, together with all other documents referring to the ISDA Form (each a “Confirmation”) confirming Transactions (each a “Transaction”) entered into between us (notwithstanding anything to the contrary in a Confirmation) shall supplement, form a part of, and be subject to an agreement in the form of the ISDA Form as if Party A and Party B had executed an agreement on the Trade Date of the first such Transaction between us in such form, with the Schedule thereto (i) specifying only that (a) the governing law is English law, provided, that such choice of law shall be superseded by any choice of law provision specified in the Agreement upon its execution, and (b) the Termination Currency is U.S. Dollars and (ii) incorporating the addition to the definition of “Indemnifiable Tax” contained in (page 49 of) the ISDA “User’s Guide to the 2002 ISDA Master Agreements”.
 2. The terms of the particular Transaction to which this Confirmation relates are as follows:
  
-Notional Amount: 300000000.00 USD
+Notional Amount: -300000000.00 USD
 Trade Date: 06/23/2005
 Effective Date: 06/27/2005
 Termination Date: 06/18/2008
@@ -53,17 +53,11 @@ Floating Rate Payer Business Days: "New York"
 Floating Rate Payer Business Day Convention: "Modified Following"
 """
 
-  Scenario: The fixed rate and the notional amount are both not negative
+  Scenario: The notional amount is negative
     When it receives the request
 """
 {
     "$class": "org.accordproject.isda.irs.RateObservation"
 }
 """
-    Then it should respond with
-"""
-{
-    "$class": "org.accordproject.isda.irs.Result",
-    "outstandingBalance": 10
-}
-"""
+    Then it should reject the request with the error "Notional amount cannot be negative"
