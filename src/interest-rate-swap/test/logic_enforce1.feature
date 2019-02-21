@@ -33,7 +33,7 @@ Fixed Amounts:
 Fixed Rate Payer: "Counterparty"
 Fixed Rate Payer Period End Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment"
 Fixed Rate Payer Payment Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date"
-Fixed Rate: 4.09%
+Fixed Rate: -4.09%
 Fixed Rate Day Count Fraction: "30" "360"
 Fixed Rate Payer Business Days:"New York"
 Fixed Rate Payer Business Day Convention: "Modified Following"
@@ -53,17 +53,12 @@ Floating Rate Payer Business Days: "New York"
 Floating Rate Payer Business Day Convention: "Modified Following"
 """
 
-  Scenario: The fixed rate and the notional amount are both not negative
+  Scenario: The fixed rate is negative
     When it receives the request
 """
 {
     "$class": "org.accordproject.isda.irs.RateObservation"
 }
 """
-    Then it should respond with
-"""
-{
-    "$class": "org.accordproject.isda.irs.Result",
-    "outstandingBalance": 10
-}
-"""
+    Then it should reject the request with the error "Fixed rate cannot be negative"
+
