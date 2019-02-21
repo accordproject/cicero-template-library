@@ -131,7 +131,8 @@ Routing Number: "YYY-YY"
   "paymentObligation" : null
 }
 """
-    When it receives the request
+    When the current time is "2019-01-31T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.supplyagreement.ForecastRequest",
@@ -170,7 +171,8 @@ Scenario: The contract should execute a purchase order
   "paymentObligation" : null
 }
 """
-    When it receives the request
+    When the current time is "2019-01-31T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.supplyagreement.PurchaseRequest",
@@ -192,7 +194,7 @@ Scenario: The contract should execute a purchase order
                 "unitPrice": 4.99
             }
         ],
-        "deliveryDate": "2018/05/10",
+        "deliveryDate": "2018-05-10T00:00:00-05:00",
         "deliveryLocation": "555 Main Street"
     }
 }
@@ -203,7 +205,7 @@ Scenario: The contract should execute a purchase order
   "$class": "org.accordproject.supplyagreement.AgreementState",
   "deliveryObligation" : {
     "$class": "org.accordproject.supplyagreement.DeliveryObligation",
-    "expectedDelivery": "2018-05-10T04:00:00.000Z",
+    "expectedDelivery": "2018-05-10T05:00:00.000Z",
     "deliverables": [
             {
                 "$class": "org.accordproject.purchaseorder.OrderItem",
@@ -248,7 +250,8 @@ Scenario: The contract should execute a delivery
     "paymentObligation" : null
 }
 """
-    When it receives the request
+    When the current time is "2019-01-31T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.supplyagreement.DeliveryRequest",
