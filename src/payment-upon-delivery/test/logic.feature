@@ -1,5 +1,5 @@
 Feature: Payment Upon Delivery
-  This describe the expected behavior for the Accord Project's payment upon delivery contract
+  This describes the expected behavior for the Accord Project's payment upon delivery contract
 
   Background:
     Given the default contract
