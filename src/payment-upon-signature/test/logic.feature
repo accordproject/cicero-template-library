@@ -1,5 +1,5 @@
 Feature: Payment Upon Signature
-  This describe the expected behavior for the Accord Project's payment upon signature contract
+  This describes the expected behavior for the Accord Project's payment upon signature contract
 
   Background:
     Given the default contract
