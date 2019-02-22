@@ -378,4 +378,4 @@ Scenario: The contract should emit payment obligation on long press (1)
     "currencyCode": "EUR"}
 }
 """
-    Then it should reject the request with the error "Payments must be in the currency of the contract."
+    Then it should reject the request with the error "[Ergo] Payments must be in the currency of the contract."

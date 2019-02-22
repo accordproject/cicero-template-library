@@ -51,7 +51,7 @@ describe('Logic', () => {
             const request = {};
             request.$class = 'org.accordproject.cicero.runtime.Request';
 
-            const result = await engine.execute(clause, request, state);
+            const result = await engine.init(clause, request);
             result.should.not.be.null;
             result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
             result.emit[0].amount.doubleValue.should.equal(1922.99);
