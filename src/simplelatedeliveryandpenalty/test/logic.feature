@@ -19,7 +19,7 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
     "goodsValue": 200.00
 }
 """
-    Then it should reject the request with the error "Cannot exercise late delivery before delivery date"
+    Then it should reject the request with the error "[Ergo] Cannot exercise late delivery before delivery date"
 
   Scenario: The contract should return the penalty amount but not allow the buyer to terminate
     When the current time is "2019-01-16T16:34:00-05:00"

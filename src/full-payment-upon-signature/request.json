@@ -1,3 +1,4 @@
 {
-    "$class": "org.accordproject.cicero.runtime.Request"
+    "$class": "org.accordproject.signature.ContractSigned",
+    "contract": "MY_CONTRACT"
 }

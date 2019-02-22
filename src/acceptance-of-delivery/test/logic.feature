@@ -81,5 +81,5 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     "inspectionPassed": true
 }
 """
-    Then it should reject the request with the error "Transaction time is before the deliverable date."
+    Then it should reject the request with the error "[Ergo] Transaction time is before the deliverable date."
 
