@@ -5,19 +5,7 @@ Feature: Full Payment Upon Signature
     Given the default contract
 
   Scenario: The contract produces the correct result and has the correct initial state
-    When it receives the request
-"""
-{
-    "$class": "org.accordproject.cicero.runtime.Request"
-}
-"""
-    Then it should respond with
-"""
-{
-    "$class": "org.accordproject.cicero.runtime.Response"
-}
-"""
-And the initial state of the contract should be
+    Then the initial state of the contract should be
 """
 {
     "status": "INITIALIZED"

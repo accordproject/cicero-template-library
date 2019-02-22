@@ -22,8 +22,8 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.10.2-20190211210618",
-    "@accordproject/cicero-engine": "0.10.2-20190211210618",
+    "@accordproject/cicero-core": "0.10.2-20190222163636",
+    "@accordproject/cicero-engine": "0.10.2-20190222163636",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "4.2.0",

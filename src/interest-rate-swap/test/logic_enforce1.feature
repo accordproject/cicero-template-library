@@ -60,5 +60,5 @@ Floating Rate Payer Business Day Convention: "Modified Following"
     "$class": "org.accordproject.isda.irs.RateObservation"
 }
 """
-    Then it should reject the request with the error "Fixed rate cannot be negative"
+    Then it should reject the request with the error "[Ergo] Fixed rate cannot be negative"
 
