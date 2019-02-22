@@ -154,5 +154,5 @@ Annex 1—Service levels
     "last11MonthCharge": 0
 }
 """
-    Then it should reject the request with the error "A service level must be at least 0% and at most 100%."
+    Then it should reject the request with the error "[Ergo] A service level must be at least 0% and at most 100%."
 
