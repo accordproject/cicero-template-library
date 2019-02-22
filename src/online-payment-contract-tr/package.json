@@ -4,14 +4,14 @@
     "description": "This is an Online Payment Contract prepared in Turkish Language.",
     "license": "Apache-2.0",
     "cicero": {
-      "version": "^0.10.0",
-      "language": "ergo",
-      "template": "contract"
+        "version": "^0.10.0",
+        "language": "ergo",
+        "template": "contract"
     },
     "devDependencies": {
-        "mocha": "5.2.0"
+        "cucumber": "^5.1.0"
     },
     "scripts": {
-        "test": "mocha --timeout 10000"
+        "test": "cucumber-js test -r .cucumber.js"
     }
 }
