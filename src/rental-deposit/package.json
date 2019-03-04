@@ -1,0 +1,18 @@
+{
+    "name": "rental-deposit",
+    "version": "0.1.0",
+    "description": "This clause specifies how a rental deposit is refunded based on inspection.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "ergo",
+        "version": "^0.10.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    }
+}
