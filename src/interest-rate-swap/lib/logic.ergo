@@ -22,8 +22,10 @@ define function compoundInterestMultiple(annualInterest : Double, numberOfDays :
 
 contract SimpleInterestRateSwap over InterestRateSwapContract {
   clause check(request : RateObservation) : Result {
-    enforce contract.fixedRate >= 0.0;
-    enforce contract.notionalAmount.doubleValue >= 0.0;
+    enforce contract.fixedRate >= 0.0
+    else throw failure("Fixed rate cannot be negative");
+    enforce contract.notionalAmount.doubleValue >= 0.0
+    else throw failure("Notional amount cannot be negative");
     return Result{
       outstandingBalance: 10.0
     }

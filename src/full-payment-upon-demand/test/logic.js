@@ -79,7 +79,7 @@ describe('Logic', () => {
             state1.status = "OBLIGATION_EMITTED";
 
             await engine.execute(clause, request, state1).catch((e) => {
-                e.message.should.equal('Payment has already been demanded.');
+                e.message.should.equal('[Ergo] Payment has already been demanded.');
             });
         });
 
@@ -91,7 +91,7 @@ describe('Logic', () => {
             state1.status = "INITIALIZED";
 
             await engine.execute(clause, request, state1).catch((e) => {
-                e.message.should.equal('Either a payment obligation hasn\'t yet been emitted by the contract or payment notification has already been received');
+                e.message.should.equal('[Ergo] Either a payment obligation hasn\'t yet been emitted by the contract or payment notification has already been received');
             });
         });
     });

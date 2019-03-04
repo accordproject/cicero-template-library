@@ -1,4 +1,5 @@
 {
-    "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "org.accordproject.cicero.contract.AccordContractState#1"
+    "$class": "org.accordproject.onetimepayment.OneTimePaymentState",
+    "status": "OBLIGATION_EMITTED",
+    "stateId": "1"
 }
