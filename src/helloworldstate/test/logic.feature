@@ -24,35 +24,12 @@ Thank you!
 }
 """
 
-  Scenario: The contract accepts a second payment, and maintain the remaining balance
+  Scenario: The contract should increment when called twice
     When it is in the state
 """
 {
     "$class": "org.accordproject.helloworldstate.HelloWorldState",
     "stateId": "org.accordproject.helloworldstate.HelloWorldState#0",
-    "counter": 0
-}
-"""
-    When it receives the request
-"""
-{
-    "$class": "org.accordproject.helloworldstate.MyRequest",
-    "input": "World"
-}
-"""
-    Then the new state of the contract should be
-"""
-{
-    "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#0.0",
-    "counter": 1
-}
-"""
-    And the new state of
- """
-{
-    "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#0.0",
     "counter": 1
 }
 """
@@ -67,7 +44,32 @@ Thank you!
 """
 {
     "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#0.0",
+    "stateId": "org.accordproject.helloworldstate.HelloWorldState#1.0",
     "counter": 2
+}
+"""
+    
+    Scenario: The contract should increment when called three times
+    When it is in the state
+"""
+{
+    "$class": "org.accordproject.helloworldstate.HelloWorldState",
+    "stateId": "org.accordproject.helloworldstate.HelloWorldState#0",
+    "counter": 2
+}
+"""
+    When it receives the request
+"""
+{
+    "$class": "org.accordproject.helloworldstate.MyRequest",
+    "input": "World"
+}
+"""
+    Then the new state of the contract should be
+"""
+{
+    "$class": "org.accordproject.helloworldstate.HelloWorldState",
+    "stateId": "org.accordproject.helloworldstate.HelloWorldState#2.0",
+    "counter": 3
 }
 """
