@@ -54,7 +54,7 @@ Thank you!
 """
 {
     "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#0",
+    "stateId": "org.accordproject.helloworldstate.HelloWorldState#1.0",
     "counter": 2
 }
 """
