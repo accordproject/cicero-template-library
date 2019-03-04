@@ -5,7 +5,8 @@ Feature: IP Payment Contract
     Given the default contract
 
   Scenario: Payment of a specified amount should be made
-    When it receives the request
+    When the current time is "2019-03-04T16:34:00-05:00"
+    And it receives the request
 """
 {
     "$class": "org.accordproject.ippayment.PaymentRequest",
