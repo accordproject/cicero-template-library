@@ -12,7 +12,7 @@ Feature: IP Payment Contract
     "$class": "org.accordproject.ippayment.PaymentRequest",
     "netSaleRevenue": 1200,
     "sublicensingRevenue": 450,
-    "permissionGrantedBy": "04-05-2018"
+    "permissionGrantedBy": "2018-04-05T00:00:00-05:00"
 }
 """
     Then it should respond with
@@ -20,7 +20,7 @@ Feature: IP Payment Contract
 {
     "$class": "org.accordproject.ippayment.PayOut",
     "totalAmount": 77.4,
-    "dueBy": "2018-04-12T04:00:00.000Z"
+    "dueBy": "2018-04-12T05:00:00.000Z"
 }
 """
 
@@ -32,7 +32,7 @@ Scenario: Payment of a specified amount should be made
     "$class": "org.accordproject.ippayment.PaymentRequest",
     "netSaleRevenue": 1550,
     "sublicensingRevenue": 225,
-    "permissionGrantedBy": "04-05-2018"
+    "permissionGrantedBy": "2018-04-05T00:00:00-05:00"
 }
 """
     Then it should respond with
@@ -40,7 +40,7 @@ Scenario: Payment of a specified amount should be made
 {
     "$class": "org.accordproject.ippayment.PayOut",
     "totalAmount": 81.45,
-    "dueBy": "2018-04-12T04:00:00.000Z"
+    "dueBy": "2018-04-12T05:00:00.000Z"
 }
 """
 
@@ -52,7 +52,7 @@ Scenario: Payment of a specified amount should be made
     "$class": "org.accordproject.ippayment.PaymentRequest",
     "netSaleRevenue": 700,
     "sublicensingRevenue": 400,
-    "permissionGrantedBy": "04-05-2018"
+    "permissionGrantedBy": "2018-04-05T00:00:00-05:00"
 }
 """
     Then it should respond with
@@ -60,6 +60,6 @@ Scenario: Payment of a specified amount should be made
 {
     "$class": "org.accordproject.ippayment.PayOut",
     "totalAmount": 52.3,
-    "dueBy": "2018-04-12T04:00:00.000Z"
+    "dueBy": "2018-04-12T05:00:00.000Z"
 }
 """
