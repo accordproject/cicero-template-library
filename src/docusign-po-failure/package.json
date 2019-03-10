@@ -1,0 +1,11 @@
+{
+    "name": "purchase-order-failure",
+    "version": "0.1.0",
+    "description": "Issues credits for late purchase orders",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "javascript",
+        "version": "^0.10.0"
+    }
+}
