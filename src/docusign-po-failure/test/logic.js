@@ -46,38 +46,43 @@ describe('Logic', () => {
 
         it('should calculate the penalty when delivered after third late period', async function () {
             const request = {
-              $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
-              envelopeStatus: {
-                $class: 'com.docusign.connect.EnvelopeStatus',
-                status : 'Completed'
-              },
-              customFields: [        {
-                $class: 'com.docusign.connect.CustomField',
-                name : 'deliveryDate',
-                value: '2019-02-08'
-            },
-            {
-                $class: 'com.docusign.connect.CustomField',
-                name : 'actualPrice',
-                value: '2000'
-            },
-            {
-                $class: 'com.docusign.connect.CustomField',
-                name : 'currencyCode',
-                value: 'USD'
-            }],
-              timestamp: '2019-03-10T17:38:01.412Z'
+                $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
+                envelopeStatus: {
+                    $class: 'com.docusign.connect.EnvelopeStatus',
+                    status : 'Completed'
+                },
+                customFields: [
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'deliveryDate',
+                        value: '2019-02-08'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'actualPrice',
+                        value: '2000'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'currencyCode',
+                        value: 'USD'
+                    }
+                ],
+                timestamp: '2019-03-10T17:38:01.412Z'
             };
             const state = {};
-            state.$class = 'org.accordproject.cicero.contract.AccordContractState';
+            state.$class = 'com.docusign.clauses.PurchaseOrderFailureState';
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            state.pastFailures = [];
+            state.nbPastFailures = 0;
             const result = await engine.execute(clause, request, state);
             result.should.not.be.null;
             result.response.penalty.should.deep.equal({
-              '$class': 'org.accordproject.money.MonetaryAmount',
-              'doubleValue': 1000,
-              'currencyCode': 'USD'
-          });
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 1000,
+                'currencyCode': 'USD'
+            });
+            result.state.nbPastFailures.should.equal(1);
             result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
             result.emit[0].amount.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
@@ -86,123 +91,187 @@ describe('Logic', () => {
             });
         });
 
+        it('should calculate the penalty when delivered after third late period (with repeated failure penalty)', async function () {
+            const request = {
+                $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
+                envelopeStatus: {
+                    $class: 'com.docusign.connect.EnvelopeStatus',
+                    status : 'Completed'
+                },
+                customFields: [
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'deliveryDate',
+                        value: '2019-02-08'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'actualPrice',
+                        value: '2000'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'currencyCode',
+                        value: 'USD'
+                    }
+                ],
+                timestamp: '2019-03-10T17:38:01.412Z'
+            };
+            const state = {};
+            state.$class = 'com.docusign.clauses.PurchaseOrderFailureState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            state.pastFailures = ["2018-11-08T05:00:00.000Z","2019-02-08T05:00:00.000Z","2019-01-08T05:00:00.000Z","2019-03-01T05:00:00.000Z","2019-02-01T05:00:00.000Z","2019-03-08T05:00:00.000Z"];
+            state.nbPastFailures = 6;
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.penalty.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 1599.99,
+                'currencyCode': 'USD'
+            });
+            result.state.nbPastFailures.should.equal(5);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 1599.99,
+                'currencyCode': 'USD'
+            });
+        });
+
         it('should calculate the penalty when delivered after second late period', async function () {
-          const request = {
-            $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
-            envelopeStatus: {
-              $class: 'com.docusign.connect.EnvelopeStatus',
-              status : 'Completed'
-            },
-            customFields: [        {
-              $class: 'com.docusign.connect.CustomField',
-              name : 'deliveryDate',
-              value: '2019-03-08'
-          },
-          {
-              $class: 'com.docusign.connect.CustomField',
-              name : 'actualPrice',
-              value: '2000'
-          },
-          {
-              $class: 'com.docusign.connect.CustomField',
-              name : 'currencyCode',
-              value: 'USD'
-          }],
-            timestamp: '2019-03-10T17:38:01.412Z'
-          };
-          const state = {};
-          state.$class = 'org.accordproject.cicero.contract.AccordContractState';
-          state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
-          const result = await engine.execute(clause, request, state);
-          result.should.not.be.null;
-          result.response.penalty.should.deep.equal({
-            '$class': 'org.accordproject.money.MonetaryAmount',
-            'doubleValue': 200,
-            'currencyCode': 'USD'
+            const request = {
+                $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
+                envelopeStatus: {
+                    $class: 'com.docusign.connect.EnvelopeStatus',
+                    status : 'Completed'
+                },
+                customFields: [
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'deliveryDate',
+                        value: '2019-03-08'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'actualPrice',
+                        value: '2000'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'currencyCode',
+                        value: 'USD'
+                    }
+                ],
+                timestamp: '2019-03-10T17:38:01.412Z'
+            };
+            const state = {};
+            state.$class = 'com.docusign.clauses.PurchaseOrderFailureState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            state.pastFailures = [];
+            state.nbPastFailures = 0;
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.penalty.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 200,
+                'currencyCode': 'USD'
+            });
+            result.state.nbPastFailures.should.equal(1);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 200,
+                'currencyCode': 'USD'
+            });
         });
-          result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
-          result.emit[0].amount.should.deep.equal({
-              '$class': 'org.accordproject.money.MonetaryAmount',
-              'doubleValue': 200,
-              'currencyCode': 'USD'
-          });
-      });
-
-      it('should calculate the penalty when delivered after first late period', async function () {
-        const request = {
-          $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
-          envelopeStatus: {
-            $class: 'com.docusign.connect.EnvelopeStatus',
-            status : 'Completed'
-          },
-          customFields: [        {
-            $class: 'com.docusign.connect.CustomField',
-            name : 'deliveryDate',
-            value: '2019-03-10'
-        },
-        {
-            $class: 'com.docusign.connect.CustomField',
-            name : 'actualPrice',
-            value: '2000'
-        },
-        {
-            $class: 'com.docusign.connect.CustomField',
-            name : 'currencyCode',
-            value: 'USD'
-        }],
-          timestamp: '2019-03-10T17:38:01.412Z'
-        };
-        const state = {};
-        state.$class = 'org.accordproject.cicero.contract.AccordContractState';
-        state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
-        const result = await engine.execute(clause, request, state);
-        result.should.not.be.null;
-        result.response.penalty.should.deep.equal({
-          '$class': 'org.accordproject.money.MonetaryAmount',
-          'doubleValue': 100,
-          'currencyCode': 'USD'
-      });
-        result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
-        result.emit[0].amount.should.deep.equal({
-            '$class': 'org.accordproject.money.MonetaryAmount',
-            'doubleValue': 100,
-            'currencyCode': 'USD'
+        
+        it('should calculate the penalty when delivered after first late period', async function () {
+            const request = {
+                $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
+                envelopeStatus: {
+                    $class: 'com.docusign.connect.EnvelopeStatus',
+                    status : 'Completed'
+                },
+                customFields: [
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'deliveryDate',
+                        value: '2019-03-10'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'actualPrice',
+                        value: '2000'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'currencyCode',
+                        value: 'USD'
+                    }
+                ],
+                timestamp: '2019-03-10T17:38:01.412Z'
+            };
+            const state = {};
+            state.$class = 'com.docusign.clauses.PurchaseOrderFailureState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            state.pastFailures = [];
+            state.nbPastFailures = 0;
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.penalty.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 100,
+                'currencyCode': 'USD'
+            });
+            result.state.nbPastFailures.should.equal(1);
+            result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
+            result.emit[0].amount.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 100,
+                'currencyCode': 'USD'
+            });
         });
-    });
 
-    it('should set the penalty to zero if not late', async function () {
-      const request = {
-        $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
-        envelopeStatus: {
-          $class: 'com.docusign.connect.EnvelopeStatus',
-          status : 'Completed'
-        },
-        customFields: [        {
-          $class: 'com.docusign.connect.CustomField',
-          name : 'deliveryDate',
-          value: '2019-03-20'
-      },
-      {
-          $class: 'com.docusign.connect.CustomField',
-          name : 'actualPrice',
-          value: '2000'
-      },
-      {
-          $class: 'com.docusign.connect.CustomField',
-          name : 'currencyCode',
-          value: 'USD'
-      }],
-        timestamp: '2019-03-08T17:38:01.412Z'
-      };
-      const state = {};
-      state.$class = 'org.accordproject.cicero.contract.AccordContractState';
-      state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
-      const result = await engine.execute(clause, request, state);
-      result.should.not.be.null;
-      result.response.penalty.should.deep.equal({
-        '$class': 'org.accordproject.money.MonetaryAmount',
-        'doubleValue': 0,
-        'currencyCode': 'USD'
-    });  });
+        it('should set the penalty to zero if not late', async function () {
+            const request = {
+                $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
+                envelopeStatus: {
+                    $class: 'com.docusign.connect.EnvelopeStatus',
+                    status : 'Completed'
+                },
+                customFields: [
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'deliveryDate',
+                        value: '2019-03-20'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'actualPrice',
+                        value: '2000'
+                    },
+                    {
+                        $class: 'com.docusign.connect.CustomField',
+                        name : 'currencyCode',
+                        value: 'USD'
+                    }
+                ],
+                timestamp: '2019-03-08T17:38:01.412Z'
+            };
+            const state = {};
+            state.$class = 'com.docusign.clauses.PurchaseOrderFailureState';
+            state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
+            state.pastFailures = [];
+            state.nbPastFailures = 0;
+            const result = await engine.execute(clause, request, state);
+            result.should.not.be.null;
+            result.response.penalty.should.deep.equal({
+                '$class': 'org.accordproject.money.MonetaryAmount',
+                'doubleValue': 0,
+                'currencyCode': 'USD'
+            });
+            result.state.nbPastFailures.should.equal(0);
+            result.emit.should.deep.equal([]);
+        });
     });
 });

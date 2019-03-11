@@ -1,6 +1,6 @@
 {
     "name": "purchase-order-failure",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Issues credits for late purchase orders",
     "license": "Apache-2.0",
     "cicero": {
@@ -13,5 +13,8 @@
     },
     "scripts": {
         "test": "mocha"
+    },
+    "dependencies": {
+        "@accordproject/cicero-cli": "^0.10.2"
     }
 }

@@ -20,7 +20,23 @@ import org.accordproject.money.*
 import org.accordproject.time.*
 import com.docusign.clauses.custom.*
 
-contract PurchaseOrderFailureContract over PurchaseOrderFailure {
+define function failuresInRange(pastFailures:DateTime[],range:Duration) : DateTime[] {
+  return
+	  foreach d in pastFailures
+		where isAfter(d,subtractDuration(now(),range))
+		return d
+}
+
+contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOrderFailureState {
+  clause init(request:Request) : Response {
+    set state PurchaseOrderFailureState {
+      stateId: "1",
+      pastFailures: [],
+			nbPastFailures: 0
+    };
+    return Response{}
+  }
+
   clause execute(request:DocuSignEnvelopeInformation) : PurchaseOrderFailureResponse emits PaymentObligation {
     let fields = getCustomFields(request);
     let deliveryDate = fieldAsDateTime(fields,"deliveryDate");
@@ -30,32 +46,47 @@ contract PurchaseOrderFailureContract over PurchaseOrderFailure {
     // Check that the delivery is late, If not, no penalty should be applied
     enforce isAfter(now(),addDuration(deliveryDate,contract.lateOne))
     else return PurchaseOrderFailureResponse{
-			penalty : MonetaryAmount{ doubleValue: 0.0, currencyCode: currencyCode }
-		};
+      penalty : MonetaryAmount{ doubleValue: 0.0, currencyCode: currencyCode }
+    };
 
-		// If the delivery is late
-		let penaltyPercent =
-			if (isAfter(now(),addDuration(deliveryDate,contract.lateThree)))
-		  then contract.lateThreePercent
-		  else if (isAfter(now(),addDuration(deliveryDate,contract.lateTwo)))
-		  then contract.lateTwoPercent
-		  else contract.lateOnePercent;
+    // If the delivery is late, calculate the penalty percentage based on how late it is
+    let penaltyPercent =
+      if (isAfter(now(),addDuration(deliveryDate,contract.lateThree)))
+      then contract.lateThreePercent
+      else if (isAfter(now(),addDuration(deliveryDate,contract.lateTwo)))
+      then contract.lateTwoPercent
+      else contract.lateOnePercent;
 
-		let penalty = MonetaryAmount{
-			doubleValue: penaltyPercent / 100.0 * actualPrice,
-			currencyCode: currencyCode
-		};
+    // Maintain the past failures within range, as part of the contract state
+		let failures = failuresInRange(arrayAdd(state.pastFailures,[deliveryDate]),contract.failureRange);
+    set state PurchaseOrderFailureState {
+      stateId: state.stateId,
+      pastFailures: failures,
+			nbPastFailures: count(failures)
+    };
 
-		emit PaymentObligation{
-			contract: contract,
-			promisor: none,
-			promisee: some(contract.buyer),
-			deadline: none,
-			amount: penalty,
-			description: contract.buyer.partyId ++ " should be paid a penalty"
-		};
+    // Calculate the penalty
+		let penaltyAmount =
+			if state.nbPastFailures >= contract.maxFailures
+		  then penaltyPercent / 100.0 * actualPrice + contract.repeatedFailureCompensation.doubleValue
+		  else penaltyPercent / 100.0 * actualPrice;
+    let penalty = MonetaryAmount{
+      doubleValue: penaltyAmount,
+      currencyCode: currencyCode
+    };
+
+    // Emit a payment obligation
+    emit PaymentObligation{
+      contract: contract,
+      promisor: none,
+      promisee: some(contract.buyer),
+      deadline: none,
+      amount: penalty,
+      description: contract.buyer.partyId ++ " should be paid a penalty"
+    };
+
     return PurchaseOrderFailureResponse{
-			penalty : penalty
-		}
+      penalty : penalty
+    }
   }
 }
