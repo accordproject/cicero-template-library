@@ -2836,5 +2836,15 @@
         "ciceroVersion": "^0.10.2",
         "type": 0,
         "language": 0
+    },
+    "purchase-order-failure@0.3.0": {
+        "uri": "ap://purchase-order-failure@0.3.0#15ba0f2fd58f36726196eb1446d2d014912ee9b8e017dde17cf596896bfecf80",
+        "url": "https://templates.accordproject.org/archives/purchase-order-failure@0.3.0.cta",
+        "name": "purchase-order-failure",
+        "description": "Issues credits for late purchase orders",
+        "version": "0.3.0",
+        "ciceroVersion": "^0.10.2",
+        "type": 0,
+        "language": 0
     }
 }

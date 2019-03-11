@@ -23,6 +23,18 @@ asset PurchaseOrderFailure extends AccordContract {
 
   o String article
   o String thisSection
+
+  o Integer maxFailures
+  o Duration failureRange
+  o MonetaryAmount repeatedFailureCompensation
+}
+
+/**
+ * Defines the state of the contract
+ */
+asset PurchaseOrderFailureState extends AccordContractState {
+  o DateTime[] pastFailures
+  o Integer nbPastFailures
 }
 
 /**
