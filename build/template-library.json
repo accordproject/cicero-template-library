@@ -2796,5 +2796,35 @@
         "ciceroVersion": "^0.10.1",
         "type": 0,
         "language": 0
+    },
+    "docusign-connect@0.2.0": {
+        "uri": "ap://docusign-connect@0.2.0#61edb28a8f4b1c6a96b845712b9c0a2d16be0c4fe6bb4eefea055d1e82dc3f60",
+        "url": "https://templates.accordproject.org/archives/docusign-connect@0.2.0.cta",
+        "name": "docusign-connect",
+        "description": "Counts events from DocuSign connect with a given envelope status.",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.10.1",
+        "type": 0,
+        "language": 0
+    },
+    "purchase-order-failure@0.1.0": {
+        "uri": "ap://purchase-order-failure@0.1.0#edf79e90e3d0a4143887304ab4a867106ae641d3a4e13ab0552ef38a8664f552",
+        "url": "https://templates.accordproject.org/archives/purchase-order-failure@0.1.0.cta",
+        "name": "purchase-order-failure",
+        "description": "Issues credits for late purchase orders",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 1
+    },
+    "purchase-order-failure@0.1.1": {
+        "uri": "ap://purchase-order-failure@0.1.1#462b21976b2474a9c4d0500cf3fa129ada00caf77eb7d506ef889d203f9787fb",
+        "url": "https://templates.accordproject.org/archives/purchase-order-failure@0.1.1.cta",
+        "name": "purchase-order-failure",
+        "description": "Issues credits for late purchase orders",
+        "version": "0.1.1",
+        "ciceroVersion": "^0.10.0",
+        "type": 0,
+        "language": 1
     }
 }

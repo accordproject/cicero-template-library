@@ -23,6 +23,7 @@
  * @param {Context} context - the Accord context
  * @param {com.docusign.connect.DocuSignEnvelopeInformation} context.request - the incoming request
  * @param {com.docusign.clauses.PurchaseOrderFailureResponse} context.response - the response
+ * @param {org.accordproject.cicero.runtime.PaymentObligation} context.emit - the emitted events
  * @AccordClauseLogic
  */
 function execute(context) {

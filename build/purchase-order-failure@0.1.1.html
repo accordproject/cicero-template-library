@@ -1,0 +1,342 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/purchase-order-failure@0.1.1.html" />
+<meta property="og:title" content="purchase-order-failure@0.1.1" />
+<meta property="og:description" content="Issues credits for late purchase orders" />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/bPBHJiCm34NV-nL-1B7b2wPg5OWtj8hj1pBNQeDIkt8IJHNmxwHqGqmCn1vz7HtRzsOTejMOUb-Wjo40IcyQmHHSooPBAL0mTLBiRA2DDgIFrlca1AiLt5IBLedu5ieINWi0k8CAKRIfCtI4VHf9P_aXgOrE6BoDj66weEuESadjyeIZBcdlwKIeIP4u_cXbpA-jYNNMt4Prt4BUrg6dCorsBcm9fqMAz-B_lYoNRoM8jiP-EZ6el6IAGOUaOb0ugitrxDFziRpM_MSAWt2OKzWjHl9U3jzZU1AcdEnOzP8uma1iVHolEUHhnDy7QSQxdipfUR4cRgR_z040" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="purchase-order-failure@0.1.1" />
+<meta name="twitter:description" content="Issues credits for late purchase orders" />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bPBHJiCm34NV-nL-1B7b2wPg5OWtj8hj1pBNQeDIkt8IJHNmxwHqGqmCn1vz7HtRzsOTejMOUb-Wjo40IcyQmHHSooPBAL0mTLBiRA2DDgIFrlca1AiLt5IBLedu5ieINWi0k8CAKRIfCtI4VHf9P_aXgOrE6BoDj66weEuESadjyeIZBcdlwKIeIP4u_cXbpA-jYNNMt4Prt4BUrg6dCorsBcm9fqMAz-B_lYoNRoM8jiP-EZ6el6IAGOUaOb0ugitrxDFziRpM_MSAWt2OKzWjHl9U3jzZU1AcdEnOzP8uma1iVHolEUHhnDy7QSQxdipfUR4cRgR_z040" />
+<meta name="twitter:image:alt" content="UML diagram of purchase-order-failure@0.1.1 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/purchase-order-failure@0.1.1.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <a class="github-fork-ribbon right-top" href="https://github.com/accordproject/cicero-template-library" target='_blank'
+         data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Please report issues and contribute improvements on GitHub!</a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img width="256" src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template purchase-order-failure@0.1.1
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">^0.10.0</span>
+                <span class="tag">462b21976b2474a9c4d0500cf3fa129ada00caf77eb7d506ef889d203f9787fb</span>
+            </div>
+            <p class="subtitle">
+                Issues credits for late purchase orders
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="purchase-order-failure@0.1.1.html" class="dropdown-item is-active">
+                                purchase-order-failure@0.1.1
+                            </a>
+                        
+                            <a href="purchase-order-failure@0.1.0.html" class="dropdown-item ">
+                                purchase-order-failure@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/purchase-order-failure@0.1.1.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fpurchase-order-failure%400.1.1%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/bPBHJiCm34NV-nL-1B7b2wPg5OWtj8hj1pBNQeDIkt8IJHNmxwHqGqmCn1vz7HtRzsOTejMOUb-Wjo40IcyQmHHSooPBAL0mTLBiRA2DDgIFrlca1AiLt5IBLedu5ieINWi0k8CAKRIfCtI4VHf9P_aXgOrE6BoDj66weEuESadjyeIZBcdlwKIeIP4u_cXbpA-jYNNMt4Prt4BUrg6dCorsBcm9fqMAz-B_lYoNRoM8jiP-EZ6el6IAGOUaOb0ugitrxDFziRpM_MSAWt2OKzWjHl9U3jzZU1AcdEnOzP8uma1iVHolEUHhnDy7QSQxdipfUR4cRgR_z040" />
+
+            <div class="content">
+                <p>
+                <h1 id="purchaseorderfailure">Purchase Order Failure</h1>
+<p>This clause emits a payment obligations for purchase orders that are received late.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+In the event that a Purchase Order Failure causes any Product to be delivered more than 1 days after the delivery date for such Product specified in the applicable Purchase Order therefore, "Buyer Corp" shall be entitled to receive a 5.0% discount on the Actual Price for such late delivered Product which would otherwise have been payable pursuant to "Article 5". In the event that a Purchase Order Failure causes any Product to be delivered more than 2 days after the delivery date for such Product specified in the applicable Purchase Order therefore, "Buyer Corp" shall be entitled to receive a 10% discount on the Actual Price for such late delivered Product which would otherwise have been payable pursuant to "Article 5". In the event that a Purchase Order Failure causes any Product to be delivered more than 10 days, after the delivery date for such Product specified in the applicable Purchase Order therefore, "Buyer Corp" shall be entitled to receive a 50% discount on the Actual Price for such late delivered Product which would otherwise have been payable pursuant to "Article 5". Any discount amount owing to "Buyer Corp" pursuant to this "Section 3.5(c)" shall be paid by paying "Buyer Corp" such amount via electronc money transfer.
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/docusign/connect.html">com.docusign.connect.DocuSignEnvelopeInformation</a></li>
+                
+                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/purchase-order-failure">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "com.docusign.clauses.PurchaseOrderFailure",
+    "contractId": "a85fb5e2-adca-46de-a0c3-7db1ec224589",
+    "buyer": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Buyer Corp"
+    },
+    "lateOne": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 1,
+        "unit": "days"
+    },
+    "lateTwo": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 2,
+        "unit": "days"
+    },
+    "lateThree": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 10,
+        "unit": "days"
+    },
+    "lateOnePercent": 5,
+    "lateTwoPercent": 10,
+    "lateThreePercent": 50,
+    "article": "Article 5",
+    "thisSection": "Section 3.5(c)"
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>com.docusign.connect.DocuSignEnvelopeInformation</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
+    "envelopeStatus": {
+        "$class": "com.docusign.connect.EnvelopeStatus",
+        "status": "Completed",
+        "envelopeId": "Reprehenderit quis officia do.",
+        "created": "2019-03-11T00:38:43.507Z",
+        "sent": "2019-03-11T00:38:43.507Z",
+        "delivered": "2019-03-11T00:38:43.507Z",
+        "signed": "2019-03-11T00:38:43.507Z",
+        "completed": "2019-03-11T00:38:43.507Z",
+        "email": "Dolore elit ipsum aute."
+    },
+    "recipients": [
+        {
+            "$class": "com.docusign.connect.Recipient",
+            "status": "Declined",
+            "email": "Tempor amet.",
+            "userName": "Qui ad non do proident.",
+            "sent": "2019-03-11T00:38:43.507Z",
+            "delivered": "2019-03-11T00:38:43.507Z",
+            "signed": "2019-03-11T00:38:43.507Z",
+            "declined": "2019-03-11T00:38:43.507Z",
+            "declineReason": "Culpa do culpa quis."
+        }
+    ],
+    "customFields": [
+        {
+            "$class": "com.docusign.connect.CustomField",
+            "name": "Duis cupidatat.",
+            "value": "Aliqua officia duis exercitation."
+        }
+    ],
+    "transactionId": "05ecc830-4396-11e9-9ca6-e5beee196432",
+    "timestamp": "2019-03-11T00:38:43.507Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>com.docusign.clauses.PurchaseOrderFailureResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "com.docusign.clauses.PurchaseOrderFailureResponse",
+    "penalty": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 42.725,
+        "currencyCode": "SRD"
+    },
+    "transactionId": "05ed3d60-4396-11e9-9ca6-e5beee196432",
+    "timestamp": "2019-03-11T00:38:43.510Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.PaymentObligation</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 2.556,
+        "currencyCode": "MOP"
+    },
+    "description": "Reprehenderit et irure.",
+    "contract": "resource:com.docusign.clauses.PurchaseOrderFailure#0722",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#4699",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#3291",
+    "deadline": "2019-03-11T00:38:43.510Z",
+    "eventId": "05ed3d61-4396-11e9-9ca6-e5beee196432",
+    "timestamp": "2019-03-11T00:38:43.510Z"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
