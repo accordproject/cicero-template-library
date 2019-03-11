@@ -22,9 +22,9 @@ import com.docusign.clauses.custom.*
 
 define function failuresInRange(pastFailures:DateTime[],range:Duration) : DateTime[] {
   return
-	  foreach d in pastFailures
-		where isAfter(d,subtractDuration(now(),range))
-		return d
+    foreach d in pastFailures
+    where isAfter(d,subtractDuration(now(),range))
+    return d
 }
 
 contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOrderFailureState {
@@ -32,7 +32,7 @@ contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOr
     set state PurchaseOrderFailureState {
       stateId: "1",
       pastFailures: [],
-			nbPastFailures: 0
+      nbPastFailures: 0
     };
     return Response{}
   }
@@ -58,18 +58,18 @@ contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOr
       else contract.lateOnePercent;
 
     // Maintain the past failures within range, as part of the contract state
-		let failures = failuresInRange(arrayAdd(state.pastFailures,[deliveryDate]),contract.failureRange);
+    let failures = failuresInRange(arrayAdd(state.pastFailures,[deliveryDate]),contract.failureRange);
     set state PurchaseOrderFailureState {
       stateId: state.stateId,
       pastFailures: failures,
-			nbPastFailures: count(failures)
+      nbPastFailures: count(failures)
     };
 
     // Calculate the penalty
-		let penaltyAmount =
-			if state.nbPastFailures >= contract.maxFailures
-		  then penaltyPercent / 100.0 * actualPrice + contract.repeatedFailureCompensation.doubleValue
-		  else penaltyPercent / 100.0 * actualPrice;
+    let penaltyAmount =
+      if state.nbPastFailures >= contract.maxFailures
+      then penaltyPercent / 100.0 * actualPrice + contract.repeatedFailureCompensation.doubleValue
+      else penaltyPercent / 100.0 * actualPrice;
     let penalty = MonetaryAmount{
       doubleValue: penaltyAmount,
       currencyCode: currencyCode
