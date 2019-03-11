@@ -1,0 +1,61 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace com.docusign.clauses
+
+import com.docusign.connect.*
+import org.accordproject.cicero.runtime.*
+import org.accordproject.money.*
+import org.accordproject.time.*
+import com.docusign.clauses.custom.*
+
+contract PurchaseOrderFailureContract over PurchaseOrderFailure {
+  clause execute(request:DocuSignEnvelopeInformation) : PurchaseOrderFailureResponse emits PaymentObligation {
+    let fields = getCustomFields(request);
+    let deliveryDate = fieldAsDateTime(fields,"deliveryDate");
+    let actualPrice = fieldAsDouble(fields,"actualPrice");
+    let currencyCode = fieldAsString(fields,"currencyCode");
+
+    // Check that the delivery is late, If not, no penalty should be applied
+    enforce isAfter(now(),addDuration(deliveryDate,contract.lateOne))
+    else return PurchaseOrderFailureResponse{
+			penalty : MonetaryAmount{ doubleValue: 0.0, currencyCode: currencyCode }
+		};
+
+		// If the delivery is late
+		let penaltyPercent =
+			if (isAfter(now(),addDuration(deliveryDate,contract.lateThree)))
+		  then contract.lateThreePercent
+		  else if (isAfter(now(),addDuration(deliveryDate,contract.lateTwo)))
+		  then contract.lateTwoPercent
+		  else contract.lateOnePercent;
+
+		let penalty = MonetaryAmount{
+			doubleValue: penaltyPercent / 100.0 * actualPrice,
+			currencyCode: currencyCode
+		};
+
+		emit PaymentObligation{
+			contract: contract,
+			promisor: none,
+			promisee: some(contract.buyer),
+			deadline: none,
+			amount: penalty,
+			description: contract.buyer.partyId ++ " should be paid a penalty"
+		};
+    return PurchaseOrderFailureResponse{
+			penalty : penalty
+		}
+  }
+}

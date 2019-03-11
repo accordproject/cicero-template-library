@@ -54,7 +54,7 @@ describe('Logic', () => {
               customFields: [        {
                 $class: 'com.docusign.connect.CustomField',
                 name : 'deliveryDate',
-                value: '2019-03-08'
+                value: '2019-02-08'
             },
             {
                 $class: 'com.docusign.connect.CustomField',
@@ -66,7 +66,7 @@ describe('Logic', () => {
                 name : 'currencyCode',
                 value: 'USD'
             }],
-              timestamp: '2019-03-20T17:38:01.412Z'
+              timestamp: '2019-03-10T17:38:01.412Z'
             };
             const state = {};
             state.$class = 'org.accordproject.cicero.contract.AccordContractState';
@@ -108,7 +108,7 @@ describe('Logic', () => {
               name : 'currencyCode',
               value: 'USD'
           }],
-            timestamp: '2019-03-11T17:38:01.412Z'
+            timestamp: '2019-03-10T17:38:01.412Z'
           };
           const state = {};
           state.$class = 'org.accordproject.cicero.contract.AccordContractState';
@@ -138,7 +138,7 @@ describe('Logic', () => {
           customFields: [        {
             $class: 'com.docusign.connect.CustomField',
             name : 'deliveryDate',
-            value: '2019-03-08'
+            value: '2019-03-10'
         },
         {
             $class: 'com.docusign.connect.CustomField',
@@ -180,7 +180,7 @@ describe('Logic', () => {
         customFields: [        {
           $class: 'com.docusign.connect.CustomField',
           name : 'deliveryDate',
-          value: '2019-03-08'
+          value: '2019-03-20'
       },
       {
           $class: 'com.docusign.connect.CustomField',
