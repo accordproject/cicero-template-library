@@ -196,7 +196,7 @@ describe('Logic', () => {
                     {
                         $class: 'com.docusign.connect.CustomField',
                         name : 'deliveryDate',
-                        value: '2019-03-10'
+                        value: '2019-03-11'
                     },
                     {
                         $class: 'com.docusign.connect.CustomField',
