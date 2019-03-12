@@ -13,8 +13,5 @@
     },
     "scripts": {
         "test": "mocha"
-    },
-    "dependencies": {
-        "@accordproject/cicero-cli": "^0.10.2"
     }
 }
