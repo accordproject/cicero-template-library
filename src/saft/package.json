@@ -7,5 +7,6 @@
         "template": "contract",
         "language": "ergo",
         "version": "^0.10.0"
-    }
+    },
+    "keywords": ["saft", "simple", "agreement", "future", "tokens", "certifies", "puchase", "amount", "discount", "rate", "dissolution", "termination", "liquidity"]
 }
