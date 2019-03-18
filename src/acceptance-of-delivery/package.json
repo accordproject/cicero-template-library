@@ -8,5 +8,6 @@
         "template": "clause",
         "language": "ergo",
         "version": "^0.10.0"
-    }
+    },
+    "keywords": ["clause", "receiver", "goods", "inspect", "period", "delivery", "acceptance", "obligation", "criteria", "accepting", "inspection", "notice", "evaluate", "rejecting"]
 }
