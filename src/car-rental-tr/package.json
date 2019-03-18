@@ -7,5 +7,6 @@
       "version": "^0.10.0",
       "language": "ergo",
       "template": "contract"
-    }
+    },
+    "keywords": ["car", "rental", "turkish", "araba", "kiralık", "Türk"]
 }
