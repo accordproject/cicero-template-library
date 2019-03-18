@@ -7,5 +7,6 @@
         "template": "contract",
         "language": "ergo",
         "version": "^0.10.0"
-    }
+    },
+    "keywords": ["full", "payment", "pay", "signature", "sign", "price", "purchase", "agreement", "amount"]
 }
