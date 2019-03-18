@@ -7,5 +7,6 @@
       "version": "^0.10.0",
       "language": "ergo",
       "template": "contract"
-    }
+    },
+    "keywords": ["turkish", "one", "time", "payment", "Türk", "ödeme", "tek seferlik ödeme"]
 }
