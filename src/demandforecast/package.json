@@ -8,5 +8,6 @@
         "template": "clause",
         "language": "ergo",
         "version": "^0.10.0"
-    }
+    },
+    "keywords": ["demand", "forecast", "clause", "purchaser", "supplier", "supply", "commitment", "product", "calendar"]
 }
