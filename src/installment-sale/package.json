@@ -9,5 +9,5 @@
         "language": "ergo",
         "version": "^0.10.0"
     },
-    "keywords": ["installment", "sale", "pay", "agreement", "agree", "closing", "balance", "payments", "interest", "rate", "accrued"]
+    "keywords": ["installment", "sale", "pay", "agreement", "agree", "closing", "balance", "payments", "interest", "rate", "accrued", "clause"]
 }
