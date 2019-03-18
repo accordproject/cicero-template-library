@@ -8,5 +8,6 @@
         "template": "contract",
         "language": "ergo",
         "version": "^0.10.0"
-    }
+    },
+    "keywords": ["supply", "purchase", "order", "perishable", "goods", "agreement", "supplier", "address", "delivery", "pricing", "price", "mutual", "representation", "warranty", "confidentiality", "term", "termination", "provision", "schedule", "annex", "criteria", "acceptance", "shipment", "method", "limitation", "liability"]
 }
