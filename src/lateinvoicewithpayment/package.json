@@ -8,5 +8,5 @@
     "language": "ergo",
     "version": "^0.10.0"
   },
-  "keywords": ["late", "invoice", "payment", "with", "required", "issued"]
+  "keywords": ["late", "invoice", "payment", "with", "required", "issued", "clause", "obligation", "emit"]
 }

@@ -8,5 +8,5 @@
         "language": "ergo",
         "version": "^0.10.0"
     },
-    "keywords": ["simple", "late", "delivery", "penalty", "delayed", "goods", "seller", "buyer", "penalty", "time", "due", "terminate", "contract"]
+    "keywords": ["simple", "late", "delivery", "penalty", "delayed", "goods", "seller", "buyer", "time", "due", "terminate", "clause"]
 }

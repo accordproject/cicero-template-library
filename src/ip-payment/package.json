@@ -9,5 +9,5 @@
         "language": "ergo",
         "version": "^0.10.0"
     },
-    "keywords": ["ip", "payment", "royalty", "sublicensing", "taxes", "manner", "licensee", "quarterly"]
+    "keywords": ["ip", "payment", "royalty", "sublicensing", "taxes", "manner", "license", "licensor", "licensee", "quarterly", "agreement", "clause", "trademark", "copyright", "aggreement"]
 }

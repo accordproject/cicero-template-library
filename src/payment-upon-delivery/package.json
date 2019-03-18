@@ -8,5 +8,5 @@
         "language": "ergo",
         "version": "^0.10.0"
     },
-    "keywords": ["payment", "upon", "delivery", "acceptance", "accept", "pay", "deliver", "fee"]
+    "keywords": ["payment", "upon", "delivery", "acceptance", "accept", "pay", "deliver", "fee", "contract", "one", "time"]
 }

@@ -8,5 +8,5 @@
         "language": "ergo",
         "version": "^0.10.0"
     },
-    "keywords": ["full", "payment", "pay", "signature", "sign", "price", "purchase", "agreement", "amount"]
+    "keywords": ["full", "payment", "pay", "signature", "sign", "price", "purchase", "agreement", "amount", "clause", "applicable", "contract", "one-time"]
 }
