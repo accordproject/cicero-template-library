@@ -8,5 +8,6 @@
     "template": "contract",
     "language": "ergo",
     "version": "^0.10.0"
-  }
+  },
+  "keywords": ["interest", "rate", "swap", "definitions", "provisions", "confirmation", "transaction"]
 }
