@@ -7,5 +7,6 @@
       "version": "^0.10.0",
       "language": "ergo",
       "template": "contract"
-    }
+    },
+    "keywords": ["turkish", "Türk", "online", "internet üzerinden", "payment", "ödeme", "contract", "sözleşme", "ürünler", "satilan", "Satici", "Alici", "Ekler"]
 }
