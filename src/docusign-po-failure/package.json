@@ -1,6 +1,6 @@
 {
     "name": "purchase-order-failure",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Issues credits for late purchase orders",
     "license": "Apache-2.0",
     "cicero": {

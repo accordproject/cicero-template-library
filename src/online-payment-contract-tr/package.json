@@ -1,6 +1,6 @@
 {
     "name": "online-payment-contract-tr",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "description": "This is an Online Payment Contract prepared in Turkish Language.",
     "license": "Apache-2.0",
     "cicero": {

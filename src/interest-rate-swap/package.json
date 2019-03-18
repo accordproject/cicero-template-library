@@ -1,6 +1,6 @@
 {
   "name": "interest-rate-swap",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A simple ISDA Interest Rate Swap",
   "author": "Accord Project",
   "license": "Apache-2.0",
