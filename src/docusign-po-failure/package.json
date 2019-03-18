@@ -8,6 +8,7 @@
         "language": "ergo",
         "version": "^0.10.2"
     },
+    "keywords": ["docusign", "purchase", "order", "po", "fail", "failure", "product", "delivery", "date", "late", "delayed", "discount", "price", "amount", "compensation", "credits"],
     "devDependencies": {
         "mocha": "5.2.0"
     },
