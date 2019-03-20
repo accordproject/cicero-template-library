@@ -1,12 +1,12 @@
 {
     "name": "empty",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "description": "This is an empty clause template to get you started.",
     "license": "Apache-2.0",
     "cicero": {
         "template": "clause",
         "language": "ergo",
-        "version": "^0.10.0"
+        "version": "^0.11.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

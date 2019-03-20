@@ -1,11 +1,11 @@
 {
     "name": "hellomodule",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
     "cicero": {
         "template": "clause",
         "language": "ergo",
-        "version": "^0.10.0"
+        "version": "^0.11.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
