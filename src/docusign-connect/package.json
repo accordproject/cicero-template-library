@@ -1,12 +1,12 @@
 {
     "name": "docusign-connect",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "description": "Counts events from DocuSign connect with a given envelope status.",
     "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",
-        "version": "^0.10.1"
+        "version": "^0.11.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
