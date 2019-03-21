@@ -1,12 +1,18 @@
 {
     "name": "demandforecast",
-    "version": "0.9.0",
+    "version": "0.10.0",
     "description": "A sample demandforecast clause.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "cicero": {
         "template": "clause",
         "language": "ergo",
-        "version": "^0.10.0"
+        "version": "^0.11.1"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     }
 }

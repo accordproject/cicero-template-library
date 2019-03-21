@@ -1,20 +1,17 @@
 {
     "name": "purchase-order-failure",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Issues credits for late purchase orders",
     "license": "Apache-2.0",
     "cicero": {
         "template": "contract",
         "language": "ergo",
-        "version": "^0.10.2"
+        "version": "^0.11.1"
     },
     "devDependencies": {
         "mocha": "5.2.0"
     },
     "scripts": {
-        "test": "mocha"
-    },
-    "dependencies": {
-        "@accordproject/cicero-cli": "^0.10.2"
+        "test": "mocha --timeout 10000"
     }
 }

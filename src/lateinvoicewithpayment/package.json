@@ -1,11 +1,17 @@
 {
-  "name": "lateinvoicewithpayment",
-  "version": "0.1.0",
-  "description": "A sample Late invoice clause which emits a payment obligation.",
-  "license": "Apache-2.0",
-  "cicero": {
-    "template": "contract",
-    "language": "ergo",
-    "version": "^0.10.0"
-  }
+    "name": "lateinvoicewithpayment",
+    "version": "0.2.0",
+    "description": "A sample Late invoice clause which emits a payment obligation.",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "ergo",
+        "version": "^0.11.1"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    }
 }

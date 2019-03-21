@@ -1,22 +1,17 @@
 {
-  "name": "full-payment-upon-demand",
-  "version": "0.3.0",
-  "description": "This is a one-time full payment clause applicable on demand.",
-  "license": "Apache-2.0",
-  "cicero": {
-    "template": "contract",
-    "language": "ergo",
-    "version": "^0.10.0"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "devDependencies": {
-    "@accordproject/cicero-core": "^0.9.2",
-    "@accordproject/cicero-engine": "^0.9.2",
-    "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "chai-things": "^0.2.0",
-    "moment": "^2.22.2"
-  }
+    "name": "full-payment-upon-demand",
+    "version": "0.4.0",
+    "description": "This is a one-time full payment clause applicable on demand.",
+    "license": "Apache-2.0",
+    "cicero": {
+        "template": "contract",
+        "language": "ergo",
+        "version": "^0.11.1"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    }
 }

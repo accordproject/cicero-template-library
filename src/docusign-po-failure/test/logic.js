@@ -75,7 +75,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             state.pastFailures = [];
             state.nbPastFailures = 0;
-            const result = await engine.execute(clause, request, state);
+            const result = await engine.execute(clause, request, state, '2019-03-18T00:00:00Z');
             result.should.not.be.null;
             result.response.penalty.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
@@ -122,7 +122,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             state.pastFailures = ["2018-11-08T05:00:00.000Z","2019-02-08T05:00:00.000Z","2019-01-08T05:00:00.000Z","2019-03-01T05:00:00.000Z","2019-02-01T05:00:00.000Z","2019-03-08T05:00:00.000Z"];
             state.nbPastFailures = 6;
-            const result = await engine.execute(clause, request, state);
+            const result = await engine.execute(clause, request, state, '2019-03-18T00:00:00Z');
             result.should.not.be.null;
             result.response.penalty.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
@@ -169,7 +169,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             state.pastFailures = [];
             state.nbPastFailures = 0;
-            const result = await engine.execute(clause, request, state);
+            const result = await engine.execute(clause, request, state, '2019-03-18T00:00:00Z');
             result.should.not.be.null;
             result.response.penalty.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
@@ -196,7 +196,7 @@ describe('Logic', () => {
                     {
                         $class: 'com.docusign.connect.CustomField',
                         name : 'deliveryDate',
-                        value: '2019-03-10'
+                        value: '2019-03-11'
                     },
                     {
                         $class: 'com.docusign.connect.CustomField',
@@ -216,7 +216,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             state.pastFailures = [];
             state.nbPastFailures = 0;
-            const result = await engine.execute(clause, request, state);
+            const result = await engine.execute(clause, request, state, '2019-03-13T00:00:00Z');
             result.should.not.be.null;
             result.response.penalty.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
@@ -263,7 +263,7 @@ describe('Logic', () => {
             state.stateId = 'org.accordproject.cicero.contract.AccordContractState#1';
             state.pastFailures = [];
             state.nbPastFailures = 0;
-            const result = await engine.execute(clause, request, state);
+            const result = await engine.execute(clause, request, state, '2019-03-18T00:00:00Z');
             result.should.not.be.null;
             result.response.penalty.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
