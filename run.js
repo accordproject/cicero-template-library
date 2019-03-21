@@ -15,6 +15,8 @@
 'use strict';
 
 const CodeGen = require('composer-concerto-tools').CodeGen;
+const FileWriter = require('composer-concerto').FileWriter;
+
 const Template = require('@accordproject/cicero-core').Template;
 const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
@@ -329,7 +331,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     // generate UML
     const modelFile = template.getTemplateModel().getModelFile();
     const visitor = new CodeGen.PlantUMLVisitor();
-    const fileWriter = new CodeGen.FileWriter(buildDir);
+    const fileWriter = new FileWriter(buildDir);
 
     fileWriter.openFile(pumlFilePath);
     fileWriter.writeLine(0, '@startuml');
