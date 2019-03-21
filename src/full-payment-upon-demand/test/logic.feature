@@ -9,7 +9,8 @@ Feature: Full Payment Upon Demand
 """
 {
     "$class": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState",
-    "stateId": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState#1"
+    "stateId": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState#1",
+    "status": "INITIALIZED"
 }
 """
     When it receives the request

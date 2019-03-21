@@ -205,7 +205,7 @@ Scenario: The contract should execute a purchase order
   "$class": "org.accordproject.supplyagreement.AgreementState",
   "deliveryObligation" : {
     "$class": "org.accordproject.supplyagreement.DeliveryObligation",
-    "expectedDelivery": "2018-05-10T05:00:00.000Z",
+    "expectedDelivery": "2018-05-10T00:00:00.000-05:00",
     "deliverables": [
             {
                 "$class": "org.accordproject.purchaseorder.OrderItem",
