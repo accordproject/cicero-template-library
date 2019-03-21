@@ -3146,5 +3146,55 @@
         "ciceroVersion": "^0.11.1",
         "type": 0,
         "language": 0
+    },
+    "acceptance-of-delivery@0.10.0": {
+        "uri": "ap://acceptance-of-delivery@0.10.0#114d090e879bf1e613fd06ee39a89f4b04e666eade2eb3d707f296cd5c3c270e",
+        "url": "https://templates.accordproject.org/archives/acceptance-of-delivery@0.10.0.cta",
+        "name": "acceptance-of-delivery",
+        "description": "This clause allows the receiver of goods to inspect them for a given time period after delivery.",
+        "version": "0.10.0",
+        "ciceroVersion": "^0.11.1",
+        "type": 1,
+        "language": 0
+    },
+    "car-rental-tr@0.7.0": {
+        "uri": "ap://car-rental-tr@0.7.0#e88b0135d93a85a02842cef328ad16a4ede280df0c23dd2118c0cfa1a4b83bb3",
+        "url": "https://templates.accordproject.org/archives/car-rental-tr@0.7.0.cta",
+        "name": "car-rental-tr",
+        "description": "a Simple Car Rental Contract in Turkish Language",
+        "version": "0.7.0",
+        "ciceroVersion": "^0.11.1",
+        "type": 0,
+        "language": 0
+    },
+    "demandforecast@0.10.0": {
+        "uri": "ap://demandforecast@0.10.0#007f5912ab42ddb52a0ae7a07132bb4e71b0e9044f451f6737a1079aba3776d5",
+        "url": "https://templates.accordproject.org/archives/demandforecast@0.10.0.cta",
+        "name": "demandforecast",
+        "description": "A sample demandforecast clause.",
+        "version": "0.10.0",
+        "ciceroVersion": "^0.11.1",
+        "type": 1,
+        "language": 0
+    },
+    "docusign-connect@0.3.0": {
+        "uri": "ap://docusign-connect@0.3.0#9ba40e6687ccf72ec5eae5303cbc0021cb9d15084e18e704e66c467477f9c32a",
+        "url": "https://templates.accordproject.org/archives/docusign-connect@0.3.0.cta",
+        "name": "docusign-connect",
+        "description": "Counts events from DocuSign connect with a given envelope status.",
+        "version": "0.3.0",
+        "ciceroVersion": "^0.11.1",
+        "type": 0,
+        "language": 0
+    },
+    "copyright-license@0.11.0": {
+        "uri": "ap://copyright-license@0.11.0#83a5c427192234106fe3c63c7453cb4b2194da9ccd8149127a7978454c7137b9",
+        "url": "https://templates.accordproject.org/archives/copyright-license@0.11.0.cta",
+        "name": "copyright-license",
+        "description": "This clause is a copyright license agreement.",
+        "version": "0.11.0",
+        "ciceroVersion": "^0.11.1",
+        "type": 0,
+        "language": 0
     }
 }
