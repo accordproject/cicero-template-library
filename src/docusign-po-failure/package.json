@@ -6,7 +6,7 @@
     "cicero": {
         "template": "contract",
         "language": "ergo",
-        "version": "^0.11.0"
+        "version": "^0.11.1"
     },
     "devDependencies": {
         "mocha": "5.2.0"
