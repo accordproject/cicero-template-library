@@ -51,21 +51,44 @@ describe('Logic', () => {
                     $class: 'com.docusign.connect.EnvelopeStatus',
                     status : 'Completed'
                 },
-                customFields: [
+                recipients: [
                     {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'deliveryDate',
-                        value: '2019-02-08'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'actualPrice',
-                        value: '2000'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'currencyCode',
-                        value: 'USD'
+                        status: 'Completed',
+                        email: 'testRecipient@accordproject.org',
+                        userName: 'testUser',
+                        tabStatuses: [
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "currencyCode",
+                                tabName: "",
+                                customTabType: "Text",
+                                tabValue: "USD",
+                                originalValue: "",
+                                $class: "com.docusign.connect.TextTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "actualPrice",
+                                tabName: "",
+                                customTabType: "Number",
+                                tabValue: 2000,
+                                originalValue: "",
+                                $class: "com.docusign.connect.NumberTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "deliveryDate",
+                                tabName: "",
+                                customTabType: "Date",
+                                tabValue: "2019-02-08T00:00:00-07:00",
+                                originalValue: "",
+                                $class: "com.docusign.connect.DateTabStatus"
+                            }
+                        ],
+                        $class: 'com.docusign.connect.Recipient'
                     }
                 ],
                 timestamp: '2019-03-10T17:38:01.412Z'
@@ -98,21 +121,44 @@ describe('Logic', () => {
                     $class: 'com.docusign.connect.EnvelopeStatus',
                     status : 'Completed'
                 },
-                customFields: [
+                recipients: [
                     {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'deliveryDate',
-                        value: '2019-02-08'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'actualPrice',
-                        value: '2000'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'currencyCode',
-                        value: 'USD'
+                        status: 'Completed',
+                        email: 'testRecipient@accordproject.org',
+                        userName: 'testUser',
+                        tabStatuses: [
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "currencyCode",
+                                tabName: "",
+                                customTabType: "Text",
+                                tabValue: "USD",
+                                originalValue: "",
+                                $class: "com.docusign.connect.TextTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "actualPrice",
+                                tabName: "",
+                                customTabType: "Number",
+                                tabValue: 2000,
+                                originalValue: "",
+                                $class: "com.docusign.connect.NumberTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "deliveryDate",
+                                tabName: "",
+                                customTabType: "Date",
+                                tabValue: "2019-02-08T00:00:00-07:00",
+                                originalValue: "",
+                                $class: "com.docusign.connect.DateTabStatus"
+                            }
+                        ],
+                        $class: 'com.docusign.connect.Recipient'
                     }
                 ],
                 timestamp: '2019-03-10T17:38:01.412Z'
@@ -145,21 +191,44 @@ describe('Logic', () => {
                     $class: 'com.docusign.connect.EnvelopeStatus',
                     status : 'Completed'
                 },
-                customFields: [
+                recipients: [
                     {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'deliveryDate',
-                        value: '2019-03-08'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'actualPrice',
-                        value: '2000'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'currencyCode',
-                        value: 'USD'
+                        status: 'Completed',
+                        email: 'testRecipient@accordproject.org',
+                        userName: 'testUser',
+                        tabStatuses: [
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "currencyCode",
+                                tabName: "",
+                                customTabType: "Text",
+                                tabValue: "USD",
+                                originalValue: "",
+                                $class: "com.docusign.connect.TextTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "actualPrice",
+                                tabName: "",
+                                customTabType: "Number",
+                                tabValue: 2000,
+                                originalValue: "",
+                                $class: "com.docusign.connect.NumberTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "deliveryDate",
+                                tabName: "",
+                                customTabType: "Date",
+                                tabValue: "2019-03-08T00:00:00-07:00",
+                                originalValue: "",
+                                $class: "com.docusign.connect.DateTabStatus"
+                            }
+                        ],
+                        $class: 'com.docusign.connect.Recipient'
                     }
                 ],
                 timestamp: '2019-03-10T17:38:01.412Z'
@@ -192,21 +261,44 @@ describe('Logic', () => {
                     $class: 'com.docusign.connect.EnvelopeStatus',
                     status : 'Completed'
                 },
-                customFields: [
+                recipients: [
                     {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'deliveryDate',
-                        value: '2019-03-11'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'actualPrice',
-                        value: '2000'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'currencyCode',
-                        value: 'USD'
+                        status: 'Completed',
+                        email: 'testRecipient@accordproject.org',
+                        userName: 'testUser',
+                        tabStatuses: [
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "currencyCode",
+                                tabName: "",
+                                customTabType: "Text",
+                                tabValue: "USD",
+                                originalValue: "",
+                                $class: "com.docusign.connect.TextTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "actualPrice",
+                                tabName: "",
+                                customTabType: "Number",
+                                tabValue: 2000,
+                                originalValue: "",
+                                $class: "com.docusign.connect.NumberTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "deliveryDate",
+                                tabName: "",
+                                customTabType: "Date",
+                                tabValue: "2019-03-11T00:00:00-07:00",
+                                originalValue: "",
+                                $class: "com.docusign.connect.DateTabStatus"
+                            }
+                        ],
+                        $class: 'com.docusign.connect.Recipient'
                     }
                 ],
                 timestamp: '2019-03-10T17:38:01.412Z'
@@ -239,21 +331,44 @@ describe('Logic', () => {
                     $class: 'com.docusign.connect.EnvelopeStatus',
                     status : 'Completed'
                 },
-                customFields: [
+                recipients: [
                     {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'deliveryDate',
-                        value: '2019-03-20'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'actualPrice',
-                        value: '2000'
-                    },
-                    {
-                        $class: 'com.docusign.connect.CustomField',
-                        name : 'currencyCode',
-                        value: 'USD'
+                        status: 'Completed',
+                        email: 'testRecipient@accordproject.org',
+                        userName: 'testUser',
+                        tabStatuses: [
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "currencyCode",
+                                tabName: "",
+                                customTabType: "Text",
+                                tabValue: "USD",
+                                originalValue: "",
+                                $class: "com.docusign.connect.TextTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "actualPrice",
+                                tabName: "",
+                                customTabType: "Number",
+                                tabValue: 2000,
+                                originalValue: "",
+                                $class: "com.docusign.connect.NumberTabStatus"
+                            },
+                            {
+                                tabType: "Custom",
+                                status: "Signed",
+                                tabLabel: "deliveryDate",
+                                tabName: "",
+                                customTabType: "Date",
+                                tabValue: "2019-03-20T00:00:00-07:00",
+                                originalValue: "",
+                                $class: "com.docusign.connect.DateTabStatus"
+                            }
+                        ],
+                        $class: 'com.docusign.connect.Recipient'
                     }
                 ],
                 timestamp: '2019-03-08T17:38:01.412Z'
