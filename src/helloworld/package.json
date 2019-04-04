@@ -3,10 +3,10 @@
     "version": "0.9.0",
     "description": "This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "clause",
-        "language": "ergo",
-        "version": "^0.11.1"
+        "ergo": "0.7.3",
+        "cicero": "^0.11.1"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

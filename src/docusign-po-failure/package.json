@@ -3,10 +3,10 @@
     "version": "0.6.0",
     "description": "Issues credits for late purchase orders. Purchase orders sent via DocuSign must have the text recipient tabs with the following tab labels and validations: deliveryDate with Date validation, actualPrice with Numbers validation and currencyCode with no validation.",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "contract",
-        "language": "ergo",
-        "version": "^0.11.1"
+        "ergo": "0.7.3",
+        "cicero": "^0.11.1"
     },
     "devDependencies": {
         "mocha": "5.2.0"
