@@ -3242,15 +3242,6 @@
         "ciceroVersion": "^0.12.0",
         "type": 0
     },
-    "purchase-order-failure@0.6.0": {
-        "uri": "ap://purchase-order-failure@0.6.0#aae34b45f073d2b1d6bad8f436077c6ac54294d6ada4e76fcab0ea535933f7e0",
-        "url": "https://templates.accordproject.org/archives/purchase-order-failure@0.6.0.cta",
-        "name": "purchase-order-failure",
-        "description": "Issues credits for late purchase orders",
-        "version": "0.6.0",
-        "ciceroVersion": "^0.12.0",
-        "type": 0
-    },
     "eat-apples@0.8.0": {
         "uri": "ap://eat-apples@0.8.0#5d04f0bb8698e1e7565e496aa97beb055b1f3e7fb353d0b0447aeaac59729ed2",
         "url": "https://templates.accordproject.org/archives/eat-apples@0.8.0.cta",
@@ -3518,6 +3509,15 @@
         "name": "volumediscount",
         "description": "A sample volume discount contract.",
         "version": "0.12.0",
+        "ciceroVersion": "^0.12.0",
+        "type": 0
+    },
+    "purchase-order-failure@0.7.0": {
+        "uri": "ap://purchase-order-failure@0.7.0#84ec2483f1c136b461c846decc416105725445448ed088f6dc266b2e549ec701",
+        "url": "https://templates.accordproject.org/archives/purchase-order-failure@0.7.0.cta",
+        "name": "purchase-order-failure",
+        "description": "Issues credits for late purchase orders. Purchase orders sent via DocuSign must have the text recipient tabs with the following tab labels and validations: deliveryDate with Date validation, actualPrice with Numbers validation and currencyCode with no validation.",
+        "version": "0.7.0",
         "ciceroVersion": "^0.12.0",
         "type": 0
     }
