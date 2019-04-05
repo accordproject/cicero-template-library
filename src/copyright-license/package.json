@@ -1,13 +1,19 @@
 {
     "name": "copyright-license",
-    "version": "0.10.1",
+    "version": "0.12.0",
     "description": "This clause is a copyright license agreement.",
     "author": "Accord Project",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "contract",
-        "language": "ergo",
-        "version": "^0.10.0"
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["clause", "copyright", "license", "agreement", "permissions", "rights", "licensor", "licensee"]
 }

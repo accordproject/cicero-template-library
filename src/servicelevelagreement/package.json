@@ -1,12 +1,18 @@
 {
     "name": "servicelevelagreement",
-    "version": "0.10.1",
+    "version": "0.12.0",
     "description": "A service level agreement that gives invoice credit based on service availability.",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "contract",
-        "language": "ergo",
-        "version": "^0.10.0"
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["service", "levels", "agreement", "schedule", "credit", "customer", "liabilty", "provisions", "limitation", "exclusions", "reporting", "supplier", "invoice", "availability"]
 }

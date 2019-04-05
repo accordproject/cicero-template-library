@@ -1,0 +1,323 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/helloworld@0.10.0.html" />
+<meta property="og:title" content="helloworld@0.10.0" />
+<meta property="og:description" content="This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/ZT8n3i8m30NGFQVm2ABa15L5nSB20aZCKMgLeZGkZYE4WBj3eHiLpMRBplSRiWfYM6Bhb7Kc122kjR6MkEgOpcX5dz0vkXAxIczlExn4309v3hD3TlkCvb0KS5S0i82zSEDhQ7mNHJrLOjfo-IX6Bjl68fFcwALfKG_RgT3GaGyu9QKeYTGXBzNwNK_1Rlhos9ThP-90BhEQ4Vs8s9iMfxm_aV_LbhomUVVbP_fzerReg_vZl000" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="helloworld@0.10.0" />
+<meta name="twitter:description" content="This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/ZT8n3i8m30NGFQVm2ABa15L5nSB20aZCKMgLeZGkZYE4WBj3eHiLpMRBplSRiWfYM6Bhb7Kc122kjR6MkEgOpcX5dz0vkXAxIczlExn4309v3hD3TlkCvb0KS5S0i82zSEDhQ7mNHJrLOjfo-IX6Bjl68fFcwALfKG_RgT3GaGyu9QKeYTGXBzNwNK_1Rlhos9ThP-90BhEQ4Vs8s9iMfxm_aV_LbhomUVVbP_fzerReg_vZl000" />
+<meta name="twitter:image:alt" content="UML diagram of helloworld@0.10.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/helloworld@0.10.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <a class="github-fork-ribbon right-top" href="https://github.com/accordproject/cicero-template-library" target='_blank'
+         data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Please report issues and contribute improvements on GitHub!</a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img width="256" src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template helloworld@0.10.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Clause</span>
+                <span class="tag">^0.12.0</span>
+                <span class="tag">8a8ad2e502b5156e6eeb0ff364e8a88dc460cd18a817bda4592b14c54a87c891</span>
+            </div>
+            <p class="subtitle">
+                This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="helloworld@0.9.0.html" class="dropdown-item ">
+                                helloworld@0.9.0
+                            </a>
+                        
+                            <a href="helloworld@0.8.0.html" class="dropdown-item ">
+                                helloworld@0.8.0
+                            </a>
+                        
+                            <a href="helloworld@0.7.2.html" class="dropdown-item ">
+                                helloworld@0.7.2
+                            </a>
+                        
+                            <a href="helloworld@0.7.1.html" class="dropdown-item ">
+                                helloworld@0.7.1
+                            </a>
+                        
+                            <a href="helloworld@0.7.0.html" class="dropdown-item ">
+                                helloworld@0.7.0
+                            </a>
+                        
+                            <a href="helloworld@0.6.0.html" class="dropdown-item ">
+                                helloworld@0.6.0
+                            </a>
+                        
+                            <a href="helloworld@0.5.0.html" class="dropdown-item ">
+                                helloworld@0.5.0
+                            </a>
+                        
+                            <a href="helloworld@0.4.0.html" class="dropdown-item ">
+                                helloworld@0.4.0
+                            </a>
+                        
+                            <a href="helloworld@0.3.0.html" class="dropdown-item ">
+                                helloworld@0.3.0
+                            </a>
+                        
+                            <a href="helloworld@0.2.1.html" class="dropdown-item ">
+                                helloworld@0.2.1
+                            </a>
+                        
+                            <a href="helloworld@0.2.0.html" class="dropdown-item ">
+                                helloworld@0.2.0
+                            </a>
+                        
+                            <a href="helloworld@0.10.0.html" class="dropdown-item is-active">
+                                helloworld@0.10.0
+                            </a>
+                        
+                            <a href="helloworld@0.1.0.html" class="dropdown-item ">
+                                helloworld@0.1.0
+                            </a>
+                        
+                            <a href="helloworld@0.0.5.html" class="dropdown-item ">
+                                helloworld@0.0.5
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/helloworld@0.10.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fhelloworld%400.10.0%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/ZT8n3i8m30NGFQVm2ABa15L5nSB20aZCKMgLeZGkZYE4WBj3eHiLpMRBplSRiWfYM6Bhb7Kc122kjR6MkEgOpcX5dz0vkXAxIczlExn4309v3hD3TlkCvb0KS5S0i82zSEDhQ7mNHJrLOjfo-IX6Bjl68fFcwALfKG_RgT3GaGyu9QKeYTGXBzNwNK_1Rlhos9ThP-90BhEQ4Vs8s9iMfxm_aV_LbhomUVVbP_fzerReg_vZl000" />
+
+            <div class="content">
+                <p>
+                <h1 id="helloworld">Hello World</h1>
+<p>This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string <code>Hello</code> prepended to text that is passed in the request.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Name of the person to greet: "Fred Blogs".
+Thank you!
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/helloworld">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.helloworld.HelloWorldClause",
+    "clauseId": "b8f1caca-71d3-45c2-93ed-1322fcbaed5c",
+    "name": "Fred Blogs"
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.contract.AccordContractState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "c850e2f0-575d-11e9-9ffa-db0629e5d319"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.helloworld.MyRequest</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.helloworld.MyRequest",
+    "input": "Mollit.",
+    "transactionId": "c850bbe0-575d-11e9-9ffa-db0629e5d319",
+    "timestamp": "2019-04-05T00:46:31.582-04:00"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.helloworld.MyResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.helloworld.MyResponse",
+    "output": "Irure sunt non nulla.",
+    "transactionId": "c850bbe1-575d-11e9-9ffa-db0629e5d319",
+    "timestamp": "2019-04-05T00:46:31.582-04:00"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.base.Event</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

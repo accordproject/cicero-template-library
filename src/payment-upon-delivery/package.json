@@ -1,12 +1,18 @@
 {
     "name": "payment-upon-delivery",
-    "version": "0.6.1",
+    "version": "0.8.0",
     "description": "This is a one time payment contract upon acceptance of delivery.",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "contract",
-        "language": "ergo",
-        "version": "^0.10.0"
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["payment", "upon", "delivery", "acceptance", "accept", "pay", "deliver", "fee", "contract", "one", "time"]
 }

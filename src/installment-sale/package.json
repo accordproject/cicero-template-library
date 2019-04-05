@@ -1,13 +1,19 @@
 {
     "name": "installment-sale",
-    "version": "0.9.1",
+    "version": "0.12.0",
     "description": "This is a clause for a simple installment sale.",
     "author": "Accord Project",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "contract",
-        "language": "ergo",
-        "version": "^0.10.0"
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["installment", "sale", "pay", "agreement", "agree", "closing", "balance", "payments", "interest", "rate", "accrued", "clause"]
 }

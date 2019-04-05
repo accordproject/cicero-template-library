@@ -1,0 +1,339 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-120382669-1');
+    </script>
+
+    <script>
+        // handle drop down menus
+        window.addEventListener('load', function () {
+            var dropdown = document.querySelector('.dropdown');
+            if(dropdown) {
+                dropdown.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('is-active');
+                });
+            }
+        }, false);
+    </script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <!-— generic unfurl tags -->
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="templates.accordproject.org" />
+    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+    <meta name="twitter:data1" content="on GitHub.com" />
+    <meta name="twitter:label2" content="Contribute" />
+    <meta name="twitter:data2" content="at AccordProject.org" />
+
+    
+<!-— facebook open graph tags -->
+<meta property="og:url" content="https://templates.accordproject.org/docusign-connect@0.5.0.html" />
+<meta property="og:title" content="docusign-connect@0.5.0" />
+<meta property="og:description" content="Counts events from DocuSign connect with a given envelope status." />
+<meta property="og:image" content="https://www.plantuml.com/plantuml/png/fPB1JiCm38RlUGeVGMnvWgdQL3Xmu4Bt0b5gHPrIkt8SK0LxTq9Rf5qsRUCKsR_jtv_YRL8dcljeV7GfWUVUjknpwW9PpqJejRoP5CM-ZU-O1gQ4iDd0mturOepy-GXL1Ly609wWKUae06STiiwfrz8RK62POexcMfFr-hi2bc2Tzopj87oOAZkFmbPAVTUZ_Ik_Xk2v24qHNkW38mzOp_b6dSvCkrKGH3f5kd7_YnQNYSee5LVYtQJMIpYr_eEkZYwditZBZvKxq9pkX5iSxg8pMwJszm1_0000" />
+
+<!-— twitter card tags additive with the og: tags -->
+<meta name="twitter:title" content="docusign-connect@0.5.0" />
+<meta name="twitter:description" content="Counts events from DocuSign connect with a given envelope status." />
+<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/fPB1JiCm38RlUGeVGMnvWgdQL3Xmu4Bt0b5gHPrIkt8SK0LxTq9Rf5qsRUCKsR_jtv_YRL8dcljeV7GfWUVUjknpwW9PpqJejRoP5CM-ZU-O1gQ4iDd0mturOepy-GXL1Ly609wWKUae06STiiwfrz8RK62POexcMfFr-hi2bc2Tzopj87oOAZkFmbPAVTUZ_Ik_Xk2v24qHNkW38mzOp_b6dSvCkrKGH3f5kd7_YnQNYSee5LVYtQJMIpYr_eEkZYwditZBZvKxq9pkX5iSxg8pMwJszm1_0000" />
+<meta name="twitter:image:alt" content="UML diagram of docusign-connect@0.5.0 namespace." />
+<meta name="twitter:url" content="https://templates.accordproject.org/docusign-connect@0.5.0.html" />
+
+
+    <title>Accord Project Template Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+  <a class="github-fork-ribbon right-top" href="https://github.com/accordproject/cicero-template-library" target='_blank'
+         data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Please report issues and contribute improvements on GitHub!</a>
+    <section class="section">
+        <div class="container">
+            <a href="/">
+                <img width="256" src="/accord_logo.png" />
+            </a>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Template docusign-connect@0.5.0
+            </h1>
+            <div class="tags">
+                <span class="tag">Contract</span>
+                <span class="tag">^0.12.0</span>
+                <span class="tag">4b44811f4f3e4899c026c35f4180d6c555f9101e8fcca35a13ad09aa2e28b7f7</span>
+            </div>
+            <p class="subtitle">
+                Counts events from DocuSign connect with a given envelope status.
+            </p>
+
+            <p>
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Versions</span>
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        
+                            <a href="docusign-connect@0.5.0.html" class="dropdown-item is-active">
+                                docusign-connect@0.5.0
+                            </a>
+                        
+                            <a href="docusign-connect@0.3.0.html" class="dropdown-item ">
+                                docusign-connect@0.3.0
+                            </a>
+                        
+                            <a href="docusign-connect@0.2.0.html" class="dropdown-item ">
+                                docusign-connect@0.2.0
+                            </a>
+                        
+                            <a href="docusign-connect@0.1.0.html" class="dropdown-item ">
+                                docusign-connect@0.1.0
+                            </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a href="./archives/docusign-connect@0.5.0.cta" class="button is-rounded">Download Archive</a>
+                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fdocusign-connect%400.5.0%23hash" class="button is-rounded">Open in Template Studio</a>
+            </p>
+
+            <img src="https://www.plantuml.com/plantuml/svg/fPB1JiCm38RlUGeVGMnvWgdQL3Xmu4Bt0b5gHPrIkt8SK0LxTq9Rf5qsRUCKsR_jtv_YRL8dcljeV7GfWUVUjknpwW9PpqJejRoP5CM-ZU-O1gQ4iDd0mturOepy-GXL1Ly609wWKUae06STiiwfrz8RK62POexcMfFr-hi2bc2Tzopj87oOAZkFmbPAVTUZ_Ik_Xk2v24qHNkW38mzOp_b6dSvCkrKGH3f5kd7_YnQNYSee5LVYtQJMIpYr_eEkZYwditZBZvKxq9pkX5iSxg8pMwJszm1_0000" />
+
+            <div class="content">
+                <p>
+                <h1 id="docusignconnect">DocuSign Connect</h1>
+<p>A template that counts events from DocuSign connect with a given envelope status.</p>
+                </p>
+            </div>
+
+            <h4 class="title is-4">Sample</h4>
+            <div class="content">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+Count DocuSign connect events with the status: "Completed".
+
+                </pre>
+            </div>
+
+            <h4 class="title is-4">Model Dependencies</h4>
+            <div class="content">
+                <ul>
+                
+                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                
+                <li><a href="https://models.accordproject.org/docusign/connect.html">com.docusign.connect.DocuSignEnvelopeInformation</a></li>
+                
+                </ul>
+            </div>
+
+            <div class="container">
+    <h2 class="title is-2">Technical Integration</h2>
+
+    <div class="content">
+    <p>
+    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+    for details and examples of how to integrate a call to a Cicero template into your application.
+    <p>
+    <p>
+    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/docusign-connect">on GitHub.</a>
+    </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterClause",
+    "contractId": "72c44a50-ae18-44f5-a2f8-0f0be633e892",
+    "status": "Completed"
+}</pre></code>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>com.docusign.connect.counter.DocuSignEnvelopeCounterState</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
+    "counter": 25297,
+    "stateId": "c4e619a0-575d-11e9-9ffa-db0629e5d319"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>com.docusign.connect.DocuSignEnvelopeInformation</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
+    "envelopeStatus": {
+        "$class": "com.docusign.connect.EnvelopeStatus",
+        "status": "Any",
+        "envelopeId": "Non.",
+        "created": "2019-04-05T00:46:25.846-04:00",
+        "sent": "2019-04-05T00:46:25.846-04:00",
+        "delivered": "2019-04-05T00:46:25.846-04:00",
+        "signed": "2019-04-05T00:46:25.846-04:00",
+        "completed": "2019-04-05T00:46:25.846-04:00",
+        "declined": "2019-04-05T00:46:25.846-04:00",
+        "email": "Ea voluptate ipsum laboris labore."
+    },
+    "recipients": [
+        {
+            "$class": "com.docusign.connect.Recipient",
+            "status": "Sent",
+            "email": "Ipsum incididunt id pariatur.",
+            "userName": "Non veniam ut laborum.",
+            "sent": "2019-04-05T00:46:25.846-04:00",
+            "delivered": "2019-04-05T00:46:25.846-04:00",
+            "signed": "2019-04-05T00:46:25.846-04:00",
+            "declined": "2019-04-05T00:46:25.846-04:00",
+            "declineReason": "Mollit incididunt commodo.",
+            "tabStatuses": [
+                {
+                    "$class": "com.docusign.connect.NumberTabStatus",
+                    "tabName": "Velit velit.",
+                    "tabValue": 214.497,
+                    "tabType": "InitialHereOptional",
+                    "status": "Laborum sit non.",
+                    "tabLabel": "Aliqua.",
+                    "originalValue": "Excepteur dolore.",
+                    "signed": "2019-04-05T00:46:25.846-04:00",
+                    "customTabType": "Note"
+                }
+            ]
+        }
+    ],
+    "customFields": [
+        {
+            "$class": "com.docusign.connect.CustomField",
+            "name": "Ad qui non ex cupidatat.",
+            "value": "Veniam labore aute."
+        }
+    ],
+    "transactionId": "c4e57d60-575d-11e9-9ffa-db0629e5d319",
+    "timestamp": "2019-04-05T00:46:25.846-04:00"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>com.docusign.connect.counter.MyResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "com.docusign.connect.counter.MyResponse",
+    "output": "Laboris sit proident exercitation.",
+    "counter": 41668,
+    "transactionId": "c4e5f290-575d-11e9-9ffa-db0629e5d319",
+    "timestamp": "2019-04-05T00:46:25.849-04:00"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table">
+    <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+        <th>org.accordproject.cicero.runtime.NotificationObligation</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.NotificationObligation",
+    "title": "Id.",
+    "message": "Magna eu in velit dolor.",
+    "contract": "resource:com.docusign.connect.counter.DocuSignEnvelopeCounterClause#6567",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9865",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0395",
+    "deadline": "2019-04-05T00:46:25.850-04:00",
+    "eventId": "c4e619a1-575d-11e9-9ffa-db0629e5d319",
+    "timestamp": "2019-04-05T00:46:25.850-04:00"
+}</pre></code></td>
+        </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

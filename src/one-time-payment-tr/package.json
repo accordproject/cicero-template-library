@@ -1,12 +1,18 @@
 {
     "name": "one-time-payment-tr",
-    "version": "0.8.1",
+    "version": "0.10.0",
     "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
     "license": "Apache-2.0",
-    "cicero": {
-      "version": "^0.10.0",
-      "language": "ergo",
-      "template": "contract"
+    "accordproject": {
+        "template": "contract",
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["turkish", "one", "time", "payment", "Türk", "ödeme", "tek seferlik ödeme"]
 }

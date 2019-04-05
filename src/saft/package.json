@@ -1,12 +1,18 @@
 {
     "name": "saft",
-    "version": "0.10.1",
+    "version": "0.12.0",
     "description": "The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "contract",
-        "language": "ergo",
-        "version": "^0.10.0"
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["saft", "contract", "simple", "agreement", "future", "tokens", "certifies", "puchase", "amount", "discount", "rate", "dissolution", "termination", "liquidity", "invest", "exchange", "utility", "launch"]
 }

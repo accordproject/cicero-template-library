@@ -42,3 +42,70 @@ define function getCustomFields(env:DocuSignEnvelopeInformation) : CustomField[]
   else return []
 }
 
+define function matchesTabName(tabStatus:TabStatus,n:String) : Boolean {
+  if (tabStatus.tabLabel = n) then return true
+  else
+  match tabStatus
+    with let t : NumberTabStatus then return t.tabName = some(n)
+    with let t : DateTabStatus then return t.tabName = some(n)
+    with let t : TextTabStatus then return t.tabName = some(n)
+    else return false
+}
+
+define function findTab(tabStatuses:TabStatus[],n:String) : TabStatus? {
+  return
+    singleton(
+      foreach x in tabStatuses
+      where matchesTabName(x,n)
+      return x
+    )
+}
+
+define function findTabAsNumber(tabStatuses:TabStatus[],n:String) : Double? {
+  match findTab(tabStatuses, n)
+  with let? x : NumberTabStatus then return x.tabValue
+  else return none
+}
+
+define function findTabAsDate(tabStatuses:TabStatus[],n:String) : DateTime? {
+  match findTab(tabStatuses, n)
+  with let? x : DateTabStatus then return x.tabValue
+  else return none
+}
+
+
+define function findTabAsText(tabStatuses:TabStatus[],n:String) : String? {
+  match findTab(tabStatuses, n)
+  with let? x : TextTabStatus then return x.tabValue
+  else return none
+}
+
+define function getAllTabStatuses(recipients:Recipient[]) : TabStatus[] {
+  return
+    flatten(foreach r in recipients
+    return
+      match r.tabStatuses
+      with let? x then x
+      else [])
+}
+
+define function getNumberTabFromRecipients(env:DocuSignEnvelopeInformation,n:String) : Double? {
+  return
+    match env.recipients
+    with let? x then findTabAsNumber(getAllTabStatuses(x),n)
+    else none
+}
+
+define function getDateTabFromRecipients(env:DocuSignEnvelopeInformation,n:String) : DateTime? {
+  return
+    match env.recipients
+    with let? x then findTabAsDate(getAllTabStatuses(x),n)
+    else none
+}
+
+define function getTextTabFromRecipients(env:DocuSignEnvelopeInformation,n:String) : String? {
+  return
+    match env.recipients
+    with let? x then findTabAsText(getAllTabStatuses(x),n)
+    else none
+}

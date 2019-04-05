@@ -1,13 +1,19 @@
 {
     "name": "supplyagreement",
-    "version": "0.8.1",
+    "version": "0.10.0",
     "description": "A sample supply agreement.",
     "author": "Accord Project",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "contract",
-        "language": "ergo",
-        "version": "^0.10.0"
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["supply", "purchase", "order", "agreement", "supplier", "address", "delivery", "pricing", "price", "mutual", "representation", "warranty", "confidentiality", "term", "termination", "provision", "schedule", "annex", "criteria", "acceptance", "method", "limitation", "liability"]
 }

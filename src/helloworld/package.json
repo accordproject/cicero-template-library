@@ -1,12 +1,18 @@
 {
     "name": "helloworld",
-    "version": "0.8.1",
+    "version": "0.10.0",
     "description": "This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
     "license": "Apache-2.0",
-    "cicero": {
+    "accordproject": {
         "template": "clause",
-        "language": "ergo",
-        "version": "^0.10.0"
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
     },
     "keywords": ["hello", "world", "greet"]
 }

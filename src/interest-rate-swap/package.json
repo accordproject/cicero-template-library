@@ -1,13 +1,19 @@
 {
-  "name": "interest-rate-swap",
-  "version": "0.2.1",
-  "description": "A simple ISDA Interest Rate Swap",
-  "author": "Accord Project",
-  "license": "Apache-2.0",
-  "cicero": {
-    "template": "contract",
-    "language": "ergo",
-    "version": "^0.10.0"
-  },
-  "keywords": ["interest", "rate", "swap", "definitions", "provisions", "confirmation", "transaction", "isda"]
+    "name": "interest-rate-swap",
+    "version": "0.4.0",
+    "description": "A simple ISDA Interest Rate Swap",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "contract",
+        "ergo": "0.8.0",
+        "cicero": "^0.12.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["interest", "rate", "swap", "definitions", "provisions", "confirmation", "transaction", "isda"]
 }

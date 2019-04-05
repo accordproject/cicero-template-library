@@ -1,0 +1,27 @@
+@startuml
+class org.accordproject.rentaldeposit.Penalty {
+   + String description
+   + MonetaryAmount amount
+}
+class org.accordproject.rentaldeposit.ProperyInspection << (T,yellow) >> {
+   + Penalty[] penalties
+}
+org.accordproject.rentaldeposit.ProperyInspection --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.rentaldeposit.PropertyInspectionResponse << (T,yellow) >> {
+   + MonetaryAmount balance
+}
+org.accordproject.rentaldeposit.PropertyInspectionResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.rentaldeposit.RentalDepositClause << (A,green) >> {
+   + AccordParty tenant
+   + AccordParty landlord
+   + MonetaryAmount depositAmount
+   + Period tenantDepositRestorationPeriod
+   + Double monthlyBaseRentMultiple
+   + String applicableLaw
+   + String statute
+   + String bankName
+   + Period landlordDepositReturnPeriod
+   + String exhibit
+}
+org.accordproject.rentaldeposit.RentalDepositClause --|> org.accordproject.cicero.contract.AccordContract
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class org.accordproject.payment.iot.CounterState << (A,green) >> {
+   + ContractLifecycleStatus status
+   + Double counter
+   + Double paymentCount
+}
+org.accordproject.payment.iot.CounterState --|> org.accordproject.cicero.contract.AccordContractState
+class org.accordproject.payment.iot.ContractLifecycleStatus << (E,grey) >> {
+   + INITIALIZED
+   + RUNNING
+   + COMPLETED
+}
+class org.accordproject.payment.iot.CounterResponse << (T,yellow) >> {
+   + Double counter
+   + Double paymentCount
+}
+org.accordproject.payment.iot.CounterResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.payment.iot.MonetaryAmountPayment << (T,yellow) >> {
+   + MonetaryAmount amount
+}
+org.accordproject.payment.iot.MonetaryAmountPayment --|> org.accordproject.payment.PaymentReceived
+class org.accordproject.payment.iot.PaymentUponButtonContract << (A,green) >> {
+   + AccordParty buyer
+   + AccordParty seller
+   + MonetaryAmount amountPerUnit
+   + Integer paymentCount
+}
+org.accordproject.payment.iot.PaymentUponButtonContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml
