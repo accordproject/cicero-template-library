@@ -1,6 +1,6 @@
 {
     "name": "purchase-order-failure",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "description": "Issues credits for late purchase orders. Purchase orders sent via DocuSign must have the text recipient tabs with the following tab labels and validations: deliveryDate with Date validation, actualPrice with Numbers validation and currencyCode with no validation.",
     "license": "Apache-2.0",
     "accordproject": {
