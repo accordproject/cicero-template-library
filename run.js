@@ -222,14 +222,8 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     const archiveFileExists = await fs.pathExists(archiveFilePath)
 
                     if(!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        const language = template.getMetadata().getLanguage();
                         let archive;
-                        // Keeps produced archives in the same language as their source from directory
-                        if (language === 0) {
-                            archive = await template.toArchive('ergo');
-                        } else {
-                            archive = await template.toArchive('javascript');
-                        }
+                        archive = await template.toArchive('ergo');
                         await writeFile(archiveFilePath, archive);
                         console.log('Copied: ' + archiveFileName);
         
@@ -242,9 +236,8 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             name : m.getName(),
                             description : m.getDescription(),
                             version: m.getVersion(),
-                            ciceroVersion: m.getTargetVersion(),
-                            type: m.getTemplateType(),
-                            language: m.getLanguage()
+                            ciceroVersion: m.getCiceroVersion(),
+                            type: m.getTemplateType()
                         }
                         templateIndex[template.getIdentifier()] = indexData;
         
