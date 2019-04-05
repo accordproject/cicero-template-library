@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["perishable", "goods", "receipt", "shipment", "shipping", "contain", "spoiled", "dispose", "return", "humidity", "temperature", "breach", "penalty", "calculation", "clause", "penalties", "penalty", "transport", "conditions", "package"]
 }

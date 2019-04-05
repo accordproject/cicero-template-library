@@ -12,5 +12,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["hello", "world", "greet"]
 }

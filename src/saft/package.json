@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["saft", "contract", "simple", "agreement", "future", "tokens", "certifies", "puchase", "amount", "discount", "rate", "dissolution", "termination", "liquidity", "invest", "exchange", "utility", "launch"]
 }

@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["volume", "discount", "contract", "agreement", "percentage", "percent", "rate", "flat", "monthly", "credit", "chargeback", "rejection", "deduction", "withholding"]
 }

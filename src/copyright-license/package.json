@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["clause", "copyright", "license", "agreement", "permissions", "rights", "licensor", "licensee"]
 }

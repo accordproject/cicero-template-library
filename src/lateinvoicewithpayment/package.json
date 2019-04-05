@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["late", "invoice", "payment", "with", "required", "issued", "clause", "obligation", "emit"]
 }

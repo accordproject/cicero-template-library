@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["full", "payment", "pay", "demand", "execution", "price", "purchase", "agreement", "amount", "one-time", "clause"]
 }

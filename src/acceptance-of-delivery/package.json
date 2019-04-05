@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["clause", "receiver", "goods", "inspect", "period", "delivery", "acceptance", "obligation", "criteria", "accepting", "inspection", "notice", "evaluate", "rejecting"]
 }

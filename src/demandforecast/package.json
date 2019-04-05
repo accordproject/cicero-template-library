@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["demand", "forecast", "clause", "purchaser", "supplier", "supply", "commitment", "product", "calendar"]
 }

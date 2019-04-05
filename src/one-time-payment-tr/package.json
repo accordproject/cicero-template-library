@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["turkish", "one", "time", "payment", "Türk", "ödeme", "tek seferlik ödeme"]
 }

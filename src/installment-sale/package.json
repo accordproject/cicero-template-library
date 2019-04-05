@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["installment", "sale", "pay", "agreement", "agree", "closing", "balance", "payments", "interest", "rate", "accrued", "clause"]
 }

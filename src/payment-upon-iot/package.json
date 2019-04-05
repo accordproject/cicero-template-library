@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["payment", "pay", "upon", "iot", "button", "press", "long", "short", "complete", "double-press", "contract", "fixed", "amount"]
 }

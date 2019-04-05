@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["ip", "payment", "royalty", "sublicensing", "taxes", "manner", "license", "licensor", "licensee", "quarterly", "agreement", "clause", "trademark", "copyright", "aggreement"]
 }

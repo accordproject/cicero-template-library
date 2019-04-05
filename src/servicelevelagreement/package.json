@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["service", "levels", "agreement", "schedule", "credit", "customer", "liabilty", "provisions", "limitation", "exclusions", "reporting", "supplier", "invoice", "availability"]
 }

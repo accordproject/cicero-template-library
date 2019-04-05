@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["rent", "deposit", "rental", "refund", "refunded", "inspection", "inspect", "housing", "apartment", "tenant", "landlord"]
 }

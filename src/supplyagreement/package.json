@@ -14,5 +14,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["supply", "purchase", "order", "agreement", "supplier", "address", "delivery", "pricing", "price", "mutual", "representation", "warranty", "confidentiality", "term", "termination", "provision", "schedule", "annex", "criteria", "acceptance", "method", "limitation", "liability"]
 }

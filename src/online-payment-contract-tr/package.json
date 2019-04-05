@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["turkish", "Türk", "online", "internet üzerinden", "payment", "ödeme", "contract", "sözleşme", "ürünler", "satilan", "Satici", "Alici", "Ekler"]
 }

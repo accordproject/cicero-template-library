@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["late", "delivery", "penalty", "delayed", "Majeure", "seller", "pay", "exceed", "terimate", "clause"]
 }

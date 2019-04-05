@@ -13,5 +13,6 @@
     },
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
-    }
+    },
+    "keywords": ["payment", "upon", "delivery", "acceptance", "accept", "pay", "deliver", "fee", "contract", "one", "time"]
 }
