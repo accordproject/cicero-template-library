@@ -1,6 +1,6 @@
 {
     "name": "acceptance-of-delivery",
-    "version": "0.11.0",
+    "version": "0.11.1",
     "description": "This clause allows the receiver of goods to inspect them for a given time period after delivery.",
     "author": "Accord Project",
     "license": "Apache-2.0",
