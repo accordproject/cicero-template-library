@@ -1,7 +1,7 @@
 {
-    "name": "minilatedeliveryandpenalty",
+    "name": "minilatedeliveryandpenalty-capped",
     "version": "0.2.0",
-    "description": "A Late Delivery And Penalty Clause (Mini).",
+    "description": "A Late Delivery And Penalty (Mini, Capped)",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
