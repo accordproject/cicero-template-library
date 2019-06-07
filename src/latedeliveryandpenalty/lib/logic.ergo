@@ -33,7 +33,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
     ;
 
     // Calculate the time difference between current date and agreed upon date
-    let diff = diffDurationAs(now,agreed,"days");
+    let diff = diffDurationAs(now(),agreed,"days");
     let diffRatio = divideDuration(diff,durationAs(contract.penaltyDuration,"days"));
     // Penalty formula
     let penalty = diffRatio * contract.penaltyPercentage/100.0 * request.goodsValue;

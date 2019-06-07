@@ -1,13 +1,13 @@
 {
     "name": "sales-contract-ru",
     "displayName": "Sales Contract (RU)",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "description": "This is a Sales Contract prepared in Russian Language.",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
         "ergo": "0.9.0",
-        "cicero": "^0.13.0"
+        "cicero": "^0.13.4"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
