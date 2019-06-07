@@ -1,13 +1,13 @@
 {
     "name": "payment-upon-delivery",
     "displayName": "Payment Upon Delivery",
-    "version": "0.9.1",
+    "version": "0.10.0",
     "description": "This is a one time payment contract upon acceptance of delivery.",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
         "ergo": "0.9.0",
-        "cicero": "^0.13.0"
+        "cicero": "^0.13.4"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

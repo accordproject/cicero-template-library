@@ -1,0 +1,34 @@
+namespace org.accordproject.promissorynote
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.usa.business.BusinessEntity from https://models.accordproject.org/usa/business.cto
+
+
+transaction Payment extends Request {
+  o MonetaryAmount amountPaid
+}
+
+transaction Result extends Response {
+  o Double outstandingBalance
+}
+
+/**
+ * The template model
+ */
+asset PromissoryNoteContract extends AccordContract {
+  o MonetaryAmount amount
+  o DateTime date
+  o String maker
+  o Double interestRate
+  o Boolean individual
+  o String makerAddress
+  o String lender
+  o BusinessEntity legalEntity
+  o String lenderAddress
+  o DateTime maturityDate
+  o Integer defaultDays
+  o Integer insolvencyDays
+  o String jurisdiction
+}

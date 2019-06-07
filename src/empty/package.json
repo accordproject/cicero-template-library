@@ -1,13 +1,13 @@
 {
     "name": "empty",
     "displayName": "Empty",
-    "version": "0.6.1",
+    "version": "0.7.0",
     "description": "This is an empty clause template to get you started.",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
         "ergo": "0.9.0",
-        "cicero": "^0.13.0"
+        "cicero": "^0.13.4"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

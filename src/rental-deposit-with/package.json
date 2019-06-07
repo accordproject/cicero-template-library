@@ -1,0 +1,20 @@
+{
+    "name": "rental-deposit-with",
+    "displayName": "Rental Deposit",
+    "version": "0.1.0",
+    "description": "This clause specifies how a rental deposit is refunded based on inspection. (using with)",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "contract",
+        "ergo": "0.9.0",
+        "cicero": "^0.13.4"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["rent", "deposit", "rental", "refund", "refunded", "inspection", "inspect", "housing", "apartment", "tenant", "landlord"]
+}
