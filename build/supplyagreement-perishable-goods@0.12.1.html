@@ -3,176 +3,189 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-120382669-1');
-    </script>
+  <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-120382669-1');
+      </script>
 
-    <script>
-        // handle drop down menus
-        window.addEventListener('load', function () {
-            var dropdown = document.querySelector('.dropdown');
-            if(dropdown) {
-                dropdown.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    dropdown.classList.toggle('is-active');
-                });
-            }
-        }, false);
-    </script>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script>
+          // handle drop down menus
+          window.addEventListener('load', function () {
+              var dropdown = document.querySelector('.dropdown');
+              if(dropdown) {
+                  dropdown.addEventListener('click', function(event) {
+                      event.stopPropagation();
+                      dropdown.classList.toggle('is-active');
+                  });
+              }
+          }, false);
+      </script>
+      
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
-    
-    
+      
+      
+      
 
-    <!-— generic unfurl tags -->
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:domain" content="templates.accordproject.org" />
-    <meta name="twitter:label1" content="Apache 2.0 Licensed" />
-    <meta name="twitter:data1" content="on GitHub.com" />
-    <meta name="twitter:label2" content="Contribute" />
-    <meta name="twitter:data2" content="at AccordProject.org" />
+      <!-— generic unfurl tags -->
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:domain" content="templates.accordproject.org" />
+      <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+      <meta name="twitter:data1" content="on GitHub.com" />
+      <meta name="twitter:label2" content="Contribute" />
+      <meta name="twitter:data2" content="at AccordProject.org" />
 
-    
-<!-— facebook open graph tags -->
-<meta property="og:url" content="https://templates.accordproject.org/supplyagreement-perishable-goods@0.12.1.html" />
-<meta property="og:title" content="supplyagreement-perishable-goods@0.12.1" />
-<meta property="og:description" content="This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached." />
-<meta property="og:image" content="https://www.plantuml.com/plantuml/png/hP9DJiCm48NtESKiGT2SeAeQWLfO85Mq7C3OezGedZ5ZMpG2xewTXB-gx5XbyhqtVfgnbo4gYSbrbUvK2C3Irafh5kE5dr37sgFOi5UF7RRC9jIQAOhAmZPvt_LDAuWEAMw-VElYkvfiC9_3MNDPN7GEYmMyLW1m0MlX5nHeXy-8RfrdYHdQgHZnTczz2O0m5IE-LX5trY6OXAKUwHqJvedwnd7ABObit8ZLa_gGVmSs1LB4DkSvIqK9HrGTVj1j54ijvAsOf8_w0r9WkKTbicKb-9oGT3zwTbY6KTqGRPAeQ9cc2JZbRPNqOi8i9S7VaZhyALcwISuQ6_lZbfFS8wakzgjy9IpLU_N_5psRlIrEl1-Tjo_yVLepg9zTrHB9bEVt0G00" />
+      
+  <!-— facebook open graph tags -->
+  <meta property="og:url" content="https://templates.accordproject.org/supplyagreement-perishable-goods@0.12.1.html" />
+  <meta property="og:title" content="supplyagreement-perishable-goods@0.12.1" />
+  <meta property="og:description" content="This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached." />
+  <meta property="og:image" content="https://www.plantuml.com/plantuml/png/hP9DJiCm48NtESKiGT2SeAeQWLfO85Mq7C3OezGedZ5ZMpG2xewTXB-gx5XbyhqtVfgnbo4gYSbrbUvK2C3Irafh5kE5dr37sgFOi5UF7RRC9jIQAOhAmZPvt_LDAuWEAMw-VElYkvfiC9_3MNDPN7GEYmMyLW1m0MlX5nHeXy-8RfrdYHdQgHZnTczz2O0m5IE-LX5trY6OXAKUwHqJvedwnd7ABObit8ZLa_gGVmSs1LB4DkSvIqK9HrGTVj1j54ijvAsOf8_w0r9WkKTbicKb-9oGT3zwTbY6KTqGRPAeQ9cc2JZbRPNqOi8i9S7VaZhyALcwISuQ6_lZbfFS8wakzgjy9IpLU_N_5psRlIrEl1-Tjo_yVLepg9zTrHB9bEVt0G00" />
 
-<!-— twitter card tags additive with the og: tags -->
-<meta name="twitter:title" content="supplyagreement-perishable-goods@0.12.1" />
-<meta name="twitter:description" content="This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached." />
-<meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hP9DJiCm48NtESKiGT2SeAeQWLfO85Mq7C3OezGedZ5ZMpG2xewTXB-gx5XbyhqtVfgnbo4gYSbrbUvK2C3Irafh5kE5dr37sgFOi5UF7RRC9jIQAOhAmZPvt_LDAuWEAMw-VElYkvfiC9_3MNDPN7GEYmMyLW1m0MlX5nHeXy-8RfrdYHdQgHZnTczz2O0m5IE-LX5trY6OXAKUwHqJvedwnd7ABObit8ZLa_gGVmSs1LB4DkSvIqK9HrGTVj1j54ijvAsOf8_w0r9WkKTbicKb-9oGT3zwTbY6KTqGRPAeQ9cc2JZbRPNqOi8i9S7VaZhyALcwISuQ6_lZbfFS8wakzgjy9IpLU_N_5psRlIrEl1-Tjo_yVLepg9zTrHB9bEVt0G00" />
-<meta name="twitter:image:alt" content="UML diagram of supplyagreement-perishable-goods@0.12.1 namespace." />
-<meta name="twitter:url" content="https://templates.accordproject.org/supplyagreement-perishable-goods@0.12.1.html" />
+  <!-— twitter card tags additive with the og: tags -->
+  <meta name="twitter:title" content="supplyagreement-perishable-goods@0.12.1" />
+  <meta name="twitter:description" content="This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached." />
+  <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hP9DJiCm48NtESKiGT2SeAeQWLfO85Mq7C3OezGedZ5ZMpG2xewTXB-gx5XbyhqtVfgnbo4gYSbrbUvK2C3Irafh5kE5dr37sgFOi5UF7RRC9jIQAOhAmZPvt_LDAuWEAMw-VElYkvfiC9_3MNDPN7GEYmMyLW1m0MlX5nHeXy-8RfrdYHdQgHZnTczz2O0m5IE-LX5trY6OXAKUwHqJvedwnd7ABObit8ZLa_gGVmSs1LB4DkSvIqK9HrGTVj1j54ijvAsOf8_w0r9WkKTbicKb-9oGT3zwTbY6KTqGRPAeQ9cc2JZbRPNqOi8i9S7VaZhyALcwISuQ6_lZbfFS8wakzgjy9IpLU_N_5psRlIrEl1-Tjo_yVLepg9zTrHB9bEVt0G00" />
+  <meta name="twitter:image:alt" content="UML diagram of supplyagreement-perishable-goods@0.12.1 namespace." />
+  <meta name="twitter:url" content="https://templates.accordproject.org/supplyagreement-perishable-goods@0.12.1.html" />
 
 
-    <title>Accord Project Template Library</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-</head>
+      <title>Accord Project Template Library</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+      <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/idea.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+      <link rel="stylesheet" href="assets/fonts.css" />
+      <link rel="stylesheet" href="/styles.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+  </head>
 
-<body>
-  <a class="github-fork-ribbon right-top" href="https://github.com/accordproject/cicero-template-library" target='_blank'
-         data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Please report issues and contribute improvements on GitHub!</a>
-    <section class="section">
-        <div class="container">
-            <a href="/">
-                <img width="256" src="/accord_logo.png" />
-            </a>
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="/assets/images/accord_logo.png" alt="Accord Project" width="34" height="100%">
+            <span class="brand-label">Accord Project</span>
+          </a>
         </div>
-    </section>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
 
     
-    <section class="section">
-        <div class="container">
-            <h1 class="title">
-                Template supplyagreement-perishable-goods@0.12.1
-            </h1>
-            <div class="tags">
-                <span class="tag">Contract</span>
-                <span class="tag">^0.12.0</span>
-                <span class="tag">fa95046a0d2545fcaa1302b7e9d882a527ae104f1b53e9c8a64df51809629477</span>
+    <section class="section inner-content">
+      <div class="container">
+        <h1 class="title is-1">
+          Template supplyagreement-perishable-goods@0.12.1
+        </h1>
+        <div class="tags">
+          <span class="tag is-light">Contract</span>
+          <span class="tag is-light">^0.12.0</span>
+          <span class="tag is-light">fa95046a0d2545fcaa1302b7e9d882a527ae104f1b53e9c8a64df51809629477</span>
+        </div>
+        <p class="subtitle">
+          This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.
+        </p>
+
+        <p>
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
             </div>
-            <p class="subtitle">
-                This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.
-            </p>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="supplyagreement-perishable-goods@0.9.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.9.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.8.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.8.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.7.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.7.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.6.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.6.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.5.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.5.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.4.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.4.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.12.1.html" class="dropdown-item is-active">
+                    supplyagreement-perishable-goods@0.12.1
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.12.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.12.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.11.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.11.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.10.1.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.10.1
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.10.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.10.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.1.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.1.0
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/supplyagreement-perishable-goods@0.12.1.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fsupplyagreement-perishable-goods%400.12.1%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
 
-            <p>
-                <div class="dropdown">
-                    <div class="dropdown-trigger">
-                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                            <span>Versions</span>
-                            <span class="icon is-small">
-                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                        <div class="dropdown-content">
-                        
-                            <a href="supplyagreement-perishable-goods@0.9.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.9.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.8.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.8.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.7.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.7.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.6.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.6.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.5.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.5.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.4.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.4.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.12.1.html" class="dropdown-item is-active">
-                                supplyagreement-perishable-goods@0.12.1
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.12.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.12.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.11.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.11.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.10.1.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.10.1
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.10.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.10.0
-                            </a>
-                        
-                            <a href="supplyagreement-perishable-goods@0.1.0.html" class="dropdown-item ">
-                                supplyagreement-perishable-goods@0.1.0
-                            </a>
-                        
-                        </div>
-                    </div>
-                </div>
-                <a href="./archives/supplyagreement-perishable-goods@0.12.1.cta" class="button is-rounded">Download Archive</a>
-                <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fsupplyagreement-perishable-goods%400.12.1%23hash" class="button is-rounded">Open in Template Studio</a>
-            </p>
+        <img src="https://www.plantuml.com/plantuml/svg/hP9DJiCm48NtESKiGT2SeAeQWLfO85Mq7C3OezGedZ5ZMpG2xewTXB-gx5XbyhqtVfgnbo4gYSbrbUvK2C3Irafh5kE5dr37sgFOi5UF7RRC9jIQAOhAmZPvt_LDAuWEAMw-VElYkvfiC9_3MNDPN7GEYmMyLW1m0MlX5nHeXy-8RfrdYHdQgHZnTczz2O0m5IE-LX5trY6OXAKUwHqJvedwnd7ABObit8ZLa_gGVmSs1LB4DkSvIqK9HrGTVj1j54ijvAsOf8_w0r9WkKTbicKb-9oGT3zwTbY6KTqGRPAeQ9cc2JZbRPNqOi8i9S7VaZhyALcwISuQ6_lZbfFS8wakzgjy9IpLU_N_5psRlIrEl1-Tjo_yVLepg9zTrHB9bEVt0G00" class="box" style="margin-top:40px;" />
 
-            <img src="https://www.plantuml.com/plantuml/svg/hP9DJiCm48NtESKiGT2SeAeQWLfO85Mq7C3OezGedZ5ZMpG2xewTXB-gx5XbyhqtVfgnbo4gYSbrbUvK2C3Irafh5kE5dr37sgFOi5UF7RRC9jIQAOhAmZPvt_LDAuWEAMw-VElYkvfiC9_3MNDPN7GEYmMyLW1m0MlX5nHeXy-8RfrdYHdQgHZnTczz2O0m5IE-LX5trY6OXAKUwHqJvedwnd7ABObit8ZLa_gGVmSs1LB4DkSvIqK9HrGTVj1j54ijvAsOf8_w0r9WkKTbicKb-9oGT3zwTbY6KTqGRPAeQ9cc2JZbRPNqOi8i9S7VaZhyALcwISuQ6_lZbfFS8wakzgjy9IpLU_N_5psRlIrEl1-Tjo_yVLepg9zTrHB9bEVt0G00" />
-
-            <div class="content">
-                <p>
-                <h1 id="supplyagreementwithperishablegoods">Supply Agreement with Perishable Goods</h1>
+        <div class="content">
+          <p>
+          <h1 id="supplyagreementwithperishablegoods">Supply Agreement with Perishable Goods</h1>
 <p>This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.</p>
-                </p>
-            </div>
+          </p>
+        </div>
 
-            <h4 class="title is-4">Sample</h4>
-            <div class="content">
-                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
-Supply Agreement
+        <h4 class="title is-4">Sample</h4>
+        <div class="content box">
+          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+            Supply Agreement
 
 This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of 06/30/2099 (the “Execution Date”) between "SUPPLIER CORPORATION", a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and "BUYER CORPORATION", a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.
 
@@ -297,47 +310,47 @@ Shipments that have a temperature or humidity reading outside the agreed range h
 Formula for Breach Penalty Calculation:
    penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor
 
-                </pre>
-            </div>
+          </pre>
+        </div>
 
-            <h4 class="title is-4">Model Dependencies</h4>
-            <div class="content">
-                <ul>
-                
-                <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
-                
-                <li><a href="https://models.accordproject.org/address.html">org.accordproject.address.PostalAddress</a></li>
-                
-                <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
-                
-                <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-                
-                <li><a href="https://models.accordproject.org/value.html">org.accordproject.value.*</a></li>
-                
-                </ul>
-            </div>
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+          <ul>
+          
+          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+          
+          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+          
+          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
+          
+          <li><a href="https://models.accordproject.org/address.html">org.accordproject.address.PostalAddress</a></li>
+          
+          <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+          
+          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+          
+          <li><a href="https://models.accordproject.org/value.html">org.accordproject.value.*</a></li>
+          
+          </ul>
+        </div>
 
-            <div class="container">
-    <h2 class="title is-2">Technical Integration</h2>
-
+          <div class="container technical-integration">
+  <h2 class="title is-2">Technical Integration</h2>
     <div class="content">
-    <p>
-    Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
-    for details and examples of how to integrate a call to a Cicero template into your application.
-    <p>
-    <p>
-    View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement-perishable-goods">on GitHub.</a>
-    </p>
+      <p>
+      Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+      for details and examples of how to integrate a call to a Cicero template into your application.
+      </p>
+      <p>
+      View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement-perishable-goods">on GitHub.</a>
+      </p>
     </div>
 
     <h4 class="title is-4">Sample Instance</h4>
-    <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    <div class="box">
+      <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.contract.SupplyAgreementPerishableGoodsContract",
-    "contractId": "ab0d4fb5-2832-46b7-8b19-f348c3f5a61a",
+    "contractId": "12e20593-fd9d-4625-8162-047470ca2825",
     "grower": "SUPPLIER CORPORATION",
     "importer": "BUYER CORPORATION",
     "shipment": "SHIP_001",
@@ -359,61 +372,62 @@ Formula for Breach Penalty Calculation:
     "maxHumidity": 90,
     "penaltyFactor": 0.2
 }</pre></code>
+    </div>
 
     <h4 class="title is-4">State Types</h4>
-    <table class="table">
-    <thead>
-        <tr>
-        <th>Type</th>
-        <th>Sample JSON</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        <tr>
-        <th>org.accordproject.cicero.contract.AccordContractState</th>
-        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    <table class="table box">
+      <thead>
+          <tr>
+          <th>Type</th>
+          <th>Sample JSON</th>
+          </tr>
+      </thead>
+      <tbody>
+          
+          <tr>
+          <th>org.accordproject.cicero.contract.AccordContractState</th>
+          <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "8c37eb00-6b63-11e9-87e1-017689ae8ca6"
+    "stateId": "32439ed0-8942-11e9-b9ba-87d1cf618bec"
 }</pre></code></td>
-        </tr>
-        
-    </tbody>
+          </tr>
+          
+      </tbody>
     </table>
 
     <h4 class="title is-4">Request Types</h4>
-    <table class="table">
-    <thead>
-        <tr>
-        <th>Type</th>
-        <th>Sample JSON</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        <tr>
-        <th>org.accordproject.perishablegoods.ShipmentReceived</th>
-        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    <table class="table box">
+      <thead>
+          <tr>
+          <th>Type</th>
+          <th>Sample JSON</th>
+          </tr>
+      </thead>
+      <tbody>
+          
+          <tr>
+          <th>org.accordproject.perishablegoods.ShipmentReceived</th>
+          <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 54004,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#5313",
-    "transactionId": "8c37c3f0-6b63-11e9-87e1-017689ae8ca6",
-    "timestamp": "2019-04-30T12:18:10.991-04:00"
+    "unitCount": 4210,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#6421",
+    "transactionId": "324377c0-8942-11e9-b9ba-87d1cf618bec",
+    "timestamp": "2019-06-07T12:35:01.564-04:00"
 }</pre></code></td>
-        </tr>
-        
-    </tbody>
+          </tr>
+          
+      </tbody>
     </table>
 
     <h4 class="title is-4">Response Types</h4>
-    <table class="table">
-    <thead>
+    <table class="table box">
+      <thead>
         <tr>
         <th>Type</th>
         <th>Sample JSON</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         
         <tr>
         <th>org.accordproject.perishablegoods.PriceCalculation</th>
@@ -421,50 +435,49 @@ Formula for Breach Penalty Calculation:
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
     "totalPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 89.557,
-        "currencyCode": "VEF"
+        "doubleValue": 113.034,
+        "currencyCode": "AWG"
     },
     "penalty": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 215.979,
-        "currencyCode": "COU"
+        "doubleValue": 72.833,
+        "currencyCode": "BND"
     },
     "late": true,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#1343",
-    "transactionId": "8c37c3f1-6b63-11e9-87e1-017689ae8ca6",
-    "timestamp": "2019-04-30T12:18:10.991-04:00"
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#5318",
+    "transactionId": "324377c1-8942-11e9-b9ba-87d1cf618bec",
+    "timestamp": "2019-06-07T12:35:01.564-04:00"
 }</pre></code></td>
         </tr>
         
-    </tbody>
+      </tbody>
     </table>
 
     <h4 class="title is-4">Events Types</h4>
-    <table class="table">
-    <thead>
+    <table class="table box">
+      <thead>
         <tr>
         <th>Type</th>
         <th>Sample JSON</th>
         </tr>
-    </thead>
-    <tbody>
-        
-        <tr>
-        <th>org.accordproject.base.Event</th>
-        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+      </thead>
+      <tbody>
+          
+          <tr>
+          <th>org.accordproject.base.Event</th>
+          <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "abstract": "this is an abstract type"
 }</pre></code></td>
-        </tr>
-        
-    </tbody>
+          </tr>
+          
+      </tbody>
     </table>
 </div>
-
-        </div>
+      </div>
     </section>
 
 
-    <footer class="footer">
+    <footer class="footer has-background-dark">
         <div class="container">
             <div class="content has-text-centered">
                 <p>
@@ -473,11 +486,11 @@ Formula for Breach Penalty Calculation:
                 </p>
             </div>
             <div class="content has-text-centered">
-                <p>
-The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.                </p>
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
             </div>
         </div>
     </footer>
-</body>
-
+  </body>
 </html>
