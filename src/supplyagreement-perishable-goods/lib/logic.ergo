@@ -103,7 +103,7 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
       promisee: some(contract.grower),
 			deadline: none,
       amount: totalPrice,
-      description: toString(contract.grower) ++ " must pay " ++ toString(contract.importer) ++ " " ++ toString(totalPrice.doubleValue)
+      description: toText(contract.grower) ++ " must pay " ++ toText(contract.importer) ++ " " ++ toText(totalPrice.doubleValue)
     };
     return PriceCalculation{
       shipment : request.shipment,

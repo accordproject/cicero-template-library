@@ -1,0 +1,48 @@
+namespace org.accordproject.rentaldeposit
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.time.Period from https://models.accordproject.org/v2.0/time.cto
+
+concept Penalty {
+  o String description
+  o MonetaryAmount amount
+}
+
+/**
+ * This is a transaction that represents the result of inspecting the property
+ */
+transaction ProperyInspection extends Request {
+  o Penalty[] penalties
+}
+
+/**
+ * The clause response
+ */
+transaction PropertyInspectionResponse extends Response {
+    o MonetaryAmount balance
+}
+
+/**
+ * The contract parties
+ */
+participant RentalParty extends AccordParty {
+    o String address
+}
+
+/**
+ * The template model
+ */
+asset RentalDepositClause extends AccordContract {
+  o RentalParty tenant
+  o RentalParty landlord
+  o MonetaryAmount depositAmount
+  o Period tenantDepositRestorationPeriod
+  o Double monthlyBaseRentMultiple
+  o String applicableLaw
+  o String statute
+  o String bankName
+  o Period landlordDepositReturnPeriod
+  o String exhibit
+}

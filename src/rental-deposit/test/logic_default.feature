@@ -13,8 +13,8 @@ Feature: Rental Deposit
    "$class": "org.accordproject.rentaldeposit.PropertyInspectionResponse",
     "balance": {
       "$class": "org.accordproject.money.MonetaryAmount",
-      "currencyCode" : "USD",
-      "doubleValue" : 1550
+      "doubleValue" : 1550,
+      "currencyCode" : "USD"
     }
 }
 """
@@ -25,8 +25,8 @@ Feature: Rental Deposit
         "$class": "org.accordproject.cicero.runtime.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
-            "doubleValue": 1550,
-            "currencyCode": "USD"
+            "currencyCode": "USD",
+            "doubleValue": 1550
         }
     }
 ]
