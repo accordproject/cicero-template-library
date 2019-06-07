@@ -1,0 +1,272 @@
+/* Global Styles Override */
+body {
+	font-family: "Graphik", sans-serif, Arial, Helvetica, sans-serif !important;
+}
+
+a {
+	color: rgb(25, 198, 199);
+	font-weight: 500;
+	transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+a:hover {
+	color: rgb(27, 37, 64);
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+	color: rgb(27, 37, 64);
+}
+
+.content h1:not(:first-child) {
+	margin-top: 1em;
+	font-weight: 400;
+	font-size: 2.5rem;
+	margin-bottom: 5px;
+}
+
+.content p:not(:last-child) {
+	margin-bottom: 0px !important;
+}
+
+.content p {
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 28px;
+	color: rgba(5, 12, 64, 0.502);
+}
+
+.content:not(:last-child) {
+	margin-bottom: 45px;
+}
+
+.box {
+	border-radius: 10px;
+	display: inline-block;
+	margin-bottom: 50px !important;
+}
+
+/* Headings */
+
+.title {
+	font-weight: 400;
+	color: rgb(27, 37, 64);
+}
+
+.title:not(:last-child) {
+	margin-bottom: 0;
+}
+
+.title.is-2 {
+	margin-bottom: 5px;
+}
+
+.title.is-4 {
+	margin-bottom: 20px;
+}
+
+.title:not(.is-spaced) + .subtitle {
+	max-width: 720px;
+	margin-top: 4px;
+}
+
+.subtitle {
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 28px;
+	color: rgba(5, 12, 64, 0.502);
+}
+
+.has-background-dark,
+.is-dark {
+	background-color: rgb(27, 37, 64) !important;
+}
+
+.has-light {
+	font-weight: 200 !important;
+	font-style: normal;
+	color: rgb(211, 206, 224);
+}
+
+/* Buttons */
+
+.button {
+	transition: background 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.button.is-primary {
+	color: rgb(5, 12, 64) !important;
+	background-color: rgb(25, 198, 199);
+	height: 45px;
+	width: auto;
+	padding: 15px 30px 13px;
+	font-size: 15px;
+	border: 2px solid transparent;
+}
+
+.button.is-primary.is-hovered,
+.button.is-primary:hover {
+	background-color: rgba(255, 255, 255, 0);
+	border: 2px solid rgb(25, 198, 199);
+}
+
+.button.download-button {
+	margin-right: 15px;
+}
+
+a.navbar-item {
+	color: rgb(255, 255, 255);
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1;
+	transition: color 0.15s ease-in;
+}
+
+a.navbar-item:hover {
+	background-color: transparent;
+	color: rgb(25, 198, 199);
+}
+
+a.navbar-item img {
+	margin-right: 10px;
+}
+
+.icon {
+	margin-top: -2px;
+	margin-right: 5px !important;
+}
+
+/* Hero */
+.hero {
+	padding-top: 140px;
+	padding-bottom: 70px;
+	background-image: url(/assets/images/background.jpg);
+	background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+.hero.is-dark a:not(.button):not(.dropdown-item):not(.tag) {
+	color: rgb(25, 198, 199);
+	transition: color 0.15s ease-in;
+}
+
+.hero.is-dark a:not(.button):not(.dropdown-item):not(.tag):hover {
+	color: rgb(255, 255, 255);
+}
+
+/* Footer */
+
+.footer .content p {
+	font-weight: 500;
+	font-style: normal;
+	color: rgba(255, 255, 255, 0.502);
+	font-size: 0.6666666667rem;
+	letter-spacing: 1px;
+	line-height: 1.8;
+	text-transform: uppercase;
+}
+
+/* Dropdown */
+
+.dropdown {
+	margin-top: 5px;
+	margin-right: 20px;
+}
+
+.dropdown .button .span {
+	font-size: 15px;
+	font-weight: 500;
+	color: rgb(5, 12, 64);
+}
+
+.dropdown-item {
+	font-weight: 400 !important;
+}
+
+a.dropdown-item.is-active {
+	background-color: rgb(25, 198, 199);
+	color: rgb(5, 12, 64);
+}
+
+svg.svg-inline--fa.fa-angle-down.fa-w-10 path {
+	fill: rgb(25, 198, 199) !important;
+}
+
+/* Tags */
+.tags:not(:last-child) {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
+.brand-label {
+	color: #fff;
+	font-size: 18.75px;
+	font-weight: 600;
+}
+
+/* Table */
+
+.table thead th {
+	font-weight: 500;
+	color: rgb(5, 12, 64);
+	line-height: initial;
+	border-bottom: 2px solid rgba(5, 12, 64, 0.102);
+	color: rgba(5, 12, 64, 0.502);
+	font-size: 0.6666666667rem;
+	font-weight: 500;
+	letter-spacing: 2.7px;
+	line-height: initial;
+	text-transform: uppercase;
+	padding-bottom: 15px;
+}
+
+.table td,
+.table th {
+	border: 1px solid rgb(219, 219, 219);
+	border-width: 0 0 1px;
+	padding: 0.5em 0.75em;
+	vertical-align: top;
+	color: rgba(5, 12, 64, 0.6);
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.table tfoot th {
+	font-weight: 500;
+	color: rgb(5, 12, 64);
+	line-height: initial;
+	border-top: 2px solid rgba(5, 12, 64, 0.102);
+	color: rgba(5, 12, 64, 0.502);
+	font-size: 0.6666666667rem;
+	font-weight: 500;
+	letter-spacing: 2.7px;
+	line-height: initial;
+	text-transform: uppercase;
+	padding-top: 15px;
+	padding-bottom: 0;
+}
+
+.table a:hover {
+	color: rgb(5, 12, 64) !important;
+}
+
+.technical-integration {
+	margin-top: 95px;
+}
+
+table.table.box.versions {
+	margin-top: 10px;
+}
+
+.inner-content {
+	padding-top: 140px;
+}
+
+.technical-integration.content {
+	margin-bottom: 20px;
+}
