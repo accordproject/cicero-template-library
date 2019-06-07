@@ -3,15 +3,15 @@ DLK BİLİŞİM TEKNOLOJİLERİ SATIŞ SÖZLEŞMESİ
 
 1. TARAFLAR :
 
-            1.1  [{buyer}] (Bundan sonra ALICI olarak anılacaktır)
+            1.1  {{buyer}} (Bundan sonra ALICI olarak anılacaktır)
 
-            1.2. [{seller}]  (Bundan sonra SATICI olarak anılacaktır)
+            1.2. {{seller}}  (Bundan sonra SATICI olarak anılacaktır)
 
 2. SATILAN ÜRÜNLER:
 
-Program: [{softwareID}]          
+Program: {{softwareID}}          
 
-Kullanıcı Sayısı: [{userCount}] 
+Kullanıcı Sayısı: {{userCount}} 
 
 3.KONU
 
@@ -91,7 +91,7 @@ Garanti Belgesi
 Destek Sözleşmesi
  
 
-10. Bu sözleşmeden doğan anlaşmazlıkların çözümde [{authorizedCourt}] yetkilidir.
+10. Bu sözleşmeden doğan anlaşmazlıkların çözümde {{authorizedCourt}} yetkilidir.
 
  
 

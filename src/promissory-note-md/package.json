@@ -1,0 +1,19 @@
+{
+    "name": "promissory-note-md",
+    "version": "0.1.0",
+    "description": "A promissory note",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "contract",
+        "ergo": "0.9.0",
+        "cicero": "^0.13.4"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["promissory", "note", "value", "received", "undersigned", "interest", "prepayment", "default", "remedies", "waiver", "savings", "amendment", "counterparts", "assignment", "principal"]
+}

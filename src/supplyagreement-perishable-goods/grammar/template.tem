@@ -1,8 +1,8 @@
 Supply Agreement
 
-This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of [{dueDate}] (the “Execution Date”) between [{grower}], a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and [{importer}], a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.
+This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of {{dueDate}} (the “Execution Date”) between {{grower}}, a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and {{importer}}, a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.
 
-1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase [{product}] (the "Products", [{shipment}]) in accordance with the terms of this agreement.
+1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase {{product}} (the "Products", {{shipment}}) in accordance with the terms of this agreement.
 
 2. Orders
 2.1. Purchase Orders. The Purchaser shall submit all orders for Products to the Supplier in writing to the Supplier's address listed in the introduction to this agreement, or as the Supplier otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
@@ -110,15 +110,15 @@ Routing Number: "YYY-YY"
 (c) Counterparts Form One Document. Together, all counterparts form one single document.
 
 Schedule A.
-[{shipment}] [{unitPrice}] per [{unit}]
+{{shipment}} {{unitPrice}} per {{unit}}
 
 Annex A. Delivery Method
-Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least [{sensorReadingFrequency}] per [{duration}].
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least {{sensorReadingFrequency}} per {{duration}}.
 
 Annex B. Acceptance Criteria
-The shipment must contain between [{minUnits}] and [{maxUnits}] [{unit}] of [{product}].
-Temperature readings for the shipment must be between [{minTemperature}]°C and [{maxTemperature}]°C.
-Humidity readings for the shipment must be between [{minHumidity}]% and [{maxHumidity}]%.
-Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is [{penaltyFactor}].
+The shipment must contain between {{minUnits}} and {{maxUnits}} {{unit}} of {{product}}.
+Temperature readings for the shipment must be between {{minTemperature}}°C and {{maxTemperature}}°C.
+Humidity readings for the shipment must be between {{minHumidity}}% and {{maxHumidity}}%.
+Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is {{penaltyFactor}}.
 Formula for Breach Penalty Calculation:
    penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor

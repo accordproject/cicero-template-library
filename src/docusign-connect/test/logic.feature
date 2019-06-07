@@ -37,7 +37,7 @@ Scenario: The contract should be in the correct initial state
 """
 {
    "$class": "com.docusign.connect.counter.MyResponse",
-    "output" : "Have received 0.0 contracts with status Completed",
+    "output" : "Have received 0 contracts with status Completed",
     "counter" : 0
 }
 """
@@ -77,7 +77,7 @@ Scenario: The contract should be in the correct initial state
 """
 {
    "$class": "com.docusign.connect.counter.MyResponse",
-    "output" : "Have received 2.0 contracts with status Completed",
+    "output" : "Have received 2 contracts with status Completed",
     "counter" : 2
 }
 """
@@ -87,7 +87,7 @@ Scenario: The contract should be in the correct initial state
   {
     "$class": "org.accordproject.cicero.runtime.NotificationObligation",
     "title": "Contracts with status Completed",
-    "message": "Have received 2.0 contracts with status Completed"
+    "message": "Have received 2 contracts with status Completed"
  }
 ]
 """

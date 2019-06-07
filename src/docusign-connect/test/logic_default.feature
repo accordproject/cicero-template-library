@@ -11,7 +11,7 @@ Feature: DocuSign Connect
 """
 {
    "$class": "com.docusign.connect.counter.MyResponse",
-    "output" : "Have received 1.0 contracts with status Completed",
+    "output" : "Have received 1 contracts with status Completed",
     "counter" : 1
 }
 """
@@ -21,7 +21,7 @@ Feature: DocuSign Connect
   {
     "$class": "org.accordproject.cicero.runtime.NotificationObligation",
     "title": "Contracts with status Completed",
-    "message": "Have received 1.0 contracts with status Completed"
+    "message": "Have received 1 contracts with status Completed"
  }
 ]
 """

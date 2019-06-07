@@ -4,8 +4,8 @@ İşbu tek seferlik ödeme hizmeti sözleşmesi ("Sözleşme"), aşağıd
 
 1. TARAFLAR
 
-        1.1 Banka [{seller}]
-        1.2 Müşteri [{buyer}]
+        1.1 Banka {{seller}}
+        1.2 Müşteri {{buyer}}
 
 2. SÖZLEŞMENİN KONUSU
 
@@ -35,4 +35,4 @@ İşbu tek seferlik ödeme hizmeti sözleşmesi ("Sözleşme"), aşağıd
         Müşteri, Banka’nın kendisini işbu Sözleşme’nin hükümleri hakkında işbu Sözleşme imzalanmadan önce bilgilendirdiğini, Banka’nın internet sitesinde taslak sözleşme örneğini
         incelediği ve kendisine sözleşmenin imzalı bir kopyasını verdiğini beyan ve kabul eder.
 
-7. Upon the signing of this Agreement, [{buyer}] shall pay the total purchase price to [{seller}] in the amount of [{totalPurchasePrice}].
+7. Upon the signing of this Agreement, {{buyer}} shall pay the total purchase price to {{seller}} in the amount of {{totalPurchasePrice}}.

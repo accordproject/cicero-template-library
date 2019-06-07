@@ -14,19 +14,19 @@ Service Levels	means the service levels set out in the Annex.
 
 2	Service levels
 
-2.1	The Supplier [{serviceProvider}] shall provide the Services so as to meet or exceed the Service Levels set out in this Schedule.
+2.1	The Supplier {{serviceProvider}} shall provide the Services so as to meet or exceed the Service Levels set out in this Schedule.
 
 2.2	Service Levels may be added, deleted, or modified by the parties at any time during the Term, in accordance with the Change Control Procedure. For the avoidance of doubt, the Supplier shall not withhold or delay its consent to any changes to the Service Levels that are required to achieve a fair, accurate and consistent measurement of the Supplier’s performance in delivering the Services.
 
 3	Service credits
 
-3.1	If the Supplier fails to meet or exceed a Service Level, the Customer [{serviceConsumer}] shall be entitled to a Service Credit in accordance with the provisions of this paragraph 3.
+3.1	If the Supplier fails to meet or exceed a Service Level, the Customer {{serviceConsumer}} shall be entitled to a Service Credit in accordance with the provisions of this paragraph 3.
 
-3.2	Service Credits shall be applied as a deduction against the Customer’s next monthly invoice or, if there are insufficient charges to deduct from, shall be paid to the Customer within [{paymentPeriod}] days.
+3.2	Service Credits shall be applied as a deduction against the Customer’s next monthly invoice or, if there are insufficient charges to deduct from, shall be paid to the Customer within {{paymentPeriod}} days.
 
-3.3	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in a single month under this Agreement shall not exceed: [{monthlyCapPercentage}]%.
+3.3	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in a single month under this Agreement shall not exceed: {{monthlyCapPercentage}}%.
 
-3.4	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in any 12–month period under this Agreement shall not exceed: [{yearlyCapPercentage}]%.
+3.4	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in any 12–month period under this Agreement shall not exceed: {{yearlyCapPercentage}}%.
 
 3.5	The Supplier shall not charge the Customer for any work carried out by it in connection with remedying a Service Level default.
 
@@ -59,5 +59,5 @@ Service Levels	means the service levels set out in the Annex.
 Annex 1—Service levels
 
 | Service Level Description     | Target service level      | Service credit 
-| Priority 1                    | [{availability1}]%                      |     [{serviceCredit1}]
-| Priority 1                    | [{availability2}]%                       |     [{serviceCredit2}]
+| Priority 1                    | {{availability1}}%                      |     {{serviceCredit1}}
+| Priority 1                    | {{availability2}}%                       |     {{serviceCredit2}}
