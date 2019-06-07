@@ -1,38 +1,23 @@
 {% extends "page.njk" %}
 
 {% block body %}
-    <section class="section">
+    <section class="hero is-dark">
+      <div class="hero-body">
         <div class="container">
-            <h1 class="title">
-                Accord Project Template Library
-            </h1>
-            <p class="subtitle">
-                Open Source Smart Legal Templates
-            </p>
+          <h1 class="title is-1">
+            Accord Project <span class="has-light">Template Library</span>
+          </h1>
+          <h2 class="subtitle">
+            This library contains all Accord Project contract and clause templates. Templates are captured using the Accord Project Cicero format. To contribute new templates (or fix existing templates), you can fork this <a href="https://github.com/accordproject/cicero-template-library" target="_blank">GitHub</a> repository and submit pull requests to the maintainers.
+          </h2>
         </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="title is-2">Welcome!</h2>
-            This library contains all Accord Project contract and clause templates. Templates are captured using the
-            <a href="https://github.com/accordproject/cicero">Accord Project Cicero format</a>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="title is-2">Contributing</h2>
-            To contribute new templates (or fix existing templates), you can fork this GitHub repository and submit
-            pull requests to the maintainers. Please join the
-            <a href="http://accordproject.org">Accord Project</a> Technology Working Group Slack channel.
-        </div>
+      </div>
     </section>
 
     <section class="section">
         <div class="container">
             <h2 class="title is-2">Templates</h2>
-            <table class="table">
+            <table class="table box versions">
             <thead>
                 <tr>
                 <th>Name</th>
@@ -60,7 +45,7 @@
             </tfoot>
             </table>
             <div class="content">
-                <a href="template-library.json">Template Library Index</a>
+                <a href="template-library.json" target="_blank">Template Library Index</a>
             </div>
         </div>
     </section>
