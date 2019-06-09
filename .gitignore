@@ -62,3 +62,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# Derived CTO files
+@models.accordproject.org*.cto
