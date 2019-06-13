@@ -132,7 +132,8 @@ a.navbar-item:hover {
 }
 
 a.navbar-item img {
-	margin-right: 10px;
+  margin-right: 10px;
+  max-height: none!important;
 }
 
 .icon {
@@ -145,10 +146,23 @@ a.navbar-item img {
 	padding-top: 140px;
 	padding-bottom: 70px;
 	background-image: url(/assets/images/background.jpg);
-	background-repeat: no-repeat;
-	background-repeat: no-repeat;
-	background-position: center top;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: 2205px 2000px;
+  position: relative;
 }
+  
+.hero::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background-image: url(/assets/images/noise.png);
+  background-size: 276px 276px;
+  pointer-events: none;
+  }
 
 .hero.is-dark a:not(.button):not(.dropdown-item):not(.tag) {
 	color: rgb(25, 198, 199);
@@ -160,6 +174,26 @@ a.navbar-item img {
 }
 
 /* Footer */
+
+.footer {
+	background-image: url(/assets/images/background.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: 2205px 2000px;
+  position: relative;
+}
+
+.footer::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background-image: url(/assets/images/noise.png);
+  background-size: 276px 276px;
+  pointer-events: none;
+}
 
 .footer .content p {
 	font-weight: 500;
