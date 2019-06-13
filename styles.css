@@ -132,7 +132,8 @@ a.navbar-item:hover {
 }
 
 a.navbar-item img {
-	margin-right: 10px;
+  margin-right: 10px;
+  max-height: none!important;
 }
 
 .icon {

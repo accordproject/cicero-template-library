@@ -132,7 +132,8 @@ a.navbar-item:hover {
 }
 
 a.navbar-item img {
-	margin-right: 10px;
+  margin-right: 10px;
+  max-height: none!important;
 }
 
 .icon {
@@ -150,7 +151,6 @@ a.navbar-item img {
   background-size: 2205px 2000px;
   position: relative;
 }
-
   
 .hero::before {
   position: absolute;
@@ -174,7 +174,6 @@ a.navbar-item img {
 }
 
 /* Footer */
-
 
 .footer {
 	background-image: url(/assets/images/background.jpg);
