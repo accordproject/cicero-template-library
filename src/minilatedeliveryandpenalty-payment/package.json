@@ -1,12 +1,12 @@
 {
     "name": "minilatedeliveryandpenalty-payment",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "description": "A Late Delivery And Penalty (Mini, Capped, with Payment)",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "ergo": "0.8.0",
-        "cicero": "^0.12.0"
+        "ergo": "0.9.0",
+        "cicero": "^0.13.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
