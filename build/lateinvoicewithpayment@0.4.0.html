@@ -1,0 +1,337 @@
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-120382669-1');
+      </script>
+
+      <script>
+          // handle drop down menus
+          window.addEventListener('load', function () {
+              var dropdown = document.querySelector('.dropdown');
+              if(dropdown) {
+                  dropdown.addEventListener('click', function(event) {
+                      event.stopPropagation();
+                      dropdown.classList.toggle('is-active');
+                  });
+              }
+          }, false);
+      </script>
+      
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      
+      
+      
+
+      <!-— generic unfurl tags -->
+      <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:domain" content="templates.accordproject.org" />
+      <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+      <meta name="twitter:data1" content="on GitHub.com" />
+      <meta name="twitter:label2" content="Contribute" />
+      <meta name="twitter:data2" content="at AccordProject.org" />
+
+      
+  <!-— facebook open graph tags -->
+  <meta property="og:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.4.0.html" />
+  <meta property="og:title" content="lateinvoicewithpayment@0.4.0" />
+  <meta property="og:description" content="A sample Late invoice clause which emits a payment obligation." />
+  <meta property="og:image" content="https://www.plantuml.com/plantuml/png/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" />
+
+  <!-— twitter card tags additive with the og: tags -->
+  <meta name="twitter:title" content="lateinvoicewithpayment@0.4.0" />
+  <meta name="twitter:description" content="A sample Late invoice clause which emits a payment obligation." />
+  <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" />
+  <meta name="twitter:image:alt" content="UML diagram of lateinvoicewithpayment@0.4.0 namespace." />
+  <meta name="twitter:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.4.0.html" />
+
+
+      <title>Accord Project Template Library</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+      <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/idea.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+      <link rel="stylesheet" href="assets/fonts.css" />
+      <link rel="stylesheet" href="/styles.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="/assets/images/accord_logo.png" alt="Accord Project" width="34" height="100%">
+            <span class="brand-label">Accord Project</span>
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    
+    <section class="section inner-content">
+      <div class="container">
+        <h1 class="title is-1">
+          Template lateinvoicewithpayment@0.4.0
+        </h1>
+        <div class="tags">
+          <span class="tag is-light">Contract</span>
+          <span class="tag is-light">^0.13.0</span>
+          <span class="tag is-light">5e38f7939cf588f9ec9656b6310080528b8506c9bb33f597f67ac73c13a2acb3</span>
+        </div>
+        <p class="subtitle">
+          A sample Late invoice clause which emits a payment obligation.
+        </p>
+
+        <p>
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="lateinvoicewithpayment@0.4.0.html" class="dropdown-item is-active">
+                    lateinvoicewithpayment@0.4.0
+                </a>
+              
+                <a href="lateinvoicewithpayment@0.3.1.html" class="dropdown-item ">
+                    lateinvoicewithpayment@0.3.1
+                </a>
+              
+                <a href="lateinvoicewithpayment@0.3.0.html" class="dropdown-item ">
+                    lateinvoicewithpayment@0.3.0
+                </a>
+              
+                <a href="lateinvoicewithpayment@0.2.0.html" class="dropdown-item ">
+                    lateinvoicewithpayment@0.2.0
+                </a>
+              
+                <a href="lateinvoicewithpayment@0.1.0.html" class="dropdown-item ">
+                    lateinvoicewithpayment@0.1.0
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/lateinvoicewithpayment@0.4.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Flateinvoicewithpayment%400.4.0%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
+
+        <img src="https://www.plantuml.com/plantuml/svg/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" class="box" style="margin-top:40px;" />
+
+        <div class="content">
+          <p>
+          <h1 id="lateinvoiceclausewithpayment">Late Invoice Clause With Payment</h1>
+<p>A sample Late invoice clause which emits a payment obligation.</p>
+          </p>
+        </div>
+
+        <h4 class="title is-4">Sample</h4>
+        <div class="content box">
+          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;">
+            2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".
+          </pre>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+          <ul>
+          
+          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+          
+          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+          
+          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
+          
+          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.*</a></li>
+          
+          </ul>
+        </div>
+
+          <div class="container technical-integration">
+  <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+      <p>
+      Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+      for details and examples of how to integrate a call to a Cicero template into your application.
+      </p>
+      <p>
+      View the Latest code for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/lateinvoicewithpayment">on GitHub.</a>
+      </p>
+    </div>
+
+    <h4 class="title is-4">Sample Instance</h4>
+    <div class="box">
+      <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceContract",
+    "contractId": "00304976-d5f9-45de-a843-c12bbf6325cd",
+    "maximumDelay": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 180,
+        "unit": "days"
+    },
+    "purchaser": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Betty Buyer"
+    },
+    "supplier": {
+        "$class": "org.accordproject.cicero.contract.AccordParty",
+        "partyId": "Steve Seller"
+    }
+}</pre></code>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+      <thead>
+          <tr>
+          <th>Type</th>
+          <th>Sample JSON</th>
+          </tr>
+      </thead>
+      <tbody>
+          
+          <tr>
+          <th>org.accordproject.cicero.contract.AccordContractState</th>
+          <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.contract.AccordContractState",
+    "stateId": "782b7221-9cce-11e9-9a6f-d5f6456622aa"
+}</pre></code></td>
+          </tr>
+          
+      </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+      <thead>
+          <tr>
+          <th>Type</th>
+          <th>Sample JSON</th>
+          </tr>
+      </thead>
+      <tbody>
+          
+          <tr>
+          <th>org.accordproject.lateinvoicewithpayment.LateInvoiceRequest</th>
+          <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceRequest",
+    "invoiceDue": "2019-07-02T09:37:00.481-04:00",
+    "amountDue": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 195.412,
+        "currencyCode": "KES"
+    },
+    "transactionId": "782b4b10-9cce-11e9-9a6f-d5f6456622aa",
+    "timestamp": "2019-07-02T09:37:00.481-04:00"
+}</pre></code></td>
+          </tr>
+          
+      </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+      <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+        <th>org.accordproject.lateinvoicewithpayment.LateInvoiceResponse</th>
+        <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceResponse",
+    "paymentRequired": true,
+    "cause": "Ex.",
+    "transactionId": "782b7220-9cce-11e9-9a6f-d5f6456622aa",
+    "timestamp": "2019-07-02T09:37:00.482-04:00"
+}</pre></code></td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+      <thead>
+        <tr>
+        <th>Type</th>
+        <th>Sample JSON</th>
+        </tr>
+      </thead>
+      <tbody>
+          
+          <tr>
+          <th>org.accordproject.cicero.runtime.PaymentObligation</th>
+          <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 212.86,
+        "currencyCode": "BWP"
+    },
+    "description": "Sit voluptate elit.",
+    "contract": "resource:org.accordproject.lateinvoicewithpayment.LateInvoiceContract#1900",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5380",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0154",
+    "deadline": "2019-07-02T09:37:00.483-04:00",
+    "eventId": "782b9930-9cce-11e9-9a6f-d5f6456622aa",
+    "timestamp": "2019-07-02T09:37:00.483-04:00"
+}</pre></code></td>
+          </tr>
+          
+      </tbody>
+    </table>
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>
