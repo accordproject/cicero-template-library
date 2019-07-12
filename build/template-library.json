@@ -4213,5 +4213,14 @@
         "version": "0.13.0",
         "ciceroVersion": "^0.13.0",
         "type": 0
+    },
+    "car-rental-tr@0.9.0": {
+        "uri": "ap://car-rental-tr@0.9.0#7360271832afb721a915ac85ca6d04d25a8bd236c710c70ec104213c9c725543",
+        "url": "https://templates.accordproject.org/archives/car-rental-tr@0.9.0.cta",
+        "name": "car-rental-tr",
+        "description": "a Simple Car Rental Contract in Turkish Language",
+        "version": "0.9.0",
+        "ciceroVersion": "^0.13.0",
+        "type": 0
     }
 }

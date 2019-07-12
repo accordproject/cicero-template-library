@@ -14,8 +14,8 @@
 
 'use strict';
 
-const CodeGen = require('composer-concerto-tools').CodeGen;
-const FileWriter = require('composer-concerto').FileWriter;
+const CodeGen = require('@accordproject/ergo-compiler').ComposerConcertoTools.CodeGen;
+const FileWriter = require('@accordproject/ergo-compiler').ComposerConcerto.FileWriter;
 
 const Template = require('@accordproject/cicero-core').Template;
 const Clause = require('@accordproject/cicero-core').Clause;
