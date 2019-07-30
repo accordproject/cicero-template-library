@@ -19,7 +19,7 @@
     <section class="section inner-content">
       <div class="container">
         <h1 class="title is-1">
-          Template {{template.getIdentifier()}}
+          {{template.getMetadata().getDisplayName()}} Template
         </h1>
         <div class="tags">
           <span class="tag is-light">{% if template.getMetadata().getTemplateType() === 0 %}Contract{% else %}Clause{% endif %}</span>
