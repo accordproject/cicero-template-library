@@ -235,6 +235,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             uri: `ap://${template.getIdentifier()}#${templateHash}`,
                             url: `${serverRoot}/archives/${archiveFileName}`,
                             name : m.getName(),
+                            displayName: m.getDisplayName(),
                             description : m.getDescription(),
                             version: m.getVersion(),
                             ciceroVersion: m.getCiceroVersion(),
