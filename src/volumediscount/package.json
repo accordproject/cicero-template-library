@@ -1,6 +1,7 @@
 {
     "name": "volumediscount",
-    "version": "0.13.0",
+    "displayName": "Volume Discount",
+    "version": "0.13.1",
     "description": "A sample volume discount contract.",
     "license": "Apache-2.0",
     "accordproject": {

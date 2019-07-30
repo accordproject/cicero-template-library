@@ -1,6 +1,7 @@
 {
     "name": "minilatedeliveryandpenalty-capped",
-    "version": "0.3.0",
+    "displayName": "Mini-Late Delivery and Penalty Capped",
+    "version": "0.3.1",
     "description": "A Late Delivery And Penalty (Mini, Capped)",
     "license": "Apache-2.0",
     "accordproject": {

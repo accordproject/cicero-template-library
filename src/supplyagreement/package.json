@@ -1,6 +1,7 @@
 {
     "name": "supplyagreement",
-    "version": "0.11.0",
+    "displayName": "Supply Agreement",
+    "version": "0.11.1",
     "description": "A sample supply agreement.",
     "author": "Accord Project",
     "license": "Apache-2.0",

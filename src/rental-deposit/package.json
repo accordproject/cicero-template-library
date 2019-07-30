@@ -1,6 +1,7 @@
 {
     "name": "rental-deposit",
-    "version": "0.4.0",
+    "displayName": "Rental Deposit",
+    "version": "0.4.1",
     "description": "This clause specifies how a rental deposit is refunded based on inspection.",
     "author": "Accord Project",
     "license": "Apache-2.0",

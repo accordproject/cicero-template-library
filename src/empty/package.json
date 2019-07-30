@@ -1,6 +1,7 @@
 {
     "name": "empty",
-    "version": "0.6.0",
+    "displayName": "Empty",
+    "version": "0.6.1",
     "description": "This is an empty clause template to get you started.",
     "license": "Apache-2.0",
     "accordproject": {
