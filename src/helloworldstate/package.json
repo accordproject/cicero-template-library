@@ -1,6 +1,7 @@
 {
     "name": "helloworldstate",
-    "version": "0.12.0",
+    "displayName": "Hello World State",
+    "version": "0.12.1",
     "description": "This is the stateful Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request along with the number of times the clause has been called.",
     "license": "Apache-2.0",
     "accordproject": {

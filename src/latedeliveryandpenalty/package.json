@@ -1,6 +1,7 @@
 {
     "name": "latedeliveryandpenalty",
-    "version": "0.14.0",
+    "displayName": "Late Delivery and Penalty",
+    "version": "0.14.1",
     "description": "A sample Late Delivery And Penalty clause.",
     "license": "Apache-2.0",
     "accordproject": {

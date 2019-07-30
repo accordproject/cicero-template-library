@@ -1,6 +1,7 @@
 {
     "name": "minilatedeliveryandpenalty",
-    "version": "0.3.0",
+    "displayName": "Mini-Late Delivery and Penalty",
+    "version": "0.3.1",
     "description": "A Late Delivery And Penalty Clause (Mini).",
     "license": "Apache-2.0",
     "accordproject": {

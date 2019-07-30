@@ -1,6 +1,7 @@
 {
     "name": "hellomodule",
-    "version": "0.5.0",
+    "displayName": "Hello Module",
+    "version": "0.5.1",
     "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
     "accordproject": {
         "template": "clause",
