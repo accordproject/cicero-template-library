@@ -29,7 +29,15 @@
             <tbody>
                 {% for name, val in templateIndex |dictsort%}
                 <tr>
-                <th><a href="{{name}}.html">{{name}}<a></th>
+                <th>
+                  <a href="{{name}}.html">
+                    {% if val.displayName %}
+                      {{val.displayName}}
+                    {% else %}
+                      {{name}}
+                    {% endif %}
+                  <a>
+                </th>
                 <td>{{val.description}}</td>
                 <td>{{val.ciceroVersion}}</td>
                 <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
