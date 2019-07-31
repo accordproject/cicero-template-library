@@ -19,9 +19,10 @@
     <section class="section inner-content">
       <div class="container">
         <h1 class="title is-1">
-          {{template.getMetadata().getDisplayName()}} Template
+          {{template.getMetadata().getDisplayName()}}
         </h1>
         <div class="tags">
+          <span class="tag is-light">{{template.getIdentifier()}}</span>
           <span class="tag is-light">{% if template.getMetadata().getTemplateType() === 0 %}Contract{% else %}Clause{% endif %}</span>
           <span class="tag is-light">{{template.getMetadata().getCiceroVersion()}}</span>
           <span class="tag is-light">{{template.getHash()}}</span>
