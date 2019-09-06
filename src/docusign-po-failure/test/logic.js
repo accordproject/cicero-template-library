@@ -29,7 +29,7 @@ const moment = require('moment');
 describe('Logic', () => {
 
     const rootDir = path.resolve(__dirname, '..');
-    const clauseText = fs.readFileSync(path.resolve(rootDir, 'sample.txt'), 'utf8');
+    const clauseText = fs.readFileSync(path.resolve(rootDir, 'sample.md'), 'utf8');
     
     let template;
     let clause;
@@ -203,7 +203,7 @@ describe('Logic', () => {
                                 tabLabel: "currencyCode",
                                 tabName: "",
                                 customTabType: "Text",
-                                tabValue: "USD",
+                                tabValue: "GBP",
                                 originalValue: "",
                                 $class: "com.docusign.connect.TextTabStatus"
                             },
@@ -243,14 +243,14 @@ describe('Logic', () => {
             result.response.penalty.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
                 'doubleValue': 200,
-                'currencyCode': 'USD'
+                'currencyCode': 'GBP'
             });
             result.state.nbPastFailures.should.equal(1);
             result.emit[0].$class.should.equal('org.accordproject.cicero.runtime.PaymentObligation');
             result.emit[0].amount.should.deep.equal({
                 '$class': 'org.accordproject.money.MonetaryAmount',
                 'doubleValue': 200,
-                'currencyCode': 'USD'
+                'currencyCode': 'GBP'
             });
         });
         

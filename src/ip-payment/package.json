@@ -2,13 +2,13 @@
     "name": "ip-payment",
     "displayName": "IP Payment",
     "version": "0.12.0",
-    "description": "This clause is a payment clause for IP agreement, such as trademark or copyright licenses aggreements.",
+    "description": "This clause is a payment clause for IP agreements, such as trademark or copyright licenses.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
-        "ergo": "0.9.0",
-        "cicero": "^0.13.4"
+        "ergo": "0.20.0-alpha.2",
+        "cicero": "^0.20.0-alpha.2"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

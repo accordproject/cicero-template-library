@@ -15,13 +15,13 @@
 namespace com.docusign.connect.counter
 
 import org.accordproject.cicero.runtime.*
-import com.docusign.connect.DocuSignEnvelopeInformation
+import com.docusign.connect.*
 
-define function buildMessage(counter: Integer, status: String) {
-  return "Have received " ++ toString(counter) ++ " contracts with status " ++ status
+define function buildMessage(counter: Integer, status: EnvelopeStatusCode) {
+  return `Have received {{% counter %}} contracts with status {{% status %}}`
 }
 
-define function buildResponse(counter: Integer, status: String) {
+define function buildResponse(counter: Integer, status: EnvelopeStatusCode) {
   return MyResponse {
     output: buildMessage(counter, status),
     counter: counter
@@ -31,7 +31,7 @@ define function buildResponse(counter: Integer, status: String) {
 contract DocuSignEnvelopeCounter over DocuSignEnvelopeCounterClause state DocuSignEnvelopeCounterState {
 
   // initialize the state counter
-  clause init(request : Request) : Response {
+  clause init() : Response {
     set state DocuSignEnvelopeCounterState {
       stateId: "com.docusign.connect.clause.DocuSignEnvelopeCounterState",
       counter: 0
@@ -41,18 +41,15 @@ contract DocuSignEnvelopeCounter over DocuSignEnvelopeCounterClause state DocuSi
 
   // count envelopes with a given status
   clause connectEvent(request : DocuSignEnvelopeInformation) : MyResponse emits NotificationObligation {
-
     enforce request.envelopeStatus.status = contract.status
     else return buildResponse(state.counter, contract.status);
-    
     let newCounter = state.counter+1;
     set state DocuSignEnvelopeCounterState {
       stateId: "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
       counter: newCounter
     };
-
     emit NotificationObligation {
-      title: "Contracts with status " ++ contract.status,
+      title: `Contracts with status {{% contract.status %}}`,
       message: buildMessage(state.counter, contract.status),
       contract: contract,
       promisor: none,
