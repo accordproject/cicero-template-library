@@ -22,14 +22,14 @@ contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state 
   clause init(request : Request) : Response {   
     set state FullPaymentUponDemandState {
       stateId: "1",
-      status: "INITIALIZED"
+      status: INITIALIZED
     };
     return Response{}
   }
 
   
   clause paymentDemand(request : PaymentDemand) : Response emits PaymentObligation {
-    enforce (state.status = "INITIALIZED") 
+    enforce (state.status = INITIALIZED) 
     	else throw ErgoErrorResponse{ message: "Payment has already been demanded." };
     
     emit PaymentObligation{
@@ -43,19 +43,19 @@ contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state 
     
     set state FullPaymentUponDemandState {
       stateId: "1",
-      status: "OBLIGATION_EMITTED"
+      status: OBLIGATION_EMITTED
     };
     
     return Response{}
   }
   clause paymentReceived(request : PaymentReceived): Response {
     
-    enforce (state.status = "OBLIGATION_EMITTED") 
+    enforce (state.status = OBLIGATION_EMITTED) 
     else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
     
     set state FullPaymentUponDemandState {
       stateId: state.stateId,
-      status: "COMPLETED"
+      status: COMPLETED
     };
     
     return Response{}
