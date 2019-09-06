@@ -16,7 +16,7 @@ namespace org.accordproject.minilatedeliveryandpenalty
 
 import org.accordproject.time.*
 import org.accordproject.cicero.runtime.*
-import org.accordproject.money.MonetaryAmount
+import org.accordproject.money.*
 
 contract MiniLateDelivery over MiniLateDeliveryContract {
   clause latedeliveryandpenalty(request : LateRequest) : LateResponse emits PaymentObligation {
@@ -28,7 +28,7 @@ contract MiniLateDelivery over MiniLateDeliveryContract {
     else throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
 
     // 2. Penalty formula
-    let delay = diffDurationAs(delivery,agreed,"days");       // Delay in days
+    let delay = diffDurationAs(delivery,agreed,~org.accordproject.time.TemporalUnit.days);       // Delay in days
     let penaltyStep = contract.penaltyDuration;               // Penalty steps
 
     let penalty =
@@ -47,7 +47,7 @@ contract MiniLateDelivery over MiniLateDeliveryContract {
       else penalty;
 
     // 4. Can the buyer terminate?
-    let maxDays = durationAs(contract.maximumDelay,"days");
+    let maxDays = durationAs(contract.maximumDelay,~org.accordproject.time.TemporalUnit.days);
     let termination = delay.amount > maxDays.amount;
 
     // 5. Emit a payment obligation in USD
@@ -56,7 +56,7 @@ contract MiniLateDelivery over MiniLateDeliveryContract {
       promisor: some(contract.seller),
       promisee: some(contract.buyer),
       deadline: none,
-      amount: MonetaryAmount{ doubleValue: cappedPenalty, currencyCode: "USD" },
+      amount: MonetaryAmount{ doubleValue: cappedPenalty, currencyCode: USD },
       description: contract.seller.partyId ++ " should pay penalty amount to " ++ contract.buyer.partyId
     };
 

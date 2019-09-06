@@ -22,7 +22,7 @@ contract onetimepayment over OneTimePaymentContract state OneTimePaymentState {
 	 * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
 	 */
   clause init(request : Request) : Response emits PaymentObligation {
-	  // enforce (state.status = "UNINTIALIZED") 
+	  // enforce (state.status = UNINTIALIZED) 
     // else throw ErgoErrorResponse{ message: "This contract has already been initialized. Current state is " ++ state.status };
 		
     emit PaymentObligation{
@@ -35,7 +35,7 @@ contract onetimepayment over OneTimePaymentContract state OneTimePaymentState {
 		};
 		set state OneTimePaymentState {
 			stateId: "1",
-			status: "OBLIGATION_EMITTED"
+			status: OBLIGATION_EMITTED
 		};
     return Response{}
   }
@@ -44,11 +44,11 @@ contract onetimepayment over OneTimePaymentContract state OneTimePaymentState {
 	 * Update the contract state once we've recieved a payment
 	 */
   clause paymentReceived(request : PaymentReceived): Response {
-    enforce (state.status = "OBLIGATION_EMITTED") 
+    enforce (state.status = OBLIGATION_EMITTED) 
     else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
 		set state OneTimePaymentState {
 			stateId: state.stateId,
-			status: "COMPLETED"
+			status: COMPLETED
 		};
 		return Response{}
   }

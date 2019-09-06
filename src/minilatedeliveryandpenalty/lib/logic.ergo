@@ -26,7 +26,7 @@ contract MiniLateDelivery over MiniLateDeliveryClause {
     else throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
 
     // 2. Penalty formula
-    let delay = diffDurationAs(delivery,agreed,"days");       // Delay in days
+    let delay = diffDurationAs(delivery,agreed,~org.accordproject.time.TemporalUnit.days);       // Delay in days
     let penaltyStep = contract.penaltyDuration;               // Penalty steps
 
     let penalty =
@@ -35,7 +35,7 @@ contract MiniLateDelivery over MiniLateDeliveryClause {
     * request.goodsValue;
 
     // 4. Can the buyer terminate?
-    let maxDays = durationAs(contract.maximumDelay,"days");
+    let maxDays = durationAs(contract.maximumDelay,~org.accordproject.time.TemporalUnit.days);
     let termination = delay.amount > maxDays.amount;
 
     // 5. Return the response

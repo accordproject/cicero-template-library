@@ -191,7 +191,7 @@ Formula for Breach Penalty Calculation:
       "doubleValue": 300,
       "currencyCode": "USD"
     },
-    "description": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION must pay resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION 300.0",
+    "description": "\"resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION\" must pay \"resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION\" 300.0",
     "promisor": "resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION",
     "promisee": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION",
     "eventId": "valid"

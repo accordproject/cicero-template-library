@@ -22,9 +22,9 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.13.5-20190803034616",
-    "@accordproject/cicero-engine": "0.13.5-20190803034616",
-    "@accordproject/cicero-test": "0.13.5-20190803034616",
+    "@accordproject/cicero-core": "0.20.0-alpha.2",
+    "@accordproject/cicero-engine": "0.20.0-alpha.2",
+    "@accordproject/cicero-test": "0.20.0-alpha.2",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "4.2.0",
@@ -46,7 +46,7 @@
   "version": "0.1.0",
   "main": "build.js",
   "devDependencies": {
-    "lerna": "2.11.0",
+    "lerna": "3.15.0",
     "mkdirp": "^0.5.1",
     "nyc": "^14.1.1"
   },

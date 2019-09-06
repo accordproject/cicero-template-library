@@ -27,9 +27,10 @@ contract HelloWorldState over HelloWorldClause state HelloWorldState {
 
   // Simple Clause
   clause helloworldstate(request : MyRequest) : MyResponse {
+    let newCounter = state.counter + 1.0;
     set state HelloWorldState{
       stateId: "org.accordproject.helloworldstate.HelloWorldState#" ++ toString(state.counter),
-      counter: state.counter + 1.0
+      counter: newCounter
     };
     return MyResponse{
       output: "Hello " ++ contract.name ++ " " ++ request.input ++ "(" ++ toString(state.counter) ++ ")"
