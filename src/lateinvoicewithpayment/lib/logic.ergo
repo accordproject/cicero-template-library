@@ -19,7 +19,7 @@ import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 
 define function lateMessage(d:Duration) : String {
-  return "Invoice was received " ++ toString(d.amount) ++ " " ++ d.unit ++ " late"
+  return `Invoice was received {{% d.amount %}} {{% d.unit %}} late`
 }
 
 contract LateInvoice over LateInvoiceContract {

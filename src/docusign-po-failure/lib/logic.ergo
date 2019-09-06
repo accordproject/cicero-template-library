@@ -27,6 +27,27 @@ define function failuresInRange(pastFailures:DateTime[],range:Duration) : DateTi
     return d
 }
 
+define function mapTextToCurrencyCode(text:String) : CurrencyCode? {
+	// XXX Should there be any restriction on which currency is supported?
+	let allCodes = [
+		AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND,
+		BOB, BOV, BRL, BSD, BTN, BWP, BYN, BZD, CAD, CDF, CHE, CHF, CHW, CLF, CLP, CNY, COP, COU,
+		CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GHS,
+		GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, INR, IQD, IRR, ISK, JMD, JOD,
+		JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LYD, MAD, MDL,
+		MGA, MKD, MMK, MNT, MOP, MRU, MUR, MVR, MWK, MXN, MXV, MYR, MZN, NAD, NGN, NIO, NOK, NPR,
+		NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG,
+		SEK, SGD, SHP, SLL, SOS, SRD, SSP, STN, SVC, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD,
+		TWD, TZS, UAH, UGX, USD, USN, UYI, UYU, UZS, VEF, VND, VUV, WST, XAF, XAG, XAU, XBA, XBB,
+		XBC, XBD, XCD, XDR, XOF, XPD, XPF, XPT, XSU, XTS, XUA, XXX, YER, ZAR, ZMW, ZWL
+  ];
+	return singleton(
+    foreach c in allCodes
+		where toString(c) = text
+    return c
+	)
+}
+
 contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOrderFailureState {
   clause init(request:Request) : Response {
     set state PurchaseOrderFailureState {
@@ -40,7 +61,7 @@ contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOr
   clause execute(request:DocuSignEnvelopeInformation) : PurchaseOrderFailureResponse emits PaymentObligation {
     let deliveryDateOpt = getDateTabFromRecipients(request,"deliveryDate");
     let actualPriceOpt = getNumberTabFromRecipients(request,"actualPrice");
-    let currencyCodeOpt = getTextTabFromRecipients(request,"currencyCode");
+    let currencyTextOpt = getTextTabFromRecipients(request,"currencyCode");
 
     enforce deliveryDateOpt != none
     else throw failure("Could not find a deliveryDate tab");
@@ -50,9 +71,15 @@ contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOr
     else throw failure("Could not find an actualPrice tab");
     let actualPrice = actualPriceOpt ?? nan;
 
-    enforce currencyCodeOpt != none
+    enforce currencyTextOpt != none
     else throw failure("Could not find a currencyCode tab");
-    let currencyCode = currencyCodeOpt ?? "";
+    let currencyText = currencyTextOpt ?? "";
+
+    let currencyCodeOpt = mapTextToCurrencyCode(currencyText);
+
+    enforce currencyCodeOpt != none
+    else throw failure(`Unknown currency code: {{% currencyText %}}`);
+    let currencyCode = currencyCodeOpt ?? USD;
 
     // Check that the delivery is late, If not, no penalty should be applied
     enforce isAfter(now(),addDuration(deliveryDate,contract.lateOne))

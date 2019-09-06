@@ -16,7 +16,7 @@ namespace org.accordproject.latedeliveryandpenalty
 
 import org.accordproject.cicero.runtime.*
 import org.accordproject.time.*
-import org.accordproject.money.MonetaryAmount
+import org.accordproject.money.*
 
 contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
   clause latedeliveryandpenalty(request : LateDeliveryAndPenaltyRequest) : LateDeliveryAndPenaltyResponse emits PaymentObligation {
@@ -33,8 +33,8 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
     ;
 
     // Calculate the time difference between current date and agreed upon date
-    let diff = diffDurationAs(now(),agreed,"days");
-    let diffRatio = divideDuration(diff,durationAs(contract.penaltyDuration,"days"));
+    let diff = diffDurationAs(now(),agreed,~org.accordproject.time.TemporalUnit.days);
+    let diffRatio = divideDuration(diff,durationAs(contract.penaltyDuration,~org.accordproject.time.TemporalUnit.days));
     // Penalty formula
     let penalty = diffRatio * contract.penaltyPercentage/100.0 * request.goodsValue;
     // Penalty may be capped
@@ -45,13 +45,13 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
 			promisor: some(contract.seller),
 			promisee: some(contract.buyer),
 			deadline: none,
-			amount: MonetaryAmount{ doubleValue: capped, currencyCode: "USD" },
+			amount: MonetaryAmount{ doubleValue: capped, currencyCode: USD },
 			description: contract.seller.partyId ++ " should pay penalty amount to " ++ contract.buyer.partyId
 		};
     // Return the response with the penalty and termination determination
     return LateDeliveryAndPenaltyResponse{
       penalty: capped,
-      buyerMayTerminate: diff.amount > durationAs(contract.termination,"days").amount
+      buyerMayTerminate: diff.amount > durationAs(contract.termination,~org.accordproject.time.TemporalUnit.days).amount
     }
   }
 }

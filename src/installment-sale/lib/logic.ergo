@@ -15,7 +15,7 @@
 namespace org.accordproject.installmentsale
 
 import org.accordproject.cicero.runtime.*
-import org.accordproject.money.MonetaryAmount
+import org.accordproject.money.*
 
 define function round(x:Double) {
     return floor(x + 0.5)
@@ -31,7 +31,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
   clause init(request : Request) : Response {
     set state InstallmentSaleState{
 			stateId: "#1",
-      status: "WaitingForFirstDayOfNextMonth",
+      status: WaitingForFirstDayOfNextMonth,
       balance_remaining: contract.INITIAL_DUE,
       total_paid: MonetaryAmount{ doubleValue : 0.0, currencyCode : contract.INITIAL_DUE.currencyCode },
       next_payment_month: contract.FIRST_MONTH
@@ -46,7 +46,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
   }
 
   clause PayInstallment(request : Installment) : Balance emits PaymentObligation {
-    //enforce (state.status = "WaitingForFirstDayOfNextMonth"); // Make sure this is only called in the right state
+    //enforce (state.status = WaitingForFirstDayOfNextMonth); // Make sure this is only called in the right state
     enforce (contract.MIN_PAYMENT.doubleValue <= state.balance_remaining.doubleValue) 
     else throw failure ("Payment cannot be made. The balance remaining is less than the minimum payment amount.");
     enforce (state.next_payment_month < 23) 
@@ -63,7 +63,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
 
     set state InstallmentSaleState{
       stateId: "#1",
-      status: "WaitingForFirstDayOfNextMonth",
+      status: WaitingForFirstDayOfNextMonth,
       balance_remaining: MonetaryAmount{ doubleValue : balance, currencyCode : contract.INITIAL_DUE.currencyCode},
       total_paid: MonetaryAmount{ doubleValue : total_paid, currencyCode : contract.INITIAL_DUE.currencyCode},
       next_payment_month: state.next_payment_month + 1
@@ -73,7 +73,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
 			promisor: some(contract.BUYER),
 			promisee: some(contract.SELLER),
 			deadline: none,
-			amount: request.amount,
+			amount: MonetaryAmount{ doubleValue : request.amount.doubleValue, currencyCode : request.amount.currencyCode },
 			description: contract.BUYER.partyId ++ " should pay installment to " ++ contract.SELLER.partyId
 		};
     return Balance{
@@ -91,7 +91,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
 
     set state InstallmentSaleState{
       stateId: "#1",
-      status: "Fulfilled",
+      status: Fulfilled,
       balance_remaining: balance,
       total_paid: total_paid,
       next_payment_month: 0
@@ -102,7 +102,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
 			promisor: some(contract.BUYER),
 			promisee: some(contract.SELLER),
 			deadline: none,
-			amount: request.amount,
+			amount: MonetaryAmount{ doubleValue : request.amount.doubleValue, currencyCode : request.amount.currencyCode },
 			description: contract.BUYER.partyId ++ " should pay installment to " ++ contract.SELLER.partyId
 		};
 

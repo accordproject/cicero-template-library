@@ -29,7 +29,7 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
   clause init(request : Request) : Response {		
 		set state FullPaymentUponSignatureState {
 			stateId: "1",
-			status: "INITIALIZED"
+			status: INITIALIZED
 		};
     return Response{}
   }
@@ -38,8 +38,8 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 	 * When the contract is signed a payment obligation is emitted
 	 */
   clause contractSigned(request : ContractSigned) : Response emits PaymentObligation {
-	  enforce (state.status = "INITIALIZED") 
-	    else throw ErgoErrorResponse{ message: "Contract state is invalid " ++ state.status };
+	  enforce (state.status = INITIALIZED) 
+		else throw ErgoErrorResponse{ message: `Contract state is invalid {{% state.status %}}` };
 		
     emit PaymentObligation{
 			contract: contract,
@@ -51,7 +51,7 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 		};
 		set state FullPaymentUponSignatureState {
 			stateId: "1",
-			status: "OBLIGATION_EMITTED"
+			status: OBLIGATION_EMITTED
 		};
     return Response{}
   }
@@ -60,11 +60,11 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 	 * Complete the contract when payment is received.
 	 */
   clause paymentReceived(request : PaymentReceived): Response {
-    enforce (state.status = "OBLIGATION_EMITTED") 
+    enforce (state.status = OBLIGATION_EMITTED) 
     else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
 		set state FullPaymentUponSignatureState {
 			stateId: state.stateId,
-			status: "COMPLETED",
+			status: COMPLETED
 		};
 		return Response{}
   }

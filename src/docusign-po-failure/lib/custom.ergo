@@ -73,7 +73,6 @@ define function findTabAsDate(tabStatuses:TabStatus[],n:String) : DateTime? {
   else return none
 }
 
-
 define function findTabAsText(tabStatuses:TabStatus[],n:String) : String? {
   match findTab(tabStatuses, n)
   with let? x : TextTabStatus then return x.tabValue
