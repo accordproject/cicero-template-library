@@ -10,8 +10,16 @@ Feature: Installment Sale
 {
   "$class": "org.accordproject.installmentsale.InstallmentSaleState",
   "status" : "WaitingForFirstDayOfNextMonth",
-  "balance_remaining" : 10000.00,
-	"total_paid" : 0.00,
+  "balance_remaining" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 10000.00,
+    "currencyCode": "EUR"
+  },
+	"total_paid" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 0,
+    "currencyCode": "EUR"
+  },
   "next_payment_month" : 3,
   "stateId": "#1"
 }
@@ -23,8 +31,16 @@ Feature: Installment Sale
 {
   "$class": "org.accordproject.installmentsale.InstallmentSaleState",
   "status" : "WaitingForFirstDayOfNextMonth",
-  "balance_remaining" : 10000.00,
-	"total_paid" : 0.00,
+  "balance_remaining" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 10000.00,
+    "currencyCode": "EUR"
+  },
+	"total_paid" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 0,
+    "currencyCode": "EUR"
+  },
   "next_payment_month" : 3,
   "stateId": "#1"
 }
@@ -33,8 +49,16 @@ Feature: Installment Sale
     Then it should respond with
 """
 {
-  "total_paid": 2500,
-  "balance": 7612.499999999999,
+  "total_paid" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 2500,
+    "currencyCode": "EUR"
+  },
+	"balance" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 7612.499999999999,
+    "currencyCode": "EUR"
+  },
   "$class": "org.accordproject.installmentsale.Balance"
 }
 """
@@ -43,8 +67,16 @@ Feature: Installment Sale
 {
   "$class": "org.accordproject.installmentsale.InstallmentSaleState",
   "status" : "WaitingForFirstDayOfNextMonth",
-  "balance_remaining" : 7612.499999999999,
-	"total_paid" : 2500,
+   "balance_remaining" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 7612.499999999999,
+    "currencyCode": "EUR"
+  },
+	"total_paid" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 2500,
+    "currencyCode": "EUR"
+  },
   "next_payment_month" : 4,
   "stateId": "#1"
 }

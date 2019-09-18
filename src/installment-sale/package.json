@@ -1,7 +1,7 @@
 {
     "name": "installment-sale",
     "displayName": "Installment Sale",
-    "version": "0.13.1",
+    "version": "1.0.0",
     "description": "This is a clause for a simple installment sale.",
     "author": "Accord Project",
     "license": "Apache-2.0",
@@ -16,5 +16,18 @@
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
     },
-    "keywords": ["installment", "sale", "pay", "agreement", "agree", "closing", "balance", "payments", "interest", "rate", "accrued", "clause"]
+    "keywords": [
+        "installment",
+        "sale",
+        "pay",
+        "agreement",
+        "agree",
+        "closing",
+        "balance",
+        "payments",
+        "interest",
+        "rate",
+        "accrued",
+        "clause"
+    ]
 }
