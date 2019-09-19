@@ -40,13 +40,15 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
     enforce (contract.INITIAL_DUE.currencyCode = contract.TOTAL_DUE_BEFORE_CLOSING.currencyCode) 
         and (contract.INITIAL_DUE.currencyCode = contract.MIN_PAYMENT.currencyCode) 
         and (contract.INITIAL_DUE.currencyCode = contract.DUE_AT_CLOSING.currencyCode);
+    else throw failure("Same currency code should be used across the contract");
+    
     return Response{}
   }
 
   clause PayInstallment(request : Installment) : Balance emits PaymentObligation {
     //enforce (state.status = "WaitingForFirstDayOfNextMonth"); // Make sure this is only called in the right state
     enforce (contract.MIN_PAYMENT.doubleValue <= state.balance_remaining.doubleValue) and (state.next_payment_month < 23);
-    enforce (contract.MIN_PAYMENT.doubleValue <= request.amount.doubleValue); // Underpaying is forbidden
+    enforce (contract.MIN_PAYMENT.doubleValue <= request.amount.doubleValue);// Underpaying is forbidden
     enforce (request.amount.doubleValue <= state.balance_remaining.doubleValue); // overpaying is forbidden. this is NOT checked statically.
     enforce (contract.INITIAL_DUE.currencyCode = request.amount.currencyCode); // Checks that the installment payment and initial due has the same currency
 
@@ -77,6 +79,7 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
   
   clause PayLastInstallment(request : ClosingPayment) : Balance emits PaymentObligation {
     enforce (roundn(request.amount.doubleValue, 2) = roundn(state.balance_remaining.doubleValue + contract.DUE_AT_CLOSING.doubleValue, 2));
+    else throw failure ("The last installment payment should be equal to the sum of remaining balance plus the amount due at closing.")
 
     let balance =  MonetaryAmount{ doubleValue : 0.0, currencyCode : contract.INITIAL_DUE.currencyCode};
     let total_paid = MonetaryAmount{ doubleValue : state.total_paid.doubleValue + request.amount.doubleValue, currencyCode : contract.INITIAL_DUE.currencyCode};
