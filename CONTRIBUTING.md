@@ -205,6 +205,14 @@ Accord Project documentation files are made available under the [Creative Common
 [contribute.submit]: CONTRIBUTING.md#submit
 [contribute.submitpr]: CONTRIBUTING.md#submit-pr
 
+[developers]: DEVELOPERS.md
+[developers.commits]: DEVELOPERS.md#commits
+[developers.pullrequest]: DEVELOPERS.md#pullrequests
+[developers.documentation]: DEVELOPERS.md#documentation
+[developers.rules]: DEVELOPERS.md#rules
+[developers.setup]: DEVELOPERS.md#setup
+[developers.unit-tests]: DEVELOPERS.md#unit-tests
+
 [github-issues]: https://github.com/accordproject/cicero-template-library/issues
 [github-new-issue]: https://github.com/accordproject/cicero-template-library/issues/new
 [github]: https://github.com/accordproject/cicero-template-library
