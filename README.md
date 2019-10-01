@@ -1,11 +1,15 @@
-<a href="https://www.accordproject.org/">
-  <img src="assets/images/APLogo.png" alt="Accord Project Logo" width="400" />
-</a>
+<p align="center">
+  <a href="https://www.accordproject.org/">
+    <img src="assets/images/APLogo.png" alt="Accord Project Logo" width="400" />
+  </a>
+</p>
 
 # Accord Project Template Library
 
 [![Build Status](https://travis-ci.org/accordproject/cicero-template-library.svg?branch=master)](https://travis-ci.org/accordproject/cicero-template-library)
+[![GitHub license](https://img.shields.io/github/license/accordproject/cicero-template-library)](https://github.com/accordproject/cicero-template-library/blob/master/LICENSE)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
+[![join slack](https://img.shields.io/badge/Slack-Join%20Slack-blue)](https://accord-project-slack-signup.herokuapp.com/)
 
 Repository for Smart Legal Contract Templates that conform that to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
 
