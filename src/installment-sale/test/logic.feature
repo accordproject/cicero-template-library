@@ -115,7 +115,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 4,
-        "stateId": "#2"
+        "stateId": "#1"
       }
       """
 
@@ -136,7 +136,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 4,
-        "stateId": "#2"
+        "stateId": "#1"
       }
       """
     When it receives the request
@@ -166,7 +166,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 5,
-        "stateId": "#3"
+        "stateId": "#1"
       }
       """
     And it should respond with
@@ -203,7 +203,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 5,
-        "stateId": "#3"
+        "stateId": "#1"
       }
       """
     When it receives the request
@@ -233,7 +233,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 6,
-        "stateId": "#4"
+        "stateId": "#1"
       }
       """
     And it should respond with
@@ -270,7 +270,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 6,
-        "stateId": "#4"
+        "stateId": "#1"
       }
       """
     When it receives the request
@@ -300,7 +300,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 0,
-        "stateId": "#5"
+        "stateId": "#1"
       }
       """
     And it should respond with
