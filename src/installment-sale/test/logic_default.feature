@@ -78,7 +78,7 @@ Feature: Installment Sale
     "currencyCode": "EUR"
   },
   "next_payment_month" : 4,
-  "stateId": "#2"
+  "stateId": "#1"
 }
 """
 
