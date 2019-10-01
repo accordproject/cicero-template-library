@@ -76,7 +76,7 @@ Feature: Installment Sale
         },
         "balance": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 7612.499999999999,
+          "doubleValue": 7612.50,
           "currencyCode": "EUR"
         },
         "$class": "org.accordproject.installmentsale.Balance"
@@ -106,7 +106,7 @@ Feature: Installment Sale
         "status": "WaitingForFirstDayOfNextMonth",
         "balance_remaining": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 7612.499999999999,
+          "doubleValue": 7612.50,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -115,7 +115,7 @@ Feature: Installment Sale
           "currencyCode": "EUR"
         },
         "next_payment_month": 4,
-        "stateId": "#1"
+        "stateId": "#2"
       }
       """
 
@@ -127,7 +127,7 @@ Feature: Installment Sale
         "status": "WaitingForFirstDayOfNextMonth",
         "balance_remaining": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 7612.499999999999,
+          "doubleValue": 7612.50,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -135,8 +135,8 @@ Feature: Installment Sale
           "doubleValue": 2500,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 1,
-        "stateId": "#1"
+        "next_payment_month": 4,
+        "stateId": "#2"
       }
       """
     When it receives the request
@@ -157,7 +157,7 @@ Feature: Installment Sale
         "status": "WaitingForFirstDayOfNextMonth",
         "balance_remaining": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 5189.187499999998,
+          "doubleValue": 5189.19,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -165,8 +165,8 @@ Feature: Installment Sale
           "doubleValue": 5000,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 2,
-        "stateId": "#1"
+        "next_payment_month": 5,
+        "stateId": "#3"
       }
       """
     And it should respond with
@@ -174,7 +174,7 @@ Feature: Installment Sale
       {
         "balance": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 5189.187499999998,
+          "doubleValue": 5189.19,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -194,7 +194,7 @@ Feature: Installment Sale
         "status": "WaitingForFirstDayOfNextMonth",
         "balance_remaining": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 5189.187499999998,
+          "doubleValue": 5189.19,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -202,8 +202,8 @@ Feature: Installment Sale
           "doubleValue": 5000,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 2,
-        "stateId": "#1"
+        "next_payment_month": 5,
+        "stateId": "#3"
       }
       """
     When it receives the request
@@ -224,7 +224,7 @@ Feature: Installment Sale
         "status": "WaitingForFirstDayOfNextMonth",
         "balance_remaining": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 2729.525312499998,
+          "doubleValue": 2729.53,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -232,8 +232,8 @@ Feature: Installment Sale
           "doubleValue": 7500,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 3,
-        "stateId": "#1"
+        "next_payment_month": 6,
+        "stateId": "#4"
       }
       """
     And it should respond with
@@ -241,7 +241,7 @@ Feature: Installment Sale
       {
         "balance": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 2729.525312499998,
+          "doubleValue": 2729.53,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -261,7 +261,7 @@ Feature: Installment Sale
         "status": "WaitingForFirstDayOfNextMonth",
         "balance_remaining": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 2729.525312499998,
+          "doubleValue": 2729.53,
           "currencyCode": "EUR"
         },
         "total_paid": {
@@ -269,8 +269,8 @@ Feature: Installment Sale
           "doubleValue": 7500,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 3,
-        "stateId": "#1"
+        "next_payment_month": 6,
+        "stateId": "#4"
       }
       """
     When it receives the request
@@ -279,7 +279,7 @@ Feature: Installment Sale
         "$class": "org.accordproject.installmentsale.ClosingPayment",
         "amount": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 3229.525312499998,
+          "doubleValue": 3229.53,
           "currencyCode": "EUR"
         }
       }
@@ -296,11 +296,11 @@ Feature: Installment Sale
         },
         "total_paid": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 10729.525312499998,
+          "doubleValue": 10729.53,
           "currencyCode": "EUR"
         },
         "next_payment_month": 0,
-        "stateId": "#1"
+        "stateId": "#5"
       }
       """
     And it should respond with
@@ -308,7 +308,7 @@ Feature: Installment Sale
       {
         "total_paid": {
           "$class": "org.accordproject.money.MonetaryAmount",
-          "doubleValue": 10729.525312499998,
+          "doubleValue": 10729.53,
           "currencyCode": "EUR"
         },
         "balance": {
