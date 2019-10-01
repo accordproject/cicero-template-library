@@ -14,7 +14,7 @@ We'd love for you to contribute to a template to make the Accord Project templat
 
 ## <a name="coc"></a> Code of Conduct
 
-Help us keep the Accord Project open and inclusive. Please read and follow our [Code of Conduct][coc].
+Help us keep the Accord Project open and inclusive. Please read and follow our [Code of Conduct][contribute.coc].
 
 ## <a name="requests"></a> Questions, Bugs, Features
 
