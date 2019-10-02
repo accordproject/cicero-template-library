@@ -35,7 +35,7 @@ To save your and our time, we will systematically close all issues that are requ
 support and redirect people to the section you are reading right now.
 
 Other channels for support are:
-- the [Cicero Slack Channel][slack]
+- the [Cicero Slack Channel][apslack]
 
 ### <a name="issue"></a> Found an Issue or Bug?
 
@@ -192,7 +192,7 @@ Accord Project source code files are made available under the [Apache License, V
 
 Accord Project documentation files are made available under the [Creative Commons Attribution 4.0 International License][creativecommons] (CC-BY-4.0).
 
-[coc]: https://github.com/accordproject/docs/blob/master/Accord%20Project%20Code%20of%20Conduct.pdf
+[coc]: https://lfprojects.org/policies/code-of-conduct/
 [apslack]: https://accord-project-slack-signup.herokuapp.com
 [stackoverflow]: http://stackoverflow.com/questions/tagged/cicero
 
@@ -204,6 +204,14 @@ Accord Project documentation files are made available under the [Creative Common
 [contribute.docs]: CONTRIBUTING.md#docs
 [contribute.submit]: CONTRIBUTING.md#submit
 [contribute.submitpr]: CONTRIBUTING.md#submit-pr
+
+[developers]: DEVELOPERS.md
+[developers.commits]: DEVELOPERS.md#commits
+[developers.pullrequest]: DEVELOPERS.md#pullrequests
+[developers.documentation]: DEVELOPERS.md#documentation
+[developers.rules]: DEVELOPERS.md#rules
+[developers.setup]: DEVELOPERS.md#setup
+[developers.unit-tests]: DEVELOPERS.md#unit-tests
 
 [github-issues]: https://github.com/accordproject/cicero-template-library/issues
 [github-new-issue]: https://github.com/accordproject/cicero-template-library/issues/new
