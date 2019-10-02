@@ -1,4 +1,6 @@
-This is a fixed interest loan to the amount of 100000
+## Fixed rate loan
+
+This is a _fixed interest_ loan to the amount of 100000
 at the yearly interest rate of 2.5%
 with a loan term of 15,
-and monthly payments of {{gibberish}}
+and monthly payments of {{I'm not sure which amount right now}}
