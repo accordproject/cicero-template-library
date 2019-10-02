@@ -22,7 +22,7 @@ Accord Project Template Library, hosted at https://templates.accordproject.org.
 
 ## Contributing
 
-Can't find a something? Then why not make a new template yourself? 
+Can't find something? Then why not make a new template yourself? 
 
 [Follow the instuctions in the docs.][ctlguide]
 
