@@ -49,10 +49,7 @@ contract PaymentUponSignature over PaymentUponSignatureContract state PaymentUpo
 			amount: contract.amount,
 			description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
 		};
-		set state PaymentUponSignatureState {
-			stateId: "1",
-			status: OBLIGATION_EMITTED
-		};
+		set state.status = OBLIGATION_EMITTED;
     return Response{}
   }
 
@@ -62,10 +59,7 @@ contract PaymentUponSignature over PaymentUponSignatureContract state PaymentUpo
   clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = OBLIGATION_EMITTED) 
     else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
-		set state PaymentUponSignatureState {
-			stateId: state.stateId,
-			status: COMPLETED,
-		};
+		set state.status = COMPLETED;
 		return Response{}
   }
 }
