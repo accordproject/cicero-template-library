@@ -88,11 +88,11 @@ b. Except as described in Section 7.c., all contributions to the Project are sub
 
 i. All new inbound code contributions to the Project must be made using the Apache License, Version 2.0, available at https://www.apache.org/licenses/LICENSE-2.0 (the “Project License”).
 
-ii. All new inbound code contributions must also be accompanied by a Developer Certificate of Origin (http://developercertificate.org) sign-off in the source code system that is submitted through a TSC-approved contribution process which will bind the authorized contributor and, if not self-employed, their employer to the applicable license;
+ii. All new inbound code contributions must also be accompanied by a [Developer Certificate of Origin](http://developercertificate.org) sign-off in the source code system that is submitted through a TSC-approved contribution process which will bind the authorized contributor and, if not self-employed, their employer to the applicable license;
 
 iii. All outbound code will be made available under the Project License.
 
-iv. Documentation will be received and made available by the Project under the Creative Commons Attribution 4.0 International License (available at http://creativecommons.org/licenses/by/4.0/).
+iv. Documentation will be received and made available by the Project under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 v. To the extent a contribution includes or consists of data, any rights in such data shall be made available under the CDLA-Permissive 1.0 License.
 
