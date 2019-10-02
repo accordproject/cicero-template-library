@@ -44,10 +44,7 @@ contract DocuSignEnvelopeCounter over DocuSignEnvelopeCounterClause state DocuSi
     enforce request.envelopeStatus.status = contract.status
     else return buildResponse(state.counter, contract.status);
     let newCounter = state.counter+1;
-    set state DocuSignEnvelopeCounterState {
-      stateId: "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
-      counter: newCounter
-    };
+    set state.counter = state.counter+1;
     emit NotificationObligation {
       title: `Contracts with status {{% contract.status %}}`,
       message: buildMessage(state.counter, contract.status),
