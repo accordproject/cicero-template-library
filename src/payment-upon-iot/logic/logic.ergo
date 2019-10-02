@@ -38,9 +38,9 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
     };
 
     return CounterResponse{
-    counter: state.counter,
-    paymentCount: state.paymentCount,
-  }
+      counter: state.counter,
+      paymentCount: state.paymentCount,
+    }
   }
 
   /**
@@ -50,12 +50,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
   enforce (state.status = INITIALIZED) 
     else throw ErgoErrorResponse{ message: `Contract state is invalid {{% state.status %}}` };
     
-    set state CounterState {
-      stateId: state.stateId,
-      status: RUNNING,
-      counter: state.counter,
-      paymentCount: state.paymentCount,
-    };
+    set state.status = RUNNING;
 
     return CounterResponse{
       counter: state.counter,
@@ -70,37 +65,27 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
     enforce (state.status = RUNNING) 
     else throw ErgoErrorResponse{ message: "Contract is not running." };
 
-  set state CounterState {
-    stateId: state.stateId,
-    status: state.status,
-    paymentCount: state.paymentCount,
-    counter: state.counter + 1.0
-  };
+    set state.counter = state.counter + 1.0;
 
     return CounterResponse{
-    counter: state.counter,
-    paymentCount: state.paymentCount,
-  }
+      counter: state.counter,
+      paymentCount: state.paymentCount,
+    }
   }
 
   /**
    * When a double button press is received we decrement the counter
    */
   clause decrement(request : DoubleButtonPress): Response {
-  enforce (state.status = RUNNING) 
-      else throw ErgoErrorResponse{ message: "Contract is not running." };
+    enforce (state.status = RUNNING) 
+    else throw ErgoErrorResponse{ message: "Contract is not running." };
 
-  set state CounterState {
-    stateId: state.stateId,
-    status: state.status,
-    counter: maxPair(0.0, state.counter - 1.0),
-    paymentCount: state.paymentCount
-  };
+    set state.counter = maxPair(0.0, state.counter - 1.0);
 
     return CounterResponse{
-    counter: state.counter,
-    paymentCount: state.paymentCount,
-  }
+      counter: state.counter,
+      paymentCount: state.paymentCount,
+    }
   }
 
   /**
@@ -144,7 +129,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
     enforce (payment.amount.currencyCode = contract.amountPerUnit.currencyCode) 
         else throw ErgoErrorResponse{ message: "Payments must be in the currency of the contract." };
 
-    let status : ContractLifecycleStatus =
+    let newStatus : ContractLifecycleStatus =
         if state.paymentCount + 1.0 >= integerToDouble(contract.paymentCount)
         then COMPLETED
         else RUNNING;
@@ -152,12 +137,9 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
     let unitsPaid = doubleToInteger(maxPair(0.0, payment.amount.doubleValue / contract.amountPerUnit.doubleValue));
     let newCounter = maxPair(0.0, state.counter - integerToDouble(unitsPaid));
 
-    set state CounterState {
-      stateId: state.stateId,
-      status: status,
-      counter: newCounter,
-      paymentCount: state.paymentCount + 1.0
-    };
+		set state.status = newStatus;
+    set state.counter = newCounter;
+    set state.paymentCount = state.paymentCount + 1.0;
       
     return CounterResponse {
       counter: state.counter,

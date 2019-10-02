@@ -46,10 +46,7 @@ contract onetimepayment over OneTimePaymentContract state OneTimePaymentState {
   clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = OBLIGATION_EMITTED) 
     else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
-		set state OneTimePaymentState {
-			stateId: state.stateId,
-			status: COMPLETED
-		};
+		set state.status = COMPLETED;
 		return Response{}
   }
 }

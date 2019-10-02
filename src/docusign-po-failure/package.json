@@ -6,8 +6,8 @@
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "ergo": "0.20.0-alpha.2",
-        "cicero": "^0.20.0-alpha.2"
+        "ergo": "0.19.0",
+        "cicero": "^0.19.0"
     },
     "keywords": ["docusign", "purchase", "order", "po", "fail", "failure", "product", "delivery", "date", "late", "delayed", "discount", "price", "amount", "compensation", "credits", "issue"],
     "devDependencies": {
