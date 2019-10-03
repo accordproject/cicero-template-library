@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center"> Accord Project Template Library<h1>
+<h1 align="center"> Accord Project Template Library</h1>
 
 <p align="center">
   <a href="https://travis-ci.org/accordproject/cicero-template-library">
