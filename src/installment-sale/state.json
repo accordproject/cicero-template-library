@@ -1,6 +1,14 @@
 { "$class": "org.accordproject.installmentsale.InstallmentSaleState",
   "stateId" : "org.accordproject.installmentsale.InstallmentSaleState#1",
   "status" : "WaitingForFirstDayOfNextMonth",
-  "balance_remaining" : 10000.00,
-	"total_paid" : 0.00,
+  "balance_remaining" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 10000.00,
+    "currencyCode": "EUR"
+  },
+	"total_paid" : {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 0,
+    "currencyCode": "EUR"
+  },
   "next_payment_month" : 3 }
