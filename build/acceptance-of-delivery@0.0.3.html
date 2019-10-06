@@ -96,9 +96,9 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
             <h2 class="title is-2">README</h2>
             <div class="content">
                 <p>
-                <h1 id="acceptanceofdelivery">Acceptance of Delivery</h1>
+                <h1 id="acceptanceofdelivery" style="font-weight:400">Acceptance of Delivery</h1>
 <p>This is a smart legal clause that conforms to the <a href="https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0">Accord Protocol Template Specification</a>, the protocol is managed by the open-source community of the <a href="https://accordproject.org">Accord Project</a>. The clause can be parsed and executed by the <a href="https://github.com/accordproject/cicero">Cicero</a> engine.</p>
-<h2 id="description">Description</h2>
+<h2 id="description" style="font-weight:400">Description</h2>
 <blockquote>
   <p>This clause allows the receiver of goods to inspect them for a given time period after delivery.</p>
 </blockquote>
@@ -110,7 +110,7 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
 <li><em>Contact logic</em> (in JavaScript) - <a href="lib/logic.js">logic/logic.js</a></li>
 </ul>
 <h2 id="runningthisclause">Running this clause</h2>
-<h3 id="onyourownmachine">On your own machine</h3>
+<h3 id="onyourownmachine" style="font-weight:400">On your own machine</h3>
 <ol>
 <li><p><a href="https://github.com/accordproject/cicero-template-library/archive/master.zip">Download the Cicero template library</a></p></li>
 <li><p>Unzip the library with your favourite tool</p></li>
@@ -138,7 +138,7 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
 18:22:38 - info: Loading a default state.json file.
 18:22:38 - info: {"clause":"acceptance-of-delivery@0.0.3-e407ff0a315c5b1c267677edbda49a32d4e9ef890ad21a3e40b3bc110d06c88c","request":{"$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable","deliverableReceivedAt":"January 1, 2018 16:34:00","inspectionPassed":true},"response":{"$class":"org.accordproject.acceptanceofdelivery.InspectionResponse","status":"OUTSIDE_INSPECTION_PERIOD","shipper":"resource:org.hyperledger.composer.system.Participant#Party%20A","receiver":"resource:org.hyperledger.composer.system.Participant#Party%20B","transactionId":"faacef8f-c0b2-4d9f-911f-007aa98a1c1d","timestamp":"2018-05-15T22:22:38.869Z"},"state":{"$class":"org.accordproject.common.ContractState","stateId":"org.accordproject.common.ContractState#1"},"emit":[]}
 </code></pre>
-<h3 id="samplepayloaddata">Sample Payload Data</h3>
+<h3 id="samplepayloaddata" style="font-weight:400">Sample Payload Data</h3>
 <p>Request, as in <a href="https://github.com/accordproject/cicero-template-library/blob/master/acceptance-of-delivery/request.json">request.json</a></p>
 <pre><code class="json language-json">{
     "$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable",
@@ -156,7 +156,7 @@ Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Widge
     "timestamp":"2018-02-17T21:49:40.206Z"
 }
 </code></pre>
-<h2 id="testingthisclause">Testing this clause</h2>
+<h2 id="testingthisclause" style="font-weight:400">Testing this clause</h2>
 <p>This clause comes with an automated test that ensures that it executes correctly under different conditions. To test the clause, complete the following steps.</p>
 <p>You need npm and node to test a clause. You can download both from <a href="https://nodejs.org/">here</a>.</p>
 <blockquote>
