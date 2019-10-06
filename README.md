@@ -24,7 +24,7 @@ Accord Project Template Library, hosted at https://templates.accordproject.org.
 
 Can't find something? Then why not make a new template yourself? 
 
-[Follow the instuctions in the docs.][ctlguide]
+[Follow the instructions in the docs.][ctlguide]
 
 ## Testing
 
