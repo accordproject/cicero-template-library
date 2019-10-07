@@ -4,12 +4,28 @@
   </a>
 </p>
 
-# Accord Project Template Library
+<h1 align="center">
+  Accord Project Template Library
+</h1>
 
-[![Build Status](https://travis-ci.org/accordproject/cicero-template-library.svg?branch=master)](https://travis-ci.org/accordproject/cicero-template-library)
-[![GitHub license](https://img.shields.io/github/license/accordproject/cicero-template-library)](https://github.com/accordproject/cicero-template-library/blob/master/LICENSE)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
-[![join slack](https://img.shields.io/badge/Slack-Join%20Slack-blue)](https://accord-project-slack-signup.herokuapp.com/)
+<p align="center">
+  <a href="https://travis-ci.org/accordproject/cicero-template-library">
+    <img src="https://travis-ci.org/accordproject/cicero-template-library.svg" alt="Build Status"/>
+  </a>
+
+  <a href="https://github.com/accordproject/cicero-template-library/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/accordproject/cicero-template-library" alt="GitHub license"/>
+  </a>
+
+  <a href="https://lernajs.io">
+    <img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg" alt="lerna"/>
+  </a>
+
+  <a href="https://accord-project-slack-signup.herokuapp.com">
+    <img src="https://img.shields.io/badge/Slack-Join%20Slack-blue" alt="join slack"/>
+  </a>
+
+</p>
 
 Repository for Smart Legal Contract Templates that conform that to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
 
