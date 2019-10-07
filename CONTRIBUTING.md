@@ -77,7 +77,7 @@ commit message follows the **[Commit Message Guidelines][developers.commits]**.
 ## <a name="submit"></a> Issue Submission Guidelines
 Before you submit your issue search the archive, maybe your question was already answered.
 
-If your issue appears to be a bug, and hasn't been reported, open a new issue. Help us to maximize
+If your issue appears to be a bug and hasn't been reported, open a new issue. Help us to maximize
 the effort we can spend fixing issues and adding new features, by not reporting duplicate issues.
 
 The "[new issue][github-new-issue]" form contains a number of prompts that you should fill out to
@@ -110,7 +110,7 @@ Before you submit your pull request consider the following guidelines:
 * If the changes affect public APIs, change or add relevant [documentation][developers.documentation].
 * Run the [unit][developers.unit-tests] test suite, and ensure that all tests pass.
 
-* Commit your changes using a descriptive commit message that follows our [commit message conventions][developers.commits]. Adherence to the [commit message conventions][developers.commits] is required, because release notes are automatically generated from these messages.
+* Commit your changes using a descriptive commit message that follows our [commit message conventions][developers.commits]. Adherence to the [commit message conventions][developers.commits] is required because release notes are automatically generated from these messages.
 
   ```text
     git commit -a
@@ -151,7 +151,7 @@ Before you submit your pull request consider the following guidelines:
     git push origin name-issue-tracker-short-description -f
     ```
 
-    This is generally easier to follow, but seperate commits are useful if the Pull Request contains iterations that might be interesting to see side-by-side.
+    This is generally easier to follow, but separate commits are useful if the Pull Request contains iterations that might be interesting to see side-by-side.
 
 That's it! Thank you for your contribution!
 
