@@ -39,7 +39,8 @@ const rename = promisify(fs.rename);
 const stat = promisify(fs.stat);
 const mkdirp = require('mkdirp');
 const writeFile = promisify(fs.writeFile);
-
+const jsdom = require("jsdom");
+const jquery = require("jquery");
 
 /**
  * GLOBALS
@@ -56,22 +57,22 @@ nunjucks.configure('./views', {
 
 /**
  * Generating a static website from a template library
- * 
+ *
  * - Scans the 'src' directory for templates
  * - Loads each template using Template.fromDirectory
  * - Runs any tests for the templates that are in the `test` directory for the template using Mocha
  * - Generates an archive for the template and saves to the 'build/archives' directory
  * - Generates HTML and other resources for the template
  * - Generates an index.html and json file for all the templates
- * 
+ *
  * Options (environment variables):
  * - SKIP_GENERATION : do not write anything to disk
  * - SKIP_TESTS : do not run the unit tests
- * - DELETE_ALL : clear the build directory. Use with extreme caution as all old versions of templates 
+ * - DELETE_ALL : clear the build directory. Use with extreme caution as all old versions of templates
  *                will be removed from the build archives folder!
  * - FORCE_CREATE_ARCHIVE : regenerate an existing archive even if it exists. Warning the new archive
  *                          may change because it will re-download external dependencies
- * 
+ * - UPDATE_DROPDOWNS : regenerate update dropdowns on old html versions to point to the latest releases
  * Options (command line)
  * - template name (only this template gets built)
  */
@@ -116,7 +117,7 @@ nunjucks.configure('./views', {
 /**
  * Returns a template index that only contains the latest version
  * of each template
- * 
+ *
  * @param {object} templateIndex - the template index
  * @returns {object} a new template index that only contains the latest version of each template
  */
@@ -148,7 +149,7 @@ function filterTemplateIndex(templateIndex) {
 
 /**
  * Get all the files beneath a subdirectory
- * 
+ *
  * @param {String} dir - the root directory
  */
 async function getFiles(dir) {
@@ -177,7 +178,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 
     if(indexExists) {
         const indexContent = fs.readFileSync(templateLibraryPath, 'utf8');
-        templateIndex = JSON.parse(indexContent);    
+        templateIndex = JSON.parse(indexContent);
     }
 
     const files = await getFiles(rootDir);
@@ -216,7 +217,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 if(!process.env.SKIP_GENERATION) {
 
                     // get the name of the generated archive
-                    const destPath = path.dirname(dest);    
+                    const destPath = path.dirname(dest);
                     await fs.ensureDir(destPath);
                     const archiveFileName = `${template.getIdentifier()}.cta`;
                     const archiveFilePath = `${archiveDir}/${archiveFileName}`;
@@ -227,7 +228,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                         archive = await template.toArchive('ergo');
                         await writeFile(archiveFilePath, archive);
                         console.log('Copied: ' + archiveFileName);
-        
+
                         // update the index
                         const m = template.getMetadata();
                         const templateHash = template.getHash();
@@ -242,12 +243,47 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             type: m.getTemplateType()
                         }
                         templateIndex[template.getIdentifier()] = indexData;
-        
+
                         // call the post template processor
                         await postProcessor(templateIndex, templatePath, template);
                     }
                     else {
+                      if (process.env.UPDATE_DROPDOWNS) {
+                        const templateVersions = Object.keys(templateIndex).filter(
+                          item => {
+                            const atIndex = item.indexOf("@");
+                            const name = item.substring(0, atIndex);
+                            return name == template.getName();
+                          }
+                        );
+                        templateVersions.forEach(versionToUpdate => {
+                          const templateResult = nunjucks.render("dropdown.njk", {
+                            identifier: versionToUpdate,
+                            templateVersions: templateVersions
+                          });
+                          fs.readFile(
+                            "build/" + versionToUpdate + ".html",
+                            "utf8",
+                            (err, data) => {
+                              const dom = new jsdom.JSDOM(data);
+                              const $ = jquery(dom.window);
+                              const dropdownContentElement = $(".dropdown-content");
+                              if (dropdownContentElement.length) {
+                                $(".dropdown-content").html(templateResult);
+                                fs.writeFile(
+                                  "build/" + versionToUpdate + ".html",
+                                  dom.serialize(),
+                                  err => {
+                                    console.log("dropdown updated for template: " + "build/" + versionToUpdate + ".html" );
+                                  }
+                                );
+                              }
+                            }
+                          );
+                        });
+                      } else {
                         console.log(`Skipped: ${archiveFileName} (already exists).`);
+                      }
                     }
                 }
             } catch (err) {
@@ -267,21 +303,21 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 /**
  * Runs the standard tests for a template
  * @param {String} templatePath - the location of the template on disk
- * @param {Template} template 
+ * @param {Template} template
  */
 async function templateUnitTester(templatePath, template) {
     // check that all the samples parse
     const samples = template.getMetadata().getSamples();
     if(samples) {
         const sampleValues = Object.values(samples);
-        
+
         // should be TemplateInstance
         const instance = new Clause(template);
 
         for(const s of sampleValues ) {
             instance.parse(s);
         }
-    }    
+    }
 }
 
 /**
@@ -295,7 +331,7 @@ function sampleInstance(template, type) {
     const sampleGenerationOptions = {};
     sampleGenerationOptions.generate = true;
     sampleGenerationOptions.includeOptionalFields = true;
-    
+
     const classDecl = template.getModelManager().getType(type);
 
     let result = {};
@@ -312,7 +348,7 @@ function sampleInstance(template, type) {
  * Generates html and other resources from a valid template
  * @param {object} templateIndex - the existing template index
  * @param {String} templatePath - the location of the template on disk
- * @param {Template} template 
+ * @param {Template} template
  */
 async function templatePageGenerator(templateIndex, templatePath, template) {
 
@@ -356,7 +392,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     else {
         // no sample was found, so we generate one
         const classDecl = template.getTemplateModel();
-        sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);    
+        sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);
     }
 
     const requestTypes = {};
