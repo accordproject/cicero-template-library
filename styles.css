@@ -33,11 +33,10 @@ a:hover {
 	margin-bottom: 0px !important;
 }
 
-.content .linux-foundation-logo {
-	width: 300px;
+.linux-foundation-logo{
 	margin-top: 50px;
 	margin-bottom: 50px;
-  }
+}
   
 
 .content p {
