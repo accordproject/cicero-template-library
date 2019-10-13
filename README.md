@@ -33,7 +33,7 @@ These templates can be parsed and executed by the [Cicero][cicero] engine.
 
 ## Library
 
-The contents of this repository is automatically tested, built and published to the 
+The contents of this repository are automatically tested, built and published to the 
 Accord Project Template Library, hosted at https://templates.accordproject.org.
 
 ## Contributing
