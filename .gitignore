@@ -64,3 +64,6 @@ typings/
 
 # Derived CTO files
 @models.accordproject.org*.cto
+
+# Windows Directory Cache
+thumbs.db
