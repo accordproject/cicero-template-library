@@ -31,21 +31,21 @@ f. The TSC may elect a TSC Chair, who will preside over meetings of the TSC and 
 
 g. Responsibilities: The TSC will be responsible for all aspects of oversight relating to the Project, which may include:
 
-i. Coordinating the technical direction of the Project;
+i. coordinating the technical direction of the Project;
 
-ii. Approving, modifying and disbanding Working Groups and sub-projects;
+ii. approving, modifying and disbanding Working Groups and sub-projects;
 
-iii. Creating sub-committees to focus on cross-project issues and requirements;
+iii. creating sub-committees to focus on cross-project issues and requirements;
 
-iv. Appointing representatives to work with other open source or open standards communities;
+iv. appointing representatives to work with other open source or open standards communities;
 
-v. Establishing meeting procedures, community norms, workflows, issuing releases, and security issue reporting policies;
+v. establishing meeting procedures, community norms, workflows, issuing releases, and security issue reporting policies;
 
-vi. Approving and implementing policies and processes for contributing (to be published in the CONTRIBUTING file) and coordinating with the series manager of the Project (as provided for in the Series Agreement, the “Series Manager”) to resolve matters or concerns that may arise as set forth in Section 7 of this Charter;
+vi. approving and implementing policies and processes for contributing (to be published in the CONTRIBUTING file) and coordinating with the series manager of the Project (as provided for in the Series Agreement, the “Series Manager”) to resolve matters or concerns that may arise as set forth in Section 7 of this Charter;
 
-vii. Discussions, seeking consensus, and where necessary, voting on technical matters relating to the code base that affect multiple projects; and
+vii. discussions, seeking consensus, and where necessary, voting on technical matters relating to the code base that affect multiple projects; and
 
-viii. Coordinating any marketing, events, or communications regarding the Project.
+viii.coordinating any marketing, events, or communications regarding the Project.
 
 ## 3. TSC Voting
 a. While the Project aims to operate as a consensus-based community, if any TSC decision requires a vote to move the Project forward, the voting members of the TSC will vote on a one vote per voting member basis.
@@ -57,7 +57,7 @@ c. Except as provided in Section 7.c. and 8.a, decisions by vote at a meeting re
 d. In the event a vote cannot be resolved by the TSC, any voting member of the TSC may refer the matter to the Series Manager for assistance in reaching a resolution.
 
 ## 4. Compliance with Policies
-a. This Charter is subject to the Series Agreement for the Project and the Operating Agreement of LF Projects. Contributors will comply with the policies of LF Projects as may be adopted and amended by LF Projects, including, without limitation [the policies listed here](https://lfprojects.org/policies/).
+a. This Charter is subject to the Series Agreement for the Project and the Operating Agreement of LF Projects. Contributors will comply with the policies of LF Projects as may be adopted and amended by LF Projects, including, without limitation the policies listed at https://lfprojects.org/policies/.
 
 b. The TSC may adopt a Code of Conduct (“CoC”) for the Project, which is subject to approval by the Series Manager. In the event that a Project-specific CoC has not been approved, the [LF Projects Code of Conduct](https://lfprojects.org/policies/code-of-conduct/) will apply for all Collaborators in the Project.
 
