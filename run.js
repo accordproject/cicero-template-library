@@ -215,7 +215,48 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 await preProcessor(templatePath, template);
 
                 if(!process.env.SKIP_GENERATION) {
+                    if (process.env.UPDATE_DROPDOWNS) {
+                      const templateVersions = Object.keys(templateIndex).filter(
+                        item => {
+                          const atIndex = item.indexOf("@");
+                          const name = item.substring(0, atIndex);
+                          return name == template.getName();
+                        }
+                      );
 
+                      templateVersions.forEach(versionToUpdate => {
+                        const templateResult = nunjucks.render("dropdown.njk", {
+                          identifier: versionToUpdate,
+                          templateVersions: templateVersions
+                        });
+                        fs.readFile(
+                          "build/" + versionToUpdate + ".html",
+                          "utf8",
+                          (err, data) => {
+                            if (err) {
+                              console.log(`Failed reading build/${versionToUpdate}.html with ${err}`);
+                            }
+                            const dom = new jsdom.JSDOM(data);
+                            const $ = jquery(dom.window);
+                            const dropdownContentElement = $(".dropdown-content");
+                            if (dropdownContentElement.length) {
+                              $(".dropdown-content").html(templateResult);
+                              fs.writeFile(
+                                "build/" + versionToUpdate + ".html",
+                                dom.serialize(),
+                                err => {
+                                  if (err) {
+                                      console.log(`Failed saving build/${versionToUpdate}.html with ${err}`);
+                                  } else {
+                                      console.log("dropdown updated for template: " + "build/" + versionToUpdate + ".html" );
+                                  }
+                                }
+                              );
+                            }
+                          }
+                        );
+                      });
+                    }
                     // get the name of the generated archive
                     const destPath = path.dirname(dest);
                     await fs.ensureDir(destPath);
@@ -248,42 +289,9 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                         await postProcessor(templateIndex, templatePath, template);
                     }
                     else {
-                      if (process.env.UPDATE_DROPDOWNS) {
-                        const templateVersions = Object.keys(templateIndex).filter(
-                          item => {
-                            const atIndex = item.indexOf("@");
-                            const name = item.substring(0, atIndex);
-                            return name == template.getName();
-                          }
-                        );
-                        templateVersions.forEach(versionToUpdate => {
-                          const templateResult = nunjucks.render("dropdown.njk", {
-                            identifier: versionToUpdate,
-                            templateVersions: templateVersions
-                          });
-                          fs.readFile(
-                            "build/" + versionToUpdate + ".html",
-                            "utf8",
-                            (err, data) => {
-                              const dom = new jsdom.JSDOM(data);
-                              const $ = jquery(dom.window);
-                              const dropdownContentElement = $(".dropdown-content");
-                              if (dropdownContentElement.length) {
-                                $(".dropdown-content").html(templateResult);
-                                fs.writeFile(
-                                  "build/" + versionToUpdate + ".html",
-                                  dom.serialize(),
-                                  err => {
-                                    console.log("dropdown updated for template: " + "build/" + versionToUpdate + ".html" );
-                                  }
-                                );
-                              }
-                            }
-                          );
-                        });
-                      } else {
+
                         console.log(`Skipped: ${archiveFileName} (already exists).`);
-                      }
+
                     }
                 }
             } catch (err) {
