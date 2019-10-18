@@ -329,5 +329,5 @@ Accord Project documentation files are made available under the [Creative Common
 [contributing]: https://github.com/accordproject/cicero-template-library/blob/master/CONTRIBUTING.md
 [developers]: https://github.com/accordproject/cicero-template-library/blob/master/DEVELOPERS.md
 
-[apache]: https://github.com/accordproject/template-studio-v2/blob/master/LICENSE
+[apache]: https://github.com/accordproject/cicero-template-library/blob/master/LICENSE
 [creativecommons]: http://creativecommons.org/licenses/by/4.0/
