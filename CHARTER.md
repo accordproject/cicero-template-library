@@ -31,21 +31,21 @@ f. The TSC may elect a TSC Chair, who will preside over meetings of the TSC and 
 
 g. Responsibilities: The TSC will be responsible for all aspects of oversight relating to the Project, which may include:
 
-i. coordinating the technical direction of the Project;
+i. Coordinating the technical direction of the Project;
 
-ii. approving, modifying and disbanding Working Groups and sub-projects;
+ii. Approving, modifying and disbanding Working Groups and sub-projects;
 
-iii. creating sub-committees to focus on cross-project issues and requirements;
+iii. Creating sub-committees to focus on cross-project issues and requirements;
 
-iv. appointing representatives to work with other open source or open standards communities;
+iv. Appointing representatives to work with other open source or open standards communities;
 
-v. establishing meeting procedures, community norms, workflows, issuing releases, and security issue reporting policies;
+v. Establishing meeting procedures, community norms, workflows, issuing releases, and security issue reporting policies;
 
-vi. approving and implementing policies and processes for contributing (to be published in the CONTRIBUTING file) and coordinating with the series manager of the Project (as provided for in the Series Agreement, the “Series Manager”) to resolve matters or concerns that may arise as set forth in Section 7 of this Charter;
+vi. Approving and implementing policies and processes for contributing (to be published in the CONTRIBUTING file) and coordinating with the series manager of the Project (as provided for in the Series Agreement, the “Series Manager”) to resolve matters or concerns that may arise as set forth in Section 7 of this Charter;
 
-vii. discussions, seeking consensus, and where necessary, voting on technical matters relating to the code base that affect multiple projects; and
+vii. Discussions, seeking consensus, and where necessary, voting on technical matters relating to the code base that affect multiple projects; and
 
-viii.coordinating any marketing, events, or communications regarding the Project.
+viii. Coordinating any marketing, events, or communications regarding the Project.
 
 ## 3. TSC Voting
 a. While the Project aims to operate as a consensus-based community, if any TSC decision requires a vote to move the Project forward, the voting members of the TSC will vote on a one vote per voting member basis.
@@ -57,9 +57,9 @@ c. Except as provided in Section 7.c. and 8.a, decisions by vote at a meeting re
 d. In the event a vote cannot be resolved by the TSC, any voting member of the TSC may refer the matter to the Series Manager for assistance in reaching a resolution.
 
 ## 4. Compliance with Policies
-a. This Charter is subject to the Series Agreement for the Project and the Operating Agreement of LF Projects. Contributors will comply with the policies of LF Projects as may be adopted and amended by LF Projects, including, without limitation the policies listed at https://lfprojects.org/policies/.
+a. This Charter is subject to the Series Agreement for the Project and the Operating Agreement of LF Projects. Contributors will comply with the policies of LF Projects as may be adopted and amended by LF Projects, including, without limitation [the policies listed here](https://lfprojects.org/policies/).
 
-b. The TSC may adopt a code of conduct (“CoC”) for the Project, which is subject to approval by the Series Manager. In the event that a Project-specific CoC has not been approved, the LF Projects Code of Conduct listed at https://lfprojects.org/policies will apply for all Collaborators in the Project.
+b. The TSC may adopt a Code of Conduct (“CoC”) for the Project, which is subject to approval by the Series Manager. In the event that a Project-specific CoC has not been approved, the [LF Projects Code of Conduct](https://lfprojects.org/policies/code-of-conduct/) will apply for all Collaborators in the Project.
 
 c. When amending or adopting any policy applicable to the Project, LF Projects will publish such policy, as to be amended or adopted, on its web site at least 30 days prior to such policy taking effect; provided, however, that in the case of any amendment of the Trademark Policy or Terms of Use of LF Projects, any such amendment is effective upon publication on LF Project’s web site.
 
@@ -77,16 +77,16 @@ c. Under no circumstances will LF Projects be expected or required to undertake 
 ## 6. General Rules and Operations.
 a. The Project will:
 
-i. engage in the work of the Project in a professional manner consistent with maintaining a cohesive community, while also maintaining the goodwill and esteem of LF Projects, LFP, Inc. and other partner organizations in the open source community; and
+i. Engage in the work of the Project in a professional manner consistent with maintaining a cohesive community, while also maintaining the goodwill and esteem of LF Projects, LFP, Inc. and other partner organizations in the open source community; and
 
-ii. respect the rights of all trademark owners, including any branding and trademark usage guidelines.
+ii. Respect the rights of all trademark owners, including any branding and trademark usage guidelines.
 
 ## 7. Intellectual Property Policy
 a. Collaborators acknowledge that the copyright in all new contributions will be retained by the copyright holder as independent works of authorship and that no contributor or copyright holder will be required to assign copyrights to the Project.
 
 b. Except as described in Section 7.c., all contributions to the Project are subject to the following:
 
-i. All new inbound code contributions to the Project must be made using the Apache License, Version 2.0, available at https://www.apache.org/licenses/LICENSE-2.0 (the “Project License”).
+i. All new inbound code contributions to the Project must be made using the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) (the “Project License”).
 
 ii. All new inbound code contributions must also be accompanied by a [Developer Certificate of Origin](http://developercertificate.org) sign-off in the source code system that is submitted through a TSC-approved contribution process which will bind the authorized contributor and, if not self-employed, their employer to the applicable license;
 
