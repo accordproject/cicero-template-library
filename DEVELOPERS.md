@@ -59,7 +59,7 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 
 * All features or bug fixes **must be tested** by one or more [specs][developers.unit-tests].
 * All public API methods **must be documented** with jsdoc. To see how we document our APIs, please check
-  out the existing source code and see the section about [writing documentation][developers.documentation]
+  out the existing source code and see the section about [writing documentation][developers.documentation].
 * With the exceptions listed below, we follow the rules contained in
   [Google's JavaScript Style Guide][google].
 
@@ -114,7 +114,7 @@ The subject contains succinct description of the change:
 * no dot (.) at the end
 
 ### Footer
-The footer should contain [reference GitHub Issues that this commit addresses][github-issues].
+The footer should contain [reference GitHub Issues][github-issues] that this commit addresses.
 
 ## <a name="pullrequests"></a> GitHub Pull Request Guidelines
 Pull Requests should consist of a complete addition to the code which contains value. 

@@ -1,0 +1,1 @@
+After execution of this Agreement, {{buyer}} shall pay the full purchase price to {{seller}} in the amount of {{value}} upon demand by {{seller}}.

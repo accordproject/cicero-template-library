@@ -1,0 +1,1 @@
+Upon the signing of this Agreement, {{buyer}} shall pay the total purchase price to {{seller}} in the amount of {{amount}}.
