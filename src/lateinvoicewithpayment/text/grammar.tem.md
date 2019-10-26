@@ -1,0 +1,1 @@
+2.4 {{purchaser}} is not required to pay any invoice that is issued more than {{maximumDelay}} after it is due to be issued by {{supplier}}.

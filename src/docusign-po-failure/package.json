@@ -11,9 +11,9 @@
     },
     "keywords": ["docusign", "purchase", "order", "po", "fail", "failure", "product", "delivery", "date", "late", "delayed", "discount", "price", "amount", "compensation", "credits", "issue"],
     "devDependencies": {
-        "mocha": "5.2.0"
+        "cucumber": "^5.1.0"
     },
     "scripts": {
-        "test": "mocha --timeout 10000"
+        "test": "cucumber-js test -r .cucumber.js"
     }
 }
