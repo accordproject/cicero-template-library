@@ -33,7 +33,7 @@ These templates can be parsed and executed by the [Cicero][cicero] engine.
 
 ## Library
 
-The contents of this repository is automatically tested, built and published to the 
+The contents of this repository are automatically tested, built and published to the 
 Accord Project Template Library, hosted at https://templates.accordproject.org.
 
 ## Contributing
@@ -53,7 +53,7 @@ lerna run test
 
 ---
 
-Accord Project is an open source, non-profit, initiative working to transform contract management and contract automation by digitizing contracts. Accord Project operates under the umbrella of the [Linux Foundation][linuxfound]. The technical charter for the Accord Project can be found [here][charter].
+Accord Project is an open source, a non-profit, initiative working to transform contract management and contract automation by digitizing contracts. Accord Project operates under the umbrella of the [Linux Foundation][linuxfound]. The technical charter for the Accord Project can be found [here][charter].
 
 ## Learn More About Accord Project
 
