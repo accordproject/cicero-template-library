@@ -1,0 +1,4 @@
+{
+    "$class": "org.accordproject.signature.ContractSigned",
+    "contract": "MY_CONTRACT"
+}
