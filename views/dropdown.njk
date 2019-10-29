@@ -1,0 +1,5 @@
+{% for name in templateVersions %}
+  <a href="{{name}}.html" class="dropdown-item {{"is-active" if name === identifier}}">
+      {{name}}
+  </a>
+{% endfor %}
