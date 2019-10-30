@@ -25,7 +25,7 @@ Feature: Certificate of Incorporation
     {
       "$class": "org.accordproject.incorporation.ContractData",
       "companyName": "ACME",
-      "incorporationDate": "2019-04-01T00:00:00.000-04:00",
+      "incorporationDate": "2019-04-01T00:00:00.000Z",
       "authorizedShareCapital": 400,
       "parValue": 0.1
     }
