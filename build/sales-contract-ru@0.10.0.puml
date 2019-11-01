@@ -1,0 +1,20 @@
+@startuml
+class org.accordru.salescontract.MyRequest << (T,yellow) >> {
+   + String input
+}
+org.accordru.salescontract.MyRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordru.salescontract.MyResponse << (T,yellow) >> {
+   + String output
+}
+org.accordru.salescontract.MyResponse --|> org.accordproject.cicero.runtime.Response
+class org.accordru.salescontract.MyContract << (A,green) >> {
+   + String buyer
+   + String seller
+   + String refundPeriod
+   + String counterparty
+   + String currencyType
+   + String appealPeriod
+   + String countryLegislation
+}
+org.accordru.salescontract.MyContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml

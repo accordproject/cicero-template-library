@@ -1,0 +1,15 @@
+@startuml
+class com.docusign.connect.counter.MyResponse << (T,yellow) >> {
+   + String output
+   + Integer counter
+}
+com.docusign.connect.counter.MyResponse --|> org.accordproject.cicero.runtime.Response
+class com.docusign.connect.counter.DocuSignEnvelopeCounterState << (A,green) >> {
+   + Integer counter
+}
+com.docusign.connect.counter.DocuSignEnvelopeCounterState --|> org.accordproject.cicero.contract.AccordContractState
+class com.docusign.connect.counter.DocuSignEnvelopeCounterClause << (A,green) >> {
+   + EnvelopeStatusCode status
+}
+com.docusign.connect.counter.DocuSignEnvelopeCounterClause --|> org.accordproject.cicero.contract.AccordContract
+@enduml

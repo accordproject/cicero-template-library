@@ -1,0 +1,43 @@
+@startuml
+class org.accordproject.isda.irs.DayCountFraction {
+   + String value
+   + String dayCountFractionScheme
+}
+class org.accordproject.isda.irs.RateObservation << (T,yellow) >> {
+}
+org.accordproject.isda.irs.RateObservation --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.isda.irs.Result << (T,yellow) >> {
+   + Double outstandingBalance
+}
+org.accordproject.isda.irs.Result --|> org.accordproject.cicero.runtime.Response
+class org.accordproject.isda.irs.InterestRateSwapContract << (A,green) >> {
+   + Organization bank
+   + DateTime letterDate
+   + Organization counterparty
+   + String bankReference
+   + MonetaryAmount notionalAmount
+   + DateTime tradeDate
+   + DateTime effectiveDate
+   + DateTime terminationDate
+   + Organization fixedRatePayer
+   + String fixedRatePayerPeriodEndDates
+   + String fixedRatePayerPaymentDates
+   + Double fixedRate
+   + DayCountFraction fixedRateDayCountFraction
+   + String fixedRatePayerBusinessDays
+   + String fixedRatePayerBusinessDayConvention
+   + Organization floatingRatePayer
+   + String floatingRatePayerPeriodEndDates
+   + String floatingRatePayerPaymentDates
+   + Double floatingRateForInitialCalculationPeriod
+   + String floatingRateOption
+   + String designatedMaturity
+   + String spread
+   + DayCountFraction floatingRateDayCountFraction
+   + String resetDates
+   + String compounding
+   + String floatingRatePayerBusinessDays
+   + String floatingRatePayerBusinessDayConvention
+}
+org.accordproject.isda.irs.InterestRateSwapContract --|> org.accordproject.cicero.contract.AccordContract
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class org.accordproject.empty.EmptyContract << (A,green) >> {
+}
+org.accordproject.empty.EmptyContract --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.empty.EmptyRequest << (T,yellow) >> {
+}
+org.accordproject.empty.EmptyRequest --|> org.accordproject.cicero.runtime.Request
+class org.accordproject.empty.EmptyResponse << (T,yellow) >> {
+}
+org.accordproject.empty.EmptyResponse --|> org.accordproject.cicero.runtime.Response
+@enduml
