@@ -23,9 +23,9 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.20.0-20191030200006",
-    "@accordproject/cicero-engine": "0.20.0-20191030200006",
-    "@accordproject/cicero-test": "0.20.0-20191030200006",
+    "@accordproject/cicero-core": "0.20.0",
+    "@accordproject/cicero-engine": "0.20.0",
+    "@accordproject/cicero-test": "0.20.0",
     "@accordproject/concerto-core": "0.82.4",
     "@accordproject/concerto-tools": "0.82.4",
     "adm-zip": "^0.4.11",
