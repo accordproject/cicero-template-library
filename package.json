@@ -3,7 +3,7 @@
     "build": "node run.js",
     "test": "lerna run test",
     "generate": "SKIP_TESTS=true node run.js",
-    "update-html-dropdowns": "UPDATE_DROPDOWNS=true node run.js"
+    "update-skip-dropdowns": "SKIP_DROPDOWNS=true node run.js"
   },
   "nyc": {
     "include": [
