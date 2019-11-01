@@ -58,9 +58,9 @@ To generate the static HTML pages for each template, run:
 npm run build
 ```
 
-By default, old pages won't include links to newer versions of templates, to regenerate old pages with the latest set of links, run:
+By default, old pages will include links to newer versions of templates, to skip regeneratation of old pages with the latest set of links, run:
 ```
-UPDATE_DROPDOWNS=true npm run build
+SKIP_DROPDOWNS=true npm run build
 ```
 
 ---
