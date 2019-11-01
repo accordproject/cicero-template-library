@@ -51,6 +51,18 @@ lerna bootstrap
 lerna run test
 ```
 
+## Building Static Pages
+
+To generate the static HTML pages for each template, run:
+```
+npm run build
+```
+
+By default, old pages won't include links to newer versions of templates, to regenerate old pages with the latest set of links, run:
+```
+UPDATE_DROPDOWNS=true npm run build
+```
+
 ---
 
 Accord Project is an open source, non-profit, initiative working to transform contract management and contract automation by digitizing contracts. Accord Project operates under the umbrella of the [Linux Foundation][linuxfound]. The technical charter for the Accord Project can be found [here][charter].
@@ -307,6 +319,7 @@ Accord Project documentation files are made available under the [Creative Common
 
 [techspec]: https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0
 [aphome]: https://accordproject.org
+[cicero]: https://github.com/accordproject/cicero
 [ctlguide]: https://docs.accordproject.org/docs/cicero-tutorial.html#creating-a-new-template
 
 [linuxfound]: https://www.linuxfoundation.org
