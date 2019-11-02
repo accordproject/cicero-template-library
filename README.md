@@ -46,7 +46,7 @@ Can't find something? Then why not make a new template yourself?
 
 To install and test all the templates locally, clone this repository and use lerna:
 ```
-npm install -g lerna@^2.11.0
+npm install -g lerna@^3.15.0
 lerna bootstrap
 lerna run test
 ```

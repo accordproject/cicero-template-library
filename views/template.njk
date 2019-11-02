@@ -55,20 +55,36 @@
           <a href="{{studioURL}}" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
         </p>
 
-        <img src="{{umlURL}}" class="box" style="margin-top:40px;" />
-
         <div class="content">
           <p>
           {{readmeHtml}}
           </p>
         </div>
 
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="content">
+          <p></p>
+        </div>
+
+        <h4 class="title is-4">Grammar</h4>
+        <div class="content box">
+          <pre style="{{pre_style}}"><code class="tem">{{template.getParserManager().getTemplatizedGrammar()}}</code></pre>
+        </div>
+
         <h4 class="title is-4">Sample</h4>
         <div class="content box">
-          <pre style="{{pre_style}}">
-            {{template.getMetadata().getSample()}}
-          </pre>
+          <pre style="{{pre_style}}"><code class="markdown">{{template.getMetadata().getSample()}}</code></pre>
         </div>
+
+        <h4 class="title is-4">Sample Data</h4>
+        <div class="box">
+            <pre style="{{pre_style}}"><code style="{{code_style}}">{{instance}}</pre></code>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <img src="{{umlURL}}" class="box" style="margin-top:40px;" />
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
