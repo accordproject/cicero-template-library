@@ -13,8 +13,6 @@
  */
 namespace org.accordproject.interests
 
-import org.accordproject.loan.interests.*
-
 contract Interests over TemplateModel {
   clause test(request: Request) : Response {
 		return Response{ output: "loan for the amount of " ++ toString(contract.loanAmount) }
