@@ -5062,5 +5062,15 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.20.0",
         "type": 0
+    },
+    "fixed-interests-static@0.2.0": {
+        "uri": "ap://fixed-interests-static@0.2.0#a5d67d689ed7c58f64da92239bf12133489d915a0fb93e0a2f0a0edc2f1f67d3",
+        "url": "https://templates.accordproject.org/archives/fixed-interests-static@0.2.0.cta",
+        "name": "fixed-interests-static",
+        "displayName": "Fixed Interests Static",
+        "description": "A Fixed Interests Loan Clause, with a monthly Payment (static)",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.20.0",
+        "type": 1
     }
 }

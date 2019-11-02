@@ -1,0 +1,20 @@
+@startuml
+class org.accordproject.interests.Request << (T,yellow) >> {
+   + String input
+}
+org.accordproject.interests.Request --|> org.accordproject.base.Transaction
+class org.accordproject.interests.Response << (T,yellow) >> {
+   + String output
+}
+org.accordproject.interests.Response --|> org.accordproject.base.Transaction
+class org.accordproject.interests.TemplateModel << (A,green) >> {
+   + Double loanAmount
+   + Double rate
+   + Integer loanDuration
+   + Double monthlyPayment
+}
+org.accordproject.interests.TemplateModel --|> org.accordproject.cicero.contract.AccordClause
+class org.accordproject.interests.TextResponse {
+   + String text
+}
+@enduml
