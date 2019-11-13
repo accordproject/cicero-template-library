@@ -5072,5 +5072,15 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.20.0",
         "type": 1
+    },
+    "volumediscountulist@0.2.1": {
+        "uri": "ap://volumediscountulist@0.2.1#8cf849ca763071ed333fde22f3636ed7ef4294dce34f69d71bc3b75d75fca800",
+        "url": "https://templates.accordproject.org/archives/volumediscountulist@0.2.1.cta",
+        "name": "volumediscountulist",
+        "displayName": "Volumediscountulist",
+        "description": "A sample volume discount contract (unordered list).",
+        "version": "0.2.1",
+        "ciceroVersion": "^0.20.0",
+        "type": 0
     }
 }
