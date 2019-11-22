@@ -1,0 +1,10 @@
+{
+    "name": "company-details",
+    "version": "0.1.0",
+    "description": "An example text-only clause",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "clause",
+        "cicero": "^0.20.0"
+    }
+}

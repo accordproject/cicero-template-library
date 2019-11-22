@@ -1,20 +1,17 @@
-```
-{# 
-import https://models.accordproject.org/company/CompanyDetails-en.tem
-import Address-en.tem 
-import https://templates.accordproject.org/archives/helloworld@0.8.0.cta
-#}
-```
+{{%
+import org.accordproject.servicelevelagreement.CompanyDetails from https://templates.accordproject.org/archives/company-details@0.1.0.cta
+import org.accordproject.helloworld.* from https://templates.accordproject.org/archives/helloworld@0.12.0.cta
+%}}
 
 # Service level agreement (SLA)
 
-<HelloWorld>
+{{#clause helloworld}}
 Name of the person to greet: "Fred Blogs".
 Thank you!
-</HelloWorld>
+{{/clause}}
 
 ## Introduction
-This service level agreement (SLA) describes the levels of service that [{clientName}] ('the client') will receive from `[{supplierName}]` ('the supplier').
+This service level agreement (SLA) describes the levels of service that {{clientName}} ('the client') will receive from `{{supplierName}}` ('the supplier').
 
 This SLA should be read alongside the IT support contract between the client and the supplier. Although the SLA covers key areas of the client's IT systems and support, the support contract may include areas not covered by this SLA.
 
@@ -33,15 +30,14 @@ This SLA is between:
 
 The client:
 
-`[{clientDetails}]`
-
+{{>clientDetails}}
 
 The supplier:
 
-`[{supplierDetails}]`
+{{>supplierDetails}}
 
 ## Dates and reviews
-This agreement begins on `[{contractStart}]` and will run for a period of `[{contractMonths}]` months.
+This agreement begins on {{contractStart}} and will run for a period of {{contractMonths}} months.
 
 It may be reviewed at any point, by mutual agreement. It may also be reviewed if there are any changes to the client's IT system.
 
@@ -55,7 +51,7 @@ Please note:
    * These items have been assigned a priority level, from 1 (most important) to 3 (least important). The priority levels help determine the guaranteed uptime and response time.
 
 
-`[{coverageItems}]`
+{{coverageItems}}
 
 This SLA is written in a spirit of partnership. The supplier will always do everything possible to rectify every issue in a timely manner.
 
@@ -73,7 +69,7 @@ Additionally, this SLA does not apply when:
    * This SLA does not apply in circumstances that could be reasonably said to be beyond the supplier's control. For instance: floods, war, acts of god and so on.
    * This SLA also does not apply if the client is in breach of its contract with the supplier for any reason (e.g. late payment of fees).
 
-Having said all that, [{supplierName}] aims to be helpful and accommodating at all times, and will do its absolute best to assist [{clientName}] wherever possible.
+Having said all that, {{supplierName}} aims to be helpful and accommodating at all times, and will do its absolute best to assist {{clientName}} wherever possible.
 
 ## Responsibilities
 ## Supplier responsibilities
@@ -107,7 +103,7 @@ These uptime levels apply to items in the Equipment, software and services cover
 
 The level of guaranteed uptime depends on the priority level of each item:
 
-`[{uptimeLevel}]`
+{{uptimeLevel}}
 
 ### Measurement and penalties
 Uptime is measured the using supplier's automated systems, over each calendar month. It is calculated to the nearest minute, based on the number of minutes in the given month (for instance, a 31-day month contains 44,640 minutes).
@@ -120,10 +116,10 @@ The level of penalty will be calculated depending on the number of hours for whi
 
 Priority level
 
-`[{penalties}]`
+{{penalties}}
 
 ## Important notes:
-Uptime penalties in any month are capped at [{penaltyCap}]% of the total monthly fee.
+Uptime penalties in any month are capped at {{penaltyCap}}% of the total monthly fee.
 
 Uptime measurements exclude periods of routine maintenance. These must be agreed between the supplier and client in advance.
 
@@ -137,7 +133,7 @@ The supplier is deemed to have responded when it has replied to the client's ini
 
 Guaranteed response times depend on the priority of the item(s) affected and the severity of the issue. They are shown in this table:
 
-`[{responseTimes}]`
+{{responseTimes}}
 
 Response times are measured from the moment the client submits a support request via the supplier's online support system.
 
@@ -163,7 +159,7 @@ This means the following month's fee payable by the client will be reduced on a 
 
 The level of penalty will be calculated depending on the number of hours by which the supplier missed the response time, minus the downtime permitted by the SLA:
 
-`[{priorityPenalty}]`
+{{priorityPenalty}}
 
 Important notes:
 
@@ -188,14 +184,14 @@ If the supplier consistently fails to meet the service levels described in this 
 This right is available to the client if the supplier fails to meet these service levels more than five times in any single calendar month.
 
 ## Signatures
-This service level agreement is agreed as part of the IT support contract between `[{clientName}]` and `[{supplierName}]`:
+This service level agreement is agreed as part of the IT support contract between {{clientName}} and {{supplierName}}:
 
 Signed on behalf of the client: 
 
-`[{clientSignature}]`
+{{clientSignature}}
 
 
 Signed on behalf of the supplier: 
 
-`[{supplierSignature}]`
+{{supplierSignature}}
 

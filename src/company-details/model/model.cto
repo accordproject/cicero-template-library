@@ -1,0 +1,13 @@
+namespace org.accordproject.servicelevelagreement
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+
+asset CompanyDetails extends AccordClause {
+  o String name
+  o String companyAddress
+  o String addressLine2
+  o String addressLine3
+  o String keyContactName
+  o String telephone
+  o String email
+}
