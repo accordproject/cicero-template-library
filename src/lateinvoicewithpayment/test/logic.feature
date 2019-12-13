@@ -13,7 +13,7 @@ Feature: Late invoice contract
 """
 {
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceRequest",
-    "invoiceDue": "17 Feb 2019 03:24:00 Z",
+    "invoiceDue": "2019-02-17T03:24:00Z",
     "amountDue": {
                     "doubleValue": 200,
                     "currencyCode": "USD"
@@ -47,7 +47,7 @@ Feature: Late invoice contract
 """
 {
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceRequest",
-    "invoiceDue": "17 Jan 2018 03:24:00 Z",
+    "invoiceDue": "2018-01-17T03:24:00Z",
     "amountDue": {
       "doubleValue": 200,
       "currencyCode": "USD"
