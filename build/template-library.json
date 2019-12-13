@@ -5082,5 +5082,25 @@
         "version": "0.2.1",
         "ciceroVersion": "^0.20.0",
         "type": 0
+    },
+    "acceptance-of-delivery@0.13.1": {
+        "uri": "ap://acceptance-of-delivery@0.13.1#b5505785f4de9000be15687601d869cb1719df2f482cd57f3bf4fbd6774127bc",
+        "url": "https://templates.accordproject.org/archives/acceptance-of-delivery@0.13.1.cta",
+        "name": "acceptance-of-delivery",
+        "displayName": "Acceptance of Delivery",
+        "description": "This clause allows the receiver of goods to inspect them for a given time period after delivery.",
+        "version": "0.13.1",
+        "ciceroVersion": "^0.20.0",
+        "type": 1
+    },
+    "lateinvoicewithpayment@0.5.1": {
+        "uri": "ap://lateinvoicewithpayment@0.5.1#eaac35d7a1cd8d81301f7c9e8a9fcc77f60b47276be6abd13c4569060f8fa5fe",
+        "url": "https://templates.accordproject.org/archives/lateinvoicewithpayment@0.5.1.cta",
+        "name": "lateinvoicewithpayment",
+        "displayName": "Late Invoice with Payment",
+        "description": "A sample Late invoice clause which emits a payment obligation.",
+        "version": "0.5.1",
+        "ciceroVersion": "^0.20.0",
+        "type": 0
     }
 }
