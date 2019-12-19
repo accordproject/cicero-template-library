@@ -17,6 +17,9 @@
 const CodeGen = require('@accordproject/concerto-tools').CodeGen;
 const FileWriter = require('@accordproject/concerto-tools').FileWriter;
 
+const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
+const CiceroMarkTransformer = require('@accordproject/markdown-cicero').CiceroMarkTransformer;
+
 const Template = require('@accordproject/cicero-core').Template;
 const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
@@ -50,6 +53,9 @@ const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
 const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.accordproject.org';
 const studioRoot = 'https://studio.accordproject.org';
+
+const ciceroMark = new CiceroMarkTransformer();
+const htmlMark = new HtmlTransformer();
 
 nunjucks.configure('./views', {
     autoescape: false
@@ -430,6 +436,11 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         return name == template.getName();
     });
 
+    const sample = template.getMetadata().getSample();
+    let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample,'json'));
+    // XXX HTML cleanup hack for rendering in page. Would be best done with the right option in markdown-transform
+    sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">','').replace('</div>\n</body>\n</html>','');
+
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL : umlURL,
@@ -437,6 +448,8 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         studioURL : studioURL,
         filePath: templatePageHtml,
         template: template,
+        sample: sample,
+        sampleHTML: sampleHTML,
         readmeHtml: readmeHtml,
         requestTypes: requestTypes,
         responseTypes: responseTypes,

@@ -1,71 +1,86 @@
 {%set pre_style="white-space: pre-wrap; border: 0; background-color: transparent;"%}
+{%set html_style="white-space: normal; border: 0; background-color: transparent;"%}
 {%set code_style="white-space: pre-wrap;"%}
 
 <!DOCTYPE html>
 <html>
-  <head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      {%set accord_logo="accord_logo_large.png"%}
-      {%set title="Accord Project Template Library"%}
-      {%set description="Library hosting all Accord Project templates."%}
+        {%set accord_logo="accord_logo_large.png"%}
+        {%set title="Accord Project Template Library"%}
+        {%set description="Library hosting all Accord Project templates."%}
 
-      <!-— generic unfurl tags -->
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org" />
-      <meta name="twitter:label1" content="Apache 2.0 Licensed" />
-      <meta name="twitter:data1" content="on GitHub.com" />
-      <meta name="twitter:label2" content="Contribute" />
-      <meta name="twitter:data2" content="at AccordProject.org" />
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
 
-      {% block unfurl %}
-      <!-— facebook open graph tags -->
-      <meta property="og:url" content="https://templates.accordproject.org" />
-      <meta property="og:title" content="{{title}}" />
-      <meta property="og:description" content="{{description}}" />
-      <meta property="og:image" content="{{serverRoot}}/{{accord_logo}}" />
-  
-      <!-— twitter card tags additive with the og: tags -->
-      <meta name="twitter:title" content="{{title}}" />
-      <meta name="twitter:site" content="@AccordHQ" />
-      <meta name="twitter:description" content="{{description}}" />
-      <meta name="twitter:image" content="{{serverRoot}}/{{accord_logo}}" />
-      <meta name="twitter:image:alt" content="The Accord Project logo" />
-      <meta name="twitter:url" content="{{serverRoot}}" />
-      {% endblock %}
+        {% block unfurl %}
+            <!-— facebook open graph tags -->
+            <meta property="og:url" content="https://templates.accordproject.org" />
+            <meta property="og:title" content="{{title}}" />
+            <meta property="og:description" content="{{description}}" />
+            <meta property="og:image" content="{{serverRoot}}/{{accord_logo}}" />
+            
+            <!-— twitter card tags additive with the og: tags -->
+            <meta name="twitter:title" content="{{title}}" />
+            <meta name="twitter:site" content="@AccordHQ" />
+            <meta name="twitter:description" content="{{description}}" />
+            <meta name="twitter:image" content="{{serverRoot}}/{{accord_logo}}" />
+            <meta name="twitter:image:alt" content="The Accord Project logo" />
+            <meta name="twitter:url" content="{{serverRoot}}" />
+        {% endblock %}
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
-      <link rel="stylesheet" href="assets/fonts.css" />
-      <link rel="stylesheet" href="styles.css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>{% raw %}
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
