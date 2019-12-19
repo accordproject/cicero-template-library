@@ -63,23 +63,43 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="{{pre_style}}"><code class="tem">{{template.getParserManager().getTemplatizedGrammar()}}</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="{{pre_style}}"><code class="markdown">{{template.getMetadata().getSample()}}</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="{{pre_style}}"><code style="{{code_style}}">{{instance}}</pre></code>
+        <div id="tab-content">
+            <div class="content box" data-content="1">
+                <span stype="{{html_style}}">{{sampleHTML}}</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="{{pre_style}}"><code class="markdown">{{sample}}</code></pre>
+            </div>
+            <div class="is-active content box" data-content="3">
+                <pre style="{{pre_style}}"><code class="tem">{{template.getParserManager().getTemplatizedGrammar()}}</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="{{pre_style}}"><code style="{{code_style}}">{{instance}}</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -88,9 +108,9 @@
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
-          {% for ns, uri in template.getTemplateModel().getModelFile().getExternalImports() %}
-          <li><a href="{{uri | replace(".cto", ".html")}}">{{ns}}</a></li>
+            <ul>
+                {% for ns, uri in template.getTemplateModel().getModelFile().getExternalImports() %}
+                    <li><a href="{{uri | replace(".cto", ".html")}}">{{ns}}</a></li>
           {% else %}
             <li>None</li>
           {% endfor %}
