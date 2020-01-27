@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/fragile-goods@0.13.0.html">
   <meta property="og:title" content="fragile-goods@0.13.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/fragile-goods@0.13.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -290,30 +304,42 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Liquidated Damages for Delayed Delivery.
-
-In the event the EXW delivery date of the Equipment is delayed beyond the delivery schedule as indicated below, solely through the fault of {{seller}} (the Seller), and unless the parties mutually agreed to an extension thereto, {{buyer}} (the Buyer) is entitled to claim liquidated damages in an amount equivalent to {{lateDeliveryPenalty}}.
-Prior to implementing the provisions of Article 16.4 pursuant to this section, Buyer agrees that it shall discuss with Seller alternate remedies in good faith.. . . .
-
-The Equipment to be shipped to the Buyer shall be packed and shipped in accordance with the Specifications and if not specified therein....
-Additionally the Equipment should have proper devices on it to record any shock during transportation as any instance of acceleration outside the bounds of {{accelerationMin}}g and {{accelerationMax}}g.
-Each shock shall reduce the Contract Price by {{accelerationBreachPenalty}}. Packing containing fragile materials should be so marked in bold stout letters. . . . .
-
-Equipment Description, Contract Price and Delivery Schedule
-
-Contract Price is {{deliveryPrice}} per unit of Equipment.
-Delivery Schedule: no later than {{deliveryLimitDuration}} after initiation.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Liquidated Damages for Delayed Delivery.
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>Liquidated Damages for Delayed Delivery.</p>
+<p>In the event the EXW delivery date of the Equipment is delayed beyond the delivery schedule as indicated below, solely through the fault of "Dan" (the Seller), and unless the parties mutually agreed to an extension thereto, "Steve" (the Buyer) is entitled to claim liquidated damages in an amount equivalent to 200.00 USD.<wbr>Prior to implementing the provisions of Article 16.4 pursuant to this section, Buyer agrees that it shall discuss with Seller alternate remedies in good faith.. . . .</p>
+<p>The Equipment to be shipped to the Buyer shall be packed and shipped in accordance with the Specifications and if not specified therein....<wbr>Additionally the Equipment should have proper devices on it to record any shock during transportation as any instance of acceleration outside the bounds of -0.5g and 0.5g.<wbr>Each shock shall reduce the Contract Price by 5.00 USD. Packing containing fragile materials should be so marked in bold stout letters. . . . .</p>
+<p>Equipment Description, Contract Price and Delivery Schedule</p>
+<p>Contract Price is 1000.00 USD per unit of Equipment.<wbr>Delivery Schedule: no later than 10 seconds after initiation.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Liquidated Damages for Delayed Delivery.
 
 In the event the EXW delivery date of the Equipment is delayed beyond the delivery schedule as indicated below, solely through the fault of "Dan" (the Seller), and unless the parties mutually agreed to an extension thereto, "Steve" (the Buyer) is entitled to claim liquidated damages in an amount equivalent to 200.00 USD. 
 Prior to implementing the provisions of Article 16.4 pursuant to this section, Buyer agrees that it shall discuss with Seller alternate remedies in good faith.. . . . 
@@ -327,13 +353,26 @@ Equipment Description, Contract Price and Delivery Schedule
 Contract Price is 1000.00 USD per unit of Equipment.
 Delivery Schedule: no later than 10 seconds after initiation.
 </code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Liquidated Damages for Delayed Delivery.
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+In the event the EXW delivery date of the Equipment is delayed beyond the delivery schedule as indicated below, solely through the fault of {{seller}} (the Seller), and unless the parties mutually agreed to an extension thereto, {{buyer}} (the Buyer) is entitled to claim liquidated damages in an amount equivalent to {{lateDeliveryPenalty}}.
+Prior to implementing the provisions of Article 16.4 pursuant to this section, Buyer agrees that it shall discuss with Seller alternate remedies in good faith.. . . .
+
+The Equipment to be shipped to the Buyer shall be packed and shipped in accordance with the Specifications and if not specified therein....
+Additionally the Equipment should have proper devices on it to record any shock during transportation as any instance of acceleration outside the bounds of {{accelerationMin}}g and {{accelerationMax}}g.
+Each shock shall reduce the Contract Price by {{accelerationBreachPenalty}}. Packing containing fragile materials should be so marked in bold stout letters. . . . .
+
+Equipment Description, Contract Price and Delivery Schedule
+
+Contract Price is {{deliveryPrice}} per unit of Equipment.
+Delivery Schedule: no later than {{deliveryLimitDuration}} after initiation.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.FragileGoodsClause",
-    "contractId": "50162155-8069-4bcd-8bc4-323024ecf9dc",
+    "contractId": "1d21ea9e-b5b3-46ef-98af-3a63f00f2c99",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Steve"
@@ -365,6 +404,7 @@ Delivery Schedule: no later than 10 seconds after initiation.
         "currencyCode": "USD"
     }
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -373,15 +413,15 @@ Delivery Schedule: no later than 10 seconds after initiation.
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.Duration</a></li>
           
-          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.Duration</a></li>
-          
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
           </ul>
         </div>
@@ -408,7 +448,7 @@ Delivery Schedule: no later than 10 seconds after initiation.
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "eda77262-ff3e-11e9-b361-efc0ae54bdd6"
+    "stateId": "2bf60fc0-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -429,14 +469,14 @@ Delivery Schedule: no later than 10 seconds after initiation.
                     <th>io.clause.demo.fragileGoods.DeliveryUpdate</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.DeliveryUpdate",
-    "startTime": "2019-11-04T15:08:55.174-05:00",
-    "finishTime": "2019-11-04T15:08:55.174-05:00",
-    "status": "ARRIVED",
+    "startTime": "2020-01-27T15:04:05.947-05:00",
+    "finishTime": "2020-01-27T15:04:05.947-05:00",
+    "status": "CREATED",
     "accelerometerReadings": [
-        198.317
+        33.345
     ],
-    "transactionId": "eda77260-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:55.174-05:00"
+    "transactionId": "2bf5e8b0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:05.947-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -459,11 +499,11 @@ Delivery Schedule: no later than 10 seconds after initiation.
     "$class": "io.clause.demo.fragileGoods.PayOut",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 103.234,
-        "currencyCode": "BTN"
+        "doubleValue": 196.569,
+        "currencyCode": "UZS"
     },
-    "transactionId": "eda77261-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:55.174-05:00"
+    "transactionId": "2bf5e8b1-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:05.947-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -486,16 +526,16 @@ Delivery Schedule: no later than 10 seconds after initiation.
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 177.971,
-        "currencyCode": "TND"
+        "doubleValue": 135.446,
+        "currencyCode": "GIP"
     },
-    "description": "Do.",
-    "contract": "resource:io.clause.demo.fragileGoods.FragileGoodsClause#2187",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#6296",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#8751",
-    "deadline": "2019-11-04T15:08:55.175-05:00",
-    "eventId": "eda79970-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:55.175-05:00"
+    "description": "Ex irure.",
+    "contract": "resource:io.clause.demo.fragileGoods.FragileGoodsClause#4383",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#2824",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6434",
+    "deadline": "2020-01-27T15:04:05.948-05:00",
+    "eventId": "2bf60fc1-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:05.948-05:00"
 }</code></pre></td>
                 </tr>
             

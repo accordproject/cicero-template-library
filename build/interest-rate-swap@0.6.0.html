@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/interest-rate-swap@0.6.0.html">
   <meta property="og:title" content="interest-rate-swap@0.6.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/interest-rate-swap@0.6.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -253,64 +267,51 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT<wbr>"Deutsche Bank"</p>
+<p>Date: 06/30/2005<wbr>To: "MagnaChip Semiconductor S.A."<wbr>Attention: Swaps Documentation Department<wbr>Our Reference: "Global No. N397355N"<wbr>Re: Interest Rate Swap Transaction</p>
+<p>Ladies and Gentlemen:</p>
+<p>The purpose of this letter agreement is to set forth the terms and conditions of the Transaction entered into between "Deutsche Bank" and "MagnaChip Semiconductor S.A." (“Counterparty”) on the Trade Date specified below (the “Transaction”). This letter agreement constitutes a “Confirmation” as referred to in the Agreement specified below.</p>
+<p>The definitions and provisions contained in the 2000 ISDA Definitions (the “Definitions”) as published by the International Swaps and Derivatives Association, Inc. are incorporated by reference herein. In the event of any inconsistency between the Definitions and this Confirmation, this Confirmation will govern.</p>
+<p>For the purpose of this Confirmation, all references in the Definitions or the Agreement to a “Swap Transaction” shall be deemed to be references to this Transaction.</p>
 
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT
-{{bank}}
-
-Date: {{letterDate}}
-To: {{counterparty}}
-Attention: Swaps Documentation Department
-Our Reference: {{bankReference}}
-Re: Interest Rate Swap Transaction
-
-Ladies and Gentlemen:
-
-The purpose of this letter agreement is to set forth the terms and conditions of the Transaction entered into between {{bank}} and {{counterparty}} (“Counterparty”) on the Trade Date specified below (the “Transaction”). This letter agreement constitutes a “Confirmation” as referred to in the Agreement specified below.
-
-The definitions and provisions contained in the 2000 ISDA Definitions (the “Definitions”) as published by the International Swaps and Derivatives Association, Inc. are incorporated by reference herein. In the event of any inconsistency between the Definitions and this Confirmation, this Confirmation will govern.
-
-For the purpose of this Confirmation, all references in the Definitions or the Agreement to a “Swap Transaction” shall be deemed to be references to this Transaction.
-
-1. This Confirmation evidences a complete and binding agreement between {{bank}} (“Party A”) and Counterparty (“Party B”) as to the terms of the Transaction to which this Confirmation relates. In addition, Party A and Party B agree to use all reasonable efforts to negotiate, execute and deliver an agreement in the form of the ISDA 2002 Master Agreement with such modifications as Party A and Party B will in good faith agree (the “ISDA Form” or the “Agreement”). Upon execution by the parties of such Agreement, this Confirmation will supplement, form a part of and be subject to the Agreement. All provisions contained or incorporated by reference in such Agreement upon its execution shall govern this Confirmation except as expressly modified below. Until Party A and Party B execute and deliver the Agreement, this Confirmation, together with all other documents referring to the ISDA Form (each a “Confirmation”) confirming Transactions (each a “Transaction”) entered into between us (notwithstanding anything to the contrary in a Confirmation) shall supplement, form a part of, and be subject to an agreement in the form of the ISDA Form as if Party A and Party B had executed an agreement on the Trade Date of the first such Transaction between us in such form, with the Schedule thereto (i) specifying only that (a) the governing law is English law, provided, that such choice of law shall be superseded by any choice of law provision specified in the Agreement upon its execution, and (b) the Termination Currency is U.S. Dollars and (ii) incorporating the addition to the definition of “Indemnifiable Tax” contained in (page 49 of) the ISDA “User’s Guide to the 2002 ISDA Master Agreements”.
-1. The terms of the particular Transaction to which this Confirmation relates are as follows:
-
-Notional Amount: {{notionalAmount}}
-Trade Date: {{tradeDate}}
-Effective Date: {{effectiveDate}}
-Termination Date: {{terminationDate}}
-
-Fixed Amounts:
-Fixed Rate Payer: {{fixedRatePayer}}
-Fixed Rate Payer Period End Dates: {{fixedRatePayerPeriodEndDates}}
-Fixed Rate Payer Payment Dates: {{fixedRatePayerPaymentDates}}
-Fixed Rate: {{fixedRate}}%
-Fixed Rate Day Count Fraction: {{fixedRateDayCountFraction}}
-Fixed Rate Payer Business Days:{{fixedRatePayerBusinessDays}}
-Fixed Rate Payer Business Day Convention: {{fixedRatePayerBusinessDayConvention}}
-
-Floating Amounts:
-Floating Rate Payer: {{floatingRatePayer}}
-Floating Rate Payer Period End Dates: {{floatingRatePayerPeriodEndDates}}
-Floating Rate Payer Payment Dates: {{floatingRatePayerPaymentDates}}
-Floating Rate for initial Calculation Period: {{floatingRateForInitialCalculationPeriod}}%
-Floating Rate Option: {{floatingRateOption}}
-Designated Maturity: {{designatedMaturity}}
-Spread: {{spread}}
-Floating Rate Day Count Fraction: {{floatingRateDayCountFraction}}
-Reset Dates: {{resetDates}}
-Compounding: {{compounding}}
-Floating Rate Payer Business Days: {{floatingRatePayerBusinessDays}}
-Floating Rate Payer Business Day Convention: {{floatingRatePayerBusinessDayConvention}}</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT
+<ol delimiter="period" start="1" tight="true">
+<li><p>This Confirmation evidences a complete and binding agreement between "Deutsche Bank" (“Party A”) and Counterparty (“Party B”) as to the terms of the Transaction to which this Confirmation relates. In addition, Party A and Party B agree to use all reasonable efforts to negotiate, execute and deliver an agreement in the form of the ISDA 2002 Master Agreement with such modifications as Party A and Party B will in good faith agree (the “ISDA Form” or the “Agreement”). Upon execution by the parties of such Agreement, this Confirmation will supplement, form a part of and be subject to the Agreement. All provisions contained or incorporated by reference in such Agreement upon its execution shall govern this Confirmation except as expressly modified below. Until Party A and Party B execute and deliver the Agreement, this Confirmation, together with all other documents referring to the ISDA Form (each a “Confirmation”) confirming Transactions (each a “Transaction”) entered into between us (notwithstanding anything to the contrary in a Confirmation) shall supplement, form a part of, and be subject to an agreement in the form of the ISDA Form as if Party A and Party B had executed an agreement on the Trade Date of the first such Transaction between us in such form, with the Schedule thereto (i) specifying only that (a) the governing law is English law, provided, that such choice of law shall be superseded by any choice of law provision specified in the Agreement upon its execution, and (b) the Termination Currency is U.S. Dollars and (ii) incorporating the addition to the definition of “Indemnifiable Tax” contained in (page 49 of) the ISDA “User’s Guide to the 2002 ISDA Master Agreements”.</p>
+</li>
+<li><p>The terms of the particular Transaction to which this Confirmation relates are as follows:</p>
+</li></ol><p>Notional Amount: 300000000.00 USD<wbr>Trade Date: 06/23/2005<wbr>Effective Date: 06/27/2005<wbr>Termination Date: 06/18/2008</p>
+<p>Fixed Amounts:<wbr>Fixed Rate Payer: "Counterparty"<wbr>Fixed Rate Payer Period End Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment"<wbr>Fixed Rate Payer Payment Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date"<wbr>Fixed Rate: 4.09%<wbr>Fixed Rate Day Count Fraction: "30" "360"<wbr>Fixed Rate Payer Business Days:"New York"<wbr>Fixed Rate Payer Business Day Convention: "Modified Following"</p>
+<p>Floating Amounts:<wbr>Floating Rate Payer: "DBAG"<wbr>Floating Rate Payer Period End Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment"<wbr>Floating Rate Payer Payment Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date"<wbr>Floating Rate for initial Calculation Period: 3.41%<wbr>Floating Rate Option: "USD-LIBOR-BBA"<wbr>Designated Maturity: "Three months"<wbr>Spread: "None"<wbr>Floating Rate Day Count Fraction: "30" "360"<wbr>Reset Dates: "The first Floating Rate Payer Business Day of each Calculation Period or Compounding Period, if Compounding is applicable."<wbr>Compounding: "Inapplicable"<wbr>Floating Rate Payer Business Days: "New York"<wbr>Floating Rate Payer Business Day Convention: "Modified Following"</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT
 "Deutsche Bank"
  
 Date: 06/30/2005
@@ -357,13 +358,59 @@ Reset Dates: "The first Floating Rate Payer Business Day of each Calculation Per
 Compounding: "Inapplicable"
 Floating Rate Payer Business Days: "New York"
 Floating Rate Payer Business Day Convention: "Modified Following"</code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT
+{{bank}}
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+Date: {{letterDate}}
+To: {{counterparty}}
+Attention: Swaps Documentation Department
+Our Reference: {{bankReference}}
+Re: Interest Rate Swap Transaction
+
+Ladies and Gentlemen:
+
+The purpose of this letter agreement is to set forth the terms and conditions of the Transaction entered into between {{bank}} and {{counterparty}} (“Counterparty”) on the Trade Date specified below (the “Transaction”). This letter agreement constitutes a “Confirmation” as referred to in the Agreement specified below.
+
+The definitions and provisions contained in the 2000 ISDA Definitions (the “Definitions”) as published by the International Swaps and Derivatives Association, Inc. are incorporated by reference herein. In the event of any inconsistency between the Definitions and this Confirmation, this Confirmation will govern.
+
+For the purpose of this Confirmation, all references in the Definitions or the Agreement to a “Swap Transaction” shall be deemed to be references to this Transaction.
+1. This Confirmation evidences a complete and binding agreement between {{bank}} (“Party A”) and Counterparty (“Party B”) as to the terms of the Transaction to which this Confirmation relates. In addition, Party A and Party B agree to use all reasonable efforts to negotiate, execute and deliver an agreement in the form of the ISDA 2002 Master Agreement with such modifications as Party A and Party B will in good faith agree (the “ISDA Form” or the “Agreement”). Upon execution by the parties of such Agreement, this Confirmation will supplement, form a part of and be subject to the Agreement. All provisions contained or incorporated by reference in such Agreement upon its execution shall govern this Confirmation except as expressly modified below. Until Party A and Party B execute and deliver the Agreement, this Confirmation, together with all other documents referring to the ISDA Form (each a “Confirmation”) confirming Transactions (each a “Transaction”) entered into between us (notwithstanding anything to the contrary in a Confirmation) shall supplement, form a part of, and be subject to an agreement in the form of the ISDA Form as if Party A and Party B had executed an agreement on the Trade Date of the first such Transaction between us in such form, with the Schedule thereto (i) specifying only that (a) the governing law is English law, provided, that such choice of law shall be superseded by any choice of law provision specified in the Agreement upon its execution, and (b) the Termination Currency is U.S. Dollars and (ii) incorporating the addition to the definition of “Indemnifiable Tax” contained in (page 49 of) the ISDA “User’s Guide to the 2002 ISDA Master Agreements”.
+1. The terms of the particular Transaction to which this Confirmation relates are as follows:
+
+Notional Amount: {{notionalAmount}}
+Trade Date: {{tradeDate}}
+Effective Date: {{effectiveDate}}
+Termination Date: {{terminationDate}}
+
+Fixed Amounts:
+Fixed Rate Payer: {{fixedRatePayer}}
+Fixed Rate Payer Period End Dates: {{fixedRatePayerPeriodEndDates}}
+Fixed Rate Payer Payment Dates: {{fixedRatePayerPaymentDates}}
+Fixed Rate: {{fixedRate}}%
+Fixed Rate Day Count Fraction: {{fixedRateDayCountFraction}}
+Fixed Rate Payer Business Days:{{fixedRatePayerBusinessDays}}
+Fixed Rate Payer Business Day Convention: {{fixedRatePayerBusinessDayConvention}}
+
+Floating Amounts:
+Floating Rate Payer: {{floatingRatePayer}}
+Floating Rate Payer Period End Dates: {{floatingRatePayerPeriodEndDates}}
+Floating Rate Payer Payment Dates: {{floatingRatePayerPaymentDates}}
+Floating Rate for initial Calculation Period: {{floatingRateForInitialCalculationPeriod}}%
+Floating Rate Option: {{floatingRateOption}}
+Designated Maturity: {{designatedMaturity}}
+Spread: {{spread}}
+Floating Rate Day Count Fraction: {{floatingRateDayCountFraction}}
+Reset Dates: {{resetDates}}
+Compounding: {{compounding}}
+Floating Rate Payer Business Days: {{floatingRatePayerBusinessDays}}
+Floating Rate Payer Business Day Convention: {{floatingRatePayerBusinessDayConvention}}</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.isda.irs.InterestRateSwapContract",
-    "contractId": "65b2733e-742d-4699-93d4-08e0e085a11f",
+    "contractId": "6bae2ff0-ca07-40a8-8c7f-91cfe75b367b",
     "bank": "Deutsche Bank",
     "letterDate": "2005-06-30T00:00:00.000-05:00",
     "counterparty": "MagnaChip Semiconductor S.A.",
@@ -404,6 +451,7 @@ Floating Rate Payer Business Day Convention: "Modified Following"</code></pre>
     "floatingRatePayerBusinessDays": "New York",
     "floatingRatePayerBusinessDayConvention": "Modified Following"
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -412,15 +460,15 @@ Floating Rate Payer Business Day Convention: "Modified Following"</code></pre>
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-          
-          <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+                    <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
           
           </ul>
         </div>
@@ -447,7 +495,7 @@ Floating Rate Payer Business Day Convention: "Modified Following"</code></pre>
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "f4a4d851-ff3e-11e9-b361-efc0ae54bdd6"
+    "stateId": "304cbfb1-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -468,8 +516,8 @@ Floating Rate Payer Business Day Convention: "Modified Following"</code></pre>
                     <th>org.accordproject.isda.irs.RateObservation</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.isda.irs.RateObservation",
-    "transactionId": "f4a4b140-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:06.900-05:00"
+    "transactionId": "304c98a0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:13.226-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -490,9 +538,9 @@ Floating Rate Payer Business Day Convention: "Modified Following"</code></pre>
                     <th>org.accordproject.isda.irs.Result</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.isda.irs.Result",
-    "outstandingBalance": 242.755,
-    "transactionId": "f4a4d850-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:06.901-05:00"
+    "outstandingBalance": 115.509,
+    "transactionId": "304cbfb0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:13.227-05:00"
 }</code></pre></td>
                 </tr>
             

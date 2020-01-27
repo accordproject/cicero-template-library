@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/perishable-goods@0.13.0.html">
   <meta property="og:title" content="perishable-goods@0.13.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/perishable-goods@0.13.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -298,31 +312,44 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">On receipt of the shipment {{shipment}} the importer {{importer}} pays the grower {{grower}} {{unitPrice}} per {{unit}}. The shipment must contain between {{minUnits}} and {{maxUnits}} {{unit}} of {{product}}.
-
-Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least {{sensorReadingFrequency}} per {{duration}}.
-
-Shipments that arrive after {{dueDate}} are to be considered spoiled and must be arranged to be returned to or disposed of by grower at cost to grower.
-
-Temperature readings for the shipment must be between {{minTemperature}} and {{maxTemperature}}.
-
-Humidity readings for the shipment must be between {{minHumidity}} and {{maxHumidity}}.
-
-Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is {{penaltyFactor}}.
-
-Formula for Breach Penalty Calculation:
-penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">On receipt of the shipment "SHIP_001" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>On receipt of the shipment "SHIP_001" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".</p>
+<p>Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per hours.</p>
+<p>Shipments that arrive after 07/02/2018 are to be considered spoiled and must be arranged to be returned to or disposed of by grower at cost to grower.</p>
+<p>Temperature readings for the shipment must be between 2 and 13.</p>
+<p>Humidity readings for the shipment must be between 70 and 90.</p>
+<p>Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is 0.2.</p>
+<p>Formula for Breach Penalty Calculation:<wbr>penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">On receipt of the shipment "SHIP_001" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".
 
 Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per hours.
 
@@ -337,13 +364,27 @@ Shipments that have a temperature or humidity reading outside the agreed range h
 Formula for Breach Penalty Calculation:
    penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor
 </code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">On receipt of the shipment {{shipment}} the importer {{importer}} pays the grower {{grower}} {{unitPrice}} per {{unit}}. The shipment must contain between {{minUnits}} and {{maxUnits}} {{unit}} of {{product}}.
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least {{sensorReadingFrequency}} per {{duration}}.
+
+Shipments that arrive after {{dueDate}} are to be considered spoiled and must be arranged to be returned to or disposed of by grower at cost to grower.
+
+Temperature readings for the shipment must be between {{minTemperature}} and {{maxTemperature}}.
+
+Humidity readings for the shipment must be between {{minHumidity}} and {{maxHumidity}}.
+
+Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is {{penaltyFactor}}.
+
+Formula for Breach Penalty Calculation:
+penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PerishableGoodsContract",
-    "contractId": "4b413e27-3b2f-4b94-bc4a-07bfed661b55",
+    "contractId": "a643d42e-c45a-42b0-9b2c-e1604f822492",
     "grower": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "PETER"
@@ -371,6 +412,7 @@ Formula for Breach Penalty Calculation:
     "maxHumidity": 90,
     "penaltyFactor": 0.2
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -379,21 +421,21 @@ Formula for Breach Penalty Calculation:
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
           
-          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
+                    <li><a href="https://models.accordproject.org/address.html">org.accordproject.address.PostalAddress</a></li>
           
-          <li><a href="https://models.accordproject.org/address.html">org.accordproject.address.PostalAddress</a></li>
+                    <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
           
-          <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-          
-          <li><a href="https://models.accordproject.org/value.html">org.accordproject.value.*</a></li>
+                    <li><a href="https://models.accordproject.org/value.html">org.accordproject.value.*</a></li>
           
           </ul>
         </div>
@@ -420,7 +462,7 @@ Formula for Breach Penalty Calculation:
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "01d17ec1-ff3f-11e9-b361-efc0ae54bdd6"
+    "stateId": "390961d1-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -441,10 +483,10 @@ Formula for Breach Penalty Calculation:
                     <th>org.accordproject.perishablegoods.ShipmentReceived</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 51349,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#5579",
-    "transactionId": "01d157b0-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:29.003-05:00"
+    "unitCount": 1404,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#6809",
+    "transactionId": "39093ac0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:27.884-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -467,18 +509,18 @@ Formula for Breach Penalty Calculation:
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
     "totalPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 255.451,
-        "currencyCode": "SRD"
+        "doubleValue": 230.23,
+        "currencyCode": "AOA"
     },
     "penalty": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 4.27,
-        "currencyCode": "BIF"
+        "doubleValue": 168.526,
+        "currencyCode": "DZD"
     },
-    "late": true,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#2935",
-    "transactionId": "01d17ec0-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:29.004-05:00"
+    "late": false,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#8140",
+    "transactionId": "390961d0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:27.885-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -501,16 +543,16 @@ Formula for Breach Penalty Calculation:
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 33.766,
-        "currencyCode": "STN"
+        "doubleValue": 10.888,
+        "currencyCode": "USN"
     },
-    "description": "Non non magna.",
-    "contract": "resource:org.accordproject.perishablegoods.PerishableGoodsContract#0850",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9269",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2279",
-    "deadline": "2019-11-04T15:09:29.004-05:00",
-    "eventId": "01d17ec2-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:29.004-05:00"
+    "description": "Cillum est.",
+    "contract": "resource:org.accordproject.perishablegoods.PerishableGoodsContract#6474",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#1554",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2436",
+    "deadline": "2020-01-27T15:04:27.885-05:00",
+    "eventId": "390961d2-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:27.885-05:00"
 }</code></pre></td>
                 </tr>
             
