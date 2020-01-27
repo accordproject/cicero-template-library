@@ -1,5 +1,5 @@
 {%set pre_style="white-space: pre-wrap; border: 0; background-color: transparent;"%}
-{%set html_style="white-space: normal; border: 0; background-color: transparent;"%}
+{%set html_style="white-space: pre; border: 0; background-color: transparent;"%}
 {%set code_style="white-space: pre-wrap;"%}
 
 <!DOCTYPE html>
@@ -70,6 +70,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
          $(document).ready(function() {
+             $('wbr').replaceWith('\n');
              $('#tabs li').on('click', function() {
                  var tab = $(this).data('tab');
 
