@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/full-payment-upon-signature@0.9.0.html">
   <meta property="og:title" content="full-payment-upon-signature@0.9.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/full-payment-upon-signature@0.9.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -266,25 +280,46 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Upon the signing of this Agreement, {{buyer}} shall pay the total purchase price to {{seller}} in the amount of {{amount}}.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Upon the signing of this Agreement, "Dan" shall pay the total purchase price to "Steve" in the amount of 0.01 USD.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>Upon the signing of this Agreement, "Dan" shall pay the total purchase price to "Steve" in the amount of 0.01 USD.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Upon the signing of this Agreement, "Dan" shall pay the total purchase price to "Steve" in the amount of 0.01 USD.</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Upon the signing of this Agreement, {{buyer}} shall pay the total purchase price to {{seller}} in the amount of {{amount}}.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureContract",
-    "contractId": "e50d55c7-3d92-46dd-9e87-93df29fddffd",
+    "contractId": "09eeced0-9ac9-434f-a2d0-12d4a428f217",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dan"
@@ -299,6 +334,7 @@
         "currencyCode": "USD"
     }
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -307,17 +343,17 @@
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    <li><a href="https://models.accordproject.org/signature/signature.html">org.accordproject.signature.ContractSigned</a></li>
           
-          <li><a href="https://models.accordproject.org/signature/signature.html">org.accordproject.signature.ContractSigned</a></li>
-          
-          <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
+                    <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
           
           </ul>
         </div>
@@ -344,8 +380,8 @@
                     <th>org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureState",
-    "status": "OBLIGATION_EMITTED",
-    "stateId": "f0070d43-ff3e-11e9-b361-efc0ae54bdd6"
+    "status": "COMPLETED",
+    "stateId": "2d323940-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -366,8 +402,8 @@
                     <th>org.accordproject.payment.PaymentReceived</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.PaymentReceived",
-    "transactionId": "f006e631-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:59.155-05:00"
+    "transactionId": "2d321231-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:08.019-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -375,9 +411,9 @@
                     <th>org.accordproject.signature.ContractSigned</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.signature.ContractSigned",
-    "contract": "resource:org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureContract#5625",
-    "transactionId": "f006e630-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:59.155-05:00"
+    "contract": "resource:org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureContract#9173",
+    "transactionId": "2d321230-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:08.019-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -398,8 +434,8 @@
                     <th>org.accordproject.cicero.runtime.Response</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.Response",
-    "transactionId": "f0070d41-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:59.156-05:00"
+    "transactionId": "2d321233-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:08.019-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -429,16 +465,16 @@
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 141.24,
-        "currencyCode": "KRW"
+        "doubleValue": 17.465,
+        "currencyCode": "VEF"
     },
-    "description": "Non cupidatat.",
-    "contract": "resource:org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureContract#0220",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#6750",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0355",
-    "deadline": "2019-11-04T15:08:59.156-05:00",
-    "eventId": "f0070d44-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:59.156-05:00"
+    "description": "Adipisicing.",
+    "contract": "resource:org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureContract#8336",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#1992",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#7819",
+    "deadline": "2020-01-27T15:04:08.020-05:00",
+    "eventId": "2d323941-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:08.020-05:00"
 }</code></pre></td>
                 </tr>
             

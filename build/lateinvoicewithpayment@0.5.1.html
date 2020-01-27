@@ -1,70 +1,79 @@
+<!DOCTYPE html><html><head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
+
+        
+  <!---— facebook open graph tags ---->
+  <meta property="og:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.5.1.html">
+  <meta property="og:title" content="lateinvoicewithpayment@0.5.1">
+  <meta property="og:description" content="A sample Late invoice clause which emits a payment obligation.">
+  <meta property="og:image" content="https://www.plantuml.com/plantuml/png/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00">
+
+  <!---— twitter card tags additive with the og: tags ---->
+  <meta name="twitter:title" content="lateinvoicewithpayment@0.5.1">
+  <meta name="twitter:description" content="A sample Late invoice clause which emits a payment obligation.">
+  <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00">
+  <meta name="twitter:image:alt" content="UML diagram of lateinvoicewithpayment@0.5.1 namespace.">
+  <meta name="twitter:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.5.1.html">
 
 
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
 
-<!DOCTYPE html>
-<html>
-  <head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      
-      
-      
-
-      <!-— generic unfurl tags -->
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org" />
-      <meta name="twitter:label1" content="Apache 2.0 Licensed" />
-      <meta name="twitter:data1" content="on GitHub.com" />
-      <meta name="twitter:label2" content="Contribute" />
-      <meta name="twitter:data2" content="at AccordProject.org" />
-
-      
-  <!-— facebook open graph tags -->
-  <meta property="og:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.5.1.html" />
-  <meta property="og:title" content="lateinvoicewithpayment@0.5.1" />
-  <meta property="og:description" content="A sample Late invoice clause which emits a payment obligation." />
-  <meta property="og:image" content="https://www.plantuml.com/plantuml/png/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" />
-
-  <!-— twitter card tags additive with the og: tags -->
-  <meta name="twitter:title" content="lateinvoicewithpayment@0.5.1" />
-  <meta name="twitter:description" content="A sample Late invoice clause which emits a payment obligation." />
-  <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" />
-  <meta name="twitter:image:alt" content="UML diagram of lateinvoicewithpayment@0.5.1 namespace." />
-  <meta name="twitter:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.5.1.html" />
-
-
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
-      <link rel="stylesheet" href="assets/fonts.css" />
-      <link rel="stylesheet" href="styles.css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -169,14 +178,14 @@
           <div class="navbar-end">
             <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
               <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
                 </svg>
               </div>
               GitHub
             </a>
           </div>
         </div>
-      </div>
+      
     </nav>
 
     
@@ -196,7 +205,7 @@
         </p>
 
         <p>
-          <div class="dropdown">
+          </p><div class="dropdown">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span>Versions</span>
@@ -207,74 +216,94 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-              
-                <a href="lateinvoicewithpayment@0.5.1.html" class="dropdown-item is-active">
-                    lateinvoicewithpayment@0.5.1
-                </a>
-              
-                <a href="lateinvoicewithpayment@0.5.0.html" class="dropdown-item ">
-                    lateinvoicewithpayment@0.5.0
-                </a>
-              
-                <a href="lateinvoicewithpayment@0.4.1.html" class="dropdown-item ">
-                    lateinvoicewithpayment@0.4.1
-                </a>
-              
-                <a href="lateinvoicewithpayment@0.4.0.html" class="dropdown-item ">
-                    lateinvoicewithpayment@0.4.0
-                </a>
-              
-                <a href="lateinvoicewithpayment@0.3.1.html" class="dropdown-item ">
-                    lateinvoicewithpayment@0.3.1
-                </a>
-              
-                <a href="lateinvoicewithpayment@0.3.0.html" class="dropdown-item ">
-                    lateinvoicewithpayment@0.3.0
-                </a>
-              
-                <a href="lateinvoicewithpayment@0.2.0.html" class="dropdown-item ">
-                    lateinvoicewithpayment@0.2.0
-                </a>
-              
-                <a href="lateinvoicewithpayment@0.1.0.html" class="dropdown-item ">
-                    lateinvoicewithpayment@0.1.0
-                </a>
-              
-              </div>
+  <a href="lateinvoicewithpayment@0.1.0.html" class="dropdown-item ">
+      lateinvoicewithpayment@0.1.0
+  </a>
+
+  <a href="lateinvoicewithpayment@0.2.0.html" class="dropdown-item ">
+      lateinvoicewithpayment@0.2.0
+  </a>
+
+  <a href="lateinvoicewithpayment@0.3.0.html" class="dropdown-item ">
+      lateinvoicewithpayment@0.3.0
+  </a>
+
+  <a href="lateinvoicewithpayment@0.3.1.html" class="dropdown-item ">
+      lateinvoicewithpayment@0.3.1
+  </a>
+
+  <a href="lateinvoicewithpayment@0.4.0.html" class="dropdown-item ">
+      lateinvoicewithpayment@0.4.0
+  </a>
+
+  <a href="lateinvoicewithpayment@0.4.1.html" class="dropdown-item ">
+      lateinvoicewithpayment@0.4.1
+  </a>
+
+  <a href="lateinvoicewithpayment@0.5.0.html" class="dropdown-item ">
+      lateinvoicewithpayment@0.5.0
+  </a>
+
+  <a href="lateinvoicewithpayment@0.5.1.html" class="dropdown-item is-active">
+      lateinvoicewithpayment@0.5.1
+  </a>
+
+</div>
             </div>
           </div>
           <a href="./archives/lateinvoicewithpayment@0.5.1.cta" class="button is-rounded is-primary download-button">Download Archive</a>
           <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Flateinvoicewithpayment%400.5.1%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
-        </p>
+        <p></p>
 
         <div class="content">
           <p>
-          <h1 id="lateinvoiceclausewithpayment">Late Invoice Clause With Payment</h1>
+          </p><h1 id="lateinvoiceclausewithpayment">Late Invoice Clause With Payment</h1>
 <p>A sample Late invoice clause which emits a payment obligation.</p>
-          </p>
+          <p></p>
         </div>
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">2.4 {{purchaser}} is not required to pay any invoice that is issued more than {{maximumDelay}} after it is due to be issued by {{supplier}}.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">2.4 {{purchaser}} is not required to pay any invoice that is issued more than {{maximumDelay}} after it is due to be issued by {{supplier}}.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceContract",
-    "contractId": "35d2b9f5-1b31-4368-bdfc-9bee9a7ca340",
+    "contractId": "97a431b4-4028-4155-9627-7769b061caef",
     "maximumDelay": {
         "$class": "org.accordproject.time.Duration",
         "amount": 180,
@@ -288,24 +317,25 @@
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Steve Seller"
     }
-}</pre></code>
+}</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
 
-        <img src="https://www.plantuml.com/plantuml/svg/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" class="box" style="margin-top:40px;" />
+        <img src="https://www.plantuml.com/plantuml/svg/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" class="box" style="margin-top:40px;">
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
           
-          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.*</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.*</a></li>
           
           </ul>
         </div>
@@ -332,7 +362,7 @@
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "cf407cb0-1d5f-11ea-9a89-51fed438a842"
+    "stateId": "328cc4a1-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -353,15 +383,15 @@
                     <th>org.accordproject.lateinvoicewithpayment.LateInvoiceRequest</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceRequest",
-    "invoiceDue": "2019-12-12T23:19:52.442-05:00",
+    "invoiceDue": "2020-01-27T15:04:17.001-05:00",
     "amountDue": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 166.757,
-        "currencyCode": "XBC"
+        "doubleValue": 79.976,
+        "currencyCode": "SOS"
     },
-    "transactionId": "cf4055a0-1d5f-11ea-9a89-51fed438a842",
-    "timestamp": "2019-12-12T23:19:52.442-05:00"
-}</pre></code></td>
+    "transactionId": "328c9d90-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:17.001-05:00"
+}</code></pre></td>
                 </tr>
             
         </tbody>
@@ -381,11 +411,11 @@
                     <th>org.accordproject.lateinvoicewithpayment.LateInvoiceResponse</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceResponse",
-    "paymentRequired": true,
-    "cause": "Sunt pariatur sint.",
-    "transactionId": "cf4055a1-1d5f-11ea-9a89-51fed438a842",
-    "timestamp": "2019-12-12T23:19:52.442-05:00"
-}</pre></code></td>
+    "paymentRequired": false,
+    "cause": "Eu.",
+    "transactionId": "328cc4a0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:17.002-05:00"
+}</code></pre></td>
                 </tr>
             
         </tbody>
@@ -407,17 +437,17 @@
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 207.243,
-        "currencyCode": "BAM"
+        "doubleValue": 60.938,
+        "currencyCode": "MMK"
     },
-    "description": "Elit.",
-    "contract": "resource:org.accordproject.lateinvoicewithpayment.LateInvoiceContract#1655",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5995",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2570",
-    "deadline": "2019-12-12T23:19:52.443-05:00",
-    "eventId": "cf407cb1-1d5f-11ea-9a89-51fed438a842",
-    "timestamp": "2019-12-12T23:19:52.443-05:00"
-}</pre></code></td>
+    "description": "Laborum nisi consequat enim dolore.",
+    "contract": "resource:org.accordproject.lateinvoicewithpayment.LateInvoiceContract#3589",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#2185",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#7265",
+    "deadline": "2020-01-27T15:04:17.002-05:00",
+    "eventId": "328cc4a2-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:17.002-05:00"
+}</code></pre></td>
                 </tr>
             
         </tbody>
@@ -445,7 +475,7 @@
             <div class="content has-text-centered">
             <div class="linux-foundation-logo">
                 <a href="https://www.linuxfoundation.org/projects/">
-                  <img src="/assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                  <img src="/assets/images/LF-logo.png" width="300" alt="Linux Foundation">
                 </a>
               </div>
                 <p>
@@ -460,5 +490,5 @@
             </div>
         </div>
     </footer>
-  </body>
-</html>
+  
+</body></html>

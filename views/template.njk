@@ -70,12 +70,12 @@
                         <span>Sample (Rich Text)</span>
                     </a>
                 </li>
-                <li data-tab="3">
+                <li data-tab="2">
                     <a>
                         <span>Sample (Markdown)</span>
                     </a>
                 </li>
-                <li data-tab="2">
+                <li data-tab="3">
                     <a>
                         <span>Grammar (Markdown)</span>
                     </a>
@@ -88,13 +88,13 @@
             </ul>
         </div>
         <div id="tab-content">
-            <div class="content box" data-content="1">
+            <div class="is-active content box" data-content="1">
                 <span stype="{{html_style}}">{{sampleHTML}}</span>
             </div>
             <div class="content box" data-content="2">
                 <pre style="{{pre_style}}"><code class="markdown">{{sample}}</code></pre>
             </div>
-            <div class="is-active content box" data-content="3">
+            <div class="content box" data-content="3">
                 <pre style="{{pre_style}}"><code class="tem">{{template.getParserManager().getTemplatizedGrammar()}}</code></pre>
             </div>
             <div class="box" data-content="4">

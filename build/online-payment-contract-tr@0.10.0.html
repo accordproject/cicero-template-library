@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/online-payment-contract-tr@0.10.0.html">
   <meta property="og:title" content="online-payment-contract-tr@0.10.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/online-payment-contract-tr@0.10.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -336,108 +350,94 @@ Setting clause data: {"$class": "org.accordtr.onlinepayment.MyRequest","input": 
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>DLK BİLİŞİM TEKNOLOJİLERİ SATIŞ SÖZLEŞMESİ</p>
 
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">DLK BİLİŞİM TEKNOLOJİLERİ SATIŞ SÖZLEŞMESİ
+<ol delimiter="period" start="1" tight="false">
+<li><p>TARAFLAR :</p>
+<pre class="code_block"><code>     1.1  "Umut" (Bundan sonra ALICI olarak anılacaktır)
 
-1. TARAFLAR :
+     1.2. "Serkan"  (Bundan sonra SATICI olarak anılacaktır)
+</code></pre>
+</li>
+<li><p>SATILAN ÜRÜNLER:</p>
+</li></ol><p>Program: "AcmeSoftware-1.0"</p>
+<p>Kullanıcı Sayısı: "2"</p>
+<p>3.KONU</p>
+<pre class="code_block"><code>        3.1.SATICI, bu sözleşmeyle satışı yapılan yazılımların (bilgisayar programlarının) kullanım hak ve yetkisini ALICI’ya verir.
+</code></pre>
 
-```
-     1.1  {{buyer}} (Bundan sonra ALICI olarak anılacaktır)
-
-     1.2. {{seller}}  (Bundan sonra SATICI olarak anılacaktır)
-```
-
-
-
-1. SATILAN ÜRÜNLER:
-
-Program: {{softwareID}}
-
-Kullanıcı Sayısı: {{userCount}}
-
-3.KONU
-
-```
-        3.1.SATICI, bu sözleşmeyle satışı yapılan yazılımların (bilgisayar programlarının) kullanım hak ve yetkisini ALICI’ya verir.
-```
-
-
-
-1. KARŞILIKLI TAAHHÜTLER:
-
-4.1.Sözleşmenin tarafları olarak hareket eden SATICI  ve ALICI aşağıda belirten hak ve yükümlülüklerini karşılıklı olarak taahhüt edip kabul ve imza etmişlerdir.
-
-```
-        4.2 SATICI ;
-```
-
-
-
-4.2.1.İkinci Maddede belirtilen ürünleri, ALICInın bilgisayarına yüklemek, yazılım hatalarına karşı çıkabilecek sorunlarda ekteki garanti belgesinde belirlenen koşul ve süreler içinde ücretsiz, daha sonrasında ise ücret karşılığı da olsa ALICI'ya destek sağlamak ve verilmesi zorunlu olan program eğitimini vermekle sorumludur.
-
-```
-        4.2.2.Eğitim:
-```
-
-
-
-4.2.2.1.ALICI, ikinci maddede belirtilen ürünler için, standart program eğitimi ya da ek eğitim taleplerinde bulunabilir. SATICI , ALICIDAN gelecek eğitim taleplerini en kısa sürede karşılamakla yükümlüdür.  Eğitim karşılıklı anlaşmaya bağlı olarak, ALICI’nın iş yerinde veya SATICI ’nın eğitim merkezinde olabilir. Eğitimin, ne zaman, ne sürede ve hangi kapsamda olacağı SATICI ve ALICI tarafından birlikte belirlenir.
-
-4.2.2.2. ALICI, çalışanların eğitiminin sürekliliğini sağlamakla sorumludur. Eğitim amaçlı olarak ALICI’nın iş yerine gelen, eğiticiye yeteri kadar zaman ayrılmaması veya geldiği halde eğitimi verememesi gibi durumlarda, eğitim çalışması yapılmış sayılır.
-
-4.2.2.3. Eğitim hizmetleri, destek sözleşmelerinde belirtilen fiyatlar ile ücretlendirilir.
-
-```
-        4.3 ALICI:
+<ol delimiter="period" start="4" tight="true">
+<li><p>KARŞILIKLI TAAHHÜTLER:</p>
+</li></ol><p>4.1.Sözleşmenin tarafları olarak hareket eden SATICI  ve ALICI aşağıda belirten hak ve yükümlülüklerini karşılıklı olarak taahhüt edip kabul ve imza etmişlerdir.</p>
+<pre class="code_block"><code>        4.2 SATICI ;
+</code></pre>
+<p>4.2.1.İkinci Maddede belirtilen ürünleri, ALICInın bilgisayarına yüklemek, yazılım hatalarına karşı çıkabilecek sorunlarda ekteki garanti belgesinde belirlenen koşul ve süreler içinde ücretsiz, daha sonrasında ise ücret karşılığı da olsa ALICI'ya destek sağlamak ve verilmesi zorunlu olan program eğitimini vermekle sorumludur.</p>
+<pre class="code_block"><code>        4.2.2.Eğitim:
+</code></pre>
+<p>4.2.2.1.ALICI, ikinci maddede belirtilen ürünler için, standart program eğitimi ya da ek eğitim taleplerinde bulunabilir. SATICI , ALICIDAN gelecek eğitim taleplerini en kısa sürede karşılamakla yükümlüdür.  Eğitim karşılıklı anlaşmaya bağlı olarak, ALICI’nın iş yerinde veya SATICI ’nın eğitim merkezinde olabilir. Eğitimin, ne zaman, ne sürede ve hangi kapsamda olacağı SATICI ve ALICI tarafından birlikte belirlenir.</p>
+<p>4.2.2.2. ALICI, çalışanların eğitiminin sürekliliğini sağlamakla sorumludur. Eğitim amaçlı olarak ALICI’nın iş yerine gelen, eğiticiye yeteri kadar zaman ayrılmaması veya geldiği halde eğitimi verememesi gibi durumlarda, eğitim çalışması yapılmış sayılır.</p>
+<p>4.2.2.3. Eğitim hizmetleri, destek sözleşmelerinde belirtilen fiyatlar ile ücretlendirilir.</p>
+<pre class="code_block"><code>        4.3 ALICI:
 
         4.3.1. Bu sözleşme ile kendisine tanınmış hak, sorumluluk ve yetkileri, hiç bir şekilde başka kişi veya kuruluşlara devremedez. SATICI adına ya da hesabına üçüncü bir şahısla bir işlem ya da anlaşma yapamaz. Herhangi bir taahhütte bulunamaz.
 
         4.3.2. ALICI, hiçbir şekilde ürünleri oluşturan yazılım ve diğer belgeleri (CD, kitap, kullanım kılavuzu v.b. gibi) kiralayamaz, kopyalayamaz, ücretli ya da ücretsiz bir şekilde dağıtamaz.
-```
+</code></pre>
 
+<ol delimiter="period" start="5" tight="true">
+<li><p>ÖDEME:</p>
+</li></ol><p>5.1. İkinci maddede belirtilen ürünler, aşağıdaki ödeme tablosundaki bilgilere göre ALICI’ya satılmıştır.</p>
 
-
-1. ÖDEME:
-
-5.1. İkinci maddede belirtilen ürünler, aşağıdaki ödeme tablosundaki bilgilere göre ALICI’ya satılmıştır.
-
-1. ÖDEMENİN YAPILMAMASI YA DA GECİKMESİ DURUMUNDA
-
-```
-     6.1. Beşinci maddede belirtilen ödemelerin her hangi birisinin yapılmaması durumunda SATICI  geriye kalan tüm ödemelerin tahsilatını isteyebilir.
+<ol delimiter="period" start="6" tight="false">
+<li><p>ÖDEMENİN YAPILMAMASI YA DA GECİKMESİ DURUMUNDA</p>
+<pre class="code_block"><code>     6.1. Beşinci maddede belirtilen ödemelerin her hangi birisinin yapılmaması durumunda SATICI  geriye kalan tüm ödemelerin tahsilatını isteyebilir.
 
      6.2. Beşinci Maddede belirtilen ödemelere uyulmaması durumunda SATICI ’nın garanti destek ve eğitim yükümlülükleri ödemeler tamamlanana kadar kalkar. Bu arada geçen süreler garanti ve destek srelerine eklenmez.
 
      6.3. ALICI’nın ödemelerini geciktirmesi durumunda, gecikme süresi için, aylık % 7 gecikme faizi işletilerek ödeme miktarına eklenir.
 
      6.4. Satışı yapılmış olan yazılımların hiçbir şekilde iadesi yapılamaz. Yazılımın kullanılmasından vazgeçilse dahi tüm ödemelerin vadesinde tamamlanması zorunludur.
-```
-
-
-
-1. DİĞER HÜKÜMLER
-
-```
-     7.1. SATICI , ürünlerin kullanımından kaynaklanacak hatalardan sorumlu değildir. ALICI, yazılımdaki raporların ya da verilerin hatalı olduğunu; bu verilere bakarak yanlış kararlar aldığını ve zarara uğradığını öne süremez.
+</code></pre>
+</li>
+<li><p>DİĞER HÜKÜMLER</p>
+<pre class="code_block"><code>     7.1. SATICI , ürünlerin kullanımından kaynaklanacak hatalardan sorumlu değildir. ALICI, yazılımdaki raporların ya da verilerin hatalı olduğunu; bu verilere bakarak yanlış kararlar aldığını ve zarara uğradığını öne süremez.
 
      7.2. SATICI , hiçbir şekilde ürünlerle birlikte depolanan bilgileri garanti etmez. Bilgilerin güvenliğini sağlamak kullanıcının sorumluluğundadır.
 
      7.3.  SATICI , ALICInın ürünleri, yasalara aykırı biçimde kullanmasından sorumlu değildir.
 
      7.4. Yazılım sisteminin konusuna giren yasa, yönetmelik veya diğer mevzuat, uygulama ve raporlarda değişiklik olması ya da çeşitli nedenlerle ALICI tarafından programda değişiklik ya da programa ek yapılmasının istenmesi durumunda, bu işlemlerin gerçekleştirilip gerçekleştirilmeyeceğine SATICI  karar verir.  Yapılacak değişiklik ve ekler ayrıca fiyatlandırılır.
-```
-
-
-
-1. FESİH
-
-```
-     8.1. Taraflar aşağıda belirtilen sebeplerin varlığında sözleşmeyi fesh etme hakkına sahiptir.
+</code></pre>
+</li>
+<li><p>FESİH</p>
+<pre class="code_block"><code>     8.1. Taraflar aşağıda belirtilen sebeplerin varlığında sözleşmeyi fesh etme hakkına sahiptir.
 
      8.1.1. ALICInın SATICI ya olan borçları ile ilgili temerrüde düşmesi halinde,
 
@@ -446,23 +446,19 @@ Kullanıcı Sayısı: {{userCount}}
      8.1.3. ALICI’nın ticari işletmesini devretmesi halinde,
 
      8.1.4.SATICI ’nın, ticari faaliyetlerinin T.T.K.’da belirtilen biçimlerde sona ermesi halinde.
-```
+</code></pre>
+</li>
+<li><p>EKLER</p>
+</li></ol><p>Garanti Belgesi<wbr>Destek Sözleşmesi</p>
 
-
-
-1. EKLER
-
-Garanti Belgesi
-Destek Sözleşmesi
-
-1. Bu sözleşmeden doğan anlaşmazlıkların çözümde {{authorizedCourt}} yetkilidir.
-
-1. 11 (0nbir) ana maddeden oluşan bu sözleşme aşağıda belirtilen tarihte, 2 (iki) nüsha halinde düzenlenmiş olup, taraflarca imzalanıp teslim alınmıştır.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">DLK BİLİŞİM TEKNOLOJİLERİ SATIŞ SÖZLEŞMESİ
+<ol delimiter="period" start="10" tight="false">
+<li><p>Bu sözleşmeden doğan anlaşmazlıkların çözümde "ANKARA 1.Bölge İdare Mahkemesi" yetkilidir.</p>
+</li>
+<li><p>11 (0nbir) ana maddeden oluşan bu sözleşme aşağıda belirtilen tarihte, 2 (iki) nüsha halinde düzenlenmiş olup, taraflarca imzalanıp teslim alınmıştır.</p>
+</li></ol></span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">DLK BİLİŞİM TEKNOLOJİLERİ SATIŞ SÖZLEŞMESİ
 
 
 1. TARAFLAR :
@@ -566,19 +562,115 @@ Destek Sözleşmesi
  
 
 </code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">DLK BİLİŞİM TEKNOLOJİLERİ SATIŞ SÖZLEŞMESİ
+1. TARAFLAR :
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+```
+     1.1  {{buyer}} (Bundan sonra ALICI olarak anılacaktır)
+
+     1.2. {{seller}}  (Bundan sonra SATICI olarak anılacaktır)
+```
+
+1. SATILAN ÜRÜNLER:
+
+Program: {{softwareID}}
+
+Kullanıcı Sayısı: {{userCount}}
+
+3.KONU
+
+```
+        3.1.SATICI, bu sözleşmeyle satışı yapılan yazılımların (bilgisayar programlarının) kullanım hak ve yetkisini ALICI’ya verir.
+```
+1. KARŞILIKLI TAAHHÜTLER:
+
+4.1.Sözleşmenin tarafları olarak hareket eden SATICI  ve ALICI aşağıda belirten hak ve yükümlülüklerini karşılıklı olarak taahhüt edip kabul ve imza etmişlerdir.
+
+```
+        4.2 SATICI ;
+```
+
+4.2.1.İkinci Maddede belirtilen ürünleri, ALICInın bilgisayarına yüklemek, yazılım hatalarına karşı çıkabilecek sorunlarda ekteki garanti belgesinde belirlenen koşul ve süreler içinde ücretsiz, daha sonrasında ise ücret karşılığı da olsa ALICI'ya destek sağlamak ve verilmesi zorunlu olan program eğitimini vermekle sorumludur.
+
+```
+        4.2.2.Eğitim:
+```
+
+4.2.2.1.ALICI, ikinci maddede belirtilen ürünler için, standart program eğitimi ya da ek eğitim taleplerinde bulunabilir. SATICI , ALICIDAN gelecek eğitim taleplerini en kısa sürede karşılamakla yükümlüdür.  Eğitim karşılıklı anlaşmaya bağlı olarak, ALICI’nın iş yerinde veya SATICI ’nın eğitim merkezinde olabilir. Eğitimin, ne zaman, ne sürede ve hangi kapsamda olacağı SATICI ve ALICI tarafından birlikte belirlenir.
+
+4.2.2.2. ALICI, çalışanların eğitiminin sürekliliğini sağlamakla sorumludur. Eğitim amaçlı olarak ALICI’nın iş yerine gelen, eğiticiye yeteri kadar zaman ayrılmaması veya geldiği halde eğitimi verememesi gibi durumlarda, eğitim çalışması yapılmış sayılır.
+
+4.2.2.3. Eğitim hizmetleri, destek sözleşmelerinde belirtilen fiyatlar ile ücretlendirilir.
+
+```
+        4.3 ALICI:
+
+        4.3.1. Bu sözleşme ile kendisine tanınmış hak, sorumluluk ve yetkileri, hiç bir şekilde başka kişi veya kuruluşlara devremedez. SATICI adına ya da hesabına üçüncü bir şahısla bir işlem ya da anlaşma yapamaz. Herhangi bir taahhütte bulunamaz.
+
+        4.3.2. ALICI, hiçbir şekilde ürünleri oluşturan yazılım ve diğer belgeleri (CD, kitap, kullanım kılavuzu v.b. gibi) kiralayamaz, kopyalayamaz, ücretli ya da ücretsiz bir şekilde dağıtamaz.
+```
+1. ÖDEME:
+
+5.1. İkinci maddede belirtilen ürünler, aşağıdaki ödeme tablosundaki bilgilere göre ALICI’ya satılmıştır.
+1. ÖDEMENİN YAPILMAMASI YA DA GECİKMESİ DURUMUNDA
+
+```
+     6.1. Beşinci maddede belirtilen ödemelerin her hangi birisinin yapılmaması durumunda SATICI  geriye kalan tüm ödemelerin tahsilatını isteyebilir.
+
+     6.2. Beşinci Maddede belirtilen ödemelere uyulmaması durumunda SATICI ’nın garanti destek ve eğitim yükümlülükleri ödemeler tamamlanana kadar kalkar. Bu arada geçen süreler garanti ve destek srelerine eklenmez.
+
+     6.3. ALICI’nın ödemelerini geciktirmesi durumunda, gecikme süresi için, aylık % 7 gecikme faizi işletilerek ödeme miktarına eklenir.
+
+     6.4. Satışı yapılmış olan yazılımların hiçbir şekilde iadesi yapılamaz. Yazılımın kullanılmasından vazgeçilse dahi tüm ödemelerin vadesinde tamamlanması zorunludur.
+```
+
+1. DİĞER HÜKÜMLER
+
+```
+     7.1. SATICI , ürünlerin kullanımından kaynaklanacak hatalardan sorumlu değildir. ALICI, yazılımdaki raporların ya da verilerin hatalı olduğunu; bu verilere bakarak yanlış kararlar aldığını ve zarara uğradığını öne süremez.
+
+     7.2. SATICI , hiçbir şekilde ürünlerle birlikte depolanan bilgileri garanti etmez. Bilgilerin güvenliğini sağlamak kullanıcının sorumluluğundadır.
+
+     7.3.  SATICI , ALICInın ürünleri, yasalara aykırı biçimde kullanmasından sorumlu değildir.
+
+     7.4. Yazılım sisteminin konusuna giren yasa, yönetmelik veya diğer mevzuat, uygulama ve raporlarda değişiklik olması ya da çeşitli nedenlerle ALICI tarafından programda değişiklik ya da programa ek yapılmasının istenmesi durumunda, bu işlemlerin gerçekleştirilip gerçekleştirilmeyeceğine SATICI  karar verir.  Yapılacak değişiklik ve ekler ayrıca fiyatlandırılır.
+```
+
+1. FESİH
+
+```
+     8.1. Taraflar aşağıda belirtilen sebeplerin varlığında sözleşmeyi fesh etme hakkına sahiptir.
+
+     8.1.1. ALICInın SATICI ya olan borçları ile ilgili temerrüde düşmesi halinde,
+
+     8.1.2. Tarafların sözleşme hükümlerine aykırı davranması halinde,
+
+     8.1.3. ALICI’nın ticari işletmesini devretmesi halinde,
+
+     8.1.4.SATICI ’nın, ticari faaliyetlerinin T.T.K.’da belirtilen biçimlerde sona ermesi halinde.
+```
+
+1. EKLER
+
+Garanti Belgesi
+Destek Sözleşmesi
+1. Bu sözleşmeden doğan anlaşmazlıkların çözümde {{authorizedCourt}} yetkilidir.
+
+1. 11 (0nbir) ana maddeden oluşan bu sözleşme aşağıda belirtilen tarihte, 2 (iki) nüsha halinde düzenlenmiş olup, taraflarca imzalanıp teslim alınmıştır.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordtr.onlinepayment.MyContract",
-    "contractId": "2f6e6ec7-f81e-40de-890e-c0a80ff4bc94",
+    "contractId": "d412e029-98fb-429f-bcce-8721f2dd86c5",
     "buyer": "Umut",
     "seller": "Serkan",
     "softwareID": "AcmeSoftware-1.0",
     "userCount": "2",
     "authorizedCourt": "ANKARA 1.Bölge İdare Mahkemesi"
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -587,11 +679,11 @@ Destek Sözleşmesi
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
           </ul>
         </div>
@@ -618,7 +710,7 @@ Destek Sözleşmesi
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "fc2529e2-ff3e-11e9-b361-efc0ae54bdd6"
+    "stateId": "35c35e92-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -639,9 +731,9 @@ Destek Sözleşmesi
                     <th>org.accordtr.onlinepayment.MyRequest</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordtr.onlinepayment.MyRequest",
-    "input": "Sint enim sit voluptate.",
-    "transactionId": "fc2529e0-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:19.486-05:00"
+    "input": "Amet.",
+    "transactionId": "35c35e90-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:22.393-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -662,9 +754,9 @@ Destek Sözleşmesi
                     <th>org.accordtr.onlinepayment.MyResponse</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordtr.onlinepayment.MyResponse",
-    "output": "Sit.",
-    "transactionId": "fc2529e1-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:19.486-05:00"
+    "output": "Anim eiusmod.",
+    "transactionId": "35c35e91-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:22.393-05:00"
 }</code></pre></td>
                 </tr>
             

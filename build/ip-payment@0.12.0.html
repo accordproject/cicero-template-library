@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/ip-payment@0.12.0.html">
   <meta property="og:title" content="ip-payment@0.12.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/ip-payment@0.12.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -282,32 +296,52 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>Payments.</p>
 
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Payments.
+<ol delimiter="period" start="1" tight="false">
+<li><p>Royalty. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor a royalty of "four point five" percent (4.5%) of the Net Sales Price for the respective preceding Quarterly Period.</p>
+</li>
+<li><p>Sublicensing Revenue. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor "five point two" percent (5.2%) of any royalties and fees received by Licensee from sublicensing any rights granted to it under this Agreement during the respective preceding Quarterly Period.</p>
+</li>
+<li><p>Taxes. If Licensee is required by applicable Law to withhold taxes in connection with any sums payable to Licensor under this Agreement, Licensee may deduct the amount of the withholding from the payment it otherwise would have made to Licensor under this Agreement.</p>
+</li>
+<li><p>Manner of Payment.</p>
+</li></ol><p>(a) Royalties and any other sums payable under this Section shall be paid within 10 days following the end of each Quarterly Period in US dollars.</p>
+<p>(b) If Licensee is prohibited by a governmental authority in any country from making any payment due under this Section, then within the prescribed period for making the payment Licensee shall request permission from the governmental authority to make the payment and shall make the payment within 7 days business days after receiving permission. If such permission is not received within 7 days business days after Licensee's request, then Licensee, at Licensor's option, shall either deposit the payment in the currency of the relevant country in a bank account within that country designated by Licensor or make the payment to an associated company of Licensor designated by Licensor and having an office in the relevant country or in another country designated by Licensor.</p>
 
-1. Royalty. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor a royalty of {{royaltyText}} percent ({{royaltyRate}}%) of the Net Sales Price for the respective preceding Quarterly Period.
-
-1. Sublicensing Revenue. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor {{sublicensingRoyaltyText}} percent ({{sublicensingRoyaltyRate}}%) of any royalties and fees received by Licensee from sublicensing any rights granted to it under this Agreement during the respective preceding Quarterly Period.
-
-1. Taxes. If Licensee is required by applicable Law to withhold taxes in connection with any sums payable to Licensor under this Agreement, Licensee may deduct the amount of the withholding from the payment it otherwise would have made to Licensor under this Agreement.
-
-1. Manner of Payment.
-
-(a) Royalties and any other sums payable under this Section shall be paid within {{paymentPeriod}} following the end of each Quarterly Period in US dollars.
-
-(b) If Licensee is prohibited by a governmental authority in any country from making any payment due under this Section, then within the prescribed period for making the payment Licensee shall request permission from the governmental authority to make the payment and shall make the payment within {{paymentPeriodWithPermission}} business days after receiving permission. If such permission is not received within {{paymentPeriodWithPermission}} business days after Licensee's request, then Licensee, at Licensor's option, shall either deposit the payment in the currency of the relevant country in a bank account within that country designated by Licensor or make the payment to an associated company of Licensor designated by Licensor and having an office in the relevant country or in another country designated by Licensor.
-
-1. Royalty Statements. At the same time as payments are made under Section 4., Licensee shall submit a statement showing the total Net Sales Price of Licensed Product[s] received by Licensee and its Affiliates and sublicensees and the total amount of any sublicense royalties and other fees received by Licensee in the relevant Quarterly Period.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Payments.
+<ol delimiter="period" start="5" tight="true">
+<li><p>Royalty Statements. At the same time as payments are made under Section 4., Licensee shall submit a statement showing the total Net Sales Price of Licensed Product[s] received by Licensee and its Affiliates and sublicensees and the total amount of any sublicense royalties and other fees received by Licensee in the relevant Quarterly Period.</p>
+</li></ol></span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Payments.
 
 1.  Royalty. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor a royalty of "four point five" percent (4.5%) of the Net Sales Price for the respective preceding Quarterly Period.
 
@@ -324,13 +358,26 @@
 5. Royalty Statements. At the same time as payments are made under Section 4., Licensee shall submit a statement showing the total Net Sales Price of Licensed Product[s] received by Licensee and its Affiliates and sublicensees and the total amount of any sublicense royalties and other fees received by Licensee in the relevant Quarterly Period.
 
 </code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Payments.
+1. Royalty. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor a royalty of {{royaltyText}} percent ({{royaltyRate}}%) of the Net Sales Price for the respective preceding Quarterly Period.
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+1. Sublicensing Revenue. On or before the last business day of each Quarterly Period during the Term and any Sell-off Period, Licensee shall pay to Licensor {{sublicensingRoyaltyText}} percent ({{sublicensingRoyaltyRate}}%) of any royalties and fees received by Licensee from sublicensing any rights granted to it under this Agreement during the respective preceding Quarterly Period.
+
+1. Taxes. If Licensee is required by applicable Law to withhold taxes in connection with any sums payable to Licensor under this Agreement, Licensee may deduct the amount of the withholding from the payment it otherwise would have made to Licensor under this Agreement.
+
+1. Manner of Payment.
+
+(a) Royalties and any other sums payable under this Section shall be paid within {{paymentPeriod}} following the end of each Quarterly Period in US dollars.
+
+(b) If Licensee is prohibited by a governmental authority in any country from making any payment due under this Section, then within the prescribed period for making the payment Licensee shall request permission from the governmental authority to make the payment and shall make the payment within {{paymentPeriodWithPermission}} business days after receiving permission. If such permission is not received within {{paymentPeriodWithPermission}} business days after Licensee's request, then Licensee, at Licensor's option, shall either deposit the payment in the currency of the relevant country in a bank account within that country designated by Licensor or make the payment to an associated company of Licensor designated by Licensor and having an office in the relevant country or in another country designated by Licensor.
+1. Royalty Statements. At the same time as payments are made under Section 4., Licensee shall submit a statement showing the total Net Sales Price of Licensed Product[s] received by Licensee and its Affiliates and sublicensees and the total amount of any sublicense royalties and other fees received by Licensee in the relevant Quarterly Period.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.ippayment.IntellectualPropertyPaymentClause",
-    "clauseId": "358b19c3-8f29-448b-8a15-42029aa94578",
+    "clauseId": "956cbf2e-c92c-40ce-9199-8b2e70d12010",
     "royaltyText": "four point five",
     "royaltyRate": 4.5,
     "sublicensingRoyaltyText": "five point two",
@@ -346,6 +393,7 @@
         "unit": "days"
     }
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -354,13 +402,13 @@
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
+                    <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
           
           </ul>
         </div>
@@ -387,7 +435,7 @@
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "f57d0fe2-ff3e-11e9-b361-efc0ae54bdd6"
+    "stateId": "30e72af1-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -408,11 +456,11 @@
                     <th>org.accordproject.ippayment.PaymentRequest</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.ippayment.PaymentRequest",
-    "netSaleRevenue": 83.134,
-    "sublicensingRevenue": 14.632,
-    "permissionGrantedBy": "2019-11-04T15:09:08.318-05:00",
-    "transactionId": "f57d0fe0-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:08.318-05:00"
+    "netSaleRevenue": 45.084,
+    "sublicensingRevenue": 150.492,
+    "permissionGrantedBy": "2020-01-27T15:04:14.238-05:00",
+    "transactionId": "30e703e0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:14.238-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -433,10 +481,10 @@
                     <th>org.accordproject.ippayment.PayOut</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.ippayment.PayOut",
-    "totalAmount": 158.798,
-    "dueBy": "2019-11-04T15:09:08.318-05:00",
-    "transactionId": "f57d0fe1-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:08.318-05:00"
+    "totalAmount": 61.206,
+    "dueBy": "2020-01-27T15:04:14.239-05:00",
+    "transactionId": "30e72af0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:14.239-05:00"
 }</code></pre></td>
                 </tr>
             

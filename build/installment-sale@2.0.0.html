@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/installment-sale@2.0.0.html">
   <meta property="og:title" content="installment-sale@2.0.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/installment-sale@2.0.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -286,24 +300,41 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">{{BUYER}} agrees to pay to {{SELLER}} the total sum {{INITIAL_DUE}}, in the manner following:
-
-{{DUE_AT_CLOSING}} is to be paid at closing, and the remaining balance of {{TOTAL_DUE_BEFORE_CLOSING}} shall be paid as follows:
-
-{{MIN_PAYMENT}} or more per month on the first day of each and every month, and continuing until the entire balance, including both principal and interest, shall be paid in full -- provided, however, that the entire balance due plus accrued interest and any other amounts due here-under shall be paid in full on or before 24 months.
-
-Monthly payments, which shall start on month {{FIRST_MONTH}}, include both principal and interest with interest at the rate of {{INTEREST_RATE}}%, computed monthly on the remaining balance from time to time unpaid.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">"Dan" agrees to pay to "Ned" the total sum 10000 EUR, in the manner following:
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>"Dan" agrees to pay to "Ned" the total sum 10000 EUR, in the manner following:</p>
+<p>500 EUR is to be paid at closing, and the remaining balance of 9500 EUR shall be paid as follows:</p>
+<p>500 EUR or more per month on the first day of each and every month, and continuing until the entire balance, including both principal and interest, shall be paid in full -- provided, however, that the entire balance due plus accrued interest and any other amounts due here-under shall be paid in full on or before 24 months.</p>
+<p>Monthly payments, which shall start on month 3, include both principal and interest with interest at the rate of 1.5%, computed monthly on the remaining balance from time to time unpaid.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">"Dan" agrees to pay to "Ned" the total sum 10000 EUR, in the manner following:
 
 500 EUR is to be paid at closing, and the remaining balance of 9500 EUR shall be paid as follows:
 
@@ -311,13 +342,20 @@ Monthly payments, which shall start on month {{FIRST_MONTH}}, include both princ
 
 Monthly payments, which shall start on month 3, include both principal and interest with interest at the rate of 1.5%, computed monthly on the remaining balance from time to time unpaid.
 </code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">{{BUYER}} agrees to pay to {{SELLER}} the total sum {{INITIAL_DUE}}, in the manner following:
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+{{DUE_AT_CLOSING}} is to be paid at closing, and the remaining balance of {{TOTAL_DUE_BEFORE_CLOSING}} shall be paid as follows:
+
+{{MIN_PAYMENT}} or more per month on the first day of each and every month, and continuing until the entire balance, including both principal and interest, shall be paid in full -- provided, however, that the entire balance due plus accrued interest and any other amounts due here-under shall be paid in full on or before 24 months.
+
+Monthly payments, which shall start on month {{FIRST_MONTH}}, include both principal and interest with interest at the rate of {{INTEREST_RATE}}%, computed monthly on the remaining balance from time to time unpaid.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.installmentsale.InstallmentSaleContract",
-    "contractId": "8b27296b-111f-4768-b829-8bbde9b5049f",
+    "contractId": "4fd74a2d-68e4-4a09-b927-3a65acf39e2d",
     "BUYER": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dan"
@@ -349,6 +387,7 @@ Monthly payments, which shall start on month 3, include both principal and inter
     },
     "FIRST_MONTH": 3
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -357,13 +396,13 @@ Monthly payments, which shall start on month 3, include both principal and inter
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
           </ul>
         </div>
@@ -393,16 +432,16 @@ Monthly payments, which shall start on month 3, include both principal and inter
     "status": "Fulfilled",
     "balance_remaining": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 219.623,
-        "currencyCode": "CDF"
+        "doubleValue": 158.129,
+        "currencyCode": "GEL"
     },
-    "next_payment_month": 20852,
+    "next_payment_month": 32417,
     "total_paid": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 7.644,
-        "currencyCode": "PHP"
+        "doubleValue": 52.62,
+        "currencyCode": "STN"
     },
-    "stateId": "f342b042-ff3e-11e9-b361-efc0ae54bdd6"
+    "stateId": "2f759992-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -425,11 +464,11 @@ Monthly payments, which shall start on month 3, include both principal and inter
     "$class": "org.accordproject.installmentsale.ClosingPayment",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 37.164,
-        "currencyCode": "MRU"
+        "doubleValue": 71.49,
+        "currencyCode": "CNY"
     },
-    "transactionId": "f3428931-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:04.579-05:00"
+    "transactionId": "2f757281-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:11.816-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -439,11 +478,11 @@ Monthly payments, which shall start on month 3, include both principal and inter
     "$class": "org.accordproject.installmentsale.Installment",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 200.32,
-        "currencyCode": "IDR"
+        "doubleValue": 168.542,
+        "currencyCode": "ETB"
     },
-    "transactionId": "f3428930-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:04.579-05:00"
+    "transactionId": "2f757280-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:11.816-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -466,16 +505,16 @@ Monthly payments, which shall start on month 3, include both principal and inter
     "$class": "org.accordproject.installmentsale.Balance",
     "balance": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 188.077,
-        "currencyCode": "CLP"
+        "doubleValue": 208.108,
+        "currencyCode": "MNT"
     },
     "total_paid": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 237.803,
-        "currencyCode": "AMD"
+        "doubleValue": 40.289,
+        "currencyCode": "KYD"
     },
-    "transactionId": "f342b040-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:04.580-05:00"
+    "transactionId": "2f759990-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:11.817-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -498,16 +537,16 @@ Monthly payments, which shall start on month 3, include both principal and inter
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 79.333,
-        "currencyCode": "KWD"
+        "doubleValue": 182.663,
+        "currencyCode": "WST"
     },
-    "description": "Eu Lorem.",
-    "contract": "resource:org.accordproject.installmentsale.InstallmentSaleContract#9788",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#1029",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#9246",
-    "deadline": "2019-11-04T15:09:04.581-05:00",
-    "eventId": "f342d751-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:04.581-05:00"
+    "description": "Incididunt labore mollit commodo.",
+    "contract": "resource:org.accordproject.installmentsale.InstallmentSaleContract#6623",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#9270",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6358",
+    "deadline": "2020-01-27T15:04:11.818-05:00",
+    "eventId": "2f75c0a1-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:11.818-05:00"
 }</code></pre></td>
                 </tr>
             

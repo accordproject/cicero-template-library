@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/payment-upon-delivery@0.10.0.html">
   <meta property="og:title" content="payment-upon-delivery@0.10.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/payment-upon-delivery@0.10.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -270,26 +284,47 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Upon delivery and acceptance, {{buyer}} shall pay to {{seller}} the cost of goods ({{costOfGoods}}) and the delivery fee ({{deliveryFee}}).</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Upon delivery and acceptance, "Michael" shall pay to "Diana" the cost of goods (9.99 USD) and the delivery fee (1.99 USD).
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>Upon delivery and acceptance, "Michael" shall pay to "Diana" the cost of goods (9.99 USD) and the delivery fee (1.99 USD).</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Upon delivery and acceptance, "Michael" shall pay to "Diana" the cost of goods (9.99 USD) and the delivery fee (1.99 USD).
 </code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Upon delivery and acceptance, {{buyer}} shall pay to {{seller}} the cost of goods ({{costOfGoods}}) and the delivery fee ({{deliveryFee}}).</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.upondelivery.PaymentUponDeliveryContract",
-    "contractId": "56c61c00-fab8-4876-9a3f-9d660621d54c",
+    "contractId": "9d87c06c-869f-4239-963d-c1ad40b51002",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Michael"
@@ -309,6 +344,7 @@
         "currencyCode": "USD"
     }
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -317,13 +353,13 @@
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
           </ul>
         </div>
@@ -350,7 +386,7 @@
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "fcf87f72-ff3e-11e9-b361-efc0ae54bdd6"
+    "stateId": "36564fc1-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -371,8 +407,8 @@
                     <th>org.accordproject.payment.upondelivery.DeliveryAcceptedRequest</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.upondelivery.DeliveryAcceptedRequest",
-    "transactionId": "fcf87f70-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:20.871-05:00"
+    "transactionId": "365628b0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:23.355-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -393,8 +429,8 @@
                     <th>org.accordproject.payment.upondelivery.DeliveryAcceptedResponse</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.upondelivery.DeliveryAcceptedResponse",
-    "transactionId": "fcf87f71-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:20.871-05:00"
+    "transactionId": "36564fc0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:23.356-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -417,16 +453,16 @@
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 139.367,
-        "currencyCode": "LKR"
+        "doubleValue": 95.496,
+        "currencyCode": "STN"
     },
-    "description": "Est magna.",
-    "contract": "resource:org.accordproject.payment.upondelivery.PaymentUponDeliveryContract#6307",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#1054",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6576",
-    "deadline": "2019-11-04T15:09:20.871-05:00",
-    "eventId": "fcf87f73-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:20.871-05:00"
+    "description": "In velit nulla dolore.",
+    "contract": "resource:org.accordproject.payment.upondelivery.PaymentUponDeliveryContract#2221",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#7693",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#3359",
+    "deadline": "2020-01-27T15:04:23.356-05:00",
+    "eventId": "36564fc2-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:23.356-05:00"
 }</code></pre></td>
                 </tr>
             

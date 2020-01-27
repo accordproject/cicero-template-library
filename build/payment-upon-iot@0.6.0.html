@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/payment-upon-iot@0.6.0.html">
   <meta property="og:title" content="payment-upon-iot@0.6.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/payment-upon-iot@0.6.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -260,29 +274,51 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Upon long button press, {{buyer}} shall pay to {{seller}} {{amountPerUnit}} for each short button press. A maximum of {{paymentCount}} payments may be made before this contract is COMPLETED.
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>Upon long button press, "Dan" shall pay to "Grant" 10 USD for each short button press. A maximum of 5 payments may be made before this contract is COMPLETED.</p>
+<p>Note: to undo a short button press the buyer may double-press the button.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Upon long button press, "Dan" shall pay to "Grant" 10 USD for each short button press. A maximum of 5 payments may be made before this contract is COMPLETED.
 
 Note: to undo a short button press the buyer may double-press the button.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Upon long button press, "Dan" shall pay to "Grant" 10 USD for each short button press. A maximum of 5 payments may be made before this contract is COMPLETED.
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Upon long button press, {{buyer}} shall pay to {{seller}} {{amountPerUnit}} for each short button press. A maximum of {{paymentCount}} payments may be made before this contract is COMPLETED.
 
 Note: to undo a short button press the buyer may double-press the button.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.iot.PaymentUponButtonContract",
-    "contractId": "f31b06d7-0e8b-4ffc-b317-bd960fd235bc",
+    "contractId": "50e80303-66b1-4dcb-bc1e-9d55e63d18c3",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dan"
@@ -298,6 +334,7 @@ Note: to undo a short button press the buyer may double-press the button.</code>
     },
     "paymentCount": 5
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -306,23 +343,23 @@ Note: to undo a short button press the buyer may double-press the button.</code>
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
           
-          <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
+                    <li><a href="https://models.accordproject.org/signature/signature.html">org.accordproject.signature.ContractSigned</a></li>
           
-          <li><a href="https://models.accordproject.org/signature/signature.html">org.accordproject.signature.ContractSigned</a></li>
+                    <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.SingleButtonPress</a></li>
           
-          <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.SingleButtonPress</a></li>
+                    <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.DoubleButtonPress</a></li>
           
-          <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.DoubleButtonPress</a></li>
-          
-          <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.LongButtonPress</a></li>
+                    <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.LongButtonPress</a></li>
           
           </ul>
         </div>
@@ -349,10 +386,10 @@ Note: to undo a short button press the buyer may double-press the button.</code>
                     <th>org.accordproject.payment.iot.CounterState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.iot.CounterState",
-    "status": "INITIALIZED",
-    "counter": 41.593,
-    "paymentCount": 14.92,
-    "stateId": "feabfbd2-ff3e-11e9-b361-efc0ae54bdd6"
+    "status": "COMPLETED",
+    "counter": 72.693,
+    "paymentCount": 161.407,
+    "stateId": "3729a553-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -373,10 +410,10 @@ Note: to undo a short button press the buyer may double-press the button.</code>
                     <th>org.accordproject.iot.DoubleButtonPress</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.iot.DoubleButtonPress",
-    "serialNumber": "Nostrud dolore officia.",
-    "batteryVoltage": "Duis labore pariatur.",
-    "transactionId": "feabadb2-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:23.723-05:00"
+    "serialNumber": "Adipisicing sunt do voluptate.",
+    "batteryVoltage": "Aliquip.",
+    "transactionId": "37293021-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:24.738-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -384,10 +421,10 @@ Note: to undo a short button press the buyer may double-press the button.</code>
                     <th>org.accordproject.iot.LongButtonPress</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.iot.LongButtonPress",
-    "serialNumber": "Ut pariatur aute occaecat nostrud.",
-    "batteryVoltage": "Proident.",
-    "transactionId": "feabadb3-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:23.723-05:00"
+    "serialNumber": "Velit ipsum.",
+    "batteryVoltage": "Ut aute eiusmod nostrud velit.",
+    "transactionId": "37293022-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:24.738-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -395,10 +432,10 @@ Note: to undo a short button press the buyer may double-press the button.</code>
                     <th>org.accordproject.iot.SingleButtonPress</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.iot.SingleButtonPress",
-    "serialNumber": "Veniam ex.",
-    "batteryVoltage": "Amet proident qui mollit.",
-    "transactionId": "feabadb1-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:23.723-05:00"
+    "serialNumber": "Officia minim aliqua consequat anim.",
+    "batteryVoltage": "Aute cillum aliquip.",
+    "transactionId": "37293020-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:24.738-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -408,11 +445,11 @@ Note: to undo a short button press the buyer may double-press the button.</code>
     "$class": "org.accordproject.payment.iot.MonetaryAmountPayment",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 199.1,
-        "currencyCode": "MAD"
+        "doubleValue": 228.393,
+        "currencyCode": "PKR"
     },
-    "transactionId": "feabadb4-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:23.723-05:00"
+    "transactionId": "37295730-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:24.739-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -420,9 +457,9 @@ Note: to undo a short button press the buyer may double-press the button.</code>
                     <th>org.accordproject.signature.ContractSigned</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.signature.ContractSigned",
-    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#9426",
-    "transactionId": "feabadb0-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:23.723-05:00"
+    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#9476",
+    "transactionId": "37290910-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:24.738-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -443,8 +480,8 @@ Note: to undo a short button press the buyer may double-press the button.</code>
                     <th>org.accordproject.cicero.runtime.Response</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.Response",
-    "transactionId": "feabd4c4-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:23.724-05:00"
+    "transactionId": "37297e44-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:24.740-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -474,16 +511,16 @@ Note: to undo a short button press the buyer may double-press the button.</code>
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 42.78,
-        "currencyCode": "LKR"
+        "doubleValue": 241.247,
+        "currencyCode": "TTD"
     },
-    "description": "Veniam qui pariatur mollit.",
-    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#3219",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#4969",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#7366",
-    "deadline": "2019-11-04T15:09:23.725-05:00",
-    "eventId": "feabfbd3-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:23.725-05:00"
+    "description": "Veniam tempor occaecat enim.",
+    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#0804",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5800",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4722",
+    "deadline": "2020-01-27T15:04:24.741-05:00",
+    "eventId": "3729a554-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:24.741-05:00"
 }</code></pre></td>
                 </tr>
             

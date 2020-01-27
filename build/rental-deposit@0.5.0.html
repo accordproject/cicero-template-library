@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/rental-deposit@0.5.0.html">
   <meta property="og:title" content="rental-deposit@0.5.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/rental-deposit@0.5.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -243,30 +257,44 @@ deduct damages and a payment obligation is emitted to refund the remaining depos
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant {{tenant}} shall deposit with the Landlord {{landlord}} the sum of {{depositAmount}} payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents {{monthlyBaseRentMultiple}} times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within {{tenantDepositRestorationPeriod}} of Landlord’s demand, the Security Deposit to an amount equivalent to {{monthlyBaseRentMultiple}} times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.
-
-B. Interest on Monetary Deposit. Landlord will hold this security deposit for the period Tenant occupies the Premises in accordance with the {{applicableLaw}}, as amended. Landlord shall put the deposit in an interest bearing account in {{bankName}}. Tenant acknowledges that this Lease constitutes notice under {{statute}} of where the Landlord has deposited the security.
-
-C. Disposition of Monetary Deposit. Within {{landlordDepositReturnPeriod}} after the end of the Term, Landlord will return Tenant's monetary deposit to Tenant, less any allowed deductions to Tenant by certified mail to the address provided to Landlord by Tenant. Any deductions to the Security Deposit will be itemized in a statement in accordance with the following protocol:
-
-i. Landlord will inspect the Premises for damage and any damage beyond reasonable wear and tear will be charged to Tenant in accordance with the Schedule of Maintenance Costs attached as {{exhibit}}. Landlord will use reasonable efforts to permit Tenant to participate in the inspection upon Tenant’s request.
-
-ii. Landlord will inspect the Premises for cleanliness and if the Premises is not restored to the same condition as it was received by Tenant at the inception of this Agreement, cleaning and restoration costs will be charged to Tenant in accordance with the Schedule of Maintenance Costs.
-
-iii. Landlord shall accept the return of (i) keys (ii) access devices and (iii) amenity identification cards and shall charge Tenant, in accordance with the Schedule of Maintenance Costs, for any unreturned (i) keys (ii) access devices and (iii) amenity identification cards.
-
-iv. Any and all outstanding items due and unpaid to Landlord shall be collected.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant "Michael" shall deposit with the Landlord "Parsa" the sum of 3000 USD payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents 0.98 times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within 30 days of Landlord’s demand, the Security Deposit to an amount equivalent to 0.98 times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant "Michael" shall deposit with the Landlord "Parsa" the sum of 3000 USD payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents 0.98 times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within 30 days of Landlord’s demand, the Security Deposit to an amount equivalent to 0.98 times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.</p>
+<p>B. Interest on Monetary Deposit. Landlord will hold this security deposit for the period Tenant occupies the Premises in accordance with the "New Jersey", as amended. Landlord shall put the deposit in an interest bearing account in "Bank of America". Tenant acknowledges that this Lease constitutes notice under "NJSD" of where the Landlord has deposited the security.</p>
+<p>C. Disposition of Monetary Deposit. Within 3 weeks after the end of the Term, Landlord will return Tenant's monetary deposit to Tenant, less any allowed deductions to Tenant by certified mail to the address provided to Landlord by Tenant. Any deductions to the Security Deposit will be itemized in a statement in accordance with the following protocol:</p>
+<p>i. Landlord will inspect the Premises for damage and any damage beyond reasonable wear and tear will be charged to Tenant in accordance with the Schedule of Maintenance Costs attached as "Schedule A". Landlord will use reasonable efforts to permit Tenant to participate in the inspection upon Tenant’s request.</p>
+<p>ii. Landlord will inspect the Premises for cleanliness and if the Premises is not restored to the same condition as it was received by Tenant at the inception of this Agreement, cleaning and restoration costs will be charged to Tenant in accordance with the Schedule of Maintenance Costs.</p>
+<p>iii. Landlord shall accept the return of (i) keys (ii) access devices and (iii) amenity identification cards and shall charge Tenant, in accordance with the Schedule of Maintenance Costs, for any unreturned (i) keys (ii) access devices and (iii) amenity identification cards.</p>
+<p>iv. Any and all outstanding items due and unpaid to Landlord shall be collected.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant "Michael" shall deposit with the Landlord "Parsa" the sum of 3000 USD payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents 0.98 times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within 30 days of Landlord’s demand, the Security Deposit to an amount equivalent to 0.98 times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.
 
 B. Interest on Monetary Deposit. Landlord will hold this security deposit for the period Tenant occupies the Premises in accordance with the "New Jersey", as amended. Landlord shall put the deposit in an interest bearing account in "Bank of America". Tenant acknowledges that this Lease constitutes notice under "NJSD" of where the Landlord has deposited the security.
 
@@ -279,13 +307,26 @@ ii. Landlord will inspect the Premises for cleanliness and if the Premises is no
 iii. Landlord shall accept the return of (i) keys (ii) access devices and (iii) amenity identification cards and shall charge Tenant, in accordance with the Schedule of Maintenance Costs, for any unreturned (i) keys (ii) access devices and (iii) amenity identification cards.
 
 iv. Any and all outstanding items due and unpaid to Landlord shall be collected.</code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant {{tenant}} shall deposit with the Landlord {{landlord}} the sum of {{depositAmount}} payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents {{monthlyBaseRentMultiple}} times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within {{tenantDepositRestorationPeriod}} of Landlord’s demand, the Security Deposit to an amount equivalent to {{monthlyBaseRentMultiple}} times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+B. Interest on Monetary Deposit. Landlord will hold this security deposit for the period Tenant occupies the Premises in accordance with the {{applicableLaw}}, as amended. Landlord shall put the deposit in an interest bearing account in {{bankName}}. Tenant acknowledges that this Lease constitutes notice under {{statute}} of where the Landlord has deposited the security.
+
+C. Disposition of Monetary Deposit. Within {{landlordDepositReturnPeriod}} after the end of the Term, Landlord will return Tenant's monetary deposit to Tenant, less any allowed deductions to Tenant by certified mail to the address provided to Landlord by Tenant. Any deductions to the Security Deposit will be itemized in a statement in accordance with the following protocol:
+
+i. Landlord will inspect the Premises for damage and any damage beyond reasonable wear and tear will be charged to Tenant in accordance with the Schedule of Maintenance Costs attached as {{exhibit}}. Landlord will use reasonable efforts to permit Tenant to participate in the inspection upon Tenant’s request.
+
+ii. Landlord will inspect the Premises for cleanliness and if the Premises is not restored to the same condition as it was received by Tenant at the inception of this Agreement, cleaning and restoration costs will be charged to Tenant in accordance with the Schedule of Maintenance Costs.
+
+iii. Landlord shall accept the return of (i) keys (ii) access devices and (iii) amenity identification cards and shall charge Tenant, in accordance with the Schedule of Maintenance Costs, for any unreturned (i) keys (ii) access devices and (iii) amenity identification cards.
+
+iv. Any and all outstanding items due and unpaid to Landlord shall be collected.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.rentaldeposit.RentalDepositClause",
-    "contractId": "8f65eeca-f94b-474f-89f6-6b66b71402ab",
+    "contractId": "31357611-9793-4389-9be5-cde314b0062e",
     "tenant": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Michael"
@@ -315,6 +356,7 @@ iv. Any and all outstanding items due and unpaid to Landlord shall be collected.
     },
     "exhibit": "Schedule A"
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -323,15 +365,15 @@ iv. Any and all outstanding items due and unpaid to Landlord shall be collected.
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-          
-          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.Period</a></li>
+                    <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.Period</a></li>
           
           </ul>
         </div>
@@ -358,7 +400,7 @@ iv. Any and all outstanding items due and unpaid to Landlord shall be collected.
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "045bfa30-ff3f-11e9-b361-efc0ae54bdd6"
+    "stateId": "3af0bf70-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -382,16 +424,16 @@ iv. Any and all outstanding items due and unpaid to Landlord shall be collected.
     "penalties": [
         {
             "$class": "org.accordproject.rentaldeposit.Penalty",
-            "description": "Aute.",
+            "description": "Ea cillum consectetur.",
             "amount": {
                 "$class": "org.accordproject.money.MonetaryAmount",
-                "doubleValue": 89.728,
-                "currencyCode": "RUB"
+                "doubleValue": 255.56,
+                "currencyCode": "LAK"
             }
         }
     ],
-    "transactionId": "045bd320-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:33.266-05:00"
+    "transactionId": "3af09860-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:31.078-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -414,11 +456,11 @@ iv. Any and all outstanding items due and unpaid to Landlord shall be collected.
     "$class": "org.accordproject.rentaldeposit.PropertyInspectionResponse",
     "balance": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 53.93,
-        "currencyCode": "ETB"
+        "doubleValue": 62.391,
+        "currencyCode": "BAM"
     },
-    "transactionId": "045bd321-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:33.266-05:00"
+    "transactionId": "3af09861-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:31.078-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -441,16 +483,16 @@ iv. Any and all outstanding items due and unpaid to Landlord shall be collected.
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 230.811,
-        "currencyCode": "HTG"
+        "doubleValue": 154.842,
+        "currencyCode": "XPF"
     },
-    "description": "Quis velit quis.",
-    "contract": "resource:org.accordproject.rentaldeposit.RentalDepositClause#9275",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#4962",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2387",
-    "deadline": "2019-11-04T15:09:33.267-05:00",
-    "eventId": "045bfa31-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:33.267-05:00"
+    "description": "Est ullamco occaecat pariatur cillum.",
+    "contract": "resource:org.accordproject.rentaldeposit.RentalDepositClause#6607",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#8181",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6959",
+    "deadline": "2020-01-27T15:04:31.079-05:00",
+    "eventId": "3af0bf71-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:04:31.079-05:00"
 }</code></pre></td>
                 </tr>
             

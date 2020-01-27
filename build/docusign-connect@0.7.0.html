@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/docusign-connect@0.7.0.html">
   <meta property="og:title" content="docusign-connect@0.7.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/docusign-connect@0.7.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -250,28 +264,50 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Count DocuSign connect events with the status: {{status}}.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Count DocuSign connect events with the status: Completed.
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>Count DocuSign connect events with the status: Completed.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Count DocuSign connect events with the status: Completed.
 </code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Count DocuSign connect events with the status: {{status}}.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterClause",
-    "contractId": "822a5e56-092e-417e-aa55-54698434631c",
+    "contractId": "62ce2757-5998-4f54-a3d7-fca450584732",
     "status": "Completed"
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -280,15 +316,15 @@
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/docusign/connect.html">com.docusign.connect.DocuSignEnvelopeInformation</a></li>
           
-          <li><a href="https://models.accordproject.org/docusign/connect.html">com.docusign.connect.DocuSignEnvelopeInformation</a></li>
-          
-          <li><a href="https://models.accordproject.org/docusign/connect.html">com.docusign.connect.EnvelopeStatusCode</a></li>
+                    <li><a href="https://models.accordproject.org/docusign/connect.html">com.docusign.connect.EnvelopeStatusCode</a></li>
           
           </ul>
         </div>
@@ -315,8 +351,8 @@
                     <th>com.docusign.connect.counter.DocuSignEnvelopeCounterState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
-    "counter": 59854,
-    "stateId": "e6d402a1-ff3e-11e9-b361-efc0ae54bdd6"
+    "counter": 46615,
+    "stateId": "27714af1-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -339,37 +375,37 @@
     "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
     "envelopeStatus": {
         "$class": "com.docusign.connect.EnvelopeStatus",
-        "status": "Signed",
-        "envelopeId": "Do reprehenderit.",
-        "created": "2019-11-04T15:08:43.721-05:00",
-        "sent": "2019-11-04T15:08:43.721-05:00",
-        "delivered": "2019-11-04T15:08:43.721-05:00",
-        "signed": "2019-11-04T15:08:43.721-05:00",
-        "completed": "2019-11-04T15:08:43.721-05:00",
-        "declined": "2019-11-04T15:08:43.721-05:00",
-        "email": "Sunt eu cupidatat nulla."
+        "status": "Created",
+        "envelopeId": "Enim culpa veniam.",
+        "created": "2020-01-27T15:03:58.365-05:00",
+        "sent": "2020-01-27T15:03:58.365-05:00",
+        "delivered": "2020-01-27T15:03:58.365-05:00",
+        "signed": "2020-01-27T15:03:58.365-05:00",
+        "completed": "2020-01-27T15:03:58.365-05:00",
+        "declined": "2020-01-27T15:03:58.365-05:00",
+        "email": "Velit."
     },
     "recipients": [
         {
             "$class": "com.docusign.connect.Recipient",
             "status": "AutoResponded",
-            "email": "Non.",
-            "userName": "Nostrud consectetur sunt.",
-            "sent": "2019-11-04T15:08:43.721-05:00",
-            "delivered": "2019-11-04T15:08:43.721-05:00",
-            "signed": "2019-11-04T15:08:43.721-05:00",
-            "declined": "2019-11-04T15:08:43.721-05:00",
-            "declineReason": "Velit sint eu irure occaecat.",
+            "email": "Eu.",
+            "userName": "Occaecat Lorem irure eu laborum.",
+            "sent": "2020-01-27T15:03:58.365-05:00",
+            "delivered": "2020-01-27T15:03:58.365-05:00",
+            "signed": "2020-01-27T15:03:58.365-05:00",
+            "declined": "2020-01-27T15:03:58.365-05:00",
+            "declineReason": "Ea.",
             "tabStatuses": [
                 {
                     "$class": "com.docusign.connect.NumberTabStatus",
-                    "tabName": "Nisi reprehenderit eu Lorem.",
-                    "tabValue": 224.942,
-                    "tabType": "InitialHereOptional",
-                    "status": "Cillum culpa excepteur.",
-                    "tabLabel": "Cillum eiusmod culpa.",
-                    "originalValue": "Laborum velit aliqua incididunt ad.",
-                    "signed": "2019-11-04T15:08:43.721-05:00",
+                    "tabName": "Velit irure officia.",
+                    "tabValue": 136.35,
+                    "tabType": "DigitalSignature",
+                    "status": "Ex ut aliquip culpa.",
+                    "tabLabel": "Do id amet cupidatat adipisicing.",
+                    "originalValue": "Commodo.",
+                    "signed": "2020-01-27T15:03:58.365-05:00",
                     "customTabType": "Text"
                 }
             ]
@@ -378,12 +414,12 @@
     "customFields": [
         {
             "$class": "com.docusign.connect.CustomField",
-            "name": "Ea.",
-            "value": "Reprehenderit laboris minim nulla cillum."
+            "name": "Commodo deserunt elit sint.",
+            "value": "Amet dolore aliquip pariatur aute."
         }
     ],
-    "transactionId": "e6d3db90-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:43.721-05:00"
+    "transactionId": "2770fcd0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:03:58.365-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -404,10 +440,10 @@
                     <th>com.docusign.connect.counter.MyResponse</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "com.docusign.connect.counter.MyResponse",
-    "output": "Deserunt occaecat labore enim.",
-    "counter": 26798,
-    "transactionId": "e6d402a0-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:43.722-05:00"
+    "output": "Dolore ipsum ipsum commodo.",
+    "counter": 2052,
+    "transactionId": "27714af0-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:03:58.367-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -428,14 +464,14 @@
                     <th>org.accordproject.cicero.runtime.NotificationObligation</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.NotificationObligation",
-    "title": "Ea.",
-    "message": "Culpa tempor.",
-    "contract": "resource:com.docusign.connect.counter.DocuSignEnvelopeCounterClause#7226",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#8003",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4249",
-    "deadline": "2019-11-04T15:08:43.722-05:00",
-    "eventId": "e6d402a2-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:43.722-05:00"
+    "title": "Duis adipisicing labore excepteur.",
+    "message": "Nostrud.",
+    "contract": "resource:com.docusign.connect.counter.DocuSignEnvelopeCounterClause#9222",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#1968",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4972",
+    "deadline": "2020-01-27T15:03:58.367-05:00",
+    "eventId": "27714af2-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:03:58.367-05:00"
 }</code></pre></td>
                 </tr>
             

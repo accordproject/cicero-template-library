@@ -1,43 +1,43 @@
 <!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
 
-      
+        
   <!---— facebook open graph tags ---->
   <meta property="og:url" content="https://templates.accordproject.org/car-rental-tr@0.10.0.html">
   <meta property="og:title" content="car-rental-tr@0.10.0">
@@ -52,14 +52,28 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/car-rental-tr@0.10.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tab-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -278,65 +292,65 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+        <div id="tab-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: normal; border: 0; background-color: transparent;">
+<p>OTO KİRALAMA SÖZLEŞMESİ</p>
 
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">OTO KİRALAMA SÖZLEŞMESİ
+<ol delimiter="period" start="1" tight="false">
+<li><p>TARAFLAR</p>
+<p>1.1 Kiraya Veren Şirket, Şahıs, Kurum "Acme Car Rental"<wbr>1.2 Adresi "Dikmen Caddesi No:48/15 Dikmen Ankara"<wbr>1.3 Telefon "+901231231234"</p>
+</li></ol><p>Bundan böyle KİRAYA VEREN olarak anılacaktır.</p>
+<pre class="code_block"><code>1.4 Kiralayanın Adı Soyadı "Can Doğan"
+1.5 Adresi "John F. Kennedy Sokak No:23/12 Kavaklıdere Ankara"
+1.6 Telefon "+901234567890"
+</code></pre>
+<p>Bundan böyle KİRALAYAN olarak anılacaktır.</p>
 
-1. TARAFLAR
-
-1.1 Kiraya Veren Şirket, Şahıs, Kurum {{lessorName}}
-1.2 Adresi {{lessorAddress}}
-1.3 Telefon {{lessorPhone}}
-
-Bundan böyle KİRAYA VEREN olarak anılacaktır.
-
-```
-1.4 Kiralayanın Adı Soyadı {{lesseeName}}
-1.5 Adresi {{lesseeAddress}}
-1.6 Telefon {{lesseePhone}}
-```
-
-
-
-Bundan böyle KİRALAYAN olarak anılacaktır.
-
-1. ARAÇ DETAYLARI
-
-2.1 Plaka No {{plateID}}
-2.2 Marka {{carBrand}}
-2.3 Model {{model}}
-2.4 Trafiğe Çıkış Yılı {{modelYear}}
-2.5 Renk {{color}}
-2.6 Şase No {{vechileID}}
-
-1. KİRALAMA DETAYLARI
-
-3.1 {{#clause paymentClause}}{{amountText}} ({{amount}}) {{paymentProcedure}}.{{/clause}}
-3.2 Kiralama Başlangıç Tarihi {{startDate}}
-3.3 Kiralama Bitiş Tarihi {{endDate}}
-3.4 Teslimat Noktası {{deliveryStation}}
-
-1. SÖZLEŞMENİN KONUSU {{plateID}} Plaka numaralı {{carBrand}} marka otomobilin KİRALAYAN'a kiraya verilmesi.
-
-1. SÖZLEŞMENİN İÇERİĞİ : Bu sözleşme tarafların taahhütlerine ve aracın kiralanması şartlarını kapsar.
-
-1. TAAHHÜTNAME : Sözleşmenin akidi olarak hareket eden KİRAYA VEREN ve KİRALAYAN aşağıda belirtiliği üzere yükümlülüklerini karşılıklı birbirlerine taahhüt edip kabul ile imzalamışlardır.
-
-1. SÖZLEŞME ŞARTLARI :
-
-a) KİRAYA VEREN, aracı tüm fonksiyonları çalışır vaziyette KİRALAYAN'a teslim etmiştir.
-b) Sözleşme tarihinden itibaren araçta meydana gelebilecek her türlü arıza, bakım, onarım ve yakıt giderleri KİRALAYAN'a aittir. Hiç bir surette giderlerle ilgili olarak KİRAYA VEREN'den ücret talebinde bulunulmayacaktır. KİRALAYAN aracın en iyi şekilde korunması için gereken önlemleri alacak ve her türlü bakımını süresi içerisinde yaptıracaktır.
-
-İş bu sözleşmeden doğacak herhangi bir anlaşmazlık durumunda {{authorizedCourt}} mahkemelerinin yetkili olduğunu taraflar kabul etmişlerdir.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">OTO KİRALAMA SÖZLEŞMESİ
+<ol delimiter="period" start="2" tight="false">
+<li><p>ARAÇ DETAYLARI</p>
+<p>2.1 Plaka No "06 MX 7817"<wbr>2.2 Marka "Volkswagen"<wbr>2.3 Model "Golf 1.6 TDI Comfortline"<wbr>2.4 Trafiğe Çıkış Yılı "2017"<wbr>2.5 Renk "Kırmızı"<wbr>2.6 Şase No "WVWZZZ3CZXW000001"</p>
+</li>
+<li><p>KİRALAMA DETAYLARI</p>
+<p>3.1 "İki Yüz On Yedi Amerikan Doları" (217.99 USD) "bank transfer".<wbr>3.2 Kiralama Başlangıç Tarihi "13.07.2018"<wbr>3.3 Kiralama Bitiş Tarihi "17.07.2018"<wbr>3.4 Teslimat Noktası "Acme Car Rental Merkez Ofis"</p>
+</li>
+<li><p>SÖZLEŞMENİN KONUSU "PlakaNo" Plaka numaralı "marka" marka otomobilin KİRALAYAN'a kiraya verilmesi.</p>
+</li>
+<li><p>SÖZLEŞMENİN İÇERİĞİ : Bu sözleşme tarafların taahhütlerine ve aracın kiralanması şartlarını kapsar.</p>
+</li>
+<li><p>TAAHHÜTNAME : Sözleşmenin akidi olarak hareket eden KİRAYA VEREN ve KİRALAYAN aşağıda belirtiliği üzere yükümlülüklerini karşılıklı birbirlerine taahhüt edip kabul ile imzalamışlardır.</p>
+</li>
+<li><p>SÖZLEŞME ŞARTLARI :</p>
+<p>a) KİRAYA VEREN, aracı tüm fonksiyonları çalışır vaziyette KİRALAYAN'a teslim etmiştir.<wbr>b) Sözleşme tarihinden itibaren araçta meydana gelebilecek her türlü arıza, bakım, onarım ve yakıt giderleri KİRALAYAN'a aittir. Hiç bir surette giderlerle ilgili olarak KİRAYA VEREN'den ücret talebinde bulunulmayacaktır. KİRALAYAN aracın en iyi şekilde korunması için gereken önlemleri alacak ve her türlü bakımını süresi içerisinde yaptıracaktır.</p>
+</li></ol><p>İş bu sözleşmeden doğacak herhangi bir anlaşmazlık durumunda "Ankara" mahkemelerinin yetkili olduğunu taraflar kabul etmişlerdir.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">OTO KİRALAMA SÖZLEŞMESİ
 1. TARAFLAR
 
     1.1 Kiraya Veren Şirket, Şahıs, Kurum "Acme Car Rental"
@@ -379,13 +393,57 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
     b) Sözleşme tarihinden itibaren araçta meydana gelebilecek her türlü arıza, bakım, onarım ve yakıt giderleri KİRALAYAN'a aittir. Hiç bir surette giderlerle ilgili olarak KİRAYA VEREN'den ücret talebinde bulunulmayacaktır. KİRALAYAN aracın en iyi şekilde korunması için gereken önlemleri alacak ve her türlü bakımını süresi içerisinde yaptıracaktır.
 
 İş bu sözleşmeden doğacak herhangi bir anlaşmazlık durumunda "Ankara" mahkemelerinin yetkili olduğunu taraflar kabul etmişlerdir.</code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">OTO KİRALAMA SÖZLEŞMESİ
+1. TARAFLAR
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+1.1 Kiraya Veren Şirket, Şahıs, Kurum {{lessorName}}
+1.2 Adresi {{lessorAddress}}
+1.3 Telefon {{lessorPhone}}
+
+Bundan böyle KİRAYA VEREN olarak anılacaktır.
+
+```
+1.4 Kiralayanın Adı Soyadı {{lesseeName}}
+1.5 Adresi {{lesseeAddress}}
+1.6 Telefon {{lesseePhone}}
+```
+
+Bundan böyle KİRALAYAN olarak anılacaktır.
+1. ARAÇ DETAYLARI
+
+2.1 Plaka No {{plateID}}
+2.2 Marka {{carBrand}}
+2.3 Model {{model}}
+2.4 Trafiğe Çıkış Yılı {{modelYear}}
+2.5 Renk {{color}}
+2.6 Şase No {{vechileID}}
+
+1. KİRALAMA DETAYLARI
+
+3.1 {{#clause paymentClause}}{{amountText}} ({{amount}}) {{paymentProcedure}}.{{/clause}}
+3.2 Kiralama Başlangıç Tarihi {{startDate}}
+3.3 Kiralama Bitiş Tarihi {{endDate}}
+3.4 Teslimat Noktası {{deliveryStation}}
+
+1. SÖZLEŞMENİN KONUSU {{plateID}} Plaka numaralı {{carBrand}} marka otomobilin KİRALAYAN'a kiraya verilmesi.
+
+1. SÖZLEŞMENİN İÇERİĞİ : Bu sözleşme tarafların taahhütlerine ve aracın kiralanması şartlarını kapsar.
+
+1. TAAHHÜTNAME : Sözleşmenin akidi olarak hareket eden KİRAYA VEREN ve KİRALAYAN aşağıda belirtiliği üzere yükümlülüklerini karşılıklı birbirlerine taahhüt edip kabul ile imzalamışlardır.
+
+1. SÖZLEŞME ŞARTLARI :
+
+a) KİRAYA VEREN, aracı tüm fonksiyonları çalışır vaziyette KİRALAYAN'a teslim etmiştir.
+b) Sözleşme tarihinden itibaren araçta meydana gelebilecek her türlü arıza, bakım, onarım ve yakıt giderleri KİRALAYAN'a aittir. Hiç bir surette giderlerle ilgili olarak KİRAYA VEREN'den ücret talebinde bulunulmayacaktır. KİRALAYAN aracın en iyi şekilde korunması için gereken önlemleri alacak ve her türlü bakımını süresi içerisinde yaptıracaktır.
+
+İş bu sözleşmeden doğacak herhangi bir anlaşmazlık durumunda {{authorizedCourt}} mahkemelerinin yetkili olduğunu taraflar kabul etmişlerdir.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordtr.carrental.CarRentalContract",
-    "contractId": "5c76cef5-4447-439c-a07f-372970ec70aa",
+    "contractId": "ffe0992a-3a06-4b29-ae7e-6b542fe033f0",
     "lessorName": "Acme Car Rental",
     "lessorAddress": "Dikmen Caddesi No:48/15 Dikmen Ankara",
     "lessorPhone": "+901231231234",
@@ -404,7 +462,7 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
     "deliveryStation": "Acme Car Rental Merkez Ofis",
     "paymentClause": {
         "$class": "org.accordtr.carrental.PaymentClause",
-        "clauseId": "bf3fca1d-7db4-4f1e-a5a7-7cc600072570",
+        "clauseId": "af7c1f37-e846-44cc-9285-3963d4908a53",
         "amountText": "İki Yüz On Yedi Amerikan Doları",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
@@ -414,6 +472,7 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
         "paymentProcedure": "bank transfer"
     }
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
@@ -422,15 +481,15 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
+            <ul>
+                
+                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
           
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
           
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-          
-          <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+                    <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
           
           </ul>
         </div>
@@ -457,7 +516,7 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "e1ef6a91-ff3e-11e9-b361-efc0ae54bdd6"
+    "stateId": "24979e11-4140-11ea-9f41-8547c1bcffeb"
 }</code></pre></td>
                 </tr>
             
@@ -478,8 +537,8 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
                     <th>org.accordtr.carrental.PaymentRequest</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordtr.carrental.PaymentRequest",
-    "transactionId": "e1ef4380-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:35.512-05:00"
+    "transactionId": "24977700-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:03:53.584-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -502,11 +561,11 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
     "$class": "org.accordtr.carrental.PayOut",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 91.806,
-        "currencyCode": "KMF"
+        "doubleValue": 127.667,
+        "currencyCode": "XAU"
     },
-    "transactionId": "e1ef6a90-ff3e-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:08:35.513-05:00"
+    "transactionId": "24979e10-4140-11ea-9f41-8547c1bcffeb",
+    "timestamp": "2020-01-27T15:03:53.585-05:00"
 }</code></pre></td>
                 </tr>
             
