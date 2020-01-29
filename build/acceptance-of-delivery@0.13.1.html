@@ -63,15 +63,23 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>
          $(document).ready(function() {
-             $('wbr').replaceWith('\n');
              $('#tabs li').on('click', function() {
                  var tab = $(this).data('tab');
 
                  $('#tabs li').removeClass('is-active');
                  $(this).addClass('is-active');
 
-                 $('#tab-content div').removeClass('is-active');
+                 $('#tabs-content div').removeClass('is-active');
                  $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
              });
          });
         </script>
@@ -325,15 +333,24 @@
                 </li>
             </ul>
         </div>
-        <div id="tab-content">
+        <div id="tabs-content">
             <div class="is-active content box" data-content="1">
-                <span stype="white-space: normal; border: 0; background-color: transparent;">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
 <h2>Acceptance of Delivery.</h2>
-<p>"Party A" will be deemed to have completed its delivery obligations<wbr>if in "Party B"'s opinion, the "Widgets" satisfies the<wbr>Acceptance Criteria, and "Party B" notifies "Party A" in writing<wbr>that it is accepting the "Widgets".</p>
+<p>"Party A" will be deemed to have completed its delivery obligations
+if in "Party B"'s opinion, the "Widgets" satisfies the
+Acceptance Criteria, and "Party B" notifies "Party A" in writing
+that it is accepting the "Widgets".</p>
 <h2>Inspection and Notice.</h2>
-<p>"Party B" will have 10 Business Days to inspect and<wbr>evaluate the "Widgets" on the delivery date before notifying<wbr>"Party A" that it is either accepting or rejecting the<wbr>"Widgets".</p>
+<p>"Party B" will have 10 Business Days to inspect and
+evaluate the "Widgets" on the delivery date before notifying
+"Party A" that it is either accepting or rejecting the
+"Widgets".</p>
 <h2>Acceptance Criteria.</h2>
-<p>The "Acceptance Criteria" are the specifications the "Widgets"<wbr>must meet for the "Party A" to comply with its requirements and<wbr>obligations under this agreement, detailed in "Attachment X", attached<wbr>to this agreement.</p>
+<p>The "Acceptance Criteria" are the specifications the "Widgets"
+must meet for the "Party A" to comply with its requirements and
+obligations under this agreement, detailed in "Attachment X", attached
+to this agreement.</p>
 </span>
             </div>
             <div class="content box" data-content="2">
@@ -386,7 +403,7 @@ to this agreement.</code></pre>
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
-    "clauseId": "9e3e5f7b-42d4-4259-83c1-9853e9c518cd",
+    "clauseId": "8f6ca613-ca39-434a-974a-2caadf1170be",
     "shipper": "Party A",
     "receiver": "Party B",
     "deliverable": "Widgets",
@@ -398,22 +415,101 @@ to this agreement.</code></pre>
 
         <h2 class="title is-2">Template Model</h2>
 
-        <img src="https://www.plantuml.com/plantuml/svg/dLDTRu8m57tdL_HnovHVO8nCs49YX01xDhLSiKjjMNlPmZx--mer6zkSKP_WddDfpaUP6QGQcvtmcA364AKhdpAcT5bhzGWCkmbgf9A1sfGW-3Fere-bgIqPkfck1P39X5mLenQ4K2_NP3ebRnuXv8Q45A7WEo3bzt863Enx6Q3RkLLA09M4ksEvagaL0wNtuLqkQ3n-dnxmmpW3hNpTIBIg_0oU6Z1uaNshCqUAZUdDHwDAGpkqdWPv7eMh8igBU7dliBiWNlp6aeSYZyDe5I_pD9eNSR9SfL4M9w7rVw6k34ojfFc_bZyMJF_O2z8LbVoLTZGnMrxNe0ymsjMepwvfAF3KcjpwUNa4Ns2osL-DTYveiyybw1e3EOpbNESzbQFciXfUS8Slb4NNZU4IZ0bfQtwiKqJAjZkGU7f-HmmTpv4fYPhQEUXPzuqt0rbs__ud" class="box" style="margin-top:40px;">
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/dLDTRu8m57tdL_HnovHVO8nCs49YX01xDhLSiKjjMNlPmZx--mer6zkSKP_WddDfpaUP6QGQcvtmcA364AKhdpAcT5bhzGWCkmbgf9A1sfGW-3Fere-bgIqPkfck1P39X5mLenQ4K2_NP3ebRnuXv8Q45A7WEo3bzt863Enx6Q3RkLLA09M4ksEvagaL0wNtuLqkQ3n-dnxmmpW3hNpTIBIg_0oU6Z1uaNshCqUAZUdDHwDAGpkqdWPv7eMh8igBU7dliBiWNlp6aeSYZyDe5I_pD9eNSR9SfL4M9w7rVw6k34ojfFc_bZyMJF_O2z8LbVoLTZGnMrxNe0ymsjMepwvfAF3KcjpwUNa4Ns2osL-DTYveiyybw1e3EOpbNESzbQFciXfUS8Slb4NNZU4IZ0bfQtwiKqJAjZkGU7f-HmmTpv4fYPhQEUXPzuqt0rbs__ud">
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.acceptanceofdelivery
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+
+
+/**
+ * Sent by the receiver of the goods, indicates when the goods were
+ * received, as well as if they passed inspection
+ */
+transaction InspectDeliverable extends Request {
+  o DateTime deliverableReceivedAt
+  o Boolean inspectionPassed
+}
+
+/**
+ * The inspection status
+ */
+enum InspectionStatus {
+  o PASSED_TESTING
+  o FAILED_TESTING
+  o OUTSIDE_INSPECTION_PERIOD
+}
+
+/**
+ * The clause response
+ */
+transaction InspectionResponse extends Response {
+  o InspectionStatus status
+  --&gt; Organization shipper
+  --&gt; Organization receiver
+}
+
+/**
+ * The template model
+ */
+asset AcceptanceOfDeliveryClause extends AccordClause {
+  /**
+   * the shipper of the goods
+   */
+  --&gt; Organization shipper
+
+  /**
+   * the receiver of the goods
+   */
+  --&gt; Organization receiver
+
+  /**
+   * what are we delivering
+   */
+  o String deliverable
+
+  /**
+   * how long does the receiver have to inspect the goods
+   */
+  o Long businessDays
+
+  /**
+   * additional information
+   */
+  o String attachment
+}</code></pre>
+            </div>
+        </div>
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
             <ul>
                 
-                    <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-          
-                    <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-          
-                    <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
-          
-          </ul>
+                    <li>None</li>
+                
+            </ul>
         </div>
 
-          <div class="container technical-integration">
+        <div class="container technical-integration">
     <h2 class="title is-2">Template Logic</h2>
     <div class="content">
         <p>
@@ -435,7 +531,7 @@ to this agreement.</code></pre>
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "2395be70-4140-11ea-9f41-8547c1bcffeb"
+    "stateId": "f6d09200-42d6-11ea-a520-7d4ebfcb2c04"
 }</code></pre></td>
                 </tr>
             
@@ -456,10 +552,10 @@ to this agreement.</code></pre>
                     <th>org.accordproject.acceptanceofdelivery.InspectDeliverable</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
-    "deliverableReceivedAt": "2020-01-27T15:03:51.891-05:00",
+    "deliverableReceivedAt": "2020-01-29T15:36:01.948-05:00",
     "inspectionPassed": false,
-    "transactionId": "2394fb20-4140-11ea-9f41-8547c1bcffeb",
-    "timestamp": "2020-01-27T15:03:51.891-05:00"
+    "transactionId": "f6cff5c0-42d6-11ea-a520-7d4ebfcb2c04",
+    "timestamp": "2020-01-29T15:36:01.948-05:00"
 }</code></pre></td>
                 </tr>
             
@@ -481,10 +577,10 @@ to this agreement.</code></pre>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.acceptanceofdelivery.InspectionResponse",
     "status": "FAILED_TESTING",
-    "shipper": "resource:org.accordproject.organization.Organization#3372",
-    "receiver": "resource:org.accordproject.organization.Organization#9993",
-    "transactionId": "23959760-4140-11ea-9f41-8547c1bcffeb",
-    "timestamp": "2020-01-27T15:03:51.894-05:00"
+    "shipper": "resource:org.accordproject.organization.Organization#7421",
+    "receiver": "resource:org.accordproject.organization.Organization#8379",
+    "transactionId": "f6d06af0-42d6-11ea-a520-7d4ebfcb2c04",
+    "timestamp": "2020-01-29T15:36:01.951-05:00"
 }</code></pre></td>
                 </tr>
             

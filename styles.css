@@ -319,10 +319,18 @@ table.table.box.versions {
 	margin-bottom: 20px;
 }
 
-#tab-content div {
+#tabs-content div {
   display: none;
 }
 
-#tab-content div.is-active {
+#tabs-content div.is-active {
+  display: inline-block;
+}
+
+#mtabs-content div {
+  display: none;
+}
+
+#mtabs-content div.is-active {
   display: inline-block;
 }
