@@ -327,7 +327,7 @@
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandTemplate",
-    "contractId": "62937283-844e-4984-b0a5-ccea9b514b83",
+    "contractId": "0b6c865e-7441-4182-b0b8-917f78ae7337",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dan"
@@ -401,7 +401,15 @@ enum ContractLifecycleStatus {
         <div class="content">
             <ul>
                 
-                    <li>None</li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
+                    
                 
             </ul>
         </div>
@@ -429,7 +437,7 @@ enum ContractLifecycleStatus {
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState",
     "status": "INITIALIZED",
-    "stateId": "8b60a4f1-42d7-11ea-a687-2b4c23fac418"
+    "stateId": "5adf1cd1-42fa-11ea-8b78-dde257dbceb0"
 }</code></pre></td>
                 </tr>
             
@@ -450,8 +458,8 @@ enum ContractLifecycleStatus {
                     <th>org.accordproject.payment.fullupondemand.PaymentDemand</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.fullupondemand.PaymentDemand",
-    "transactionId": "8b607de0-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:11.198-05:00"
+    "transactionId": "5adeceb0-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:49:22.203-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -459,8 +467,8 @@ enum ContractLifecycleStatus {
                     <th>org.accordproject.payment.PaymentReceived</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.PaymentReceived",
-    "transactionId": "8b607de1-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:11.198-05:00"
+    "transactionId": "5adeceb1-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:49:22.203-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -481,8 +489,8 @@ enum ContractLifecycleStatus {
                     <th>org.accordproject.cicero.runtime.Response</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.Response",
-    "transactionId": "8b607de3-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:11.198-05:00"
+    "transactionId": "5adef5c1-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:49:22.204-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -512,16 +520,16 @@ enum ContractLifecycleStatus {
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 168.153,
-        "currencyCode": "INR"
+        "doubleValue": 31.958,
+        "currencyCode": "PLN"
     },
-    "description": "Amet exercitation exercitation mollit.",
-    "contract": "resource:org.accordproject.payment.fullupondemand.FullPaymentUponDemandTemplate#2804",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#0078",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#1408",
-    "deadline": "2020-01-29T15:40:11.199-05:00",
-    "eventId": "8b60a4f2-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:11.199-05:00"
+    "description": "Id amet Lorem officia.",
+    "contract": "resource:org.accordproject.payment.fullupondemand.FullPaymentUponDemandTemplate#6584",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#4225",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#9642",
+    "deadline": "2020-01-29T19:49:22.205-05:00",
+    "eventId": "5adf1cd2-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:49:22.205-05:00"
 }</pre></code></td>
                 </tr>
             

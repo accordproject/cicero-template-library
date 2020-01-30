@@ -334,7 +334,7 @@ Note: to undo a short button press the buyer may double-press the button.</code>
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.iot.PaymentUponButtonContract",
-    "contractId": "6d09c24a-0fd6-4d1c-90d1-35dcddc6e484",
+    "contractId": "59102618-3e2c-4c0f-b767-4e53acf01648",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dan"
@@ -424,7 +424,23 @@ asset PaymentUponButtonContract extends AccordContract {
         <div class="content">
             <ul>
                 
-                    <li>None</li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/signature/signature.html">org.accordproject.signature.ContractSigned</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.SingleButtonPress</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.DoubleButtonPress</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/iot/iot.html">org.accordproject.iot.LongButtonPress</a></li>
+                    
                 
             </ul>
         </div>
@@ -451,10 +467,10 @@ asset PaymentUponButtonContract extends AccordContract {
                     <th>org.accordproject.payment.iot.CounterState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.iot.CounterState",
-    "status": "COMPLETED",
-    "counter": 166.941,
-    "paymentCount": 46.657,
-    "stateId": "a05a3651-42d7-11ea-a687-2b4c23fac418"
+    "status": "INITIALIZED",
+    "counter": 113.024,
+    "paymentCount": 190.02,
+    "stateId": "76661444-42fa-11ea-8b78-dde257dbceb0"
 }</code></pre></td>
                 </tr>
             
@@ -475,10 +491,10 @@ asset PaymentUponButtonContract extends AccordContract {
                     <th>org.accordproject.iot.DoubleButtonPress</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.iot.DoubleButtonPress",
-    "serialNumber": "Incididunt.",
-    "batteryVoltage": "Eu.",
-    "transactionId": "a059e831-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:46.387-05:00"
+    "serialNumber": "Elit eiusmod incididunt labore ut.",
+    "batteryVoltage": "Cillum ut do proident.",
+    "transactionId": "7665ed30-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:08.387-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -486,10 +502,10 @@ asset PaymentUponButtonContract extends AccordContract {
                     <th>org.accordproject.iot.LongButtonPress</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.iot.LongButtonPress",
-    "serialNumber": "Proident occaecat proident.",
-    "batteryVoltage": "Occaecat est sint sint.",
-    "transactionId": "a059e832-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:46.387-05:00"
+    "serialNumber": "Sunt nostrud.",
+    "batteryVoltage": "Cupidatat.",
+    "transactionId": "7665ed31-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:08.387-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -497,10 +513,10 @@ asset PaymentUponButtonContract extends AccordContract {
                     <th>org.accordproject.iot.SingleButtonPress</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.iot.SingleButtonPress",
-    "serialNumber": "Id proident est.",
-    "batteryVoltage": "Exercitation duis eu.",
-    "transactionId": "a059e830-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:46.387-05:00"
+    "serialNumber": "Aliquip in amet laborum sint.",
+    "batteryVoltage": "Aute.",
+    "transactionId": "7665c621-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:08.386-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -510,11 +526,11 @@ asset PaymentUponButtonContract extends AccordContract {
     "$class": "org.accordproject.payment.iot.MonetaryAmountPayment",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 74.575,
-        "currencyCode": "RUB"
+        "doubleValue": 69.71,
+        "currencyCode": "GYD"
     },
-    "transactionId": "a059e833-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:46.387-05:00"
+    "transactionId": "7665ed32-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:08.387-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -522,9 +538,9 @@ asset PaymentUponButtonContract extends AccordContract {
                     <th>org.accordproject.signature.ContractSigned</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.signature.ContractSigned",
-    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#5465",
-    "transactionId": "a059c120-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:46.386-05:00"
+    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#9461",
+    "transactionId": "7665c620-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:08.386-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -545,8 +561,8 @@ asset PaymentUponButtonContract extends AccordContract {
                     <th>org.accordproject.cicero.runtime.Response</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.Response",
-    "transactionId": "a05a0f43-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:46.388-05:00"
+    "transactionId": "7665ed37-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:08.387-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -576,16 +592,16 @@ asset PaymentUponButtonContract extends AccordContract {
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 205.319,
-        "currencyCode": "AUD"
+        "doubleValue": 10.701,
+        "currencyCode": "GMD"
     },
-    "description": "Cupidatat ea.",
-    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#8495",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5787",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#8363",
-    "deadline": "2020-01-29T15:40:46.389-05:00",
-    "eventId": "a05a3652-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:46.389-05:00"
+    "description": "Anim consectetur excepteur.",
+    "contract": "resource:org.accordproject.payment.iot.PaymentUponButtonContract#9992",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#7125",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#5956",
+    "deadline": "2020-01-29T19:50:08.388-05:00",
+    "eventId": "76661445-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:08.388-05:00"
 }</pre></code></td>
                 </tr>
             

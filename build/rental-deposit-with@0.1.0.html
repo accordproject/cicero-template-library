@@ -331,7 +331,7 @@ For the Landlord: {{#with landlord}}{{partyId}}, domiciled at {{address}}{{/with
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.rentaldeposit.RentalDepositClause",
-    "contractId": "a030af47-5a12-4d11-96d2-4cdea9f441c0",
+    "contractId": "161f3f12-d577-48a2-b065-9fc6d4ecd339",
     "tenant": {
         "$class": "org.accordproject.rentaldeposit.RentalParty",
         "partyId": "Michael",
@@ -442,7 +442,15 @@ asset RentalDepositClause extends AccordContract {
         <div class="content">
             <ul>
                 
-                    <li>None</li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.Period</a></li>
+                    
                 
             </ul>
         </div>
@@ -469,7 +477,7 @@ asset RentalDepositClause extends AccordContract {
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "ab25e250-42d7-11ea-a687-2b4c23fac418"
+    "stateId": "864816b1-42fa-11ea-8b78-dde257dbceb0"
 }</code></pre></td>
                 </tr>
             
@@ -493,16 +501,16 @@ asset RentalDepositClause extends AccordContract {
     "penalties": [
         {
             "$class": "org.accordproject.rentaldeposit.Penalty",
-            "description": "Aliqua voluptate.",
+            "description": "Ut.",
             "amount": {
                 "$class": "org.accordproject.money.MonetaryAmount",
-                "doubleValue": 235.374,
-                "currencyCode": "USD"
+                "doubleValue": 128.684,
+                "currencyCode": "AUD"
             }
         }
     ],
-    "transactionId": "ab25bb40-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:41:04.500-05:00"
+    "transactionId": "8647efa0-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:35.034-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -525,11 +533,11 @@ asset RentalDepositClause extends AccordContract {
     "$class": "org.accordproject.rentaldeposit.PropertyInspectionResponse",
     "balance": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 62.523,
-        "currencyCode": "CZK"
+        "doubleValue": 181.902,
+        "currencyCode": "SGD"
     },
-    "transactionId": "ab25bb41-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:41:04.501-05:00"
+    "transactionId": "864816b0-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:35.035-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -552,16 +560,16 @@ asset RentalDepositClause extends AccordContract {
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 193.436,
-        "currencyCode": "GIP"
+        "doubleValue": 181.762,
+        "currencyCode": "ZWL"
     },
-    "description": "Ut incididunt officia.",
-    "contract": "resource:org.accordproject.rentaldeposit.RentalDepositClause#5167",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#6830",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0604",
-    "deadline": "2020-01-29T15:41:04.501-05:00",
-    "eventId": "ab25e251-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:41:04.501-05:00"
+    "description": "Do in exercitation anim.",
+    "contract": "resource:org.accordproject.rentaldeposit.RentalDepositClause#7410",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#7666",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#7216",
+    "deadline": "2020-01-29T19:50:35.036-05:00",
+    "eventId": "86483dc0-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:35.036-05:00"
 }</pre></code></td>
                 </tr>
             
