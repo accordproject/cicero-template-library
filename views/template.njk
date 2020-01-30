@@ -130,7 +130,7 @@
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
             <ul>
-                {% if template.getTemplateModel().getModelFile().getExternalImports().length === 0 %}
+                {% if template.getTemplateModel().getModelFile().getExternalImports().length !== 0 %}
                     {% for ns, uri in template.getTemplateModel().getModelFile().getExternalImports() %}
                         <li><a href="{{uri | replace(".cto", ".html")}}">{{ns}}</a></li>
                     {% endfor %}

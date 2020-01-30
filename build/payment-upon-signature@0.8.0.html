@@ -327,7 +327,7 @@
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.uponsignature.PaymentUponSignatureContract",
-    "contractId": "ca00cf38-70b8-4b69-8980-75eb9bf8dfe5",
+    "contractId": "308c225b-8e29-4db8-8e55-1214b09f8d2d",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Dave"
@@ -400,7 +400,17 @@ asset PaymentUponSignatureContract extends AccordContract {
         <div class="content">
             <ul>
                 
-                    <li>None</li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/signature/signature.html">org.accordproject.signature.ContractSigned</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/payment/payment.html">org.accordproject.payment.PaymentReceived</a></li>
+                    
                 
             </ul>
         </div>
@@ -428,7 +438,7 @@ asset PaymentUponSignatureContract extends AccordContract {
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.uponsignature.PaymentUponSignatureState",
     "status": "INITIALIZED",
-    "stateId": "a2fe5443-42d7-11ea-a687-2b4c23fac418"
+    "stateId": "782be021-42fa-11ea-8b78-dde257dbceb0"
 }</code></pre></td>
                 </tr>
             
@@ -449,8 +459,8 @@ asset PaymentUponSignatureContract extends AccordContract {
                     <th>org.accordproject.payment.PaymentReceived</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.payment.PaymentReceived",
-    "transactionId": "a2fe2d31-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:50.819-05:00"
+    "transactionId": "782bb911-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:11.361-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -458,9 +468,9 @@ asset PaymentUponSignatureContract extends AccordContract {
                     <th>org.accordproject.signature.ContractSigned</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.signature.ContractSigned",
-    "contract": "resource:org.accordproject.payment.uponsignature.PaymentUponSignatureContract#6153",
-    "transactionId": "a2fe2d30-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:50.819-05:00"
+    "contract": "resource:org.accordproject.payment.uponsignature.PaymentUponSignatureContract#5629",
+    "transactionId": "782bb910-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:11.361-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -481,8 +491,8 @@ asset PaymentUponSignatureContract extends AccordContract {
                     <th>org.accordproject.cicero.runtime.Response</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.runtime.Response",
-    "transactionId": "a2fe5441-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:50.820-05:00"
+    "transactionId": "782bb913-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:11.361-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -512,16 +522,16 @@ asset PaymentUponSignatureContract extends AccordContract {
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 61.549,
-        "currencyCode": "BAM"
+        "doubleValue": 13.766,
+        "currencyCode": "USD"
     },
-    "description": "Consequat nulla proident enim laborum.",
-    "contract": "resource:org.accordproject.payment.uponsignature.PaymentUponSignatureContract#7836",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#2412",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4681",
-    "deadline": "2020-01-29T15:40:50.821-05:00",
-    "eventId": "a2fe7b50-42d7-11ea-a687-2b4c23fac418",
-    "timestamp": "2020-01-29T15:40:50.821-05:00"
+    "description": "Ex quis.",
+    "contract": "resource:org.accordproject.payment.uponsignature.PaymentUponSignatureContract#9820",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#2174",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#9585",
+    "deadline": "2020-01-29T19:50:11.363-05:00",
+    "eventId": "782c0730-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:50:11.363-05:00"
 }</pre></code></td>
                 </tr>
             
