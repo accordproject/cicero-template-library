@@ -1,48 +1,49 @@
 
 
 
+
 <!DOCTYPE html>
 <html>
-  <head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      
-      
-      
+        
+        
+        
 
-      <!-— generic unfurl tags -->
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org" />
-      <meta name="twitter:label1" content="Apache 2.0 Licensed" />
-      <meta name="twitter:data1" content="on GitHub.com" />
-      <meta name="twitter:label2" content="Contribute" />
-      <meta name="twitter:data2" content="at AccordProject.org" />
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
 
-      
+        
   <!-— facebook open graph tags -->
   <meta property="og:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.5.1.html" />
   <meta property="og:title" content="lateinvoicewithpayment@0.5.1" />
@@ -57,14 +58,37 @@
   <meta name="twitter:url" content="https://templates.accordproject.org/lateinvoicewithpayment@0.5.1.html" />
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
-      <link rel="stylesheet" href="assets/fonts.css" />
-      <link rel="stylesheet" href="styles.css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -256,25 +280,46 @@
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">2.4 {{purchaser}} is not required to pay any invoice that is issued more than {{maximumDelay}} after it is due to be issued by {{supplier}}.</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">2.4 "Betty Buyer" is not required to pay any invoice that is issued more than 180 days after it is due to be issued by "Steve Seller".</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">2.4 {{purchaser}} is not required to pay any invoice that is issued more than {{maximumDelay}} after it is due to be issued by {{supplier}}.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceContract",
-    "contractId": "35d2b9f5-1b31-4368-bdfc-9bee9a7ca340",
+    "contractId": "6ec72767-13f4-4d05-a6b2-5b67ae65bde4",
     "maximumDelay": {
         "$class": "org.accordproject.time.Duration",
         "amount": 180,
@@ -288,29 +333,92 @@
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Steve Seller"
     }
-}</pre></code>
+}</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
 
-        <img src="https://www.plantuml.com/plantuml/svg/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00" class="box" style="margin-top:40px;" />
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/fLDBJiCm4Dtd5BC4qUO4LTH0DfL0Gj0BZ9nHQcHxpDYcHC3TSUfqWVW8jIjByzxuVIolGqI9oPfA6Gm1M8OQbMBflV0JgLWRZAJT2sj5Unrt7aTBBjQtURmfunjsKL15MAtWebqCGkGkeMdWhGA0A-YIODJimEAhjibsP70iK7kGkiyMHl19r0u3oNSe9E-DpiX7TPR1vVAz-I6YoXpXMisqkaWVjyveve6U4uLIp7OnaZ6y_z9Cfcwr9PYlwH8Lu8uTvOSPMyl9HS33CQ6d5N3qyNT-oHhPJ3sppyeTFBj0lmQ_PZQ43kRTIL4BzGLyZABT00fJE3tmRE2_YGkzMfFhfy_m2G00"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.lateinvoicewithpayment
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
+import org.accordproject.money.* from https://models.accordproject.org/money.cto
+
+/**
+ * Defines the data model for the LateInvoice template.
+ * This defines the structure of the abstract syntax tree that the parser for the template
+ * must generate from input source text.
+ */
+asset LateInvoiceContract extends AccordContract {
+  /**
+   * If the invoice deliver date  >= termination date then the buyer does not have to pay
+   */
+  o Duration maximumDelay
+  o AccordParty purchaser
+  o AccordParty supplier
+}
+
+/**
+ * Defines the input data required by the template
+ */
+transaction LateInvoiceRequest extends Request {
+  /**
+   * What was the agreed delivery date for the invoice?
+   */
+  o DateTime invoiceDue
+  o MonetaryAmount amountDue
+}
+
+/**
+ * Defines the output data for the template
+ */
+transaction LateInvoiceResponse extends Response {
+  o Boolean paymentRequired
+  o String cause optional
+}
+</code></pre>
+            </div>
+        </div>
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
-          
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.*</a></li>
-          
-          </ul>
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.*</a></li>
+                    
+                
+            </ul>
         </div>
 
-          <div class="container technical-integration">
+        <div class="container technical-integration">
     <h2 class="title is-2">Template Logic</h2>
     <div class="content">
         <p>
@@ -332,7 +440,7 @@
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "cf407cb0-1d5f-11ea-9a89-51fed438a842"
+    "stateId": "6a00b571-42fa-11ea-8b78-dde257dbceb0"
 }</code></pre></td>
                 </tr>
             
@@ -353,14 +461,14 @@
                     <th>org.accordproject.lateinvoicewithpayment.LateInvoiceRequest</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceRequest",
-    "invoiceDue": "2019-12-12T23:19:52.442-05:00",
+    "invoiceDue": "2020-01-29T19:49:47.590-05:00",
     "amountDue": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 166.757,
-        "currencyCode": "XBC"
+        "doubleValue": 100.685,
+        "currencyCode": "GMD"
     },
-    "transactionId": "cf4055a0-1d5f-11ea-9a89-51fed438a842",
-    "timestamp": "2019-12-12T23:19:52.442-05:00"
+    "transactionId": "6a008e60-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:49:47.590-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -382,9 +490,9 @@
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceResponse",
     "paymentRequired": true,
-    "cause": "Sunt pariatur sint.",
-    "transactionId": "cf4055a1-1d5f-11ea-9a89-51fed438a842",
-    "timestamp": "2019-12-12T23:19:52.442-05:00"
+    "cause": "Irure.",
+    "transactionId": "6a00b570-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:49:47.591-05:00"
 }</pre></code></td>
                 </tr>
             
@@ -407,16 +515,16 @@
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 207.243,
-        "currencyCode": "BAM"
+        "doubleValue": 150.864,
+        "currencyCode": "ALL"
     },
-    "description": "Elit.",
-    "contract": "resource:org.accordproject.lateinvoicewithpayment.LateInvoiceContract#1655",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#5995",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2570",
-    "deadline": "2019-12-12T23:19:52.443-05:00",
-    "eventId": "cf407cb1-1d5f-11ea-9a89-51fed438a842",
-    "timestamp": "2019-12-12T23:19:52.443-05:00"
+    "description": "Magna consectetur magna nisi enim.",
+    "contract": "resource:org.accordproject.lateinvoicewithpayment.LateInvoiceContract#5959",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#3039",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#2927",
+    "deadline": "2020-01-29T19:49:47.591-05:00",
+    "eventId": "6a00b572-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:49:47.591-05:00"
 }</pre></code></td>
                 </tr>
             

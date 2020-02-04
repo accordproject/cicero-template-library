@@ -38,12 +38,19 @@ a:hover {
 	margin-bottom: 50px;
 }
   
-
 .content p {
 	font-size: 15px;
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 28px;
-	color: rgba(5, 12, 64, 0.502);
+	color: rgba(5, 12, 64, 0.7);
+}
+
+.content pre {
+	padding: 0px;
+}
+
+pre {
+	padding: 0px;
 }
 
 .content:not(:last-child) {
@@ -54,6 +61,7 @@ a:hover {
 	border-radius: 10px;
 	display: inline-block;
 	margin-bottom: 50px !important;
+  padding: 2.25rem;
 }
 
 /* Headings */
@@ -82,9 +90,9 @@ a:hover {
 
 .subtitle {
 	font-size: 15px;
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 28px;
-	color: rgba(5, 12, 64, 0.502);
+	color: rgba(5, 12, 64, 0.7);
 }
 
 .has-background-dark,
@@ -168,7 +176,7 @@ a.navbar-item img {
   background-image: url(/assets/images/noise.png);
   background-size: 276px 276px;
   pointer-events: none;
-  }
+}
 
 .hero.is-dark a:not(.button):not(.dropdown-item):not(.tag) {
 	color: rgb(25, 198, 199);
@@ -271,7 +279,7 @@ svg.svg-inline--fa.fa-angle-down.fa-w-10 path {
 	border-width: 0 0 1px;
 	padding: 0.5em 0.75em;
 	vertical-align: top;
-	color: rgba(5, 12, 64, 0.6);
+	color: rgba(5, 12, 64, 0.7);
 	font-size: 15px;
 	font-weight: 400;
 }
@@ -309,4 +317,20 @@ table.table.box.versions {
 
 .technical-integration.content {
 	margin-bottom: 20px;
+}
+
+#tabs-content div {
+  display: none;
+}
+
+#tabs-content div.is-active {
+  display: inline-block;
+}
+
+#mtabs-content div {
+  display: none;
+}
+
+#mtabs-content div.is-active {
+  display: inline-block;
 }

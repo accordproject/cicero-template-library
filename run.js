@@ -17,6 +17,9 @@
 const CodeGen = require('@accordproject/concerto-tools').CodeGen;
 const FileWriter = require('@accordproject/concerto-tools').FileWriter;
 
+const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
+const CiceroMarkTransformer = require('@accordproject/markdown-cicero').CiceroMarkTransformer;
+
 const Template = require('@accordproject/cicero-core').Template;
 const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
@@ -25,7 +28,7 @@ const nunjucks = require('nunjucks');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
 const uuidv1 = require('uuid/v1');
-const semver = require('semver')
+const semver = require('semver');
 
 const {
     promisify
@@ -51,8 +54,11 @@ const archiveDir = resolve(__dirname, './build/archives');
 const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.accordproject.org';
 const studioRoot = 'https://studio.accordproject.org';
 
+const ciceroMark = new CiceroMarkTransformer();
+const htmlMark = new HtmlTransformer();
+
 nunjucks.configure('./views', {
-    autoescape: false
+    autoescape: false,
 });
 
 /**
@@ -104,7 +110,7 @@ nunjucks.configure('./views', {
             // generate the index html page
             const templateResult = nunjucks.render('index.njk', {
                 serverRoot: serverRoot,
-                templateIndex: latestIndex
+                templateIndex: latestIndex,
             });
             await writeFile('./build/index.html', templateResult);
         }
@@ -172,9 +178,9 @@ async function getFiles(dir) {
 async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 
     // load the index
-    const templateLibraryPath = `${buildDir}/template-library.json`
+    const templateLibraryPath = `${buildDir}/template-library.json`;
     let templateIndex = {};
-    const indexExists = await fs.pathExists(templateLibraryPath)
+    const indexExists = await fs.pathExists(templateLibraryPath);
 
     if(indexExists) {
         const indexContent = fs.readFileSync(templateLibraryPath, 'utf8');
@@ -227,7 +233,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                       templateVersions.forEach(versionToUpdate => {
                         const templateResult = nunjucks.render("dropdown.njk", {
                           identifier: versionToUpdate,
-                          templateVersions: templateVersions
+                          templateVersions: templateVersions,
                         });
                         fs.readFile(
                           "build/" + versionToUpdate + ".html",
@@ -262,7 +268,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     await fs.ensureDir(destPath);
                     const archiveFileName = `${template.getIdentifier()}.cta`;
                     const archiveFilePath = `${archiveDir}/${archiveFileName}`;
-                    const archiveFileExists = await fs.pathExists(archiveFilePath)
+                    const archiveFileExists = await fs.pathExists(archiveFilePath);
 
                     if(!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
                         let archive;
@@ -281,7 +287,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             description : m.getDescription(),
                             version: m.getVersion(),
                             ciceroVersion: m.getCiceroVersion(),
-                            type: m.getTemplateType()
+                            type: m.getTemplateType(),
                         }
                         templateIndex[template.getIdentifier()] = indexData;
 
@@ -289,9 +295,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                         await postProcessor(templateIndex, templatePath, template);
                     }
                     else {
-
                         console.log(`Skipped: ${archiveFileName} (already exists).`);
-
                     }
                 }
             } catch (err) {
@@ -368,18 +372,20 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const pumlFilePath = `${buildDir}/${template.getIdentifier()}.puml`;
 
     // generate UML
-    const modelFile = template.getTemplateModel().getModelFile();
+    const modelDecls = template.getTemplateModel().getModelFile();
+    const models = template.getModelManager().getModels();
+    const modelFile = models[models.length-1].content;
     const visitor = new CodeGen.PlantUMLVisitor();
     const fileWriter = new FileWriter(buildDir);
 
     fileWriter.openFile(pumlFilePath);
     fileWriter.writeLine(0, '@startuml');
     const params = {fileWriter : fileWriter};
-    modelFile.accept(visitor, params);
+    modelDecls.accept(visitor, params);
     fileWriter.writeLine(0, '@enduml');
     fileWriter.closeFile();
     const pumlContent = fs.readFileSync(pumlFilePath, 'utf8');
-    const encoded = plantumlEncoder.encode(pumlContent)
+    const encoded = plantumlEncoder.encode(pumlContent);
     const umlURL = `https://www.plantuml.com/plantuml/svg/${encoded}`;
     const umlCardURL = `https://www.plantuml.com/plantuml/png/${encoded}`;
     const studioURL = `${studioRoot}/?template=${encodeURIComponent('ap://' + template.getIdentifier() + '#hash')}`;
@@ -387,7 +393,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
 
-    let sampleInstanceText = null
+    let sampleInstanceText = null;
 
     // parse the default sample and use it as the sample instance
     const samples = template.getMetadata().getSamples();
@@ -430,6 +436,11 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         return name == template.getName();
     });
 
+    const sample = template.getMetadata().getSample();
+    let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample,'json'));
+    // XXX HTML cleanup hack for rendering in page. Would be best done with the right option in markdown-transform
+    sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">','').replace('</div>\n</body>\n</html>','');
+
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL : umlURL,
@@ -437,13 +448,16 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         studioURL : studioURL,
         filePath: templatePageHtml,
         template: template,
+        modelFile: modelFile,
+        sample: sample,
+        sampleHTML: sampleHTML,
         readmeHtml: readmeHtml,
         requestTypes: requestTypes,
         responseTypes: responseTypes,
         stateTypes: stateTypes,
         instance: sampleInstanceText,
         eventTypes: eventTypes,
-        templateVersions: templateVersions
+        templateVersions: templateVersions,
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }

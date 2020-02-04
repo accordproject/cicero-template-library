@@ -1,65 +1,94 @@
-<!DOCTYPE html><html><head>
-      <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-120382669-1');
-      </script>
-
-      <script>
-          // handle drop down menus
-          window.addEventListener('load', function () {
-              var dropdown = document.querySelector('.dropdown');
-              if(dropdown) {
-                  dropdown.addEventListener('click', function(event) {
-                      event.stopPropagation();
-                      dropdown.classList.toggle('is-active');
-                  });
-              }
-          }, false);
-      </script>
-      
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      
-      
-      
-
-      <!---— generic unfurl tags ---->
-      <meta property="og:type" content="website">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:domain" content="templates.accordproject.org">
-      <meta name="twitter:label1" content="Apache 2.0 Licensed">
-      <meta name="twitter:data1" content="on GitHub.com">
-      <meta name="twitter:label2" content="Contribute">
-      <meta name="twitter:data2" content="at AccordProject.org">
-
-      
-  <!---— facebook open graph tags ---->
-  <meta property="og:url" content="https://templates.accordproject.org/servicelevelagreement@0.14.0.html">
-  <meta property="og:title" content="servicelevelagreement@0.14.0">
-  <meta property="og:description" content="A service level agreement that gives invoice credit based on service availability.">
-  <meta property="og:image" content="https://www.plantuml.com/plantuml/png/hPF1QiCm38RlVGeVDzO6idCf3Tsbi4AXVG7L4Qc7RGNPoJ3RtdrEauvcD5iAlUh_PKlVRo-T1_QLqHEfmJb1N2GW9N5UChsXz8b3hfL4ZJLgA1ZHeFN9hgs-DjNiN5sHzGpIY_bSF6JJfcmVnM8XFYP2Y2UnjXuBP552QEnRP4LvAxrGTT0eJ3pXgCCAoYZAw842UuQ0m7_fK8FIS51Q-P2soeOinYL3PgYoNdJxh1XpvTF1vkV_cpjBTiArZHZ3MTyorIf77ZH4KguoqV0rkG_nsUnpSIKy6JkO4jdPadQKSzUDcM-QS7QLCP77AUBzDA3Mz7wPSJ_8ow6l1dq4_fLW7CcdwUck5lEWslQE9zYRVm3O0HmcUmRh8Xz5zaP4QrlJp_iOoQZRSlmU_Kl6Bh94cpV__1i0">
-
-  <!---— twitter card tags additive with the og: tags ---->
-  <meta name="twitter:title" content="servicelevelagreement@0.14.0">
-  <meta name="twitter:description" content="A service level agreement that gives invoice credit based on service availability.">
-  <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hPF1QiCm38RlVGeVDzO6idCf3Tsbi4AXVG7L4Qc7RGNPoJ3RtdrEauvcD5iAlUh_PKlVRo-T1_QLqHEfmJb1N2GW9N5UChsXz8b3hfL4ZJLgA1ZHeFN9hgs-DjNiN5sHzGpIY_bSF6JJfcmVnM8XFYP2Y2UnjXuBP552QEnRP4LvAxrGTT0eJ3pXgCCAoYZAw842UuQ0m7_fK8FIS51Q-P2soeOinYL3PgYoNdJxh1XpvTF1vkV_cpjBTiArZHZ3MTyorIf77ZH4KguoqV0rkG_nsUnpSIKy6JkO4jdPadQKSzUDcM-QS7QLCP77AUBzDA3Mz7wPSJ_8ow6l1dq4_fLW7CcdwUck5lEWslQE9zYRVm3O0HmcUmRh8Xz5zaP4QrlJp_iOoQZRSlmU_Kl6Bh94cpV__1i0">
-  <meta name="twitter:image:alt" content="UML diagram of servicelevelagreement@0.14.0 namespace.">
-  <meta name="twitter:url" content="https://templates.accordproject.org/servicelevelagreement@0.14.0.html">
 
 
-      <title>Accord Project Template Library</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-      <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
-      <link rel="stylesheet" href="assets/fonts.css">
-      <link rel="stylesheet" href="styles.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+  <!-— facebook open graph tags -->
+  <meta property="og:url" content="https://templates.accordproject.org/servicelevelagreement@0.14.0.html" />
+  <meta property="og:title" content="servicelevelagreement@0.14.0" />
+  <meta property="og:description" content="A service level agreement that gives invoice credit based on service availability." />
+  <meta property="og:image" content="https://www.plantuml.com/plantuml/png/hPF1QiCm38RlVGeVDzO6idCf3Tsbi4AXVG7L4Qc7RGNPoJ3RtdrEauvcD5iAlUh_PKlVRo-T1_QLqHEfmJb1N2GW9N5UChsXz8b3hfL4ZJLgA1ZHeFN9hgs-DjNiN5sHzGpIY_bSF6JJfcmVnM8XFYP2Y2UnjXuBP552QEnRP4LvAxrGTT0eJ3pXgCCAoYZAw842UuQ0m7_fK8FIS51Q-P2soeOinYL3PgYoNdJxh1XpvTF1vkV_cpjBTiArZHZ3MTyorIf77ZH4KguoqV0rkG_nsUnpSIKy6JkO4jdPadQKSzUDcM-QS7QLCP77AUBzDA3Mz7wPSJ_8ow6l1dq4_fLW7CcdwUck5lEWslQE9zYRVm3O0HmcUmRh8Xz5zaP4QrlJp_iOoQZRSlmU_Kl6Bh94cpV__1i0" />
+
+  <!-— twitter card tags additive with the og: tags -->
+  <meta name="twitter:title" content="servicelevelagreement@0.14.0" />
+  <meta name="twitter:description" content="A service level agreement that gives invoice credit based on service availability." />
+  <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hPF1QiCm38RlVGeVDzO6idCf3Tsbi4AXVG7L4Qc7RGNPoJ3RtdrEauvcD5iAlUh_PKlVRo-T1_QLqHEfmJb1N2GW9N5UChsXz8b3hfL4ZJLgA1ZHeFN9hgs-DjNiN5sHzGpIY_bSF6JJfcmVnM8XFYP2Y2UnjXuBP552QEnRP4LvAxrGTT0eJ3pXgCCAoYZAw842UuQ0m7_fK8FIS51Q-P2soeOinYL3PgYoNdJxh1XpvTF1vkV_cpjBTiArZHZ3MTyorIf77ZH4KguoqV0rkG_nsUnpSIKy6JkO4jdPadQKSzUDcM-QS7QLCP77AUBzDA3Mz7wPSJ_8ow6l1dq4_fLW7CcdwUck5lEWslQE9zYRVm3O0HmcUmRh8Xz5zaP4QrlJp_iOoQZRSlmU_Kl6Bh94cpV__1i0" />
+  <meta name="twitter:image:alt" content="UML diagram of servicelevelagreement@0.14.0 namespace." />
+  <meta name="twitter:url" content="https://templates.accordproject.org/servicelevelagreement@0.14.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
       <script>
        hljs.initHighlightingOnLoad();
        hljs.registerLanguage('ergo', function(hljs) {
@@ -164,14 +193,14 @@
           <div class="navbar-end">
             <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
               <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
                 </svg>
               </div>
               GitHub
             </a>
           </div>
         </div>
-      
+      </div>
     </nav>
 
     
@@ -191,7 +220,7 @@
         </p>
 
         <p>
-          </p><div class="dropdown">
+          <div class="dropdown">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span>Versions</span>
@@ -202,168 +231,159 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-  <a href="servicelevelagreement@0.0.1.html" class="dropdown-item ">
-      servicelevelagreement@0.0.1
-  </a>
-
-  <a href="servicelevelagreement@0.1.0.html" class="dropdown-item ">
-      servicelevelagreement@0.1.0
-  </a>
-
-  <a href="servicelevelagreement@0.2.0.html" class="dropdown-item ">
-      servicelevelagreement@0.2.0
-  </a>
-
-  <a href="servicelevelagreement@0.3.0.html" class="dropdown-item ">
-      servicelevelagreement@0.3.0
-  </a>
-
-  <a href="servicelevelagreement@0.4.0.html" class="dropdown-item ">
-      servicelevelagreement@0.4.0
-  </a>
-
-  <a href="servicelevelagreement@0.5.0.html" class="dropdown-item ">
-      servicelevelagreement@0.5.0
-  </a>
-
-  <a href="servicelevelagreement@0.6.0.html" class="dropdown-item ">
-      servicelevelagreement@0.6.0
-  </a>
-
-  <a href="servicelevelagreement@0.7.0.html" class="dropdown-item ">
-      servicelevelagreement@0.7.0
-  </a>
-
-  <a href="servicelevelagreement@0.8.0.html" class="dropdown-item ">
-      servicelevelagreement@0.8.0
-  </a>
-
-  <a href="servicelevelagreement@0.9.0.html" class="dropdown-item ">
-      servicelevelagreement@0.9.0
-  </a>
-
-  <a href="servicelevelagreement@0.9.1.html" class="dropdown-item ">
-      servicelevelagreement@0.9.1
-  </a>
-
-  <a href="servicelevelagreement@0.10.0.html" class="dropdown-item ">
-      servicelevelagreement@0.10.0
-  </a>
-
-  <a href="servicelevelagreement@0.11.0.html" class="dropdown-item ">
-      servicelevelagreement@0.11.0
-  </a>
-
-  <a href="servicelevelagreement@0.12.0.html" class="dropdown-item ">
-      servicelevelagreement@0.12.0
-  </a>
-
-  <a href="servicelevelagreement@0.12.1.html" class="dropdown-item ">
-      servicelevelagreement@0.12.1
-  </a>
-
-  <a href="servicelevelagreement@0.13.0.html" class="dropdown-item ">
-      servicelevelagreement@0.13.0
-  </a>
-
-  <a href="servicelevelagreement@0.13.1.html" class="dropdown-item ">
-      servicelevelagreement@0.13.1
-  </a>
-
-  <a href="servicelevelagreement@0.14.0.html" class="dropdown-item is-active">
-      servicelevelagreement@0.14.0
-  </a>
-
-</div>
+              
+                <a href="servicelevelagreement@0.9.1.html" class="dropdown-item ">
+                    servicelevelagreement@0.9.1
+                </a>
+              
+                <a href="servicelevelagreement@0.9.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.9.0
+                </a>
+              
+                <a href="servicelevelagreement@0.8.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.8.0
+                </a>
+              
+                <a href="servicelevelagreement@0.7.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.7.0
+                </a>
+              
+                <a href="servicelevelagreement@0.6.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.6.0
+                </a>
+              
+                <a href="servicelevelagreement@0.5.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.5.0
+                </a>
+              
+                <a href="servicelevelagreement@0.4.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.4.0
+                </a>
+              
+                <a href="servicelevelagreement@0.3.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.3.0
+                </a>
+              
+                <a href="servicelevelagreement@0.2.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.2.0
+                </a>
+              
+                <a href="servicelevelagreement@0.14.0.html" class="dropdown-item is-active">
+                    servicelevelagreement@0.14.0
+                </a>
+              
+                <a href="servicelevelagreement@0.13.1.html" class="dropdown-item ">
+                    servicelevelagreement@0.13.1
+                </a>
+              
+                <a href="servicelevelagreement@0.13.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.13.0
+                </a>
+              
+                <a href="servicelevelagreement@0.12.1.html" class="dropdown-item ">
+                    servicelevelagreement@0.12.1
+                </a>
+              
+                <a href="servicelevelagreement@0.12.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.12.0
+                </a>
+              
+                <a href="servicelevelagreement@0.11.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.11.0
+                </a>
+              
+                <a href="servicelevelagreement@0.10.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.10.0
+                </a>
+              
+                <a href="servicelevelagreement@0.1.0.html" class="dropdown-item ">
+                    servicelevelagreement@0.1.0
+                </a>
+              
+                <a href="servicelevelagreement@0.0.1.html" class="dropdown-item ">
+                    servicelevelagreement@0.0.1
+                </a>
+              
+              </div>
             </div>
           </div>
           <a href="./archives/servicelevelagreement@0.14.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
           <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fservicelevelagreement%400.14.0%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
-        <p></p>
+        </p>
 
         <div class="content">
           <p>
-          </p><h1 id="servicelevelagreement">Service Level Agreement</h1>
+          <h1 id="servicelevelagreement">Service Level Agreement</h1>
 <p>A service level agreement that gives invoice credit based on service availability.</p>
-          <p></p>
+          </p>
         </div>
 
         <h2 class="title is-2">Template Text</h2>
 
-        <div class="content">
-          <p></p>
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-        <h4 class="title is-4">Grammar</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">1	Definitions
-
-1.1	In this Schedule:
-
-Business Day	means any day which is not a Saturday, Sunday or a public or bank holiday in England;
-
-Change Control Procedure	the procedure described in Change Control;
-
-month	means calendar month;
-
-Service Credits	means the credits which become due to the Customer where the Service Levels are not achieved as set out in paragraph 3 and the Annex; and
-
-Service Levels	means the service levels set out in the Annex.
-
-2	Service levels
-
-2.1	The Supplier {{serviceProvider}} shall provide the Services so as to meet or exceed the Service Levels set out in this Schedule.
-
-2.2	Service Levels may be added, deleted, or modified by the parties at any time during the Term, in accordance with the Change Control Procedure. For the avoidance of doubt, the Supplier shall not withhold or delay its consent to any changes to the Service Levels that are required to achieve a fair, accurate and consistent measurement of the Supplier’s performance in delivering the Services.
-
-3	Service credits
-
-3.1	If the Supplier fails to meet or exceed a Service Level, the Customer {{serviceConsumer}} shall be entitled to a Service Credit in accordance with the provisions of this paragraph 3.
-
-3.2	Service Credits shall be applied as a deduction against the Customer’s next monthly invoice or, if there are insufficient charges to deduct from, shall be paid to the Customer within {{paymentPeriod}} days.
-
-3.3	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in a single month under this Agreement shall not exceed: {{monthlyCapPercentage}}%.
-
-3.4	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in any 12–month period under this Agreement shall not exceed: {{yearlyCapPercentage}}%.
-
-3.5	The Supplier shall not charge the Customer for any work carried out by it in connection with remedying a Service Level default.
-
-3.6	Where a sum is expressed to be payable as a Service Credit the parties agree that:
-
-3.6.1	the Customer has a legitimate interest in ensuring that it can recover losses suffered as a result of the Supplier’s failure to meet the relevant Service Level; and
-
-3.6.2	the Service Credits set out in this Agreement are not out of all proportion to such interest.
-
-3.7	Any Service Credits that are deducted and/or paid are not to be taken into account for the purposes of the limitation on liability provisions set out in Limitation of liability.
-
-3.8	The payment of Service Credits is without prejudice to any other remedy available to the Customer, whether under this Agreement, common law, or in equity.
-
-4	Exclusions
-
-4.1	The Supplier shall be relieved of its liability in respect of any failure to provide the Services to the Service Levels if, and to the extent that, such failure is wholly and directly attributable to any of the following:
-
-4.1.1	a failure by the Customer to observe any of its obligations under this Agreement which have a direct impact upon the Supplier’s provision of the Services; or
-
-4.1.2	a Force Majeure event.
-
-5	Reporting
-
-5.1	The Supplier shall monitor its performance against the Service Levels and, within ten Business Days after the end of each month, shall prepare and submit to the Customer a report showing in detail its performance against the Service Levels in that previous month.
-
-5.2	The Supplier shall, at the Customer’s request, provide details of its performance against the Service Levels more frequently than monthly if the Customer, acting reasonably, has a concern as to service quality or any other aspect of the Supplier’s performance of this Agreement.
-
-5.3	A failure by the Supplier to monitor the Services or to provide the Customer with a monthly report or other details in accordance with this Schedule shall be deemed to be a Service Level default and the Supplier will be deemed to have failed to achieve those Service Levels in respect of which the Customer has failed to report.
-
-Annex 1—Service levels
-
-| Service Level Description     | Target service level      | Service credit
-| Priority 1                    | {{availability1}}%                      |     {{serviceCredit1}}
-| Priority 1                    | {{availability2}}%                       |     {{serviceCredit2}}</code></pre>
-        </div>
-
-        <h4 class="title is-4">Sample</h4>
-        <div class="content box">
-          <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">1	Definitions
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>1	Definitions</p>
+<p>1.1	In this Schedule:</p>
+<p>Business Day	means any day which is not a Saturday, Sunday or a public or bank holiday in England;</p>
+<p>Change Control Procedure	the procedure described in Change Control;</p>
+<p>month	means calendar month;</p>
+<p>Service Credits	means the credits which become due to the Customer where the Service Levels are not achieved as set out in paragraph 3 and the Annex; and</p>
+<p>Service Levels	means the service levels set out in the Annex.</p>
+<p>2	Service levels</p>
+<p>2.1	The Supplier "Service Provider" shall provide the Services so as to meet or exceed the Service Levels set out in this Schedule.</p>
+<p>2.2	Service Levels may be added, deleted, or modified by the parties at any time during the Term, in accordance with the Change Control Procedure. For the avoidance of doubt, the Supplier shall not withhold or delay its consent to any changes to the Service Levels that are required to achieve a fair, accurate and consistent measurement of the Supplier’s performance in delivering the Services.</p>
+<p>3	Service credits</p>
+<p>3.1	If the Supplier fails to meet or exceed a Service Level, the Customer "Service Consumer" shall be entitled to a Service Credit in accordance with the provisions of this paragraph 3.</p>
+<p>3.2	Service Credits shall be applied as a deduction against the Customer’s next monthly invoice or, if there are insufficient charges to deduct from, shall be paid to the Customer within 30 days.</p>
+<p>3.3	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in a single month under this Agreement shall not exceed: 10%.</p>
+<p>3.4	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in any 12–month period under this Agreement shall not exceed: 10%.</p>
+<p>3.5	The Supplier shall not charge the Customer for any work carried out by it in connection with remedying a Service Level default.</p>
+<p>3.6	Where a sum is expressed to be payable as a Service Credit the parties agree that:</p>
+<p>3.6.1	the Customer has a legitimate interest in ensuring that it can recover losses suffered as a result of the Supplier’s failure to meet the relevant Service Level; and</p>
+<p>3.6.2	the Service Credits set out in this Agreement are not out of all proportion to such interest.</p>
+<p>3.7	Any Service Credits that are deducted and/or paid are not to be taken into account for the purposes of the limitation on liability provisions set out in Limitation of liability.</p>
+<p>3.8	The payment of Service Credits is without prejudice to any other remedy available to the Customer, whether under this Agreement, common law, or in equity.</p>
+<p>4	Exclusions</p>
+<p>4.1	The Supplier shall be relieved of its liability in respect of any failure to provide the Services to the Service Levels if, and to the extent that, such failure is wholly and directly attributable to any of the following:</p>
+<p>4.1.1	a failure by the Customer to observe any of its obligations under this Agreement which have a direct impact upon the Supplier’s provision of the Services; or</p>
+<p>4.1.2	a Force Majeure event.</p>
+<p>5	Reporting</p>
+<p>5.1	The Supplier shall monitor its performance against the Service Levels and, within ten Business Days after the end of each month, shall prepare and submit to the Customer a report showing in detail its performance against the Service Levels in that previous month.</p>
+<p>5.2	The Supplier shall, at the Customer’s request, provide details of its performance against the Service Levels more frequently than monthly if the Customer, acting reasonably, has a concern as to service quality or any other aspect of the Supplier’s performance of this Agreement.</p>
+<p>5.3	A failure by the Supplier to monitor the Services or to provide the Customer with a monthly report or other details in accordance with this Schedule shall be deemed to be a Service Level default and the Supplier will be deemed to have failed to achieve those Service Levels in respect of which the Customer has failed to report.</p>
+<p>Annex 1—Service levels</p>
+<p>| Service Level Description     | Target service level      | Service credit
+| Priority 1                    | 99.8%                      |     2.0 GBP
+| Priority 1                    | 98.0%                       |     3.0 GBP</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">1	Definitions
 
 1.1	In this Schedule:
 
@@ -426,13 +446,76 @@ Annex 1—Service levels
 | Service Level Description     | Target service level      | Service credit 
 | Priority 1                    | 99.8%                      |     2.0 GBP
 | Priority 1                    | 98.0%                       |     3.0 GBP</code></pre>
-        </div>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">1	Definitions
 
-        <h4 class="title is-4">Sample Data</h4>
-        <div class="box">
-            <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+1.1	In this Schedule:
+
+Business Day	means any day which is not a Saturday, Sunday or a public or bank holiday in England;
+
+Change Control Procedure	the procedure described in Change Control;
+
+month	means calendar month;
+
+Service Credits	means the credits which become due to the Customer where the Service Levels are not achieved as set out in paragraph 3 and the Annex; and
+
+Service Levels	means the service levels set out in the Annex.
+
+2	Service levels
+
+2.1	The Supplier {{serviceProvider}} shall provide the Services so as to meet or exceed the Service Levels set out in this Schedule.
+
+2.2	Service Levels may be added, deleted, or modified by the parties at any time during the Term, in accordance with the Change Control Procedure. For the avoidance of doubt, the Supplier shall not withhold or delay its consent to any changes to the Service Levels that are required to achieve a fair, accurate and consistent measurement of the Supplier’s performance in delivering the Services.
+
+3	Service credits
+
+3.1	If the Supplier fails to meet or exceed a Service Level, the Customer {{serviceConsumer}} shall be entitled to a Service Credit in accordance with the provisions of this paragraph 3.
+
+3.2	Service Credits shall be applied as a deduction against the Customer’s next monthly invoice or, if there are insufficient charges to deduct from, shall be paid to the Customer within {{paymentPeriod}} days.
+
+3.3	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in a single month under this Agreement shall not exceed: {{monthlyCapPercentage}}%.
+
+3.4	The amount of Service Credits credited (and/or paid) to the Customer with respect to all Service Level defaults occurring in any 12–month period under this Agreement shall not exceed: {{yearlyCapPercentage}}%.
+
+3.5	The Supplier shall not charge the Customer for any work carried out by it in connection with remedying a Service Level default.
+
+3.6	Where a sum is expressed to be payable as a Service Credit the parties agree that:
+
+3.6.1	the Customer has a legitimate interest in ensuring that it can recover losses suffered as a result of the Supplier’s failure to meet the relevant Service Level; and
+
+3.6.2	the Service Credits set out in this Agreement are not out of all proportion to such interest.
+
+3.7	Any Service Credits that are deducted and/or paid are not to be taken into account for the purposes of the limitation on liability provisions set out in Limitation of liability.
+
+3.8	The payment of Service Credits is without prejudice to any other remedy available to the Customer, whether under this Agreement, common law, or in equity.
+
+4	Exclusions
+
+4.1	The Supplier shall be relieved of its liability in respect of any failure to provide the Services to the Service Levels if, and to the extent that, such failure is wholly and directly attributable to any of the following:
+
+4.1.1	a failure by the Customer to observe any of its obligations under this Agreement which have a direct impact upon the Supplier’s provision of the Services; or
+
+4.1.2	a Force Majeure event.
+
+5	Reporting
+
+5.1	The Supplier shall monitor its performance against the Service Levels and, within ten Business Days after the end of each month, shall prepare and submit to the Customer a report showing in detail its performance against the Service Levels in that previous month.
+
+5.2	The Supplier shall, at the Customer’s request, provide details of its performance against the Service Levels more frequently than monthly if the Customer, acting reasonably, has a concern as to service quality or any other aspect of the Supplier’s performance of this Agreement.
+
+5.3	A failure by the Supplier to monitor the Services or to provide the Customer with a monthly report or other details in accordance with this Schedule shall be deemed to be a Service Level default and the Supplier will be deemed to have failed to achieve those Service Levels in respect of which the Customer has failed to report.
+
+Annex 1—Service levels
+
+| Service Level Description     | Target service level      | Service credit
+| Priority 1                    | {{availability1}}%                      |     {{serviceCredit1}}
+| Priority 1                    | {{availability2}}%                       |     {{serviceCredit2}}</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.ServiceLevelAgreementContract",
-    "contractId": "ba0412cd-67d7-483a-b32a-311932013563",
+    "contractId": "f0764e2f-f80f-49b0-912c-25924e42586a",
     "paymentPeriod": 30,
     "monthlyCapPercentage": 10,
     "yearlyCapPercentage": 10,
@@ -457,26 +540,77 @@ Annex 1—Service levels
         "partyId": "Service Consumer"
     }
 }</code></pre>
+            </div>
         </div>
 
         <h2 class="title is-2">Template Model</h2>
 
-        <img src="https://www.plantuml.com/plantuml/svg/hPF1QiCm38RlVGeVDzO6idCf3Tsbi4AXVG7L4Qc7RGNPoJ3RtdrEauvcD5iAlUh_PKlVRo-T1_QLqHEfmJb1N2GW9N5UChsXz8b3hfL4ZJLgA1ZHeFN9hgs-DjNiN5sHzGpIY_bSF6JJfcmVnM8XFYP2Y2UnjXuBP552QEnRP4LvAxrGTT0eJ3pXgCCAoYZAw842UuQ0m7_fK8FIS51Q-P2soeOinYL3PgYoNdJxh1XpvTF1vkV_cpjBTiArZHZ3MTyorIf77ZH4KguoqV0rkG_nsUnpSIKy6JkO4jdPadQKSzUDcM-QS7QLCP77AUBzDA3Mz7wPSJ_8ow6l1dq4_fLW7CcdwUck5lEWslQE9zYRVm3O0HmcUmRh8Xz5zaP4QrlJp_iOoQZRSlmU_Kl6Bh94cpV__1i0" class="box" style="margin-top:40px;">
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/hPF1QiCm38RlVGeVDzO6idCf3Tsbi4AXVG7L4Qc7RGNPoJ3RtdrEauvcD5iAlUh_PKlVRo-T1_QLqHEfmJb1N2GW9N5UChsXz8b3hfL4ZJLgA1ZHeFN9hgs-DjNiN5sHzGpIY_bSF6JJfcmVnM8XFYP2Y2UnjXuBP552QEnRP4LvAxrGTT0eJ3pXgCCAoYZAw842UuQ0m7_fK8FIS51Q-P2soeOinYL3PgYoNdJxh1XpvTF1vkV_cpjBTiArZHZ3MTyorIf77ZH4KguoqV0rkG_nsUnpSIKy6JkO4jdPadQKSzUDcM-QS7QLCP77AUBzDA3Mz7wPSJ_8ow6l1dq4_fLW7CcdwUck5lEWslQE9zYRVm3O0HmcUmRh8Xz5zaP4QrlJp_iOoQZRSlmU_Kl6Bh94cpV__1i0"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.servicelevelagreement
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
+asset ServiceLevelAgreementContract extends AccordContract {
+ o Integer paymentPeriod 
+ o Double monthlyCapPercentage
+ o Double yearlyCapPercentage
+ o Double availability1
+ o MonetaryAmount serviceCredit1
+ o Double availability2
+ o MonetaryAmount serviceCredit2
+ o AccordParty serviceProvider
+ o AccordParty serviceConsumer
+}
+
+transaction MonthSummary {
+  o Double monthlyServiceLevel
+  o Double monthlyCharge
+  o Double last11MonthCredit
+  o Double last11MonthCharge
+}
+
+transaction InvoiceCredit {
+  o Double monthlyCredit
+}</code></pre>
+            </div>
+        </div>
 
         <h4 class="title is-4">Model Dependencies</h4>
         <div class="content">
-          <ul>
-          
-          <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
-          
-          <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
-          
-          </ul>
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                
+            </ul>
         </div>
 
-          <div class="container technical-integration">
+        <div class="container technical-integration">
     <h2 class="title is-2">Template Logic</h2>
     <div class="content">
         <p>
@@ -498,7 +632,7 @@ Annex 1—Service levels
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "08e0e611-ff3f-11e9-b361-efc0ae54bdd6"
+    "stateId": "9c6ce1a1-42fa-11ea-8b78-dde257dbceb0"
 }</code></pre></td>
                 </tr>
             
@@ -519,13 +653,13 @@ Annex 1—Service levels
                     <th>org.accordproject.servicelevelagreement.MonthSummary</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.MonthSummary",
-    "monthlyServiceLevel": 171.501,
-    "monthlyCharge": 199.378,
-    "last11MonthCredit": 255.938,
-    "last11MonthCharge": 38.292,
-    "transactionId": "08e0bf00-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:40.848-05:00"
-}</code></pre></td>
+    "monthlyServiceLevel": 251.424,
+    "monthlyCharge": 183.823,
+    "last11MonthCredit": 119.378,
+    "last11MonthCharge": 81.957,
+    "transactionId": "9c6cba90-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:51:12.185-05:00"
+}</pre></code></td>
                 </tr>
             
         </tbody>
@@ -545,10 +679,10 @@ Annex 1—Service levels
                     <th>org.accordproject.servicelevelagreement.InvoiceCredit</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.servicelevelagreement.InvoiceCredit",
-    "monthlyCredit": 71.878,
-    "transactionId": "08e0e610-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:40.849-05:00"
-}</code></pre></td>
+    "monthlyCredit": 216.329,
+    "transactionId": "9c6ce1a0-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:51:12.186-05:00"
+}</pre></code></td>
                 </tr>
             
         </tbody>
@@ -570,17 +704,17 @@ Annex 1—Service levels
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 107.167,
-        "currencyCode": "KWD"
+        "doubleValue": 212.822,
+        "currencyCode": "BMD"
     },
-    "description": "Est est.",
-    "contract": "resource:org.accordproject.servicelevelagreement.ServiceLevelAgreementContract#4843",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#0111",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0788",
-    "deadline": "2019-11-04T15:09:40.849-05:00",
-    "eventId": "08e0e612-ff3f-11e9-b361-efc0ae54bdd6",
-    "timestamp": "2019-11-04T15:09:40.849-05:00"
-}</code></pre></td>
+    "description": "Ea.",
+    "contract": "resource:org.accordproject.servicelevelagreement.ServiceLevelAgreementContract#5083",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#2076",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#1978",
+    "deadline": "2020-01-29T19:51:12.186-05:00",
+    "eventId": "9c6ce1a2-42fa-11ea-8b78-dde257dbceb0",
+    "timestamp": "2020-01-29T19:51:12.186-05:00"
+}</pre></code></td>
                 </tr>
             
         </tbody>
@@ -608,7 +742,7 @@ Annex 1—Service levels
             <div class="content has-text-centered">
             <div class="linux-foundation-logo">
                 <a href="https://www.linuxfoundation.org/projects/">
-                  <img src="/assets/images/LF-logo.png" width="300" alt="Linux Foundation">
+                  <img src="/assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
                 </a>
               </div>
                 <p>
@@ -623,5 +757,5 @@ Annex 1—Service levels
             </div>
         </div>
     </footer>
-  
-</body></html>
+  </body>
+</html>
