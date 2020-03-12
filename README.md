@@ -320,7 +320,7 @@ Accord Project documentation files are made available under the [Creative Common
 [techspec]: https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0
 [aphome]: https://accordproject.org
 [cicero]: https://github.com/accordproject/cicero
-[ctlguide]: https://docs.accordproject.org/docs/cicero-tutorial.html#creating-a-new-template
+[ctlguide]: https://docs.accordproject.org/docs/started-installation.html
 
 [linuxfound]: https://www.linuxfoundation.org
 [charter]: https://github.com/accordproject/cicero-template-library/blob/master/CHARTER.md
