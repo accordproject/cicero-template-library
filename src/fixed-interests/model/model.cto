@@ -17,6 +17,7 @@ namespace org.accordproject.interests
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
+import org.accordproject.money.* from https://models.accordproject.org/money.cto
 
 transaction Request {
   o String input
@@ -27,7 +28,7 @@ transaction Response {
 }
 
 asset TemplateModel extends AccordClause {
-  o Double loanAmount
+  o MonetaryAmount loanAmount
   o Double rate
   o Integer loanDuration
 }
