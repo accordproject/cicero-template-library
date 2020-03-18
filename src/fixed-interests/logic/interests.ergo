@@ -1,6 +1,21 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 namespace org.accordproject.loan.interests
 
 import org.accordproject.time.*
+import org.accordproject.money.*
 
 define function round(x:Double) {
     return floor(x + 0.5)
@@ -12,20 +27,26 @@ define function roundn(x:Double, n:Integer) {
 }
 
 // Formula taken from https://en.wikipedia.org/wiki/Mortgage_calculator#Monthly_payment_formula
-define function monthlyPaymentFormula(loanAmount: Double, rate: Double, loanDuration: Integer) : Double {
+define function monthlyPaymentFormula(loanAmount: MonetaryAmount, rate: Double, loanDuration: Integer) : MonetaryAmount {
+	let currency = loanAmount.currencyCode;
+	let amount = loanAmount.doubleValue;
   let term = longToDouble(loanDuration * 12);
-  if (rate = 0.0) then return (loanAmount / term)
+  if (rate = 0.0) then return MonetaryAmount{ doubleValue: (amount / term), currencyCode: currency }
   else
     let monthlyRate = (rate / 12.0) / 100.0;
     let monthlyPayment =
-      (monthlyRate * loanAmount)
+      (monthlyRate * amount)
       / (1.0 - ((1.0 + monthlyRate) ^ (-term)));
-    return roundn(monthlyPayment, 0)
+    return MonetaryAmount{ doubleValue: roundn(monthlyPayment, 0), currencyCode: currency }
 }
 
-define function cummulativeInterests(loanAmount: Double, rate: Double, loanDuration: Integer) : Double {
+define function cummulativeInterests(loanAmount: MonetaryAmount, rate: Double, loanDuration: Integer) : MonetaryAmount {
   let term = longToDouble(loanDuration * 12);
-	return term * monthlyPaymentFormula(loanAmount, rate, loanDuration) - loanAmount
+  let monthly = monthlyPaymentFormula(loanAmount, rate, loanDuration);
+  return MonetaryAmount{
+    doubleValue: term * (monthly.doubleValue - loanAmount.doubleValue),
+    currencyCode: monthly.currencyCode
+  }
 }
 
 // Try it also on NYT calculator: https://www.nytimes.com/real-estate/mortgage-calculator
