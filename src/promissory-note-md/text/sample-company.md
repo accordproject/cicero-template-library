@@ -2,7 +2,7 @@
 
 On **01/30/2018**
 
-FOR VALUE RECEIVED, the undersigned, **"Daniel"**, **a company registered** at **"1 Main Street"** (“Maker”), hereby promises to pay to the order of **"Clause Inc."**, a **CORP**, having offices at **"246 5th Ave, 3rd Fl, New York, NY 10001"**, or its successors and permitted assigns (“Lender” or the “Company”), the principal sum of **1000 USD**, plus any and all interest accrued thereon at the Note Rate (defined below), each due and payable in cash in lawful money of the United States on the dates and in the manner set forth in this Promissory Note (this “Note”).
+FOR VALUE RECEIVED, the undersigned, **"Daniel"**, **a company registered** at **"1 Main Street"** (“Maker”), hereby promises to pay to the order of **"Clause Inc."**, a **CORP**, having offices at **"246 5th Ave, 3rd Fl, New York, NY 10001"**, or its successors and permitted assigns (“Lender” or the “Company”), the principal sum of **1,000.00 USD**, plus any and all interest accrued thereon at the Note Rate (defined below), each due and payable in cash in lawful money of the United States on the dates and in the manner set forth in this Promissory Note (this “Note”).
 
 ## Interest.
 
