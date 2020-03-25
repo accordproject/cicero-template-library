@@ -1,7 +1,7 @@
 {
     "name": "installment-sale",
     "displayName": "Installment Sale",
-    "version": "2.0.0",
+    "version": "3.0.0",
     "description": "This is a clause for a simple installment sale.",
     "author": "Accord Project",
     "license": "Apache-2.0",

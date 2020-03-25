@@ -1,8 +1,8 @@
 # PROMISSORY NOTE
 
-**{{amount}}** **{{date}}**
+**{{amount as "0,0.00 CCC"}}** **{{date}}**
 
-FOR VALUE RECEIVED, the undersigned, **{{maker}}**, **{{#if individual}}an individual residing{{else}}a company registered{{/if}}** at **{{makerAddress}}** (“Maker”), hereby promises to pay to the order of **{{lender}}**, a **{{legalEntity}}**, having offices at **{{lenderAddress}}**, or its successors and permitted assigns (“Lender” or the “Company”), the principal sum of **{{principal}}**, plus any and all interest accrued thereon at the Note Rate (defined below), each due and payable in cash in lawful money of the United States on the dates and in the manner set forth in this Promissory Note (this “Note”).
+FOR VALUE RECEIVED, the undersigned, **{{maker}}**, **{{#if individual}}an individual residing{{else}}a company registered{{/if}}** at **{{makerAddress}}** (“Maker”), hereby promises to pay to the order of **{{lender}}**, a **{{legalEntity}}**, having offices at **{{lenderAddress}}**, or its successors and permitted assigns (“Lender” or the “Company”), the principal sum of **{{principal as "0,0.00 CCC"}}**, plus any and all interest accrued thereon at the Note Rate (defined below), each due and payable in cash in lawful money of the United States on the dates and in the manner set forth in this Promissory Note (this “Note”).
 
 ## Interest.
 
