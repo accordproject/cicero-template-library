@@ -95,6 +95,12 @@ pre {
 	color: rgba(5, 12, 64, 0.7);
 }
 
+.logo.box {
+	border-radius: 10px;
+	display: inline-block;
+	padding: 1.0rem;
+}
+
 .has-background-dark,
 .is-dark {
 	background-color: rgb(27, 37, 64) !important;

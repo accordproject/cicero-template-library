@@ -1,7 +1,7 @@
 {
     "name": "promissory-note",
     "displayName": "Promissory Note",
-    "version": "0.15.0",
+    "version": "0.15.1",
     "description": "A promissory note",
     "author": "Accord Project",
     "license": "Apache-2.0",

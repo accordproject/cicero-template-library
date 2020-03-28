@@ -1,7 +1,7 @@
 {
     "name": "one-time-payment-tr",
     "displayName": "One Time Payment (TR)",
-    "version": "0.12.0",
+    "version": "0.12.1",
     "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
     "license": "Apache-2.0",
     "accordproject": {

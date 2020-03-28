@@ -1,7 +1,7 @@
 {
     "name": "fragile-goods",
     "displayName": "Fragile Goods",
-    "version": "0.13.0",
+    "version": "0.13.1",
     "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
     "author": "Accord Project",
     "license": "Apache-2.0",

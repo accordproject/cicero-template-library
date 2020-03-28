@@ -1,7 +1,7 @@
 {
     "name": "safte",
     "displayName": "SAFTE",
-    "version": "0.14.0",
+    "version": "0.14.1",
     "description": "The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company.",
     "license": "Apache-2.0",
     "accordproject": {
