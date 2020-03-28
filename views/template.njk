@@ -1,38 +1,43 @@
 {% extends "page.njk" %}
 
 {% block unfurl %}
-  <!-— facebook open graph tags -->
-  <meta property="og:url" content="{{serverRoot}}/{{filePath}}" />
-  <meta property="og:title" content="{{template.getIdentifier()}}" />
-  <meta property="og:description" content="{{template.getMetadata().getDescription()}}" />
-  <meta property="og:image" content="{{umlCardURL}}" />
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="{{serverRoot}}/{{filePath}}" />
+    <meta property="og:title" content="{{template.getIdentifier()}}" />
+    <meta property="og:description" content="{{template.getMetadata().getDescription()}}" />
+    <meta property="og:image" content="{{umlCardURL}}" />
 
-  <!-— twitter card tags additive with the og: tags -->
-  <meta name="twitter:title" content="{{template.getIdentifier()}}" />
-  <meta name="twitter:description" content="{{template.getMetadata().getDescription()}}" />
-  <meta name="twitter:image" content="{{umlCardURL}}" />
-  <meta name="twitter:image:alt" content="UML diagram of {{template.getIdentifier()}} namespace." />
-  <meta name="twitter:url" content="{{serverRoot}}/{{filePath}}" />
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="{{template.getIdentifier()}}" />
+    <meta name="twitter:description" content="{{template.getMetadata().getDescription()}}" />
+    <meta name="twitter:image" content="{{umlCardURL}}" />
+    <meta name="twitter:image:alt" content="UML diagram of {{template.getIdentifier()}} namespace." />
+    <meta name="twitter:url" content="{{serverRoot}}/{{filePath}}" />
 {% endblock %}
 
 {% block body %}
     <section class="section inner-content">
-      <div class="container">
-        <h1 class="title is-1">
-          {{template.getMetadata().getDisplayName()}}
-        </h1>
-        <div class="tags">
-          <span class="tag is-light">{{template.getIdentifier()}}</span>
-          <span class="tag is-light">{% if template.getMetadata().getTemplateType() === 0 %}Contract{% else %}Clause{% endif %}</span>
-          <span class="tag is-light">{{template.getMetadata().getCiceroVersion()}}</span>
-          <span class="tag is-light">{{template.getHash()}}</span>
-        </div>
-        <p class="subtitle">
-          {{template.getMetadata().getDescription()}}
-        </p>
+        <div class="container">
+            <h1 class="title is-1">
+                {{template.getMetadata().getDisplayName()}}
+            </h1>
+            {% if author or logo %}
+                <h4 class="title is-4">
+                    Author: {% if logo %} <img height="24" width="24" src="data:image/png;base64, {{logo}}"/> {% endif %} {% if author %} {{author}} {% endif %}
+                </h4>
+            {% endif %}
+            <div class="tags">
+                <span class="tag is-light">{{template.getIdentifier()}}</span>
+                <span class="tag is-light">{% if template.getMetadata().getTemplateType() === 0 %}Contract{% else %}Clause{% endif %}</span>
+                <span class="tag is-light">{{template.getMetadata().getCiceroVersion()}}</span>
+                <span class="tag is-light">{{template.getHash()}}</span>
+            </div>
+            <p class="subtitle">
+                {{template.getMetadata().getDescription()}}
+            </p>
 
-        <p>
-          <div class="dropdown">
+            <p>
+                <div class="dropdown">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                 <span>Versions</span>

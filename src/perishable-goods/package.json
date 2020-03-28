@@ -1,7 +1,7 @@
 {
     "name": "perishable-goods",
     "displayName": "Perishable Goods",
-    "version": "0.13.0",
+    "version": "0.13.1",
     "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
     "author": "Accord Project",
     "license": "Apache-2.0",
