@@ -1,7 +1,7 @@
 {
     "name": "payment-upon-signature",
     "displayName": "Payment Upon Signature",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "description": "This is a generic payment clause applicable to any type of contract that requires some payment at the time of signature.",
     "license": "Apache-2.0",
     "accordproject": {

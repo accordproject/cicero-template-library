@@ -1,7 +1,7 @@
 {
     "name": "full-payment-upon-signature",
     "displayName": "Full Payment Upon Signature",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "description": "This is a one-time full payment clause applicable at the signature of the contract.",
     "license": "Apache-2.0",
     "accordproject": {

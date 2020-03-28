@@ -1,7 +1,7 @@
 {
     "name": "helloworld",
     "displayName": "Hello World",
-    "version": "0.12.0",
+    "version": "0.12.1",
     "description": "This is the Hello World of Accord Project Templates. Executing the clause will simply echo back the text that occurs after the string `Hello` prepended to text that is passed in the request.",
     "license": "Apache-2.0",
     "accordproject": {

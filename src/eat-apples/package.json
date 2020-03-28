@@ -1,7 +1,7 @@
 {
     "name": "eat-apples",
     "displayName": "Eat Apples",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "description": "This is a clause enforcing healthy eating habits in employees.",
     "author": "Accord Project",
     "license": "Apache-2.0",

@@ -1,7 +1,7 @@
 {
     "name": "servicelevelagreement",
     "displayName": "Service Level Agreement",
-    "version": "0.14.0",
+    "version": "0.14.1",
     "description": "A service level agreement that gives invoice credit based on service availability.",
     "license": "Apache-2.0",
     "accordproject": {

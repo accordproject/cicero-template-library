@@ -1,7 +1,7 @@
 {
     "name": "sales-contract-ru",
     "displayName": "Sales Contract (RU)",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "description": "This is a Sales Contract prepared in Russian Language.",
     "license": "Apache-2.0",
     "accordproject": {

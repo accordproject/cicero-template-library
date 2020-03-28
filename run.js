@@ -288,6 +288,8 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             version: m.getVersion(),
                             ciceroVersion: m.getCiceroVersion(),
                             type: m.getTemplateType(),
+                            logo: m.getLogo() ? m.getLogo().toString('base64') : null,
+                            author: m.getAuthor() ? m.getAuthor() : null,
                         }
                         templateIndex[template.getIdentifier()] = indexData;
 
@@ -437,6 +439,8 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     });
 
     const sample = template.getMetadata().getSample();
+    const logo = template.getMetadata().getLogo() ? template.getMetadata().getLogo().toString('base64') : null;
+    const author = template.getMetadata().getAuthor() ? template.getMetadata().getAuthor() : null;
     let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample,'json'));
     // XXX HTML cleanup hack for rendering in page. Would be best done with the right option in markdown-transform
     sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">','').replace('</div>\n</body>\n</html>','');
@@ -458,6 +462,8 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         instance: sampleInstanceText,
         eventTypes: eventTypes,
         templateVersions: templateVersions,
+        logo: logo,
+        author: author,
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }
