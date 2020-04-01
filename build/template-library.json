@@ -5102,5 +5102,55 @@
         "version": "0.5.1",
         "ciceroVersion": "^0.20.0",
         "type": 0
+    },
+    "latedeliveryandpenalty@0.15.1": {
+        "uri": "ap://latedeliveryandpenalty@0.15.1#6f45781682a43b9c5ca7b22536d1209e6b17364b045dcb968d0a906e83d8bc53",
+        "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.15.1.cta",
+        "name": "latedeliveryandpenalty",
+        "displayName": "Late Delivery and Penalty",
+        "description": "A sample Late Delivery And Penalty clause.",
+        "version": "0.15.1",
+        "ciceroVersion": "^0.20.9",
+        "type": 0
+    },
+    "latedeliveryandpenalty-else@0.1.0": {
+        "uri": "ap://latedeliveryandpenalty-else@0.1.0#2b5900c2ebab3c13366d56e6b3aafcba7d587b7f8d79c1ecdf55490b252603b3",
+        "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty-else@0.1.0.cta",
+        "name": "latedeliveryandpenalty-else",
+        "displayName": "Late Delivery and Penalty (with Else)",
+        "description": "A sample Late Delivery And Penalty clause.",
+        "version": "0.1.0",
+        "ciceroVersion": "^0.20.0",
+        "type": 0
+    },
+    "promissory-note@0.14.0": {
+        "uri": "ap://promissory-note@0.14.0#171d8e9a69d7ba653014428d2e1b3641108700bb27da19ccc96a3a025c4bf852",
+        "url": "https://templates.accordproject.org/archives/promissory-note@0.14.0.cta",
+        "name": "promissory-note",
+        "displayName": "Promissory Note",
+        "description": "A promissory note",
+        "version": "0.14.0",
+        "ciceroVersion": "^0.20.9",
+        "type": 0
+    },
+    "promissory-note-md@0.2.0": {
+        "uri": "ap://promissory-note-md@0.2.0#48a8b877a7c03362e35e35824d7c25d1ae6b082a33a4069eb313fd8e4670be37",
+        "url": "https://templates.accordproject.org/archives/promissory-note-md@0.2.0.cta",
+        "name": "promissory-note-md",
+        "displayName": "Promissory Note Md",
+        "description": "A promissory note",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.20.9",
+        "type": 0
+    },
+    "saft@0.14.1": {
+        "uri": "ap://saft@0.14.1#eac9307a916e7a6ceb619a1f1674e17c883afdc480ff55d54e17f9e1245fdef6",
+        "url": "https://templates.accordproject.org/archives/saft@0.14.1.cta",
+        "name": "saft",
+        "displayName": "SAFT",
+        "description": "The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.",
+        "version": "0.14.1",
+        "ciceroVersion": "^0.20.9",
+        "type": 0
     }
 }
