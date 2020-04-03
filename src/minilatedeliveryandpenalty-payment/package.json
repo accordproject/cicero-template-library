@@ -3,6 +3,7 @@
     "displayName": "Mini-Late Delivery and Penalty Payment",
     "version": "0.4.1",
     "description": "A Late Delivery And Penalty (Mini, Capped, with Payment)",
+    "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",

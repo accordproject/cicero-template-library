@@ -3,6 +3,7 @@
     "displayName": "Empty Contract",
     "version": "0.6.1",
     "description": "This is an empty contract template to get you started.",
+    "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",

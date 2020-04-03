@@ -3,6 +3,7 @@
     "displayName": "Empty",
     "version": "0.7.1",
     "description": "This is an empty clause template to get you started.",
+    "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
