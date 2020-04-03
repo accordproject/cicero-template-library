@@ -3,6 +3,7 @@
     "displayName": "Volume Discount",
     "version": "0.14.1",
     "description": "A sample volume discount contract.",
+    "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",

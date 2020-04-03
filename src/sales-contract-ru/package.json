@@ -3,6 +3,7 @@
     "displayName": "Sales Contract (RU)",
     "version": "0.10.1",
     "description": "This is a Sales Contract prepared in Russian Language.",
+    "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
