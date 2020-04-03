@@ -2,6 +2,7 @@
     "name": "volumediscountolist",
     "version": "0.2.1",
     "description": "A sample volume discount contract (ordered list).",
+    "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",

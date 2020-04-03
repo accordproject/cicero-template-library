@@ -3,6 +3,7 @@
     "displayName": "Late Delivery and Penalty",
     "version": "0.15.2",
     "description": "A sample Late Delivery And Penalty clause.",
+    "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
