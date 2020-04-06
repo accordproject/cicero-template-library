@@ -22,7 +22,7 @@
                 {{template.getMetadata().getDisplayName()}}
             </h1>
             {% if author or logo %}
-                <h4 class="title is-4">
+                <h4 class="title is-4 author-section">
                     Author: {% if logo %} <img height="24" width="24" src="data:image/png;base64, {{logo}}"/> {% endif %} {% if author %} <span class="author"> {{author}} </span> {% endif %}
                 </h4>
             {% endif %}

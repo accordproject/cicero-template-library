@@ -81,6 +81,9 @@ pre {
 
 .title.is-4 {
 	margin-bottom: 20px;
+}
+
+.title.is-4.author-section {
 	font-size: 15pt;
 }
 
