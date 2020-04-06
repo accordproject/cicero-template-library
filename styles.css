@@ -81,6 +81,11 @@ pre {
 
 .title.is-4 {
 	margin-bottom: 20px;
+	font-size: 15pt;
+}
+
+.title.is-4 .author {
+	font-weight: 600;
 }
 
 .title:not(.is-spaced) + .subtitle {
