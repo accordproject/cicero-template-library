@@ -157,9 +157,9 @@ a.navbar-item img {
 
 /* Hero */
 .hero {
-	padding-top: 140px;
-	padding-bottom: 70px;
-	background-image: url(/assets/images/background.jpg);
+  padding-top: 140px;
+  padding-bottom: 70px;
+  background-image: url(./assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: 2205px 2000px;
