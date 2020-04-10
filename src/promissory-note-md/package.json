@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.20.9"
+        "cicero": "^0.20.10"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
