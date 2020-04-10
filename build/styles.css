@@ -83,6 +83,14 @@ pre {
 	margin-bottom: 20px;
 }
 
+.title.is-4.author-section {
+	font-size: 15pt;
+}
+
+.title.is-4 .author {
+	font-weight: 600;
+}
+
 .title:not(.is-spaced) + .subtitle {
 	max-width: 720px;
 	margin-top: 4px;
@@ -163,9 +171,9 @@ a.navbar-item img {
 
 /* Hero */
 .hero {
-	padding-top: 140px;
-	padding-bottom: 70px;
-	background-image: url(/assets/images/background.jpg);
+  padding-top: 140px;
+  padding-bottom: 70px;
+  background-image: url(./assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: 2205px 2000px;
@@ -196,7 +204,7 @@ a.navbar-item img {
 /* Footer */
 
 .footer {
-	background-image: url(/assets/images/background.jpg);
+  background-image: url(./assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: 2205px 2000px;
@@ -255,12 +263,6 @@ svg.svg-inline--fa.fa-angle-down.fa-w-10 path {
 .tags:not(:last-child) {
 	margin-bottom: 1rem;
 	margin-top: 1rem;
-}
-
-.brand-label {
-	color: #fff;
-	font-size: 18.75px;
-	font-weight: 600;
 }
 
 /* Table */

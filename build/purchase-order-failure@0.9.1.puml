@@ -1,0 +1,26 @@
+@startuml
+class com.docusign.clauses.PurchaseOrderFailure << (A,green) >> {
+   + AccordParty buyer
+   + Duration lateOne
+   + Duration lateTwo
+   + Duration lateThree
+   + Double lateOnePercent
+   + Double lateTwoPercent
+   + Double lateThreePercent
+   + String article
+   + String thisSection
+   + Integer maxFailures
+   + Duration failureRange
+   + MonetaryAmount repeatedFailureCompensation
+}
+com.docusign.clauses.PurchaseOrderFailure --|> org.accordproject.cicero.contract.AccordContract
+class com.docusign.clauses.PurchaseOrderFailureState << (A,green) >> {
+   + DateTime[] pastFailures
+   + Integer nbPastFailures
+}
+com.docusign.clauses.PurchaseOrderFailureState --|> org.accordproject.cicero.contract.AccordContractState
+class com.docusign.clauses.PurchaseOrderFailureResponse << (T,yellow) >> {
+   + MonetaryAmount penalty
+}
+com.docusign.clauses.PurchaseOrderFailureResponse --|> org.accordproject.cicero.runtime.Response
+@enduml
