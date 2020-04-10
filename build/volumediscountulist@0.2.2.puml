@@ -1,0 +1,19 @@
+@startuml
+class org.accordproject.volumediscountlist.RateRange {
+   + Double volumeUpTo
+   + Double volumeAbove
+   + Double rate
+}
+class org.accordproject.volumediscountlist.VolumeDiscountContract << (A,green) >> {
+   + RateRange[] rates
+}
+org.accordproject.volumediscountlist.VolumeDiscountContract --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.volumediscountlist.VolumeDiscountRequest << (T,yellow) >> {
+   + Double netAnnualChargeVolume
+}
+org.accordproject.volumediscountlist.VolumeDiscountRequest --|> org.accordproject.base.Transaction
+class org.accordproject.volumediscountlist.VolumeDiscountResponse << (T,yellow) >> {
+   + Double discountRate
+}
+org.accordproject.volumediscountlist.VolumeDiscountResponse --|> org.accordproject.base.Transaction
+@enduml
