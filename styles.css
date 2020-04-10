@@ -190,7 +190,7 @@ a.navbar-item img {
 /* Footer */
 
 .footer {
-	background-image: url(/assets/images/background.jpg);
+  background-image: url(./assets/images/background.jpg);
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: 2205px 2000px;
