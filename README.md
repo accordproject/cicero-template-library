@@ -12,19 +12,12 @@
   <a href="https://travis-ci.org/accordproject/cicero-template-library">
     <img src="https://travis-ci.org/accordproject/cicero-template-library.svg" alt="Build Status"/>
   </a>
-
   <a href="https://github.com/accordproject/cicero-template-library/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/accordproject/cicero-template-library" alt="GitHub license"/>
   </a>
-
-  <a href="https://lerna.js.org/">
-    <img src="https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg" alt="lerna"/>
+  <a href="https://www.accordproject.org/">
+    <img src="https://img.shields.io/badge/powered%20by-accord%20project-19C6C8.svg" alt="Accord Project" />
   </a>
-
-  <a href="https://accord-project-slack-signup.herokuapp.com/">
-    <img src="https://img.shields.io/badge/Accord%20Project-Join%20Slack-blue" alt="Join the Accord Project Slack" />
-  </a>
-
 </p>
 
 Repository for Smart Legal Contract Templates that conform that to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
@@ -312,6 +305,14 @@ Join the Accord Project Technology Working Group [Slack channel][apslack] to get
 
 For code contributions, read our [CONTRIBUTING guide][contributing] and information for [DEVELOPERS][developers].
 
+### README Badge
+
+Using Accord Project? Add a README badge to let everyone know: [![accord project](https://img.shields.io/badge/powered%20by-accord%20project-19C6C8.svg)](https://www.accordproject.org/)
+
+```
+[![accord project](https://img.shields.io/badge/powered%20by-accord%20project-19C6C8.svg)](https://www.accordproject.org/)
+```
+
 ## License <a name="license"></a>
 
 Accord Project source code files are made available under the [Apache License, Version 2.0][apache].
@@ -320,7 +321,7 @@ Accord Project documentation files are made available under the [Creative Common
 [techspec]: https://docs.google.com/document/d/1UacA_r2KGcBA2D4voDgGE8jqid-Uh4Dt09AE-shBKR0
 [aphome]: https://accordproject.org
 [cicero]: https://github.com/accordproject/cicero
-[ctlguide]: https://docs.accordproject.org/docs/cicero-tutorial.html#creating-a-new-template
+[ctlguide]: https://docs.accordproject.org/docs/started-installation.html
 
 [linuxfound]: https://www.linuxfoundation.org
 [charter]: https://github.com/accordproject/cicero-template-library/blob/master/CHARTER.md
