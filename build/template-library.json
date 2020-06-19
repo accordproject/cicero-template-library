@@ -5764,5 +5764,29 @@
         "type": 1,
         "logo": null,
         "author": "Accord Project"
+    },
+    "signature-name-date@0.1.2": {
+        "uri": "ap://signature-name-date@0.1.2#402d7bfe4296906b8951142303117da6ea010a2eb77c9c965525dc7fa6421820",
+        "url": "https://templates.accordproject.org/archives/signature-name-date@0.1.2.cta",
+        "name": "signature-name-date",
+        "displayName": "Signature Name Date",
+        "description": "A signature block with name and date tags for a recipient",
+        "version": "0.1.2",
+        "ciceroVersion": "^0.20.10",
+        "type": 1,
+        "logo": null,
+        "author": "Accord Project"
+    },
+    "signature-name-date@0.1.3": {
+        "uri": "ap://signature-name-date@0.1.3#36a19149ed75ee2c3dfc246c67c0aff89e55a492978ed7d7d95936d4dd8b829c",
+        "url": "https://templates.accordproject.org/archives/signature-name-date@0.1.3.cta",
+        "name": "signature-name-date",
+        "displayName": "Signature Name Date",
+        "description": "A signature block with name and date tags for a recipient",
+        "version": "0.1.3",
+        "ciceroVersion": "^0.20.10",
+        "type": 1,
+        "logo": null,
+        "author": "Accord Project"
     }
 }
