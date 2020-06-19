@@ -1,11 +1,13 @@
-"/sn1/"
-__________________
+"signature-clause-signature"
+
+\_____________________________
+
 Signature
 
+"signature-clause-name"
 
-"/name1/"
-__________________
+\_____________________________
+
 Name
 
-
-Date: "/date1/"
+Date: "signature-clause-date"

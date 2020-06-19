@@ -1,11 +1,13 @@
 {{signatureAnchorTag}}
-__________________
+
+\_____________________________
+
 Signature
 
-
 {{nameAnchorTag}}
-__________________
-Name
 
+\_____________________________
+
+Name
 
 Date: {{dateAnchorTag}}
