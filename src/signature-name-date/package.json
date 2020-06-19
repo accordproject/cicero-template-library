@@ -1,0 +1,20 @@
+{
+    "name": "signature-name-date",
+    "displayName": "Signature Name Date",
+    "version": "0.1.0",
+    "description": "A signature block with name and date tags for a recipient",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "clause",
+        "cicero": "^0.20.10",
+        "runtime": "ergo"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["signature-clause"]
+}

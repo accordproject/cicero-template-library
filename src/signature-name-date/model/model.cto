@@ -1,0 +1,11 @@
+namespace io.clause.signature.namedate
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+
+// Template model
+asset SignatureClause extends AccordClause {
+  o String signatureAnchorTag
+  o String nameAnchorTag
+  o String dateAnchorTag
+}
