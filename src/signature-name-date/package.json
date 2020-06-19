@@ -1,7 +1,7 @@
 {
     "name": "signature-name-date",
     "displayName": "Signature Name Date",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A signature block with name and date tags for a recipient",
     "author": "Accord Project",
     "license": "Apache-2.0",
