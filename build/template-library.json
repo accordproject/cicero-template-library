@@ -5788,5 +5788,17 @@
         "type": 1,
         "logo": null,
         "author": "Accord Project"
+    },
+    "signature-name-date@0.1.4": {
+        "uri": "ap://signature-name-date@0.1.4#0011339b24ae847dfe47e3192cd4cd617b74f95d0a97f6b3051050065231f4b3",
+        "url": "https://templates.accordproject.org/archives/signature-name-date@0.1.4.cta",
+        "name": "signature-name-date",
+        "displayName": "Signature Name Date",
+        "description": "A signature block with name and date tags for a recipient",
+        "version": "0.1.4",
+        "ciceroVersion": "^0.20.10",
+        "type": 1,
+        "logo": null,
+        "author": "Accord Project"
     }
 }

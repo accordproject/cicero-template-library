@@ -1,13 +1,5 @@
-{{signatureAnchorTag}}
+Signature: {{signatureAnchorTag}}
 
-..............................
-
-Signature
-
-{{nameAnchorTag}}
-
-..............................
-
-Name
+Name: {{nameAnchorTag}}
 
 Date: {{dateAnchorTag}}

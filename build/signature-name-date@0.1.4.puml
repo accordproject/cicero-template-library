@@ -1,0 +1,8 @@
+@startuml
+class io.clause.signature.namedate.SignatureClause << (A,green) >> {
+   + String signatureAnchorTag
+   + String nameAnchorTag
+   + String dateAnchorTag
+}
+io.clause.signature.namedate.SignatureClause --|> org.accordproject.cicero.contract.AccordClause
+@enduml

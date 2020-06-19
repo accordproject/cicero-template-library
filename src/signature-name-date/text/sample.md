@@ -1,13 +1,5 @@
-"signature-clause-signature"
+Signature: "signature-clause-signature"
 
-..............................
-
-Signature
-
-"signature-clause-name"
-
-..............................
-
-Name
+Name: "signature-clause-name"
 
 Date: "signature-clause-date"
