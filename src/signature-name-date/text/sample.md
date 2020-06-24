@@ -1,5 +1,9 @@
-Signature: "signature-clause-signature"
+Signature: "{{sn}}|alice@example.com"
 
-Name: "signature-clause-name"
+Title: "{{title}}|alice@example.com"
 
-Date: "signature-clause-date"
+Full name: "{{fullName}}|alice@example.com"
+
+Date signed: "{{dateSigned}}|alice@example.com"
+
+Favorite Color: "{{favoriteColor}}|alice@example.com"

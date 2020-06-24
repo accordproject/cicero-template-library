@@ -1,5 +1,9 @@
 Signature: {{signatureAnchorTag}}
 
-Name: {{nameAnchorTag}}
+Title: {{titleAnchorTag}}
 
-Date: {{dateAnchorTag}}
+Full name: {{nameAnchorTag}}
+
+Date signed: {{dateAnchorTag}}
+
+Favorite Color: {{favoriteColorAnchorTag}}

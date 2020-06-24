@@ -5,7 +5,19 @@ import org.accordproject.cicero.runtime.* from https://models.accordproject.org/
 
 // Template model
 asset SignatureClause extends AccordClause {
+
+  @DocuSignTab("Text")
+  o String favoriteColorAnchorTag
+
+  @DocuSignTab("Title")
+  o String titleAnchorTag optional
+
+  @DocuSignTab("SignHere")
   o String signatureAnchorTag
+
+  @DocuSignTab("FullName")
   o String nameAnchorTag
+
+  @DocuSignTab("DateSigned")
   o String dateAnchorTag
 }

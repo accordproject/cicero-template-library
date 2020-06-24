@@ -1,8 +1,8 @@
 {
     "name": "signature-name-date",
-    "displayName": "Signature Name Date",
-    "version": "0.1.4",
-    "description": "A signature block with name and date tags for a recipient",
+    "displayName": "Signature Block (Title, Name, Date)",
+    "version": "0.2.0",
+    "description": "A signature block with name, title and date input fields",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
@@ -16,5 +16,5 @@
     "scripts": {
         "test": "cucumber-js test -r .cucumber.js"
     },
-    "keywords": ["signature-clause"]
+    "keywords": ["signature-block"]
 }
