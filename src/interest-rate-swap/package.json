@@ -1,13 +1,13 @@
 {
     "name": "interest-rate-swap",
     "displayName": "Interest Rate Swap",
-    "version": "0.6.1",
+    "version": "0.7.0",
     "description": "A simple ISDA Interest Rate Swap",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.20.10"
+        "cicero": "^0.21.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

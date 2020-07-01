@@ -1,13 +1,13 @@
 {
     "name": "volumediscount",
     "displayName": "Volume Discount",
-    "version": "0.14.1",
+    "version": "0.15.0",
     "description": "A sample volume discount contract.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.20.10"
+        "cicero": "^0.21.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

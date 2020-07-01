@@ -1,13 +1,13 @@
 {
     "name": "installment-sale",
     "displayName": "Installment Sale",
-    "version": "3.0.1",
+    "version": "4.0.0",
     "description": "This is a clause for a simple installment sale.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.20.10"
+        "cicero": "^0.21.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

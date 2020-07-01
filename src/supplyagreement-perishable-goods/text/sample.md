@@ -2,7 +2,7 @@ Supply Agreement
 
 This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of 06/30/2099 (the “Execution Date”) between "SUPPLIER CORPORATION", a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and "BUYER CORPORATION", a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.
 
-1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase "Grade I, Size 4, Zutano Mexican Avocados" (the "Products", "SHIP_001") in accordance with the terms of this agreement.
+1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase "Grade I, Size 4, Zutano Mexican Avocados" (the "Products", "Grade I, Size 4, Zutano Mexican Avocados") in accordance with the terms of this agreement.
 
 2. Orders
 2.1. Purchase Orders. The Purchaser shall submit all orders for Products to the Supplier in writing to the Supplier's address listed in the introduction to this agreement, or as the Supplier otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order

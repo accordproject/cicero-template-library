@@ -1,4 +1,4 @@
-On receipt of the shipment "SHIP_001" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".
+On receipt of the shipment "Grade I, Size 4, Zutano Mexican Avocados" the importer "DAN" pays the grower "PETER" 1.50 USD per KG. The shipment must contain between 3000 and 3500 KG of "Grade I, Size 4, Zutano Mexican Avocados".
 
 Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per HOUR.
 

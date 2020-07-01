@@ -1,0 +1,19 @@
+{
+    "name": "latedeliveryandpenalty-optional",
+    "displayName": "Late Delivery and Penalty (with Optional)",
+    "version": "0.1.0",
+    "description": "A sample Late Delivery And Penalty clause.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "contract",
+        "cicero": "^0.21.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["late", "delivery", "penalty", "delayed", "Majeure", "seller", "pay", "exceed", "terimate", "clause"]
+}
