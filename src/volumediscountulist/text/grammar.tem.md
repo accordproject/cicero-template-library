@@ -31,4 +31,6 @@ Our agent will subtract the full amount of all applicable deductions, rejections
 #### Discount.
 
 The Discount is determined according to the following table:
-{{#ulist rates}}{{volumeAbove}}$ million <= Volume < {{volumeUpTo}}$ million : {{rate}}%{{/ulist}}
+{{#ulist rates}}
+{{volumeAbove}}$ million <= Volume < {{volumeUpTo}}$ million : {{rate}}%
+{{/ulist}}

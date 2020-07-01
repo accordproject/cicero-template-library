@@ -1,12 +1,12 @@
 {
     "name": "certificate-of-incorporation",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "description": "This is a sample Certificate of Incorporation.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.20.10"
+        "cicero": "^0.21.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

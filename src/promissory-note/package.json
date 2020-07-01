@@ -1,13 +1,13 @@
 {
     "name": "promissory-note",
     "displayName": "Promissory Note",
-    "version": "0.15.2",
+    "version": "0.16.0",
     "description": "A promissory note",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.20.10"
+        "cicero": "^0.21.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

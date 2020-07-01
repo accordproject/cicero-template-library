@@ -1,13 +1,13 @@
 {
     "name": "lateinvoicewithpayment",
     "displayName": "Late Invoice with Payment",
-    "version": "0.5.2",
+    "version": "0.6.0",
     "description": "A sample Late invoice clause which emits a payment obligation.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.20.10"
+        "cicero": "^0.21.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
