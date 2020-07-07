@@ -53,6 +53,10 @@ contract PaymentUponSignature over PaymentUponSignatureContract state PaymentUpo
     return Response{}
   }
 
+  clause danDidACoolThing( request: DanDidACoolThing) : Response {
+	  // do stuff ...
+  }
+
   /**
 	 * Complete the contract when payment is received.
 	 */

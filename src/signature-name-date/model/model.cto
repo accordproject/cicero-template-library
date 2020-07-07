@@ -3,21 +3,31 @@ namespace io.clause.signature.namedate
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 
-// Template model
+/**
+ * A Signature block
+ */
 asset SignatureClause extends AccordClause {
 
-  @DocuSignTab("Text")
-  o String favoriteColorAnchorTag
+  @SignatureVariable()
+  --> AccordParty party
 
-  @DocuSignTab("Title")
-  o String titleAnchorTag optional
+  @DocuSignTab("Text")
+  @SignatureVariable()
+  o String favoriteColor
+
+  @DocuSignTab("Title", "optional")
+  @SignatureVariable()
+  o String title
 
   @DocuSignTab("SignHere")
-  o String signatureAnchorTag
+  @SignatureVariable()
+  o String signature
 
   @DocuSignTab("FullName")
-  o String nameAnchorTag
+  @SignatureVariable()
+  o String name
 
   @DocuSignTab("DateSigned")
-  o String dateAnchorTag
+  @SignatureVariable()
+  o String date
 }
