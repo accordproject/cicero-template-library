@@ -317,6 +317,7 @@
             </div>
           </div>
           <a href="./archives/perishable-goods@0.13.1.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/perishable-goods@0.13.1-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
           <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fperishable-goods%400.13.1%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
         <p></p>
 
@@ -402,7 +403,7 @@ penalty = number of shipment units x difference between sensor reading and agree
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.PerishableGoodsContract",
-    "contractId": "c46ce521-01ec-49f5-8a46-986e1ffbc721",
+    "contractId": "a9f01110-7b23-4733-9a24-29e5acf4162b",
     "grower": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "PETER"
@@ -412,7 +413,7 @@ penalty = number of shipment units x difference between sensor reading and agree
         "partyId": "DAN"
     },
     "shipment": "SHIP_001",
-    "dueDate": "2018-07-02T00:00:00.000-04:00",
+    "dueDate": "2018-07-02T00:00:00.000+01:00",
     "unitPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 1.5,
@@ -623,7 +624,7 @@ transaction SetupDemo {
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "06e29b20-7b6c-11ea-b280-c173749a9e96"
+    "stateId": "ecc97431-c07a-11ea-ad77-8b5ce7c057ac"
 }</code></pre></td>
                 </tr>
             
@@ -644,10 +645,10 @@ transaction SetupDemo {
                     <th>org.accordproject.perishablegoods.ShipmentReceived</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount": 54300,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#4332",
-    "transactionId": "06e27410-7b6c-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:44:09.041-04:00"
+    "unitCount": 51506,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#4755",
+    "transactionId": "ecc94d20-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:37.938+01:00"
 }</code></pre></td>
                 </tr>
             
@@ -670,18 +671,18 @@ transaction SetupDemo {
     "$class": "org.accordproject.perishablegoods.PriceCalculation",
     "totalPrice": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 131.907,
-        "currencyCode": "XPT"
+        "doubleValue": 141.705,
+        "currencyCode": "LAK"
     },
     "penalty": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 148.074,
-        "currencyCode": "GYD"
+        "doubleValue": 248.714,
+        "currencyCode": "USD"
     },
-    "late": false,
-    "shipment": "resource:org.accordproject.perishablegoods.Shipment#3437",
-    "transactionId": "06e27411-7b6c-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:44:09.041-04:00"
+    "late": true,
+    "shipment": "resource:org.accordproject.perishablegoods.Shipment#4940",
+    "transactionId": "ecc97430-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:37.939+01:00"
 }</code></pre></td>
                 </tr>
             
@@ -704,16 +705,16 @@ transaction SetupDemo {
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 230.523,
-        "currencyCode": "JMD"
+        "doubleValue": 200.136,
+        "currencyCode": "RWF"
     },
-    "description": "Proident officia.",
-    "contract": "resource:org.accordproject.perishablegoods.PerishableGoodsContract#9273",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#3855",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4795",
-    "deadline": "2020-04-10T16:44:09.042-04:00",
-    "eventId": "06e29b21-7b6c-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:44:09.042-04:00"
+    "description": "Do.",
+    "contract": "resource:org.accordproject.perishablegoods.PerishableGoodsContract#0002",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#4810",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0725",
+    "deadline": "2020-07-07T18:54:37.940+01:00",
+    "eventId": "ecc99b40-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:37.940+01:00"
 }</code></pre></td>
                 </tr>
             

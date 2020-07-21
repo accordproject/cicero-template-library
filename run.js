@@ -270,18 +270,30 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     const archiveFilePath = `${archiveDir}/${archiveFileName}`;
                     const archiveFileExists = await fs.pathExists(archiveFilePath);
 
-                    if(!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        let archive;
-                        archive = await template.toArchive('ergo');
-                        await writeFile(archiveFilePath, archive);
-                        console.log('Copied: ' + archiveFileName);
+                    const ciceroArchiveFileName = `${template.getIdentifier()}-cicero.cta`;
+                    const ciceroArchiveFilePath = `${archiveDir}/${ciceroArchiveFileName}`;
+                    const ciceroArchiveFileExists = await fs.pathExists(ciceroArchiveFilePath);
 
+                    if(!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                        const ciceroArchive = await template.toArchive('cicero');
+                        await writeFile(ciceroArchiveFilePath, ciceroArchive);
+                        console.log('Copied: ' + ciceroArchiveFilePath);
+                    }
+
+                    if(!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                        const ergoArchive = await template.toArchive('ergo');
+                        await writeFile(archiveFilePath, ergoArchive);
+                        console.log('Copied: ' + archiveFileName);
+                    }
+
+                    if(!ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
                         // update the index
                         const m = template.getMetadata();
                         const templateHash = template.getHash();
                         const indexData = {
                             uri: `ap://${template.getIdentifier()}#${templateHash}`,
                             url: `${serverRoot}/archives/${archiveFileName}`,
+                            ciceroUrl: `${serverRoot}/archives/${ciceroArchiveFileName}`,
                             name : m.getName(),
                             displayName: m.getDisplayName(),
                             description : m.getDescription(),

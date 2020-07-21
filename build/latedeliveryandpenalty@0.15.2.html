@@ -317,6 +317,7 @@
             </div>
           </div>
           <a href="./archives/latedeliveryandpenalty@0.15.2.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/latedeliveryandpenalty@0.15.2-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
           <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Flatedeliveryandpenalty%400.15.2%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
         <p></p>
 
@@ -392,7 +393,7 @@ If the delay is more than {{termination}}, the Buyer is entitled to terminate th
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract",
-    "contractId": "13521a8a-5a74-4bbe-a99d-765d3c097d54",
+    "contractId": "3bbea5d0-e062-423f-915a-4b7c0292d29f",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Steve"
@@ -573,7 +574,7 @@ transaction LateDeliveryAndPenaltyResponse extends Response {
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "ed0a3e10-7b6b-11ea-b280-c173749a9e96"
+    "stateId": "de5e3341-c07a-11ea-ad77-8b5ce7c057ac"
 }</code></pre></td>
                 </tr>
             
@@ -594,12 +595,12 @@ transaction LateDeliveryAndPenaltyResponse extends Response {
                     <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
-    "forceMajeure": false,
-    "agreedDelivery": "2020-04-10T16:43:25.680-04:00",
-    "deliveredAt": "2020-04-10T16:43:25.680-04:00",
-    "goodsValue": 143.581,
-    "transactionId": "ed0a1700-7b6b-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:43:25.680-04:00"
+    "forceMajeure": true,
+    "agreedDelivery": "2020-07-07T18:54:13.747+01:00",
+    "deliveredAt": "2020-07-07T18:54:13.747+01:00",
+    "goodsValue": 236.902,
+    "transactionId": "de5e0c30-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:13.747+01:00"
 }</code></pre></td>
                 </tr>
             
@@ -620,10 +621,10 @@ transaction LateDeliveryAndPenaltyResponse extends Response {
                     <th>org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
-    "penalty": 244.089,
+    "penalty": 22.799,
     "buyerMayTerminate": true,
-    "transactionId": "ed0a1701-7b6b-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:43:25.680-04:00"
+    "transactionId": "de5e3340-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:13.748+01:00"
 }</code></pre></td>
                 </tr>
             
@@ -646,16 +647,16 @@ transaction LateDeliveryAndPenaltyResponse extends Response {
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 201.951,
-        "currencyCode": "VEF"
+        "doubleValue": 232.605,
+        "currencyCode": "TTD"
     },
-    "description": "Culpa.",
-    "contract": "resource:org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract#0182",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#4957",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#6795",
-    "deadline": "2020-04-10T16:43:25.681-04:00",
-    "eventId": "ed0a3e11-7b6b-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:43:25.681-04:00"
+    "description": "Adipisicing officia id.",
+    "contract": "resource:org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract#5671",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#0538",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4718",
+    "deadline": "2020-07-07T18:54:13.748+01:00",
+    "eventId": "de5e3342-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:13.748+01:00"
 }</code></pre></td>
                 </tr>
             

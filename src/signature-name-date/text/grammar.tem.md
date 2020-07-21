@@ -1,9 +1,9 @@
-Signature: {{signatureAnchorTag}}
+Signature: {{signature}} {{party}}
 
-Title: {{titleAnchorTag}}
+Title: {{title}}
 
-Full name: {{nameAnchorTag}}
+Full name: {{name}}
 
-Date signed: {{dateAnchorTag}}
+Date signed: {{date}}
 
-Favorite Color: {{favoriteColorAnchorTag}}
+Favorite Color: {{favoriteColor}}

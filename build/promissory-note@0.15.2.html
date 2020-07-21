@@ -321,6 +321,7 @@
             </div>
           </div>
           <a href="./archives/promissory-note@0.15.2.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/promissory-note@0.15.2-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
           <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fpromissory-note%400.15.2%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
         <p></p>
 
@@ -535,13 +536,13 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.PromissoryNoteContract",
-    "contractId": "f2fb2dbb-a511-48e6-a564-a73dbb40f847",
+    "contractId": "551aee2a-9d8f-4a66-9474-c17c81a9870e",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 1000,
         "currencyCode": "USD"
     },
-    "date": "2018-01-30T00:00:00.000-04:00",
+    "date": "2018-01-30T00:00:00.000+01:00",
     "maker": "Daniel",
     "interestRate": 3.8,
     "individual": true,
@@ -554,7 +555,7 @@ IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year fir
         "doubleValue": 500,
         "currencyCode": "USD"
     },
-    "maturityDate": "2019-01-20T00:00:00.000-04:00",
+    "maturityDate": "2019-01-20T00:00:00.000+01:00",
     "defaultDays": 90,
     "insolvencyDays": 90,
     "jurisdiction": "New York, NY"
@@ -660,7 +661,7 @@ asset PromissoryNoteContract extends AccordContract {
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "a97c4bd1-7ff2-11ea-8007-d5530794d32a"
+    "stateId": "eea6e6c2-c07a-11ea-ad77-8b5ce7c057ac"
 }</code></pre></td>
                 </tr>
             
@@ -683,11 +684,11 @@ asset PromissoryNoteContract extends AccordContract {
     "$class": "org.accordproject.promissorynote.Payment",
     "amountPaid": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 188.15,
-        "currencyCode": "KPW"
+        "doubleValue": 162.262,
+        "currencyCode": "SDG"
     },
-    "transactionId": "a97bd6a0-7ff2-11ea-8007-d5530794d32a",
-    "timestamp": "2020-04-16T10:57:59.050-04:00"
+    "transactionId": "eea6e6c0-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:41.068+01:00"
 }</code></pre></td>
                 </tr>
             
@@ -708,9 +709,9 @@ asset PromissoryNoteContract extends AccordContract {
                     <th>org.accordproject.promissorynote.Result</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.promissorynote.Result",
-    "outstandingBalance": 131.022,
-    "transactionId": "a97c4bd0-7ff2-11ea-8007-d5530794d32a",
-    "timestamp": "2020-04-16T10:57:59.053-04:00"
+    "outstandingBalance": 249.684,
+    "transactionId": "eea6e6c1-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:54:41.068+01:00"
 }</code></pre></td>
                 </tr>
             

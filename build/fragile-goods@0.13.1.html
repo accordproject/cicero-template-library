@@ -309,6 +309,7 @@
             </div>
           </div>
           <a href="./archives/fragile-goods@0.13.1.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/fragile-goods@0.13.1-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
           <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Ffragile-goods%400.13.1%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
         <p></p>
 
@@ -393,7 +394,7 @@ Delivery Schedule: no later than {{deliveryLimitDuration}} after initiation.</co
             <div class="box" data-content="4">
                 <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.FragileGoodsClause",
-    "contractId": "96af2307-d392-4a19-b1aa-f4934052655f",
+    "contractId": "2b46d426-f28c-430f-8d51-732773dccfdd",
     "buyer": {
         "$class": "org.accordproject.cicero.contract.AccordParty",
         "partyId": "Steve"
@@ -531,7 +532,7 @@ asset FragileGoodsClause extends AccordContract {
                     <th>org.accordproject.cicero.contract.AccordContractState</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "org.accordproject.cicero.contract.AccordContractState",
-    "stateId": "de5b8b81-7b6b-11ea-b280-c173749a9e96"
+    "stateId": "d16483b0-c07a-11ea-ad77-8b5ce7c057ac"
 }</code></pre></td>
                 </tr>
             
@@ -552,14 +553,14 @@ asset FragileGoodsClause extends AccordContract {
                     <th>io.clause.demo.fragileGoods.DeliveryUpdate</th>
                     <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
     "$class": "io.clause.demo.fragileGoods.DeliveryUpdate",
-    "startTime": "2020-04-10T16:43:01.048-04:00",
-    "finishTime": "2020-04-10T16:43:01.048-04:00",
-    "status": "ARRIVED",
+    "startTime": "2020-07-07T18:53:51.977+01:00",
+    "finishTime": "2020-07-07T18:53:51.977+01:00",
+    "status": "IN_TRANSIT",
     "accelerometerReadings": [
-        23.537
+        250.384
     ],
-    "transactionId": "de5b6470-7b6b-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:43:01.048-04:00"
+    "transactionId": "d1643590-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:53:51.977+01:00"
 }</code></pre></td>
                 </tr>
             
@@ -582,11 +583,11 @@ asset FragileGoodsClause extends AccordContract {
     "$class": "io.clause.demo.fragileGoods.PayOut",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 252.644,
-        "currencyCode": "KGS"
+        "doubleValue": 239.912,
+        "currencyCode": "DOP"
     },
-    "transactionId": "de5b8b80-7b6b-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:43:01.048-04:00"
+    "transactionId": "d1645ca0-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:53:51.978+01:00"
 }</code></pre></td>
                 </tr>
             
@@ -609,16 +610,16 @@ asset FragileGoodsClause extends AccordContract {
     "$class": "org.accordproject.cicero.runtime.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
-        "doubleValue": 72.522,
-        "currencyCode": "KZT"
+        "doubleValue": 78.587,
+        "currencyCode": "TZS"
     },
-    "description": "Do velit non.",
-    "contract": "resource:io.clause.demo.fragileGoods.FragileGoodsClause#8078",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#7032",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#0852",
-    "deadline": "2020-04-10T16:43:01.049-04:00",
-    "eventId": "de5bb290-7b6b-11ea-b280-c173749a9e96",
-    "timestamp": "2020-04-10T16:43:01.049-04:00"
+    "description": "Culpa.",
+    "contract": "resource:io.clause.demo.fragileGoods.FragileGoodsClause#3763",
+    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#6566",
+    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#5443",
+    "deadline": "2020-07-07T18:53:51.979+01:00",
+    "eventId": "d16483b1-c07a-11ea-ad77-8b5ce7c057ac",
+    "timestamp": "2020-07-07T18:53:51.979+01:00"
 }</code></pre></td>
                 </tr>
             
