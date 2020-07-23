@@ -1,0 +1,1010 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/supplyagreement@0.13.0.html" />
+    <meta property="og:title" content="supplyagreement@0.13.0" />
+    <meta property="og:description" content="A sample supply agreement." />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/jLTDZziW4BtdLt1irLt_WbMqKQDAUsWJTLDLLTK3WOb3PGCxmAPMs_zUYCqc_chiR7Aoc64UyvuVODyRIz6wF9kmZ1f35AO9PKmXrwX-0hE9SLfd1KqH80TfayVzU1R7xvMqI9abTtVapUmcXELRCfsItnD2o3iofnPM8WS2cus74yyG8cNkqQAGATcl801hmRKh6X6pLMZdO1WAROMIYyrg2qjKt35hofaFqa8AIAIoWi5N8RdQrJECIWPPHWF0SNwkt3e3aWifSfSl0PddHjDwenmotpzIFxEnO9KfZY7hHSNCMigsGR9wgP161s7g_LJ5_bM0jg7dldADdkaNpRsetVNAIVl9vUk6cgYSzK-VaI-fY6a1ysz0iK4IGSAEPlsPUWE-8v8gJrtwTVR3uympI0TbzE_aVDVTtlwPTfYMUL5G9QoQbipssLWrsEiVYyKw4-dUBT7GbNxQRvl2jpuKQbxPe0rus26_WX60nwbbUe4SyC52_lr7tO13PEjOjKUn_r4VJ7Bfa6sfWGwIvVv2U782WSU9THiLtbdro9FpCdjx3k7QiVXLkT8YF7kfqZpil66Tjw2ksVZB9YetOi-vtQ6cReKgmcsJyLQeGcqnrSt88CKQ7Cuw1Sh3PwXg7nG2eyP-zWu6Krvtgvl2toLgTwnRT6vP7wi6aMekqSDgxLz1ia8g3MMZNlm1tsWb3NHn6DTdXNFfHgFtJcdzuj5mH1xi6KQZJenh2Nx0VvtWBPnBDnfty4d1owyjVnFf-DqrvXQwbiu7_DVftCAvk27Am-wKp6VV85SpSeJlr_UuSKq57zVsIBtlGVBmp_8F" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="supplyagreement@0.13.0" />
+    <meta name="twitter:description" content="A sample supply agreement." />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/jLTDZziW4BtdLt1irLt_WbMqKQDAUsWJTLDLLTK3WOb3PGCxmAPMs_zUYCqc_chiR7Aoc64UyvuVODyRIz6wF9kmZ1f35AO9PKmXrwX-0hE9SLfd1KqH80TfayVzU1R7xvMqI9abTtVapUmcXELRCfsItnD2o3iofnPM8WS2cus74yyG8cNkqQAGATcl801hmRKh6X6pLMZdO1WAROMIYyrg2qjKt35hofaFqa8AIAIoWi5N8RdQrJECIWPPHWF0SNwkt3e3aWifSfSl0PddHjDwenmotpzIFxEnO9KfZY7hHSNCMigsGR9wgP161s7g_LJ5_bM0jg7dldADdkaNpRsetVNAIVl9vUk6cgYSzK-VaI-fY6a1ysz0iK4IGSAEPlsPUWE-8v8gJrtwTVR3uympI0TbzE_aVDVTtlwPTfYMUL5G9QoQbipssLWrsEiVYyKw4-dUBT7GbNxQRvl2jpuKQbxPe0rus26_WX60nwbbUe4SyC52_lr7tO13PEjOjKUn_r4VJ7Bfa6sfWGwIvVv2U782WSU9THiLtbdro9FpCdjx3k7QiVXLkT8YF7kfqZpil66Tjw2ksVZB9YetOi-vtQ6cReKgmcsJyLQeGcqnrSt88CKQ7Cuw1Sh3PwXg7nG2eyP-zWu6Krvtgvl2toLgTwnRT6vP7wi6aMekqSDgxLz1ia8g3MMZNlm1tsWb3NHn6DTdXNFfHgFtJcdzuj5mH1xi6KQZJenh2Nx0VvtWBPnBDnfty4d1owyjVnFf-DqrvXQwbiu7_DVftCAvk27Am-wKp6VV85SpSeJlr_UuSKq57zVsIBtlGVBmp_8F" />
+    <meta name="twitter:image:alt" content="UML diagram of supplyagreement@0.13.0 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/supplyagreement@0.13.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Supply Agreement
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">supplyagreement@0.13.0</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^0.21.0</span>
+                <span class="tag is-light">b115ca666bf56fa124221427302142b6e2ee508f6963e103efbfd0147e58ffe0</span>
+            </div>
+            <p class="subtitle">
+                A sample supply agreement.
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="supplyagreement@0.9.0.html" class="dropdown-item ">
+                    supplyagreement@0.9.0
+                </a>
+              
+                <a href="supplyagreement@0.8.0.html" class="dropdown-item ">
+                    supplyagreement@0.8.0
+                </a>
+              
+                <a href="supplyagreement@0.7.0.html" class="dropdown-item ">
+                    supplyagreement@0.7.0
+                </a>
+              
+                <a href="supplyagreement@0.6.0.html" class="dropdown-item ">
+                    supplyagreement@0.6.0
+                </a>
+              
+                <a href="supplyagreement@0.5.0.html" class="dropdown-item ">
+                    supplyagreement@0.5.0
+                </a>
+              
+                <a href="supplyagreement@0.4.0.html" class="dropdown-item ">
+                    supplyagreement@0.4.0
+                </a>
+              
+                <a href="supplyagreement@0.3.0.html" class="dropdown-item ">
+                    supplyagreement@0.3.0
+                </a>
+              
+                <a href="supplyagreement@0.2.0.html" class="dropdown-item ">
+                    supplyagreement@0.2.0
+                </a>
+              
+                <a href="supplyagreement@0.13.0.html" class="dropdown-item is-active">
+                    supplyagreement@0.13.0
+                </a>
+              
+                <a href="supplyagreement@0.12.1.html" class="dropdown-item ">
+                    supplyagreement@0.12.1
+                </a>
+              
+                <a href="supplyagreement@0.12.0.html" class="dropdown-item ">
+                    supplyagreement@0.12.0
+                </a>
+              
+                <a href="supplyagreement@0.11.1.html" class="dropdown-item ">
+                    supplyagreement@0.11.1
+                </a>
+              
+                <a href="supplyagreement@0.11.0.html" class="dropdown-item ">
+                    supplyagreement@0.11.0
+                </a>
+              
+                <a href="supplyagreement@0.10.1.html" class="dropdown-item ">
+                    supplyagreement@0.10.1
+                </a>
+              
+                <a href="supplyagreement@0.10.0.html" class="dropdown-item ">
+                    supplyagreement@0.10.0
+                </a>
+              
+                <a href="supplyagreement@0.1.0.html" class="dropdown-item ">
+                    supplyagreement@0.1.0
+                </a>
+              
+                <a href="supplyagreement@0.0.6.html" class="dropdown-item ">
+                    supplyagreement@0.0.6
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/supplyagreement@0.13.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/supplyagreement@0.13.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fsupplyagreement%400.13.0%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="supplyagreement">Supply Agreement</h1>
+<p>A simple supply agreement.</p>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>Supply Agreement</p>
+<p>This Supply Sales Agreement is made on 04/02/2018 (the "Effective Date") between "DAN" and "PETER".</p>
+
+<ol delimiter=period start=1 tight=false>
+<li><p>Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase the "Umbrellas" (the "Products") in accordance with the terms of this agreement.</p>
+</li>
+<li><p>Orders
+2.1. Purchase Orders. "PETER" shall submit all orders for Products to "DAN" in writing to "DAN"'s address listed in the introduction to this agreement, or as "DAN" otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
+(a) each Product it is ordering, identified by model or part number,
+(b) the amount of each Product it is ordering,
+(c) the unit price of each Product it is ordering,
+(d) the location for delivery, and
+(e) the delivery date, allowing reasonable time for "DAN" to receive, review, process the Purchase Order, and ship the Products (the "Delivery Date").
+2.2. Accepting, Modifying, and Rejecting Purchase Orders
+(a) By Notice. Within 2 Business Days' of receiving a Purchase Order from "PETER", "DAN" shall accept, reject, or propose a modification to the Purchase Order by sending "PETER" written notice of its acceptance, rejection, or proposed modification.
+(b) Deemed Acceptance. If "DAN" fails to notify "PETER" of its acceptance, rejection, or proposed modification, "PETER" may deem that "DAN" accepted the Purchase Order.
+(c) Modification of Purchase Order. "DAN" may propose a modification to a Purchase Order by including in its notice to "PETER" a modified Purchase Order for "PETER" to accept or reject according to the acceptance and rejection procedures under paragraphs 2.2(a) and 2.2(b).
+2.3. Canceling Purchase Orders. "PETER" may, at no expense to itself, cancel part or all of a Purchase Order up to 10 Business Days before the Delivery Date.</p>
+</li>
+<li><p>Supply Forecasts. On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.</p>
+</li>
+<li><p>Delivery. "DAN" shall deliver the "Colorful Umbrellas" and title to the "Colorful Umbrellas" to "PETER" within 1 days of the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the "Annex A", attached to this agreement.</p>
+</li>
+<li><p>Acceptance
+5.1. Acceptance of Delivery. "DAN" will be deemed to have completed its delivery obligations if
+(a) in "PETER"'s opinion, the "Colorful Umbrellas" satisfies the Acceptance Criteria, and
+(b) "PETER" notifies "DAN" in writing that it is accepting the "Colorful Umbrellas".
+5.2. Inspection and Notice. "PETER" will have 3 Business Days to inspect and evaluate the "Colorful Umbrellas" on the delivery date before notifying "DAN" that it is either accepting or rejecting the "Colorful Umbrellas".
+5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Colorful Umbrellas" must meet for "DAN" to comply with its requirements and obligations under this agreement, detailed in "Annex B", attached to this agreement.</p>
+</li>
+<li><p>Pricing
+6.1.  Product Prices. The initial prices for all Products are set forth in Schedule A. All prices are FOB the Supplier's designated shipping point.
+6.2.  Updated Price List. The Supplier shall update its price list each calendar quarter and give Notice of the updated list to the Purchaser no later than 15 days before the end of each calendar quarter.</p>
+</li>
+<li><p>Purchase Price. "PETER" shall pay the Purchase Price to "DAN"
+7.1. in full,
+7.2. on delivery and "PETER"'s acceptance,
+7.3. in immediately available funds, and
+7.4. to the account "DAN" lists directly below:
+Account Number: "XXX-XX"
+Routing Number: "YYY-YY"</p>
+</li>
+<li><p>Term
+8.1. Initial Term. The initial term of this agreement begins on 04/02/2018 and will continue for 2 years, unless terminated earlier (the "Initial Term").
+8.2. Renewal Term by Notice. "PETER" may renew this agreement for successive renewal terms of 1 years length ("Renewal Terms"), unless terminated earlier, by giving "DAN" notice of the intent to renew this agreement, at least 30 Business Days before the end of the Current Term.
+8.3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.</p>
+</li>
+<li><p>Mutual Representations
+9.1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+9.2. Execution and Delivery. The parties have executed and delivered this agreement.
+9.3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+9.4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.</p>
+</li>
+<li><p>Limited Warranty
+10.1. Warranty. "PETER" warrants that the Products
+(a) will be free from material defects,
+(b) are made with workmanlike quality, and
+(c) will conform, within normal commercial tolerances, to the applicable specifications.
+10.2. Replacement Products. Subject to paragraphs 10.3 and 10.4 directly below, "PETER"'s sole remedy for breach of this limited warranty will be "DAN" providing "PETER" with a replacement Product, at "DAN"'s sole expense.
+10.3. Notice Requirement. "DAN" will only be required to replace Products under paragraph 10.2 if it receives written notice from "PETER" of such defect or nonconformity within 90 days after delivery of the Products.
+10.4. Exclusions. This warranty does not extend to any Product "PETER" abuses, neglects, or misuses according to the applicable documentation or specifications, or to any Product "PETER" has had repaired or altered by a Person other than "DAN".</p>
+</li>
+<li><p>Confidentiality
+11.1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+11.2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+11.3. Non-Disclosure. "PETER" may not disclose Confidential Information to any third party, except to the extent
+(a) permitted by this agreement,
+(b) "DAN" consents in writing, or
+(c) required by Law.
+11.4. Notice. "PETER" shall notify "DAN" if it
+(a) is required by Law to disclose any Confidential Information, or
+(b) learns of any unauthorized disclosure of Confidential Information.</p>
+</li>
+<li><p>Effect of Termination
+12.1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+12.2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+(a) pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+(b) refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+12.3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+(a) that arose before the termination or expiration of this agreement, or
+(b) arising after the termination or expiration of this agreement.</p>
+</li>
+<li><p>Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.</p>
+</li>
+<li><p>General Provisions
+14.1. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+(a) represent the final expression of the parties' intent relating to the subject matter of this agreement,
+(b)  contain all the terms the parties agreed to relating to the subject matter, and
+(c) replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+14.2. Amendment. This agreement can be amended only by a writing signed by both parties.
+14.3. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+14.4. Notices
+(a) Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, next-day courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+(b) Receipt of Notice. A notice given under this agreement will be effective on
+(i) the other party's receipt of it, or
+(ii) if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it.
+14.5. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+14.6. Waiver
+(a) Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+(b) Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+(c) No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+(d) No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+14.7. Governing Law and Consent to Jurisdiction and Venue
+(a) Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of NY.
+(b) Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of NY, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+(c) Consent to Service. Each party hereby irrevocably
+(i) agrees that process may be served on it in any manner authorized by the Laws of the State of NY, and
+(ii) waives any objection which it might otherwise have to service of process under the Laws of the State of NY.
+14.8. Counterparts
+(a) Signed in Counterparts. This agreement may be signed in any number of counterparts.
+(b) All Counterparts Original. Each counterpart is an original.
+(c) Counterparts Form One Document. Together, all counterparts form one single document.</p>
+</li></ol></span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Supply Agreement
+
+This Supply Sales Agreement is made on 04/02/2018 (the "Effective Date") between "DAN" and "PETER".
+
+1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase the "Umbrellas" (the "Products") in accordance with the terms of this agreement.
+
+2. Orders
+2.1. Purchase Orders. "PETER" shall submit all orders for Products to "DAN" in writing to "DAN"'s address listed in the introduction to this agreement, or as "DAN" otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
+(a) each Product it is ordering, identified by model or part number,
+(b) the amount of each Product it is ordering,
+(c) the unit price of each Product it is ordering,
+(d) the location for delivery, and
+(e) the delivery date, allowing reasonable time for "DAN" to receive, review, process the Purchase Order, and ship the Products (the "Delivery Date").
+2.2. Accepting, Modifying, and Rejecting Purchase Orders
+(a) By Notice. Within 2 Business Days' of receiving a Purchase Order from "PETER", "DAN" shall accept, reject, or propose a modification to the Purchase Order by sending "PETER" written notice of its acceptance, rejection, or proposed modification.
+(b) Deemed Acceptance. If "DAN" fails to notify "PETER" of its acceptance, rejection, or proposed modification, "PETER" may deem that "DAN" accepted the Purchase Order.
+(c) Modification of Purchase Order. "DAN" may propose a modification to a Purchase Order by including in its notice to "PETER" a modified Purchase Order for "PETER" to accept or reject according to the acceptance and rejection procedures under paragraphs 2.2(a) and 2.2(b).
+2.3. Canceling Purchase Orders. "PETER" may, at no expense to itself, cancel part or all of a Purchase Order up to 10 Business Days before the Delivery Date.
+
+3. Supply Forecasts. On or before the 04/02/2018, and thereafter on or before the last day of each calendar quarter, the Purchaser "PETER" shall send the Supplier "DAN" a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least 85% of the quantity of the listed Product.
+
+4. Delivery. "DAN" shall deliver the "Colorful Umbrellas" and title to the "Colorful Umbrellas" to "PETER" within 1 days of the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the "Annex A", attached to this agreement.
+
+5. Acceptance
+5.1. Acceptance of Delivery. "DAN" will be deemed to have completed its delivery obligations if
+(a) in "PETER"'s opinion, the "Colorful Umbrellas" satisfies the Acceptance Criteria, and
+(b) "PETER" notifies "DAN" in writing that it is accepting the "Colorful Umbrellas".
+5.2. Inspection and Notice. "PETER" will have 3 Business Days to inspect and evaluate the "Colorful Umbrellas" on the delivery date before notifying "DAN" that it is either accepting or rejecting the "Colorful Umbrellas".
+5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Colorful Umbrellas" must meet for "DAN" to comply with its requirements and obligations under this agreement, detailed in "Annex B", attached to this agreement.
+
+6.  Pricing
+6.1.  Product Prices. The initial prices for all Products are set forth in Schedule A. All prices are FOB the Supplier's designated shipping point.
+6.2.  Updated Price List. The Supplier shall update its price list each calendar quarter and give Notice of the updated list to the Purchaser no later than 15 days before the end of each calendar quarter.
+
+7. Purchase Price. "PETER" shall pay the Purchase Price to "DAN"
+7.1. in full,
+7.2. on delivery and "PETER"'s acceptance,
+7.3. in immediately available funds, and
+7.4. to the account "DAN" lists directly below:
+Account Number: "XXX-XX"
+Routing Number: "YYY-YY"
+
+8. Term
+8.1. Initial Term. The initial term of this agreement begins on 04/02/2018 and will continue for 2 years, unless terminated earlier (the "Initial Term").
+8.2. Renewal Term by Notice. "PETER" may renew this agreement for successive renewal terms of 1 years length ("Renewal Terms"), unless terminated earlier, by giving "DAN" notice of the intent to renew this agreement, at least 30 Business Days before the end of the Current Term.
+8.3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.
+
+9. Mutual Representations
+9.1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+9.2. Execution and Delivery. The parties have executed and delivered this agreement.
+9.3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+9.4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.
+
+10. Limited Warranty
+10.1. Warranty. "PETER" warrants that the Products
+(a) will be free from material defects, 
+(b) are made with workmanlike quality, and 
+(c) will conform, within normal commercial tolerances, to the applicable specifications.
+10.2. Replacement Products. Subject to paragraphs 10.3 and 10.4 directly below, "PETER"'s sole remedy for breach of this limited warranty will be "DAN" providing "PETER" with a replacement Product, at "DAN"'s sole expense.
+10.3. Notice Requirement. "DAN" will only be required to replace Products under paragraph 10.2 if it receives written notice from "PETER" of such defect or nonconformity within 90 days after delivery of the Products.
+10.4. Exclusions. This warranty does not extend to any Product "PETER" abuses, neglects, or misuses according to the applicable documentation or specifications, or to any Product "PETER" has had repaired or altered by a Person other than "DAN".
+
+11. Confidentiality
+11.1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+11.2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+11.3. Non-Disclosure. "PETER" may not disclose Confidential Information to any third party, except to the extent
+(a) permitted by this agreement,
+(b) "DAN" consents in writing, or
+(c) required by Law.
+11.4. Notice. "PETER" shall notify "DAN" if it
+(a) is required by Law to disclose any Confidential Information, or
+(b) learns of any unauthorized disclosure of Confidential Information.
+
+12. Effect of Termination
+12.1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+12.2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+(a) pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+(b) refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+12.3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+(a) that arose before the termination or expiration of this agreement, or
+(b) arising after the termination or expiration of this agreement.
+
+13. Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.
+
+14. General Provisions
+14.1. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+(a) represent the final expression of the parties' intent relating to the subject matter of this agreement,
+(b)  contain all the terms the parties agreed to relating to the subject matter, and
+(c) replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+14.2. Amendment. This agreement can be amended only by a writing signed by both parties.
+14.3. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+14.4. Notices
+(a) Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, next-day courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+(b) Receipt of Notice. A notice given under this agreement will be effective on
+(i) the other party's receipt of it, or
+(ii) if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it. 
+14.5. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+14.6. Waiver
+(a) Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+(b) Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+(c) No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+(d) No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+14.7. Governing Law and Consent to Jurisdiction and Venue
+(a) Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of NY.
+(b) Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of NY, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+(c) Consent to Service. Each party hereby irrevocably
+(i) agrees that process may be served on it in any manner authorized by the Laws of the State of NY, and
+(ii) waives any objection which it might otherwise have to service of process under the Laws of the State of NY.
+14.8. Counterparts
+(a) Signed in Counterparts. This agreement may be signed in any number of counterparts.
+(b) All Counterparts Original. Each counterpart is an original.
+(c) Counterparts Form One Document. Together, all counterparts form one single document.
+
+</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Supply Agreement
+
+This Supply Sales Agreement is made on {{effectiveDate}} (the "Effective Date") between {{supplier}} and {{buyer}}.
+
+1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase the {{shortDescriptionOfTheProducts}} (the "Products") in accordance with the terms of this agreement.
+
+2. Orders
+2.1. Purchase Orders. {{buyer}} shall submit all orders for Products to {{supplier}} in writing to {{supplier}}'s address listed in the introduction to this agreement, or as {{supplier}} otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
+(a) each Product it is ordering, identified by model or part number,
+(b) the amount of each Product it is ordering,
+(c) the unit price of each Product it is ordering,
+(d) the location for delivery, and
+(e) the delivery date, allowing reasonable time for {{supplier}} to receive, review, process the Purchase Order, and ship the Products (the "Delivery Date").
+2.2. Accepting, Modifying, and Rejecting Purchase Orders
+(a) By Notice. Within {{noticeWindow}} Business Days' of receiving a Purchase Order from {{buyer}}, {{supplier}} shall accept, reject, or propose a modification to the Purchase Order by sending {{buyer}} written notice of its acceptance, rejection, or proposed modification.
+(b) Deemed Acceptance. If {{supplier}} fails to notify {{buyer}} of its acceptance, rejection, or proposed modification, {{buyer}} may deem that {{supplier}} accepted the Purchase Order.
+(c) Modification of Purchase Order. {{supplier}} may propose a modification to a Purchase Order by including in its notice to {{buyer}} a modified Purchase Order for {{buyer}} to accept or reject according to the acceptance and rejection procedures under paragraphs 2.2(a) and 2.2(b).
+2.3. Canceling Purchase Orders. {{buyer}} may, at no expense to itself, cancel part or all of a Purchase Order up to {{cancellationWindow}} Business Days before the Delivery Date.
+
+3. Supply Forecasts. On or before the {{effectiveDate}}, and thereafter on or before the last day of each calendar quarter, the Purchaser {{buyer}} shall send the Supplier {{supplier}} a Supply Forecast. The Supply Forecast will be a binding commitment on the Purchaser’s behalf to purchase during the first quarter included in each Supply Forecast at least {{minimumPercentage}}% of the quantity of the listed Product.
+
+4. Delivery. {{supplier}} shall deliver the {{deliverables}} and title to the {{deliverables}} to {{buyer}} within {{deliveryWindow}} days of the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the {{deliveryAttachment}}, attached to this agreement.
+
+5. Acceptance
+5.1. Acceptance of Delivery. {{supplier}} will be deemed to have completed its delivery obligations if
+(a) in {{buyer}}'s opinion, the {{deliverables}} satisfies the Acceptance Criteria, and
+(b) {{buyer}} notifies {{supplier}} in writing that it is accepting the {{deliverables}}.
+5.2. Inspection and Notice. {{buyer}} will have {{inspectionWindow}} Business Days to inspect and evaluate the {{deliverables}} on the delivery date before notifying {{supplier}} that it is either accepting or rejecting the {{deliverables}}.
+5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the {{deliverables}} must meet for {{supplier}} to comply with its requirements and obligations under this agreement, detailed in {{acceptanceAttachment}}, attached to this agreement.
+
+6.  Pricing
+6.1.  Product Prices. The initial prices for all Products are set forth in Schedule A. All prices are FOB the Supplier's designated shipping point.
+6.2.  Updated Price List. The Supplier shall update its price list each calendar quarter and give Notice of the updated list to the Purchaser no later than {{priceUpdateWindow}} days before the end of each calendar quarter.
+
+7. Purchase Price. {{buyer}} shall pay the Purchase Price to {{supplier}}
+7.1. in full,
+7.2. on delivery and {{buyer}}'s acceptance,
+7.3. in immediately available funds, and
+7.4. to the account {{supplier}} lists directly below:
+Account Number: {{accountNumber}}
+Routing Number: {{routingNumnber}}
+
+8. Term
+8.1. Initial Term. The initial term of this agreement begins on {{effectiveDate}} and will continue for {{termYears}} years, unless terminated earlier (the "Initial Term").
+8.2. Renewal Term by Notice. {{buyer}} may renew this agreement for successive renewal terms of {{renewalYears}} years length ("Renewal Terms"), unless terminated earlier, by giving {{supplier}} notice of the intent to renew this agreement, at least {{renewalWindow}} Business Days before the end of the Current Term.
+8.3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.
+
+9. Mutual Representations
+9.1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+9.2. Execution and Delivery. The parties have executed and delivered this agreement.
+9.3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+9.4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.
+
+10. Limited Warranty
+10.1. Warranty. {{buyer}} warrants that the Products
+(a) will be free from material defects, 
+(b) are made with workmanlike quality, and 
+(c) will conform, within normal commercial tolerances, to the applicable specifications.
+10.2. Replacement Products. Subject to paragraphs 10.3 and 10.4 directly below, {{buyer}}'s sole remedy for breach of this limited warranty will be {{supplier}} providing {{buyer}} with a replacement Product, at {{supplier}}'s sole expense.
+10.3. Notice Requirement. {{supplier}} will only be required to replace Products under paragraph 10.2 if it receives written notice from {{buyer}} of such defect or nonconformity within 90 days after delivery of the Products.
+10.4. Exclusions. This warranty does not extend to any Product {{buyer}} abuses, neglects, or misuses according to the applicable documentation or specifications, or to any Product {{buyer}} has had repaired or altered by a Person other than {{supplier}}.
+
+11. Confidentiality
+11.1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+11.2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+11.3. Non-Disclosure. {{buyer}} may not disclose Confidential Information to any third party, except to the extent
+(a) permitted by this agreement,
+(b) {{supplier}} consents in writing, or
+(c) required by Law.
+11.4. Notice. {{buyer}} shall notify {{supplier}} if it
+(a) is required by Law to disclose any Confidential Information, or
+(b) learns of any unauthorized disclosure of Confidential Information.
+
+12. Effect of Termination
+12.1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+12.2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+(a) pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+(b) refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+12.3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+(a) that arose before the termination or expiration of this agreement, or
+(b) arising after the termination or expiration of this agreement.
+
+13. Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.
+
+14. General Provisions
+14.1. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+(a) represent the final expression of the parties' intent relating to the subject matter of this agreement,
+(b)  contain all the terms the parties agreed to relating to the subject matter, and
+(c) replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+14.2. Amendment. This agreement can be amended only by a writing signed by both parties.
+14.3. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+14.4. Notices
+(a) Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, next-day courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+(b) Receipt of Notice. A notice given under this agreement will be effective on
+(i) the other party's receipt of it, or
+(ii) if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it. 
+14.5. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+14.6. Waiver
+(a) Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+(b) Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+(c) No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+(d) No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+14.7. Governing Law and Consent to Jurisdiction and Venue
+(a) Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of {{governingState}}.
+(b) Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of {{venueState}}, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+(c) Consent to Service. Each party hereby irrevocably
+(i) agrees that process may be served on it in any manner authorized by the Laws of the State of {{governingState}}, and
+(ii) waives any objection which it might otherwise have to service of process under the Laws of the State of {{governingState}}.
+14.8. Counterparts
+(a) Signed in Counterparts. This agreement may be signed in any number of counterparts.
+(b) All Counterparts Original. Each counterpart is an original.
+(c) Counterparts Form One Document. Together, all counterparts form one single document.
+
+</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.SupplyAgreementContract",
+    "effectiveDate": "2018-04-02T00:00:00.000-04:00",
+    "supplier": "DAN",
+    "buyer": "PETER",
+    "shortDescriptionOfTheProducts": "Umbrellas",
+    "noticeWindow": 2,
+    "cancellationWindow": 10,
+    "minimumPercentage": 85,
+    "deliverables": "Colorful Umbrellas",
+    "deliveryWindow": 1,
+    "deliveryAttachment": "Annex A",
+    "inspectionWindow": 3,
+    "acceptanceAttachment": "Annex B",
+    "priceUpdateWindow": 15,
+    "accountNumber": "XXX-XX",
+    "routingNumnber": "YYY-YY",
+    "termYears": 2,
+    "renewalYears": 1,
+    "renewalWindow": 30,
+    "governingState": "NY",
+    "venueState": "NY",
+    "contractId": "30d498b6-95d2-4c32-a5c6-86ddcbd37d59"
+}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/jLTDZziW4BtdLt1irLt_WbMqKQDAUsWJTLDLLTK3WOb3PGCxmAPMs_zUYCqc_chiR7Aoc64UyvuVODyRIz6wF9kmZ1f35AO9PKmXrwX-0hE9SLfd1KqH80TfayVzU1R7xvMqI9abTtVapUmcXELRCfsItnD2o3iofnPM8WS2cus74yyG8cNkqQAGATcl801hmRKh6X6pLMZdO1WAROMIYyrg2qjKt35hofaFqa8AIAIoWi5N8RdQrJECIWPPHWF0SNwkt3e3aWifSfSl0PddHjDwenmotpzIFxEnO9KfZY7hHSNCMigsGR9wgP161s7g_LJ5_bM0jg7dldADdkaNpRsetVNAIVl9vUk6cgYSzK-VaI-fY6a1ysz0iK4IGSAEPlsPUWE-8v8gJrtwTVR3uympI0TbzE_aVDVTtlwPTfYMUL5G9QoQbipssLWrsEiVYyKw4-dUBT7GbNxQRvl2jpuKQbxPe0rus26_WX60nwbbUe4SyC52_lr7tO13PEjOjKUn_r4VJ7Bfa6sfWGwIvVv2U782WSU9THiLtbdro9FpCdjx3k7QiVXLkT8YF7kfqZpil66Tjw2ksVZB9YetOi-vtQ6cReKgmcsJyLQeGcqnrSt88CKQ7Cuw1Sh3PwXg7nG2eyP-zWu6Krvtgvl2toLgTwnRT6vP7wi6aMekqSDgxLz1ia8g3MMZNlm1tsWb3NHn6DTdXNFfHgFtJcdzuj5mH1xi6KQZJenh2Nx0VvtWBPnBDnfty4d1owyjVnFf-DqrvXQwbiu7_DVftCAvk27Am-wKp6VV85SpSeJlr_UuSKq57zVsIBtlGVBmp_8F"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.purchaseorder
+
+asset Product identified by partNumber {
+  o String partNumber
+  o String name
+  o Double quantity
+  o Double unitPrice
+}
+
+asset OrderItem identified by partNumber {
+  o String partNumber
+  o Double quantity
+}
+
+concept PurchaseOrder {
+  o Product[] products
+  o String deliveryLocation
+  o DateTime deliveryDate
+}
+
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/usa/state.html">org.accordproject.usa.state.State</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreement.AgreementState</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.AgreementState",
+    "purchaseObligation": {
+        "$class": "org.accordproject.supplyagreement.PurchaseObligation",
+        "requiredPurchase": 107.628,
+        "year": 26043,
+        "quarter": 7015,
+        "party": "Lorem et."
+    },
+    "deliveryObligation": {
+        "$class": "org.accordproject.supplyagreement.DeliveryObligation",
+        "expectedDelivery": "2020-07-23T15:49:34.143-04:00",
+        "deliverables": [
+            {
+                "$class": "org.accordproject.purchaseorder.OrderItem",
+                "partNumber": "5455",
+                "quantity": 25.244
+            }
+        ],
+        "party": "Mollit exercitation magna deserunt."
+    },
+    "paymentObligation": {
+        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "amount": {
+            "$class": "org.accordproject.money.MonetaryAmount",
+            "doubleValue": 201.612,
+            "currencyCode": "XSU"
+        },
+        "description": "Est amet dolor ipsum.",
+        "contract": "resource:org.accordproject.supplyagreement.SupplyAgreementContract#4763",
+        "promisor": "resource:org.accordproject.cicero.contract.AccordParty#3497",
+        "promisee": "resource:org.accordproject.cicero.contract.AccordParty#4832",
+        "deadline": "2020-07-23T15:49:34.143-04:00",
+        "eventId": "1756",
+        "timestamp": "2020-07-23T15:49:34.143-04:00"
+    },
+    "stateId": "a1daacf0-cd1d-11ea-920c-ade26666d144"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreement.DeliveryRequest</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.DeliveryRequest",
+    "products": [
+        {
+            "$class": "org.accordproject.purchaseorder.Product",
+            "partNumber": "6129",
+            "name": "Eiusmod.",
+            "quantity": 156.532,
+            "unitPrice": 52.845
+        }
+    ],
+    "transactionId": "a1da10b0-cd1d-11ea-920c-ade26666d144",
+    "timestamp": "2020-07-23T15:49:34.139-04:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreement.ForecastRequest</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.ForecastRequest",
+    "supplyForecast": 63509,
+    "transactionId": "a1d9e9a0-cd1d-11ea-920c-ade26666d144",
+    "timestamp": "2020-07-23T15:49:34.138-04:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreement.PurchaseRequest</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.PurchaseRequest",
+    "purchaseOrder": {
+        "$class": "org.accordproject.purchaseorder.PurchaseOrder",
+        "products": [
+            {
+                "$class": "org.accordproject.purchaseorder.Product",
+                "partNumber": "9682",
+                "name": "Enim cupidatat culpa exercitation veniam.",
+                "quantity": 128.254,
+                "unitPrice": 149.916
+            }
+        ],
+        "deliveryLocation": "Consectetur laborum sit sunt.",
+        "deliveryDate": "2020-07-23T15:49:34.138-04:00"
+    },
+    "transactionId": "a1d9e9a1-cd1d-11ea-920c-ade26666d144",
+    "timestamp": "2020-07-23T15:49:34.138-04:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreement.DeliveryResponse</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.DeliveryResponse",
+    "transactionId": "a1da37c1-cd1d-11ea-920c-ade26666d144",
+    "timestamp": "2020-07-23T15:49:34.140-04:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreement.ForecastResponse</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.ForecastResponse",
+    "transactionId": "a1da10b1-cd1d-11ea-920c-ade26666d144",
+    "timestamp": "2020-07-23T15:49:34.139-04:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreement.PurchaseResponse</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreement.PurchaseResponse",
+    "transactionId": "a1da37c0-cd1d-11ea-920c-ade26666d144",
+    "timestamp": "2020-07-23T15:49:34.140-04:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.base.Event</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+            for details and examples of how to integrate a call to a Cicero template into your application.
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

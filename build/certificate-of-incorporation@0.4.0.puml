@@ -1,0 +1,27 @@
+@startuml
+class org.accordproject.incorporation.IncorporationCertificate << (A,green) >> {
+   + String companyName
+   + String incorporationState
+   + String streetAddress
+   + String addressRegion
+   + String addressLocality
+   + String postalCode
+   + String registeredAgentName
+   + DateTime incorporationDate
+   + Long authorizedShareCapital
+   + Double parValue
+   + String incorporatorName
+   + String incorporatorAddress
+   + String incorporatorCity
+   + String incorporatorState
+   + String incorporatorZip
+}
+org.accordproject.incorporation.IncorporationCertificate --|> org.accordproject.cicero.contract.AccordContract
+class org.accordproject.incorporation.ContractData {
+   + String companyName
+   + DateTime incorporationDate
+   + Long authorizedShareCapital
+   + Double parValue
+}
+org.accordproject.incorporation.ContractData --|> org.accordproject.base.Event
+@enduml
