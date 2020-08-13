@@ -15,6 +15,6 @@ evaluate the {{deliverable}} on the delivery date before notifying
 ## Acceptance Criteria.
 
 The "Acceptance Criteria" are the specifications the {{deliverable}}
-must meet for the {{shipper}} to comply with its requirements and
+must meet for {{shipper}} to comply with its requirements and
 obligations under this agreement, detailed in {{attachment}}, attached
 to this agreement.
