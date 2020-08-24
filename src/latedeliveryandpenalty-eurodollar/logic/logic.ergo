@@ -39,9 +39,14 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
     let penalty = diffRatio * contract.penaltyPercentage/100.0 * request.goodsValue;
     // Penalty may be capped
     let capped = min([penalty, contract.capPercentage/100.0 * request.goodsValue]);
+    //calculate any currency calculation needed for the penalty and set the currency
+    let goodsInDifferentCurrency =
+        if contract.fromCurrency != contract.toCurrency
+        then true
+        else false;
     let capped =
-        if contract.goodsInEuro
-        then capped * request.euroDollarValue
+        if goodsInDifferentCurrency
+        then capped * request.exchangeValue
         else capped;
     // Return a Payment Obligation
     emit PaymentObligation{
@@ -49,7 +54,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
 			promisor: some(contract.seller),
 			promisee: some(contract.buyer),
 			deadline: none,
-			amount: MonetaryAmount{ doubleValue: capped, currencyCode: USD },
+			amount: MonetaryAmount{ doubleValue: capped, currencyCode: contract.toCurrency },
 			description: contract.seller.partyId ++ " should pay penalty amount to " ++ contract.buyer.partyId
 		};
     // Return the response with the penalty and termination determination
