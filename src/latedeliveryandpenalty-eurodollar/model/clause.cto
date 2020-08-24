@@ -3,6 +3,8 @@ namespace org.accordproject.latedeliveryandpenalty
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
+/*import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money@0.2.0.cto*/
+import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money.cto
 
 /**
  * Defines the data model for the LateDeliveryAndPenalty template.
@@ -51,9 +53,28 @@ asset LateDeliveryAndPenaltyContract extends AccordContract {
   o TemporalUnit fractionalPart
 
   /**
-   * Are the goods in EUR not USD?
+   * Adding new currency related fields
    */
-  o Boolean goodsInEuro
+
+  /**
+   * Are the goods in different currencies?
+   */
+  /*o Boolean goodsInDifferentCurrency*/
+
+  /**
+   * Where are the currency versions coming from?
+   */
+  o String conversionSource
+
+  /**
+   * The currency that the goods are valued in
+   */
+  o CurrencyCode fromCurrency
+
+  /**
+   * The currency to be used for the penalty
+   */
+  o CurrencyCode toCurrency
 }
 
 /**
@@ -84,7 +105,7 @@ transaction LateDeliveryAndPenaltyRequest extends Request {
   /**
    * What is the exchange rate?
    */
-  o Double euroDollarValue
+  o Double exchangeValue
 }
 
 /**

@@ -13,7 +13,7 @@ whose delivery has been delayed. Any fractional part of a days is to be
 considered a full days. The total amount of penalty shall not however,
 exceed 55% of the total value of the Equipment involved in late delivery.
 If the delay is more than 15 days, the Buyer is entitled to terminate this Contract.
-The conversion from EUR/USD shall be calculated at the time of the goods arrival and based on an agreed rate from a third party Oracle service.
+All Equipment values are based on EUR and all penalty payments will be paid in USD at its equivalent amount in EUR. The conversion rate between the currencies is based upon "the prevailing exchange rate at a major United States bank".
 """
 
   Scenario: The contract should not allow the late delivery clause to be triggered when the delivery is on time
@@ -26,7 +26,7 @@ The conversion from EUR/USD shall be calculated at the time of the goods arrival
     "agreedDelivery": "2019-01-31 03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
-    "euroDollarValue":1
+    "exchangeValue":1
 }
 """
     Then it should reject the request with the error "[Ergo] Cannot exercise late delivery before delivery date"
@@ -41,7 +41,7 @@ The conversion from EUR/USD shall be calculated at the time of the goods arrival
     "agreedDelivery": "2019-01-11T03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
-    "euroDollarValue":1
+    "exchangeValue":1
 }
 """
     Then it should respond with
@@ -63,7 +63,7 @@ The conversion from EUR/USD shall be calculated at the time of the goods arrival
     "agreedDelivery": "2018-01-31 03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
-    "euroDollarValue":1.1
+    "exchangeValue":1.1
 }
 """
     Then it should respond with
