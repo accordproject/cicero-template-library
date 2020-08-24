@@ -7,4 +7,4 @@ whose delivery has been delayed. Any fractional part of a {{fractionalPart}} is 
 considered a full {{fractionalPart}}. The total amount of penalty shall not however,
 exceed {{capPercentage}}% of the total value of the Equipment involved in late delivery.
 If the delay is more than {{termination}}, the Buyer is entitled to terminate this Contract.
-{{#if goodsInEuro}}The conversion from EUR/USD shall be calculated at the time of the goods arrival and based on an agreed rate from a third party Oracle service.{{/if}}
+All Equipment values are based on {{fromCurrency}} and all penalty payments will be paid in {{toCurrency}} at its equivalent amount in {{fromCurrency}}. The conversion rate between the currencies is based upon {{conversionSource}}.
