@@ -1,6 +1,6 @@
 {
-    "name": "latedeliveryandpenalty-euro-dollar",
-    "displayName": "Late Delivery and Penalty (with EUR/USD conversion)",
+    "name": "latedeliveryandpenalty-currency-conversion",
+    "displayName": "Late Delivery and Penalty with currency conversion",
     "version": "0.1.0",
     "description": "A sample Late Delivery And Penalty clause with currency conversion.",
     "author": "Accord Project",
