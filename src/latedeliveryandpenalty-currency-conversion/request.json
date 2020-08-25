@@ -4,5 +4,5 @@
     "agreedDelivery": "2017-12-17T03:24:00-05:00",
     "deliveredAt": null,
     "goodsValue": 200.00,
-    "exchangeValue":1.1
+    "currencyConversion":{"from":"USD","to":"EUR","rate":1.1}
 }
