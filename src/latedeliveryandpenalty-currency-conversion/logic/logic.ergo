@@ -46,7 +46,7 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
         else false;
     let capped =
         if goodsInDifferentCurrency
-        then capped * request.exchangeValue
+        then capped * request.currencyConversion.rate
         else capped;
     // Return a Payment Obligation
     emit PaymentObligation{
