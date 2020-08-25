@@ -57,11 +57,6 @@ asset LateDeliveryAndPenaltyContract extends AccordContract {
    */
 
   /**
-   * Are the goods in different currencies?
-   */
-  /*o Boolean goodsInDifferentCurrency*/
-
-  /**
    * Where are the currency versions coming from?
    */
   o String conversionSource
