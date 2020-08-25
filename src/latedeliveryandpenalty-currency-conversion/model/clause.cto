@@ -3,8 +3,7 @@ namespace org.accordproject.latedeliveryandpenalty
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
 import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
-/*import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money@0.2.0.cto*/
-import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money.cto
+import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money@0.2.0.cto
 
 /**
  * Defines the data model for the LateDeliveryAndPenalty template.
@@ -73,6 +72,15 @@ asset LateDeliveryAndPenaltyContract extends AccordContract {
 }
 
 /**
+ * Represents a currency conversion pair and exchange rate
+ */
+concept CurrencyConversion {
+   o CurrencyCode from
+   o CurrencyCode to
+   o Double rate
+}
+
+/**
  * Defines the input data required by the template
  */
 transaction LateDeliveryAndPenaltyRequest extends Request {
@@ -100,7 +108,8 @@ transaction LateDeliveryAndPenaltyRequest extends Request {
   /**
    * What is the exchange rate?
    */
-  o Double exchangeValue
+  /*o Double exchangeValue*/
+  o CurrencyConversion currencyConversion
 }
 
 /**
