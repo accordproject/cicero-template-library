@@ -23,13 +23,13 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "^0.21.5",
-    "@accordproject/cicero-engine": "^0.21.5",
-    "@accordproject/cicero-test": "^0.21.5",
+    "@accordproject/cicero-core": "^0.21.6",
+    "@accordproject/cicero-engine": "^0.21.6",
+    "@accordproject/cicero-test": "^0.21.6",
     "@accordproject/concerto-core": "0.82.8",
     "@accordproject/concerto-tools": "0.82.8",
-    "@accordproject/markdown-cicero": "^0.12.7",
-    "@accordproject/markdown-html": "^0.12.7",
+    "@accordproject/markdown-cicero": "^0.12.8",
+    "@accordproject/markdown-html": "^0.12.8",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "4.2.0",
