@@ -1,4 +1,4 @@
-Signature: "{{sn}}|alice@example.com"
+Signature: "{{sn}}|alice@example.com" "{{partyId}}|alice@example.com"
 
 Title: "{{title}}|alice@example.com"
 
