@@ -1,9 +1,7 @@
-{{signatory}}
+**Signature:** {{signatory}} {{signature}}
 
-Signature: {{signatory}} {{signature}}
+**Title:** {{signatory}} {{title}}
 
-Title: {{signatory}} {{title}}
+**Full name:** {{signatory}} {{fullName}}
 
-Full name: {{signatory}} {{fullName}}
-
-Date signed: {{signatory}} {{dateSigned}}
+**Date signed:** {{signatory}} {{dateSigned}}
