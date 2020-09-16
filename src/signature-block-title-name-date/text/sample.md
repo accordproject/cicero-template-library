@@ -1,9 +1,9 @@
-"alice@example.com"
+"buyer@example.com"
 
-Signature: "<supplied at signature>"
+Signature: "buyer@example.com" "{{on signature, signature inserted here}}"
 
-Title: "<supplied at signature>"
+Title: "buyer@example.com" "{{on signature, title inserted here}}"
 
-Full name: "<supplied at signature>"
+Full name: "buyer@example.com" "{{on signature, full name inserted here}}"
 
-Date signed: "<supplied at signature>"
+Date signed: "buyer@example.com" "{{on signature, date signed inserted here}}"
