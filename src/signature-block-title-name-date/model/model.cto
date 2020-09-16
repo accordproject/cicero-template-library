@@ -1,0 +1,31 @@
+namespace org.accordproject.signature.tnd
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.signature.SignatureBlock from https://models.accordproject.org/signature/signature.cto
+
+/**
+ * A detailed signature block, configured to render to PDF
+ * in white, and with all variables read-only in the Web editor
+ */
+asset TitleNameDateSignatureBlock extends SignatureBlock {
+  @DocuSignTab("Title", "optional")
+  @ContractEditor("readOnly")
+  @PdfStyle("background")
+  o String title
+
+  @DocuSignTab("SignHere")
+  @ContractEditor("readOnly")
+  @PdfStyle("background")
+  o String signature
+
+  @DocuSignTab("FullName")
+  @ContractEditor("readOnly")
+  @PdfStyle("background")
+  o String fullName
+
+  @DocuSignTab("DateSigned")
+  @ContractEditor("readOnly")
+  @PdfStyle("background")
+  o String dateSigned
+}
