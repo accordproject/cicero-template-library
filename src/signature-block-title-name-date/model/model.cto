@@ -2,30 +2,30 @@ namespace org.accordproject.signature.tnd
 
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.signature.SignatureBlock from https://models.accordproject.org/signature/signature.cto
+import org.accordproject.signature.block.SignatureClause from https://models.accordproject.org/signature/block.cto
 
 /**
  * A detailed signature block, configured to render to PDF
  * in white, and with all variables read-only in the Web editor
  */
-asset TitleNameDateSignatureBlock extends SignatureBlock {
-  @DocuSignTab("Title", "optional")
-  @ContractEditor("readOnly")
-  @PdfStyle("background")
+asset TitleNameDateSignatureBlock extends SignatureClause {
+  @DocuSignTab("type", "Title", "optional", true)
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true, "opacity", 0)
   o String title
 
-  @DocuSignTab("SignHere")
-  @ContractEditor("readOnly")
-  @PdfStyle("background")
+  @DocuSignTab("type", "SignHere")
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true, "opacity", 0)
   o String signature
 
-  @DocuSignTab("FullName")
-  @ContractEditor("readOnly")
-  @PdfStyle("background")
+  @DocuSignTab("type", "FullName")
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true, "opacity", 0)
   o String fullName
 
-  @DocuSignTab("DateSigned")
-  @ContractEditor("readOnly")
-  @PdfStyle("background")
+  @DocuSignTab("type", "DateSigned")
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true, "opacity", 0)
   o String dateSigned
 }
