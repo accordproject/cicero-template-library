@@ -12,24 +12,28 @@ asset TitleNameDateSignatureBlock extends SignatureClause {
   @DocuSignTab("type", "Title", "optional", true)
   @Pdf("style", "background")
   @ContractEditor("readOnly", true, 
+    "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
   o String title
 
   @DocuSignTab("type", "SignHere")
   @Pdf("style", "background")
   @ContractEditor("readOnly", true, 
+    "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
   o String signature
 
   @DocuSignTab("type", "FullName")
   @Pdf("style", "background")
-  @ContractEditor("readOnly", true, 
+  @ContractEditor("readOnly", true,
+    "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
   o String fullName
 
   @DocuSignTab("type", "DateSigned")
   @Pdf("style", "background")
   @ContractEditor("readOnly", true,
+    "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
   o String dateSigned
 }
