@@ -1,7 +1,7 @@
-**Signature:** "buyer@example.com" "{{signature}}"
+**Signature:** "buyer@example.com" "﹍﹍﹍﹍﹍﹍﹍﹍﹍﹍"
 
-**Title:** "buyer@example.com" "{{title}}"
+**Title:** "buyer@example.com" "Title"
 
-**Full name:** "buyer@example.com" "{{fullName}}"
+**Full name:** "buyer@example.com" "Full Name"
 
-**Date signed:** "buyer@example.com" "{{dateSigned}}"
+**Date signed:** "buyer@example.com" "Date Signed"
