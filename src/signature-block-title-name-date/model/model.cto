@@ -14,7 +14,7 @@ asset TitleNameDateSignatureBlock extends SignatureClause {
   @ContractEditor("readOnly", true, 
     "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
-  @FormEditor("readOnly", true)
+  @FormEditor("hide", true)
   o String title
 
   @DocuSignTab("type", "SignHere")
@@ -22,7 +22,7 @@ asset TitleNameDateSignatureBlock extends SignatureClause {
   @ContractEditor("readOnly", true, 
     "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
-  @FormEditor("readOnly", true)
+  @FormEditor("hide", true)
   o String signature
 
   @DocuSignTab("type", "FullName")
@@ -30,7 +30,7 @@ asset TitleNameDateSignatureBlock extends SignatureClause {
   @ContractEditor("readOnly", true,
     "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
-  @FormEditor("readOnly", true)
+  @FormEditor("hide", true)
   o String fullName
 
   @DocuSignTab("type", "DateSigned")
@@ -38,6 +38,6 @@ asset TitleNameDateSignatureBlock extends SignatureClause {
   @ContractEditor("readOnly", true,
     "fontFamily", "Lucida Console, Courier, monospace",
     "backgroundColor", "#FAE094", "border", '#CCA855' )
-  @FormEditor("readOnly", true)
+  @FormEditor("hide", true)
   o String dateSigned
 }
