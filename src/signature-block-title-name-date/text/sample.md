@@ -1,4 +1,6 @@
-**Signature:** "﹍﹍" "buyer@example.com"
+**Signature:**\
+\
+"--------" "buyer@example.com"
 
 **Title:** "Title" "buyer@example.com"
 

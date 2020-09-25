@@ -1,4 +1,6 @@
-**Signature:** {{signature}} {{signatory}}
+**Signature:**\
+\
+{{signature}} {{signatory}}
 
 **Title:** {{title}} {{signatory}} 
 
