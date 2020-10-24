@@ -1,0 +1,25 @@
+{
+  "name": "contact-information",
+  "displayName": "Contact Information",
+  "version": "0.2.0",
+  "description": "Gather contact information",
+  "license": "Apache-2.0",
+  "accordproject": {
+    "template": "clause",
+    "cicero": "^0.21.0"
+  },
+  "devDependencies": {
+    "cucumber": "^5.1.0"
+  },
+  "scripts": {
+    "parse": "cicero parse",
+    "trigger": "cicero execute",
+    "archive": "cicero archive",
+    "test": "cucumber-js test -r .cucumber.js"
+  },
+  "keywords": [
+    "contact",
+    "information"
+  ],
+  "dependencies": {}
+}

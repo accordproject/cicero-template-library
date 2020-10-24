@@ -1,0 +1,13 @@
+namespace org.accordproject.companyinformation
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.address.PostalAddress from https://models.accordproject.org/address.cto
+
+asset CompanyInformation extends AccordClause {
+    o String name
+    o String industry
+    o String website
+    o PostalAddress address
+    o Integer numberOfEmployees
+}
