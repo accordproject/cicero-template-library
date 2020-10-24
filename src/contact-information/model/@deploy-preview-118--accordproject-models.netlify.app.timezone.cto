@@ -1,0 +1,124 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.timezone
+
+/**
+ * IANA TimeZone database names
+ * Source: https://gist.github.com/arodu/3b0f2cd901c07da0ef70
+ */
+enum TimeZone {
+    o Pacific_Midway
+    o Pacific_Honolulu
+    o America_Anchorage
+    o America_Tijuana
+    o America_Los_Angeles
+    o America_Phoenix
+    o America_Chihuahua
+    o America_Denver
+    o America_Belize
+    o America_Chicago
+    o America_Mexico_City
+    o America_Regina
+    o America_Bogota
+    o America_Jamaica
+    o America_New_York
+    o America_Indiana_Indianapolis
+    o America_Caracas
+    o America_Asuncion
+    o America_Halifax
+    o America_Cuiaba
+    o America_Manaus
+    o America_St_Johns
+    o America_Sao_Paulo
+    o America_Buenos_Aires
+    o America_Cayenne
+    o America_Godthab
+    o America_Montevideo
+    o America_Bahia
+    o America_Santiago
+    o America_Noronha
+    o Atlantic_Azores
+    o Atlantic_Cape_Verde
+    o Europe_London
+    o Africa_Casablanca
+    o Africa_Monrovia
+    o Europe_Amsterdam
+    o Europe_Belgrade
+    o Europe_Brussels
+    o Europe_Warsaw
+    o Africa_Algiers
+    o Africa_Windhoek
+    o Europe_Athens
+    o Asia_Beirut
+    o Africa_Cairo
+    o Asia_Damascus
+    o EET
+    o Africa_Harare
+    o Europe_Helsinki
+    o Asia_Istanbul
+    o Asia_Jerusalem
+    o Europe_Kaliningrad
+    o Africa_Tripoli
+    o Asia_Amman
+    o Asia_Baghdad
+    o Asia_Kuwait
+    o Europe_Minsk
+    o Europe_Moscow
+    o Africa_Nairobi
+    o Asia_Tehran
+    o Asia_Muscat
+    o Asia_Baku
+    o Europe_Samara
+    o Indian_Mauritius
+    o Asia_Tbilisi
+    o Asia_Yerevan
+    o Asia_Kabul
+    o Asia_Tashkent
+    o Asia_Yekaterinburg
+    o Asia_Karachi
+    o Asia_Kolkata
+    o Asia_Colombo
+    o Asia_Katmandu
+    o Asia_Almaty
+    o Asia_Dhaka
+    o Asia_Novosibirsk
+    o Asia_Rangoon
+    o Asia_Bangkok
+    o Asia_Krasnoyarsk
+    o Asia_Chongqing
+    o Asia_Irkutsk
+    o Asia_Kuala_Lumpur
+    o Australia_Perth
+    o Asia_Taipei
+    o Asia_Ulaanbaatar
+    o Asia_Tokyo
+    o Asia_Seoul
+    o Asia_Yakutsk
+    o Australia_Adelaide
+    o Australia_Darwin
+    o Australia_Brisbane
+    o Australia_Canberra
+    o Pacific_Guam
+    o Australia_Hobart
+    o Asia_Magadan
+    o Asia_Vladivostok
+    o Asia_Srednekolymsk
+    o Pacific_Guadalcanal
+    o Asia_Anadyr
+    o Pacific_Auckland
+    o Pacific_Fiji
+    o Pacific_Tongatapu
+    o Pacific_Apia
+}

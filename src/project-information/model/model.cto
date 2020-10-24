@@ -1,0 +1,13 @@
+namespace org.accordproject.projectinformation
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+
+asset ProjectInformation extends AccordClause {
+    o String name
+    o DateTime deadline
+    o MonetaryAmount budget
+    o String description
+    o String other
+}
