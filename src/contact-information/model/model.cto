@@ -2,7 +2,7 @@ namespace org.accordproject.contactinformation
 
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.timezone.TimeZone from https://deploy-preview-118--accordproject-models.netlify.app/timezone.cto
+import org.accordproject.timezone.TimeZone from https://models.accordproject.org/timezone.cto
 
 enum CommunicationChannel {
     o EMAIL
