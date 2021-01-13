@@ -1,0 +1,1201 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/supply-agreement-loc@0.0.4.html" />
+    <meta property="og:title" content="supply-agreement-loc@0.0.4" />
+    <meta property="og:description" content="Supply agreement" />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/jLPBJzmm4Bxlh_2nLI6_027sKIeaO5VBLZrKFHXxDd5nFEdO1bPj_tljF23EXeejwW6HZ1yptsCcUsOT9-TBFH6QMykGyanezDA2yAJSZckjk16GMLzLUiTp0YZ1kEm6Z4LQ0vVAvEpaXBtR7Er0QtnupqvFsSy9O-m3Mw2_rS0Sb1KGTvuWYHU-L39acVoU_6lcu-DVftNPN0WaMH5-1-4oeGGGPkIDKoLaQ_ZXmRg3KSuB47TpD8wuS6Ce3oaylUp_5hu0hUw1Tckm5HeBBofquoZIM8ArF6_LcI5gu8OfymbHBaa27GHqB_bhiJRR3_TY_JxjtcySTmtWwL6CcGHltprVlp7RVxU76N4ixT-XYbRzR5glTcQeZxuLTcBJ4UIBa6CJU6Rm66vs2asC92w0nmh91RNxGLME10CkwOKRtJWd24tz49uBPOAl1kcLjHxsKdU7BvVp6JTtpTg5SP03zHUlVNdRrNA51iBysarB31RgxseYIGACDfufhPVRorhi50yNT-7_fR8kJKrWu87h3L3P0ba1APHXfb6vRXRtud6tCZnoV8qkI9z2DVSuZDqYnlmNCgtAaoYuXQO5nvIQIabF57SrXpbhE0K6P2GyNUCrCyljHowALL_40PdUABUYKER8rhO6ZQA6U8xKTVn0Qjc6dzNkokZgZrh7NXYgLQ9KMmLojS_0mbETbedO5LhNBulGm3guBRd45gggHjsy2dyZVEw5Mvilm0fILKoKmcZNlu3AYz6JLy1j-Eh5_XobUKlrqNd1AGSx00ZtNFlwyLd7zlemNQ1oaO1vc171UNn0VRJX37BLQ_AUGPl791o6JV2wYzRT8_75yfzSaj8Imsaa6RFd5BzgHhHssK3KXElFuHIJBVYqjfYihVaD4_gLtzuNXlJa38oCFvN-0000" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="supply-agreement-loc@0.0.4" />
+    <meta name="twitter:description" content="Supply agreement" />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/jLPBJzmm4Bxlh_2nLI6_027sKIeaO5VBLZrKFHXxDd5nFEdO1bPj_tljF23EXeejwW6HZ1yptsCcUsOT9-TBFH6QMykGyanezDA2yAJSZckjk16GMLzLUiTp0YZ1kEm6Z4LQ0vVAvEpaXBtR7Er0QtnupqvFsSy9O-m3Mw2_rS0Sb1KGTvuWYHU-L39acVoU_6lcu-DVftNPN0WaMH5-1-4oeGGGPkIDKoLaQ_ZXmRg3KSuB47TpD8wuS6Ce3oaylUp_5hu0hUw1Tckm5HeBBofquoZIM8ArF6_LcI5gu8OfymbHBaa27GHqB_bhiJRR3_TY_JxjtcySTmtWwL6CcGHltprVlp7RVxU76N4ixT-XYbRzR5glTcQeZxuLTcBJ4UIBa6CJU6Rm66vs2asC92w0nmh91RNxGLME10CkwOKRtJWd24tz49uBPOAl1kcLjHxsKdU7BvVp6JTtpTg5SP03zHUlVNdRrNA51iBysarB31RgxseYIGACDfufhPVRorhi50yNT-7_fR8kJKrWu87h3L3P0ba1APHXfb6vRXRtud6tCZnoV8qkI9z2DVSuZDqYnlmNCgtAaoYuXQO5nvIQIabF57SrXpbhE0K6P2GyNUCrCyljHowALL_40PdUABUYKER8rhO6ZQA6U8xKTVn0Qjc6dzNkokZgZrh7NXYgLQ9KMmLojS_0mbETbedO5LhNBulGm3guBRd45gggHjsy2dyZVEw5Mvilm0fILKoKmcZNlu3AYz6JLy1j-Eh5_XobUKlrqNd1AGSx00ZtNFlwyLd7zlemNQ1oaO1vc171UNn0VRJX37BLQ_AUGPl791o6JV2wYzRT8_75yfzSaj8Imsaa6RFd5BzgHhHssK3KXElFuHIJBVYqjfYihVaD4_gLtzuNXlJa38oCFvN-0000" />
+    <meta name="twitter:image:alt" content="UML diagram of supply-agreement-loc@0.0.4 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/supply-agreement-loc@0.0.4.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Supply Agreement Loc
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> John Carpenter </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">supply-agreement-loc@0.0.4</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^0.21.9</span>
+                <span class="tag is-light">5575f550ba2720905abae313358eb74b22a341675f9b05e287fc609421e2ac7d</span>
+            </div>
+            <p class="subtitle">
+                Supply agreement
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="supply-agreement-loc@0.0.4.html" class="dropdown-item is-active">
+                    supply-agreement-loc@0.0.4
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/supply-agreement-loc@0.0.4.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/supply-agreement-loc@0.0.4-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fsupply-agreement-loc%400.0.4%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <p>This is a template.</p>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<h1>Supply Agreement With Trade Finance</h1>
+<p>This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of 01/20/2021 (the “Execution Date”) between "Acme Exports", a Delaware corporation (“Exporter”), having a principal place of business at 12345 Main Street, California 92705, and "Dan's Imports", a company organized and existing under the laws of Sweden (“Importer”), with a place of business at 39E, TunaVagen Stockholm - SE114 55.</p>
+
+<ol delimiter=period start=1 tight=false>
+<li><p>Supply and Purchase of Products. "Acme Exports" shall supply and "Dan's Imports" shall purchase "Widgets" (the "Products", "Shipment 001") in accordance with the terms of this agreement.</p>
+</li>
+<li><p>Creditworthiness Qualification for "Dan's Imports". The "Dan's Imports" shall only be able to import "Widgets" based on their creditworthiness as determined in the sole and exclusive discretion of the "Big Bank Corp.".</p>
+<p>Letter Of Issue Date: 01/21/2021<br>"Credit worthy."<br>L/C Number: 1234567<br>"Big Bank Corp." hereby issues this irrevocable documentary Letter of Credit, 1234567 to "Dan's Imports" for 1000000.00 SEK. An initial payment of {{% importerLOCAmount/2 %}} will be made immediately upon sight by a draft drawn against "Big Bank Corp." in accordance with 1234567.<br>The draft is to be accompanied by the following documents:</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>"ORDER-001"</p>
+</li>
+<li><p>"PACKING-001"</p>
+</li>
+<li><p>"INVOICE-001"</p>
+</li></ol><p>The remaining {{% calculated %}} will be made upon acceptance of the "Widgets" by the "Dan's Imports" defined in section 6. below.</p>
+</li>
+<li><p>Orders.</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Purchase Orders. The "Dan's Imports" shall submit all orders for "Widgets" to the "Acme Exports" in writing to the "123 Main Street." and include in each "PO-001"</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>each "Widgets" it is ordering, identified by model or part number,</p>
+</li>
+<li><p>the 100 it is ordering,</p>
+</li>
+<li><p>the 300.00 SEK it is ordering,</p>
+</li>
+<li><p>the "34 Elm Street", and</p>
+</li>
+<li><p>the 01/30/2021, allowing reasonable time for "Acme Exports" to receive, review, process the "PO-001", and ship the "Widgets" by the 01/30/2021.</p>
+</li>
+<li><p>the "Dan's Imports" 1000000.00 SEK</p>
+</li></ol></li>
+<li><p>Accepting, Modifying, and Rejecting Purchase Orders</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>By Notice. Within 7 Business Days' of receiving a "PO-001" from "Dan's Imports", "Acme Exports" shall accept, reject, or propose a modification to the "PO-001" by sending the "Dan's Imports" written notice of its acceptance, rejection, or proposed modification.</p>
+</li>
+<li><p>Acceptance. "Dan's Imports" shall notify "Acme Exports" of its acceptance, rejection, or proposed modification of the "PO-001".</p>
+</li>
+<li><p>An acceptance notice will include 142635263523 information.</p>
+</li>
+<li><p>Modification of Purchase Order. "Acme Exports" may propose a modification to a "PO-001" by including in its notice to "Dan's Imports" a "PO-001-A" for the "Dan's Imports" to accept or reject according to the acceptance and rejection procedures under paragraphs 3.b.i and 3.b.ii.</p>
+</li>
+<li><p>Canceling Purchase Orders. The "Dan's Imports" or "Acme Exports" may, at no expense to itself, cancel part or all of a "PO-001" up to 7 days before the 01/30/2021</p>
+</li></ol></li></ol></li>
+<li><p>Bill of Lading. This document will be issued by the "DHS" to the "Acme Exports" once it takes possession of the "Widgets". The Bill of Lading format will use following template:</p>
+<p>"DHS"<br>BILL OF LADING FOR OCEAN TRANSPORT<br>Shipper "Acme Exports"<br>BOOKING ID "BOOKING-001"<br>Consignee "Dan's Imports"<br>Notify Party "Big Bank Corp."<br>Place of Receipt "Malmo"<br>Place of Delivery "Los Angeles"<br>PARTICULARS FURNISHED BY "DHS"<br>Description of Goods "Widgets"<br>Weight 100<br>Measurement "50 cm x 10 cm x 60 cm"<br>Freight Charges 4000.00 SEK\</p>
+<p>Submission of the Bill of Lading to the "Big Bank Corp." will trigger the first payment installation as documented in section 2 above.</p>
+</li>
+<li><p>Acceptance.</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Acceptance of Delivery.  The "Acme Exports" will be deemed to have completed its delivery obligations if</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>the "Dan's Imports" notifies the "Acme Exports" in writing that it is accepting the "Widgets". This will trigger the second and final payment installation as documented in section 2 above.</p>
+</li>
+<li><p>Inspection and Notice. The "Dan's Imports" will have 7 days to inspect and evaluate the "Widgets" on the 01/30/2021 before notifying the "Acme Exports" that it is either accepting or rejecting the "Widgets".</p>
+</li>
+<li><p>Acceptance Criteria. If "good are acceptable" is true based on Annex B, attached to this agreement, then "Dan's Imports" shall pay "Acme Exports" {{% calculated %}}</p>
+</li></ol></li></ol></li>
+<li><p>Term</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Initial Term. The initial term of this agreement begins on 01/20/2021 and will continue for 3 years, unless terminated earlier (the "Initial Term").</p>
+</li>
+<li><p>Renewal Term by Notice. The "Dan's Imports" may renew this agreement for successive 2 of 5 years, unless terminated earlier, by giving the "Acme Exports" notice of the intent to renew this agreement, at least 90 days before the end of the 2 years</p>
+</li>
+<li><p>Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.</p>
+</li></ol></li>
+<li><p>Mutual Representations</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Authority and Capacity. The parties have the authority and capacity to enter into this agreement.</p>
+</li>
+<li><p>Execution and Delivery. The parties have executed and delivered this agreement.</p>
+</li>
+<li><p>Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.</p>
+</li>
+<li><p>No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.</p>
+</li></ol></li>
+<li><p>Limited Warranty</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Warranty. The "Acme Exports" warrants that the Products</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>will be free from material defects,</p>
+</li>
+<li><p>are made with workmanlike quality, and</p>
+</li>
+<li><p>will conform, within normal commercial tolerances, to the applicable specifications.</p>
+</li></ol></li>
+<li><p>Replacement Products. Subject to paragraphs 8.c and 8.d directly below, the "Dan's Imports" sole remedy for breach of this limited warranty will be the "Acme Exports" providing the "Dan's Imports" with a replacement "Widgets", at the "Acme Exports" sole expense.</p>
+</li>
+<li><p>Notice Requirement. The "Acme Exports" will only be required to replace "Widgets" under paragraph 10.2 if it receives written notice from the "Dan's Imports" of such defect or nonconformity within 90 days after delivery of the "Widgets".</p>
+</li>
+<li><p>Exclusions. This warranty does not extend to any "Widgets" the "Dan's Imports" abuses, neglects, or misuses according to the applicable documentation or specifications, or to any "Widgets" the "Dan's Imports" has had repaired or altered by a Person other than the "Acme Exports".</p>
+</li></ol></li>
+<li><p>Confidentiality</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.</p>
+</li>
+<li><p>Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.</p>
+</li>
+<li><p>Non-Disclosure. The "Dan's Imports" may not disclose Confidential Information to any third party, except to the extent</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>permitted by this agreement,</p>
+</li>
+<li><p>the {[exporter}} consents in writing, or</p>
+</li>
+<li><p>required by Law.</p>
+</li></ol></li>
+<li><p>Notice. The "Dan's Imports" shall notify the "Acme Exports" if it</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>is required by Law to disclose any Confidential Information, or</p>
+</li>
+<li><p>learns of any unauthorized disclosure of Confidential Information.</p>
+</li></ol></li></ol></li>
+<li><p>Effect of Termination</p>
+</li>
+<li><p>Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.</p>
+</li>
+<li><p>Payment Obligations. Even after termination or expiration of this agreement, each party shall</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and</p>
+</li>
+<li><p>refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.</p>
+</li></ol></li>
+<li><p>No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>that arose before the termination or expiration of this agreement, or</p>
+</li>
+<li><p>arising after the termination or expiration of this agreement.</p>
+</li></ol></li>
+<li><p>Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.</p>
+</li>
+<li><p>General Provisions</p>
+</li>
+<li><p>Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,</p>
+</li>
+<li><p>represent the final expression of the parties' intent relating to the subject matter of this agreement,</p>
+</li>
+<li><p>contain all the terms the parties agreed to relating to the subject matter, and</p>
+</li>
+<li><p>replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.</p>
+</li>
+<li><p>Amendment. This agreement can be amended only by a writing signed by both parties.</p>
+</li>
+<li><p>Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.</p>
+</li>
+<li><p>Notices</p>
+</li>
+<li><p>Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, international courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.</p>
+</li>
+<li><p>Receipt of Notice. A notice given under this agreement will be effective on</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>the other party's receipt of it, or</p>
+</li>
+<li><p>if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it.</p>
+</li></ol></li>
+<li><p>Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.</p>
+</li>
+<li><p>Waiver</p>
+</li>
+<li><p>Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.</p>
+</li>
+<li><p>Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.</p>
+</li>
+<li><p>No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.</p>
+</li>
+<li><p>No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.</p>
+</li>
+<li><p>Governing Law and Consent to Jurisdiction and Venue</p>
+</li>
+<li><p>Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of Delaware.</p>
+</li>
+<li><p>Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of Delaware, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.</p>
+</li>
+<li><p>Consent to Service. Each party hereby irrevocably</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>agrees that process may be served on it in any manner authorized by the Laws of the State of Delaware, and</p>
+</li>
+<li><p>waives any objection which it might otherwise have to service of process under the Laws of the State of Delaware.</p>
+</li></ol></li>
+<li><p>Counterparts</p>
+</li>
+<li><p>Signed in Counterparts. This agreement may be signed in any number of counterparts.</p>
+</li>
+<li><p>All Counterparts Original. Each counterpart is an original.</p>
+</li>
+<li><p>Counterparts Form One Document. Together, all counterparts form one single document.</p>
+</li></ol><h2>Schedule A.</h2>
+<p>"Shipment 001" 4000.00 SEK per 10</p>
+<h2>Annex A. Delivery Method</h2>
+<p>Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 10 per days.</p>
+<h2>Annex B. Acceptance Criteria</h2>
+<p>The shipment must occur within 10 days of the order of placement. The "Widgets" delivered is not damaged and functions as expected. The product count must match 100 on the "PO-001".</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Supply Agreement With Trade Finance
+====
+
+This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of 01/20/2021 (the “Execution Date”) between "Acme Exports", a Delaware corporation (“Exporter”), having a principal place of business at 12345 Main Street, California 92705, and "Dan's Imports", a company organized and existing under the laws of Sweden (“Importer”), with a place of business at 39E, TunaVagen Stockholm - SE114 55.
+1. Supply and Purchase of Products. "Acme Exports" shall supply and "Dan's Imports" shall purchase "Widgets" (the "Products", "Shipment 001") in accordance with the terms of this agreement.
+
+2. Creditworthiness Qualification for "Dan's Imports". The "Dan's Imports" shall only be able to import "Widgets" based on their creditworthiness as determined in the sole and exclusive discretion of the "Big Bank Corp.".
+   
+   Letter Of Issue Date: 01/21/2021\
+   "Credit worthy."\
+   L/C Number: 1234567\
+   "Big Bank Corp." hereby issues this irrevocable documentary Letter of Credit, 1234567 to "Dan's Imports" for 1000000.00 SEK. An initial payment of {{% importerLOCAmount/2 %}} will be made immediately upon sight by a draft drawn against "Big Bank Corp." in accordance with 1234567.\
+   The draft is to be accompanied by the following documents:
+   1. "ORDER-001"
+   2. "PACKING-001"
+   3. "INVOICE-001"
+   
+   The remaining {{% calculated %}} will be made upon acceptance of the "Widgets" by the "Dan's Imports" defined in section 6. below.
+
+3. Orders.
+   1. Purchase Orders. The "Dan's Imports" shall submit all orders for "Widgets" to the "Acme Exports" in writing to the "123 Main Street." and include in each "PO-001"
+      1. each "Widgets" it is ordering, identified by model or part number,
+      2. the 100 it is ordering,
+      3. the 300.00 SEK it is ordering,
+      4. the "34 Elm Street", and
+      5. the 01/30/2021, allowing reasonable time for "Acme Exports" to receive, review, process the "PO-001", and ship the "Widgets" by the 01/30/2021.
+      6. the "Dan's Imports" 1000000.00 SEK
+   2. Accepting, Modifying, and Rejecting Purchase Orders
+      1. By Notice. Within 7 Business Days' of receiving a "PO-001" from "Dan's Imports", "Acme Exports" shall accept, reject, or propose a modification to the "PO-001" by sending the "Dan's Imports" written notice of its acceptance, rejection, or proposed modification.
+      2. Acceptance. "Dan's Imports" shall notify "Acme Exports" of its acceptance, rejection, or proposed modification of the "PO-001".
+      3. An acceptance notice will include 142635263523 information.
+      4. Modification of Purchase Order. "Acme Exports" may propose a modification to a "PO-001" by including in its notice to "Dan's Imports" a "PO-001-A" for the "Dan's Imports" to accept or reject according to the acceptance and rejection procedures under paragraphs 3.b.i and 3.b.ii.
+      5. Canceling Purchase Orders. The "Dan's Imports" or "Acme Exports" may, at no expense to itself, cancel part or all of a "PO-001" up to 7 days before the 01/30/2021
+
+4. Bill of Lading. This document will be issued by the "DHS" to the "Acme Exports" once it takes possession of the "Widgets". The Bill of Lading format will use following template:
+   
+   "DHS"\
+   BILL OF LADING FOR OCEAN TRANSPORT\
+   Shipper "Acme Exports"\
+   BOOKING ID "BOOKING-001"\
+   Consignee "Dan's Imports"\
+   Notify Party "Big Bank Corp."\
+   Place of Receipt "Malmo"\
+   Place of Delivery "Los Angeles"\
+   PARTICULARS FURNISHED BY "DHS"\
+   Description of Goods "Widgets"\
+   Weight 100\
+   Measurement "50 cm x 10 cm x 60 cm"\
+   Freight Charges 4000.00 SEK\
+   
+   Submission of the Bill of Lading to the "Big Bank Corp." will trigger the first payment installation as documented in section 2 above.
+
+5. Acceptance.
+   1. Acceptance of Delivery.  The "Acme Exports" will be deemed to have completed its delivery obligations if
+      1. the "Dan's Imports" notifies the "Acme Exports" in writing that it is accepting the "Widgets". This will trigger the second and final payment installation as documented in section 2 above.
+      2. Inspection and Notice. The "Dan's Imports" will have 7 days to inspect and evaluate the "Widgets" on the 01/30/2021 before notifying the "Acme Exports" that it is either accepting or rejecting the "Widgets".
+      3. Acceptance Criteria. If "good are acceptable" is true based on Annex B, attached to this agreement, then "Dan's Imports" shall pay "Acme Exports" {{% calculated %}}
+
+6. Term
+   1. Initial Term. The initial term of this agreement begins on 01/20/2021 and will continue for 3 years, unless terminated earlier (the "Initial Term").
+   2. Renewal Term by Notice. The "Dan's Imports" may renew this agreement for successive 2 of 5 years, unless terminated earlier, by giving the "Acme Exports" notice of the intent to renew this agreement, at least 90 days before the end of the 2 years
+   3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.
+
+7. Mutual Representations
+   1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+   2. Execution and Delivery. The parties have executed and delivered this agreement.
+   3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+   4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.
+
+8. Limited Warranty
+   1. Warranty. The "Acme Exports" warrants that the Products
+      1. will be free from material defects,
+      2. are made with workmanlike quality, and
+      3. will conform, within normal commercial tolerances, to the applicable specifications.
+   2. Replacement Products. Subject to paragraphs 8.c and 8.d directly below, the "Dan's Imports" sole remedy for breach of this limited warranty will be the "Acme Exports" providing the "Dan's Imports" with a replacement "Widgets", at the "Acme Exports" sole expense.
+   3. Notice Requirement. The "Acme Exports" will only be required to replace "Widgets" under paragraph 10.2 if it receives written notice from the "Dan's Imports" of such defect or nonconformity within 90 days after delivery of the "Widgets".
+   4. Exclusions. This warranty does not extend to any "Widgets" the "Dan's Imports" abuses, neglects, or misuses according to the applicable documentation or specifications, or to any "Widgets" the "Dan's Imports" has had repaired or altered by a Person other than the "Acme Exports".
+
+9. Confidentiality
+   1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+   2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+   3. Non-Disclosure. The "Dan's Imports" may not disclose Confidential Information to any third party, except to the extent
+      1. permitted by this agreement,
+      2. the {[exporter}} consents in writing, or
+      3. required by Law.
+   4. Notice. The "Dan's Imports" shall notify the "Acme Exports" if it
+      1. is required by Law to disclose any Confidential Information, or
+      2. learns of any unauthorized disclosure of Confidential Information.
+
+10. Effect of Termination
+
+   1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+   
+   2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+      1. pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+      2. refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+   
+   3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+      1. that arose before the termination or expiration of this agreement, or
+      2. arising after the termination or expiration of this agreement.
+
+11. Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.
+
+12. General Provisions
+
+13. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+   1. represent the final expression of the parties' intent relating to the subject matter of this agreement,
+   2. contain all the terms the parties agreed to relating to the subject matter, and
+   3. replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+
+14. Amendment. This agreement can be amended only by a writing signed by both parties.
+
+15. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+
+16. Notices
+   1. Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, international courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+   2. Receipt of Notice. A notice given under this agreement will be effective on
+      1. the other party's receipt of it, or
+      2. if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it.
+
+17. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+
+18. Waiver
+   1. Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+   2. Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+   3. No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+   4. No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+
+19. Governing Law and Consent to Jurisdiction and Venue
+   1. Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of Delaware.
+   2. Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of Delaware, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+   3. Consent to Service. Each party hereby irrevocably
+      1. agrees that process may be served on it in any manner authorized by the Laws of the State of Delaware, and
+      2. waives any objection which it might otherwise have to service of process under the Laws of the State of Delaware.
+
+20. Counterparts
+   1. Signed in Counterparts. This agreement may be signed in any number of counterparts.
+   2. All Counterparts Original. Each counterpart is an original.
+   3. Counterparts Form One Document. Together, all counterparts form one single document.
+
+Schedule A.
+----
+
+"Shipment 001" 4000.00 SEK per 10
+
+Annex A. Delivery Method
+----
+
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 10 per days.
+
+Annex B. Acceptance Criteria
+----
+
+The shipment must occur within 10 days of the order of placement. The "Widgets" delivered is not damaged and functions as expected. The product count must match 100 on the "PO-001".</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Supply Agreement With Trade Finance
+====
+
+This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of {{executionDate}} (the “Execution Date”) between {{exporter}}, a Delaware corporation (“Exporter”), having a principal place of business at 12345 Main Street, California 92705, and {{importer}}, a company organized and existing under the laws of Sweden (“Importer”), with a place of business at 39E, TunaVagen Stockholm - SE114 55.
+1. Supply and Purchase of Products. {{exporter}} shall supply and {{importer}} shall purchase {{product}} (the "Products", {{shipment}}) in accordance with the terms of this agreement.
+
+2. Creditworthiness Qualification for {{importer}}. The {{importer}} shall only be able to import {{product}} based on their creditworthiness as determined in the sole and exclusive discretion of the {{importerLOCBank}}.
+   
+   Letter Of Issue Date: {{issueDate}}\
+   {{importerCreditworthiness}}\
+   L/C Number: {{importerLOCNumber}}\
+   {{importerLOCBank}} hereby issues this irrevocable documentary Letter of Credit, {{importerLOCNumber}} to {{importer}} for {{importerLOCAmount}}. An initial payment of {{% importerLOCAmount.doubleValue / 2.0 %}} will be made immediately upon sight by a draft drawn against {{importerLOCBank}} in accordance with {{importerLOCNumber}}.\
+   The draft is to be accompanied by the following documents:
+   1. {{orderBillOfLading}}
+   2. {{packingList}}
+   3. {{invoice}}
+   
+   The remaining {{% importerLOCAmount.doubleValue / 2.0 %}} will be made upon acceptance of the {{product}} by the {{importer}} defined in section 6. below.
+
+3. Orders.
+   1. Purchase Orders. The {{importer}} shall submit all orders for {{product}} to the {{exporter}} in writing to the {{exporterAddress}} and include in each {{purchaseOrder}}
+      1. each {{product}} it is ordering, identified by model or part number,
+      2. the {{amountOfEachProduct}} it is ordering,
+      3. the {{unitPriceOfEachProduct}} it is ordering,
+      4. the {{locationForDelivery}}, and
+      5. the {{deliveryDate}}, allowing reasonable time for {{exporter}} to receive, review, process the {{purchaseOrder}}, and ship the {{product}} by the {{deliveryDate}}.
+      6. the {{importer}} {{importerLOCAmount}}
+   2. Accepting, Modifying, and Rejecting Purchase Orders
+      1. By Notice. Within {{turnaroundTime}} Business Days' of receiving a {{purchaseOrder}} from {{importer}}, {{exporter}} shall accept, reject, or propose a modification to the {{purchaseOrder}} by sending the {{importer}} written notice of its acceptance, rejection, or proposed modification.
+      2. Acceptance. {{importer}} shall notify {{exporter}} of its acceptance, rejection, or proposed modification of the {{purchaseOrder}}.
+      3. An acceptance notice will include {{exporterBankAccount}} information.
+      4. Modification of Purchase Order. {{exporter}} may propose a modification to a {{purchaseOrder}} by including in its notice to {{importer}} a {{modifiedPurchaseOrder}} for the {{importer}} to accept or reject according to the acceptance and rejection procedures under paragraphs 3.b.i and 3.b.ii.
+      5. Canceling Purchase Orders. The {{importer}} or {{exporter}} may, at no expense to itself, cancel part or all of a {{purchaseOrder}} up to {{cancellationDeadline}} before the {{deliveryDate}}
+
+4. Bill of Lading. This document will be issued by the {{shipper}} to the {{exporter}} once it takes possession of the {{product}}. The Bill of Lading format will use following template:
+   
+   {{shipper}}\
+   BILL OF LADING FOR OCEAN TRANSPORT\
+   Shipper {{exporter}}\
+   BOOKING ID {{bookingId}}\
+   Consignee {{importer}}\
+   Notify Party {{importerLOCBank}}\
+   Place of Receipt {{exportPort}}\
+   Place of Delivery {{importPort}}\
+   PARTICULARS FURNISHED BY {{shipper}}\
+   Description of Goods {{productDescription}}\
+   Weight {{productWeight}}\
+   Measurement {{productMeasurement}}\
+   Freight Charges {{freightCharges}}\
+   
+   Submission of the Bill of Lading to the {{importerLOCBank}} will trigger the first payment installation as documented in section 2 above.
+
+5. Acceptance.
+   1. Acceptance of Delivery.  The {{exporter}} will be deemed to have completed its delivery obligations if
+      1. the {{importer}} notifies the {{exporter}} in writing that it is accepting the {{product}}. This will trigger the second and final payment installation as documented in section 2 above.
+      2. Inspection and Notice. The {{importer}} will have {{evaluationTime}} to inspect and evaluate the {{product}} on the {{deliveryDate}} before notifying the {{exporter}} that it is either accepting or rejecting the {{product}}.
+      3. Acceptance Criteria. If {{acceptanceCriteria}} is true based on Annex B, attached to this agreement, then {{importer}} shall pay {{exporter}} {{% importerLOCAmount.doubleValue / 2.0 %}}
+
+6. Term
+   1. Initial Term. The initial term of this agreement begins on {{termBeginDate}} and will continue for {{termPeriod}}, unless terminated earlier (the "Initial Term").
+   2. Renewal Term by Notice. The {{importer}} may renew this agreement for successive {{renewalTerms}} of {{termRenewal}}, unless terminated earlier, by giving the {{exporter}} notice of the intent to renew this agreement, at least {{termTerminationNotice}} before the end of the {{currentTerm}}
+   3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.
+
+7. Mutual Representations
+   1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+   2. Execution and Delivery. The parties have executed and delivered this agreement.
+   3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+   4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.
+
+8. Limited Warranty
+   1. Warranty. The {{exporter}} warrants that the Products
+      1. will be free from material defects,
+      2. are made with workmanlike quality, and
+      3. will conform, within normal commercial tolerances, to the applicable specifications.
+   2. Replacement Products. Subject to paragraphs 8.c and 8.d directly below, the {{importer}} sole remedy for breach of this limited warranty will be the {{exporter}} providing the {{importer}} with a replacement {{product}}, at the {{exporter}} sole expense.
+   3. Notice Requirement. The {{exporter}} will only be required to replace {{product}} under paragraph 10.2 if it receives written notice from the {{importer}} of such defect or nonconformity within 90 days after delivery of the {{product}}.
+   4. Exclusions. This warranty does not extend to any {{product}} the {{importer}} abuses, neglects, or misuses according to the applicable documentation or specifications, or to any {{product}} the {{importer}} has had repaired or altered by a Person other than the {{exporter}}.
+
+9. Confidentiality
+   1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+   2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+   3. Non-Disclosure. The {{importer}} may not disclose Confidential Information to any third party, except to the extent
+      1. permitted by this agreement,
+      2. the {[exporter}} consents in writing, or
+      3. required by Law.
+   4. Notice. The {{importer}} shall notify the {{exporter}} if it
+      1. is required by Law to disclose any Confidential Information, or
+      2. learns of any unauthorized disclosure of Confidential Information.
+
+10. Effect of Termination
+   1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+   
+   2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+      1. pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+      2. refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+   
+   3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+      1. that arose before the termination or expiration of this agreement, or
+      2. arising after the termination or expiration of this agreement.
+
+11. Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.
+
+12. General Provisions
+
+13. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+   1. represent the final expression of the parties' intent relating to the subject matter of this agreement,
+   2. contain all the terms the parties agreed to relating to the subject matter, and
+   3. replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+
+14. Amendment. This agreement can be amended only by a writing signed by both parties.
+
+15. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+
+16. Notices
+   1. Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, international courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+   2. Receipt of Notice. A notice given under this agreement will be effective on
+      1. the other party's receipt of it, or
+      2. if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it.
+
+17. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+
+18. Waiver
+   1. Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+   2. Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+   3. No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+   4. No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+
+19. Governing Law and Consent to Jurisdiction and Venue
+   1. Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of Delaware.
+   2. Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of Delaware, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+   3. Consent to Service. Each party hereby irrevocably
+      1. agrees that process may be served on it in any manner authorized by the Laws of the State of Delaware, and
+      2. waives any objection which it might otherwise have to service of process under the Laws of the State of Delaware.
+
+20. Counterparts
+   1. Signed in Counterparts. This agreement may be signed in any number of counterparts.
+   2. All Counterparts Original. Each counterpart is an original.
+   3. Counterparts Form One Document. Together, all counterparts form one single document.
+
+Schedule A.
+----
+
+{{shipment}} {{unitPrice}} per {{unit}}
+
+Annex A. Delivery Method
+----
+
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least {{sensorReadingFrequency}} per {{duration}}.
+
+Annex B. Acceptance Criteria
+----
+
+The shipment must occur within {{countPeriod}} of the order of placement. The {{product}} delivered is not damaged and functions as expected. The product count must match {{amountOfEachProduct}} on the {{purchaseOrder}}.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.cloudsecurityalliance.supplyagreement.SupplyAgreementContract",
+    "executionDate": "2021-01-20T00:00:00.000Z",
+    "exporter": "Acme Exports",
+    "importer": "Dan's Imports",
+    "product": "Widgets",
+    "importerCreditworthiness": "Credit worthy.",
+    "issueDate": "2021-01-21T00:00:00.000Z",
+    "importerLOCBank": "Big Bank Corp.",
+    "importerLOCNumber": 1234567,
+    "importerLOCAmount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 1000000,
+        "currencyCode": "SEK"
+    },
+    "orderBillOfLading": "ORDER-001",
+    "packingList": "PACKING-001",
+    "renewalTerms": 2,
+    "termRenewal": {
+        "$class": "org.accordproject.time.Period",
+        "amount": 5,
+        "unit": "years"
+    },
+    "termTerminationNotice": {
+        "$class": "org.accordproject.time.Period",
+        "amount": 90,
+        "unit": "days"
+    },
+    "invoice": "INVOICE-001",
+    "bookingId": "BOOKING-001",
+    "purchaseOrder": "PO-001",
+    "exporterAddress": "123 Main Street.",
+    "turnaroundTime": 7,
+    "amountOfEachProduct": 100,
+    "unitPriceOfEachProduct": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 300,
+        "currencyCode": "SEK"
+    },
+    "locationForDelivery": "34 Elm Street",
+    "deliveryDate": "2021-01-30T00:00:00.000Z",
+    "exporterBankAccount": 142635263523,
+    "modifiedPurchaseOrder": "PO-001-A",
+    "cancellationDeadline": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 7,
+        "unit": "days"
+    },
+    "shipper": "DHS",
+    "importPort": "Los Angeles",
+    "exportPort": "Malmo",
+    "productDescription": "Widgets",
+    "productWeight": 100,
+    "productMeasurement": "50 cm x 10 cm x 60 cm",
+    "freightCharges": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 4000,
+        "currencyCode": "SEK"
+    },
+    "evaluationTime": {
+        "$class": "org.accordproject.time.Duration",
+        "amount": 7,
+        "unit": "days"
+    },
+    "acceptanceCriteria": "good are acceptable",
+    "termBeginDate": "2021-01-20T00:00:00.000Z",
+    "termPeriod": {
+        "$class": "org.accordproject.time.Period",
+        "amount": 3,
+        "unit": "years"
+    },
+    "currentTerm": {
+        "$class": "org.accordproject.time.Period",
+        "amount": 2,
+        "unit": "years"
+    },
+    "shipment": "Shipment 001",
+    "unitPrice": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 4000,
+        "currencyCode": "SEK"
+    },
+    "unit": 10,
+    "sensorReadingFrequency": 10,
+    "duration": "days",
+    "countPeriod": {
+        "$class": "org.accordproject.time.Period",
+        "amount": 10,
+        "unit": "days"
+    },
+    "contractId": "20bdb42b-290c-43ad-9459-a0c7356feb30"
+}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/jLPBJzmm4Bxlh_2nLI6_027sKIeaO5VBLZrKFHXxDd5nFEdO1bPj_tljF23EXeejwW6HZ1yptsCcUsOT9-TBFH6QMykGyanezDA2yAJSZckjk16GMLzLUiTp0YZ1kEm6Z4LQ0vVAvEpaXBtR7Er0QtnupqvFsSy9O-m3Mw2_rS0Sb1KGTvuWYHU-L39acVoU_6lcu-DVftNPN0WaMH5-1-4oeGGGPkIDKoLaQ_ZXmRg3KSuB47TpD8wuS6Ce3oaylUp_5hu0hUw1Tckm5HeBBofquoZIM8ArF6_LcI5gu8OfymbHBaa27GHqB_bhiJRR3_TY_JxjtcySTmtWwL6CcGHltprVlp7RVxU76N4ixT-XYbRzR5glTcQeZxuLTcBJ4UIBa6CJU6Rm66vs2asC92w0nmh91RNxGLME10CkwOKRtJWd24tz49uBPOAl1kcLjHxsKdU7BvVp6JTtpTg5SP03zHUlVNdRrNA51iBysarB31RgxseYIGACDfufhPVRorhi50yNT-7_fR8kJKrWu87h3L3P0ba1APHXfb6vRXRtud6tCZnoV8qkI9z2DVSuZDqYnlmNCgtAaoYuXQO5nvIQIabF57SrXpbhE0K6P2GyNUCrCyljHowALL_40PdUABUYKER8rhO6ZQA6U8xKTVn0Qjc6dzNkokZgZrh7NXYgLQ9KMmLojS_0mbETbedO5LhNBulGm3guBRd45gggHjsy2dyZVEw5Mvilm0fILKoKmcZNlu3AYz6JLy1j-Eh5_XobUKlrqNd1AGSx00ZtNFlwyLd7zlemNQ1oaO1vc171UNn0VRJX37BLQ_AUGPl791o6JV2wYzRT8_75yfzSaj8Imsaa6RFd5BzgHhHssK3KXElFuHIJBVYqjfYihVaD4_gLtzuNXlJa38oCFvN-0000"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.cloudsecurityalliance.supplyagreement
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.geo.Country from https://models.accordproject.org/geo.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.time.Duration from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.time.Period from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.time.TemporalUnit from https://models.accordproject.org/time@0.2.0.cto
+
+transaction SensorReading extends Request {
+  o Double temperature
+  o Double humidity
+}
+
+transaction CheckContract extends Request {
+}
+
+transaction DeliveryResponse extends Response {
+  o String message
+  o Boolean inGoodOrder
+}
+
+asset SupplyAgreementState extends AccordContractState {
+  o SensorReading[] sensorReadings
+}
+
+/**
+ * The model for the contract
+ */
+asset SupplyAgreementContract extends AccordContract {
+  o DateTime executionDate
+  o String exporter 
+  o String importer
+  o String product
+  o String importerCreditworthiness
+  o DateTime issueDate
+  o String importerLOCBank
+  o Integer importerLOCNumber
+  o MonetaryAmount importerLOCAmount
+  o String orderBillOfLading
+  o String packingList
+  o Integer renewalTerms
+  o Period termRenewal
+  o Period termTerminationNotice
+  o String invoice
+  o String bookingId
+  o String purchaseOrder
+  o String exporterAddress
+  o Integer turnaroundTime
+  o Integer amountOfEachProduct
+  o MonetaryAmount unitPriceOfEachProduct
+  o String locationForDelivery
+  o DateTime deliveryDate
+  // o DateTime turaroundTime
+  o Integer exporterBankAccount
+  o String modifiedPurchaseOrder
+  o Duration cancellationDeadline
+  o String shipper
+  // o Integer bookingid
+  o String importPort
+  o String exportPort
+  o String productDescription
+  o Integer productWeight
+  o String productMeasurement
+  o MonetaryAmount freightCharges
+  o Duration evaluationTime
+  o String acceptanceCriteria
+  o DateTime termBeginDate
+  o Period termPeriod
+  o Period currentTerm
+  o String shipment
+  o MonetaryAmount unitPrice
+  o Integer unit
+  o Integer sensorReadingFrequency
+  o TemporalUnit duration
+  o Period countPeriod
+  // o Integer productCount
+  // o Integer noticeWindow
+  // o Integer cancellationWindow
+  // o Double minimumPercentage
+  // o String deliverables
+  // o Integer deliveryWindow
+  // o String deliveryAttachment
+  // o Integer inspectionWindow
+  // o String acceptanceAttachment
+  // o Integer priceUpdateWindow
+  // o String accountNumber
+  // o String routingNumber
+  // o Integer termYears
+  // o Integer renewalYears
+  // o Integer renewalWindow
+  // o Country governingCountry
+  // o Country venueCountry
+  // o Integer paymentMade
+}
+
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/geo.html">org.accordproject.geo.Country</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/time@0.2.0.html">org.accordproject.time.Duration</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/time@0.2.0.html">org.accordproject.time.Period</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/time@0.2.0.html">org.accordproject.time.TemporalUnit</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supply-agreement-loc/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.cloudsecurityalliance.supplyagreement.SupplyAgreementState</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.cloudsecurityalliance.supplyagreement.SupplyAgreementState",
+    "sensorReadings": [
+        {
+            "$class": "org.cloudsecurityalliance.supplyagreement.SensorReading",
+            "temperature": 249.556,
+            "humidity": 231.036,
+            "transactionId": "2508",
+            "timestamp": "2021-01-13T16:23:11.379+00:00"
+        }
+    ],
+    "stateId": "a1075630-55bb-11eb-a567-19833b252d62"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.cloudsecurityalliance.supplyagreement.CheckContract</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.cloudsecurityalliance.supplyagreement.CheckContract",
+    "transactionId": "a1070810-55bb-11eb-a567-19833b252d62",
+    "timestamp": "2021-01-13T16:23:11.377+00:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.cloudsecurityalliance.supplyagreement.SensorReading</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.cloudsecurityalliance.supplyagreement.SensorReading",
+    "temperature": 7.911,
+    "humidity": 164.477,
+    "transactionId": "a106b9f0-55bb-11eb-a567-19833b252d62",
+    "timestamp": "2021-01-13T16:23:11.375+00:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.cloudsecurityalliance.supplyagreement.DeliveryResponse</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.cloudsecurityalliance.supplyagreement.DeliveryResponse",
+    "message": "Lorem adipisicing ad eu occaecat.",
+    "inGoodOrder": true,
+    "transactionId": "a1072f21-55bb-11eb-a567-19833b252d62",
+    "timestamp": "2021-01-13T16:23:11.378+00:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.base.Event</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the <a href="https://docs.accordproject.org/docs/cicero.html">Cicero documentation</a> 
+            for details and examples of how to integrate a call to a Cicero template into your application.
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supply-agreement-loc">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

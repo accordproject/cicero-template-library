@@ -6548,5 +6548,70 @@
         "type": 1,
         "logo": null,
         "author": "Accord Project"
+    },
+    "company-information@0.2.1": {
+        "uri": "ap://company-information@0.2.1#3765ad87766276f2e24e103fb3aecf4a9caf1c28ed0076d2e041a9c612e55675",
+        "url": "https://templates.accordproject.org/archives/company-information@0.2.1.cta",
+        "ciceroUrl": "https://templates.accordproject.org/archives/company-information@0.2.1-cicero.cta",
+        "name": "company-information",
+        "displayName": "Company Information",
+        "description": "Gather company information",
+        "version": "0.2.1",
+        "ciceroVersion": "^0.21.0",
+        "type": 1,
+        "logo": null,
+        "author": null
+    },
+    "contact-information@0.2.0": {
+        "uri": "ap://contact-information@0.2.0#ec20538cb81c7132d81fec904d7fa5a1cebaec2f666ce88daa12b74a3eba8e99",
+        "url": "https://templates.accordproject.org/archives/contact-information@0.2.0.cta",
+        "ciceroUrl": "https://templates.accordproject.org/archives/contact-information@0.2.0-cicero.cta",
+        "name": "contact-information",
+        "displayName": "Contact Information",
+        "description": "Gather contact information",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.21.0",
+        "type": 1,
+        "logo": null,
+        "author": null
+    },
+    "project-information@0.2.0": {
+        "uri": "ap://project-information@0.2.0#d14e795f530b50d329d2846796fd5255837bdc8d81a7e83a8935b58b2c9b0ece",
+        "url": "https://templates.accordproject.org/archives/project-information@0.2.0.cta",
+        "ciceroUrl": "https://templates.accordproject.org/archives/project-information@0.2.0-cicero.cta",
+        "name": "project-information",
+        "displayName": "Project Information",
+        "description": "Gather project information",
+        "version": "0.2.0",
+        "ciceroVersion": "^0.21.0",
+        "type": 1,
+        "logo": null,
+        "author": null
+    },
+    "signature-block-title-name-date@0.19.0": {
+        "uri": "ap://signature-block-title-name-date@0.19.0#9f4c34596a97239fb8069186289ff9528dcffceb5b00a737ae6aed8149f5997d",
+        "url": "https://templates.accordproject.org/archives/signature-block-title-name-date@0.19.0.cta",
+        "ciceroUrl": "https://templates.accordproject.org/archives/signature-block-title-name-date@0.19.0-cicero.cta",
+        "name": "signature-block-title-name-date",
+        "displayName": "Signature Block (Title, Name, Date)",
+        "description": "A signature block with name, title, date input fields",
+        "version": "0.19.0",
+        "ciceroVersion": "^0.21.0",
+        "type": 1,
+        "logo": null,
+        "author": "Accord Project"
+    },
+    "supply-agreement-loc@0.0.4": {
+        "uri": "ap://supply-agreement-loc@0.0.4#5575f550ba2720905abae313358eb74b22a341675f9b05e287fc609421e2ac7d",
+        "url": "https://templates.accordproject.org/archives/supply-agreement-loc@0.0.4.cta",
+        "ciceroUrl": "https://templates.accordproject.org/archives/supply-agreement-loc@0.0.4-cicero.cta",
+        "name": "supply-agreement-loc",
+        "displayName": "Supply Agreement Loc",
+        "description": "Supply agreement",
+        "version": "0.0.4",
+        "ciceroVersion": "^0.21.9",
+        "type": 0,
+        "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
+        "author": "John Carpenter"
     }
 }

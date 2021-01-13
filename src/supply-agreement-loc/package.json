@@ -1,0 +1,19 @@
+{
+    "name": "supply-agreement-loc",
+    "version": "0.0.4",
+    "description": "Supply agreement",
+    "author": "John Carpenter",
+    "accordproject": {
+        "template": "contract",
+        "cicero": "^0.21.9",
+        "runtime": "ergo"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0",
+        "chai": "4.2.0",
+        "@accordproject/cicero-cli": "^0.21.9"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    }
+}

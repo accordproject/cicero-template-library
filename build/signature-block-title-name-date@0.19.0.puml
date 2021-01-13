@@ -1,0 +1,9 @@
+@startuml
+class org.accordproject.signature.tnd.TitleNameDateSignatureBlock << (A,green) >> {
+   + String title
+   + String signature
+   + String fullName
+   + String dateSigned
+}
+org.accordproject.signature.tnd.TitleNameDateSignatureBlock --|> org.accordproject.signature.block.SignatureClause
+@enduml

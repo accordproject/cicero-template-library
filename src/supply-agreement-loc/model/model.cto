@@ -1,0 +1,97 @@
+namespace org.cloudsecurityalliance.supplyagreement
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.geo.Country from https://models.accordproject.org/geo.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.time.Duration from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.time.Period from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.time.TemporalUnit from https://models.accordproject.org/time@0.2.0.cto
+
+transaction SensorReading extends Request {
+  o Double temperature
+  o Double humidity
+}
+
+transaction CheckContract extends Request {
+}
+
+transaction DeliveryResponse extends Response {
+  o String message
+  o Boolean inGoodOrder
+}
+
+asset SupplyAgreementState extends AccordContractState {
+  o SensorReading[] sensorReadings
+}
+
+/**
+ * The model for the contract
+ */
+asset SupplyAgreementContract extends AccordContract {
+  o DateTime executionDate
+  o String exporter 
+  o String importer
+  o String product
+  o String importerCreditworthiness
+  o DateTime issueDate
+  o String importerLOCBank
+  o Integer importerLOCNumber
+  o MonetaryAmount importerLOCAmount
+  o String orderBillOfLading
+  o String packingList
+  o Integer renewalTerms
+  o Period termRenewal
+  o Period termTerminationNotice
+  o String invoice
+  o String bookingId
+  o String purchaseOrder
+  o String exporterAddress
+  o Integer turnaroundTime
+  o Integer amountOfEachProduct
+  o MonetaryAmount unitPriceOfEachProduct
+  o String locationForDelivery
+  o DateTime deliveryDate
+  // o DateTime turaroundTime
+  o Integer exporterBankAccount
+  o String modifiedPurchaseOrder
+  o Duration cancellationDeadline
+  o String shipper
+  // o Integer bookingid
+  o String importPort
+  o String exportPort
+  o String productDescription
+  o Integer productWeight
+  o String productMeasurement
+  o MonetaryAmount freightCharges
+  o Duration evaluationTime
+  o String acceptanceCriteria
+  o DateTime termBeginDate
+  o Period termPeriod
+  o Period currentTerm
+  o String shipment
+  o MonetaryAmount unitPrice
+  o Integer unit
+  o Integer sensorReadingFrequency
+  o TemporalUnit duration
+  o Period countPeriod
+  // o Integer productCount
+  // o Integer noticeWindow
+  // o Integer cancellationWindow
+  // o Double minimumPercentage
+  // o String deliverables
+  // o Integer deliveryWindow
+  // o String deliveryAttachment
+  // o Integer inspectionWindow
+  // o String acceptanceAttachment
+  // o Integer priceUpdateWindow
+  // o String accountNumber
+  // o String routingNumber
+  // o Integer termYears
+  // o Integer renewalYears
+  // o Integer renewalWindow
+  // o Country governingCountry
+  // o Country venueCountry
+  // o Integer paymentMade
+}
+
