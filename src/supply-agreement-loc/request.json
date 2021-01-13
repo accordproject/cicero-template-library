@@ -1,0 +1,5 @@
+{
+    "$class": "org.cloudsecurityalliance.supplyagreement.SensorReading",
+    "temperature": 25,
+    "humidity": 25
+}

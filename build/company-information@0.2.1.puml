@@ -1,0 +1,10 @@
+@startuml
+class org.accordproject.companyinformation.CompanyInformation << (A,green) >> {
+   + String name
+   + String industry
+   + String website
+   + PostalAddress address
+   + Integer numberOfEmployees
+}
+org.accordproject.companyinformation.CompanyInformation --|> org.accordproject.cicero.contract.AccordClause
+@enduml
