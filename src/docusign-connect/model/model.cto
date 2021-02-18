@@ -2,8 +2,8 @@ namespace com.docusign.connect.counter
 
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import com.docusign.connect.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect.cto
-import com.docusign.connect.EnvelopeStatusCode from https://models.accordproject.org/docusign/connect.cto
+import com.docusign.connect.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect@0.2.0.cto
+import com.docusign.connect.EnvelopeStatusCode from https://models.accordproject.org/docusign/connect@0.2.0.cto
 
 transaction MyResponse extends Response {
   o String output
