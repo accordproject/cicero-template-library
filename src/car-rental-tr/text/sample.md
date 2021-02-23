@@ -11,8 +11,6 @@ Bundan böyle KİRAYA VEREN olarak anılacaktır.
    1.5 Adresi "John F. Kennedy Sokak No:23/12 Kavaklıdere Ankara"
    1.6 Telefon "+901234567890"
 
-Bundan böyle KİRALAYAN olarak anılacaktır.
-
 2. ARAÇ DETAYLARI
 
    2.1 Plaka No "PlakaNo"
