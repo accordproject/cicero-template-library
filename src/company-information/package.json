@@ -1,0 +1,19 @@
+{
+  "name": "company-information",
+  "displayName": "Company Information",
+  "version": "0.2.1",
+  "description": "Gather company information",
+  "license": "Apache-2.0",
+  "accordproject": {
+    "template": "clause",
+    "cicero": "^0.21.0"
+  },
+  "devDependencies": {
+    "cucumber": "^5.1.0"
+  },
+  "keywords": [
+    "company",
+    "information"
+  ],
+  "dependencies": {}
+}

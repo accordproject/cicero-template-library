@@ -1,8 +1,8 @@
 {
-    "name": "signature-name-date",
+    "name": "signature-block-title-name-date",
     "displayName": "Signature Block (Title, Name, Date)",
-    "version": "0.3.0",
-    "description": "A signature block with name, title and date input fields",
+    "version": "0.19.0",
+    "description": "A signature block with name, title, date input fields",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {

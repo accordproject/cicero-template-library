@@ -1,0 +1,43 @@
+namespace org.accordproject.signature.tnd
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.signature.block.SignatureClause from https://models.accordproject.org/signature/block.cto
+
+/**
+ * A detailed signature block, configured to render to PDF
+ * in white, and with all variables read-only in the Web editor
+ */
+asset TitleNameDateSignatureBlock extends SignatureClause {
+  @DocuSignTab("type", "Title", "optional", true)
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true, 
+    "fontFamily", "Lucida Console, Courier, monospace",
+    "backgroundColor", "#FAE094", "border", '#CCA855' )
+  @FormEditor("hide", true)
+  o String title
+
+  @DocuSignTab("type", "SignHere")
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true, 
+    "fontFamily", "Lucida Console, Courier, monospace",
+    "backgroundColor", "#FAE094", "border", '#CCA855' )
+  @FormEditor("hide", true)
+  o String signature
+
+  @DocuSignTab("type", "FullName")
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true,
+    "fontFamily", "Lucida Console, Courier, monospace",
+    "backgroundColor", "#FAE094", "border", '#CCA855' )
+  @FormEditor("hide", true)
+  o String fullName
+
+  @DocuSignTab("type", "DateSigned")
+  @Pdf("style", "background")
+  @ContractEditor("readOnly", true,
+    "fontFamily", "Lucida Console, Courier, monospace",
+    "backgroundColor", "#FAE094", "border", '#CCA855' )
+  @FormEditor("hide", true)
+  o String dateSigned
+}

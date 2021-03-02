@@ -1,0 +1,20 @@
+{
+  "name": "project-information",
+  "displayName": "Project Information",
+  "version": "0.2.0",
+  "description": "Gather project information",
+  "license": "Apache-2.0",
+  "accordproject": {
+    "template": "clause",
+    "cicero": "^0.21.0"
+  },
+  "devDependencies": {
+    "cucumber": "^5.1.0"
+  },
+  "keywords": [
+    "clause",
+    "verify",
+    "project"
+  ],
+  "dependencies": {}
+}

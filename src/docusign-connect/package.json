@@ -1,7 +1,7 @@
 {
     "name": "docusign-connect",
     "displayName": "Docusign Connect",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "description": "Counts events from DocuSign connect with a given envelope status.",
     "author": "Accord Project",
     "license": "Apache-2.0",
