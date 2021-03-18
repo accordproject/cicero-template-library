@@ -77,6 +77,7 @@ This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agree
    4. Exclusions. This warranty does not extend to any {{product}} the {{importer}} abuses, neglects, or misuses according to the applicable documentation or specifications, or to any {{product}} the {{importer}} has had repaired or altered by a Person other than the {{exporter}}.
 
 9. Confidentiality
+
    1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
    2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
    3. Non-Disclosure. The {{importer}} may not disclose Confidential Information to any third party, except to the extent
@@ -88,54 +89,55 @@ This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agree
       2. learns of any unauthorized disclosure of Confidential Information.
 
 10. Effect of Termination
-   1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+
+    1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
    
-   2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
-      1. pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
-      2. refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+    2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+       1. pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+       2. refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
    
-   3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
-      1. that arose before the termination or expiration of this agreement, or
-      2. arising after the termination or expiration of this agreement.
+    3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+       1. that arose before the termination or expiration of this agreement, or
+       2. arising after the termination or expiration of this agreement.
 
 11. Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.
 
 12. General Provisions
 
 13. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
-   1. represent the final expression of the parties' intent relating to the subject matter of this agreement,
-   2. contain all the terms the parties agreed to relating to the subject matter, and
-   3. replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+    1. represent the final expression of the parties' intent relating to the subject matter of this agreement,
+    2. contain all the terms the parties agreed to relating to the subject matter, and
+    3. replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
 
 14. Amendment. This agreement can be amended only by a writing signed by both parties.
 
 15. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
 
 16. Notices
-   1. Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, international courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
-   2. Receipt of Notice. A notice given under this agreement will be effective on
-      1. the other party's receipt of it, or
-      2. if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it.
+    1. Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, international courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+    2. Receipt of Notice. A notice given under this agreement will be effective on
+       1. the other party's receipt of it, or
+       2. if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it.
 
 17. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
 
 18. Waiver
-   1. Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
-   2. Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
-   3. No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
-   4. No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+    1. Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+    2. Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+    3. No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+    4. No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
 
 19. Governing Law and Consent to Jurisdiction and Venue
-   1. Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of Delaware.
-   2. Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of Delaware, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
-   3. Consent to Service. Each party hereby irrevocably
-      1. agrees that process may be served on it in any manner authorized by the Laws of the State of Delaware, and
-      2. waives any objection which it might otherwise have to service of process under the Laws of the State of Delaware.
+    1. Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of Delaware.
+    2. Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of Delaware, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+    3. Consent to Service. Each party hereby irrevocably
+       1. agrees that process may be served on it in any manner authorized by the Laws of the State of Delaware, and
+       2. waives any objection which it might otherwise have to service of process under the Laws of the State of Delaware.
 
 20. Counterparts
-   1. Signed in Counterparts. This agreement may be signed in any number of counterparts.
-   2. All Counterparts Original. Each counterpart is an original.
-   3. Counterparts Form One Document. Together, all counterparts form one single document.
+    1. Signed in Counterparts. This agreement may be signed in any number of counterparts.
+    2. All Counterparts Original. Each counterpart is an original.
+    3. Counterparts Form One Document. Together, all counterparts form one single document.
 
 Schedule A.
 ----
