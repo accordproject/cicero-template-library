@@ -15,6 +15,6 @@ evaluate the "Widgets" on the delivery date before notifying
 ## Acceptance Criteria.
 
 The "Acceptance Criteria" are the specifications the "Widgets"
-must meet for the "Party A" to comply with its requirements and
+must meet for "Party A" to comply with its requirements and
 obligations under this agreement, detailed in "Attachment X", attached
 to this agreement.
