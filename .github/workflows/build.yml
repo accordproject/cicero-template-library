@@ -35,31 +35,6 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
 
-      - name: Calculate code coverage
-        run: npm run coverage
-
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          flag-name: ${{ matrix.os }}
-          parallel: true
-
-  notify:
-    needs:
-      - build
-
-    name: Code Coverage
-    if: ${{ success() }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Coveralls Finished
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
-
   publish:
     needs:
       - build
