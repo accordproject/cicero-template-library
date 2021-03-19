@@ -1,0 +1,904 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/bill-of-lading@0.0.1.html" />
+    <meta property="og:title" content="bill-of-lading@0.0.1" />
+    <meta property="og:description" content="Bill of Lading for transfort of goods via ocean vessel" />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/bLNHRfim57tFL_2uQMlKT6kpILLLGbYBGZ4of5qqJP5h3F4ADZEcMxhjtsSIcyPL9cLFd7FFlSVszGKk6uc4RAjoW4lKD0uNnH1Xp4LM2_wDO3cyfsN9yn9bb1N36E47L91qNHFd_DnvvRyj15c_TYukd5y3nt7UE1Ftoe3GDmX2FpGucVcfmMdgmyNI0n229BZrbtUz54GQWCyQp2FlkeTJu-svAjLKUMva09o0HOzXuCEUfA1FIdgJPAOHY59N6PfqwAOcPn46qTG8KpY_sQ8G06C3qckZnwutSwzyGuBGe30qcuq3t_CJWsD_gVnr0LJL6lccSH246YMpOAfH380EfcwaIzBvHDlCeq2lTUj6oxWtlODk7FlJmP_3xloJ8BHOIM-Jk__IlT1DakNfiSLETzcPfPrPsjZIncDB_62nZoSM7HrRfQEHJLyas_iRsUkSs5OdTl8xMtrlqrD53spcDNf28kFjlpgvC2CHWKCjFLvLFADoRJm29ab1XFEzHKogk9u6HYN8Rph3jeTw_7RUwlePwo6JGgtYPAJ1WjQIScR5MPLZZsSwsPgLV8TivUVJhz1JXUIXHvme0l9mGvHTsso_FcxNFi9s-wTtrNcrJ4Qeia_HO8Ijm3qlexQw9-95b3-evnw5_Aova93aH126IME9dFrGnmjO8qMBkqvf6OW2CVg4kf3Jh6XT6rTBmQg05eoGFHhZakRhM7shrzQIZwHfI6c7-5fTu9wzTpjNNUIRDkvHfhJ1AoGAksLrYJ01EIIOgElV9qr9IH-9q1lhn_7BLtMYBQQcKJUS4VN3MRjLTprggDJr2vBTeh8bQXZ-VmoEZdvVx9aUJ34HVAWwAWLItDsesvh19M5PzyVx2m00" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="bill-of-lading@0.0.1" />
+    <meta name="twitter:description" content="Bill of Lading for transfort of goods via ocean vessel" />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bLNHRfim57tFL_2uQMlKT6kpILLLGbYBGZ4of5qqJP5h3F4ADZEcMxhjtsSIcyPL9cLFd7FFlSVszGKk6uc4RAjoW4lKD0uNnH1Xp4LM2_wDO3cyfsN9yn9bb1N36E47L91qNHFd_DnvvRyj15c_TYukd5y3nt7UE1Ftoe3GDmX2FpGucVcfmMdgmyNI0n229BZrbtUz54GQWCyQp2FlkeTJu-svAjLKUMva09o0HOzXuCEUfA1FIdgJPAOHY59N6PfqwAOcPn46qTG8KpY_sQ8G06C3qckZnwutSwzyGuBGe30qcuq3t_CJWsD_gVnr0LJL6lccSH246YMpOAfH380EfcwaIzBvHDlCeq2lTUj6oxWtlODk7FlJmP_3xloJ8BHOIM-Jk__IlT1DakNfiSLETzcPfPrPsjZIncDB_62nZoSM7HrRfQEHJLyas_iRsUkSs5OdTl8xMtrlqrD53spcDNf28kFjlpgvC2CHWKCjFLvLFADoRJm29ab1XFEzHKogk9u6HYN8Rph3jeTw_7RUwlePwo6JGgtYPAJ1WjQIScR5MPLZZsSwsPgLV8TivUVJhz1JXUIXHvme0l9mGvHTsso_FcxNFi9s-wTtrNcrJ4Qeia_HO8Ijm3qlexQw9-95b3-evnw5_Aova93aH126IME9dFrGnmjO8qMBkqvf6OW2CVg4kf3Jh6XT6rTBmQg05eoGFHhZakRhM7shrzQIZwHfI6c7-5fTu9wzTpjNNUIRDkvHfhJ1AoGAksLrYJ01EIIOgElV9qr9IH-9q1lhn_7BLtMYBQQcKJUS4VN3MRjLTprggDJr2vBTeh8bQXZ-VmoEZdvVx9aUJ34HVAWwAWLItDsesvh19M5PzyVx2m00" />
+    <meta name="twitter:image:alt" content="UML diagram of bill-of-lading@0.0.1 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/bill-of-lading@0.0.1.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Bill of Lading
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">bill-of-lading@0.0.1</span>
+                <span class="tag is-light">Clause</span>
+                <span class="tag is-light">^0.21.0</span>
+                <span class="tag is-light">b53b43b58be96695e2f19af2fe6b45da98ea4be510370a77f15f0bbfa50054f7</span>
+            </div>
+            <p class="subtitle">
+                Bill of Lading for transfort of goods via ocean vessel
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="bill-of-lading@0.0.1.html" class="dropdown-item is-active">
+                    bill-of-lading@0.0.1
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/bill-of-lading@0.0.1.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/bill-of-lading@0.0.1-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fbill-of-lading%400.0.1%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="billoflading">Bill of Lading</h1>
+<p>This clause defines a Bill of Lading for the transport of goods via an ocean vessel.</p>
+<p>References:</p>
+<ul>
+<li>https://www.icecargo.com.au/bill-of-lading/</li>
+<li>https://www.advancedontrade.com/2015/03/how-to-complete-consignee-and-notify-fields-of-a-bill-of-lading.html</li>
+</ul>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<h1>"MAERSK LINE"</h1>
+<h2>Bill of Lading for Ocean Transport or Multimodal Transport</h2>
+<h3>Non-negotiable unless consigned TO ORDER</h3>
+<h2>ORIGINAL</h2>
+<p>SCAC: "MAEU"</p>
+<p>B/L Number: "MAEU-ABC12345678"</p>
+<p>Booking Number: "2021030264747"</p>
+<h3>Shipper</h3>
+<p>"CLAUSE TECHNOLOGIES"</p>
+<h3>Consignee</h3>
+<p>"TO ORDER"</p>
+<h3>Notify Party</h3>
+<p>"SAME AS CONSIGNEE"</p>
+<p>Exporter References: ""<br>Onward Instructions: ""</p>
+<p>Vessel: "Lagua"<br>Voyage number: "725"</p>
+<p>Port of Loading: "Shanghai, China"<br>Port of Discharge: "Brisbane, Australia"</p>
+<p>Place of Receipt: "Brisbane, Australia"<br>Place of Delivery: "Brisbane, Australia"</p>
+<h3>Freight</h3>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>Amount: 15 TONNE Package: CONTAINER Description: "Corn" NMFC: "" Freight Class: CLASS_400 Hazardous: NO</p>
+</li>
+<li><p>Amount: 35 TONNE Package: CONTAINER Description: "Wheat" NMFC: "" Freight Class: CLASS_400 Hazardous: NO</p>
+</li></ol><h3>Declared value: 2500.00 USD.</h3>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown"># "MAERSK LINE"
+
+## Bill of Lading for Ocean Transport or Multimodal Transport
+### Non-negotiable unless consigned TO ORDER
+## ORIGINAL
+
+SCAC: "MAEU"
+
+B/L Number: "MAEU-ABC12345678"
+
+Booking Number: "2021030264747"
+
+### Shipper
+
+"CLAUSE TECHNOLOGIES"
+
+### Consignee
+
+"TO ORDER"
+
+### Notify Party
+
+"SAME AS CONSIGNEE"
+
+Exporter References: ""  
+Onward Instructions: ""
+
+Vessel: "Lagua"  
+Voyage number: "725"
+
+Port of Loading: "Shanghai, China"  
+Port of Discharge: "Brisbane, Australia"
+
+Place of Receipt: "Brisbane, Australia"  
+Place of Delivery: "Brisbane, Australia"
+
+### Freight
+
+1. Amount: 15 TONNE Package: CONTAINER Description: "Corn" NMFC: "" Freight Class: CLASS_400 Hazardous: NO
+1. Amount: 35 TONNE Package: CONTAINER Description: "Wheat" NMFC: "" Freight Class: CLASS_400 Hazardous: NO
+
+### Declared value: 2500.00 USD.
+</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem"># {{accountName}}
+
+## Bill of Lading for Ocean Transport or Multimodal Transport
+### Non-negotiable unless consigned TO ORDER
+## ORIGINAL
+
+SCAC: {{scac}}
+
+B/L Number: {{bolNumber}}
+
+Booking Number: {{bookingNumber}}
+
+### Shipper
+
+{{shipper}}
+
+### Consignee
+
+{{consignee}}
+
+### Notify Party
+
+{{notifyParty}}
+
+Exporter References: {{exportReferences}}  
+Onward Instructions: {{onwardInstructions}}
+
+Vessel: {{vessel}}  
+Voyage number: {{voyageNumber}}
+
+Port of Loading: {{portOfLoading}}  
+Port of Discharge: {{portOfDischarge}}
+
+Place of Receipt: {{placeOfReceipt}}  
+Place of Delivery: {{placeOfDelivery}}
+
+### Freight
+
+{{#olist commodities}}
+Amount: {{quantity}} {{unitOfMass}} Package: {{packageType}} Description: {{description}} NMFC: {{nmfcCode}} Freight Class: {{freightClass}} Hazardous: {{hazmat}}
+{{/olist}}
+
+### Declared value: {{declaredValue}}.
+</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.billoflading.BillOfLadingClause",
+    "accountName": "MAERSK LINE",
+    "scac": "MAEU",
+    "bolNumber": "MAEU-ABC12345678",
+    "bookingNumber": "2021030264747",
+    "exportReferences": "",
+    "onwardInstructions": "",
+    "shipper": "resource:org.accordproject.organization.Organization#CLAUSE%20TECHNOLOGIES",
+    "consignee": "resource:org.accordproject.organization.Organization#TO%20ORDER",
+    "notifyParty": "resource:org.accordproject.organization.Organization#SAME%20AS%20CONSIGNEE",
+    "vessel": "Lagua",
+    "voyageNumber": "725",
+    "portOfLoading": "Shanghai, China",
+    "portOfDischarge": "Brisbane, Australia",
+    "placeOfReceipt": "Brisbane, Australia",
+    "placeOfDelivery": "Brisbane, Australia",
+    "commodities": [
+        {
+            "$class": "org.accordproject.billoflading.Commodity",
+            "quantity": 15,
+            "unitOfMass": "TONNE",
+            "packageType": "CONTAINER",
+            "description": "Corn",
+            "nmfcCode": "",
+            "freightClass": "CLASS_400",
+            "hazmat": "NO"
+        },
+        {
+            "$class": "org.accordproject.billoflading.Commodity",
+            "quantity": 35,
+            "unitOfMass": "TONNE",
+            "packageType": "CONTAINER",
+            "description": "Wheat",
+            "nmfcCode": "",
+            "freightClass": "CLASS_400",
+            "hazmat": "NO"
+        }
+    ],
+    "declaredValue": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 2500,
+        "currencyCode": "USD"
+    },
+    "clauseId": "07b492ba-09fa-4b98-a7d1-4becc722aa4d"
+}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/bLNHRfim57tFL_2uQMlKT6kpILLLGbYBGZ4of5qqJP5h3F4ADZEcMxhjtsSIcyPL9cLFd7FFlSVszGKk6uc4RAjoW4lKD0uNnH1Xp4LM2_wDO3cyfsN9yn9bb1N36E47L91qNHFd_DnvvRyj15c_TYukd5y3nt7UE1Ftoe3GDmX2FpGucVcfmMdgmyNI0n229BZrbtUz54GQWCyQp2FlkeTJu-svAjLKUMva09o0HOzXuCEUfA1FIdgJPAOHY59N6PfqwAOcPn46qTG8KpY_sQ8G06C3qckZnwutSwzyGuBGe30qcuq3t_CJWsD_gVnr0LJL6lccSH246YMpOAfH380EfcwaIzBvHDlCeq2lTUj6oxWtlODk7FlJmP_3xloJ8BHOIM-Jk__IlT1DakNfiSLETzcPfPrPsjZIncDB_62nZoSM7HrRfQEHJLyas_iRsUkSs5OdTl8xMtrlqrD53spcDNf28kFjlpgvC2CHWKCjFLvLFADoRJm29ab1XFEzHKogk9u6HYN8Rph3jeTw_7RUwlePwo6JGgtYPAJ1WjQIScR5MPLZZsSwsPgLV8TivUVJhz1JXUIXHvme0l9mGvHTsso_FcxNFi9s-wTtrNcrJ4Qeia_HO8Ijm3qlexQw9-95b3-evnw5_Aova93aH126IME9dFrGnmjO8qMBkqvf6OW2CVg4kf3Jh6XT6rTBmQg05eoGFHhZakRhM7shrzQIZwHfI6c7-5fTu9wzTpjNNUIRDkvHfhJ1AoGAksLrYJ01EIIOgElV9qr9IH-9q1lhn_7BLtMYBQQcKJUS4VN3MRjLTprggDJr2vBTeh8bQXZ-VmoEZdvVx9aUJ34HVAWwAWLItDsesvh19M5PzyVx2m00"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.geo
+
+import org.accordproject.address.PostalAddress from https://models.accordproject.org/address.cto
+
+/**
+ * http://schema.org/GeoCoordinates
+ */
+concept GeoCoordinates {
+  o PostalAddress address optional
+  o String addressCountry optional
+  o Double elevation optional
+  o Double latitude optional
+  o Double longitude optional
+}
+
+/**
+ * http://schema.org/Place
+ */
+concept Place {
+  o PostalAddress address optional
+  o String branchCode optional
+  o String faxNumber optional
+  o GeoCoordinates geo optional
+  o String globalLocationNumber optional
+  o String mapUrl optional
+  o String isicsV4 optional
+  o String telephone optional
+}
+
+/**
+ * A country
+ */
+concept Country {
+  o String name
+  o CountryCodeISOAlpha2 optional
+}
+
+// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+enum CountryCodeISOAlpha2 {
+   o AD	 // Andorra	1974	.ad	ISO 3166-2:AD	
+   o AE	 // United Arab Emirates	1974	.ae	ISO 3166-2:AE	
+   o AF	 // Afghanistan	1974	.af	ISO 3166-2:AF	
+   o AG	 // Antigua and Barbuda	1974	.ag	ISO 3166-2:AG	
+   o AI	 // Anguilla	1985	.ai	ISO 3166-2:AI	AI previously represented French Afar and Issas
+   o AL	 // Albania	1974	.al	ISO 3166-2:AL	
+   o AM	 // Armenia	1992	.am	ISO 3166-2:AM	
+   o AO	 // Angola	1974	.ao	ISO 3166-2:AO	
+   o AQ	 // Antarctica	1974	.aq	ISO 3166-2:AQ	Covers the territories south of 60° south latitude Code taken from name in French: Antarctique
+   o AR	 // Argentina	1974	.ar	ISO 3166-2:AR	
+   o AS	 // American Samoa	1974	.as	ISO 3166-2:AS	
+   o AT	 // Austria	1974	.at	ISO 3166-2:AT	
+   o AU	 // Australia	1974	.au	ISO 3166-2:AU	Includes the Ashmore and Cartier Islands and the Coral Sea Islands
+   o AW	 // Aruba	1986	.aw	ISO 3166-2:AW	
+   o AX	 // Åland Islands	2004	.ax	ISO 3166-2:AX	An autonomous province of Finland
+   o AZ	 // Azerbaijan	1992	.az	ISO 3166-2:AZ	
+   o BA	 // Bosnia and Herzegovina	1992	.ba	ISO 3166-2:BA	
+   o BB	 // Barbados	1974	.bb	ISO 3166-2:BB	
+   o BD	 // Bangladesh	1974	.bd	ISO 3166-2:BD	
+   o BE	 // Belgium	1974	.be	ISO 3166-2:BE	
+   o BF	 // Burkina Faso	1984	.bf	ISO 3166-2:BF	Name changed from Upper Volta (HV)
+   o BG	 // Bulgaria	1974	.bg	ISO 3166-2:BG	
+   o BH	 // Bahrain	1974	.bh	ISO 3166-2:BH	
+   o BI	 // Burundi	1974	.bi	ISO 3166-2:BI	
+   o BJ	 // Benin	1977	.bj	ISO 3166-2:BJ	Name changed from Dahomey (DY)
+   o BL	 // Saint Barthélemy	2007	.bl	ISO 3166-2:BL	
+   o BM	 // Bermuda	1974	.bm	ISO 3166-2:BM	
+   o BN	 // Brunei Darussalam	1974	.bn	ISO 3166-2:BN	ISO country name follows UN designation (common name: Brunei)
+   o BO	 // Bolivia, Plurinational State of	1974	.bo	ISO 3166-2:BO	ISO country name follows UN designation (common name and previous ISO country name: Bolivia)
+   o BQ	 // Bonaire, Sint Eustatius and Saba	2010	.bq	ISO 3166-2:BQ	Consists of three Caribbean "special municipalities", which are part of the Netherlands proper: Bonaire, Sint Eustatius, and Saba (the BES Islands) Previous ISO country name: Bonaire, Saint Eustatius and Saba BQ previously represented British Antarctic Territory
+   o BR	 // Brazil	1974	.br	ISO 3166-2:BR	
+   o BS	 // Bahamas	1974	.bs	ISO 3166-2:BS	
+   o BT	 // Bhutan	1974	.bt	ISO 3166-2:BT	
+   o BV	 // Bouvet Island	1974	.bv	ISO 3166-2:BV	Belongs to Norway
+   o BW	 // Botswana	1974	.bw	ISO 3166-2:BW	
+   o BY	 // Belarus	1974	.by	ISO 3166-2:BY	Code taken from previous ISO country name: Byelorussian SSR (now assigned ISO 3166-3 code BYAA) Code assigned as the country was already a UN member since 1945[14]
+   o BZ	 // Belize	1974	.bz	ISO 3166-2:BZ	
+   o CA	 // Canada	1974	.ca	ISO 3166-2:CA	
+   o CC	 // Cocos (Keeling) Islands	1974	.cc	ISO 3166-2:CC	
+   o CD	 // Congo, the Democratic Republic of the	1997	.cd	ISO 3166-2:CD	Name changed from Zaire (ZR)
+   o CF	 // Central African Republic	1974	.cf	ISO 3166-2:CF	
+   o CG	 // Congo	1974	.cg	ISO 3166-2:CG	
+   o CH	 // Switzerland	1974	.ch	ISO 3166-2:CH	Code taken from name in Latin: Confoederatio Helvetica
+   o CI	 // Côte d'Ivoire	1974	.ci	ISO 3166-2:CI	ISO country name follows UN designation (common name: Ivory Coast)
+   o CK	 // Cook Islands	1974	.ck	ISO 3166-2:CK	
+   o CL	 // Chile	1974	.cl	ISO 3166-2:CL	
+   o CM	 // Cameroon	1974	.cm	ISO 3166-2:CM	
+   o CN	 // China	1974	.cn	ISO 3166-2:CN	
+   o CO	 // Colombia	1974	.co	ISO 3166-2:CO	
+   o CR	 // Costa Rica	1974	.cr	ISO 3166-2:CR	
+   o CU	 // Cuba	1974	.cu	ISO 3166-2:CU	
+   o CV	 // Cabo Verde	1974	.cv	ISO 3166-2:CV	
+   o CW	 // Curaçao	2010	.cw	ISO 3166-2:CW	
+   o CX	 // Christmas Island	1974	.cx	ISO 3166-2:CX	
+   o CY	 // Cyprus	1974	.cy	ISO 3166-2:CY	
+   o CZ	 // Czechia	1993	.cz	ISO 3166-2:CZ	Previous ISO country name: Czech Republic
+   o DE	 // Germany	1974	.de	ISO 3166-2:DE	Code taken from name in German: Deutschland Code used for West Germany before 1990 (previous ISO country name: Germany, Federal Republic of)
+   o DJ	 // Djibouti	1977	.dj	ISO 3166-2:DJ	Name changed from French Afar and Issas (AI)
+   o DK	 // Denmark	1974	.dk	ISO 3166-2:DK	
+   o DM	 // Dominica	1974	.dm	ISO 3166-2:DM	
+   o DO	 // Dominican Republic	1974	.do	ISO 3166-2:DO	
+   o DZ	 // Algeria	1974	.dz	ISO 3166-2:DZ	Code taken from name in Kabyle: Dzayer
+   o EC	 // Ecuador	1974	.ec	ISO 3166-2:EC	
+   o EE	 // Estonia	1992	.ee	ISO 3166-2:EE	Code taken from name in Estonian: Eesti
+   o EG	 // Egypt	1974	.eg	ISO 3166-2:EG	
+   o EH	 // Western Sahara	1974	.eh	ISO 3166-2:EH	Previous ISO country name: Spanish Sahara (code taken from name in Spanish: Sahara español)
+   o ER	 // Eritrea	1993	.er	ISO 3166-2:ER	
+   o ES	 // Spain	1974	.es	ISO 3166-2:ES	Code taken from name in Spanish: España
+   o ET	 // Ethiopia	1974	.et	ISO 3166-2:ET	
+   o FI	 // Finland	1974	.fi	ISO 3166-2:FI	
+   o FJ	 // Fiji	1974	.fj	ISO 3166-2:FJ	
+   o FK	 // Falkland Islands (Malvinas)	1974	.fk	ISO 3166-2:FK	ISO country name follows UN designation due to the Falkland Islands sovereignty dispute (local common name: Falkland Islands)[15]
+   o FM	 // Micronesia, Federated States of	1986	.fm	ISO 3166-2:FM	Previous ISO country name: Micronesia
+   o FO	 // Faroe Islands	1974	.fo	ISO 3166-2:FO	Code taken from name in Faroese: Føroyar
+   o FR	 // France	1974	.fr	ISO 3166-2:FR	Includes Clipperton Island
+   o GA	 // Gabon	1974	.ga	ISO 3166-2:GA	
+   o GB	 // United Kingdom of Great Britain and Northern Ireland	1974	.gb (.uk)	ISO 3166-2:GB	Code taken from Great Britain (from official name: United Kingdom of Great Britain and Northern Ireland)[16] .uk is the primary ccTLD of the United Kingdom instead of .gb (see code UK, which is exceptionally reserved)
+   o GD	 // Grenada	1974	.gd	ISO 3166-2:GD	
+   o GE	 // Georgia	1992	.ge	ISO 3166-2:GE	GE previously represented Gilbert and Ellice Islands
+   o GF	 // French Guiana	1974	.gf	ISO 3166-2:GF	Code taken from name in French: Guyane française
+   o GG	 // Guernsey	2006	.gg	ISO 3166-2:GG	a British Crown dependency
+   o GH	 // Ghana	1974	.gh	ISO 3166-2:GH	
+   o GI	 // Gibraltar	1974	.gi	ISO 3166-2:GI	
+   o GL	 // Greenland	1974	.gl	ISO 3166-2:GL	
+   o GM	 // Gambia	1974	.gm	ISO 3166-2:GM	
+   o GN	 // Guinea	1974	.gn	ISO 3166-2:GN	
+   o GP	 // Guadeloupe	1974	.gp	ISO 3166-2:GP	
+   o GQ	 // Equatorial Guinea	1974	.gq	ISO 3166-2:GQ	Code taken from name in French: Guinée équatoriale
+   o GR	 // Greece	1974	.gr	ISO 3166-2:GR	
+   o GS	 // South Georgia and the South Sandwich Islands	1993	.gs	ISO 3166-2:GS	
+   o GT	 // Guatemala	1974	.gt	ISO 3166-2:GT	
+   o GU	 // Guam	1974	.gu	ISO 3166-2:GU	
+   o GW	 // Guinea-Bissau	1974	.gw	ISO 3166-2:GW	
+   o GY	 // Guyana	1974	.gy	ISO 3166-2:GY	
+   o HK	 // Hong Kong	1974	.hk	ISO 3166-2:HK	
+   o HM	 // Heard Island and McDonald Islands	1974	.hm	ISO 3166-2:HM	
+   o HN	 // Honduras	1974	.hn	ISO 3166-2:HN	
+   o HR	 // Croatia	1992	.hr	ISO 3166-2:HR	Code taken from name in Croatian: Hrvatska
+   o HT	 // Haiti	1974	.ht	ISO 3166-2:HT	
+   o HU	 // Hungary	1974	.hu	ISO 3166-2:HU	
+   o ID	 // Indonesia	1974	.id	ISO 3166-2:ID	
+   o IE	 // Ireland	1974	.ie	ISO 3166-2:IE	
+   o IL	 // Israel	1974	.il	ISO 3166-2:IL	
+   o IM	 // Isle of Man	2006	.im	ISO 3166-2:IM	a British Crown dependency
+   o IN	 // India	1974	.in	ISO 3166-2:IN	
+   o IO	 // British Indian Ocean Territory	1974	.io	ISO 3166-2:IO	
+   o IQ	 // Iraq	1974	.iq	ISO 3166-2:IQ	
+   o IR	 // Iran, Islamic Republic of	1974	.ir	ISO 3166-2:IR	ISO country name follows UN designation (common name: Iran)
+   o IS	 // Iceland	1974	.is	ISO 3166-2:IS	Code taken from name in Icelandic: Ísland
+   o IT	 // Italy	1974	.it	ISO 3166-2:IT	
+   o JE	 // Jersey	2006	.je	ISO 3166-2:JE	a British Crown dependency
+   o JM	 // Jamaica	1974	.jm	ISO 3166-2:JM	
+   o JO	 // Jordan	1974	.jo	ISO 3166-2:JO	
+   o JP	 // Japan	1974	.jp	ISO 3166-2:JP	
+   o KE	 // Kenya	1974	.ke	ISO 3166-2:KE	
+   o KG	 // Kyrgyzstan	1992	.kg	ISO 3166-2:KG	
+   o KH	 // Cambodia	1974	.kh	ISO 3166-2:KH	Code taken from former name: Khmer Republic Previous ISO country name: Kampuchea
+   o KI	 // Kiribati	1979	.ki	ISO 3166-2:KI	
+   o KM	 // Comoros	1974	.km	ISO 3166-2:KM	Code taken from name in Comorian: Komori
+   o KN	 // Saint Kitts and Nevis	1974	.kn	ISO 3166-2:KN	Previous ISO country name: Saint Kitts-Nevis-Anguilla
+   o KP	 // Korea, Democratic People's Republic of	1974	.kp	ISO 3166-2:KP	ISO country name follows UN designation (common name: North Korea)
+   o KR	 // Korea, Republic of	1974	.kr	ISO 3166-2:KR	ISO country name follows UN designation (common name: South Korea)
+   o KW	 // Kuwait	1974	.kw	ISO 3166-2:KW	
+   o KY	 // Cayman Islands	1974	.ky	ISO 3166-2:KY	
+   o KZ	 // Kazakhstan	1992	.kz	ISO 3166-2:KZ	Previous ISO country name: Kazakstan
+   o LA	 // Lao People's Democratic Republic	1974	.la	ISO 3166-2:LA	ISO country name follows UN designation (common name: Laos)
+   o LB	 // Lebanon	1974	.lb	ISO 3166-2:LB	
+   o LC	 // Saint Lucia	1974	.lc	ISO 3166-2:LC	
+   o LI	 // Liechtenstein	1974	.li	ISO 3166-2:LI	
+   o LK	 // Sri Lanka	1974	.lk	ISO 3166-2:LK	
+   o LR	 // Liberia	1974	.lr	ISO 3166-2:LR	
+   o LS	 // Lesotho	1974	.ls	ISO 3166-2:LS	
+   o LT	 // Lithuania	1992	.lt	ISO 3166-2:LT	
+   o LU	 // Luxembourg	1974	.lu	ISO 3166-2:LU	
+   o LV	 // Latvia	1992	.lv	ISO 3166-2:LV	
+   o LY	 // Libya	1974	.ly	ISO 3166-2:LY	Previous ISO country name: Libyan Arab Jamahiriya
+   o MA	 // Morocco	1974	.ma	ISO 3166-2:MA	Code taken from name in French: Maroc
+   o MC	 // Monaco	1974	.mc	ISO 3166-2:MC	
+   o MD	 // Moldova, Republic of	1992	.md	ISO 3166-2:MD	ISO country name follows UN designation (common name and previous ISO country name: Moldova)
+   o ME	 // Montenegro	2006	.me	ISO 3166-2:ME	
+   o MF	 // Saint Martin (French part)	2007	.mf	ISO 3166-2:MF	The Dutch part of Saint Martin island is assigned code SX
+   o MG	 // Madagascar	1974	.mg	ISO 3166-2:MG	
+   o MH	 // Marshall Islands	1986	.mh	ISO 3166-2:MH	
+   o MK	 // Macedonia, the former Yugoslav Republic of	1993	.mk	ISO 3166-2:MK	ISO country name follows UN designation (due to Macedonia naming dispute; official name used by country itself: Republic of Macedonia) Code taken from name in Macedonian: Makedonija
+   o ML	 // Mali	1974	.ml	ISO 3166-2:ML	
+   o MM	 // Myanmar	1989	.mm	ISO 3166-2:MM	Name changed from Burma (BU)
+   o MN	 // Mongolia	1974	.mn	ISO 3166-2:MN	
+   o MO	 // Macao	1974	.mo	ISO 3166-2:MO	Previous ISO country name: Macau
+   o MP	 // Northern Mariana Islands	1986	.mp	ISO 3166-2:MP	
+   o MQ	 // Martinique	1974	.mq	ISO 3166-2:MQ	
+   o MR	 // Mauritania	1974	.mr	ISO 3166-2:MR	
+   o MS	 // Montserrat	1974	.ms	ISO 3166-2:MS	
+   o MT	 // Malta	1974	.mt	ISO 3166-2:MT	
+   o MU	 // Mauritius	1974	.mu	ISO 3166-2:MU	
+   o MV	 // Maldives	1974	.mv	ISO 3166-2:MV	
+   o MW	 // Malawi	1974	.mw	ISO 3166-2:MW	
+   o MX	 // Mexico	1974	.mx	ISO 3166-2:MX	
+   o MY	 // Malaysia	1974	.my	ISO 3166-2:MY	
+   o MZ	 // Mozambique	1974	.mz	ISO 3166-2:MZ	
+   o NA	 // Namibia	1974	.na	ISO 3166-2:NA	
+   o NC	 // New Caledonia	1974	.nc	ISO 3166-2:NC	
+   o NE	 // Niger	1974	.ne	ISO 3166-2:NE	
+   o NF	 // Norfolk Island	1974	.nf	ISO 3166-2:NF	
+   o NG	 // Nigeria	1974	.ng	ISO 3166-2:NG	
+   o NI	 // Nicaragua	1974	.ni	ISO 3166-2:NI	
+   o NL	 // Netherlands	1974	.nl	ISO 3166-2:NL	
+   o NO	 // Norway	1974	.no	ISO 3166-2:NO	
+   o NP	 // Nepal	1974	.np	ISO 3166-2:NP	
+   o NR	 // Nauru	1974	.nr	ISO 3166-2:NR	
+   o NU	 // Niue	1974	.nu	ISO 3166-2:NU	
+   o NZ	 // New Zealand	1974	.nz	ISO 3166-2:NZ	
+   o OM	 // Oman	1974	.om	ISO 3166-2:OM	
+   o PA	 // Panama	1974	.pa	ISO 3166-2:PA	
+   o PE	 // Peru	1974	.pe	ISO 3166-2:PE	
+   o PF	 // French Polynesia	1974	.pf	ISO 3166-2:PF	Code taken from name in French: Polynésie française
+   o PG	 // Papua New Guinea	1974	.pg	ISO 3166-2:PG	
+   o PH	 // Philippines	1974	.ph	ISO 3166-2:PH	
+   o PK	 // Pakistan	1974	.pk	ISO 3166-2:PK	
+   o PL	 // Poland	1974	.pl	ISO 3166-2:PL	
+   o PM	 // Saint Pierre and Miquelon	1974	.pm	ISO 3166-2:PM	
+   o PN	 // Pitcairn	1974	.pn	ISO 3166-2:PN	
+   o PR	 // Puerto Rico	1974	.pr	ISO 3166-2:PR	
+   o PS	 // Palestine, State of	1999	.ps	ISO 3166-2:PS	Previous ISO country name: Palestinian Territory, Occupied Consists of the West Bank and the Gaza Strip
+   o PT	 // Portugal	1974	.pt	ISO 3166-2:PT	
+   o PW	 // Palau	1986	.pw	ISO 3166-2:PW	
+   o PY	 // Paraguay	1974	.py	ISO 3166-2:PY	
+   o QA	 // Qatar	1974	.qa	ISO 3166-2:QA	
+   o RE	 // Réunion	1974	.re	ISO 3166-2:RE	
+   o RO	 // Romania	1974	.ro	ISO 3166-2:RO	
+   o RS	 // Serbia	2006	.rs	ISO 3166-2:RS	
+   o RU	 // Russian Federation	1992	.ru	ISO 3166-2:RU	ISO country name follows UN designation (common name: Russia)
+   o RW	 // Rwanda	1974	.rw	ISO 3166-2:RW	
+   o SA	 // Saudi Arabia	1974	.sa	ISO 3166-2:SA	
+   o SB	 // Solomon Islands	1974	.sb	ISO 3166-2:SB	Code taken from former name: British Solomon Islands
+   o SC	 // Seychelles	1974	.sc	ISO 3166-2:SC	
+   o SD	 // Sudan	1974	.sd	ISO 3166-2:SD	
+   o SE	 // Sweden	1974	.se	ISO 3166-2:SE	
+   o SG	 // Singapore	1974	.sg	ISO 3166-2:SG	
+   o SH	 // Saint Helena, Ascension and Tristan da Cunha	1974	.sh	ISO 3166-2:SH	Previous ISO country name: Saint Helena
+   o SI	 // Slovenia	1992	.si	ISO 3166-2:SI	
+   o SJ	 // Svalbard and Jan Mayen	1974	.sj	ISO 3166-2:SJ	Consists of two arctic territories of Norway: Svalbard and Jan Mayen
+   o SK	 // Slovakia	1993	.sk	ISO 3166-2:SK	SK previously represented Sikkim
+   o SL	 // Sierra Leone	1974	.sl	ISO 3166-2:SL	
+   o SM	 // San Marino	1974	.sm	ISO 3166-2:SM	
+   o SN	 // Senegal	1974	.sn	ISO 3166-2:SN	
+   o SO	 // Somalia	1974	.so	ISO 3166-2:SO	
+   o SR	 // Suriname	1974	.sr	ISO 3166-2:SR	
+   o SS	 // South Sudan	2011	.ss	ISO 3166-2:SS	
+   o ST	 // Sao Tome and Principe	1974	.st	ISO 3166-2:ST	
+   o SV	 // El Salvador	1974	.sv	ISO 3166-2:SV	
+   o SX	 // Sint Maarten (Dutch part)	2010	.sx	ISO 3166-2:SX	The French part of Saint Martin island is assigned code MF
+   o SY	 // Syrian Arab Republic	1974	.sy	ISO 3166-2:SY	ISO country name follows UN designation (common name: Syria)
+   o SZ	 // Swaziland	1974	.sz	ISO 3166-2:SZ	
+   o TC	 // Turks and Caicos Islands	1974	.tc	ISO 3166-2:TC	
+   o TD	 // Chad	1974	.td	ISO 3166-2:TD	Code taken from name in French: Tchad
+   o TF	 // French Southern Territories	1979	.tf	ISO 3166-2:TF	Covers the French Southern and Antarctic Lands except Adélie Land Code taken from name in French: Terres australes françaises
+   o TG	 // Togo	1974	.tg	ISO 3166-2:TG	
+   o TH	 // Thailand	1974	.th	ISO 3166-2:TH	
+   o TJ	 // Tajikistan	1992	.tj	ISO 3166-2:TJ	
+   o TK	 // Tokelau	1974	.tk	ISO 3166-2:TK	
+   o TL	 // Timor-Leste	2002	.tl	ISO 3166-2:TL	Name changed from East Timor (TP)
+   o TM	 // Turkmenistan	1992	.tm	ISO 3166-2:TM	
+   o TN	 // Tunisia	1974	.tn	ISO 3166-2:TN	
+   o TO	 // Tonga	1974	.to	ISO 3166-2:TO	
+   o TR	 // Turkey	1974	.tr	ISO 3166-2:TR	
+   o TT	 // Trinidad and Tobago	1974	.tt	ISO 3166-2:TT	
+   o TV	 // Tuvalu	1977	.tv	ISO 3166-2:TV	
+   o TW	 // Taiwan, Province of China	1974	.tw	ISO 3166-2:TW	Covers the current jurisdiction of the Republic of China ISO country name follows UN designation (due to political status of Taiwan within the UN)[16] (common name: Taiwan)
+   o TZ	 // Tanzania, United Republic of	1974	.tz	ISO 3166-2:TZ	ISO country name follows UN designation (common name: Tanzania)
+   o UA	 // Ukraine	1974	.ua	ISO 3166-2:UA	Previous ISO country name: Ukrainian SSR Code assigned as the country was already a UN member since 1945[14]
+   o UG	 // Uganda	1974	.ug	ISO 3166-2:UG	
+   o UM	 // United States Minor Outlying Islands	1986	.um	ISO 3166-2:UM	Consists of nine minor insular areas of the United States: Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Navassa Island, Palmyra Atoll, and Wake Island
+   o US	 // United States of America	1974	.us	ISO 3166-2:US	
+   o UY	 // Uruguay	1974	.uy	ISO 3166-2:UY	
+   o UZ	 // Uzbekistan	1992	.uz	ISO 3166-2:UZ	
+   o VA	 // Holy See	1974	.va	ISO 3166-2:VA	Covers Vatican City, territory of the Holy See Previous ISO country name: Vatican City State (Holy See)
+   o VC	 // Saint Vincent and the Grenadines	1974	.vc	ISO 3166-2:VC	
+   o VE	 // Venezuela, Bolivarian Republic of	1974	.ve	ISO 3166-2:VE	ISO country name follows UN designation (common name and previous ISO country name: Venezuela)
+   o VG	 // Virgin Islands, British	1974	.vg	ISO 3166-2:VG	
+   o VI	 // Virgin Islands, U.S.	1974	.vi	ISO 3166-2:VI	
+   o VN	 // Viet Nam	1974	.vn	ISO 3166-2:VN	ISO country name follows UN designation (common name: Vietnam) Code used for Republic of Viet Nam (Common Name:South Vietnam) before 1977
+   o VU	 // Vanuatu	1980	.vu	ISO 3166-2:VU	Name changed from New Hebrides (NH)
+   o WF	 // Wallis and Futuna	1974	.wf	ISO 3166-2:WF	
+   o WS	 // Samoa	1974	.ws	ISO 3166-2:WS	Code taken from former name: Western Samoa
+   o YE	 // Yemen	1974	.ye	ISO 3166-2:YE	Previous ISO country name: Yemen, Republic of Code used for North Yemen before 1990
+   o YT	 // Mayotte	1993	.yt	ISO 3166-2:YT	
+   o ZA	 // South Africa	1974	.za	ISO 3166-2:ZA	Code taken from name in Dutch: Zuid-Afrika
+   o ZM	 // Zambia	1974	.zm	ISO 3166-2:ZM	
+   o ZW	 // Zimbabwe	1980	.zw	ISO 3166-2:ZW	Name changed from Southern Rhodesia (RH)
+}</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/cicero/contract.html">org.accordproject.cicero.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/cicero/runtime.html">org.accordproject.cicero.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/v2.0/time.html">org.accordproject.time.Duration</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/value.html">org.accordproject.value.UnitOfMass</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/bill-of-lading/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/bill-of-lading">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>
