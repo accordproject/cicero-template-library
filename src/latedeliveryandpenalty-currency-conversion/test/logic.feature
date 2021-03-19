@@ -26,7 +26,7 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
     "agreedDelivery": "2019-01-31 03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
-    "currencyConversion":{"from":"USD","to":"EUR","rate":1}
+    "currencyConversion":{"$class":"org.accordproject.latedeliveryandpenalty.CurrencyConversion","from":"USD","to":"EUR","rate":1}
 }
 """
     Then it should reject the request with the error "[Ergo] Cannot exercise late delivery before delivery date"
@@ -41,7 +41,7 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
     "agreedDelivery": "2019-01-11T03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
-    "currencyConversion":{"from":"USD","to":"EUR","rate":1}
+    "currencyConversion":{"$class":"org.accordproject.latedeliveryandpenalty.CurrencyConversion","from":"USD","to":"EUR","rate":1}
 }
 """
     Then it should respond with
@@ -63,7 +63,7 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
     "agreedDelivery": "2018-01-31 03:24:00Z",
     "deliveredAt": null,
     "goodsValue": 200.00,
-    "currencyConversion":{"from":"USD","to":"EUR","rate":1.1}
+    "currencyConversion":{"$class":"org.accordproject.latedeliveryandpenalty.CurrencyConversion","from":"USD","to":"EUR","rate":1.1}
 }
 """
     Then it should respond with
