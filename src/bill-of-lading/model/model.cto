@@ -1,0 +1,117 @@
+namespace org.accordproject.billoflading
+
+import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
+import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.time.Duration from https://models.accordproject.org/v2.0/time.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+import org.accordproject.value.UnitOfMass from https://models.accordproject.org/value.cto
+
+enum PackageType {
+  o BAG
+  o BALE
+  o BARREL
+  o BASKET
+  o BATTERY_CORROSIVE_WET
+  o BIN
+  o BOX
+  o BUNCH
+  o BUNDLE
+  o CABINET
+  o CAN
+  o CARBOY
+  o CARRIER
+  o CARTON
+  o CASE
+  o CASK
+  o CONTAINER
+  o CRATE
+  o CYLINDER
+  o DRUM
+  o LOOSE
+  o OTHER
+  o PACKAGE
+  o PAIL
+  o PALLET
+  o PIECES
+  o PIPE_LINE
+  o RACK
+  o REEL
+  o ROLL
+  o SKID
+  o SPOOL
+  o TANK
+  o TUBE
+  o UNIT
+  o VAN_PACK
+  o WRAPPED
+}
+
+enum FreightClass {
+  o CLASS_50
+  o CLASS_55
+  o CLASS_60
+  o CLASS_65
+  o CLASS_70
+  o CLASS_775
+  o CLASS_85
+  o CLASS_925
+  o CLASS_100
+  o CLASS_110
+  o CLASS_125
+  o CLASS_150
+  o CLASS_175
+  o CLASS_200
+  o CLASS_250
+  o CLASS_300
+  o CLASS_400
+  o CLASS_500
+}
+
+enum Hazardous {
+  o YES
+  o NO
+}
+
+concept Commodity {
+  o Integer quantity
+  o UnitOfMass unitOfMass
+  o PackageType packageType
+  o String description
+  o String  nmfcCode optional // National Motor Freight Classification (NMFC) number associated with the commodity classification.
+  o FreightClass freightClass optional
+  o Hazardous hazmat optional
+}
+
+/**
+ * An (To Order) Bill of Lading is a legal document that gives the
+ * holder of the bill of lading legal title to the goods described
+ * Refs: https://www.icecargo.com.au/bill-of-lading/
+ * https://www.advancedontrade.com/2015/03/how-to-complete-consignee-and-notify-fields-of-a-bill-of-lading.html
+ */
+asset BillOfLadingClause extends AccordClause {
+
+  o String accountName
+
+  o String scac // The Standard Carrier Alpha Code (SCAC) assigned to identify the carrier.
+  o String bolNumber
+  o String bookingNumber
+  o String exportReferences optional
+  o String onwardInstructions optional
+
+  --> Organization shipper
+  --> Organization consignee optional // identifier should be "TO ORDER" or "TO BEARER" if this is a negotiable BoL
+  --> Organization notifyParty optional
+
+  o String vessel
+  o String voyageNumber
+
+  o String portOfLoading
+  o String portOfDischarge
+
+  o String placeOfReceipt optional
+  o String placeOfDelivery optional
+
+  o Commodity[] commodities
+  o MonetaryAmount declaredValue
+}
