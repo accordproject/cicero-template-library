@@ -1,0 +1,7 @@
+[[redirects]]
+  from = "https://models.accordproject.org/v2.0/time.html"
+  to = "https://models.accordproject.org/time@0.2.0.html"
+  status = 301
+  force = false
+  query = {path = ":path"} #  apply this rule for /old-path?path=example
+  conditions = {Language = ["en","es"], Country = ["US"]}
