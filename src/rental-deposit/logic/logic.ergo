@@ -14,7 +14,7 @@
 
 namespace org.accordproject.rentaldeposit
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 

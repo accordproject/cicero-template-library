@@ -1,8 +1,8 @@
 namespace org.accordproject.isda.irs
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
 
 /**
@@ -25,7 +25,7 @@ transaction Result extends Response {
 /**
  * The template model for a simple ISDA Interest Rate Swap
  */
-asset InterestRateSwapContract extends AccordContract {
+asset InterestRateSwapContract extends Contract {
  --> Organization bank
  o DateTime letterDate
  --> Organization counterparty

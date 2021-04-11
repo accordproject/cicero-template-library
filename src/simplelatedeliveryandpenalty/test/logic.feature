@@ -10,6 +10,7 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
 
   Scenario: The contract should not allow the late delivery clause to be triggered when the delivery is on time
     When the current time is "2019-01-11T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -23,6 +24,7 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
 
   Scenario: The contract should return the penalty amount but not allow the buyer to terminate
     When the current time is "2019-01-16T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -43,6 +45,7 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
 
   Scenario: The contract should return the penalty amount and allow the buyer to terminate
     When the current time is "2019-01-11T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -64,17 +67,15 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
 """
 [
     {
-      "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+      "$class": "org.accordproject.obligation.PaymentObligation",
       "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 110.00000000000001,
         "currencyCode": "USD"
       },
-      "description": "Steve Seller should pay penalty amount to Betty Buyer",
-      "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Steve%20Seller",
-      "promisee": "resource:org.accordproject.cicero.contract.AccordParty#Betty%20Buyer",
-      "eventId": "valid"
+      "description": "\"resource:org.accordproject.contract.Party#Steve%20Seller\" should pay penalty amount to \"resource:org.accordproject.contract.Party#Betty%20Buyer\"",
+      "promisor": "resource:org.accordproject.contract.Party#Steve%20Seller",
+      "promisee": "resource:org.accordproject.contract.Party#Betty%20Buyer"
     }
 ]
 """
-

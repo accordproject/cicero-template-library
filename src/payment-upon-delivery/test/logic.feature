@@ -21,7 +21,7 @@ Feature: Payment Upon Delivery
 """
 [
   {
-    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "$class": "org.accordproject.obligation.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 11.98,

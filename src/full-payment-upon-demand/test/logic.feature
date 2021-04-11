@@ -9,7 +9,6 @@ Feature: Full Payment Upon Demand
 """
 {
     "$class": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState",
-    "stateId": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState#1",
     "status": "INITIALIZED"
 }
 """
@@ -23,16 +22,15 @@ Feature: Full Payment Upon Demand
 """
 [
     {
-      "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+      "$class": "org.accordproject.obligation.PaymentObligation",
       "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 3.14,
         "currencyCode": "EUR"
       },
-      "description": "Dan should pay contract amount to Jerome",
-      "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Dan",
-      "promisee": "resource:org.accordproject.cicero.contract.AccordParty#Jerome",
-      "eventId": "valid"
+      "description": "\"resource:org.accordproject.contract.Party#Dan\" should pay contract amount to \"resource:org.accordproject.contract.Party#Jerome\"",
+      "promisor": "resource:org.accordproject.contract.Party#Dan",
+      "promisee": "resource:org.accordproject.contract.Party#Jerome"
     }
 ]
 """
@@ -48,7 +46,6 @@ Scenario: The contract should complete once the payment is acknowledged
 """
 {
     "$class": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState",
-    "stateId": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState#1",
     "status": "OBLIGATION_EMITTED"
 }
 """
@@ -70,7 +67,6 @@ Scenario: The contract should not emit multiple payment obligations
 """
 {
     "$class": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState",
-    "stateId": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState#1",
     "status": "OBLIGATION_EMITTED"
 }
 """
@@ -87,7 +83,6 @@ Scenario: The contract should not emit multiple payment obligations
 """
 {
     "$class": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState",
-    "stateId": "org.accordproject.payment.fullupondemand.FullPaymentUponDemandState#1",
     "status": "INITIALIZED"
 }
 """

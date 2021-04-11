@@ -22,7 +22,7 @@ Feature: Rental Deposit
 """
 [
     {
-        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "$class": "org.accordproject.obligation.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 1550,

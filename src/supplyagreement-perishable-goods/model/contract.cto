@@ -6,12 +6,12 @@
   */
 namespace org.accordproject.perishablegoods.contract
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
 import org.accordproject.address.PostalAddress from https://models.accordproject.org/address.cto
 import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 import org.accordproject.value.* from https://models.accordproject.org/value.cto
 
 import org.accordproject.perishablegoods.*
@@ -22,7 +22,7 @@ import org.accordproject.perishablegoods.*
  * a penality factor proportional to the deviation from the min and max
  * negociated temperatures for the shipment.
  */
-asset SupplyAgreementPerishableGoodsContract extends AccordContract {
+asset SupplyAgreementPerishableGoodsContract extends Contract {
   --> Grower grower
   --> Importer importer
   --> Shipment shipment

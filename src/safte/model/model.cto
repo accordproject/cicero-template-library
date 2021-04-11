@@ -1,7 +1,6 @@
 namespace org.accordproject.safte
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
 import org.accordproject.usa.state.State from https://models.accordproject.org/usa/state.cto
 
 /**
@@ -64,7 +63,7 @@ transaction PayOut {
 /**
  * Defines the data model for the Safte template.
  */
-asset SafteContract extends AccordContract {
+asset SafteContract extends Contract {
   /**
    * The name of the company selling the token
    */

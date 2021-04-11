@@ -1,13 +1,13 @@
 {
     "name": "empty-contract",
     "displayName": "Empty Contract",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "description": "This is an empty contract template to get you started.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.21.0"
+        "cicero": "^0.22.0-alpha.1"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

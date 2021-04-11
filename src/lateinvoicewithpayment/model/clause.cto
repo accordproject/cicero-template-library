@@ -1,22 +1,23 @@
 namespace org.accordproject.lateinvoicewithpayment
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
-import org.accordproject.money.* from https://models.accordproject.org/money.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.money.* from https://models.accordproject.org/money@0.2.0.cto
 
 /**
  * Defines the data model for the LateInvoice template.
  * This defines the structure of the abstract syntax tree that the parser for the template
  * must generate from input source text.
  */
-asset LateInvoiceContract extends AccordContract {
+asset LateInvoiceContract extends Contract {
   /**
    * If the invoice deliver date  >= termination date then the buyer does not have to pay
    */
   o Duration maximumDelay
-  o AccordParty purchaser
-  o AccordParty supplier
+  --> Party purchaser
+  --> Party supplier
 }
 
 /**

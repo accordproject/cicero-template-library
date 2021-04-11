@@ -28,6 +28,7 @@ terminate this Contract.
 
   Scenario: The contract should return the penalty amount but not allow the buyer to terminate
     When the current time is "2019-01-11T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -48,6 +49,7 @@ terminate this Contract.
 
   Scenario: The contract should return the penalty amount and allow the buyer to terminate
     When the current time is "2019-01-11T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {

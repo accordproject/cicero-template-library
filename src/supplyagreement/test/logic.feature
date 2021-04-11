@@ -125,13 +125,13 @@ Routing Number: "YYY-YY"
 """
 {
   "$class": "org.accordproject.supplyagreement.AgreementState",
-  "stateId": "org.accordproject.supplyagreement.AgreementState#1",
   "purchaseObligation" : null,
   "deliveryObligation" : null,
   "paymentObligation" : null
 }
 """
     When the current time is "2019-01-31T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -149,8 +149,7 @@ Routing Number: "YYY-YY"
       "year": 2019,
       "quarter": 1,
       "party": "PETER"
-    },
-    "stateId": "org.accordproject.supplyagreement.AgreementState#1"
+    }
 }
 """
 
@@ -159,7 +158,6 @@ Scenario: The contract should execute a purchase order
 """
 {
   "$class": "org.accordproject.supplyagreement.AgreementState",
-  "stateId": "org.accordproject.supplyagreement.AgreementState#1",
   "purchaseObligation" : {
     "$class": "org.accordproject.supplyagreement.PurchaseObligation",
     "requiredPurchase": 1020,
@@ -172,6 +170,7 @@ Scenario: The contract should execute a purchase order
 }
 """
     When the current time is "2019-01-31T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -209,11 +208,13 @@ Scenario: The contract should execute a purchase order
     "deliverables": [
             {
                 "$class": "org.accordproject.purchaseorder.OrderItem",
+                "$identifier": "Pink Umbrella",
                 "partNumber": "Pink Umbrella",
                 "quantity": 180
             },
             {
                 "$class": "org.accordproject.purchaseorder.OrderItem",
+                "$identifier": "Blue Umbrella",
                 "partNumber": "Blue Umbrella",
                 "quantity": 100
             }
@@ -228,7 +229,6 @@ Scenario: The contract should execute a delivery
 """
 {
     "$class": "org.accordproject.supplyagreement.AgreementState",
-    "stateId": "org.accordproject.supplyagreement.AgreementState#1",
     "purchaseObligation" : null,
     "deliveryObligation" : {
         "$class": "org.accordproject.supplyagreement.DeliveryObligation",
@@ -251,6 +251,7 @@ Scenario: The contract should execute a delivery
 }
 """
     When the current time is "2019-01-31T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -281,7 +282,6 @@ Scenario: The contract should execute a delivery
       "$class": "org.accordproject.supplyagreement.PaymentObligation",
       "amount": 1577.2,
       "party": "PETER"
-    },
-    "stateId": "org.accordproject.supplyagreement.AgreementState#1"
+    }
 }
 """

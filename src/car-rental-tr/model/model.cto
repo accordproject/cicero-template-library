@@ -1,9 +1,9 @@
 namespace org.accordtr.carrental
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
 
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
 
 // transaction MyRequest extends Request {
@@ -23,7 +23,7 @@ transaction PayOut extends Response {
   o MonetaryAmount amount
 }
 
-asset CarRentalContract extends AccordContract {
+asset CarRentalContract extends Contract {
 
   // Lessor //
   o String lessorName
@@ -58,7 +58,7 @@ asset CarRentalContract extends AccordContract {
   o PaymentClause paymentClause
 }
 
-asset PaymentClause extends AccordClause {
+asset PaymentClause extends Clause {
   o String amountText
 	o MonetaryAmount amount
 	o String paymentProcedure

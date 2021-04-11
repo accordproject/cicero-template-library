@@ -1,6 +1,5 @@
 {
   "$class": "com.docusign.clauses.PurchaseOrderFailureState",
   "pastFailures": [],
-  "nbPastFailures": 0,
-  "stateId": "1"
+  "nbPastFailures": 0
 }

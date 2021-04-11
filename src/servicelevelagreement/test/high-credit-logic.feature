@@ -91,16 +91,15 @@ Annex 1—Service levels
 """
 [
   {
-    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "$class": "org.accordproject.obligation.PaymentObligation",
     "amount": {
       "$class": "org.accordproject.money.MonetaryAmount",
       "doubleValue": 1,
       "currencyCode": "GBP"
     },
-    "description": "payment owed by Service Provider to Service Consumer for delivery of service downtimes",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Service%20Provider",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#Service%20Consumer",
-    "eventId": "valid"
+    "description": "payment owed by \"resource:org.accordproject.contract.Party#Service%20Provider\" to \"resource:org.accordproject.contract.Party#Service%20Consumer\" for delivery of service downtimes",
+    "promisor": "resource:org.accordproject.contract.Party#Service%20Provider",
+    "promisee": "resource:org.accordproject.contract.Party#Service%20Consumer"
   }
 ]
 """

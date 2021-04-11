@@ -17,8 +17,7 @@ Scenario: The contract is signed
 """
 {
     "$class": "org.accordproject.payment.uponsignature.PaymentUponSignatureState",
-    "status": "INITIALIZED",
-    "stateId": "1"
+    "status": "INITIALIZED"
 }
 """
     When it receives the request
@@ -32,7 +31,7 @@ Scenario: The contract is signed
 """
 [
 {
-    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "$class": "org.accordproject.obligation.PaymentObligation",
     "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 50,
@@ -53,8 +52,7 @@ Scenario: The payment is made
 """
 {
     "$class": "org.accordproject.payment.uponsignature.PaymentUponSignatureState",
-    "status": "OBLIGATION_EMITTED",
-    "stateId": "1"
+    "status": "OBLIGATION_EMITTED"
 }
 """
     When it receives the request

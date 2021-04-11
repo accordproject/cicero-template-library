@@ -20,8 +20,7 @@ Feature: Installment Sale
     "doubleValue": 0,
     "currencyCode": "EUR"
   },
-  "next_payment_month" : 3,
-  "stateId": "#1"
+  "next_payment_month" : 3
 }
 """
 
@@ -41,8 +40,7 @@ Feature: Installment Sale
     "doubleValue": 0,
     "currencyCode": "EUR"
   },
-  "next_payment_month" : 3,
-  "stateId": "#1"
+  "next_payment_month" : 3
 }
 """
     When it receives the default request
@@ -77,8 +75,7 @@ Feature: Installment Sale
     "doubleValue": 2500,
     "currencyCode": "EUR"
   },
-  "next_payment_month" : 4,
-  "stateId": "#1"
+  "next_payment_month" : 4
 }
 """
 

@@ -13,5 +13,3 @@ Feature: Supply Agreement Sensor Reading
     "message": "Sensor reading received"
 }
 """
-
-

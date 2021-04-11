@@ -1,13 +1,13 @@
 {
     "name": "eat-apples",
     "displayName": "Eat Apples",
-    "version": "0.11.0",
+    "version": "0.12.0",
     "description": "This is a clause enforcing healthy eating habits in employees.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
-        "cicero": "^0.21.0"
+        "cicero": "^0.22.0-alpha.1"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

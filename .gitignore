@@ -63,7 +63,7 @@ typings/
 .env
 
 # Derived CTO files
-@models.accordproject.org*.cto
+@*accordproject*.cto
 
 # Windows Directory Cache
 thumbs.db

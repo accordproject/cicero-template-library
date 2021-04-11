@@ -1,9 +1,9 @@
 namespace org.cloudsecurityalliance.supplyagreement
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
 import org.accordproject.geo.Country from https://models.accordproject.org/geo.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 import org.accordproject.time.Duration from https://models.accordproject.org/time@0.2.0.cto
 import org.accordproject.time.Period from https://models.accordproject.org/time@0.2.0.cto
 import org.accordproject.time.TemporalUnit from https://models.accordproject.org/time@0.2.0.cto
@@ -21,14 +21,14 @@ transaction DeliveryResponse extends Response {
   o Boolean inGoodOrder
 }
 
-asset SupplyAgreementState extends AccordContractState {
+asset SupplyAgreementState extends State {
   o SensorReading[] sensorReadings
 }
 
 /**
  * The model for the contract
  */
-asset SupplyAgreementContract extends AccordContract {
+asset SupplyAgreementContract extends Contract {
   o DateTime executionDate
   o String exporter 
   o String importer

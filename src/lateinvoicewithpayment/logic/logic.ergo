@@ -14,7 +14,7 @@
 
 namespace org.accordproject.lateinvoicewithpayment
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 
@@ -42,7 +42,7 @@ contract LateInvoice over LateInvoiceContract {
       promisee: some(contract.supplier),
       deadline: none,
       amount: request.amountDue,
-      description: contract.purchaser.partyId ++ " should pay invoice amount to " ++ contract.supplier.partyId
+      description: toString(contract.purchaser) ++ " should pay invoice amount to " ++ toString(contract.supplier)
     };
     return LateInvoiceResponse{
       paymentRequired: true,

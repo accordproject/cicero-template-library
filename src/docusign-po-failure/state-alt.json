@@ -1,6 +1,5 @@
 {
   "$class": "com.docusign.clauses.PurchaseOrderFailureState",
   "pastFailures": ["2018-11-08T05:00:00.000Z","2019-02-08T05:00:00.000Z","2019-01-08T05:00:00.000Z","2019-03-01T05:00:00.000Z","2019-02-01T05:00:00.000Z","2019-03-08T05:00:00.000Z"],
-  "nbPastFailures": 6,
-  "stateId": "1"
+  "nbPastFailures": 6
 }

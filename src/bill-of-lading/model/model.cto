@@ -1,9 +1,9 @@
 namespace org.accordproject.billoflading
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.time.Duration from https://models.accordproject.org/v2.0/time.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.time.Duration from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
 import org.accordproject.value.UnitOfMass from https://models.accordproject.org/value.cto
 
@@ -89,7 +89,7 @@ concept Commodity {
  * Refs: https://www.icecargo.com.au/bill-of-lading/
  * https://www.advancedontrade.com/2015/03/how-to-complete-consignee-and-notify-fields-of-a-bill-of-lading.html
  */
-asset BillOfLadingClause extends AccordClause {
+asset BillOfLadingClause extends Clause {
 
   o String accountName
 

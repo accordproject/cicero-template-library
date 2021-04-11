@@ -14,7 +14,8 @@
 
 namespace org.accordproject.payment.iot
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.iot.*
 
 import org.accordproject.signature.ContractSigned
@@ -31,7 +32,6 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
    */
   clause init(request : Request) : Response {   
     set state CounterState {
-      stateId: "1",
       status: INITIALIZED,
       counter: 0.0,
       paymentCount: 0.0
@@ -48,7 +48,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
    */
   clause contractSigned(request : ContractSigned) : Response {
   enforce (state.status = INITIALIZED) 
-    else throw ErgoErrorResponse{ message: `Contract state is invalid {{% state.status %}}` };
+    else throw Error{ message: `Contract state is invalid {{% state.status %}}` };
     
     set state.status = RUNNING;
 
@@ -63,7 +63,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
    */
   clause increment(request : SingleButtonPress): Response {
     enforce (state.status = RUNNING) 
-    else throw ErgoErrorResponse{ message: "Contract is not running." };
+    else throw Error{ message: "Contract is not running." };
 
     set state.counter = state.counter + 1.0;
 
@@ -78,7 +78,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
    */
   clause decrement(request : DoubleButtonPress): Response {
     enforce (state.status = RUNNING) 
-    else throw ErgoErrorResponse{ message: "Contract is not running." };
+    else throw Error{ message: "Contract is not running." };
 
     set state.counter = maxPair(0.0, state.counter - 1.0);
 
@@ -93,7 +93,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
    */
   clause requestForPayment(request : LongButtonPress): Response emits PaymentObligation {
     enforce (state.status = RUNNING) 
-      else throw ErgoErrorResponse{ message: "Contract is not running." };
+      else throw Error{ message: "Contract is not running." };
 
     emit PaymentObligation{
       contract: contract,
@@ -104,7 +104,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
         doubleValue: contract.amountPerUnit.doubleValue * state.counter,
         currencyCode: contract.amountPerUnit.currencyCode 
       },
-      description: contract.buyer.partyId ++ " should pay outstanding balance to " ++ contract.seller.partyId
+      description: toString(contract.buyer) ++ " should pay outstanding balance to " ++ toString(contract.seller)
     };
 
     return CounterResponse{
@@ -121,13 +121,13 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
   clause paymentReceived(payment : MonetaryAmountPayment): Response {
     
     enforce (state.status = RUNNING) 
-        else throw ErgoErrorResponse{ message: "Contract is not running." };
+        else throw Error{ message: "Contract is not running." };
 
     enforce (payment.amount.doubleValue >= 0.0) 
-        else throw ErgoErrorResponse{ message: "Payment must be positive." };
+        else throw Error{ message: "Payment must be positive." };
 
     enforce (payment.amount.currencyCode = contract.amountPerUnit.currencyCode) 
-        else throw ErgoErrorResponse{ message: "Payments must be in the currency of the contract." };
+        else throw Error{ message: "Payments must be in the currency of the contract." };
 
     let newStatus : ContractLifecycleStatus =
         if state.paymentCount + 1.0 >= integerToDouble(contract.paymentCount)

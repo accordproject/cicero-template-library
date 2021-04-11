@@ -9,6 +9,7 @@ Feature: Late invoice contract
 
   Scenario: The contract should accept invoice and emit a payment obligation
     When the current time is "2019-03-02T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -31,7 +32,7 @@ Feature: Late invoice contract
 """
 [
     {
-      "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+      "$class": "org.accordproject.obligation.PaymentObligation",
       "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 200,
@@ -43,6 +44,7 @@ Feature: Late invoice contract
 
   Scenario: The contract should should reject invoice and not emit a payment obligation
     When the current time is "2019-03-02T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {

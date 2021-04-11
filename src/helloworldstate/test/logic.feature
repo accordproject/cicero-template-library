@@ -29,7 +29,6 @@ Thank you!
 """
 {
     "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#0",
     "counter": 1
 }
 """
@@ -44,7 +43,6 @@ Thank you!
 """
 {
     "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#1.0",
     "counter": 2
 }
 """
@@ -54,7 +52,6 @@ Thank you!
 """
 {
     "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#1.0",
     "counter": 2
 }
 """
@@ -69,7 +66,6 @@ Thank you!
 """
 {
     "$class": "org.accordproject.helloworldstate.HelloWorldState",
-    "stateId": "org.accordproject.helloworldstate.HelloWorldState#2.0",
     "counter": 3
 }
 """

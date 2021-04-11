@@ -14,39 +14,39 @@
 
 namespace org.accordproject.onetimepayment
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.payment.PaymentReceived
 
 contract onetimepayment over OneTimePaymentContract state OneTimePaymentState {
   /**
-	 * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
-	 */
+   * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
+   */
   clause init(request : Request) : Response emits PaymentObligation {
-	  // enforce (state.status = UNINTIALIZED) 
-    // else throw ErgoErrorResponse{ message: "This contract has already been initialized. Current state is " ++ state.status };
-		
+    // enforce (state.status = UNINTIALIZED) 
+    // else throw Error{ message: "This contract has already been initialized. Current state is " ++ state.status };
+    
     emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.buyer),
-			promisee: some(contract.seller),
-			deadline: none,
-			amount: contract.totalPurchasePrice,
-			description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
-		};
-		set state OneTimePaymentState {
-			stateId: "1",
-			status: OBLIGATION_EMITTED
-		};
+      contract: contract,
+      promisor: some(contract.buyer),
+      promisee: some(contract.seller),
+      deadline: none,
+      amount: contract.totalPurchasePrice,
+      description: toString(contract.buyer) ++ " should pay contract amount to " ++ toString(contract.seller)
+    };
+    set state OneTimePaymentState {
+      status: OBLIGATION_EMITTED
+    };
     return Response{}
   }
 
   /**
-	 * Update the contract state once we've recieved a payment
-	 */
+   * Update the contract state once we've recieved a payment
+   */
   clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = OBLIGATION_EMITTED) 
-    else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
-		set state.status = COMPLETED;
-		return Response{}
+    else throw Error{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
+    set state.status = COMPLETED;
+    return Response{}
   }
 }

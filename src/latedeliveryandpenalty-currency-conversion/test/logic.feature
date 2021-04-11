@@ -18,6 +18,7 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
 
   Scenario: The contract should not allow the late delivery clause to be triggered when the delivery is on time
     When the current time is "2019-01-11T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -33,6 +34,7 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
 
   Scenario: The contract should return the penalty amount but not allow the buyer to terminate
     When the current time is "2019-01-16T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -55,6 +57,7 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
 
   Scenario: The contract should return the penalty amount (with the correct conversion applied) and allow the buyer to terminate
     When the current time is "2019-01-11T16:34:00-05:00"
+    And the UTC offset is -5
     And it receives the request
 """
 {
@@ -78,16 +81,15 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
 """
 [
     {
-      "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+      "$class": "org.accordproject.obligation.PaymentObligation",
       "amount": {
         "$class": "org.accordproject.money.MonetaryAmount",
         "doubleValue": 121.00000000000003,
         "currencyCode": "USD"
       },
-      "description": "Dan should pay penalty amount to Steve",
-      "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Dan",
-      "promisee": "resource:org.accordproject.cicero.contract.AccordParty#Steve",
-      "eventId": "valid"
+      "description": "\"resource:org.accordproject.contract.Party#Dan\" should pay penalty amount to \"resource:org.accordproject.contract.Party#Steve\"",
+      "promisor": "resource:org.accordproject.contract.Party#Dan",
+      "promisee": "resource:org.accordproject.contract.Party#Steve"
     }
 ]
 """

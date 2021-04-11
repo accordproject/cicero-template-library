@@ -26,26 +26,22 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 3000,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",
 		"shipmentId": "SHIP_001",
 		"sensorReadings": [{
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "a",
 			"shipment": "SHIP_001",
 			"centigrade": 2,
 			"humidity": 80
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "b",
 			"shipment": "SHIP_001",
 			"centigrade": 5,
 			"humidity": 90
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "c",
 			"shipment": "SHIP_001",
 			"centigrade": 15,
 			"humidity": 65
@@ -75,16 +71,15 @@ Formula for Breach Penalty Calculation:
 """
 [
   {
-    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "$class": "org.accordproject.obligation.PaymentObligation",
     "amount": {
       "$class": "org.accordproject.money.MonetaryAmount",
       "doubleValue": 300,
       "currencyCode": "USD"
     },
-    "description": "DAN should pay shipment amount to PETER",
-    "promisor": "resource:org.accordproject.cicero.contract.AccordParty#DAN",
-    "promisee": "resource:org.accordproject.cicero.contract.AccordParty#PETER",
-    "eventId": "valid"
+    "description": "\"resource:org.accordproject.contract.Party#DAN\" should pay shipment amount to \"resource:org.accordproject.contract.Party#PETER\"",
+    "promisor": "resource:org.accordproject.contract.Party#DAN",
+    "promisee": "resource:org.accordproject.contract.Party#PETER"
   }
 ]
 """
@@ -94,26 +89,22 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 2500,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",
 		"shipmentId": "SHIP_001",
 		"sensorReadings": [{
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "a",
 			"shipment": "SHIP_001",
 			"centigrade": 2,
 			"humidity": 80
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "b",
 			"shipment": "SHIP_001",
 			"centigrade": 5,
 			"humidity": 90
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "c",
 			"shipment": "SHIP_001",
 			"centigrade": 15,
 			"humidity": 65
@@ -128,26 +119,22 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 4000,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",
 		"shipmentId": "SHIP_001",
 		"sensorReadings": [{
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "a",
 			"shipment": "SHIP_001",
 			"centigrade": 2,
 			"humidity": 80
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "b",
 			"shipment": "SHIP_001",
 			"centigrade": 5,
 			"humidity": 90
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "c",
 			"shipment": "SHIP_001",
 			"centigrade": 15,
 			"humidity": 65
@@ -162,7 +149,6 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 3000,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",

@@ -15,7 +15,7 @@
 namespace org.accordproject.minilatedeliveryandpenalty
 
 import org.accordproject.time.*
-import org.accordproject.cicero.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.money.*
 
 contract MiniLateDelivery over MiniLateDeliveryContract {
@@ -25,7 +25,7 @@ contract MiniLateDelivery over MiniLateDeliveryContract {
     let delivery = request.deliveredAt;
 
     enforce isAfter(delivery, agreed)
-    else throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
+    else throw Error{ message : "Cannot exercise late delivery before delivery date" };
 
     // 2. Penalty formula
     let delay = diffDurationAs(delivery,agreed,~org.accordproject.time.TemporalUnit.days);       // Delay in days
@@ -57,7 +57,7 @@ contract MiniLateDelivery over MiniLateDeliveryContract {
       promisee: some(contract.buyer),
       deadline: none,
       amount: MonetaryAmount{ doubleValue: cappedPenalty, currencyCode: USD },
-      description: contract.seller.partyId ++ " should pay penalty amount to " ++ contract.buyer.partyId
+      description: toString(contract.seller) ++ " should pay penalty amount to " ++ toString(contract.buyer)
     };
 
     // 6. Return the response

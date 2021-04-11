@@ -1,17 +1,23 @@
 namespace com.docusign.clauses
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
-import com.docusign.connect.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
+import com.docusign.connect.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect@0.3.0.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 
-/**
- * Defines the data model for the Purchase Order Failure
- * template.
- */
-asset PurchaseOrderFailure extends AccordContract {
-  o AccordParty buyer
+transaction PurchaseOrderFailureResponse extends Response {
+  o MonetaryAmount penalty
+}
+
+asset PurchaseOrderFailureState extends State {
+  o DateTime[] pastFailures
+  o Integer nbPastFailures
+}
+
+asset PurchaseOrderFailure extends Contract {
+  --> Party buyer
 
   o Duration lateOne
   o Duration lateTwo
@@ -27,22 +33,4 @@ asset PurchaseOrderFailure extends AccordContract {
   o Integer maxFailures
   o Duration failureRange
   o MonetaryAmount repeatedFailureCompensation
-}
-
-/**
- * Defines the state of the contract
- */
-asset PurchaseOrderFailureState extends AccordContractState {
-  o DateTime[] pastFailures
-  o Integer nbPastFailures
-}
-
-/**
- * Defines the output data for the template
- */
-transaction PurchaseOrderFailureResponse extends Response {
-  /**
-   * The penalty to be paid by the seller
-   */
-  o MonetaryAmount penalty
 }

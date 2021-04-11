@@ -17,7 +17,6 @@ Feature: Full Payment Upon Signature
 """
     {
         "$class": "org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureState",
-        "stateId": "org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureState#1",
         "status": "INITIALIZED"
     }
 """
@@ -32,7 +31,7 @@ Feature: Full Payment Upon Signature
 """
 [
     {
-        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "$class": "org.accordproject.obligation.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 0.01,
@@ -53,7 +52,6 @@ And the new state of the contract should be
 """
     {
         "$class": "org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureState",
-        "stateId": "org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureState#1",
         "status": "OBLIGATION_EMITTED"
     }
 """
