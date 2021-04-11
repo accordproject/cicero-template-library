@@ -1,13 +1,13 @@
 {
     "name": "bill-of-lading",
     "displayName": "Bill of Lading",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Bill of Lading for transfort of goods via ocean vessel",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
-        "cicero": "^0.21.0"
+        "cicero": "^0.22.0-alpha.1"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

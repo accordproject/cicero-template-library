@@ -23,7 +23,7 @@ contract MiniLateDelivery over MiniLateDeliveryClause {
     let delivery = request.deliveredAt;
 
     enforce isAfter(delivery, agreed)
-    else throw ErgoErrorResponse{ message : "Cannot exercise late delivery before delivery date" };
+    else throw Error{ message : "Cannot exercise late delivery before delivery date" };
 
     // 2. Penalty formula
     let delay = diffDurationAs(delivery,agreed,~org.accordproject.time.TemporalUnit.days);       // Delay in days

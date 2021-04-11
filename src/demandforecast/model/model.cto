@@ -1,9 +1,9 @@
 namespace org.accordproject.demandforecast
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
 
-asset DemandForecastClause extends AccordClause {
+asset DemandForecastClause extends Clause {
   o String purchaser
   o String supplier 
   o DateTime effectiveDate

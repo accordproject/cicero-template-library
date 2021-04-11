@@ -14,7 +14,7 @@
 
 namespace org.accordproject.isda.irs
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
 
 define function compoundInterestMultiple(annualInterest : Double, numberOfDays : Double) : Double {
     return (1.0 + annualInterest) ^ (numberOfDays / 365.0)

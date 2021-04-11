@@ -1,9 +1,10 @@
 namespace io.clause.demo.fragileGoods
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.time.Duration from https://models.accordproject.org/v2.0/time.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
 
 /**
  * The status of a shipment
@@ -28,9 +29,9 @@ transaction PayOut extends Response {
 /**
  * The template model
  */
-asset FragileGoodsClause extends AccordContract {
-  o AccordParty buyer
-  o AccordParty seller
+asset FragileGoodsClause extends Contract {
+  --> Party buyer
+  --> Party seller
   o MonetaryAmount deliveryPrice
   o Double accelerationMin
   o Double accelerationMax

@@ -30,8 +30,7 @@ Feature: Installment Sale
           "doubleValue": 0,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 3,
-        "stateId": "#1"
+        "next_payment_month": 3
       }
       """
 
@@ -51,8 +50,7 @@ Feature: Installment Sale
           "doubleValue": 0,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 3,
-        "stateId": "#1"
+        "next_payment_month": 3
       }
       """
     When it receives the request
@@ -86,16 +84,15 @@ Feature: Installment Sale
       """
       [
         {
-          "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+          "$class": "org.accordproject.obligation.PaymentObligation",
           "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 2500,
             "currencyCode": "EUR"
           },
-          "description": "Dan should pay installment to Ned",
-          "promisor": "resource:org.accordproject.cicero.contract.AccordParty#Dan",
-          "promisee": "resource:org.accordproject.cicero.contract.AccordParty#Ned",
-          "eventId": "valid"
+          "description": "\"resource:org.accordproject.contract.Party#Dan\" should pay installment to \"resource:org.accordproject.contract.Party#Ned\"",
+          "promisor": "resource:org.accordproject.contract.Party#Dan",
+          "promisee": "resource:org.accordproject.contract.Party#Ned"
         }
       ]
       """
@@ -114,8 +111,7 @@ Feature: Installment Sale
           "doubleValue": 2500,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 4,
-        "stateId": "#1"
+        "next_payment_month": 4
       }
       """
 
@@ -135,8 +131,7 @@ Feature: Installment Sale
           "doubleValue": 2500,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 4,
-        "stateId": "#1"
+        "next_payment_month": 4
       }
       """
     When it receives the request
@@ -165,8 +160,7 @@ Feature: Installment Sale
           "doubleValue": 5000,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 5,
-        "stateId": "#1"
+        "next_payment_month": 5
       }
       """
     And it should respond with
@@ -202,8 +196,7 @@ Feature: Installment Sale
           "doubleValue": 5000,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 5,
-        "stateId": "#1"
+        "next_payment_month": 5
       }
       """
     When it receives the request
@@ -232,8 +225,7 @@ Feature: Installment Sale
           "doubleValue": 7500,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 6,
-        "stateId": "#1"
+        "next_payment_month": 6
       }
       """
     And it should respond with
@@ -269,8 +261,7 @@ Feature: Installment Sale
           "doubleValue": 7500,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 6,
-        "stateId": "#1"
+        "next_payment_month": 6
       }
       """
     When it receives the request
@@ -299,8 +290,7 @@ Feature: Installment Sale
           "doubleValue": 10729.53,
           "currencyCode": "EUR"
         },
-        "next_payment_month": 0,
-        "stateId": "#1"
+        "next_payment_month": 0
       }
       """
     And it should respond with

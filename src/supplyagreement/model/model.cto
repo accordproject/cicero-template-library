@@ -1,12 +1,12 @@
 namespace org.accordproject.supplyagreement
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.usa.state.State from https://models.accordproject.org/usa/state.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.usa.state.USState from https://models.accordproject.org/usa/state@0.2.0.cto
 
 import org.accordproject.purchaseorder.*
 
-asset SupplyAgreementContract extends AccordContract {
+asset SupplyAgreementContract extends Contract {
   o DateTime effectiveDate
   o String supplier 
   o String buyer
@@ -25,8 +25,8 @@ asset SupplyAgreementContract extends AccordContract {
   o Integer termYears
   o Integer renewalYears
   o Integer renewalWindow
-  o State governingState
-  o State venueState
+  o USState governingState
+  o USState venueState
 }
 
 
@@ -52,7 +52,7 @@ concept PaymentObligation extends MyObligation {
 /**
  * Defines the state of the contract
  */
-asset AgreementState extends AccordContractState {
+asset AgreementState extends State {
   o PurchaseObligation purchaseObligation optional
   o DeliveryObligation deliveryObligation optional
   o PaymentObligation paymentObligation optional

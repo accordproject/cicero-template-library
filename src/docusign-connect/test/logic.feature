@@ -18,8 +18,7 @@ Scenario: The contract should be in the correct initial state
 """
 {
   "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
-  "counter" : 0,
-  "stateId": "#1"
+  "counter" : 0
 }
 """
     When the current time is "2018-01-02T16:34:00Z"
@@ -58,8 +57,7 @@ Scenario: The contract should be in the correct initial state
 """
 {
   "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
-  "counter" : 1,
-  "stateId": "#1"
+  "counter" : 1
 }
 """
     When the current time is "2018-01-02T16:34:00Z"
@@ -85,7 +83,7 @@ Scenario: The contract should be in the correct initial state
 """
 [
   {
-    "$class": "org.accordproject.cicero.runtime.NotificationObligation",
+    "$class": "org.accordproject.obligation.NotificationObligation",
     "title": "Contracts with status Completed",
     "message": "Have received 2 contracts with status Completed"
  }

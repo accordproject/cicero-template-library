@@ -1,10 +1,10 @@
 namespace org.accordproject.empty
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
 
 // Template model
-asset EmptyClause extends AccordClause {
+asset EmptyClause extends Clause {
 }
 
 // Request

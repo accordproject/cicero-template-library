@@ -14,7 +14,8 @@
 
 namespace org.accordproject.payment.fulluponsignature
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.signature.ContractSigned
 import org.accordproject.payment.PaymentReceived
 
@@ -28,7 +29,6 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 	 */
   clause init(request : Request) : Response {		
 		set state FullPaymentUponSignatureState {
-			stateId: "1",
 			status: INITIALIZED
 		};
     return Response{}
@@ -39,7 +39,7 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 	 */
   clause contractSigned(request : ContractSigned) : Response emits PaymentObligation {
 	  enforce (state.status = INITIALIZED) 
-		else throw ErgoErrorResponse{ message: `Contract state is invalid {{% state.status %}}` };
+		else throw Error{ message: `Contract state is invalid {{% state.status %}}` };
 		
     emit PaymentObligation{
 			contract: contract,
@@ -47,10 +47,9 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 			promisee: some(contract.seller),
 			deadline: none,
 			amount: contract.amount,
-			description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
+			description: toString(contract.buyer) ++ " should pay contract amount to " ++ toString(contract.seller)
 		};
 		set state FullPaymentUponSignatureState {
-			stateId: "1",
 			status: OBLIGATION_EMITTED
 		};
     return Response{}
@@ -61,9 +60,8 @@ contract FullPaymentUponSignature over FullPaymentUponSignatureContract state Fu
 	 */
   clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = OBLIGATION_EMITTED) 
-    else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
+    else throw Error{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
 		set state FullPaymentUponSignatureState {
-			stateId: state.stateId,
 			status: COMPLETED
 		};
 		return Response{}

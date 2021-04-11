@@ -14,9 +14,8 @@
 
 namespace org.accordproject.incorporation
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
 import org.accordproject.signature.ContractSigned
-
 
 /**
  * This smart clause emits the contract data when the contract is signed
@@ -26,7 +25,7 @@ contract CertificateOfIncorporation over IncorporationCertificate {
    * When the contract is signed a payment obligation is emitted
    */
   clause contractSigned(request : ContractSigned) : Response {
-    emit ContractData{
+    emit Contract{
 			companyName: contract.companyName,
 			incorporationDate: contract.incorporationDate,
 			authorizedShareCapital: contract.authorizedShareCapital,

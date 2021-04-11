@@ -14,8 +14,7 @@
 
 namespace org.accordproject.perishablegoods
 
-import org.accordproject.cicero.contract.*
-import org.accordproject.cicero.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 
@@ -62,7 +61,7 @@ contract PerishableGoods over PerishableGoodsContract {
   clause payout(request : ShipmentReceived) : PriceCalculation emits PaymentObligation {
     // Guard against unitCount outside the bounds specified in the clause
     enforce unitsWithinBounds(request.unitCount, contract.minUnits, contract.maxUnits)
-    else throw ErgoErrorResponse{ message: "Units received out of range for the contract" };
+    else throw Error{ message: "Units received out of range for the contract" };
 
     let zeroMoney = MonetaryAmount{
       doubleValue: 0.0,
@@ -80,7 +79,7 @@ contract PerishableGoods over PerishableGoodsContract {
     // Guard against missing temperature readings
     let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
     enforce readings != []
-    else throw ErgoErrorResponse{ message : "No temperature readings received"};
+    else throw Error{ message : "No temperature readings received"};
 
     // Calculates payout
     let payOut = contract.unitPrice.doubleValue * integerToDouble(request.unitCount);
@@ -109,7 +108,7 @@ contract PerishableGoods over PerishableGoodsContract {
 			promisee: some(contract.grower),
 			deadline: none,
 			amount: totalPrice,
-			description: contract.importer.partyId ++ " should pay shipment amount to " ++ contract.grower.partyId
+			description: toString(contract.importer) ++ " should pay shipment amount to " ++ toString(contract.grower)
 		};
     return PriceCalculation{
       shipment : request.shipment,

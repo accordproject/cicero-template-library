@@ -1,9 +1,8 @@
 namespace org.accordproject.acceptanceofdelivery
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
 import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
-
 
 /**
  * Sent by the receiver of the goods, indicates when the goods were
@@ -35,7 +34,7 @@ transaction InspectionResponse extends Response {
 /**
  * The template model
  */
-asset AcceptanceOfDeliveryClause extends AccordClause {
+asset AcceptanceOfDeliveryClause extends Clause {
   /**
    * the shipper of the goods
    */

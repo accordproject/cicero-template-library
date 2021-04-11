@@ -15,7 +15,7 @@ Feature: One Time Payment TR
 """
 [
     {
-        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "$class": "org.accordproject.obligation.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 1922.99,
@@ -30,8 +30,7 @@ Feature: One Time Payment TR
 """
 {
     "$class": "org.accordproject.onetimepayment.OneTimePaymentState",
-    "status": "OBLIGATION_EMITTED",
-    "stateId": "1"
+    "status": "OBLIGATION_EMITTED"
 }
 """
     When it receives the request

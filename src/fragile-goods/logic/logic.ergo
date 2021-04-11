@@ -14,15 +14,15 @@
 
 namespace io.clause.demo.fragileGoods
 
-import org.accordproject.cicero.runtime.*
-import org.accordproject.cicero.contract.*
+import org.accordproject.contract.*
+import org.accordproject.obligation.*
 import org.accordproject.money.MonetaryAmount
 import org.accordproject.time.*
 
 define function createPaymentObligation(
-    acontract:AccordContract,
-    seller:AccordParty,
-    buyer:AccordParty,
+    acontract:Contract,
+    seller:Party,
+    buyer:Party,
     amount: MonetaryAmount
   ) : PaymentObligation {
   return
@@ -34,8 +34,8 @@ define function createPaymentObligation(
       amount: amount,
       description:
         "penalty payment owed by "
-          ++ seller.partyId
-          ++ " to " ++ buyer.partyId
+          ++ toString(seller)
+          ++ " to " ++ toString(buyer)
           ++ " for delivery of fragile goods, including delays"
     }
 }
@@ -76,7 +76,6 @@ contract FragileGoods over FragileGoodsClause {
       return PayOut{
         amount: monetaryAmount
       }
-    else throw ErgoErrorResponse{ message: "Finish time not present" }
+    else throw Error{ message: "Finish time not present" }
   }
 }
-

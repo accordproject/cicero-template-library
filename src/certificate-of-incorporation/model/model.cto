@@ -1,9 +1,9 @@
 namespace org.accordproject.incorporation
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature@0.2.0.cto
 
-asset IncorporationCertificate extends AccordContract {
+asset IncorporationCertificate extends Contract {
   o String companyName
   o String incorporationState
 	o String streetAddress
@@ -21,7 +21,7 @@ asset IncorporationCertificate extends AccordContract {
   o String incorporatorZip
 }
 
-event ContractData {
+event Contract {
   o String companyName
   o DateTime incorporationDate
   o Long authorizedShareCapital

@@ -10,7 +10,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "pastFailures" : [],
   "nbPastFailures" : 0
 }
@@ -79,7 +78,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "nbPastFailures" : 1
 }
 """
@@ -87,14 +85,13 @@ Feature: Purchase Order Failure
 """
       [
         {
-          "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+          "$class": "org.accordproject.obligation.PaymentObligation",
           "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 1000,
             "currencyCode": "USD"
           },
-          "description": "Buyer Corp should be paid a penalty",
-          "eventId": "valid"
+          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
@@ -105,7 +102,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "pastFailures" : ["2018-11-08T05:00:00.000Z","2019-02-08T05:00:00.000Z","2019-01-08T05:00:00.000Z","2019-03-01T05:00:00.000Z","2019-02-01T05:00:00.000Z","2019-03-08T05:00:00.000Z"],
   "nbPastFailures" : 6
 }
@@ -174,7 +170,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "nbPastFailures" : 5
 }
 """
@@ -182,14 +177,13 @@ Feature: Purchase Order Failure
 """
       [
         {
-          "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+          "$class": "org.accordproject.obligation.PaymentObligation",
           "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 1599.99,
             "currencyCode": "USD"
           },
-          "description": "Buyer Corp should be paid a penalty",
-          "eventId": "valid"
+          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
@@ -200,7 +194,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "pastFailures" : [],
   "nbPastFailures" : 0
 }
@@ -269,7 +262,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "nbPastFailures" : 1
 }
 """
@@ -277,14 +269,13 @@ Feature: Purchase Order Failure
 """
       [
         {
-          "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+          "$class": "org.accordproject.obligation.PaymentObligation",
           "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 200,
             "currencyCode": "GBP"
           },
-          "description": "Buyer Corp should be paid a penalty",
-          "eventId": "valid"
+          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
@@ -295,7 +286,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "pastFailures" : [],
   "nbPastFailures" : 0
 }
@@ -364,7 +354,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "nbPastFailures" : 1
 }
 """
@@ -372,14 +361,13 @@ Feature: Purchase Order Failure
 """
       [
         {
-          "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+          "$class": "org.accordproject.obligation.PaymentObligation",
           "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 100,
             "currencyCode": "USD"
           },
-          "description": "Buyer Corp should be paid a penalty",
-          "eventId": "valid"
+          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
@@ -390,7 +378,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "pastFailures" : [],
   "nbPastFailures" : 0
 }
@@ -459,7 +446,6 @@ Feature: Purchase Order Failure
 """
 {
   "$class" : "com.docusign.clauses.PurchaseOrderFailureState",
-  "stateId" : "org.accordproject.cicero.contract.AccordContractState#1",
   "nbPastFailures" : 0
 }
 """

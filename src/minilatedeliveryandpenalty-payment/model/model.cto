@@ -14,16 +14,17 @@
 
 namespace org.accordproject.minilatedeliveryandpenalty
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.time.* from https://models.accordproject.org/v2.0/time.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
 
 /**
  * Data Model for the LateDeliveryAndPenalty template.
  */
-asset MiniLateDeliveryContract extends AccordContract {
-  o AccordParty buyer         // Party to the contract (buyer)
-  o AccordParty seller        // Party to the contract (seller)
+asset MiniLateDeliveryContract extends Contract {
+  --> Party buyer             // Party to the contract (buyer)
+  --> Party seller            // Party to the contract (seller)
   o Duration penaltyDuration  // Length of time resulting in penalty
   o Double penaltyPercentage  // Penalty percentage
   o Double capPercentage      // Maximum penalty percentage

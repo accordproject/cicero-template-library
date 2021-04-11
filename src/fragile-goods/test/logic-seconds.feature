@@ -12,9 +12,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
     "startTime": "2018-01-01T16:34:00.000Z",
     "finishTime": "2018-01-01T16:34:11.000Z",
     "status": "ARRIVED",
-    "accelerometerReadings": [0.2,0.6,-0.3,-0.7,0.1],
-    "transactionId": "d8b14719-ae23-4867-a4c7-7c0199a74cc3",
-    "timestamp": "2018-01-02T08:28:42.248Z"
+    "accelerometerReadings": [0.2,0.6,-0.3,-0.7,0.1]
 }
 """
     Then it should respond with
@@ -32,7 +30,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
 """
 [
     {
-        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "$class": "org.accordproject.obligation.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 790,
@@ -49,9 +47,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
     "$class": "io.clause.demo.fragileGoods.DeliveryUpdate",
     "startTime": "2018-01-01T16:34:00.000Z",
     "status": "IN_TRANSIT",
-    "accelerometerReadings": [0.2,0.6,-0.3,-0.7,0.1],
-    "transactionId": "d8b14719-ae23-4867-a4c7-7c0199a74cc3",
-    "timestamp": "2018-01-02T08:28:42.248Z"
+    "accelerometerReadings": [0.2,0.6,-0.3,-0.7,0.1]
 }
 """
     Then it should respond with
@@ -74,9 +70,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
     "startTime": "2018-01-01T16:34:00.000Z",
     "finishTime": "2018-01-01T16:34:09.000Z",
     "status": "ARRIVED",
-    "accelerometerReadings": [0.2,0.6,-0.3,-0.7,0.1],
-    "transactionId": "d8b14719-ae23-4867-a4c7-7c0199a74cc3",
-    "timestamp": "2018-01-02T08:28:42.248Z"
+    "accelerometerReadings": [0.2,0.6,-0.3,-0.7,0.1]
 }
 """
     Then it should respond with
@@ -94,7 +88,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
 """
 [
     {
-        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "$class": "org.accordproject.obligation.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 990,
@@ -112,9 +106,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
     "startTime": "2018-01-01T16:34:00.000Z",
     "finishTime": "2018-01-01T16:34:09.000Z",
     "status": "ARRIVED",
-    "accelerometerReadings": [0.2,0.4,0.1],
-    "transactionId": "d8b14719-ae23-4867-a4c7-7c0199a74cc3",
-    "timestamp": "2018-01-02T08:28:42.248Z"
+    "accelerometerReadings": [0.2,0.4,0.1]
 }
 """
     Then it should respond with
@@ -132,7 +124,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
 """
 [
     {
-        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "$class": "org.accordproject.obligation.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 1000,
@@ -151,9 +143,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
     "startTime": "2018-01-01T16:34:00.000Z",
     "finishTime": "2018-01-01T16:34:09.000Z",
     "status": "ARRIVED",
-    "accelerometerReadings": [],
-    "transactionId": "d8b14719-ae23-4867-a4c7-7c0199a74cc3",
-    "timestamp": "2018-01-02T08:28:42.248Z"
+    "accelerometerReadings": []
 }
 """
     Then it should respond with
@@ -171,7 +161,7 @@ Feature: Liquidated Damages for Delayed or Mishandled Delivery
 """
 [
     {
-        "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+        "$class": "org.accordproject.obligation.PaymentObligation",
         "amount": {
             "$class": "org.accordproject.money.MonetaryAmount",
             "doubleValue": 1000,

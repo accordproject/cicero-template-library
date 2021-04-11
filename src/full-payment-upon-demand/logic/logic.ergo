@@ -14,14 +14,14 @@
 
 namespace org.accordproject.payment.fullupondemand
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.payment.PaymentReceived
 
 contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state FullPaymentUponDemandState {
   
   clause init(request : Request) : Response {   
     set state FullPaymentUponDemandState {
-      stateId: "1",
       status: INITIALIZED
     };
     return Response{}
@@ -30,7 +30,7 @@ contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state 
   
   clause paymentDemand(request : PaymentDemand) : Response emits PaymentObligation {
     enforce (state.status = INITIALIZED) 
-    	else throw ErgoErrorResponse{ message: "Payment has already been demanded." };
+    	else throw Error{ message: "Payment has already been demanded." };
     
     emit PaymentObligation{
       contract: contract,
@@ -38,7 +38,7 @@ contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state 
       promisee: some(contract.seller),
       deadline: none,
       amount: contract.value,
-      description: contract.buyer.partyId ++ " should pay contract amount to " ++ contract.seller.partyId
+      description: toString(contract.buyer) ++ " should pay contract amount to " ++ toString(contract.seller)
     };
     
     set state.status = OBLIGATION_EMITTED;
@@ -48,7 +48,7 @@ contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state 
   clause paymentReceived(request : PaymentReceived): Response {
     
     enforce (state.status = OBLIGATION_EMITTED) 
-    else throw ErgoErrorResponse{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
+    else throw Error{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
     
     set state.status = COMPLETED;
 

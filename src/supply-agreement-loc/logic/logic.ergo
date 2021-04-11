@@ -13,13 +13,13 @@
  */
 
 namespace org.cloudsecurityalliance.supplyagreement
-import org.accordproject.cicero.runtime.*
+
+import org.accordproject.runtime.*
 import org.accordproject.time.*
 
 contract SupplyAgreementLogic over SupplyAgreementContract state SupplyAgreementState {
   clause init(request : Request) : Response {
     set state SupplyAgreementState{
-      stateId: "0",
       sensorReadings: []
     };
     return Response{}

@@ -1,12 +1,13 @@
 namespace org.accordproject.payment.fulluponsignature
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
-import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature.cto
-import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature@0.2.0.cto
+import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment@0.2.0.cto
 
-asset FullPaymentUponSignatureState extends AccordContractState {
+asset FullPaymentUponSignatureState extends State {
   o ContractLifecycleStatus status
 }
 
@@ -19,8 +20,8 @@ enum ContractLifecycleStatus {
 /**
  * The template model
  */
-asset FullPaymentUponSignatureContract extends AccordContract {
-  o AccordParty buyer
-  o AccordParty seller
+asset FullPaymentUponSignatureContract extends Contract {
+  --> Party buyer
+  --> Party seller
   o MonetaryAmount amount
 }

@@ -15,7 +15,6 @@ Note: to undo a short button press the buyer may double-press the button.
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "INITIALIZED",
-  "stateId": "1",
   "counter": 0.0,
   "paymentCount": 0.0
 }
@@ -27,7 +26,6 @@ Note: to undo a short button press the buyer may double-press the button.
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "INITIALIZED",
-  "stateId": "1",
   "counter": 0.0,
   "paymentCount": 0.0
 }
@@ -61,7 +59,6 @@ Note: to undo a short button press the buyer may double-press the button.
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 0.0,
   "paymentCount": 0.0
 }
@@ -93,7 +90,6 @@ Note: to undo a short button press the buyer may double-press the button.
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 3,
   "paymentCount": 0.0
 }
@@ -125,7 +121,6 @@ Note: to undo a short button press the buyer may double-press the button.
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 0,
   "paymentCount": 0.0
 }
@@ -156,7 +151,6 @@ Scenario: The contract should emit payment obligation on long press (1)
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 0,
   "paymentCount": 0.0
 }
@@ -187,7 +181,6 @@ Scenario: The contract should emit payment obligation on long press (1)
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 1,
   "paymentCount": 0.0
 }
@@ -209,7 +202,7 @@ Scenario: The contract should emit payment obligation on long press (1)
 """
 [
   {
-    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "$class": "org.accordproject.obligation.PaymentObligation",
     "amount": {
       "$class": "org.accordproject.money.MonetaryAmount",
       "doubleValue": 10.0,
@@ -226,7 +219,6 @@ Scenario: The contract should emit payment obligation on long press (1)
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 0,
   "paymentCount": 0.0
 }
@@ -260,7 +252,6 @@ Scenario: The contract should emit payment obligation on long press (1)
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 0,
   "paymentCount": 4
 }
@@ -295,7 +286,6 @@ Scenario: The contract should emit payment obligation on long press (1)
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 4,
   "paymentCount": 0
 }
@@ -330,7 +320,6 @@ Scenario: The contract should emit payment obligation on long press (1)
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 4,
   "paymentCount": 0
 }
@@ -365,7 +354,6 @@ Scenario: The contract should emit payment obligation on long press (1)
 {
   "$class": "org.accordproject.payment.iot.CounterState",
   "status" : "RUNNING",
-  "stateId": "1",
   "counter": 4,
   "paymentCount": 0
 }

@@ -14,7 +14,7 @@
 
 namespace org.accordproject.supplyagreement
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
 import org.accordproject.time.*
 import org.accordproject.money.MonetaryAmount
 import org.accordproject.purchaseorder.*
@@ -42,7 +42,6 @@ define function purchaseOrderPrice(products:Product[]) : Double {
 contract SupplyAgreement over SupplyAgreementContract state AgreementState {
   clause init(request : Request) : Response{
     set state AgreementState{
-			stateId: "1",
 			purchaseObligation: none,
 			deliveryObligation: none,
 			paymentObligation: none
@@ -58,7 +57,6 @@ contract SupplyAgreement over SupplyAgreementContract state AgreementState {
     let requiredPurchase = integerToDouble(request.supplyForecast) * (contract.minimumPercentage / 100.0);
 
     set state AgreementState{
-			stateId: state.stateId,
 			purchaseObligation: some(PurchaseObligation{
 				party: contract.buyer,
 				requiredPurchase: requiredPurchase,
@@ -82,7 +80,6 @@ contract SupplyAgreement over SupplyAgreementContract state AgreementState {
 				};
 
     	set state AgreementState{
-				stateId: state.stateId,
 				purchaseObligation: none,
 				deliveryObligation: some(DeliveryObligation{
 					party: contract.supplier,
@@ -102,7 +99,6 @@ contract SupplyAgreement over SupplyAgreementContract state AgreementState {
 		  else throw failure("Delivery does not match the purchase order");
 
     	set state AgreementState{
-				stateId: state.stateId,
 				purchaseObligation: none,
 				deliveryObligation: none,
 				paymentObligation: some(PaymentObligation{

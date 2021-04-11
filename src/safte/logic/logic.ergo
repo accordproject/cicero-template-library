@@ -14,6 +14,8 @@
 
 namespace org.accordproject.safte
 
+import org.accordproject.runtime.*
+
 contract Safte over SafteContract {
   clause tokenSale(request : TokenSale) : TokenShare {
     let discountRate = (100.0 - contract.discount) / 100.00;
@@ -31,4 +33,3 @@ contract Safte over SafteContract {
     return PayOut{ amount : contract.purchaseAmount }
   }
 }
-

@@ -1,10 +1,10 @@
 namespace org.accordproject.servicelevelagreement
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 
-asset ServiceLevelAgreementContract extends AccordContract {
+asset ServiceLevelAgreementContract extends Contract {
  o Integer paymentPeriod 
  o Double monthlyCapPercentage
  o Double yearlyCapPercentage
@@ -12,8 +12,8 @@ asset ServiceLevelAgreementContract extends AccordContract {
  o MonetaryAmount serviceCredit1
  o Double availability2
  o MonetaryAmount serviceCredit2
- o AccordParty serviceProvider
- o AccordParty serviceConsumer
+ --> Party serviceProvider
+ --> Party serviceConsumer
 }
 
 transaction MonthSummary {

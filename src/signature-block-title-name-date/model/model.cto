@@ -1,8 +1,8 @@
 namespace org.accordproject.signature.tnd
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.signature.block.SignatureClause from https://models.accordproject.org/signature/block.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.signature.block.SignatureClause from https://models.accordproject.org/signature/block@0.2.0.cto
 
 /**
  * A detailed signature block, configured to render to PDF

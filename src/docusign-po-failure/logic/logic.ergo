@@ -15,7 +15,8 @@
 namespace com.docusign.clauses
 
 import com.docusign.connect.*
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
+import org.accordproject.obligation.*
 import org.accordproject.money.*
 import org.accordproject.time.*
 import com.docusign.clauses.custom.*
@@ -51,7 +52,6 @@ define function mapTextToCurrencyCode(text:String) : CurrencyCode? {
 contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOrderFailureState {
   clause init(request:Request) : Response {
     set state PurchaseOrderFailureState {
-      stateId: "1",
       pastFailures: [],
       nbPastFailures: 0
     };
@@ -98,7 +98,6 @@ contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOr
     // Maintain the past failures within range, as part of the contract state
     let failures = failuresInRange(arrayAdd(state.pastFailures,[deliveryDate]),contract.failureRange);
     set state PurchaseOrderFailureState {
-      stateId: state.stateId,
       pastFailures: failures,
       nbPastFailures: count(failures)
     };
@@ -120,7 +119,7 @@ contract PurchaseOrderFailureContract over PurchaseOrderFailure state PurchaseOr
       promisee: some(contract.buyer),
       deadline: none,
       amount: penalty,
-      description: contract.buyer.partyId ++ " should be paid a penalty"
+      description: toString(contract.buyer) ++ " should be paid a penalty"
     };
 
     return PurchaseOrderFailureResponse{

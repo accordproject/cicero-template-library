@@ -6,7 +6,7 @@
   */
 namespace org.accordproject.perishablegoods
 
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
 
 /**
  * The status of a shipment

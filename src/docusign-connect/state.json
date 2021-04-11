@@ -1,5 +1,4 @@
 {
     "$class": "com.docusign.connect.counter.DocuSignEnvelopeCounterState",
-    "stateId": "0",
 		"counter" : 0
 }

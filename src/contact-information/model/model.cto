@@ -1,7 +1,7 @@
 namespace org.accordproject.contactinformation
 
-import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
-import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
 import org.accordproject.timezone.TimeZone from https://models.accordproject.org/timezone.cto
 
 enum CommunicationChannel {
@@ -9,7 +9,7 @@ enum CommunicationChannel {
     o PHONE
 }
 
-asset ContactInformation extends AccordClause {
+asset ContactInformation extends Clause {
     o String name
     o String title
     o String email

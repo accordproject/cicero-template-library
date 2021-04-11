@@ -136,26 +136,22 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 3000,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",
 		"shipmentId": "Grade I, Size 4, Zutano Mexican Avocados",
 		"sensorReadings": [{
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "a",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 2,
 			"humidity": 80
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "b",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 5,
 			"humidity": 90
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "c",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 15,
 			"humidity": 65
@@ -185,16 +181,15 @@ Formula for Breach Penalty Calculation:
 """
 [
   {
-    "$class": "org.accordproject.cicero.runtime.PaymentObligation",
+    "$class": "org.accordproject.obligation.PaymentObligation",
     "amount": {
       "$class": "org.accordproject.money.MonetaryAmount",
       "doubleValue": 300,
       "currencyCode": "USD"
     },
-    "description": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION must pay resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION 300.0",
+    "description": "\"resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION\" must pay \"resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION\" 300.0",
     "promisor": "resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION",
-    "promisee": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION",
-    "eventId": "valid"
+    "promisee": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION"
   }
 ]
 """
@@ -204,26 +199,22 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 2500,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",
 		"shipmentId": "Grade I, Size 4, Zutano Mexican Avocados",
 		"sensorReadings": [{
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "a",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 2,
 			"humidity": 80
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "b",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 5,
 			"humidity": 90
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "c",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 15,
 			"humidity": 65
@@ -238,26 +229,22 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 4000,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",
 		"shipmentId": "Grade I, Size 4, Zutano Mexican Avocados",
 		"sensorReadings": [{
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "a",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 2,
 			"humidity": 80
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "b",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 5,
 			"humidity": 90
 		}, {
 			"$class": "org.accordproject.perishablegoods.SensorReading",
-			"transactionId": "c",
 			"shipment": "Grade I, Size 4, Zutano Mexican Avocados",
 			"centigrade": 15,
 			"humidity": 65
@@ -272,7 +259,6 @@ Formula for Breach Penalty Calculation:
 """
 {
 	"$class": "org.accordproject.perishablegoods.ShipmentReceived",
-	"timestamp": "2019-02-16T12:06:36.172Z",
 	"unitCount": 3000,
 	"shipment": {
 		"$class": "org.accordproject.perishablegoods.Shipment",

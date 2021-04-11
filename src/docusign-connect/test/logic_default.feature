@@ -19,7 +19,7 @@ Feature: DocuSign Connect
 """
 [
   {
-    "$class": "org.accordproject.cicero.runtime.NotificationObligation",
+    "$class": "org.accordproject.obligation.NotificationObligation",
     "title": "Contracts with status Completed",
     "message": "Have received 1 contracts with status Completed"
  }

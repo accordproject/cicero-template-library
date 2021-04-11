@@ -16,14 +16,14 @@ Feature: Certificate of Incorporation
     Then it should respond with
 """
 {
-    "$class": "org.accordproject.cicero.runtime.Response"
+    "$class": "org.accordproject.runtime.Response"
 }
 """
     And the following obligations should have been emitted
 """
 [
     {
-      "$class": "org.accordproject.incorporation.ContractData",
+      "$class": "org.accordproject.incorporation.Contract",
       "companyName": "ACME",
       "incorporationDate": "2019-04-01T00:00:00.000Z",
       "authorizedShareCapital": 400,

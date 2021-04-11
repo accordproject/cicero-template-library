@@ -14,7 +14,8 @@
 
 namespace com.docusign.connect.counter
 
-import org.accordproject.cicero.runtime.*
+import org.accordproject.runtime.*
+import org.accordproject.obligation.*
 import com.docusign.connect.*
 
 define function buildMessage(counter: Integer, status: EnvelopeStatusCode) {
@@ -33,7 +34,6 @@ contract DocuSignEnvelopeCounter over DocuSignEnvelopeCounterClause state DocuSi
   // initialize the state counter
   clause init() : Response {
     set state DocuSignEnvelopeCounterState {
-      stateId: "com.docusign.connect.clause.DocuSignEnvelopeCounterState",
       counter: 0
     };
     return Response{}
