@@ -70,12 +70,12 @@ contract PerishableGoods over PerishableGoodsContract {
     // Guard against requests for payout after the dueDate
     enforce isBefore(now(),contract.dueDate)
     else
-			return PriceCalculation{
-    	  shipment : request.shipment,
-    	  totalPrice : zeroMoney,
-    	  penalty : zeroMoney,
-    	  late : true
-    	};
+      return PriceCalculation{
+        shipment : request.shipment,
+        totalPrice : zeroMoney,
+        penalty : zeroMoney,
+        late : true
+      };
     // Guard against missing temperature readings
     let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
     enforce readings != []
@@ -103,13 +103,13 @@ contract PerishableGoods over PerishableGoodsContract {
       currencyCode: contract.unitPrice.currencyCode
     };
     emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.importer),
-			promisee: some(contract.grower),
-			deadline: none,
-			amount: totalPrice,
-			description: toString(contract.importer) ++ " should pay shipment amount to " ++ toString(contract.grower)
-		};
+      contract: contract,
+      promisor: some(contract.importer),
+      promisee: some(contract.grower),
+      deadline: none,
+      amount: totalPrice,
+      description: toString(contract.importer) ++ " should pay shipment amount to " ++ toString(contract.grower)
+    };
     return PriceCalculation{
       shipment : request.shipment,
       totalPrice : totalPrice,

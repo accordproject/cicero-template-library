@@ -137,7 +137,7 @@ contract PaymentUponCounter over PaymentUponButtonContract state CounterState {
     let unitsPaid = doubleToInteger(maxPair(0.0, payment.amount.doubleValue / contract.amountPerUnit.doubleValue));
     let newCounter = maxPair(0.0, state.counter - integerToDouble(unitsPaid));
 
-		set state.status = newStatus;
+    set state.status = newStatus;
     set state.counter = newCounter;
     set state.paymentCount = state.paymentCount + 1.0;
       

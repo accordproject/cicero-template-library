@@ -68,13 +68,13 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
       next_payment_month: state.next_payment_month + 1
     };
     emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.BUYER),
-			promisee: some(contract.SELLER),
-			deadline: none,
-			amount: MonetaryAmount{ doubleValue : request.amount.doubleValue, currencyCode : request.amount.currencyCode },
-			description: toString(contract.BUYER) ++ " should pay installment to " ++ toString(contract.SELLER)
-		};
+      contract: contract,
+      promisor: some(contract.BUYER),
+      promisee: some(contract.SELLER),
+      deadline: none,
+      amount: MonetaryAmount{ doubleValue : request.amount.doubleValue, currencyCode : request.amount.currencyCode },
+      description: toString(contract.BUYER) ++ " should pay installment to " ++ toString(contract.SELLER)
+    };
     return Balance{
       balance: MonetaryAmount{ doubleValue : balance, currencyCode : contract.INITIAL_DUE.currencyCode },
       total_paid: MonetaryAmount{ doubleValue : total_paid, currencyCode : contract.INITIAL_DUE.currencyCode },
@@ -96,13 +96,13 @@ contract InstallmentSale over InstallmentSaleContract state InstallmentSaleState
     };
 
     emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.BUYER),
-			promisee: some(contract.SELLER),
-			deadline: none,
-			amount: MonetaryAmount{ doubleValue : request.amount.doubleValue, currencyCode : request.amount.currencyCode },
-			description: toString(contract.BUYER) ++ " should pay installment to " ++ toString(contract.SELLER)
-		};
+      contract: contract,
+      promisor: some(contract.BUYER),
+      promisee: some(contract.SELLER),
+      deadline: none,
+      amount: MonetaryAmount{ doubleValue : request.amount.doubleValue, currencyCode : request.amount.currencyCode },
+      description: toString(contract.BUYER) ++ " should pay installment to " ++ toString(contract.SELLER)
+    };
 
     return Balance{
       balance: balance,

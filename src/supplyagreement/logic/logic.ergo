@@ -34,79 +34,79 @@ define function deliveryMatches(delivery:DeliveryObligation,po:Product[]) {
 // Auxiliary function to compute the price of a purchase order
 define function purchaseOrderPrice(products:Product[]) : Double {
   return sum(
-		foreach p in products return
-		p.quantity * p.unitPrice
-	)
+    foreach p in products return
+    p.quantity * p.unitPrice
+  )
 }
 
 contract SupplyAgreement over SupplyAgreementContract state AgreementState {
   clause init(request : Request) : Response{
     set state AgreementState{
-			purchaseObligation: none,
-			deliveryObligation: none,
-			paymentObligation: none
-		};
-		return Response{}
-	}
+      purchaseObligation: none,
+      deliveryObligation: none,
+      paymentObligation: none
+    };
+    return Response{}
+  }
 
   clause demandforecast(request : ForecastRequest) : ForecastResponse {
-		enforce isBefore(contract.effectiveDate, now());
-		enforce isLastDayOfQuarter(now())
-		else throw failure("Forecast was received before the effective date");
+    enforce isBefore(contract.effectiveDate, now());
+    enforce isLastDayOfQuarter(now())
+    else throw failure("Forecast was received before the effective date");
 
     let requiredPurchase = integerToDouble(request.supplyForecast) * (contract.minimumPercentage / 100.0);
 
     set state AgreementState{
-			purchaseObligation: some(PurchaseObligation{
-				party: contract.buyer,
-				requiredPurchase: requiredPurchase,
-				year: getYear(now()),
-				quarter: getQuarter(now())
-			}),
-			deliveryObligation: none,
-			paymentObligation: none
-		};
-		return ForecastResponse{}
+      purchaseObligation: some(PurchaseObligation{
+        party: contract.buyer,
+        requiredPurchase: requiredPurchase,
+        year: getYear(now()),
+        quarter: getQuarter(now())
+      }),
+      deliveryObligation: none,
+      paymentObligation: none
+    };
+    return ForecastResponse{}
   }
 
-	clause purchase(request : PurchaseRequest) : PurchaseResponse {
-		match state.purchaseObligation
-		with let? purchaseObligation then
-     	let products =
-		  foreach p in request.purchaseOrder.products return
-     	  OrderItem{
-					partNumber: p.name,
-					quantity: p.quantity
-				};
+  clause purchase(request : PurchaseRequest) : PurchaseResponse {
+    match state.purchaseObligation
+    with let? purchaseObligation then
+      let products =
+      foreach p in request.purchaseOrder.products return
+        OrderItem{
+          partNumber: p.name,
+          quantity: p.quantity
+        };
 
-    	set state AgreementState{
-				purchaseObligation: none,
-				deliveryObligation: some(DeliveryObligation{
-					party: contract.supplier,
-					expectedDelivery: request.purchaseOrder.deliveryDate,
-					deliverables: products
-				}),
-				paymentObligation: none
-			};
-		return PurchaseResponse{}
-		else throw failure("Cannot purchase without having submitted a demand forecast")
-	}
+      set state AgreementState{
+        purchaseObligation: none,
+        deliveryObligation: some(DeliveryObligation{
+          party: contract.supplier,
+          expectedDelivery: request.purchaseOrder.deliveryDate,
+          deliverables: products
+        }),
+        paymentObligation: none
+      };
+    return PurchaseResponse{}
+    else throw failure("Cannot purchase without having submitted a demand forecast")
+  }
 
   clause delivery(request: DeliveryRequest) : DeliveryResponse {
-		match state.deliveryObligation
-		with let? deliveryObligation then
-		  enforce deliveryMatches(deliveryObligation,request.products)
-		  else throw failure("Delivery does not match the purchase order");
+    match state.deliveryObligation
+    with let? deliveryObligation then
+      enforce deliveryMatches(deliveryObligation,request.products)
+      else throw failure("Delivery does not match the purchase order");
 
-    	set state AgreementState{
-				purchaseObligation: none,
-				deliveryObligation: none,
-				paymentObligation: some(PaymentObligation{
-					party: contract.buyer,
-					amount: purchaseOrderPrice(request.products)
-				})
-			};
-		  return DeliveryResponse{}
-		else throw failure("Cannot deliver without having submitted a purchase order")
-	}
+      set state AgreementState{
+        purchaseObligation: none,
+        deliveryObligation: none,
+        paymentObligation: some(PaymentObligation{
+          party: contract.buyer,
+          amount: purchaseOrderPrice(request.products)
+        })
+      };
+      return DeliveryResponse{}
+    else throw failure("Cannot deliver without having submitted a purchase order")
+  }
 }

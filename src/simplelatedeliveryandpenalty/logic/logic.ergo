@@ -35,13 +35,13 @@ contract SimpleLateDeliveryAndPenalty over SimpleLateDeliveryAndPenaltyContract 
     // Return a Payment Obligation
     // Return the response with the penalty and termination determination
     emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.seller),
-			promisee: some(contract.buyer),
-			deadline: none,
-			amount: MonetaryAmount{ doubleValue: capped, currencyCode: USD },
-			description: toString(contract.seller) ++ " should pay penalty amount to " ++ toString(contract.buyer)
-		};
+      contract: contract,
+      promisor: some(contract.seller),
+      promisee: some(contract.buyer),
+      deadline: none,
+      amount: MonetaryAmount{ doubleValue: capped, currencyCode: USD },
+      description: toString(contract.seller) ++ " should pay penalty amount to " ++ toString(contract.buyer)
+    };
     return SimpleLateDeliveryAndPenaltyResponse{
       penalty: capped,
       buyerMayTerminate: diff.amount > durationAs(contract.maximumDelay,~org.accordproject.time.TemporalUnit.days).amount

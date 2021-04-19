@@ -29,13 +29,13 @@ contract RentalDeposit over RentalDepositClause {
       };
 
     emit PaymentObligation{
-			contract: contract,
+      contract: contract,
       promisor: some(contract.tenant),
-			promisee: some(contract.landlord),
-			deadline: none,
-			amount: balance,
-			description: ""
-		};
+      promisee: some(contract.landlord),
+      deadline: none,
+      amount: balance,
+      description: ""
+    };
 
     return PropertyInspectionResponse{
       balance: balance

@@ -19,22 +19,22 @@ import org.accordproject.money.MonetaryAmount
 
 contract PaymentUponDelivery over PaymentUponDeliveryContract {
   /**
-	 * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
-	 */
+   * The initialization logic for this clause immediately notifies the buyer that they have an obligation to make a payment
+   */
   clause delivered(request : DeliveryAcceptedRequest) : DeliveryAcceptedResponse emits PaymentObligation {
-	  enforce (contract.costOfGoods.currencyCode = contract.deliveryFee.currencyCode);
-		let totalAmount = MonetaryAmount{
-				doubleValue: contract.costOfGoods.doubleValue + contract.deliveryFee.doubleValue,
-				currencyCode: contract.costOfGoods.currencyCode
-			};
+    enforce (contract.costOfGoods.currencyCode = contract.deliveryFee.currencyCode);
+    let totalAmount = MonetaryAmount{
+        doubleValue: contract.costOfGoods.doubleValue + contract.deliveryFee.doubleValue,
+        currencyCode: contract.costOfGoods.currencyCode
+      };
     emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.buyer),
-			promisee: some(contract.seller),
-			deadline: none,
-			amount: totalAmount,
-			description: toString(contract.buyer) ++ " should pay cost of goods and delivery fee to " ++ toString(contract.seller)
-		};
+      contract: contract,
+      promisor: some(contract.buyer),
+      promisee: some(contract.seller),
+      deadline: none,
+      amount: totalAmount,
+      description: toString(contract.buyer) ++ " should pay cost of goods and delivery fee to " ++ toString(contract.seller)
+    };
 
     return DeliveryAcceptedResponse{}
   }

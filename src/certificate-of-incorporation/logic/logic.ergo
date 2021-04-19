@@ -26,11 +26,11 @@ contract CertificateOfIncorporation over IncorporationCertificate {
    */
   clause contractSigned(request : ContractSigned) : Response {
     emit Contract{
-			companyName: contract.companyName,
-			incorporationDate: contract.incorporationDate,
-			authorizedShareCapital: contract.authorizedShareCapital,
-			parValue: contract.parValue
-		};
+      companyName: contract.companyName,
+      incorporationDate: contract.incorporationDate,
+      authorizedShareCapital: contract.authorizedShareCapital,
+      parValue: contract.parValue
+    };
     return Response{}
   }
 }

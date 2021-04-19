@@ -28,8 +28,8 @@ define function roundn(x:Double, n:Integer) {
 
 // Formula taken from https://en.wikipedia.org/wiki/Mortgage_calculator#Monthly_payment_formula
 define function monthlyPaymentFormula(loanAmount: MonetaryAmount, rate: Double, loanDuration: Integer) : MonetaryAmount {
-	let currency = loanAmount.currencyCode;
-	let amount = loanAmount.doubleValue;
+  let currency = loanAmount.currencyCode;
+  let amount = loanAmount.doubleValue;
   let term = longToDouble(loanDuration * 12);
   if (rate = 0.0) then return MonetaryAmount{ doubleValue: (amount / term), currencyCode: currency }
   else
