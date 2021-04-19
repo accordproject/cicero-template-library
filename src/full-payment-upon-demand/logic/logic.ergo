@@ -30,7 +30,7 @@ contract FullPaymentUponDemandContract over FullPaymentUponDemandTemplate state 
   
   clause paymentDemand(request : PaymentDemand) : Response emits PaymentObligation {
     enforce (state.status = INITIALIZED) 
-    	else throw Error{ message: "Payment has already been demanded." };
+      else throw Error{ message: "Payment has already been demanded." };
     
     emit PaymentObligation{
       contract: contract,

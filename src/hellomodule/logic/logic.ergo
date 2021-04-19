@@ -20,7 +20,7 @@ contract HelloWorld over HelloModuleClause {
   // Simple Clause
   clause helloworld(request : MyRequest) : MyResponse {
     return MyResponse{
-			output: "Hello " ++ contract.name ++ " (" ++ request.input ++ ") [motd: PI/2.0 radians is " ++ toString(radiansToDegrees(PI/2.0)) ++ " degrees]"
-		}
+      output: "Hello " ++ contract.name ++ " (" ++ request.input ++ ") [motd: PI/2.0 radians is " ++ toString(radiansToDegrees(PI/2.0)) ++ " degrees]"
+    }
   }
 }

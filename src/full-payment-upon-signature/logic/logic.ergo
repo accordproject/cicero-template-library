@@ -24,46 +24,46 @@ import org.accordproject.payment.PaymentReceived
  */
 contract FullPaymentUponSignature over FullPaymentUponSignatureContract state FullPaymentUponSignatureState {
   
-	/**
-	 * Sets the initial state for the clause
-	 */
-  clause init(request : Request) : Response {		
-		set state FullPaymentUponSignatureState {
-			status: INITIALIZED
-		};
-    return Response{}
-  }
-
-	/**
-	 * When the contract is signed a payment obligation is emitted
-	 */
-  clause contractSigned(request : ContractSigned) : Response emits PaymentObligation {
-	  enforce (state.status = INITIALIZED) 
-		else throw Error{ message: `Contract state is invalid {{% state.status %}}` };
-		
-    emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.buyer),
-			promisee: some(contract.seller),
-			deadline: none,
-			amount: contract.amount,
-			description: toString(contract.buyer) ++ " should pay contract amount to " ++ toString(contract.seller)
-		};
-		set state FullPaymentUponSignatureState {
-			status: OBLIGATION_EMITTED
-		};
+  /**
+   * Sets the initial state for the clause
+   */
+  clause init(request : Request) : Response {   
+    set state FullPaymentUponSignatureState {
+      status: INITIALIZED
+    };
     return Response{}
   }
 
   /**
-	 * Complete the contract when payment is received.
-	 */
+   * When the contract is signed a payment obligation is emitted
+   */
+  clause contractSigned(request : ContractSigned) : Response emits PaymentObligation {
+    enforce (state.status = INITIALIZED) 
+    else throw Error{ message: `Contract state is invalid {{% state.status %}}` };
+    
+    emit PaymentObligation{
+      contract: contract,
+      promisor: some(contract.buyer),
+      promisee: some(contract.seller),
+      deadline: none,
+      amount: contract.amount,
+      description: toString(contract.buyer) ++ " should pay contract amount to " ++ toString(contract.seller)
+    };
+    set state FullPaymentUponSignatureState {
+      status: OBLIGATION_EMITTED
+    };
+    return Response{}
+  }
+
+  /**
+   * Complete the contract when payment is received.
+   */
   clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = OBLIGATION_EMITTED) 
     else throw Error{ message: "Either a payment obligation hasn't yet been emitted by the contract or payment notification has already been received" };
-		set state FullPaymentUponSignatureState {
-			status: COMPLETED
-		};
-		return Response{}
+    set state FullPaymentUponSignatureState {
+      status: COMPLETED
+    };
+    return Response{}
   }
 }

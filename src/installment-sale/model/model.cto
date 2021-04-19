@@ -15,7 +15,7 @@ transaction ClosingPayment extends Request {
 
 transaction Balance extends Request {
   o MonetaryAmount balance
-	o MonetaryAmount total_paid
+  o MonetaryAmount total_paid
 }
 
 enum ContractStatus {
@@ -27,7 +27,7 @@ asset InstallmentSaleState extends State {
   o ContractStatus status
   o MonetaryAmount balance_remaining
   o Integer next_payment_month
-	o MonetaryAmount total_paid
+  o MonetaryAmount total_paid
 }
 
 /**
@@ -35,7 +35,7 @@ asset InstallmentSaleState extends State {
  */
 asset InstallmentSaleContract extends Contract {
   --> Party BUYER
-	--> Party SELLER
+  --> Party SELLER
   o MonetaryAmount INITIAL_DUE
   o Double INTEREST_RATE
   o MonetaryAmount TOTAL_DUE_BEFORE_CLOSING

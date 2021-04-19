@@ -50,13 +50,13 @@ contract LateDeliveryAndPenalty over LateDeliveryAndPenaltyContract {
         else capped;
     // Return a Payment Obligation
     emit PaymentObligation{
-			contract: contract,
-			promisor: some(contract.seller),
-			promisee: some(contract.buyer),
-			deadline: none,
-			amount: MonetaryAmount{ doubleValue: capped, currencyCode: contract.toCurrency },
-			description: toString(contract.seller) ++ " should pay penalty amount to " ++ toString(contract.buyer)
-		};
+      contract: contract,
+      promisor: some(contract.seller),
+      promisee: some(contract.buyer),
+      deadline: none,
+      amount: MonetaryAmount{ doubleValue: capped, currencyCode: contract.toCurrency },
+      description: toString(contract.seller) ++ " should pay penalty amount to " ++ toString(contract.buyer)
+    };
     // Return the response with the penalty and termination determination
     return LateDeliveryAndPenaltyResponse{
       penalty: capped,

@@ -46,6 +46,6 @@ asset CopyrightLicenseContract extends Contract {
 
 asset PaymentClause extends Clause {
   o String amountText
-	o MonetaryAmount amount
-	o String paymentProcedure
+  o MonetaryAmount amount
+  o String paymentProcedure
 }

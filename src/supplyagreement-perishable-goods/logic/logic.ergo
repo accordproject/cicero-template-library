@@ -72,7 +72,7 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
       late : true
     };
     // Guard against missing temperature readings
-		let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
+    let readings : SensorReading[] = request.shipment.sensorReadings ?? [];
     enforce readings != []
     else throw Error{ message : "No temperature readings received."};
 
@@ -101,7 +101,7 @@ contract SupplyAgreement over SupplyAgreementPerishableGoodsContract {
       contract: contract,
       promisor: some(contract.importer),
       promisee: some(contract.grower),
-			deadline: none,
+      deadline: none,
       amount: totalPrice,
       description: toText(contract.grower) ++ " must pay " ++ toText(contract.importer) ++ " " ++ toText(totalPrice.doubleValue)
     };

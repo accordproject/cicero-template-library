@@ -38,8 +38,8 @@ define function createPaymentObligation(
       amount: amount,
       description:
         "payment owed by "
-					++ toString(serviceProvider)
-					++ " to " ++ toString(serviceConsumer)
+          ++ toString(serviceProvider)
+          ++ " to " ++ toString(serviceConsumer)
           ++ " for delivery of service downtimes"
     }
 }

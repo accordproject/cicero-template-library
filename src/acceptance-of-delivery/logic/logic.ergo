@@ -20,7 +20,7 @@ import org.accordproject.time.*
 contract AcceptanceOfDelivery over AcceptanceOfDeliveryClause {
   clause acceptanceofdelivery(request : InspectDeliverable) : InspectionResponse {
 
-		let received = request.deliverableReceivedAt;
+    let received = request.deliverableReceivedAt;
     enforce isBefore(received,now()) else
       throw Error{ message : "Transaction time is before the deliverable date." }
     ;

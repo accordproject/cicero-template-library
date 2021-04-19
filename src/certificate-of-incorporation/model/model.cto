@@ -6,10 +6,10 @@ import org.accordproject.signature.ContractSigned from https://models.accordproj
 asset IncorporationCertificate extends Contract {
   o String companyName
   o String incorporationState
-	o String streetAddress
-	o String addressRegion
-	o String addressLocality
-	o String postalCode
+  o String streetAddress
+  o String addressRegion
+  o String addressLocality
+  o String postalCode
   o String registeredAgentName
   o DateTime incorporationDate
   o Long authorizedShareCapital
