@@ -275,7 +275,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     const ciceroArchiveFileExists = await fs.pathExists(ciceroArchiveFilePath);
 
                     if(!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        const ciceroArchive = await template.toArchive('cicero');
+                        const ciceroArchive = await template.toArchive('es6');
                         await writeFile(ciceroArchiveFilePath, ciceroArchive);
                         console.log('Copied: ' + ciceroArchiveFilePath);
                     }
@@ -364,7 +364,11 @@ function sampleInstance(template, type) {
     result.abstract = 'this is an abstract type';
 
     if (!classDecl.isAbstract()) {
-        result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+        if (classDecl.getIdentifierFieldName()) {
+            result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+        } else {
+            result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), null, sampleGenerationOptions);
+        }
     }
 
     return result;
