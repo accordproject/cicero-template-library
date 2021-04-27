@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.lateinvoicewithpayment.LateInvoiceContract << (A,green) >> {
+   + Duration maximumDelay
+   + Party purchaser
+   + Party supplier
+}
+org.accordproject.lateinvoicewithpayment.LateInvoiceContract --|> org.accordproject.contract.Contract
+class org.accordproject.lateinvoicewithpayment.LateInvoiceRequest << (T,yellow) >> {
+   + DateTime invoiceDue
+   + MonetaryAmount amountDue
+}
+org.accordproject.lateinvoicewithpayment.LateInvoiceRequest --|> org.accordproject.runtime.Request
+class org.accordproject.lateinvoicewithpayment.LateInvoiceResponse << (T,yellow) >> {
+   + Boolean paymentRequired
+   + String cause
+}
+org.accordproject.lateinvoicewithpayment.LateInvoiceResponse --|> org.accordproject.runtime.Response
+@enduml

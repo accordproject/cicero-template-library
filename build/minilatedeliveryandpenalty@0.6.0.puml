@@ -1,0 +1,21 @@
+@startuml
+class org.accordproject.minilatedeliveryandpenalty.MiniLateDeliveryClause << (A,green) >> {
+   + Party buyer
+   + Party seller
+   + Duration penaltyDuration
+   + Double penaltyPercentage
+   + Duration maximumDelay
+}
+org.accordproject.minilatedeliveryandpenalty.MiniLateDeliveryClause --|> org.accordproject.contract.Clause
+class org.accordproject.minilatedeliveryandpenalty.LateRequest << (T,yellow) >> {
+   + DateTime agreedDelivery
+   + DateTime deliveredAt
+   + Double goodsValue
+}
+org.accordproject.minilatedeliveryandpenalty.LateRequest --|> org.accordproject.runtime.Request
+class org.accordproject.minilatedeliveryandpenalty.LateResponse << (T,yellow) >> {
+   + Double penalty
+   + Boolean buyerMayTerminate
+}
+org.accordproject.minilatedeliveryandpenalty.LateResponse --|> org.accordproject.runtime.Response
+@enduml

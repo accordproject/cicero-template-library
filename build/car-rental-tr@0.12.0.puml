@@ -1,0 +1,35 @@
+@startuml
+class org.accordtr.carrental.PaymentRequest << (T,yellow) >> {
+}
+org.accordtr.carrental.PaymentRequest --|> org.accordproject.runtime.Request
+class org.accordtr.carrental.PayOut << (T,yellow) >> {
+   + MonetaryAmount amount
+}
+org.accordtr.carrental.PayOut --|> org.accordproject.runtime.Response
+class org.accordtr.carrental.CarRentalContract << (A,green) >> {
+   + String lessorName
+   + String lessorAddress
+   + String lessorPhone
+   + String lesseeName
+   + String lesseeAddress
+   + String lesseePhone
+   + String authorizedCourt
+   + String plateID
+   + String carBrand
+   + String model
+   + String modelYear
+   + String color
+   + String vechileID
+   + String startDate
+   + String endDate
+   + String deliveryStation
+   + PaymentClause paymentClause
+}
+org.accordtr.carrental.CarRentalContract --|> org.accordproject.contract.Contract
+class org.accordtr.carrental.PaymentClause << (A,green) >> {
+   + String amountText
+   + MonetaryAmount amount
+   + String paymentProcedure
+}
+org.accordtr.carrental.PaymentClause --|> org.accordproject.contract.Clause
+@enduml
