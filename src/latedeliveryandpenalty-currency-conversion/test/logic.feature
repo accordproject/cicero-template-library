@@ -87,9 +87,9 @@ All Equipment values are based on EUR and all penalty payments will be paid in U
         "doubleValue": 121.00000000000003,
         "currencyCode": "USD"
       },
-      "description": "\"resource:org.accordproject.contract.Party#Dan\" should pay penalty amount to \"resource:org.accordproject.contract.Party#Steve\"",
-      "promisor": "resource:org.accordproject.contract.Party#Dan",
-      "promisee": "resource:org.accordproject.contract.Party#Steve"
+      "description": "\"resource:org.accordproject.party.Party#Dan\" should pay penalty amount to \"resource:org.accordproject.party.Party#Steve\"",
+      "promisor": "resource:org.accordproject.party.Party#Dan",
+      "promisee": "resource:org.accordproject.party.Party#Steve"
     }
 ]
 """

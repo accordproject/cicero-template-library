@@ -7,7 +7,7 @@
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0-alpha.1"
+        "cicero": "^0.22.0"
     },
     "keywords": ["docusign", "purchase", "order", "po", "fail", "failure", "product", "delivery", "date", "late", "delayed", "discount", "price", "amount", "compensation", "credits", "issue"],
     "devDependencies": {

@@ -57,9 +57,9 @@ total value of the delayed goods. If the delay is more than
         "doubleValue": 84.00,
         "currencyCode": "USD"
       },
-      "description": "\"resource:org.accordproject.contract.Party#Steve%20Seller\" should pay penalty amount to \"resource:org.accordproject.contract.Party#Betty%20Buyer\"",
-      "promisor": "resource:org.accordproject.contract.Party#Steve%20Seller",
-      "promisee": "resource:org.accordproject.contract.Party#Betty%20Buyer"
+      "description": "\"resource:org.accordproject.party.Party#Steve%20Seller\" should pay penalty amount to \"resource:org.accordproject.party.Party#Betty%20Buyer\"",
+      "promisor": "resource:org.accordproject.party.Party#Steve%20Seller",
+      "promisee": "resource:org.accordproject.party.Party#Betty%20Buyer"
     }
 ]
 """
@@ -94,9 +94,9 @@ total value of the delayed goods. If the delay is more than
         "doubleValue": 104.00,
         "currencyCode": "USD"
       },
-      "description": "\"resource:org.accordproject.contract.Party#Steve%20Seller\" should pay penalty amount to \"resource:org.accordproject.contract.Party#Betty%20Buyer\"",
-      "promisor": "resource:org.accordproject.contract.Party#Steve%20Seller",
-      "promisee": "resource:org.accordproject.contract.Party#Betty%20Buyer"
+      "description": "\"resource:org.accordproject.party.Party#Steve%20Seller\" should pay penalty amount to \"resource:org.accordproject.party.Party#Betty%20Buyer\"",
+      "promisor": "resource:org.accordproject.party.Party#Steve%20Seller",
+      "promisee": "resource:org.accordproject.party.Party#Betty%20Buyer"
     }
 ]
 """

@@ -73,9 +73,9 @@ Late Delivery and Penalty. In case of delayed delivery of Goods, "Betty Buyer" s
         "doubleValue": 110.00000000000001,
         "currencyCode": "USD"
       },
-      "description": "\"resource:org.accordproject.contract.Party#Steve%20Seller\" should pay penalty amount to \"resource:org.accordproject.contract.Party#Betty%20Buyer\"",
-      "promisor": "resource:org.accordproject.contract.Party#Steve%20Seller",
-      "promisee": "resource:org.accordproject.contract.Party#Betty%20Buyer"
+      "description": "\"resource:org.accordproject.party.Party#Steve%20Seller\" should pay penalty amount to \"resource:org.accordproject.party.Party#Betty%20Buyer\"",
+      "promisor": "resource:org.accordproject.party.Party#Steve%20Seller",
+      "promisee": "resource:org.accordproject.party.Party#Betty%20Buyer"
     }
 ]
 """

@@ -91,7 +91,7 @@ Feature: Purchase Order Failure
             "doubleValue": 1000,
             "currencyCode": "USD"
           },
-          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
+          "description": "\"resource:org.accordproject.party.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
@@ -183,7 +183,7 @@ Feature: Purchase Order Failure
             "doubleValue": 1599.99,
             "currencyCode": "USD"
           },
-          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
+          "description": "\"resource:org.accordproject.party.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
@@ -275,7 +275,7 @@ Feature: Purchase Order Failure
             "doubleValue": 200,
             "currencyCode": "GBP"
           },
-          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
+          "description": "\"resource:org.accordproject.party.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
@@ -367,7 +367,7 @@ Feature: Purchase Order Failure
             "doubleValue": 100,
             "currencyCode": "USD"
           },
-          "description": "\"resource:org.accordproject.contract.Party#Buyer%20Corp\" should be paid a penalty"
+          "description": "\"resource:org.accordproject.party.Party#Buyer%20Corp\" should be paid a penalty"
         }
       ]
 """
