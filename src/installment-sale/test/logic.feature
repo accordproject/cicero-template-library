@@ -90,9 +90,9 @@ Feature: Installment Sale
             "doubleValue": 2500,
             "currencyCode": "EUR"
           },
-          "description": "\"resource:org.accordproject.contract.Party#Dan\" should pay installment to \"resource:org.accordproject.contract.Party#Ned\"",
-          "promisor": "resource:org.accordproject.contract.Party#Dan",
-          "promisee": "resource:org.accordproject.contract.Party#Ned"
+          "description": "\"resource:org.accordproject.party.Party#Dan\" should pay installment to \"resource:org.accordproject.party.Party#Ned\"",
+          "promisor": "resource:org.accordproject.party.Party#Dan",
+          "promisee": "resource:org.accordproject.party.Party#Ned"
         }
       ]
       """

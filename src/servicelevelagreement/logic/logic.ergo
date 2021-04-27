@@ -15,6 +15,7 @@
 namespace org.accordproject.servicelevelagreement
 
 import org.accordproject.contract.*
+import org.accordproject.party.*
 import org.accordproject.obligation.*
 import org.accordproject.money.MonetaryAmount
 

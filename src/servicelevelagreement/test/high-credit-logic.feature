@@ -97,9 +97,9 @@ Annex 1—Service levels
       "doubleValue": 1,
       "currencyCode": "GBP"
     },
-    "description": "payment owed by \"resource:org.accordproject.contract.Party#Service%20Provider\" to \"resource:org.accordproject.contract.Party#Service%20Consumer\" for delivery of service downtimes",
-    "promisor": "resource:org.accordproject.contract.Party#Service%20Provider",
-    "promisee": "resource:org.accordproject.contract.Party#Service%20Consumer"
+    "description": "payment owed by \"resource:org.accordproject.party.Party#Service%20Provider\" to \"resource:org.accordproject.party.Party#Service%20Consumer\" for delivery of service downtimes",
+    "promisor": "resource:org.accordproject.party.Party#Service%20Provider",
+    "promisee": "resource:org.accordproject.party.Party#Service%20Consumer"
   }
 ]
 """

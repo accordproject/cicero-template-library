@@ -77,9 +77,9 @@ Formula for Breach Penalty Calculation:
       "doubleValue": 300,
       "currencyCode": "USD"
     },
-    "description": "\"resource:org.accordproject.contract.Party#DAN\" should pay shipment amount to \"resource:org.accordproject.contract.Party#PETER\"",
-    "promisor": "resource:org.accordproject.contract.Party#DAN",
-    "promisee": "resource:org.accordproject.contract.Party#PETER"
+    "description": "\"resource:org.accordproject.party.Party#DAN\" should pay shipment amount to \"resource:org.accordproject.party.Party#PETER\"",
+    "promisor": "resource:org.accordproject.party.Party#DAN",
+    "promisee": "resource:org.accordproject.party.Party#PETER"
   }
 ]
 """

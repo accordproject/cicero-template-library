@@ -28,9 +28,9 @@ Feature: Full Payment Upon Demand
         "doubleValue": 3.14,
         "currencyCode": "EUR"
       },
-      "description": "\"resource:org.accordproject.contract.Party#Dan\" should pay contract amount to \"resource:org.accordproject.contract.Party#Jerome\"",
-      "promisor": "resource:org.accordproject.contract.Party#Dan",
-      "promisee": "resource:org.accordproject.contract.Party#Jerome"
+      "description": "\"resource:org.accordproject.party.Party#Dan\" should pay contract amount to \"resource:org.accordproject.party.Party#Jerome\"",
+      "promisor": "resource:org.accordproject.party.Party#Dan",
+      "promisee": "resource:org.accordproject.party.Party#Jerome"
     }
 ]
 """

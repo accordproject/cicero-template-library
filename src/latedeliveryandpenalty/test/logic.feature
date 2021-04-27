@@ -83,9 +83,9 @@ If the delay is more than 15 days, the Buyer is entitled to terminate this Contr
         "doubleValue": 110.00000000000001,
         "currencyCode": "USD"
       },
-      "description": "\"resource:org.accordproject.contract.Party#Dan\" should pay penalty amount to \"resource:org.accordproject.contract.Party#Steve\"",
-      "promisor": "resource:org.accordproject.contract.Party#Dan",
-      "promisee": "resource:org.accordproject.contract.Party#Steve"
+      "description": "\"resource:org.accordproject.party.Party#Dan\" should pay penalty amount to \"resource:org.accordproject.party.Party#Steve\"",
+      "promisor": "resource:org.accordproject.party.Party#Dan",
+      "promisee": "resource:org.accordproject.party.Party#Steve"
     }
 ]
 """
