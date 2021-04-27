@@ -1,0 +1,38 @@
+@startuml
+class org.accordproject.installmentsale.Installment << (T,yellow) >> {
+   + MonetaryAmount amount
+}
+org.accordproject.installmentsale.Installment --|> org.accordproject.runtime.Request
+class org.accordproject.installmentsale.ClosingPayment << (T,yellow) >> {
+   + MonetaryAmount amount
+}
+org.accordproject.installmentsale.ClosingPayment --|> org.accordproject.runtime.Request
+class org.accordproject.installmentsale.Balance << (T,yellow) >> {
+   + MonetaryAmount balance
+   + MonetaryAmount total_paid
+}
+org.accordproject.installmentsale.Balance --|> org.accordproject.runtime.Request
+class org.accordproject.installmentsale.ContractStatus << (E,grey) >> {
+   + WaitingForFirstDayOfNextMonth
+   + Fulfilled
+}
+org.accordproject.installmentsale.ContractStatus --|> concerto.Concept
+class org.accordproject.installmentsale.InstallmentSaleState << (A,green) >> {
+   + ContractStatus status
+   + MonetaryAmount balance_remaining
+   + Integer next_payment_month
+   + MonetaryAmount total_paid
+}
+org.accordproject.installmentsale.InstallmentSaleState --|> org.accordproject.runtime.State
+class org.accordproject.installmentsale.InstallmentSaleContract << (A,green) >> {
+   + Party BUYER
+   + Party SELLER
+   + MonetaryAmount INITIAL_DUE
+   + Double INTEREST_RATE
+   + MonetaryAmount TOTAL_DUE_BEFORE_CLOSING
+   + MonetaryAmount MIN_PAYMENT
+   + MonetaryAmount DUE_AT_CLOSING
+   + Integer FIRST_MONTH
+}
+org.accordproject.installmentsale.InstallmentSaleContract --|> org.accordproject.contract.Contract
+@enduml

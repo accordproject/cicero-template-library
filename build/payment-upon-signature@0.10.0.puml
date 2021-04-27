@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.payment.uponsignature.PaymentUponSignatureState << (A,green) >> {
+   + ContractLifecycleStatus status
+}
+org.accordproject.payment.uponsignature.PaymentUponSignatureState --|> org.accordproject.runtime.State
+class org.accordproject.payment.uponsignature.ContractLifecycleStatus << (E,grey) >> {
+   + INITIALIZED
+   + OBLIGATION_EMITTED
+   + COMPLETED
+}
+org.accordproject.payment.uponsignature.ContractLifecycleStatus --|> concerto.Concept
+class org.accordproject.payment.uponsignature.PaymentUponSignatureContract << (A,green) >> {
+   + Party buyer
+   + Party seller
+   + MonetaryAmount amount
+}
+org.accordproject.payment.uponsignature.PaymentUponSignatureContract --|> org.accordproject.contract.Contract
+@enduml

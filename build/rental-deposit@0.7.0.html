@@ -1,0 +1,635 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/rental-deposit@0.7.0.html" />
+    <meta property="og:title" content="rental-deposit@0.7.0" />
+    <meta property="og:description" content="This clause specifies how a rental deposit is refunded based on inspection." />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/bLDBJyCm3BxtL-G8OlGNJDF6Ta5Y20rkY8FRMbiWZKFYQ5J0VyTz3AtGYNAANx6_puzvOF0SIvFa1a9GvBSfv3dvmdbwnfnJZvR15EWeQ4xlq8BXIhqdIgaBTSzUswqgCEHUEzPaM_kQB4hYQb5IjAoWUPBFP6pwoykFcSh9vkYPqcKjE1uBqPD3NrtRuCGfaDHqgiuU9XKQG_jpDPiTq7VL7f-KQoIDOGp6N_aRj0FVXBCkCTtWQyJmF_Xyb7-3mP4DU9B7ZsvdO40QDfhAOAq_ERLn8qbj6ctLQai3iMEpc6mzekqDHVQnKYm3aOqviWYdmaY1GSfTdLOx3DThAhf4NML1pUIX9jgwsz0LnSoWAidopbHN4B36kuwo4SvWRzF1EQDpaF0RsFSySaWSkH-TWNsvXH9xY0v4lZ5nz3qutMTys-bCZxcQeUwUc9_S57iGOTa9oHnjKT__5m00" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="rental-deposit@0.7.0" />
+    <meta name="twitter:description" content="This clause specifies how a rental deposit is refunded based on inspection." />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bLDBJyCm3BxtL-G8OlGNJDF6Ta5Y20rkY8FRMbiWZKFYQ5J0VyTz3AtGYNAANx6_puzvOF0SIvFa1a9GvBSfv3dvmdbwnfnJZvR15EWeQ4xlq8BXIhqdIgaBTSzUswqgCEHUEzPaM_kQB4hYQb5IjAoWUPBFP6pwoykFcSh9vkYPqcKjE1uBqPD3NrtRuCGfaDHqgiuU9XKQG_jpDPiTq7VL7f-KQoIDOGp6N_aRj0FVXBCkCTtWQyJmF_Xyb7-3mP4DU9B7ZsvdO40QDfhAOAq_ERLn8qbj6ctLQai3iMEpc6mzekqDHVQnKYm3aOqviWYdmaY1GSfTdLOx3DThAhf4NML1pUIX9jgwsz0LnSoWAidopbHN4B36kuwo4SvWRzF1EQDpaF0RsFSySaWSkH-TWNsvXH9xY0v4lZ5nz3qutMTys-bCZxcQeUwUc9_S57iGOTa9oHnjKT__5m00" />
+    <meta name="twitter:image:alt" content="UML diagram of rental-deposit@0.7.0 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/rental-deposit@0.7.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Rental Deposit
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">rental-deposit@0.7.0</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^0.22.0</span>
+                <span class="tag is-light">977b5f14ef6573787bda5c8fdb6f028c67e7de419b77fd3b25c6a6032c14a4f4</span>
+            </div>
+            <p class="subtitle">
+                This clause specifies how a rental deposit is refunded based on inspection.
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="rental-deposit@0.7.0.html" class="dropdown-item is-active">
+                    rental-deposit@0.7.0
+                </a>
+              
+                <a href="rental-deposit@0.6.0.html" class="dropdown-item ">
+                    rental-deposit@0.6.0
+                </a>
+              
+                <a href="rental-deposit@0.5.1.html" class="dropdown-item ">
+                    rental-deposit@0.5.1
+                </a>
+              
+                <a href="rental-deposit@0.5.0.html" class="dropdown-item ">
+                    rental-deposit@0.5.0
+                </a>
+              
+                <a href="rental-deposit@0.4.1.html" class="dropdown-item ">
+                    rental-deposit@0.4.1
+                </a>
+              
+                <a href="rental-deposit@0.4.0.html" class="dropdown-item ">
+                    rental-deposit@0.4.0
+                </a>
+              
+                <a href="rental-deposit@0.3.1.html" class="dropdown-item ">
+                    rental-deposit@0.3.1
+                </a>
+              
+                <a href="rental-deposit@0.3.0.html" class="dropdown-item ">
+                    rental-deposit@0.3.0
+                </a>
+              
+                <a href="rental-deposit@0.2.0.html" class="dropdown-item ">
+                    rental-deposit@0.2.0
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/rental-deposit@0.7.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/rental-deposit@0.7.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Frental-deposit%400.7.0%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="rentaldeposit">Rental Deposit</h1>
+<p>This clause is a monetary deposit for a rental property. When the property is inspected the landlord can
+deduct damages and a payment obligation is emitted to refund the remaining deposit.</p>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant "Michael" shall deposit with the Landlord "Parsa" the sum of 3000 USD payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents 0.98 times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within 30 days of Landlord’s demand, the Security Deposit to an amount equivalent to 0.98 times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.</p>
+<p>B. Interest on Monetary Deposit. Landlord will hold this security deposit for the period Tenant occupies the Premises in accordance with the "New Jersey", as amended. Landlord shall put the deposit in an interest bearing account in "Bank of America". Tenant acknowledges that this Lease constitutes notice under "NJSD" of where the Landlord has deposited the security.</p>
+<p>C. Disposition of Monetary Deposit. Within 3 weeks after the end of the Term, Landlord will return Tenant's monetary deposit to Tenant, less any allowed deductions to Tenant by certified mail to the address provided to Landlord by Tenant. Any deductions to the Security Deposit will be itemized in a statement in accordance with the following protocol:</p>
+<p>i. Landlord will inspect the Premises for damage and any damage beyond reasonable wear and tear will be charged to Tenant in accordance with the Schedule of Maintenance Costs attached as "Schedule A". Landlord will use reasonable efforts to permit Tenant to participate in the inspection upon Tenant’s request.</p>
+<p>ii. Landlord will inspect the Premises for cleanliness and if the Premises is not restored to the same condition as it was received by Tenant at the inception of this Agreement, cleaning and restoration costs will be charged to Tenant in accordance with the Schedule of Maintenance Costs.</p>
+<p>iii. Landlord shall accept the return of (i) keys (ii) access devices and (iii) amenity identification cards and shall charge Tenant, in accordance with the Schedule of Maintenance Costs, for any unreturned (i) keys (ii) access devices and (iii) amenity identification cards.</p>
+<p>iv. Any and all outstanding items due and unpaid to Landlord shall be collected.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant "Michael" shall deposit with the Landlord "Parsa" the sum of 3000 USD payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents 0.98 times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within 30 days of Landlord’s demand, the Security Deposit to an amount equivalent to 0.98 times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.
+
+B. Interest on Monetary Deposit. Landlord will hold this security deposit for the period Tenant occupies the Premises in accordance with the "New Jersey", as amended. Landlord shall put the deposit in an interest bearing account in "Bank of America". Tenant acknowledges that this Lease constitutes notice under "NJSD" of where the Landlord has deposited the security.
+
+C. Disposition of Monetary Deposit. Within 3 weeks after the end of the Term, Landlord will return Tenant's monetary deposit to Tenant, less any allowed deductions to Tenant by certified mail to the address provided to Landlord by Tenant. Any deductions to the Security Deposit will be itemized in a statement in accordance with the following protocol:
+
+i. Landlord will inspect the Premises for damage and any damage beyond reasonable wear and tear will be charged to Tenant in accordance with the Schedule of Maintenance Costs attached as "Schedule A". Landlord will use reasonable efforts to permit Tenant to participate in the inspection upon Tenant’s request.
+
+ii. Landlord will inspect the Premises for cleanliness and if the Premises is not restored to the same condition as it was received by Tenant at the inception of this Agreement, cleaning and restoration costs will be charged to Tenant in accordance with the Schedule of Maintenance Costs.
+
+iii. Landlord shall accept the return of (i) keys (ii) access devices and (iii) amenity identification cards and shall charge Tenant, in accordance with the Schedule of Maintenance Costs, for any unreturned (i) keys (ii) access devices and (iii) amenity identification cards.
+
+iv. Any and all outstanding items due and unpaid to Landlord shall be collected.</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">SECURITY. A. Monetary Deposit. Upon the execution of this Agreement, the Tenant {{tenant}} shall deposit with the Landlord {{landlord}} the sum of {{depositAmount}} payable through Landlord’s direct on-line payment system located at , receipt of which is hereby acknowledged by Landlord, as security and assurance that Tenant performs all of Tenant’s obligations under this Lease during the term hereof. This sum represents {{monthlyBaseRentMultiple}} times the monthly Base Rent and shall be adjusted accordingly with Base Rent increases. The Landlord may deduct from the Security Deposit any costs resulting from Tenant’s failure to comply with any of the terms of this Agreement and if Landlord makes any such deductions then, upon demand of Tenant, Tenant shall restore within {{tenantDepositRestorationPeriod}} of Landlord’s demand, the Security Deposit to an amount equivalent to {{monthlyBaseRentMultiple}} times the monthly Base Rent. Any deficit to the Security Deposit shall be deemed Additional Rent.
+
+B. Interest on Monetary Deposit. Landlord will hold this security deposit for the period Tenant occupies the Premises in accordance with the {{applicableLaw}}, as amended. Landlord shall put the deposit in an interest bearing account in {{bankName}}. Tenant acknowledges that this Lease constitutes notice under {{statute}} of where the Landlord has deposited the security.
+
+C. Disposition of Monetary Deposit. Within {{landlordDepositReturnPeriod}} after the end of the Term, Landlord will return Tenant's monetary deposit to Tenant, less any allowed deductions to Tenant by certified mail to the address provided to Landlord by Tenant. Any deductions to the Security Deposit will be itemized in a statement in accordance with the following protocol:
+
+i. Landlord will inspect the Premises for damage and any damage beyond reasonable wear and tear will be charged to Tenant in accordance with the Schedule of Maintenance Costs attached as {{exhibit}}. Landlord will use reasonable efforts to permit Tenant to participate in the inspection upon Tenant’s request.
+
+ii. Landlord will inspect the Premises for cleanliness and if the Premises is not restored to the same condition as it was received by Tenant at the inception of this Agreement, cleaning and restoration costs will be charged to Tenant in accordance with the Schedule of Maintenance Costs.
+
+iii. Landlord shall accept the return of (i) keys (ii) access devices and (iii) amenity identification cards and shall charge Tenant, in accordance with the Schedule of Maintenance Costs, for any unreturned (i) keys (ii) access devices and (iii) amenity identification cards.
+
+iv. Any and all outstanding items due and unpaid to Landlord shall be collected.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.rentaldeposit.RentalDepositClause",
+    "tenant": "resource:org.accordproject.party.Party#Michael",
+    "landlord": "resource:org.accordproject.party.Party#Parsa",
+    "depositAmount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 3000,
+        "currencyCode": "USD"
+    },
+    "tenantDepositRestorationPeriod": {
+        "$class": "org.accordproject.time.Period",
+        "amount": 30,
+        "unit": "days"
+    },
+    "monthlyBaseRentMultiple": 0.98,
+    "applicableLaw": "New Jersey",
+    "statute": "NJSD",
+    "bankName": "Bank of America",
+    "landlordDepositReturnPeriod": {
+        "$class": "org.accordproject.time.Period",
+        "amount": 3,
+        "unit": "weeks"
+    },
+    "exhibit": "Schedule A",
+    "contractId": "2fb28d9f-0753-4a77-a794-0347d8913871",
+    "$identifier": "2fb28d9f-0753-4a77-a794-0347d8913871"
+}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/bLDBJyCm3BxtL-G8OlGNJDF6Ta5Y20rkY8FRMbiWZKFYQ5J0VyTz3AtGYNAANx6_puzvOF0SIvFa1a9GvBSfv3dvmdbwnfnJZvR15EWeQ4xlq8BXIhqdIgaBTSzUswqgCEHUEzPaM_kQB4hYQb5IjAoWUPBFP6pwoykFcSh9vkYPqcKjE1uBqPD3NrtRuCGfaDHqgiuU9XKQG_jpDPiTq7VL7f-KQoIDOGp6N_aRj0FVXBCkCTtWQyJmF_Xyb7-3mP4DU9B7ZsvdO40QDfhAOAq_ERLn8qbj6ctLQai3iMEpc6mzekqDHVQnKYm3aOqviWYdmaY1GSfTdLOx3DThAhf4NML1pUIX9jgwsz0LnSoWAidopbHN4B36kuwo4SvWRzF1EQDpaF0RsFSySaWSkH-TWNsvXH9xY0v4lZ5nz3qutMTys-bCZxcQeUwUc9_S57iGOTa9oHnjKT__5m00"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.rentaldeposit
+
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.time.Period from https://models.accordproject.org/time@0.2.0.cto
+
+concept Penalty {
+  o String description
+  o MonetaryAmount amount
+}
+
+/**
+ * This is a transaction that represents the result of inspecting the property
+ */
+transaction ProperyInspection extends Request {
+  o Penalty[] penalties
+}
+
+/**
+ * The clause response
+ */
+transaction PropertyInspectionResponse extends Response {
+    o MonetaryAmount balance
+}
+
+/**
+ * The template model
+ */
+asset RentalDepositClause extends Contract {
+  --> Party tenant
+  --> Party landlord
+  o MonetaryAmount depositAmount
+  o Period tenantDepositRestorationPeriod
+  o Double monthlyBaseRentMultiple
+  o String applicableLaw
+  o String statute
+  o String bankName
+  o Period landlordDepositReturnPeriod
+  o String exhibit
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract.html">org.accordproject.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/party.html">org.accordproject.party.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime.html">org.accordproject.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/obligation.html">org.accordproject.obligation.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money@0.2.0.html">org.accordproject.money.MonetaryAmount</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/time@0.2.0.html">org.accordproject.time.Period</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/rental-deposit/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime.State",
+    "$identifier": "8ebe3c20-a77b-11eb-9770-7ddd576a12c2"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.rentaldeposit.ProperyInspection</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.rentaldeposit.ProperyInspection",
+    "penalties": [
+        {
+            "$class": "org.accordproject.rentaldeposit.Penalty",
+            "description": "Ipsum anim.",
+            "amount": {
+                "$class": "org.accordproject.money.MonetaryAmount",
+                "doubleValue": 8.3,
+                "currencyCode": "BTN"
+            }
+        }
+    ],
+    "$timestamp": "2021-04-27T13:11:08.254-04:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.rentaldeposit.PropertyInspectionResponse</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.rentaldeposit.PropertyInspectionResponse",
+    "balance": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 138.133,
+        "currencyCode": "KRW"
+    },
+    "$timestamp": "2021-04-27T13:11:08.258-04:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.obligation.PaymentObligation</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.obligation.PaymentObligation",
+    "amount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 59.668,
+        "currencyCode": "SYP"
+    },
+    "description": "Consectetur anim magna dolore.",
+    "$identifier": "8ebe3c21-a77b-11eb-9770-7ddd576a12c2",
+    "contract": "resource:org.accordproject.rentaldeposit.RentalDepositClause#4380",
+    "promisor": "resource:org.accordproject.party.Party#8165",
+    "promisee": "resource:org.accordproject.party.Party#6515",
+    "deadline": "2021-04-27T13:11:08.258-04:00",
+    "$timestamp": "2021-04-27T13:11:08.258-04:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/rental-deposit">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

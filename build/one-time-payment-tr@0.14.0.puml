@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.onetimepayment.OneTimePaymentState << (A,green) >> {
+   + ContractLifecycleStatus status
+}
+org.accordproject.onetimepayment.OneTimePaymentState --|> org.accordproject.runtime.State
+class org.accordproject.onetimepayment.ContractLifecycleStatus << (E,grey) >> {
+   + UNINITIALIZED
+   + OBLIGATION_EMITTED
+   + COMPLETED
+}
+org.accordproject.onetimepayment.ContractLifecycleStatus --|> concerto.Concept
+class org.accordproject.onetimepayment.OneTimePaymentContract << (A,green) >> {
+   + Party buyer
+   + Party seller
+   + MonetaryAmount totalPurchasePrice
+}
+org.accordproject.onetimepayment.OneTimePaymentContract --|> org.accordproject.contract.Contract
+@enduml
