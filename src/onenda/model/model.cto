@@ -1,0 +1,29 @@
+namespace org.onenda
+
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+
+participant Discloser {
+  o String entityDetails
+  o String email
+  o String name
+  o String title
+}
+
+participant Reciever {
+  o String entityDetails
+  o String email
+  o String name
+  o String title
+}
+
+/**
+ * The template model
+ */
+asset OneNDA extends Clause {
+  o Discloser party1
+  o Reciever party2
+  o String purpose
+  o String confidentialityPeriod
+  o String governingLaw
+  o String jurisdiction
+}
