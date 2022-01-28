@@ -28,11 +28,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: NPM Install
+        if: github.ref == 'refs/heads/master'
         run: npm install
 
       - name: NPM Build
-        run: npm run build
         if: github.ref == 'refs/heads/master'
+        run: npm run build
 
       - name: Set S3 
         if: github.ref == 'refs/heads/master'
