@@ -1,0 +1,22 @@
+namespace org.accordproject.roommate
+
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+
+/**
+ * The template model
+ */
+asset RoommageAgreement extends Contract {
+  o String holder
+  o String roommate
+  o String landlord
+  o String address
+  o String spaceOccupied
+  o Double rentAmount
+  o Double depositAmount
+  o DateTime startDate
+  o DateTime endDate
+  o String holderSignature
+  o DateTime holderDateSigned
+  o String roommateSignature
+  o DateTime roommateDateSigned
+}

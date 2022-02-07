@@ -1,0 +1,19 @@
+{
+    "name": "roommate",
+    "displayName": "Roommate Agreement",
+    "version": "0.1.0",
+    "description": "This contract is a simple roommate agreement.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "contract",
+        "cicero": "^0.22.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["rent", "deposit", "housing", "apartment", "roommate", "lease"]
+}
