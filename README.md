@@ -20,24 +20,25 @@
   </a>
 </p>
 
-Repository for Smart Legal Contract Templates that conform that to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
+Repository for Smart Legal Contract Templates that conform that to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome].
 
 These templates can be parsed and executed by the [Cicero][cicero] engine.
 
 ## Library
 
-The contents of this repository is automatically tested, built and published to the 
+The contents of this repository is automatically tested, built and published to the
 Accord Project Template Library, hosted at https://templates.accordproject.org.
 
 ## Contributing
 
-Can't find something? Then why not make a new template yourself? 
+Can't find something? Then why not make a new template yourself?
 
 [Follow the instructions in the docs.][ctlguide]
 
 ## Testing
 
 To install and test all the templates locally, clone this repository and use lerna:
+
 ```
 npm install -g lerna@^3.15.0
 lerna bootstrap
@@ -47,11 +48,13 @@ lerna run test
 ## Building Static Pages
 
 To generate the static HTML pages for each template, run:
+
 ```
 npm run build
 ```
 
 By default, old pages will include links to newer versions of templates, to skip regeneration of old pages with the latest set of links, run:
+
 ```
 SKIP_DROPDOWNS=true npm run build
 ```
@@ -108,17 +111,14 @@ Copyright 2018-2022 Clause, Inc. All trademarks are the property of their respec
 
 [linuxfound]: https://www.linuxfoundation.org
 [charter]: https://github.com/accordproject/governance/blob/master/accord-project-technical-charter.md
-[apmain]: https://accordproject.org/ 
+[apmain]: https://accordproject.org/
 [apblog]: https://medium.com/@accordhq
 [apdoc]: https://docs.accordproject.org/
 [apslack]: https://accord-project-slack-signup.herokuapp.com
-
 [contributing]: https://github.com/accordproject/cicero-template-library/blob/master/CONTRIBUTING.md
 [developers]: https://github.com/accordproject/cicero-template-library/blob/master/DEVELOPERS.md
-
 [apache]: https://github.com/accordproject/cicero-template-library/blob/master/LICENSE
 [creativecommons]: http://creativecommons.org/licenses/by/4.0/
-
 [techspec]: https://docs.accordproject.org/docs/accordproject-template.html
 [aphome]: https://accordproject.org
 [cicero]: https://github.com/accordproject/cicero
