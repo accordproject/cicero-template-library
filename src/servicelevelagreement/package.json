@@ -1,13 +1,13 @@
 {
     "name": "servicelevelagreement",
     "displayName": "Service Level Agreement",
-    "version": "0.16.0",
+    "version": "0.17.0",
     "description": "A service level agreement that gives invoice credit based on service availability.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.23.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

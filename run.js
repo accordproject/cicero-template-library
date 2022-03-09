@@ -14,21 +14,20 @@
 
 'use strict';
 
-const CodeGen = require('@accordproject/concerto-tools').CodeGen;
-const FileWriter = require('@accordproject/concerto-tools').FileWriter;
-
-const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
-const CiceroMarkTransformer = require('@accordproject/markdown-cicero').CiceroMarkTransformer;
-
-const Template = require('@accordproject/cicero-core').Template;
-const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
-const uuidv1 = require('uuid/v1');
+const uuid = require('uuid');
 const semver = require('semver');
+
+const FileWriter = require('@accordproject/concerto-util').FileWriter;
+const CodeGen = require('@accordproject/concerto-tools').CodeGen;
+const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
+const CiceroMarkTransformer = require('@accordproject/markdown-cicero').CiceroMarkTransformer;
+const Template = require('@accordproject/cicero-core').Template;
+const Clause = require('@accordproject/cicero-core').Clause;
 
 const {
     promisify
@@ -365,7 +364,7 @@ function sampleInstance(template, type) {
 
     if (!classDecl.isAbstract()) {
         if (classDecl.getIdentifierFieldName()) {
-            result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+            result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuid.v1(), sampleGenerationOptions);
         } else {
             result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), null, sampleGenerationOptions);
         }

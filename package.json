@@ -25,29 +25,29 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.22.2",
-    "@accordproject/cicero-engine": "0.22.2",
-    "@accordproject/cicero-test": "0.22.2",
-    "@accordproject/concerto-core": "1.2.1",
-    "@accordproject/concerto-tools": "1.2.1",
-    "@accordproject/markdown-cicero": "0.14.1",
-    "@accordproject/markdown-html": "0.14.1",
+    "@accordproject/cicero-core": "0.23.0-alpha.1",
+    "@accordproject/cicero-engine": "0.23.0-alpha.1",
+    "@accordproject/cicero-test": "0.23.0-alpha.1",
+    "@accordproject/concerto-tools": "2.0.0-alpha.2",
+    "@accordproject/concerto-util": "2.0.0-alpha.2",
+    "@accordproject/markdown-cicero": "0.15.0-alpha.2",
+    "@accordproject/markdown-html": "0.15.0-alpha.2",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
-    "chai": "4.2.0",
+    "chai": "4.3.6",
     "chai-as-promised": "7.1.1",
     "chai-things": "0.2.0",
     "fs-extra": "^6.0.1",
     "jquery": "^3.5.1",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.7.0",
     "lodash": "^4.17.19",
-    "mocha": "5.2.0",
+    "mocha": "8.3.2",
     "nunjucks": "^3.2.1",
     "plantuml-encoder": "^1.2.5",
     "rimraf": "^2.6.2",
-    "semver": "5.6.0",
+    "semver": "7.3.5",
     "showdown": "^1.9.1",
-    "uuid": "^3.3.2"
+    "uuid": "8.3.2"
   },
   "name": "@accordproject/cicero-template-library",
   "description": "This repository host all Accord Project Cicero templates.",
@@ -56,7 +56,7 @@
   "devDependencies": {
     "lerna": "^4.0.0",
     "mkdirp": "^0.5.1",
-    "nyc": "^14.1.1"
+    "nyc": "15.1.0"
   },
   "repository": {
     "type": "git",

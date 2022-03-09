@@ -1,13 +1,13 @@
 {
     "name": "latedeliveryandpenalty-currency-conversion",
     "displayName": "Late Delivery and Penalty with currency conversion",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "A sample Late Delivery And Penalty clause with currency conversion.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.23.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
