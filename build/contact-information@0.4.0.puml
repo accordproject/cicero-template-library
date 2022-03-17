@@ -1,0 +1,16 @@
+@startuml
+class org.accordproject.contactinformation.CommunicationChannel << (E,grey) >> {
+   + EMAIL
+   + PHONE
+}
+org.accordproject.contactinformation.CommunicationChannel --|> concerto.Concept
+class org.accordproject.contactinformation.ContactInformation << (A,green) >> {
+   + String name
+   + String title
+   + String email
+   + String phone
+   + TimeZone timezone
+   + CommunicationChannel communicationChannel
+}
+org.accordproject.contactinformation.ContactInformation --|> org.accordproject.contract.Clause
+@enduml

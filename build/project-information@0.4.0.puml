@@ -1,0 +1,10 @@
+@startuml
+class org.accordproject.projectinformation.ProjectInformation << (A,green) >> {
+   + String name
+   + DateTime deadline
+   + MonetaryAmount budget
+   + String description
+   + String other
+}
+org.accordproject.projectinformation.ProjectInformation --|> org.accordproject.contract.Clause
+@enduml

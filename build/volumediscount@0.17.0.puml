@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.volumediscount.VolumeDiscountContract << (A,green) >> {
+   + Double firstVolume
+   + Double secondVolume
+   + Double firstRate
+   + Double secondRate
+   + Double thirdRate
+}
+org.accordproject.volumediscount.VolumeDiscountContract --|> org.accordproject.contract.Contract
+class org.accordproject.volumediscount.VolumeDiscountRequest << (T,yellow) >> {
+   + Double netAnnualChargeVolume
+}
+org.accordproject.volumediscount.VolumeDiscountRequest --|> concerto.Transaction
+class org.accordproject.volumediscount.VolumeDiscountResponse << (T,yellow) >> {
+   + Double discountRate
+}
+org.accordproject.volumediscount.VolumeDiscountResponse --|> concerto.Transaction
+@enduml

@@ -1,0 +1,98 @@
+@startuml
+class org.accordproject.billoflading.PackageType << (E,grey) >> {
+   + BAG
+   + BALE
+   + BARREL
+   + BASKET
+   + BATTERY_CORROSIVE_WET
+   + BIN
+   + BOX
+   + BUNCH
+   + BUNDLE
+   + CABINET
+   + CAN
+   + CARBOY
+   + CARRIER
+   + CARTON
+   + CASE
+   + CASK
+   + CONTAINER
+   + CRATE
+   + CYLINDER
+   + DRUM
+   + LOOSE
+   + OTHER
+   + PACKAGE
+   + PAIL
+   + PALLET
+   + PIECES
+   + PIPE_LINE
+   + RACK
+   + REEL
+   + ROLL
+   + SKID
+   + SPOOL
+   + TANK
+   + TUBE
+   + UNIT
+   + VAN_PACK
+   + WRAPPED
+}
+org.accordproject.billoflading.PackageType --|> concerto.Concept
+class org.accordproject.billoflading.FreightClass << (E,grey) >> {
+   + CLASS_50
+   + CLASS_55
+   + CLASS_60
+   + CLASS_65
+   + CLASS_70
+   + CLASS_775
+   + CLASS_85
+   + CLASS_925
+   + CLASS_100
+   + CLASS_110
+   + CLASS_125
+   + CLASS_150
+   + CLASS_175
+   + CLASS_200
+   + CLASS_250
+   + CLASS_300
+   + CLASS_400
+   + CLASS_500
+}
+org.accordproject.billoflading.FreightClass --|> concerto.Concept
+class org.accordproject.billoflading.Hazardous << (E,grey) >> {
+   + YES
+   + NO
+}
+org.accordproject.billoflading.Hazardous --|> concerto.Concept
+class org.accordproject.billoflading.Commodity {
+   + Integer quantity
+   + UnitOfMass unitOfMass
+   + PackageType packageType
+   + String description
+   + String nmfcCode
+   + FreightClass freightClass
+   + Hazardous hazmat
+}
+org.accordproject.billoflading.Commodity --|> concerto.Concept
+class org.accordproject.billoflading.BillOfLadingClause << (A,green) >> {
+   + String accountName
+   + String scac
+   + String bolNumber
+   + String bookingNumber
+   + String exportReferences
+   + String onwardInstructions
+   + Organization shipper
+   + Organization consignee
+   + Organization notifyParty
+   + String vessel
+   + String voyageNumber
+   + String portOfLoading
+   + String portOfDischarge
+   + String placeOfReceipt
+   + String placeOfDelivery
+   + Commodity[] commodities
+   + MonetaryAmount declaredValue
+}
+org.accordproject.billoflading.BillOfLadingClause --|> org.accordproject.contract.Clause
+@enduml

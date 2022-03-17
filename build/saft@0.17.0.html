@@ -1,0 +1,992 @@
+<!DOCTYPE html><html><head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
+
+        
+    <!---— facebook open graph tags ---->
+    <meta property="og:url" content="https://templates.accordproject.org/saft@0.17.0.html">
+    <meta property="og:title" content="saft@0.17.0">
+    <meta property="og:description" content="The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.">
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/hPJ1Rjim38RlVWeTLwpr4nH1ssG32dH0aFe5L8bpjTYaHr7fZBRlNZgnbxYmWnrsi66H8ldnf-IRA9ObrLNcAXkZ8IvpwnonRvX-WPCysf-IFzY4xjbSNvilnMKBLKKl5sQnCA-PCUQhML5wgi307_TiiOID5SZUi_EvhgxU5XFbEA646l8D_4uGvJnM0Lm7r6gpP3y8GJjiRslIn8QXjW43bjyJ-ZYvHKXiTOyxBGv-lejZwV_HoDgsbEHVkn3Q0Xw-3_v7OUsfjtlF4ECyULzhZ-q87R1GNh35Q9q4mlEaZ_fQ4WhhvZtlxMN907YAUuepiZYg6uljmNQNOa0b_QOwIJluYhQ18QPJDtRlFe2e0el6re1U7rapxKBiaATKQXBhSOnmAjGoCGEwTaaUZEiNaz6wqFGEm3-4ElJXAsKfTAZ6_uKwci3wIXjQ7Ls7M-53T5tAxbQiWPs2sn96kcYn5-Bj9wt2MBpXTiKfIJVGwDIxr19su-I33ZooUeYEGxCV-EnH6GrxvfoxtfyF6xCR7K_tH_a0">
+
+    <!---— twitter card tags additive with the og: tags ---->
+    <meta name="twitter:title" content="saft@0.17.0">
+    <meta name="twitter:description" content="The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.">
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hPJ1Rjim38RlVWeTLwpr4nH1ssG32dH0aFe5L8bpjTYaHr7fZBRlNZgnbxYmWnrsi66H8ldnf-IRA9ObrLNcAXkZ8IvpwnonRvX-WPCysf-IFzY4xjbSNvilnMKBLKKl5sQnCA-PCUQhML5wgi307_TiiOID5SZUi_EvhgxU5XFbEA646l8D_4uGvJnM0Lm7r6gpP3y8GJjiRslIn8QXjW43bjyJ-ZYvHKXiTOyxBGv-lejZwV_HoDgsbEHVkn3Q0Xw-3_v7OUsfjtlF4ECyULzhZ-q87R1GNh35Q9q4mlEaZ_fQ4WhhvZtlxMN907YAUuepiZYg6uljmNQNOa0b_QOwIJluYhQ18QPJDtRlFe2e0el6re1U7rapxKBiaATKQXBhSOnmAjGoCGEwTaaUZEiNaz6wqFGEm3-4ElJXAsKfTAZ6_uKwci3wIXjQ7Ls7M-53T5tAxbQiWPs2sn96kcYn5-Bj9wt2MBpXTiKfIJVGwDIxr19su-I33ZooUeYEGxCV-EnH6GrxvfoxtfyF6xCR7K_tH_a0">
+    <meta name="twitter:image:alt" content="UML diagram of saft@0.17.0 namespace.">
+    <meta name="twitter:url" content="https://templates.accordproject.org/saft@0.17.0.html">
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      
+    </nav>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                SAFT
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=">   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">saft@0.17.0</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^0.23.0</span>
+                <span class="tag is-light">f23a39b98b818092dcb466b90f751ee01fcb900eb8f622bafd3e11df97d20dca</span>
+            </div>
+            <p class="subtitle">
+                The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.
+            </p>
+
+            <p>
+                </p><div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+  <a href="saft@0.1.1.html" class="dropdown-item ">
+      saft@0.1.1
+  </a>
+
+  <a href="saft@0.2.0.html" class="dropdown-item ">
+      saft@0.2.0
+  </a>
+
+  <a href="saft@0.3.0.html" class="dropdown-item ">
+      saft@0.3.0
+  </a>
+
+  <a href="saft@0.4.0.html" class="dropdown-item ">
+      saft@0.4.0
+  </a>
+
+  <a href="saft@0.5.0.html" class="dropdown-item ">
+      saft@0.5.0
+  </a>
+
+  <a href="saft@0.6.0.html" class="dropdown-item ">
+      saft@0.6.0
+  </a>
+
+  <a href="saft@0.7.0.html" class="dropdown-item ">
+      saft@0.7.0
+  </a>
+
+  <a href="saft@0.8.0.html" class="dropdown-item ">
+      saft@0.8.0
+  </a>
+
+  <a href="saft@0.9.0.html" class="dropdown-item ">
+      saft@0.9.0
+  </a>
+
+  <a href="saft@0.9.1.html" class="dropdown-item ">
+      saft@0.9.1
+  </a>
+
+  <a href="saft@0.10.0.html" class="dropdown-item ">
+      saft@0.10.0
+  </a>
+
+  <a href="saft@0.11.0.html" class="dropdown-item ">
+      saft@0.11.0
+  </a>
+
+  <a href="saft@0.12.0.html" class="dropdown-item ">
+      saft@0.12.0
+  </a>
+
+  <a href="saft@0.12.1.html" class="dropdown-item ">
+      saft@0.12.1
+  </a>
+
+  <a href="saft@0.13.0.html" class="dropdown-item ">
+      saft@0.13.0
+  </a>
+
+  <a href="saft@0.13.1.html" class="dropdown-item ">
+      saft@0.13.1
+  </a>
+
+  <a href="saft@0.14.0.html" class="dropdown-item ">
+      saft@0.14.0
+  </a>
+
+  <a href="saft@0.14.1.html" class="dropdown-item ">
+      saft@0.14.1
+  </a>
+
+  <a href="saft@0.14.2.html" class="dropdown-item ">
+      saft@0.14.2
+  </a>
+
+  <a href="saft@0.15.0.html" class="dropdown-item ">
+      saft@0.15.0
+  </a>
+
+  <a href="saft@0.16.0.html" class="dropdown-item ">
+      saft@0.16.0
+  </a>
+
+  <a href="saft@0.17.0.html" class="dropdown-item is-active">
+      saft@0.17.0
+  </a>
+
+</div>
+            </div>
+          </div>
+          <a href="./archives/saft@0.17.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/saft@0.17.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Fsaft%400.17.0%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        <p></p>
+
+        <div class="content">
+          <p>
+          </p><h1 id="saftsimpleagreementforfuturetokens">SAFT (Simple Agreement for Future Tokens)</h1>
+<p>The SAFT contract is a futures contract where a person invests in a company in exchange for receiving utility tokens that may be used when a product launches.</p>
+          <p></p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>NOTICE TO RESIDENTS OF THE UNITED STATES</p>
+<p>THE OFFER AND SALE OF THIS SECURITY INSTRUMENT HAS NOT BEEN REGISTERED UNDER THE U.S. SECURITIES ACT OF 1933, AS AMENDED (THE “SECURITIES ACT”), OR UNDER THE SECURITIES LAWS OF CERTAIN STATES.  THIS SECURITY MAY NOT BE OFFERED, SOLD OR OTHERWISE TRANSFERRED, PLEDGED OR HYPOTHECATED EXCEPT AS PERMITTED UNDER THE ACT AND APPLICABLE STATE SECURITIES LAWS PURSUANT TO AN EFFECTIVE REGISTRATION STATEMENT OR AN EXEMPTION THEREFROM.</p>
+<p>NOTICE TO RESIDENTS OF CANADA</p>
+<p>UNLESS PERMITTED UNDER SECURITIES LEGISLATION, THE HOLDER OF THIS SECURITY MUST NOT TRADE THE SECURITY BEFORE THE DATE THAT THE ISSUER BECOMES A REPORTING ISSUER IN ANY PROVINCE OR TERRITORY.</p>
+<p>NOTICE TO RESIDENTS OF CHINA</p>
+<p>THE RIGHTS ARE NOT BEING OFFERED OR SOLD AND MAY NOT BE OFFERED OR SOLD, DIRECTLY OR INDIRECTLY, WITHIN THE PEOPLE’S REPUBLIC OF CHINA (FOR SUCH PURPOSES, NOT INCLUDING THE HONG KONG AND MACAU SPECIAL ADMINISTRATIVE REGIONS OR TAIWAN), EXCEPT AS PERMITTED BY THE SECURITIES AND OTHER LAWS AND REGULATIONS OF THE PEOPLE’S REPUBLIC OF CHINA</p>
+<p>NOTICE TO RESIDENTS OF THE UNITED KINGDOM</p>
+<p>IN THE UNITED KINGDOM THIS DOCUMENT IS BEING DISTRIBUTED ONLY TO, AND IS DIRECTED ONLY AT (AND ANY INVESTMENT ACTIVITY TO WHICH IT RELATES WILL BE ENGAGED ONLY WITH): (i) INVESTMENT PROFESSIONALS (WITHIN THE MEANING OF ARTICLE 19(5) OF THE FINANCIAL SERVICES AND MARKETS ACT 2000 (FINANCIAL PROMOTION) ORDER 2005 AS AMENDED (THE ‘‘FPO’’)); (ii) PERSONS OR ENTITIES OF A KIND DESCRIBED IN ARTICLE 49 OF THE FPO; (iii) CERTIFIED SOPHISTICATED INVESTORS (WITHIN THE MEANING OF ARTICLE 50(1) OF THE FPO); AND (iv) OTHER PERSONS TO WHOM IT MAY OTHERWISE LAWFULLY BE COMMUNICATED (ALL SUCH PERSONS TOGETHER BEING REFERRED TO AS ‘‘RELEVANT PERSONS’’).</p>
+<p>THIS DOCUMENT HAS NOT BEEN APPROVED BY AN AUTHORISED PERSON. ANY INVESTMENT TO WHICH THIS DOCUMENT RELATES IS AVAILABLE ONLY TO (AND ANY INVESTMENT ACTIVITY TO WHICH IT RELATES WILL BE ENGAGED ONLY WITH) RELEVANT PERSONS. THIS DOCUMENT IS DIRECTED ONLY AT RELEVANT PERSONS AND PERSONS WHO ARE NOT RELEVANT PERSONS SHOULD NOT TAKE ANY ACTION BASED UPON THIS DOCUMENT AND SHOULD NOT RELY ON IT. IT IS A CONDITION OF YOU RECEIVING AND RETAINING THIS DOCUMENT THAT YOU WARRANT TO THE COMPANY, ITS DIRECTORS, AND ITS OFFICERS THAT YOU ARE A RELEVANT PERSON.</p>
+<p>"Clause Token", a product of "Clause" CORP.</p>
+<p>SAFT
+(Simple Agreement for Future Tokens)</p>
+<p>THIS CERTIFIES THAT in exchange for the payment by the undersigned purchaser (the “Purchaser”) of 25.00 USD (the “Purchase Amount”) on or about 10/04/2017, "Clause", a NY corporation (the “Company”), hereby issues to the Purchaser the right (the “Right”) to certain units of "Clause Token" (the “Token”), subject to the terms set forth below.</p>
+
+<ol delimiter="period" start="1" tight="true">
+<li><p>Events</p>
+</li></ol><p>(a)  Network Launch. If there is a Network Launch before the expiration or termination of this instrument, the Company will automatically issue to the Purchaser a number of units of the Token equal to the Purchase Amount divided by the Discount Price.
+In connection with and prior to the issuance of Tokens by the Company to the Purchaser pursuant to this Section 1(a):
+(i) The Purchaser will execute and deliver to the Company any and all other transaction documents related to this SAFT, including verification of accredited investor status or non-U.S. person status under the applicable securities laws; and
+(ii) The Purchaser will provide to the Company a network address for which to allocate Purchaser's Tokens upon the Network Launch.
+(b) Dissolution Event. If there is a Dissolution Event before this instrument expires or terminates, the Company will pay an amount equal to the Purchase Amount multiplied by the Discount Rate (the “Discounted Purchase Amount”), due and payable to the Purchaser immediately prior to, or concurrent with, the consummation of the Dissolution Event, subject to the rights and preferences of the holders of the Company’s preferred stock, as set forth in the Company’s Certificate of Incorporation, as it may be amended from time to time. If immediately prior to the consummation of the Dissolution Event, the assets of the Company that remain legally available for distribution to the Purchaser and all holders of all other SAFTs (the “Dissolving Purchasers”), as determined in good faith by the Company’s board of directors, are insufficient to permit the payment to the Dissolving Purchasers of their respective Discounted Purchase Amounts, then the remaining assets of the Company legally available for distribution, following all distributions to the holders of the Company’s preferred stock, will be distributed with equal priority and pro rata among the Dissolving Purchasers in proportion to the Discounted Purchase Amounts they would otherwise be entitled to receive pursuant to this Section 1(b).  Any distributed amounts shall be in U.S. Dollars.</p>
+<p>(c) Termination.  This instrument will expire and terminate upon the earlier of (i) the issuance of Tokens to the Purchaser pursuant to Section 1(a); (ii) the payment, or setting aside for payment, of amounts due the Purchaser pursuant to Section 1(b); (iii) 04/20/2018 (the “Deadline Date”), if the Network Launch has not occurred as of such date; provided that, the Company shall have the right to extend the Deadline Date by sixty (60) days, in its sole discretion; and (iv) the failure to obtain net proceeds of more than 3000000 USD from the sale of all rights pursuant to the SAFTs; provided, that in the case of (iv), the Company shall have the obligation to repay to the Purchasers the aggregate amount of all Purchase Amounts.</p>
+
+<ol delimiter="period" start="2" tight="true">
+<li><p>Definitions</p>
+</li></ol><p>“Discount Price” means the maximum price per Token sold by the Company to the public during the Network Launch multiplied by the Discount Rate.</p>
+<p>“Discount Rate” is 38%.</p>
+<p>“Dissolution Event” means (i) a voluntary termination of operations of the Company, (ii) a general assignment for the benefit of the Company’s creditors or (iii) any other liquidation, dissolution or winding up of the Company, whether voluntary or involuntary.</p>
+<p>“Network Launch” means [a bona fide transaction or series of transactions, pursuant to which the Company will sell the Tokens to the general public in a publicized product launch.]</p>
+<p>“SAFT” means an agreement containing a future right to units of Tokens purchased by Purchasers, similar in form and content to this agreement, which a significant portion of the amount raised under the SAFTs will be used to fund the Company’s development of a decentralized blockchain-based computer network (the "Clause Network") that enables "happiness and intergalactic equality".</p>
+
+<ol delimiter="period" start="3" tight="true">
+<li><p>Company Representations
+(a)  The Company is a corporation duly organized, validly existing and in good standing under the laws of NY, and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.</p>
+</li></ol><p>(b)  The execution, delivery and performance by the Company of this instrument is within the power of the Company and, other than with respect to the actions to be taken when Tokens are to be issued to the Purchaser, has been duly authorized by all necessary actions on the part of the Company. This instrument constitutes a legal, valid and binding obligation of the Company, enforceable against the Company in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.  To the knowledge of the Company, it is not in violation of (i) its current articles of incorporation or bylaws, (ii) any material statute, rule or regulation applicable to the Company, or (iii) any material indenture or contract to which the Company is a party or by which it is bound, where, in each case, such violation or default, individually, or together with all such violations or defaults, could reasonably be expected to have a material adverse effect on the Company.</p>
+<p>(c)  To the knowledge of the Company, the performance and consummation of the transactions contemplated by this instrument do not and will not: (i) violate any material judgment, statute, rule or regulation applicable to the Company; (ii) result in the acceleration of any material indenture or contract to which the Company is a party or by which it is bound; or (iii) result in the creation or imposition of any lien upon any property, asset or revenue of the Company or the suspension, forfeiture, or nonrenewal of any material permit, license or authorization applicable to the Company, its business or operations.</p>
+<p>(d)  No consents or approvals are required in connection with the performance of this instrument, other than: (i) the Company’s corporate approvals; and (ii) any qualifications or filings under applicable securities laws.</p>
+<p>(e)  To its knowledge, the Company owns or possesses (or can obtain on commercially reasonable terms) sufficient legal rights to all patents, trademarks, service marks, trade names, copyrights, trade secrets, licenses, information, processes and other intellectual property rights necessary for its business as now conducted and as currently proposed to be conducted, without an infringement of the rights of others. "Clause Token" is not a proprietary trade name of the Company.</p>
+
+<ol delimiter="period" start="4" tight="true">
+<li><p>Purchaser Representations
+(a)  The Purchaser has full legal capacity, power and authority to execute and deliver this instrument and to perform its obligations hereunder. This instrument constitutes valid and binding obligation of the Purchaser, enforceable in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.</p>
+</li></ol><p>(b)  The Purchaser has been advised that this instrument is a security and that the offers and sales of this instrument have not been registered under any country’s securities laws and, therefore, cannot be resold except in compliance with the applicable country’s laws. The Purchaser is purchasing this instrument for its own account for investment, not as a nominee or agent, and not with a view to, or for resale in connection with, the distribution thereof, and the Purchaser has no present intention of selling, granting any participation in, or otherwise distributing the same. The Purchaser has such knowledge and experience in financial and business matters that the Purchaser is capable of evaluating the merits and risks of such investment, is able to incur a complete loss of such investment without impairing the Purchaser’s financial condition and is able to bear the economic risk of such investment for an indefinite period of time.</p>
+<p>(c)  The Purchaser enters into this SAFT with the predominant expectation that he, she or it, as the case may be, will profit upon the successful development and Network Launch arising from the efforts of the Company and its employees to develop and market the "Clause Network" and the Network Launch and related sale of the Tokens.</p>
+
+<ol delimiter="period" start="5" tight="true">
+<li><p>Procedures for Purchase of Rights and Valuation of Purchase Amount.</p>
+</li></ol><p>(a) The Company will accept payment for the Right purchased under this SAFT in EUR. Purchaser shall make the required payment to the Company in consideration for Purchaser’s purchase of the Right pursuant to the SAFT through the procedures set forth on Exhibit A hereof.</p>
+<p>(b)   For purposes of this instrument, the value of the Purchase Amount shall be deemed in "Ether" whether the Purchaser pays in [U.S. Dollars/Bitcoin/[or] Ether], valued at the Applicable Exchange Rate for "Ether". The term “Applicable Exchange Rate” shall mean the volume-weighted average daily price of "Ether" across "itBit" in the 24-hour period (Eastern Time) following the day and time that the Company notifies the Purchaser, in writing, that the Company has accepted Purchaser’s offer to purchase the Right under this SAFT.</p>
+
+<ol delimiter="period" start="6" tight="true">
+<li><p>Miscellaneous
+(a)  This instrument sets forth the entire agreement and understanding of the parties relating to the subject matter herein and supersedes all prior or contemporaneous disclosures, discussions, understandings and agreements, whether oral of written, between them. This instrument is one of a series of similar instruments entered into by the Company from time to time.  Any provision of this instrument may be amended, waived or modified only upon the written consent of the Company and the holders of a majority, in the aggregate, of the Purchase Amounts paid to the Company with respect to all SAFTs outstanding at the time of such amendment, waiver or modification.</p>
+</li></ol><p>(b)  Any notice required or permitted by this instrument will be deemed sufficient when sent by email to the relevant address listed on the signature page, as subsequently modified by written notice received by the appropriate party.</p>
+<p>(c)  The Purchaser is not entitled, as a holder of this instrument, to vote or receive dividends or be deemed the holder of capital stock of the Company for any purpose, nor will anything contained herein be construed to confer on the Purchaser, as such, any of the rights of a stockholder of the Company or any right to vote for the election of directors or upon any matter submitted to stockholders at any meeting thereof, or to give or withhold consent to any corporate action or to receive notice of meetings, or to receive subscription rights or otherwise.</p>
+<p>(d)  Neither this instrument nor the rights contained herein may be assigned, by operation of law or otherwise, by either party without the prior written consent of the other; provided, however, that this instrument and/or the rights contained herein may be assigned without the Company’s consent by the Purchaser to any other entity who directly or indirectly, controls, is controlled by or is under common control with the Purchaser, including, without limitation, any general partner, managing member, officer or director of the Purchaser, or any venture capital fund now or hereafter existing which is controlled by one or more general partners or managing members of, or shares the same management company with, the Purchaser; and provided, further, that the Company may assign this instrument in whole, without the consent of the Purchaser, in connection with a reincorporation to change the Company’s domicile.</p>
+<p>(e)  In the event any one or more of the provisions of this instrument is for any reason held to be invalid, illegal or unenforceable, in whole or in part or in any respect, or in the event that any one or more of the provisions of this instrument operate or would prospectively operate to invalidate this instrument, then and in any such event, such provision(s) only will be deemed null and void and will not affect any other provision of this instrument and the remaining provisions of this instrument will remain operative and in full force and effect and will not be affected, prejudiced, or disturbed thereby.</p>
+<p>(f)  All rights and obligations hereunder will be governed by the laws of NY, without regard to the conflicts of law provisions of such jurisdiction.</p>
+<p>IN WITNESS WHEREOF, the undersigned have caused this instrument to be duly executed and delivered.</p>
+<p>"Clause"</p>
+<p>By: "Peter Hunn"</p>
+<p>PURCHASER</p>
+<p>By: "Daniel Charles Selman"</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">NOTICE TO RESIDENTS OF THE UNITED STATES
+
+THE OFFER AND SALE OF THIS SECURITY INSTRUMENT HAS NOT BEEN REGISTERED UNDER THE U.S. SECURITIES ACT OF 1933, AS AMENDED (THE “SECURITIES ACT”), OR UNDER THE SECURITIES LAWS OF CERTAIN STATES.  THIS SECURITY MAY NOT BE OFFERED, SOLD OR OTHERWISE TRANSFERRED, PLEDGED OR HYPOTHECATED EXCEPT AS PERMITTED UNDER THE ACT AND APPLICABLE STATE SECURITIES LAWS PURSUANT TO AN EFFECTIVE REGISTRATION STATEMENT OR AN EXEMPTION THEREFROM.
+
+NOTICE TO RESIDENTS OF CANADA
+
+UNLESS PERMITTED UNDER SECURITIES LEGISLATION, THE HOLDER OF THIS SECURITY MUST NOT TRADE THE SECURITY BEFORE THE DATE THAT THE ISSUER BECOMES A REPORTING ISSUER IN ANY PROVINCE OR TERRITORY.
+
+NOTICE TO RESIDENTS OF CHINA
+
+THE RIGHTS ARE NOT BEING OFFERED OR SOLD AND MAY NOT BE OFFERED OR SOLD, DIRECTLY OR INDIRECTLY, WITHIN THE PEOPLE’S REPUBLIC OF CHINA (FOR SUCH PURPOSES, NOT INCLUDING THE HONG KONG AND MACAU SPECIAL ADMINISTRATIVE REGIONS OR TAIWAN), EXCEPT AS PERMITTED BY THE SECURITIES AND OTHER LAWS AND REGULATIONS OF THE PEOPLE’S REPUBLIC OF CHINA
+
+NOTICE TO RESIDENTS OF THE UNITED KINGDOM
+
+IN THE UNITED KINGDOM THIS DOCUMENT IS BEING DISTRIBUTED ONLY TO, AND IS DIRECTED ONLY AT (AND ANY INVESTMENT ACTIVITY TO WHICH IT RELATES WILL BE ENGAGED ONLY WITH): (i) INVESTMENT PROFESSIONALS (WITHIN THE MEANING OF ARTICLE 19(5) OF THE FINANCIAL SERVICES AND MARKETS ACT 2000 (FINANCIAL PROMOTION) ORDER 2005 AS AMENDED (THE ‘‘FPO’’)); (ii) PERSONS OR ENTITIES OF A KIND DESCRIBED IN ARTICLE 49 OF THE FPO; (iii) CERTIFIED SOPHISTICATED INVESTORS (WITHIN THE MEANING OF ARTICLE 50(1) OF THE FPO); AND (iv) OTHER PERSONS TO WHOM IT MAY OTHERWISE LAWFULLY BE COMMUNICATED (ALL SUCH PERSONS TOGETHER BEING REFERRED TO AS ‘‘RELEVANT PERSONS’’).
+
+THIS DOCUMENT HAS NOT BEEN APPROVED BY AN AUTHORISED PERSON. ANY INVESTMENT TO WHICH THIS DOCUMENT RELATES IS AVAILABLE ONLY TO (AND ANY INVESTMENT ACTIVITY TO WHICH IT RELATES WILL BE ENGAGED ONLY WITH) RELEVANT PERSONS. THIS DOCUMENT IS DIRECTED ONLY AT RELEVANT PERSONS AND PERSONS WHO ARE NOT RELEVANT PERSONS SHOULD NOT TAKE ANY ACTION BASED UPON THIS DOCUMENT AND SHOULD NOT RELY ON IT. IT IS A CONDITION OF YOU RECEIVING AND RETAINING THIS DOCUMENT THAT YOU WARRANT TO THE COMPANY, ITS DIRECTORS, AND ITS OFFICERS THAT YOU ARE A RELEVANT PERSON.
+
+"Clause Token", a product of "Clause" CORP.
+
+SAFT
+(Simple Agreement for Future Tokens)
+
+THIS CERTIFIES THAT in exchange for the payment by the undersigned purchaser (the “Purchaser”) of 25.00 USD (the “Purchase Amount”) on or about 10/04/2017, "Clause", a NY corporation (the “Company”), hereby issues to the Purchaser the right (the “Right”) to certain units of "Clause Token" (the “Token”), subject to the terms set forth below.
+
+1.   Events
+ 
+(a)  Network Launch. If there is a Network Launch before the expiration or termination of this instrument, the Company will automatically issue to the Purchaser a number of units of the Token equal to the Purchase Amount divided by the Discount Price.
+In connection with and prior to the issuance of Tokens by the Company to the Purchaser pursuant to this Section 1(a):
+(i) The Purchaser will execute and deliver to the Company any and all other transaction documents related to this SAFT, including verification of accredited investor status or non-U.S. person status under the applicable securities laws; and
+(ii) The Purchaser will provide to the Company a network address for which to allocate Purchaser's Tokens upon the Network Launch.
+(b) Dissolution Event. If there is a Dissolution Event before this instrument expires or terminates, the Company will pay an amount equal to the Purchase Amount multiplied by the Discount Rate (the “Discounted Purchase Amount”), due and payable to the Purchaser immediately prior to, or concurrent with, the consummation of the Dissolution Event, subject to the rights and preferences of the holders of the Company’s preferred stock, as set forth in the Company’s Certificate of Incorporation, as it may be amended from time to time. If immediately prior to the consummation of the Dissolution Event, the assets of the Company that remain legally available for distribution to the Purchaser and all holders of all other SAFTs (the “Dissolving Purchasers”), as determined in good faith by the Company’s board of directors, are insufficient to permit the payment to the Dissolving Purchasers of their respective Discounted Purchase Amounts, then the remaining assets of the Company legally available for distribution, following all distributions to the holders of the Company’s preferred stock, will be distributed with equal priority and pro rata among the Dissolving Purchasers in proportion to the Discounted Purchase Amounts they would otherwise be entitled to receive pursuant to this Section 1(b).  Any distributed amounts shall be in U.S. Dollars.
+
+(c) Termination.  This instrument will expire and terminate upon the earlier of (i) the issuance of Tokens to the Purchaser pursuant to Section 1(a); (ii) the payment, or setting aside for payment, of amounts due the Purchaser pursuant to Section 1(b); (iii) 04/20/2018 (the “Deadline Date”), if the Network Launch has not occurred as of such date; provided that, the Company shall have the right to extend the Deadline Date by sixty (60) days, in its sole discretion; and (iv) the failure to obtain net proceeds of more than 3000000 USD from the sale of all rights pursuant to the SAFTs; provided, that in the case of (iv), the Company shall have the obligation to repay to the Purchasers the aggregate amount of all Purchase Amounts.
+
+2.   Definitions
+ 
+“Discount Price” means the maximum price per Token sold by the Company to the public during the Network Launch multiplied by the Discount Rate. 
+
+“Discount Rate” is 38%.
+
+“Dissolution Event” means (i) a voluntary termination of operations of the Company, (ii) a general assignment for the benefit of the Company’s creditors or (iii) any other liquidation, dissolution or winding up of the Company, whether voluntary or involuntary.  
+	
+“Network Launch” means [a bona fide transaction or series of transactions, pursuant to which the Company will sell the Tokens to the general public in a publicized product launch.]
+ 
+“SAFT” means an agreement containing a future right to units of Tokens purchased by Purchasers, similar in form and content to this agreement, which a significant portion of the amount raised under the SAFTs will be used to fund the Company’s development of a decentralized blockchain-based computer network (the "Clause Network") that enables "happiness and intergalactic equality".
+
+3.  Company Representations
+(a)  The Company is a corporation duly organized, validly existing and in good standing under the laws of NY, and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.
+
+(b)  The execution, delivery and performance by the Company of this instrument is within the power of the Company and, other than with respect to the actions to be taken when Tokens are to be issued to the Purchaser, has been duly authorized by all necessary actions on the part of the Company. This instrument constitutes a legal, valid and binding obligation of the Company, enforceable against the Company in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.  To the knowledge of the Company, it is not in violation of (i) its current articles of incorporation or bylaws, (ii) any material statute, rule or regulation applicable to the Company, or (iii) any material indenture or contract to which the Company is a party or by which it is bound, where, in each case, such violation or default, individually, or together with all such violations or defaults, could reasonably be expected to have a material adverse effect on the Company.
+
+(c)  To the knowledge of the Company, the performance and consummation of the transactions contemplated by this instrument do not and will not: (i) violate any material judgment, statute, rule or regulation applicable to the Company; (ii) result in the acceleration of any material indenture or contract to which the Company is a party or by which it is bound; or (iii) result in the creation or imposition of any lien upon any property, asset or revenue of the Company or the suspension, forfeiture, or nonrenewal of any material permit, license or authorization applicable to the Company, its business or operations.
+
+(d)  No consents or approvals are required in connection with the performance of this instrument, other than: (i) the Company’s corporate approvals; and (ii) any qualifications or filings under applicable securities laws.
+
+(e)  To its knowledge, the Company owns or possesses (or can obtain on commercially reasonable terms) sufficient legal rights to all patents, trademarks, service marks, trade names, copyrights, trade secrets, licenses, information, processes and other intellectual property rights necessary for its business as now conducted and as currently proposed to be conducted, without an infringement of the rights of others. "Clause Token" is not a proprietary trade name of the Company.
+
+4.   Purchaser Representations
+(a)  The Purchaser has full legal capacity, power and authority to execute and deliver this instrument and to perform its obligations hereunder. This instrument constitutes valid and binding obligation of the Purchaser, enforceable in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.
+
+(b)  The Purchaser has been advised that this instrument is a security and that the offers and sales of this instrument have not been registered under any country’s securities laws and, therefore, cannot be resold except in compliance with the applicable country’s laws. The Purchaser is purchasing this instrument for its own account for investment, not as a nominee or agent, and not with a view to, or for resale in connection with, the distribution thereof, and the Purchaser has no present intention of selling, granting any participation in, or otherwise distributing the same. The Purchaser has such knowledge and experience in financial and business matters that the Purchaser is capable of evaluating the merits and risks of such investment, is able to incur a complete loss of such investment without impairing the Purchaser’s financial condition and is able to bear the economic risk of such investment for an indefinite period of time.
+
+(c)  The Purchaser enters into this SAFT with the predominant expectation that he, she or it, as the case may be, will profit upon the successful development and Network Launch arising from the efforts of the Company and its employees to develop and market the "Clause Network" and the Network Launch and related sale of the Tokens.
+
+5. Procedures for Purchase of Rights and Valuation of Purchase Amount.
+
+(a) The Company will accept payment for the Right purchased under this SAFT in EUR. Purchaser shall make the required payment to the Company in consideration for Purchaser’s purchase of the Right pursuant to the SAFT through the procedures set forth on Exhibit A hereof. 
+
+(b)   For purposes of this instrument, the value of the Purchase Amount shall be deemed in "Ether" whether the Purchaser pays in [U.S. Dollars/Bitcoin/[or] Ether], valued at the Applicable Exchange Rate for "Ether". The term “Applicable Exchange Rate” shall mean the volume-weighted average daily price of "Ether" across "itBit" in the 24-hour period (Eastern Time) following the day and time that the Company notifies the Purchaser, in writing, that the Company has accepted Purchaser’s offer to purchase the Right under this SAFT. 
+
+6.   Miscellaneous
+(a)  This instrument sets forth the entire agreement and understanding of the parties relating to the subject matter herein and supersedes all prior or contemporaneous disclosures, discussions, understandings and agreements, whether oral of written, between them. This instrument is one of a series of similar instruments entered into by the Company from time to time.  Any provision of this instrument may be amended, waived or modified only upon the written consent of the Company and the holders of a majority, in the aggregate, of the Purchase Amounts paid to the Company with respect to all SAFTs outstanding at the time of such amendment, waiver or modification.
+
+(b)  Any notice required or permitted by this instrument will be deemed sufficient when sent by email to the relevant address listed on the signature page, as subsequently modified by written notice received by the appropriate party.
+
+(c)  The Purchaser is not entitled, as a holder of this instrument, to vote or receive dividends or be deemed the holder of capital stock of the Company for any purpose, nor will anything contained herein be construed to confer on the Purchaser, as such, any of the rights of a stockholder of the Company or any right to vote for the election of directors or upon any matter submitted to stockholders at any meeting thereof, or to give or withhold consent to any corporate action or to receive notice of meetings, or to receive subscription rights or otherwise.
+
+(d)  Neither this instrument nor the rights contained herein may be assigned, by operation of law or otherwise, by either party without the prior written consent of the other; provided, however, that this instrument and/or the rights contained herein may be assigned without the Company’s consent by the Purchaser to any other entity who directly or indirectly, controls, is controlled by or is under common control with the Purchaser, including, without limitation, any general partner, managing member, officer or director of the Purchaser, or any venture capital fund now or hereafter existing which is controlled by one or more general partners or managing members of, or shares the same management company with, the Purchaser; and provided, further, that the Company may assign this instrument in whole, without the consent of the Purchaser, in connection with a reincorporation to change the Company’s domicile. 
+
+(e)  In the event any one or more of the provisions of this instrument is for any reason held to be invalid, illegal or unenforceable, in whole or in part or in any respect, or in the event that any one or more of the provisions of this instrument operate or would prospectively operate to invalidate this instrument, then and in any such event, such provision(s) only will be deemed null and void and will not affect any other provision of this instrument and the remaining provisions of this instrument will remain operative and in full force and effect and will not be affected, prejudiced, or disturbed thereby. 
+
+(f)  All rights and obligations hereunder will be governed by the laws of NY, without regard to the conflicts of law provisions of such jurisdiction.
+
+IN WITNESS WHEREOF, the undersigned have caused this instrument to be duly executed and delivered.
+
+"Clause"
+
+By: "Peter Hunn"
+
+PURCHASER
+
+By: "Daniel Charles Selman"
+</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">NOTICE TO RESIDENTS OF THE UNITED STATES
+
+THE OFFER AND SALE OF THIS SECURITY INSTRUMENT HAS NOT BEEN REGISTERED UNDER THE U.S. SECURITIES ACT OF 1933, AS AMENDED (THE “SECURITIES ACT”), OR UNDER THE SECURITIES LAWS OF CERTAIN STATES.  THIS SECURITY MAY NOT BE OFFERED, SOLD OR OTHERWISE TRANSFERRED, PLEDGED OR HYPOTHECATED EXCEPT AS PERMITTED UNDER THE ACT AND APPLICABLE STATE SECURITIES LAWS PURSUANT TO AN EFFECTIVE REGISTRATION STATEMENT OR AN EXEMPTION THEREFROM.
+
+NOTICE TO RESIDENTS OF CANADA
+
+UNLESS PERMITTED UNDER SECURITIES LEGISLATION, THE HOLDER OF THIS SECURITY MUST NOT TRADE THE SECURITY BEFORE THE DATE THAT THE ISSUER BECOMES A REPORTING ISSUER IN ANY PROVINCE OR TERRITORY.
+
+NOTICE TO RESIDENTS OF CHINA
+
+THE RIGHTS ARE NOT BEING OFFERED OR SOLD AND MAY NOT BE OFFERED OR SOLD, DIRECTLY OR INDIRECTLY, WITHIN THE PEOPLE’S REPUBLIC OF CHINA (FOR SUCH PURPOSES, NOT INCLUDING THE HONG KONG AND MACAU SPECIAL ADMINISTRATIVE REGIONS OR TAIWAN), EXCEPT AS PERMITTED BY THE SECURITIES AND OTHER LAWS AND REGULATIONS OF THE PEOPLE’S REPUBLIC OF CHINA
+
+NOTICE TO RESIDENTS OF THE UNITED KINGDOM
+
+IN THE UNITED KINGDOM THIS DOCUMENT IS BEING DISTRIBUTED ONLY TO, AND IS DIRECTED ONLY AT (AND ANY INVESTMENT ACTIVITY TO WHICH IT RELATES WILL BE ENGAGED ONLY WITH): (i) INVESTMENT PROFESSIONALS (WITHIN THE MEANING OF ARTICLE 19(5) OF THE FINANCIAL SERVICES AND MARKETS ACT 2000 (FINANCIAL PROMOTION) ORDER 2005 AS AMENDED (THE ‘‘FPO’’)); (ii) PERSONS OR ENTITIES OF A KIND DESCRIBED IN ARTICLE 49 OF THE FPO; (iii) CERTIFIED SOPHISTICATED INVESTORS (WITHIN THE MEANING OF ARTICLE 50(1) OF THE FPO); AND (iv) OTHER PERSONS TO WHOM IT MAY OTHERWISE LAWFULLY BE COMMUNICATED (ALL SUCH PERSONS TOGETHER BEING REFERRED TO AS ‘‘RELEVANT PERSONS’’).
+
+THIS DOCUMENT HAS NOT BEEN APPROVED BY AN AUTHORISED PERSON. ANY INVESTMENT TO WHICH THIS DOCUMENT RELATES IS AVAILABLE ONLY TO (AND ANY INVESTMENT ACTIVITY TO WHICH IT RELATES WILL BE ENGAGED ONLY WITH) RELEVANT PERSONS. THIS DOCUMENT IS DIRECTED ONLY AT RELEVANT PERSONS AND PERSONS WHO ARE NOT RELEVANT PERSONS SHOULD NOT TAKE ANY ACTION BASED UPON THIS DOCUMENT AND SHOULD NOT RELY ON IT. IT IS A CONDITION OF YOU RECEIVING AND RETAINING THIS DOCUMENT THAT YOU WARRANT TO THE COMPANY, ITS DIRECTORS, AND ITS OFFICERS THAT YOU ARE A RELEVANT PERSON.
+
+{{token}}, a product of {{company}} {{companyType}}.
+
+SAFT
+(Simple Agreement for Future Tokens)
+
+THIS CERTIFIES THAT in exchange for the payment by the undersigned purchaser (the “Purchaser”) of {{purchaseAmount}} (the “Purchase Amount”) on or about {{date}}, {{company}}, a {{state}} corporation (the “Company”), hereby issues to the Purchaser the right (the “Right”) to certain units of {{token}} (the “Token”), subject to the terms set forth below.
+
+1.   Events
+ 
+(a)  Network Launch. If there is a Network Launch before the expiration or termination of this instrument, the Company will automatically issue to the Purchaser a number of units of the Token equal to the Purchase Amount divided by the Discount Price.
+In connection with and prior to the issuance of Tokens by the Company to the Purchaser pursuant to this Section 1(a):
+(i) The Purchaser will execute and deliver to the Company any and all other transaction documents related to this SAFT, including verification of accredited investor status or non-U.S. person status under the applicable securities laws; and
+(ii) The Purchaser will provide to the Company a network address for which to allocate Purchaser's Tokens upon the Network Launch.
+(b) Dissolution Event. If there is a Dissolution Event before this instrument expires or terminates, the Company will pay an amount equal to the Purchase Amount multiplied by the Discount Rate (the “Discounted Purchase Amount”), due and payable to the Purchaser immediately prior to, or concurrent with, the consummation of the Dissolution Event{{#if amendmentProvision}}, subject to the rights and preferences of the holders of the Company’s preferred stock, as set forth in the Company’s Certificate of Incorporation, as it may be amended from time to time.{{/if}} If immediately prior to the consummation of the Dissolution Event, the assets of the Company that remain legally available for distribution to the Purchaser and all holders of all other SAFTs (the “Dissolving Purchasers”), as determined in good faith by the Company’s board of directors, are insufficient to permit the payment to the Dissolving Purchasers of their respective Discounted Purchase Amounts, then the remaining assets of the Company legally available for distribution, following all distributions to the holders of the Company’s preferred stock, will be distributed with equal priority and pro rata among the Dissolving Purchasers in proportion to the Discounted Purchase Amounts they would otherwise be entitled to receive pursuant to this Section 1(b).  Any distributed amounts shall be in U.S. Dollars.
+
+(c) Termination.  This instrument will expire and terminate upon the earlier of (i) the issuance of Tokens to the Purchaser pursuant to Section 1(a); (ii) the payment, or setting aside for payment, of amounts due the Purchaser pursuant to Section 1(b); (iii) {{deadlineDate}} (the “Deadline Date”), if the Network Launch has not occurred as of such date; provided that, the Company shall have the right to extend the Deadline Date by sixty (60) days, in its sole discretion; and (iv) the failure to obtain net proceeds of more than {{netProceedLimit}} from the sale of all rights pursuant to the SAFTs; provided, that in the case of (iv), the Company shall have the obligation to repay to the Purchasers the aggregate amount of all Purchase Amounts.
+
+2.   Definitions
+ 
+“Discount Price” means the maximum price per Token sold by the Company to the public during the Network Launch multiplied by the Discount Rate. 
+
+“Discount Rate” is {{discountRatePercentage}}%.
+
+“Dissolution Event” means (i) a voluntary termination of operations of the Company, (ii) a general assignment for the benefit of the Company’s creditors or (iii) any other liquidation, dissolution or winding up of the Company, whether voluntary or involuntary.  
+	
+“Network Launch” means [a bona fide transaction or series of transactions, pursuant to which the Company will sell the Tokens to the general public in a publicized product launch.]
+ 
+“SAFT” means an agreement containing a future right to units of Tokens purchased by Purchasers, similar in form and content to this agreement, which a significant portion of the amount raised under the SAFTs will be used to fund the Company’s development of a decentralized blockchain-based computer network (the {{network}}) that enables {{description}}.
+
+3.  Company Representations
+(a)  The Company is a corporation duly organized, validly existing and in good standing under the laws of {{state}}, and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.
+
+(b)  The execution, delivery and performance by the Company of this instrument is within the power of the Company and, other than with respect to the actions to be taken when Tokens are to be issued to the Purchaser, has been duly authorized by all necessary actions on the part of the Company. This instrument constitutes a legal, valid and binding obligation of the Company, enforceable against the Company in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.  To the knowledge of the Company, it is not in violation of (i) its current articles of incorporation or bylaws, (ii) any material statute, rule or regulation applicable to the Company, or (iii) any material indenture or contract to which the Company is a party or by which it is bound, where, in each case, such violation or default, individually, or together with all such violations or defaults, could reasonably be expected to have a material adverse effect on the Company.
+
+(c)  To the knowledge of the Company, the performance and consummation of the transactions contemplated by this instrument do not and will not: (i) violate any material judgment, statute, rule or regulation applicable to the Company; (ii) result in the acceleration of any material indenture or contract to which the Company is a party or by which it is bound; or (iii) result in the creation or imposition of any lien upon any property, asset or revenue of the Company or the suspension, forfeiture, or nonrenewal of any material permit, license or authorization applicable to the Company, its business or operations.
+
+(d)  No consents or approvals are required in connection with the performance of this instrument, other than: (i) the Company’s corporate approvals; and (ii) any qualifications or filings under applicable securities laws.
+
+(e)  To its knowledge, the Company owns or possesses (or can obtain on commercially reasonable terms) sufficient legal rights to all patents, trademarks, service marks, trade names, copyrights, trade secrets, licenses, information, processes and other intellectual property rights necessary for its business as now conducted and as currently proposed to be conducted, without an infringement of the rights of others. {{token}} is not a proprietary trade name of the Company.
+
+4.   Purchaser Representations
+(a)  The Purchaser has full legal capacity, power and authority to execute and deliver this instrument and to perform its obligations hereunder. This instrument constitutes valid and binding obligation of the Purchaser, enforceable in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.
+
+(b)  The Purchaser has been advised that this instrument is a security and that the offers and sales of this instrument have not been registered under any country’s securities laws and, therefore, cannot be resold except in compliance with the applicable country’s laws. The Purchaser is purchasing this instrument for its own account for investment, not as a nominee or agent, and not with a view to, or for resale in connection with, the distribution thereof, and the Purchaser has no present intention of selling, granting any participation in, or otherwise distributing the same. The Purchaser has such knowledge and experience in financial and business matters that the Purchaser is capable of evaluating the merits and risks of such investment, is able to incur a complete loss of such investment without impairing the Purchaser’s financial condition and is able to bear the economic risk of such investment for an indefinite period of time.
+
+(c)  The Purchaser enters into this SAFT with the predominant expectation that he, she or it, as the case may be, will profit upon the successful development and Network Launch arising from the efforts of the Company and its employees to develop and market the {{network}} and the Network Launch and related sale of the Tokens.
+
+5. Procedures for Purchase of Rights and Valuation of Purchase Amount.
+
+(a) The Company will accept payment for the Right purchased under this SAFT in {{currency}}. Purchaser shall make the required payment to the Company in consideration for Purchaser’s purchase of the Right pursuant to the SAFT through the procedures set forth on Exhibit A hereof. 
+
+(b)   For purposes of this instrument, the value of the Purchase Amount shall be deemed in {{coin}} whether the Purchaser pays in [U.S. Dollars/Bitcoin/[or] Ether], valued at the Applicable Exchange Rate for {{coin}}. The term “Applicable Exchange Rate” shall mean the volume-weighted average daily price of {{coin}} across {{exchanges}} in the 24-hour period (Eastern Time) following the day and time that the Company notifies the Purchaser, in writing, that the Company has accepted Purchaser’s offer to purchase the Right under this SAFT. 
+
+6.   Miscellaneous
+(a)  This instrument sets forth the entire agreement and understanding of the parties relating to the subject matter herein and supersedes all prior or contemporaneous disclosures, discussions, understandings and agreements, whether oral of written, between them. This instrument is one of a series of similar instruments entered into by the Company from time to time.  Any provision of this instrument may be amended, waived or modified only upon the written consent of the Company and the holders of a majority, in the aggregate, of the Purchase Amounts paid to the Company with respect to all SAFTs outstanding at the time of such amendment, waiver or modification.
+
+(b)  Any notice required or permitted by this instrument will be deemed sufficient when sent by email to the relevant address listed on the signature page, as subsequently modified by written notice received by the appropriate party.
+
+(c)  The Purchaser is not entitled, as a holder of this instrument, to vote or receive dividends or be deemed the holder of capital stock of the Company for any purpose, nor will anything contained herein be construed to confer on the Purchaser, as such, any of the rights of a stockholder of the Company or any right to vote for the election of directors or upon any matter submitted to stockholders at any meeting thereof, or to give or withhold consent to any corporate action or to receive notice of meetings, or to receive subscription rights or otherwise.
+
+(d)  Neither this instrument nor the rights contained herein may be assigned, by operation of law or otherwise, by either party without the prior written consent of the other; provided, however, that this instrument and/or the rights contained herein may be assigned without the Company’s consent by the Purchaser to any other entity who directly or indirectly, controls, is controlled by or is under common control with the Purchaser, including, without limitation, any general partner, managing member, officer or director of the Purchaser, or any venture capital fund now or hereafter existing which is controlled by one or more general partners or managing members of, or shares the same management company with, the Purchaser; and provided, further, that the Company may assign this instrument in whole, without the consent of the Purchaser, in connection with a reincorporation to change the Company’s domicile. 
+
+(e)  In the event any one or more of the provisions of this instrument is for any reason held to be invalid, illegal or unenforceable, in whole or in part or in any respect, or in the event that any one or more of the provisions of this instrument operate or would prospectively operate to invalidate this instrument, then and in any such event, such provision(s) only will be deemed null and void and will not affect any other provision of this instrument and the remaining provisions of this instrument will remain operative and in full force and effect and will not be affected, prejudiced, or disturbed thereby. 
+
+(f)  All rights and obligations hereunder will be governed by the laws of NY, without regard to the conflicts of law provisions of such jurisdiction.
+
+IN WITNESS WHEREOF, the undersigned have caused this instrument to be duly executed and delivered.
+
+{{company}}
+
+By: {{companyRepresentative}}
+
+PURCHASER
+
+By: {{purchaser}}
+</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.saft.SaftContract",
+    "token": "Clause Token",
+    "company": "Clause",
+    "companyType": "CORP",
+    "state": "NY",
+    "amendmentProvision": true,
+    "purchaseAmount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 25,
+        "currencyCode": "USD"
+    },
+    "currency": "EUR",
+    "netProceedLimit": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 3000000,
+        "currencyCode": "USD"
+    },
+    "date": "2017-10-04T00:00:00.000-04:00",
+    "deadlineDate": "2018-04-20T00:00:00.000-04:00",
+    "discountRatePercentage": 38,
+    "network": "Clause Network",
+    "coin": "Ether",
+    "exchanges": "itBit",
+    "companyRepresentative": "Peter Hunn",
+    "purchaser": "Daniel Charles Selman",
+    "description": "happiness and intergalactic equality",
+    "contractId": "2e40f59a-ff63-43d3-acd4-74077d68e684",
+    "$identifier": "2e40f59a-ff63-43d3-acd4-74077d68e684"
+}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/hPJ1Rjim38RlVWeTLwpr4nH1ssG32dH0aFe5L8bpjTYaHr7fZBRlNZgnbxYmWnrsi66H8ldnf-IRA9ObrLNcAXkZ8IvpwnonRvX-WPCysf-IFzY4xjbSNvilnMKBLKKl5sQnCA-PCUQhML5wgi307_TiiOID5SZUi_EvhgxU5XFbEA646l8D_4uGvJnM0Lm7r6gpP3y8GJjiRslIn8QXjW43bjyJ-ZYvHKXiTOyxBGv-lejZwV_HoDgsbEHVkn3Q0Xw-3_v7OUsfjtlF4ECyULzhZ-q87R1GNh35Q9q4mlEaZ_fQ4WhhvZtlxMN907YAUuepiZYg6uljmNQNOa0b_QOwIJluYhQ18QPJDtRlFe2e0el6re1U7rapxKBiaATKQXBhSOnmAjGoCGEwTaaUZEiNaz6wqFGEm3-4ElJXAsKfTAZ6_uKwci3wIXjQ7Ls7M-53T5tAxbQiWPs2sn96kcYn5-Bj9wt2MBpXTiKfIJVGwDIxr19su-I33ZooUeYEGxCV-EnH6GrxvfoxtfyF6xCR7K_tH_a0">
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.saft
+
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.money.* from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.usa.business.BusinessEntity from https://models.accordproject.org/usa/business.cto
+import org.accordproject.usa.state.State from https://models.accordproject.org/usa/state.cto
+
+
+/**
+ * The network has launched!
+ */
+transaction Launch extends Request {
+  /**
+   * The exchange rate to use
+   */
+  o Double exchangeRate
+}
+
+/**
+ * The network has been terminated. :-(
+ */
+transaction Terminate extends Request {
+
+  /**
+   * How many funds remain, we need to reimburse them
+   */
+  o MonetaryAmount remainingFunds
+
+  /**
+   * What was the total amount invested
+   */
+  o MonetaryAmount totalInvested
+}
+
+/**
+ * Whether the network launches or terminates, we need to payout
+ */
+transaction Payout {
+
+  /**
+   * The amount to payout
+   */
+ o MonetaryAmount tokenAmount
+
+ /**
+  * The address to payout to
+  * TODO - this needs to be captured in the contract
+  */
+ o String tokenAddress
+}
+
+/**
+ * Defines the data model for the Saft template.
+ */
+asset SaftContract extends Contract {
+  /**
+   * The name of the token to be sold
+   */
+  o String token
+
+  /**
+   * The name of the company selling the token
+   */
+  o String company
+
+  /**
+   * Type of company
+   */
+  o BusinessEntity companyType
+
+  /**
+   * The state the company is incorporated in
+   */
+  o State state
+
+  /**
+   * Whether the contract has an amendmentProvision
+   */
+  o Boolean amendmentProvision
+
+  /**
+   * The amount of coin being purchased
+   */
+  o MonetaryAmount purchaseAmount
+
+  /**
+   * The currency for the purchase
+   */
+  o CurrencyCode currency
+
+  /**
+   * The minimum amount that needs to be raised
+   */
+  o MonetaryAmount netProceedLimit
+
+  /**
+   * The date of the purchase
+   */
+  o DateTime date
+
+  /**
+   * The launch date
+   */
+  o DateTime deadlineDate
+
+  /**
+   * The discount rate as a percentage
+   */
+  o Double discountRatePercentage
+
+  /**
+   * The name of the network being launched
+   */
+  o String network
+
+  /**
+   * The name of the coin to be used to purchase
+   */
+  o String coin
+
+  /**
+   * The exchanges used for pricing
+   */
+  o String exchanges
+
+  /**
+   * The name of the company representative (first, last)
+   */
+  o String companyRepresentative
+
+  /**
+   * The name of the purchaser (first, middle, last)
+   */
+  o String purchaser
+
+  /**
+   * The description of the offering
+   */
+  o String description
+}</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract.html">org.accordproject.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime.html">org.accordproject.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money@0.2.0.html">org.accordproject.money.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/usa/business.html">org.accordproject.usa.business.BusinessEntity</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/usa/state.html">org.accordproject.usa.state.State</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/saft/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime.State",
+    "$identifier": "7810eff1-a616-11ec-93be-db042168818f"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.saft.Launch</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.saft.Launch",
+    "exchangeRate": 131.88,
+    "$timestamp": "2022-03-17T13:19:57.550-04:00"
+}</code></pre></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.saft.Terminate</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.saft.Terminate",
+    "remainingFunds": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 17.571,
+        "currencyCode": "CDF"
+    },
+    "totalInvested": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 124.943,
+        "currencyCode": "EGP"
+    },
+    "$timestamp": "2022-03-17T13:19:57.550-04:00"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.saft.Payout</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.saft.Payout",
+    "tokenAmount": {
+        "$class": "org.accordproject.money.MonetaryAmount",
+        "doubleValue": 208.12,
+        "currencyCode": "NAD"
+    },
+    "tokenAddress": "Ut culpa laboris sint excepteur.",
+    "$timestamp": "2022-03-17T13:19:57.551-04:00"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>concerto.Event</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/saft">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width="300" alt="Linux Foundation">
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  
+</body></html>

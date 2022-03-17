@@ -1,0 +1,673 @@
+<!DOCTYPE html><html><head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!---— generic unfurl tags ---->
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org">
+        <meta name="twitter:label1" content="Apache 2.0 Licensed">
+        <meta name="twitter:data1" content="on GitHub.com">
+        <meta name="twitter:label2" content="Contribute">
+        <meta name="twitter:data2" content="at AccordProject.org">
+
+        
+    <!---— facebook open graph tags ---->
+    <meta property="og:url" content="https://templates.accordproject.org/acceptance-of-delivery@0.16.0.html">
+    <meta property="og:title" content="acceptance-of-delivery@0.16.0">
+    <meta property="og:description" content="This clause allows the receiver of goods to inspect them for a given time period after delivery.">
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/dPHlRu8m4CRVyodwSilKJs2CJDX2OeG0UsrgER5BRLbxR65_lliADUestIQlkDuzeS_lxc1ga6gijy9ZWXf3b2v7b36bYqghHs3Odg12AXceTG62FuDkHf4qbIq6xanN0iXuJAxoGGD2g9ThCfcGDuyGSaC2Yf3pBP3Y84w1WOqB7vtcLYa1L1BkNikLJAmPABmFhx-XuV1zSe97rnAjdL4AJpKOxCLj3MP8iJOTTJWeDJJ7p8cVPM6mpCCiZnRtBdVdH_FlkVWXpw8WN4QBB0bdUHGlbacOHd5mCVZ1KOVDb5LfLADP6rIzALCmbPBc_7H_N6-wnmvFbrJoLzgMYTdmgW9zegBTDkW-q7k3VqxRwIvhXBzFnklTQZKpGUjTG_nsy22F-t4fSbVAK7DP7dyWBZzNDhkg3PTWJ40RyqLE4IdRR47Y_nlt2z2P1jfDGarju6JU56JH_Yu-0G00">
+
+    <!---— twitter card tags additive with the og: tags ---->
+    <meta name="twitter:title" content="acceptance-of-delivery@0.16.0">
+    <meta name="twitter:description" content="This clause allows the receiver of goods to inspect them for a given time period after delivery.">
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/dPHlRu8m4CRVyodwSilKJs2CJDX2OeG0UsrgER5BRLbxR65_lliADUestIQlkDuzeS_lxc1ga6gijy9ZWXf3b2v7b36bYqghHs3Odg12AXceTG62FuDkHf4qbIq6xanN0iXuJAxoGGD2g9ThCfcGDuyGSaC2Yf3pBP3Y84w1WOqB7vtcLYa1L1BkNikLJAmPABmFhx-XuV1zSe97rnAjdL4AJpKOxCLj3MP8iJOTTJWeDJJ7p8cVPM6mpCCiZnRtBdVdH_FlkVWXpw8WN4QBB0bdUHGlbacOHd5mCVZ1KOVDb5LfLADP6rIzALCmbPBc_7H_N6-wnmvFbrJoLzgMYTdmgW9zegBTDkW-q7k3VqxRwIvhXBzFnklTQZKpGUjTG_nsy22F-t4fSbVAK7DP7dyWBZzNDhkg3PTWJ40RyqLE4IdRR47Y_nlt2z2P1jfDGarju6JU56JH_Yu-0G00">
+    <meta name="twitter:image:alt" content="UML diagram of acceptance-of-delivery@0.16.0 namespace.">
+    <meta name="twitter:url" content="https://templates.accordproject.org/acceptance-of-delivery@0.16.0.html">
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <script defer="" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css">
+        <link rel="stylesheet" href="assets/fonts.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+        </div>
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      
+    </nav>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Acceptance of Delivery
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=">   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">acceptance-of-delivery@0.16.0</span>
+                <span class="tag is-light">Clause</span>
+                <span class="tag is-light">^0.23.0</span>
+                <span class="tag is-light">96efc5c7949ccb2913150a1a2d433c8d7d17062ba9d76e29607a0d4aa16ff5d0</span>
+            </div>
+            <p class="subtitle">
+                This clause allows the receiver of goods to inspect them for a given time period after delivery.
+            </p>
+
+            <p>
+                </p><div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+  <a href="acceptance-of-delivery@0.0.3.html" class="dropdown-item ">
+      acceptance-of-delivery@0.0.3
+  </a>
+
+  <a href="acceptance-of-delivery@0.1.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.1.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.2.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.2.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.3.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.3.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.4.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.4.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.5.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.5.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.6.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.6.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.7.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.7.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.8.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.8.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.9.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.9.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.10.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.10.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.11.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.11.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.11.1.html" class="dropdown-item ">
+      acceptance-of-delivery@0.11.1
+  </a>
+
+  <a href="acceptance-of-delivery@0.12.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.12.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.12.1.html" class="dropdown-item ">
+      acceptance-of-delivery@0.12.1
+  </a>
+
+  <a href="acceptance-of-delivery@0.13.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.13.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.13.1.html" class="dropdown-item ">
+      acceptance-of-delivery@0.13.1
+  </a>
+
+  <a href="acceptance-of-delivery@0.13.2.html" class="dropdown-item ">
+      acceptance-of-delivery@0.13.2
+  </a>
+
+  <a href="acceptance-of-delivery@0.14.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.14.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.14.1.html" class="dropdown-item ">
+      acceptance-of-delivery@0.14.1
+  </a>
+
+  <a href="acceptance-of-delivery@0.15.0.html" class="dropdown-item ">
+      acceptance-of-delivery@0.15.0
+  </a>
+
+  <a href="acceptance-of-delivery@0.16.0.html" class="dropdown-item is-active">
+      acceptance-of-delivery@0.16.0
+  </a>
+
+</div>
+            </div>
+          </div>
+          <a href="./archives/acceptance-of-delivery@0.16.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/acceptance-of-delivery@0.16.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://studio.accordproject.org/?template=ap%3A%2F%2Facceptance-of-delivery%400.16.0%23hash" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+        <p></p>
+
+        <div class="content">
+          <p>
+          </p><h1 id="acceptanceofdelivery">Acceptance of Delivery</h1>
+<p>This clause allows the receiver of goods to inspect them for a given time period after delivery.</p>
+          <p></p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<h2>Acceptance of Delivery.</h2>
+<p>"Party A" will be deemed to have completed its delivery obligations
+if in "Party B"'s opinion, the "Widgets" satisfies the
+Acceptance Criteria, and "Party B" notifies "Party A" in writing
+that it is accepting the "Widgets".</p>
+<h2>Inspection and Notice.</h2>
+<p>"Party B" will have 10 Business Days to inspect and
+evaluate the "Widgets" on the delivery date before notifying
+"Party A" that it is either accepting or rejecting the
+"Widgets".</p>
+<h2>Acceptance Criteria.</h2>
+<p>The "Acceptance Criteria" are the specifications the "Widgets"
+must meet for "Party A" to comply with its requirements and
+obligations under this agreement, detailed in "Attachment X", attached
+to this agreement.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">## Acceptance of Delivery.
+
+"Party A" will be deemed to have completed its delivery obligations
+if in "Party B"'s opinion, the "Widgets" satisfies the
+Acceptance Criteria, and "Party B" notifies "Party A" in writing
+that it is accepting the "Widgets".
+
+## Inspection and Notice.
+
+"Party B" will have 10 Business Days to inspect and
+evaluate the "Widgets" on the delivery date before notifying
+"Party A" that it is either accepting or rejecting the
+"Widgets".
+
+## Acceptance Criteria.
+
+The "Acceptance Criteria" are the specifications the "Widgets"
+must meet for "Party A" to comply with its requirements and
+obligations under this agreement, detailed in "Attachment X", attached
+to this agreement.</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">## Acceptance of Delivery.
+
+{{shipper}} will be deemed to have completed its delivery obligations
+if in {{receiver}}'s opinion, the {{deliverable}} satisfies the
+Acceptance Criteria, and {{receiver}} notifies {{shipper}} in writing
+that it is accepting the {{deliverable}}.
+
+## Inspection and Notice.
+
+{{receiver}} will have {{businessDays}} Business Days to inspect and
+evaluate the {{deliverable}} on the delivery date before notifying
+{{shipper}} that it is either accepting or rejecting the
+{{deliverable}}.
+
+## Acceptance Criteria.
+
+The "Acceptance Criteria" are the specifications the {{deliverable}}
+must meet for {{shipper}} to comply with its requirements and
+obligations under this agreement, detailed in {{attachment}}, attached
+to this agreement.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
+    "shipper": "resource:org.accordproject.organization.Organization#Party%20A",
+    "receiver": "resource:org.accordproject.organization.Organization#Party%20B",
+    "deliverable": "Widgets",
+    "businessDays": 10,
+    "attachment": "Attachment X",
+    "clauseId": "c1932ca0-aa19-4c0e-badc-7b60df436edb",
+    "$identifier": "c1932ca0-aa19-4c0e-badc-7b60df436edb"
+}</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/dPHlRu8m4CRVyodwSilKJs2CJDX2OeG0UsrgER5BRLbxR65_lliADUestIQlkDuzeS_lxc1ga6gijy9ZWXf3b2v7b36bYqghHs3Odg12AXceTG62FuDkHf4qbIq6xanN0iXuJAxoGGD2g9ThCfcGDuyGSaC2Yf3pBP3Y84w1WOqB7vtcLYa1L1BkNikLJAmPABmFhx-XuV1zSe97rnAjdL4AJpKOxCLj3MP8iJOTTJWeDJJ7p8cVPM6mpCCiZnRtBdVdH_FlkVWXpw8WN4QBB0bdUHGlbacOHd5mCVZ1KOVDb5LfLADP6rIzALCmbPBc_7H_N6-wnmvFbrJoLzgMYTdmgW9zegBTDkW-q7k3VqxRwIvhXBzFnklTQZKpGUjTG_nsy22F-t4fSbVAK7DP7dyWBZzNDhkg3PTWJ40RyqLE4IdRR47Y_nlt2z2P1jfDGarju6JU56JH_Yu-0G00">
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.acceptanceofdelivery
+
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+
+/**
+ * Sent by the receiver of the goods, indicates when the goods were
+ * received, as well as if they passed inspection
+ */
+transaction InspectDeliverable extends Request {
+  o DateTime deliverableReceivedAt
+  o Boolean inspectionPassed
+}
+
+/**
+ * The inspection status
+ */
+enum InspectionStatus {
+  o PASSED_TESTING
+  o FAILED_TESTING
+  o OUTSIDE_INSPECTION_PERIOD
+}
+
+/**
+ * The clause response
+ */
+transaction InspectionResponse extends Response {
+  o InspectionStatus status
+  --&gt; Organization shipper
+  --&gt; Organization receiver
+}
+
+/**
+ * The template model
+ */
+asset AcceptanceOfDeliveryClause extends Clause {
+  /**
+   * the shipper of the goods
+   */
+  --&gt; Organization shipper
+
+  /**
+   * the receiver of the goods
+   */
+  --&gt; Organization receiver
+
+  /**
+   * what are we delivering
+   */
+  o String deliverable
+
+  /**
+   * how long does the receiver have to inspect the goods
+   */
+  o Long businessDays
+
+  /**
+   * additional information
+   */
+  o String attachment
+}</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract.html">org.accordproject.contract.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime.html">org.accordproject.runtime.*</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/organization.html">org.accordproject.organization.Organization</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/acceptance-of-delivery/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime.State",
+    "$identifier": "5c7d4e50-a616-11ec-93be-db042168818f"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.acceptanceofdelivery.InspectDeliverable</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.acceptanceofdelivery.InspectDeliverable",
+    "deliverableReceivedAt": "2022-03-17T13:19:11.284-04:00",
+    "inspectionPassed": false,
+    "$timestamp": "2022-03-17T13:19:11.284-04:00"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.acceptanceofdelivery.InspectionResponse</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.acceptanceofdelivery.InspectionResponse",
+    "status": "OUTSIDE_INSPECTION_PERIOD",
+    "shipper": "resource:org.accordproject.organization.Organization#2174",
+    "receiver": "resource:org.accordproject.organization.Organization#7863",
+    "$timestamp": "2022-03-17T13:19:11.285-04:00"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>concerto.Event</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "abstract": "this is an abstract type"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/acceptance-of-delivery">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width="300" alt="Linux Foundation">
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  
+</body></html>
