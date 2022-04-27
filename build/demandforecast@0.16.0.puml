@@ -1,0 +1,19 @@
+@startuml
+class org.accordproject.demandforecast.DemandForecastClause << (A,green) >> {
+   + String purchaser
+   + String supplier
+   + DateTime effectiveDate
+   + Double minimumPercentage
+}
+org.accordproject.demandforecast.DemandForecastClause --|> org.accordproject.contract.Clause
+class org.accordproject.demandforecast.ForecastRequest << (T,yellow) >> {
+   + Double supplyForecast
+}
+org.accordproject.demandforecast.ForecastRequest --|> org.accordproject.runtime.Request
+class org.accordproject.demandforecast.BindingResponse << (T,yellow) >> {
+   + Double requiredPurchase
+   + Integer year
+   + Integer quarter
+}
+org.accordproject.demandforecast.BindingResponse --|> org.accordproject.runtime.Response
+@enduml

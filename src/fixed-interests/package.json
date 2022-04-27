@@ -1,12 +1,12 @@
 {
     "name": "fixed-interests",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "description": "A Fixed Interests Loan Clause, with a monthly Payment",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
-        "cicero": "^0.22.0"
+        "cicero": "^0.23.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

@@ -15,7 +15,7 @@
 'use strict';
 
 const CodeGen = require('@accordproject/concerto-tools').CodeGen;
-const FileWriter = require('@accordproject/concerto-tools').FileWriter;
+const FileWriter = require('@accordproject/concerto-util').FileWriter;
 
 const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
 const CiceroMarkTransformer = require('@accordproject/markdown-cicero').CiceroMarkTransformer;
@@ -424,7 +424,12 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     else {
         // no sample was found, so we generate one
         const classDecl = template.getTemplateModel();
-        sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);
+        try {
+            sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);
+        }
+        catch(err) {
+            sampleInstanceText = `Failed to create a sample of the type "${classDecl.getFullyQualifiedName()}".`;
+        }
     }
 
     const requestTypes = {};

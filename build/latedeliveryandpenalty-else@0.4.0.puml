@@ -1,0 +1,25 @@
+@startuml
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract << (A,green) >> {
+   + Party buyer
+   + Party seller
+   + Boolean forceMajeure
+   + Duration penaltyDuration
+   + Double penaltyPercentage
+   + Double capPercentage
+   + Duration termination
+   + TemporalUnit fractionalPart
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract --|> org.accordproject.contract.Contract
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest << (T,yellow) >> {
+   + Boolean forceMajeure
+   + DateTime agreedDelivery
+   + DateTime deliveredAt
+   + Double goodsValue
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest --|> org.accordproject.runtime.Request
+class org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse << (T,yellow) >> {
+   + Double penalty
+   + Boolean buyerMayTerminate
+}
+org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse --|> org.accordproject.runtime.Response
+@enduml

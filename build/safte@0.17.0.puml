@@ -1,0 +1,41 @@
+@startuml
+class org.accordproject.safte.TokenSale << (T,yellow) >> {
+   + Double tokenPrice
+}
+org.accordproject.safte.TokenSale --|> concerto.Transaction
+class org.accordproject.safte.TokenShare << (T,yellow) >> {
+   + Double tokenAmount
+}
+org.accordproject.safte.TokenShare --|> concerto.Transaction
+class org.accordproject.safte.EquityFinancing << (T,yellow) >> {
+   + Double sharePrice
+}
+org.accordproject.safte.EquityFinancing --|> concerto.Transaction
+class org.accordproject.safte.EquityShare << (T,yellow) >> {
+   + Double equityAmount
+}
+org.accordproject.safte.EquityShare --|> concerto.Transaction
+class org.accordproject.safte.DissolutionEvent << (T,yellow) >> {
+   + String cause
+}
+org.accordproject.safte.DissolutionEvent --|> concerto.Transaction
+class org.accordproject.safte.PayOut << (T,yellow) >> {
+   + Double amount
+}
+org.accordproject.safte.PayOut --|> concerto.Transaction
+class org.accordproject.safte.SafteContract << (A,green) >> {
+   + String companyName
+   + Long companyRegistrationNumber
+   + String purchaser
+   + State jurisdiction
+   + Double purchaseAmount
+   + Double discount
+   + String projectName
+   + String projectDescription
+   + Integer months
+   + String monthsText
+   + Double amount
+   + String amountText
+}
+org.accordproject.safte.SafteContract --|> org.accordproject.contract.Contract
+@enduml

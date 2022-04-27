@@ -1,0 +1,66 @@
+@startuml
+class org.cloudsecurityalliance.supplyagreement.SensorReading << (T,yellow) >> {
+   + Double temperature
+   + Double humidity
+}
+org.cloudsecurityalliance.supplyagreement.SensorReading --|> org.accordproject.runtime.Request
+class org.cloudsecurityalliance.supplyagreement.CheckContract << (T,yellow) >> {
+}
+org.cloudsecurityalliance.supplyagreement.CheckContract --|> org.accordproject.runtime.Request
+class org.cloudsecurityalliance.supplyagreement.DeliveryResponse << (T,yellow) >> {
+   + String message
+   + Boolean inGoodOrder
+}
+org.cloudsecurityalliance.supplyagreement.DeliveryResponse --|> org.accordproject.runtime.Response
+class org.cloudsecurityalliance.supplyagreement.SupplyAgreementState << (A,green) >> {
+   + SensorReading[] sensorReadings
+}
+org.cloudsecurityalliance.supplyagreement.SupplyAgreementState --|> org.accordproject.runtime.State
+class org.cloudsecurityalliance.supplyagreement.SupplyAgreementContract << (A,green) >> {
+   + DateTime executionDate
+   + String exporter
+   + String importer
+   + String product
+   + String importerCreditworthiness
+   + DateTime issueDate
+   + String importerLOCBank
+   + Integer importerLOCNumber
+   + MonetaryAmount importerLOCAmount
+   + String orderBillOfLading
+   + String packingList
+   + Integer renewalTerms
+   + Period termRenewal
+   + Period termTerminationNotice
+   + String invoice
+   + String bookingId
+   + String purchaseOrder
+   + String exporterAddress
+   + Integer turnaroundTime
+   + Integer amountOfEachProduct
+   + MonetaryAmount unitPriceOfEachProduct
+   + String locationForDelivery
+   + DateTime deliveryDate
+   + Integer exporterBankAccount
+   + String modifiedPurchaseOrder
+   + Duration cancellationDeadline
+   + String shipper
+   + String importPort
+   + String exportPort
+   + String productDescription
+   + Integer productWeight
+   + String productMeasurement
+   + MonetaryAmount freightCharges
+   + Duration evaluationTime
+   + String acceptanceCriteria
+   + DateTime termBeginDate
+   + Period termPeriod
+   + Period currentTerm
+   + String shipment
+   + MonetaryAmount unitPrice
+   + Integer unit
+   + Integer sensorReadingFrequency
+   + TemporalUnit duration
+   + Period countPeriod
+}
+org.cloudsecurityalliance.supplyagreement.SupplyAgreementContract --|> org.accordproject.contract.Contract
+@enduml
