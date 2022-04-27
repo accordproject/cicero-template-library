@@ -1,13 +1,13 @@
 {
     "name": "full-payment-upon-signature",
     "displayName": "Full Payment Upon Signature",
-    "version": "0.11.0",
+    "version": "0.12.0",
     "description": "This is a one-time full payment clause applicable at the signature of the contract.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.23.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"

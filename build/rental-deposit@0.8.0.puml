@@ -1,0 +1,28 @@
+@startuml
+class org.accordproject.rentaldeposit.Penalty {
+   + String description
+   + MonetaryAmount amount
+}
+org.accordproject.rentaldeposit.Penalty --|> concerto.Concept
+class org.accordproject.rentaldeposit.ProperyInspection << (T,yellow) >> {
+   + Penalty[] penalties
+}
+org.accordproject.rentaldeposit.ProperyInspection --|> org.accordproject.runtime.Request
+class org.accordproject.rentaldeposit.PropertyInspectionResponse << (T,yellow) >> {
+   + MonetaryAmount balance
+}
+org.accordproject.rentaldeposit.PropertyInspectionResponse --|> org.accordproject.runtime.Response
+class org.accordproject.rentaldeposit.RentalDepositClause << (A,green) >> {
+   + Party tenant
+   + Party landlord
+   + MonetaryAmount depositAmount
+   + Period tenantDepositRestorationPeriod
+   + Double monthlyBaseRentMultiple
+   + String applicableLaw
+   + String statute
+   + String bankName
+   + Period landlordDepositReturnPeriod
+   + String exhibit
+}
+org.accordproject.rentaldeposit.RentalDepositClause --|> org.accordproject.contract.Contract
+@enduml

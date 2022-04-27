@@ -1,0 +1,14 @@
+@startuml
+class org.accordproject.helloworld.MyRequest << (T,yellow) >> {
+   + String input
+}
+org.accordproject.helloworld.MyRequest --|> org.accordproject.runtime.Request
+class org.accordproject.helloworld.MyResponse << (T,yellow) >> {
+   + String output
+}
+org.accordproject.helloworld.MyResponse --|> org.accordproject.runtime.Response
+class org.accordproject.helloworld.HelloWorldClause << (A,green) >> {
+   + String name
+}
+org.accordproject.helloworld.HelloWorldClause --|> org.accordproject.contract.Clause
+@enduml

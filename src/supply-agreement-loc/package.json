@@ -1,11 +1,11 @@
 {
     "name": "supply-agreement-loc",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Supply agreement",
     "author": "John Carpenter",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0",
+        "cicero": "^0.23.0",
         "runtime": "ergo"
     },
     "devDependencies": {

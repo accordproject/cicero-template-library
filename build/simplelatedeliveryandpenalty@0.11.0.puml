@@ -1,0 +1,22 @@
+@startuml
+class org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyContract << (A,green) >> {
+   + Party buyer
+   + Party seller
+   + Duration penaltyDuration
+   + Double penaltyPercentage
+   + Double capPercentage
+   + Duration maximumDelay
+}
+org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyContract --|> org.accordproject.contract.Contract
+class org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest << (T,yellow) >> {
+   + DateTime agreedDelivery
+   + DateTime deliveredAt
+   + Double goodsValue
+}
+org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyRequest --|> org.accordproject.runtime.Request
+class org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyResponse << (T,yellow) >> {
+   + Double penalty
+   + Boolean buyerMayTerminate
+}
+org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyResponse --|> org.accordproject.runtime.Response
+@enduml

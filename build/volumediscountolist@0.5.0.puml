@@ -1,0 +1,20 @@
+@startuml
+class org.accordproject.volumediscountlist.RateRange {
+   + Double volumeUpTo
+   + Double volumeAbove
+   + Double rate
+}
+org.accordproject.volumediscountlist.RateRange --|> concerto.Concept
+class org.accordproject.volumediscountlist.VolumeDiscountContract << (A,green) >> {
+   + RateRange[] rates
+}
+org.accordproject.volumediscountlist.VolumeDiscountContract --|> org.accordproject.contract.Contract
+class org.accordproject.volumediscountlist.VolumeDiscountRequest << (T,yellow) >> {
+   + Double netAnnualChargeVolume
+}
+org.accordproject.volumediscountlist.VolumeDiscountRequest --|> concerto.Transaction
+class org.accordproject.volumediscountlist.VolumeDiscountResponse << (T,yellow) >> {
+   + Double discountRate
+}
+org.accordproject.volumediscountlist.VolumeDiscountResponse --|> concerto.Transaction
+@enduml
