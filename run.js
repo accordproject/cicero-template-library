@@ -388,7 +388,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const archiveFilePath = `${archiveDir}/${archiveFileName}`;
     const templatePageHtml = archiveFileName.replace('.cta', '.html');
     const pumlFilePath = `${buildDir}/${template.getIdentifier()}.puml`;
-
+    const githubRoot = `https://github.dev/accordproject/cicero-template-library/tree/master`;
     // generate UML
     const modelDecls = template.getTemplateModel().getModelFile();
     const models = template.getModelManager().getModels();
@@ -407,6 +407,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const umlURL = `https://www.plantuml.com/plantuml/svg/${encoded}`;
     const umlCardURL = `https://www.plantuml.com/plantuml/png/${encoded}`;
     const studioURL = `${studioRoot}/?template=${encodeURIComponent('ap://' + template.getIdentifier() + '#hash')}`;
+    const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}`;
 
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
@@ -466,6 +467,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         umlURL : umlURL,
         umlCardURL : umlCardURL,
         studioURL : studioURL,
+        githubURL : githubURL,
         filePath: templatePageHtml,
         template: template,
         modelFile: modelFile,
