@@ -67,3 +67,6 @@ typings/
 
 # Windows Directory Cache
 thumbs.db
+
+# Local Netlify folder
+.netlify
