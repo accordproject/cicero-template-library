@@ -53,6 +53,7 @@ const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
 const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.accordproject.org';
 const studioRoot = 'https://studio.accordproject.org';
+const githubRoot = `https://github.dev/accordproject/cicero-template-library/blob/master`;
 
 const ciceroMark = new CiceroMarkTransformer();
 const htmlMark = new HtmlTransformer();
@@ -221,48 +222,61 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 await preProcessor(templatePath, template);
 
                 if(!process.env.SKIP_GENERATION) {
-                    if (!process.env.SKIP_DROPDOWNS) {
-                      const templateVersions = Object.keys(templateIndex).filter(
-                        item => {
-                          const atIndex = item.indexOf("@");
-                          const name = item.substring(0, atIndex);
-                          return name == template.getName();
-                        }
-                      );
+                    const templateVersions = Object.keys(templateIndex).filter(
+                    item => {
+                        const atIndex = item.indexOf("@");
+                        const name = item.substring(0, atIndex);
+                        return name == template.getName();
+                    }
+                    );
 
-                      templateVersions.forEach(versionToUpdate => {
+                    templateVersions.forEach(versionToUpdate => {
                         const templateResult = nunjucks.render("dropdown.njk", {
-                          identifier: versionToUpdate,
-                          templateVersions: templateVersions,
+                            identifier: versionToUpdate,
+                            templateVersions: templateVersions,
                         });
                         fs.readFile(
-                          "build/" + versionToUpdate + ".html",
-                          "utf8",
-                          (err, data) => {
-                            if (err) {
-                              console.log(`Failed reading build/${versionToUpdate}.html with ${err}`);
-                            }
-                            const dom = new jsdom.JSDOM(data);
-                            const $ = jquery(dom.window);
-                            const dropdownContentElement = $(".dropdown-content");
-                            if (dropdownContentElement.length) {
-                              $(".dropdown-content").html(templateResult);
-                              fs.writeFile(
-                                "build/" + versionToUpdate + ".html",
-                                dom.serialize(),
-                                err => {
-                                  if (err) {
-                                      console.log(`Failed saving build/${versionToUpdate}.html with ${err}`);
-                                  } else {
-                                      console.log("dropdown updated for template: " + "build/" + versionToUpdate + ".html" );
-                                  }
+                            "build/" + versionToUpdate + ".html",
+                            "utf8",
+                            (err, data) => {
+                                if (err) {
+                                    console.log(`Failed reading build/${versionToUpdate}.html with ${err}`);
                                 }
-                              );
+                                const dom = new jsdom.JSDOM(data);
+                                const $ = jquery(dom.window);
+                                if (!process.env.SKIP_DROPDOWNS) {
+                                    const dropdownContentElement = $(".dropdown-content");
+                                    if (dropdownContentElement.length) {
+                                        dropdownContentElement.html(templateResult);
+                                    }
+                                }
+
+                                if(process.env.ADD_VSCODE_BUTTON){
+                                    const dropdownContentElement = $("a.button.open-studio");
+                                    if (dropdownContentElement.length) {
+                                        const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
+                                        dropdownContentElement.after(`\n<a href="${githubURL}" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>`);
+                                        
+                                    }
+                                }
+
+                                if (!process.env.SKIP_DROPDOWNS || process.env.ADD_VSCODE_BUTTON) {
+                                    fs.writeFile(
+                                        "build/" + versionToUpdate + ".html",
+                                        dom.serialize(),
+                                        err => {
+                                            if (err) {
+                                                console.log(`Failed saving build/${versionToUpdate}.html with ${err}`);
+                                            } else {
+                                                console.log("VSCode button added for template: " + "build/" + versionToUpdate + ".html" );
+                                            }
+                                        }
+                                    );
+                                }
                             }
-                          }
                         );
-                      });
-                    }
+                    });
+
                     // get the name of the generated archive
                     const destPath = path.dirname(dest);
                     await fs.ensureDir(destPath);
@@ -388,7 +402,6 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const archiveFilePath = `${archiveDir}/${archiveFileName}`;
     const templatePageHtml = archiveFileName.replace('.cta', '.html');
     const pumlFilePath = `${buildDir}/${template.getIdentifier()}.puml`;
-    const githubRoot = `https://github.dev/accordproject/cicero-template-library/tree/master`;
     // generate UML
     const modelDecls = template.getTemplateModel().getModelFile();
     const models = template.getModelManager().getModels();
@@ -407,7 +420,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const umlURL = `https://www.plantuml.com/plantuml/svg/${encoded}`;
     const umlCardURL = `https://www.plantuml.com/plantuml/png/${encoded}`;
     const studioURL = `${studioRoot}/?template=${encodeURIComponent('ap://' + template.getIdentifier() + '#hash')}`;
-    const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}`;
+    const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
 
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());

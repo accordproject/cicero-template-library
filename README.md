@@ -56,6 +56,18 @@ By default, old pages will include links to newer versions of templates, to skip
 SKIP_DROPDOWNS=true npm run build
 ```
 
+## Previewing Static Files locally
+
+After building the static pages, install the Netlify CLI with 
+```
+npm install netlify-cli -g
+```
+
+Then run
+```
+netlify dev -d build
+```
+
 ---
 
 <p align="center">
