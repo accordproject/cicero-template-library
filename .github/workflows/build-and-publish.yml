@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches: 
-      - master
+      - main
 
 jobs:
 
@@ -28,15 +28,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: NPM Install
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: npm install
 
       - name: NPM Build
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: npm run build
 
       - name: Set S3 
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         run: |
             echo "AWS_S3_BUCKET=${{secrets.AWS_S3_BUCKET}}" >> $GITHUB_ENV
 
