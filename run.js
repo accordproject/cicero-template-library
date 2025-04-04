@@ -114,6 +114,34 @@ nunjucks.configure('./views', {
                 templateIndex: latestIndex,
             });
             await writeFile('./build/index.html', templateResult);
+
+            // generate the contracts-only html page
+            const contractsOnly = {};
+            Object.keys(latestIndex).forEach(key => {
+                if (latestIndex[key].type === 0) {
+                    contractsOnly[key] = latestIndex[key];
+                }
+            });
+            const contractsResult = nunjucks.render('index.njk', {
+                serverRoot: serverRoot,
+                templateIndex: contractsOnly,
+                filterType: 'contract'
+            });
+            await writeFile('./build/contracts.html', contractsResult);
+
+            // generate the clause-only html page
+            const clausesOnly = {};
+            Object.keys(latestIndex).forEach(key => {
+                if (latestIndex[key].type !== 0) {
+                    clausesOnly[key] = latestIndex[key];
+                }
+            });
+            const clausesResult = nunjucks.render('index.njk', {
+                serverRoot: serverRoot,
+                templateIndex: clausesOnly,
+                filterType: 'clause'
+            });
+            await writeFile('./build/clauses.html', clausesResult);
         }
     }
     catch(err) {
