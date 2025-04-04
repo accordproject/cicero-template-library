@@ -115,13 +115,17 @@ nunjucks.configure('./views', {
             });
             await writeFile('./build/index.html', templateResult);
 
-            // generate the contracts-only html page
             const contractsOnly = {};
+            const clausesOnly = {};
             Object.keys(latestIndex).forEach(key => {
                 if (latestIndex[key].type === 0) {
                     contractsOnly[key] = latestIndex[key];
+                } else {
+                    clausesOnly[key] = latestIndex[key];
                 }
             });
+
+            // generate the contracts-only html page
             const contractsResult = nunjucks.render('index.njk', {
                 serverRoot: serverRoot,
                 templateIndex: contractsOnly,
@@ -130,7 +134,6 @@ nunjucks.configure('./views', {
             await writeFile('./build/contracts.html', contractsResult);
 
             // generate the clause-only html page
-            const clausesOnly = {};
             Object.keys(latestIndex).forEach(key => {
                 if (latestIndex[key].type !== 0) {
                     clausesOnly[key] = latestIndex[key];
