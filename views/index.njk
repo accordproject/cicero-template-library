@@ -16,7 +16,26 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="title is-2">Templates</h2>
+            <div class="level">
+              <div class="level-left">
+                <h2 class="title is-2">Templates</h2>
+              </div>
+              <div class="level-right">
+                <div class="tabs is-toggle is-small">
+                  <ul>
+                    <li {% if filterType == 'all' %}class="is-active"{% endif %}>
+                      <a href="index.html">All</a>
+                    </li>
+                    <li {% if filterType == 'contract' %}class="is-active"{% endif %}>
+                      <a href="contracts.html">Contracts</a>
+                    </li>
+                    <li {% if filterType == 'clause' %}class="is-active"{% endif %}>
+                      <a href="clauses.html">Clauses</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             <table class="table box versions">
             <thead>
                 <tr>
