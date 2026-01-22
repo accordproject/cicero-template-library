@@ -41,7 +41,7 @@
     "jquery": "^3.5.1",
     "jsdom": "^15.1.1",
     "lodash": "^4.17.19",
-    "mocha": "5.2.0",
+    "mocha": "10.2.0",
     "nunjucks": "^3.2.1",
     "plantuml-encoder": "^1.2.5",
     "rimraf": "^2.6.2",
