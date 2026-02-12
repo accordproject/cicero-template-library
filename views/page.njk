@@ -206,10 +206,13 @@
                     <div class="navbar-end">
                         {% if show_theme_toggle %}
                             <div class="navbar-item">
-                                <button class="button is-light is-small theme-toggle" type="button" aria-label="Toggle theme">
-                                    <span class="icon is-small theme-icon-sun"><i class="fas fa-sun" aria-hidden="true"></i></span>
-                                    <span class="icon is-small theme-icon-moon"><i class="fas fa-moon" aria-hidden="true"></i></span>
-                                </button>
+                                <label class="theme-toggle-switch" aria-label="Toggle theme">
+                                    <input type="checkbox" class="theme-toggle-input" />
+                                    <span class="theme-toggle-slider">
+                                        <span class="theme-icon-sun">☀️</span>
+                                        <span class="theme-icon-moon">🌙</span>
+                                    </span>
+                                </label>
                             </div>
                         {% endif %}
             <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
@@ -256,6 +259,10 @@
              } catch (e) {
                  // Ignore storage errors
              }
+             var toggleInput = document.querySelector('.theme-toggle-input');
+             if (toggleInput) {
+                 toggleInput.checked = theme === 'dark';
+             }
          }
 
          function toggleTheme() {
@@ -264,9 +271,11 @@
          }
 
          document.addEventListener('DOMContentLoaded', function() {
-             var toggleButton = document.querySelector('.theme-toggle');
-             if (toggleButton) {
-                 toggleButton.addEventListener('click', toggleTheme);
+             var toggleInput = document.querySelector('.theme-toggle-input');
+             if (toggleInput) {
+                 var current = document.documentElement.getAttribute('data-theme') || 'light';
+                 toggleInput.checked = current === 'dark';
+                 toggleInput.addEventListener('change', toggleTheme);
              }
          });
      })();

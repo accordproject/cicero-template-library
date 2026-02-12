@@ -337,30 +337,87 @@ code {
 	color: var(--color-code-text);
 }
 
-.theme-toggle {
-	background-color: transparent;
-	border: 1px solid var(--color-border);
-	color: var(--color-navbar-text);
+.theme-toggle-switch {
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	position: relative;
+	margin-left: 10px;
 }
 
-.theme-toggle:hover {
-	background-color: var(--color-surface-muted);
+.theme-toggle-input {
+	display: none;
 }
 
-.theme-toggle .icon {
-	margin: 0;
+.theme-toggle-slider {
+	position: relative;
+	width: 70px;
+	height: 36px;
+	background: linear-gradient(to right, #ffd700 0%, #ffd700 50%, #1a1a2e 50%, #1a1a2e 100%);
+	border-radius: 34px;
+	display: flex;
+	align-items: center;
+	padding: 2px;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+	transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.theme-toggle-input:checked + .theme-toggle-slider {
+	background: linear-gradient(to right, #87ceeb 0%, #87ceeb 50%, #191970 50%, #191970 100%);
+}
+
+.theme-toggle-slider::before {
+	content: '';
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background: #ffffff;
+	left: 2px;
+	transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle-input:checked + .theme-toggle-slider::before {
+	left: 36px;
+}
+
+.theme-toggle-icon {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	transition: opacity 0.3s ease;
+	z-index: 2;
 }
 
 .theme-icon-sun {
-	display: none;
+	left: 8px;
+	color: #ffd700;
+	text-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
+	opacity: 1;
 }
 
-[data-theme="dark"] .theme-icon-sun {
-	display: inline-flex;
+.theme-icon-moon {
+	right: 8px;
+	color: #b0c4de;
+	text-shadow: 0 0 6px rgba(176, 196, 222, 0.8);
+	opacity: 0;
 }
 
-[data-theme="dark"] .theme-icon-moon {
-	display: none;
+.theme-toggle-input:checked + .theme-toggle-slider .theme-icon-sun {
+	opacity: 0;
+}
+
+.theme-toggle-input:checked + .theme-toggle-slider .theme-icon-moon {
+	opacity: 1;
+}
+
+.theme-toggle-switch:hover .theme-toggle-slider {
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 12px rgba(110, 231, 232, 0.4);
 }
 
 /* Tags */
