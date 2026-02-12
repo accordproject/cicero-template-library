@@ -5,7 +5,7 @@
     "author": "John Carpenter",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0",
+        "cicero": "^0.24.0",
         "runtime": "ergo"
     },
     "devDependencies": {
@@ -15,3 +15,4 @@
         "test": "cucumber-js test -r .cucumber.js"
     }
 }
+

@@ -7,7 +7,7 @@
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.24.0"
     },
     "devDependencies": {
         "cucumber": "^5.1.0"
@@ -17,3 +17,4 @@
     },
     "keywords": ["supply", "purchase", "order", "agreement", "supplier", "address", "delivery", "pricing", "price", "mutual", "representation", "warranty", "confidentiality", "term", "termination", "provision", "schedule", "annex", "criteria", "acceptance", "method", "limitation", "liability"]
 }
+
