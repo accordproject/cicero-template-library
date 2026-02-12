@@ -1,7 +1,5 @@
 {
   "scripts": {
-    "postinstall": "npm run bootstrap",
-    "bootstrap": "lerna bootstrap",
     "build": "node run.js",
     "test": "lerna run test",
     "generate": "SKIP_TESTS=true node run.js",
@@ -25,13 +23,13 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.22.2",
-    "@accordproject/cicero-engine": "0.22.2",
-    "@accordproject/cicero-test": "0.22.2",
-    "@accordproject/concerto-core": "1.2.1",
-    "@accordproject/concerto-tools": "1.2.1",
-    "@accordproject/markdown-cicero": "0.14.1",
-    "@accordproject/markdown-html": "0.14.1",
+    "@accordproject/cicero-core": "^0.24.0",
+    "@accordproject/cicero-engine": "^0.24.0",
+    "@accordproject/cicero-test": "^0.24.0",
+    "@accordproject/concerto-core": "^3.25.7",
+    "@accordproject/concerto-tools": "^1.1.0",
+    "@accordproject/markdown-cicero": "0.16.5",
+    "@accordproject/markdown-html": "0.16.5",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "4.2.0",
@@ -39,9 +37,9 @@
     "chai-things": "0.2.0",
     "fs-extra": "^6.0.1",
     "jquery": "^3.5.1",
-    "jsdom": "^15.1.1",
+    "jsdom": "^28.0.0",
     "lodash": "^4.17.19",
-    "mocha": "5.2.0",
+    "mocha": "^11.7.5",
     "nunjucks": "^3.2.1",
     "plantuml-encoder": "^1.2.5",
     "rimraf": "^2.6.2",
@@ -54,9 +52,9 @@
   "version": "0.1.0",
   "main": "build.js",
   "devDependencies": {
-    "lerna": "^4.0.0",
+    "lerna": "^9.0.4",
     "mkdirp": "^0.5.1",
-    "nyc": "^14.1.1"
+    "nyc": "^17.1.0"
   },
   "repository": {
     "type": "git",

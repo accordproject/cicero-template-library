@@ -7,7 +7,7 @@
     "license": "Apache-2.0",
     "accordproject": {
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.24.0"
     },
     "keywords": ["docusign", "purchase", "order", "po", "fail", "failure", "product", "delivery", "date", "late", "delayed", "discount", "price", "amount", "compensation", "credits", "issue"],
     "devDependencies": {
@@ -17,3 +17,4 @@
         "test": "cucumber-js test -r .cucumber.js"
     }
 }
+
