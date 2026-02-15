@@ -17,7 +17,15 @@
     <section class="section">
         <div class="container">
             <h2 class="title is-2">Templates</h2>
-            <table class="table box versions">
+
+            <!-- Search Bar -->
+            <div class="field">
+                <div class="control">
+                    <input type="text" id="searchInput" class="input" placeholder="SEARCH FOR TEMPLATE" onkeyup="filterTable()">
+                </div>
+            </div>
+
+            <table class="table box versions" id="templateTable">
             <thead>
                 <tr>
                 <th>Name</th>
@@ -26,8 +34,8 @@
                 <th>Type</th>
                 </tr>
             </thead>
-            <tbody>
-                {% for name, val in templateIndex |dictsort%}
+            <tbody id="tableBody">
+                {% for name, val in templateIndex | dictsort %}
                 <tr>
                 <th>
                   <a href="{{name}}.html">
@@ -36,12 +44,19 @@
                     {% else %}
                       {{name}}
                     {% endif %}
-                  <a>
+                  </a>
                 </th>
                 <td>{{val.description}}</td>
                 <td>{{val.ciceroVersion}}</td>
                 <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
+                </tr>
                 {% endfor %}
+
+                <!-- No Results Row (Hidden by Default) -->
+                <tr id="noResultsRow" style="display: none;">
+                    <td colspan="4" class="has-text-centered">No results found</td>
+                </tr>
+
             </tbody>            
             <tfoot>
                 <tr>
@@ -57,5 +72,33 @@
             </div>
         </div>
     </section>
+
+    <!-- JavaScript for Search Functionality -->
+    <script>
+      function filterTable() {
+          let input = document.getElementById("searchInput");
+          let filter = input.value.toLowerCase();
+          let table = document.getElementById("templateTable");
+          let rows = table.getElementsByTagName("tr");
+          let noResultsRow = document.getElementById("noResultsRow");
+          let matchFound = false;
+
+          for (let i = 1; i < rows.length - 1; i++) { // Exclude the last row (noResultsRow)
+              let td = rows[i].getElementsByTagName("th")[0];
+              if (td) {
+                  let textValue = td.textContent || td.innerText;
+                  if (textValue.toLowerCase().indexOf(filter) > -1) {
+                      rows[i].style.display = "";
+                      matchFound = true;
+                  } else {
+                      rows[i].style.display = "none";
+                  }
+              }
+          }
+
+          // Show "No results found" row if no matches are found
+          noResultsRow.style.display = matchFound ? "none" : "";
+      }
+    </script>
 
 {% endblock %}
