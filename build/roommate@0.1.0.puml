@@ -1,0 +1,18 @@
+@startuml
+class org.accordproject.roommate.RoommageAgreement << (A,green) >> {
+   + String holder
+   + String roommate
+   + String landlord
+   + String address
+   + String spaceOccupied
+   + Double rentAmount
+   + Double depositAmount
+   + DateTime startDate
+   + DateTime endDate
+   + String holderSignature
+   + DateTime holderDateSigned
+   + String roommateSignature
+   + DateTime roommateDateSigned
+}
+org.accordproject.roommate.RoommageAgreement --|> org.accordproject.contract.Contract
+@enduml
