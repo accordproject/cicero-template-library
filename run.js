@@ -27,7 +27,7 @@ const path = require('path');
 const nunjucks = require('nunjucks');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
-const uuidv1 = require('uuid/v1');
+const { v1: uuidv1 } = require('uuid');
 const semver = require('semver');
 
 const {
