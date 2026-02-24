@@ -1,0 +1,74 @@
+{% extends "page.njk" %}
+
+{% block unfurl %}
+    <!-- Open Graph / Twitter cards for sharing -->
+    <meta property="og:url" content="{{serverRoot}}/{{filePath}}" />
+    <meta property="og:title" content="{{displayName}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:image" content="{{umlCardURL}}" />
+
+    <meta name="twitter:title" content="{{displayName}}" />
+    <meta name="twitter:description" content="{{description}}" />
+    <meta name="twitter:image" content="{{umlCardURL}}" />
+    <meta name="twitter:url" content="{{serverRoot}}/{{filePath}}" />
+{% endblock %}
+
+{% block body %}
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">{{displayName}}</h1>
+
+            <div class="tags">
+                <span class="tag is-light">{{identifier}}</span>
+                <span class="tag is-light">Fallback</span>
+            </div>
+
+            <p class="subtitle">
+                {% if description %}{{description}}{% else %}<em>No description available.</em>{% endif %}
+            </p>
+
+            <div class="buttons">
+                <a href="{{archiveURL}}" class="button is-rounded is-primary">Download Archive</a>
+                <a href="{{studioURL}}" class="button is-rounded is-primary">Open in Template Studio</a>
+                <a href="{{githubURL}}" class="button is-rounded is-primary">Open in VSCode Web</a>
+            </div>
+
+            <hr/>
+
+            <div class="content box">
+                <p>
+                  This page could not be generated automatically. The repository likely lack assets for this template.
+                </p>
+                <p>
+                  We replaced the empty output with this fallback so users can still see the template metadata and links to the archive and source.
+                </p>
+            </div>
+
+            <div class="columns">
+                <div class="column is-half">
+                    <h4 class="title is-4">Template Identifier</h4>
+                    <pre><code>{{identifier}}</code></pre>
+                </div>
+                <div class="column is-half">
+                    <h4 class="title is-4">Links</h4>
+                    <ul>
+                        <li><a href="{{archiveURL}}">Archive (.cta)</a></li>
+                        <li><a href="{{studioURL}}">Open in Template Studio</a></li>
+                        <li><a href="{{githubURL}}">View README on GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content has-text-centered">
+                <img src="{{umlCardURL}}" alt="UML diagram placeholder" style="max-width:240px; opacity:0.9;"/>
+            </div>
+
+            <h2 class="title is-2">Technical Integration</h2>
+            <div class="content">
+                <p>
+                    This is a fallback page — for the template source and code, check the README on GitHub: <a href="{{githubURL}}">{{githubURL}}</a>
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
