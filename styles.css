@@ -1,16 +1,36 @@
-/* Global Styles Override */
-body {
-	font-family: "Graphik", sans-serif, Arial, Helvetica, sans-serif !important;
+/* =========================
+   GLOBAL RESET & BASE
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Graphik", Arial, Helvetica, sans-serif !important;
+  line-height: 1.6;
+  color: rgba(5, 12, 64, 0.7);
+}
+
+/* =========================
+   LINKS & TEXT
+========================= */
+
 a {
-	color: rgb(25, 198, 199);
-	font-weight: 500;
-	transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: rgb(25, 198, 199);
+  font-weight: 500;
+  transition: color 0.25s ease;
 }
 
 a:hover {
-	color: rgb(27, 37, 64);
+  color: rgb(27, 37, 64);
 }
 
 .content h1,
@@ -19,326 +39,233 @@ a:hover {
 .content h4,
 .content h5,
 .content h6 {
-	color: rgb(27, 37, 64);
+  color: rgb(27, 37, 64);
+  font-weight: 400;
 }
 
-.content h1:not(:first-child) {
-	margin-top: 1em;
-	font-weight: 400;
-	font-size: 2.5rem;
-	margin-bottom: 5px;
+.content h1 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 0.5rem;
 }
 
-.content p:not(:last-child) {
-	margin-bottom: 0px !important;
-}
-
-.linux-foundation-logo{
-	margin-top: 50px;
-	margin-bottom: 50px;
-}
-  
 .content p {
-	font-size: 15px;
-	font-weight: 400;
-	line-height: 28px;
-	color: rgba(5, 12, 64, 0.7);
+  font-size: 0.95rem;
+  line-height: 1.75;
 }
 
-.content pre {
-	padding: 0px;
-}
+/* =========================
+   CONTAINERS & BOXES
+========================= */
 
-pre {
-	padding: 0px;
-}
-
-.content:not(:last-child) {
-	margin-bottom: 45px;
+.container {
+  max-width: 1200px;
+  padding-inline: 1rem;
 }
 
 .box {
-	border-radius: 10px;
-	display: inline-block;
-	margin-bottom: 50px !important;
-  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 10px;
+  margin-bottom: 3rem;
 }
 
-/* Headings */
+/* =========================
+   HERO SECTION
+========================= */
 
-.title {
-	font-weight: 400;
-	color: rgb(27, 37, 64);
+.hero {
+  position: relative;
+  min-height: 100svh;
+  padding: clamp(4rem, 10vh, 9rem) 1rem;
+  display: flex;
+  align-items: center;
+  background-image: url(./assets/images/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
 }
 
-.title:not(:last-child) {
-	margin-bottom: 0;
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(/assets/images/noise.png);
+  background-size: 276px 276px;
+  pointer-events: none;
+  opacity: 0.25;
 }
 
-.title.is-2 {
-	margin-bottom: 5px;
+.hero.is-dark a:not(.button) {
+  color: rgb(25, 198, 199);
 }
 
-.title.is-4 {
-	margin-bottom: 20px;
+.hero.is-dark a:not(.button):hover {
+  color: #fff;
 }
 
-.title.is-4.author-section {
-	font-size: 15pt;
-}
-
-.title.is-4 .author {
-	font-weight: 600;
-}
-
-.title:not(.is-spaced) + .subtitle {
-	max-width: 720px;
-	margin-top: 4px;
-}
-
-.subtitle {
-	font-size: 15px;
-	font-weight: 400;
-	line-height: 28px;
-	color: rgba(5, 12, 64, 0.7);
-}
-
-.logo.box {
-	border-radius: 10px;
-	display: inline-block;
-	padding: 1.0rem;
-}
-
-.has-background-dark,
-.is-dark {
-	background-color: rgb(27, 37, 64) !important;
-}
-
-.has-light {
-	font-weight: 200 !important;
-	font-style: normal;
-	color: rgb(211, 206, 224);
-}
-
-/* Buttons */
-
-.button {
-	transition: background 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.button.is-primary {
-	color: rgb(5, 12, 64) !important;
-	background-color: rgb(25, 198, 199);
-	height: 45px;
-	width: auto;
-	padding: 15px 30px 13px;
-	font-size: 15px;
-	border: 2px solid transparent;
-}
-
-.button.is-primary.is-hovered,
-.button.is-primary:hover {
-	background-color: rgba(255, 255, 255, 0);
-	border: 2px solid rgb(25, 198, 199);
-}
-
-.button.download-button {
-	margin-right: 15px;
-}
+/* =========================
+   NAVBAR
+========================= */
 
 a.navbar-item {
-	color: rgb(255, 255, 255);
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 1;
-	transition: color 0.15s ease-in;
+  color: #fff;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 a.navbar-item:hover {
-	background-color: transparent;
-	color: rgb(25, 198, 199);
+  color: rgb(25, 198, 199);
+  background: transparent;
 }
 
-a.navbar-item img {
-  margin-right: 10px;
-  max-height: none!important;
+/* =========================
+   BUTTONS
+========================= */
+
+.button {
+  transition: all 0.25s ease;
 }
 
-.icon {
-	margin-top: -2px;
-	margin-right: 5px !important;
+.button.is-primary {
+  background-color: rgb(25, 198, 199);
+  color: rgb(5, 12, 64) !important;
+  padding: 0.9rem 1.75rem;
+  border-radius: 6px;
+  border: 2px solid transparent;
 }
 
-/* Hero */
-.hero {
-  padding-top: 140px;
-  padding-bottom: 70px;
-  background-image: url(./assets/images/background.jpg);
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-size: 2205px 2000px;
-  position: relative;
+.button.is-primary:hover {
+  background: transparent;
+  border-color: rgb(25, 198, 199);
 }
-  
-.hero::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+
+/* =========================
+   TABLES
+========================= */
+
+.table {
   width: 100%;
-  content: "";
-  background-image: url(/assets/images/noise.png);
-  background-size: 276px 276px;
-  pointer-events: none;
+  overflow-x: auto;
 }
 
-.hero.is-dark a:not(.button):not(.dropdown-item):not(.tag) {
-	color: rgb(25, 198, 199);
-	transition: color 0.15s ease-in;
+.table th,
+.table td {
+  font-size: 0.875rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(5, 12, 64, 0.1);
 }
 
-.hero.is-dark a:not(.button):not(.dropdown-item):not(.tag):hover {
-	color: rgb(255, 255, 255);
+.table thead th {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.65rem;
+  color: rgba(5, 12, 64, 0.5);
 }
 
-/* Footer */
+/* =========================
+   FOOTER
+========================= */
 
 .footer {
-  background-image: url(./assets/images/background.jpg);
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-size: 2205px 2000px;
   position: relative;
+  padding: 4rem 1rem;
+  background-image: url(./assets/images/background.jpg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 .footer::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
   content: "";
+  position: absolute;
+  inset: 0;
   background-image: url(/assets/images/noise.png);
   background-size: 276px 276px;
-  pointer-events: none;
+  opacity: 0.25;
 }
 
 .footer .content p {
-	font-weight: 500;
-	font-style: normal;
-	color: rgba(255, 255, 255, 0.502);
-	font-size: 0.6666666667rem;
-	letter-spacing: 1px;
-	line-height: 1.8;
-	text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-/* Dropdown */
+/* =========================
+   DROPDOWN
+========================= */
 
 .dropdown {
-	margin-top: 5px;
-	margin-right: 20px;
+  margin-inline-end: 1rem;
 }
 
-.dropdown .button .span {
-	font-size: 15px;
-	font-weight: 500;
-	color: rgb(5, 12, 64);
+.dropdown-item.is-active {
+  background-color: rgb(25, 198, 199);
+  color: rgb(5, 12, 64);
 }
 
-.dropdown-item {
-	font-weight: 400 !important;
-}
+/* =========================
+   UTILITIES
+========================= */
 
-a.dropdown-item.is-active {
-	background-color: rgb(25, 198, 199);
-	color: rgb(5, 12, 64);
-}
-
-svg.svg-inline--fa.fa-angle-down.fa-w-10 path {
-	fill: rgb(25, 198, 199) !important;
-}
-
-/* Tags */
-.tags:not(:last-child) {
-	margin-bottom: 1rem;
-	margin-top: 1rem;
-}
-
-/* Table */
-
-.table thead th {
-	font-weight: 500;
-	color: rgb(5, 12, 64);
-	line-height: initial;
-	border-bottom: 2px solid rgba(5, 12, 64, 0.102);
-	color: rgba(5, 12, 64, 0.502);
-	font-size: 0.6666666667rem;
-	font-weight: 500;
-	letter-spacing: 2.7px;
-	line-height: initial;
-	text-transform: uppercase;
-	padding-bottom: 15px;
-}
-
-.table td,
-.table th {
-	border: 1px solid rgb(219, 219, 219);
-	border-width: 0 0 1px;
-	padding: 0.5em 0.75em;
-	vertical-align: top;
-	color: rgba(5, 12, 64, 0.7);
-	font-size: 15px;
-	font-weight: 400;
-}
-
-.table tfoot th {
-	font-weight: 500;
-	color: rgb(5, 12, 64);
-	line-height: initial;
-	border-top: 2px solid rgba(5, 12, 64, 0.102);
-	color: rgba(5, 12, 64, 0.502);
-	font-size: 0.6666666667rem;
-	font-weight: 500;
-	letter-spacing: 2.7px;
-	line-height: initial;
-	text-transform: uppercase;
-	padding-top: 15px;
-	padding-bottom: 0;
-}
-
-.table a:hover {
-	color: rgb(5, 12, 64) !important;
+.linux-foundation-logo {
+  margin-block: 3rem;
 }
 
 .technical-integration {
-	margin-top: 95px;
-}
-
-table.table.box.versions {
-	margin-top: 10px;
+  margin-top: clamp(3rem, 8vh, 6rem);
 }
 
 .inner-content {
-	padding-top: 140px;
+  padding-top: clamp(3rem, 8vh, 6rem);
 }
 
-.technical-integration.content {
-	margin-bottom: 20px;
-}
+/* =========================
+   TABS
+========================= */
 
-#tabs-content div {
-  display: none;
-}
-
-#tabs-content div.is-active {
-  display: inline-block;
-}
-
+#tabs-content div,
 #mtabs-content div {
   display: none;
 }
 
+#tabs-content div.is-active,
 #mtabs-content div.is-active {
-  display: inline-block;
+  display: block;
+}
+
+/* =========================
+   RESPONSIVE BREAKPOINTS
+========================= */
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    margin-bottom: 2rem;
+  }
+
+  .table {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 4rem;
+  }
+
+  .button.is-primary {
+    width: 100%;
+    justify-content: center;
+  }
 }
