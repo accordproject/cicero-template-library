@@ -342,3 +342,17 @@ table.table.box.versions {
 #mtabs-content div.is-active {
   display: inline-block;
 }
+/* Fix for mobile responsiveness */
+@media (max-width: 768px) {
+  .box {
+    display: block !important; /* Forces the box to take up 100% width */
+    width: 100% !important;
+    overflow-x: auto;         /* Allows the table inside to be scrollable if it's too wide */
+  }
+
+  .table.table.box.versions {
+    display: block;
+    overflow-x: auto;         /* This allows users to swipe left/right on the table */
+    white-space: nowrap;      /* Prevents text from getting squished in a weird way */
+  }
+}
