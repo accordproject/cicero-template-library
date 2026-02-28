@@ -34,3 +34,20 @@ Thank you!
 }
 """
 
+
+  Scenario: The contract should say Hello to Betty Buyer for another organization
+    When it receives the request
+"""
+{
+    "$class": "org.accordproject.helloworld.MyRequest",
+    "input": "OpenAI Labs"
+}
+"""
+    Then it should respond with
+"""
+{
+    "$class": "org.accordproject.helloworld.MyResponse",
+    "output": "Hello Betty Buyer OpenAI Labs"
+}
+"""
+
