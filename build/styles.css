@@ -396,3 +396,307 @@ table.table.box.versions td:nth-child(4) {
 #mtabs-content div.is-active {
   display: inline-block;
 }
+
+/* ============================================================
+   RESPONSIVE DESIGN — Mobile-First Breakpoints
+   Breakpoints derived from Bulma's grid:
+     ≤1023px  → Tablet (navbar collapses)
+     ≤768px   → Mobile (major layout shifts)
+     ≤480px   → Small phone (fine-tuning)
+   ============================================================ */
+
+/* ---- Tablet and below: ≤1023px ---- */
+@media screen and (max-width: 1023px) {
+
+  /* Hamburger burger bars — white on dark navbar */
+  .navbar-burger {
+    color: #fff;
+    height: 3.25rem;
+    width: 3.25rem;
+  }
+
+  .navbar-burger span {
+    background-color: #fff !important;
+    height: 2px;
+    left: calc(50% - 10px);
+    width: 20px;
+  }
+
+  .navbar-burger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Mobile menu panel — matches the dark navbar */
+  .navbar-menu {
+    background-color: rgb(27, 37, 64);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 0;
+  }
+
+  .navbar-menu .navbar-item {
+    color: #fff;
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar-menu .navbar-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgb(25, 198, 199);
+  }
+
+  /* Hero — scale down padding proportionally (140→100 ≈ 0.714×) */
+  .hero {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  .hero .title.is-1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .hero .subtitle {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  /* Inner content padding matches hero reduction */
+  .inner-content {
+    padding-top: 100px;
+  }
+
+  /* Template table — allow table to scroll if needed */
+  table.table.box.versions {
+    table-layout: auto;
+  }
+}
+
+/* ---- Mobile: ≤768px ---- */
+@media screen and (max-width: 768px) {
+
+  /* Hero — further reduced (140→80 ≈ 0.571×) */
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    background-size: cover;
+  }
+
+  .hero .title.is-1 {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .hero .subtitle {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  /* Inner content padding */
+  .inner-content {
+    padding-top: 80px;
+  }
+
+  /* Section padding reduced */
+  .section {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Search bar — full width */
+  .search-container {
+    max-width: 100%;
+  }
+
+  /* Template table — hide Description & Cicero Version on mobile,
+     keep Name (col 1) + Type (col 4) visible */
+  table.table.box.versions {
+    table-layout: auto;
+    display: table;
+  }
+
+  table.table.box.versions th:nth-child(2),
+  table.table.box.versions td:nth-child(2) {
+    display: none;
+  }
+
+  table.table.box.versions th:nth-child(3),
+  table.table.box.versions td:nth-child(3) {
+    display: none;
+  }
+
+  /* Reset column widths to auto when columns are hidden */
+  table.table.box.versions th:nth-child(1),
+  table.table.box.versions td:nth-child(1) {
+    width: auto;
+  }
+
+  table.table.box.versions th:nth-child(4),
+  table.table.box.versions td:nth-child(4) {
+    width: auto;
+  }
+
+  /* Template detail: stack action buttons vertically */
+  .button.is-primary {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .button.download-button {
+    margin-right: 0;
+  }
+
+  /* Tabs — scrollable for many items */
+  .tabs ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabs li {
+    flex-shrink: 0;
+  }
+
+  .tabs li a span {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Code blocks — horizontal scroll */
+  pre, .content pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  /* Box padding reduced (2.25rem → 1.5rem ≈ 0.667×) */
+  .box {
+    padding: 1.5rem;
+  }
+
+  /* Developer tables — allow horizontal scroll */
+  .technical-integration .table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .technical-integration {
+    margin-top: 50px;
+  }
+
+  /* Tags — wrap */
+  .tags {
+    flex-wrap: wrap;
+  }
+
+  .tags .tag {
+    font-size: 0.65rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Footer — scale down logo width (300→200 ≈ 0.667×) */
+  .linux-foundation-logo img {
+    width: 200px;
+  }
+
+  .footer .content p {
+    font-size: 0.58rem;
+    line-height: 1.6;
+  }
+
+  /* Dropdown — full width */
+  .dropdown {
+    margin-right: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .dropdown .dropdown-trigger {
+    width: 100%;
+  }
+
+  .dropdown .dropdown-trigger .button {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* UML diagram — constrain within viewport */
+  .content img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ---- Small phone: ≤480px ---- */
+@media screen and (max-width: 480px) {
+
+  /* Hero — minimal padding (140→60 ≈ 0.429×) */
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+
+  .hero .title.is-1 {
+    font-size: 1.4rem;
+  }
+
+  .hero .subtitle {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  /* Inner content */
+  .inner-content {
+    padding-top: 60px;
+  }
+
+  /* Section */
+  .section {
+    padding: 1rem 0.75rem;
+  }
+
+  /* Box padding further reduced (2.25rem → 1rem ≈ 0.444×) */
+  .box {
+    padding: 1rem;
+  }
+
+  /* Table cells — tighter padding */
+  .table td,
+  .table th {
+    padding: 0.35em 0.5em;
+    font-size: 13px;
+  }
+
+  .table thead th {
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    padding-top: 12px;
+  }
+
+  /* Headings */
+  .title.is-2 {
+    font-size: 1.25rem;
+  }
+
+  .title.is-4 {
+    font-size: 1rem;
+  }
+
+  .content h1:not(:first-child) {
+    font-size: 1.5rem;
+  }
+
+  /* Footer — even smaller logo */
+  .linux-foundation-logo img {
+    width: 150px;
+  }
+
+  .linux-foundation-logo {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .footer .content p {
+    font-size: 0.5rem;
+  }
+}
