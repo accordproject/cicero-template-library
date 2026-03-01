@@ -1,0 +1,44 @@
+{
+  "version": "5",
+  "remote": {
+    "https://edge.netlify.com/": "fd941d61d88673d5f28aab283fb86fcc50f08a3bc80ee5470498fcfa88c65cfb",
+    "https://edge.netlify.com/bootstrap/config.ts": "6a2ce0e544e15e8f8883a5c18da5948e37fd0f2619f68cb31f3af53c51817025",
+    "https://edge.netlify.com/bootstrap/context.ts": "e97240232121e2f369f6546ce961490f34d961ea1ea54be3ff09633e3f08373f",
+    "https://edge.netlify.com/bootstrap/cookie.ts": "8b0baae708989ca183c6f3b4ab3d029e6abcbc2e43f93edeb0ff447b3bbc3a05",
+    "https://edge.netlify.com/bootstrap/edge_function.ts": "b8253e86aa83c67341f5cfedeba5049d77fbf84dcab7eceff7566b7728ae9b39",
+    "https://edge.netlify.com/bootstrap/globals/types.ts": "eaa6148ded3121d8dee62dd91c86e7fe76601df0f3ca8d7962243a30f4c8935f"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@accordproject/cicero-core@0.22.2",
+        "npm:@accordproject/cicero-engine@0.22.2",
+        "npm:@accordproject/cicero-test@0.22.2",
+        "npm:@accordproject/concerto-core@1.2.1",
+        "npm:@accordproject/concerto-tools@1.2.1",
+        "npm:@accordproject/markdown-cicero@0.14.1",
+        "npm:@accordproject/markdown-html@0.14.1",
+        "npm:adm-zip@~0.4.11",
+        "npm:bulma@~0.7.1",
+        "npm:chai-as-promised@7.1.1",
+        "npm:chai-things@0.2.0",
+        "npm:chai@4.2.0",
+        "npm:fs-extra@^6.0.1",
+        "npm:jquery@^3.5.1",
+        "npm:jsdom@^15.1.1",
+        "npm:lerna@4",
+        "npm:lodash@^4.17.19",
+        "npm:mkdirp@~0.5.1",
+        "npm:mocha@5.2.0",
+        "npm:netlify-cli@^23.15.1",
+        "npm:nunjucks@^3.2.1",
+        "npm:nyc@^14.1.1",
+        "npm:plantuml-encoder@^1.2.5",
+        "npm:rimraf@^2.6.2",
+        "npm:semver@5.6.0",
+        "npm:showdown@^1.9.1",
+        "npm:uuid@^3.3.2"
+      ]
+    }
+  }
+}

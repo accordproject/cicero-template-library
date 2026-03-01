@@ -194,7 +194,13 @@
           <a class="navbar-item" href="/">
             <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
           </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
+        <div id="main-navbar-menu" class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
               <div class="icon">
@@ -207,6 +213,21 @@
         </div>
       </div>
     </nav>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var burgers = document.querySelectorAll('.navbar-burger');
+        burgers.forEach(function(burger) {
+            burger.addEventListener('click', function() {
+                var targetId = burger.dataset.target;
+                var target = document.getElementById(targetId);
+                burger.classList.toggle('is-active');
+                target.classList.toggle('is-active');
+            });
+        });
+    });
+    </script>
 
     {% block body %} {% endblock %}
 

@@ -42,6 +42,7 @@
     "jsdom": "^15.1.1",
     "lodash": "^4.17.19",
     "mocha": "5.2.0",
+    "netlify-cli": "^23.15.1",
     "nunjucks": "^3.2.1",
     "plantuml-encoder": "^1.2.5",
     "rimraf": "^2.6.2",

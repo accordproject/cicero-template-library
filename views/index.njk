@@ -17,7 +17,19 @@
     <section class="section">
         <div class="container">
             <h2 class="title is-2">Templates</h2>
-            <table class="table box versions">
+
+            <div class="search-container">
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <input id="template-search" class="input" type="text" placeholder="Search for template...">
+                        <span class="icon is-left">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <table id="template-table" class="table box versions">
             <thead>
                 <tr>
                 <th>Name</th>
@@ -42,6 +54,9 @@
                 <td>{{val.ciceroVersion}}</td>
                 <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
                 {% endfor %}
+                <tr id="no-results" class="no-results-row" style="display: none;">
+                    <td colspan="4" class="has-text-centered no-results-message">No results found.</td>
+                </tr>
             </tbody>            
             <tfoot>
                 <tr>
@@ -52,10 +67,40 @@
                 </tr>
             </tfoot>
             </table>
+
             <div class="content">
                 <a href="template-library.json" target="_blank">Template Library Index</a>
             </div>
         </div>
     </section>
+
+    <script>
+    (function() {
+        var searchInput = document.getElementById('template-search');
+        var table = document.getElementById('template-table');
+        var noResultsRow = document.getElementById('no-results');
+        var tfoot = table.querySelector('tfoot');
+        var tbody = table.querySelector('tbody');
+        var rows = tbody.querySelectorAll('tr:not(.no-results-row)');
+
+        searchInput.addEventListener('input', function() {
+            var query = searchInput.value.toLowerCase().trim();
+            var visibleCount = 0;
+
+            for (var i = 0; i < rows.length; i++) {
+                var text = rows[i].textContent.toLowerCase();
+                if (text.indexOf(query) !== -1) {
+                    rows[i].style.display = '';
+                    visibleCount++;
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+
+            noResultsRow.style.display = visibleCount === 0 ? '' : 'none';
+            tfoot.style.display = visibleCount === 0 ? 'none' : '';
+        });
+    })();
+    </script>
 
 {% endblock %}
