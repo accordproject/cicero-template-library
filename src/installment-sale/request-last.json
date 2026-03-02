@@ -1,3 +1,5 @@
-{"$class":"org.accordproject.installmentsale.ClosingPayment",
-    "amount":{"$class":"org.accordproject.money.MonetaryAmount",
-        "doubleValue":3229.525312499998,"currencyCode":"EUR"}}
+{
+    "$class": "io.clause.installmentsale@0.1.0.ClosingPayment",
+    "amount": 3229.53,
+    "currencyCode": "EUR"
+}

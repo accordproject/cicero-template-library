@@ -1,24 +1,22 @@
-namespace org.accordproject.lateinvoicewithpayment
+namespace io.clause.lateinvoicewithpayment@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
-import org.accordproject.money.* from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
 
 /**
  * Defines the data model for the LateInvoice template.
  * This defines the structure of the abstract syntax tree that the parser for the template
  * must generate from input source text.
  */
-asset LateInvoiceContract extends Contract {
+@template
+asset TemplateModel extends Clause {
   /**
    * If the invoice deliver date  >= termination date then the buyer does not have to pay
    */
   o Duration maximumDelay
-  --> Party purchaser
-  --> Party supplier
+  o String purchaser
+  o String supplier
 }
 
 /**
@@ -29,7 +27,8 @@ transaction LateInvoiceRequest extends Request {
    * What was the agreed delivery date for the invoice?
    */
   o DateTime invoiceDue
-  o MonetaryAmount amountDue
+  o Double amountDue
+  o String currencyCode
 }
 
 /**
@@ -38,4 +37,11 @@ transaction LateInvoiceRequest extends Request {
 transaction LateInvoiceResponse extends Response {
   o Boolean paymentRequired
   o String cause optional
+}
+
+// Event emitted when payment is required
+event PaymentObligationEvent {
+  o Double amount
+  o String currencyCode
+  o String description
 }

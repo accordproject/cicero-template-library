@@ -1,27 +1,26 @@
-namespace org.accordproject.signature.tnd
+namespace io.clause.signatureblocktitlenamedate@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.signature.block.SignatureClause from https://models.accordproject.org/signature/block@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 
 /**
  * A detailed signature block, configured to render to PDF
  * in white, and with all variables read-only in the Web editor
  */
-asset TitleNameDateSignatureBlock extends SignatureClause {
+@template
+asset TemplateModel extends Clause {
   @DocuSignTab("type", "Title", "optional", true)
   @Pdf("style", "background")
-  @ContractEditor("readOnly", true, 
+  @ContractEditor("readOnly", true,
     "fontFamily", "Lucida Console, Courier, monospace",
-    "backgroundColor", "#FAE094", "border", '#CCA855' )
+    "backgroundColor", "#FAE094", "border", "#CCA855")
   @FormEditor("hide", true)
   o String title
 
   @DocuSignTab("type", "SignHere")
   @Pdf("style", "background")
-  @ContractEditor("readOnly", true, 
+  @ContractEditor("readOnly", true,
     "fontFamily", "Lucida Console, Courier, monospace",
-    "backgroundColor", "#FAE094", "border", '#CCA855' )
+    "backgroundColor", "#FAE094", "border", "#CCA855")
   @FormEditor("hide", true)
   o String signature
 
@@ -29,7 +28,7 @@ asset TitleNameDateSignatureBlock extends SignatureClause {
   @Pdf("style", "background")
   @ContractEditor("readOnly", true,
     "fontFamily", "Lucida Console, Courier, monospace",
-    "backgroundColor", "#FAE094", "border", '#CCA855' )
+    "backgroundColor", "#FAE094", "border", "#CCA855")
   @FormEditor("hide", true)
   o String fullName
 
@@ -37,7 +36,9 @@ asset TitleNameDateSignatureBlock extends SignatureClause {
   @Pdf("style", "background")
   @ContractEditor("readOnly", true,
     "fontFamily", "Lucida Console, Courier, monospace",
-    "backgroundColor", "#FAE094", "border", '#CCA855' )
+    "backgroundColor", "#FAE094", "border", "#CCA855")
   @FormEditor("hide", true)
   o String dateSigned
+
+  o String signatory
 }

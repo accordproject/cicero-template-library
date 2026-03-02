@@ -1,0 +1,81 @@
+namespace io.clause.perishablegoods@0.1.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+
+/**
+ * Units of mass
+ */
+enum UnitOfMass {
+  o KG
+  o TONNE
+  o LB
+}
+
+/**
+ * A sensor reading (temperature and humidity)
+ */
+concept SensorReading {
+  o Double centigrade
+  o Double humidity
+}
+
+/**
+ * Request: shipment received with unit count and embedded sensor readings
+ */
+transaction ShipmentReceived extends Request {
+  o String shipmentId
+  o Integer unitCount
+  o SensorReading[] sensorReadings
+}
+
+/**
+ * Response: price calculation result
+ */
+transaction PriceCalculation extends Response {
+  o Double totalPrice
+  o Double penalty
+  o String currencyCode
+  o Boolean late
+}
+
+/**
+ * Event emitted when payment is due
+ */
+event PerishableGoodsPaymentEvent {
+  o Double totalPrice
+  o String currencyCode
+  o String description
+}
+
+/**
+ * State for the perishable goods contract
+ */
+concept PerishableGoodsState identified {
+  o Boolean payoutMade default=false
+  o Double totalPaid default=0.0
+}
+
+/**
+ * The template model
+ */
+@template
+asset TemplateModel extends Clause {
+  o String grower
+  o String importer
+  o String shipmentId
+  o DateTime dueDate
+  o Double unitPrice
+  o String currencyCode
+  o UnitOfMass unit
+  o Integer minUnits
+  o Integer maxUnits
+  o String product
+  o Integer sensorReadingFrequency
+  o String duration
+  o Double minTemperature
+  o Double maxTemperature
+  o Double minHumidity
+  o Double maxHumidity
+  o Double penaltyFactor
+}

@@ -1,5 +1,5 @@
 {
-    "$class": "org.accordproject.servicelevelagreement.MonthSummary",
+    "$class": "io.clause.servicelevelagreement@0.1.0.MonthSummary",
     "monthlyServiceLevel": 99.7,
     "monthlyCharge": 10,
     "last11MonthCredit": 0,

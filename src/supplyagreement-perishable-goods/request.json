@@ -1,15 +1,17 @@
 {
-    "$class":"org.accordproject.perishablegoods.ShipmentReceived",
-    "unitCount":3002,
-    "shipment":{
-        "$class":"org.accordproject.perishablegoods.Shipment",
-        "shipmentId":"SHIP_001",
-        "sensorReadings":[
+    "$class": "io.clause.supplyagreementperishablegoods@0.1.0.ShipmentReceived",
+    "$identifier": "request-1",
+    "$timestamp": "2024-01-01T00:00:00Z",
+    "unitCount": 3002,
+    "shipment": {
+        "$class": "io.clause.supplyagreementperishablegoods@0.1.0.Shipment",
+        "shipmentId": "SHIP_001",
+        "status": "IN_TRANSIT",
+        "sensorReadings": [
             {
-                "$class":"org.accordproject.perishablegoods.SensorReading",
-                "centigrade":2,
-                "humidity":80,
-                "shipment":"resource:org.accordproject.perishablegoods.Shipment#SHIP_001"
+                "$class": "io.clause.supplyagreementperishablegoods@0.1.0.SensorReading",
+                "centigrade": 2,
+                "humidity": 80
             }
         ]
     }

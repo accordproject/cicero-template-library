@@ -1,8 +1,8 @@
-namespace org.accordproject.acceptanceofdelivery
+namespace io.clause.acceptanceofdelivery@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
 
 /**
  * Sent by the receiver of the goods, indicates when the goods were
@@ -24,26 +24,29 @@ enum InspectionStatus {
 
 /**
  * The clause response
+ * Note: shipper and receiver are returned as String (not Organization relationship)
  */
 transaction InspectionResponse extends Response {
   o InspectionStatus status
-  --> Organization shipper
-  --> Organization receiver
+  o String shipper
+  o String receiver
 }
 
 /**
  * The template model
+ * Note: shipper and receiver are String fields (Party relationships not supported in v0.25)
  */
-asset AcceptanceOfDeliveryClause extends Clause {
+@template
+asset TemplateModel extends Clause {
   /**
    * the shipper of the goods
    */
-  --> Organization shipper
+  o String shipper
 
   /**
    * the receiver of the goods
    */
-  --> Organization receiver
+  o String receiver
 
   /**
    * what are we delivering
@@ -51,7 +54,7 @@ asset AcceptanceOfDeliveryClause extends Clause {
   o String deliverable
 
   /**
-   * how long does the receiver have to inspect the goods
+   * how long does the receiver have to inspect the goods (in business days)
    */
   o Long businessDays
 

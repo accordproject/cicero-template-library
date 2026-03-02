@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.minilatedeliveryandpenalty.LateRequest",
+  "$class": "io.clause.minilatedeliveryandpenaltypayment@0.1.0.LateRequest",
   "agreedDelivery": "2019-04-01T12:00:00-05:00",
   "deliveredAt": "2019-04-20T03:24:00-05:00",
   "goodsValue": 200

@@ -2,7 +2,7 @@
     "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
     "envelopeStatus": {
         "$class": "com.docusign.connect.EnvelopeStatus",
-        "status" : "Completed"
+        "status": "Completed"
     },
     "recipients": [
         {

@@ -7,13 +7,20 @@
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
-        "cicero": "^0.22.0"
+        "runtime": "typescript",
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "late",
+        "delivery",
+        "penalty",
+        "delayed",
+        "seller",
+        "exceed",
+        "clause",
+        "demo"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["late", "delivery", "penalty", "delayed", "seller", "exceed", "clause", "demo"]
+        "test": "vitest run"
+    }
 }

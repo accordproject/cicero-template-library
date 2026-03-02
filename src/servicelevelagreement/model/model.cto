@@ -1,0 +1,35 @@
+namespace io.clause.servicelevelagreement@0.1.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+
+@template
+asset TemplateModel extends Clause {
+  o Integer paymentPeriod
+  o Double monthlyCapPercentage
+  o Double yearlyCapPercentage
+  o Double availability1
+  o Double serviceCredit1
+  o String currencyCode
+  o Double availability2
+  o Double serviceCredit2
+  o String serviceProvider
+  o String serviceConsumer
+}
+
+transaction MonthSummary extends Request {
+  o Double monthlyServiceLevel
+  o Double monthlyCharge
+  o Double last11MonthCredit
+  o Double last11MonthCharge
+}
+
+transaction InvoiceCredit extends Response {
+  o Double monthlyCredit
+}
+
+event ServiceCreditPaymentEvent {
+  o Double amount
+  o String currencyCode
+  o String description
+}

@@ -1,4 +1,4 @@
 {
-    "$class": "org.accordproject.volumediscount.VolumeDiscountRequest",
+    "$class": "io.clause.volumediscount@0.1.0.VolumeDiscountRequest",
     "netAnnualChargeVolume": 0.4
 }

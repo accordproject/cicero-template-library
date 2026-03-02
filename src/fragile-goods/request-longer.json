@@ -1,7 +1,7 @@
 {
-    "$class": "io.clause.demo.fragileGoods.DeliveryUpdate",
-    "startTime":"January 1, 2018 16:34:30",
-    "finishTime":"January 1, 2018 16:44:31",
-    "status":"ARRIVED",
-    "accelerometerReadings":[0.2,0.6,-0.3,-0.7,0.1]
+    "$class": "io.clause.fragilegoods@0.1.0.DeliveryUpdate",
+    "startTime": "2018-01-01T16:34:30Z",
+    "finishTime": "2018-01-01T16:44:31Z",
+    "status": "ARRIVED",
+    "accelerometerReadings": [0.2, 0.6, -0.3, -0.7, 0.1]
 }

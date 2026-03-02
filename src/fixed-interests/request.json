@@ -1,4 +1,4 @@
 {
-  "$class": "org.accordproject.interests.Request",
+  "$class": "io.clause.fixedinterests@0.1.0.FixedInterestsRequest",
   "input": "test"
 }

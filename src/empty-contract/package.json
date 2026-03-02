@@ -1,19 +1,23 @@
 {
     "name": "empty-contract",
     "displayName": "Empty Contract",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "description": "This is an empty contract template to get you started.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
-        "template": "contract",
-        "cicero": "^0.22.0"
+        "runtime": "typescript",
+        "template": "clause",
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "empty",
+        "contract",
+        "blank",
+        "new",
+        "fresh"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["empty", "contract", "blank", "new", "fresh"]
+        "test": "vitest run"
+    }
 }

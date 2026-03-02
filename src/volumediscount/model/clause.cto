@@ -1,59 +1,21 @@
-namespace org.accordproject.volumediscount
+namespace io.clause.volumediscount@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
-/**
- * Defines the data model for the VolumeDiscount template.
- * This defines the structure of the abstract syntax tree that the parser for the template
- * must generate from input source text.
- */
-asset VolumeDiscountContract extends Contract {
-  /**
-   * First volume
-   */
-  o Double firstVolume
-
-  /**
-   * Second volume
-   */
-  o Double secondVolume
-
-  /**
-   * First rate
-   */
-  o Double firstRate
-
-  /**
-   * Second rate
-   */
-  o Double secondRate
-
-  /**
-   * Third rate
-   */
-  o Double thirdRate
-
-}
-
-/**
- * Defines the input data required by the template
- */
-transaction VolumeDiscountRequest {
-
-  /**
-   * 
-   */
+transaction VolumeDiscountRequest extends Request {
   o Double netAnnualChargeVolume
-
 }
 
-/**
- * Defines the output data for the template
- */
-transaction VolumeDiscountResponse {
-  /**
-   * The discount rate
-   */
+transaction VolumeDiscountResponse extends Response {
   o Double discountRate
+}
+
+@template
+asset TemplateModel extends Clause {
+  o Double firstVolume
+  o Double secondVolume
+  o Double firstRate
+  o Double secondRate
+  o Double thirdRate
 }
