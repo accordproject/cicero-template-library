@@ -1,11 +1,11 @@
 {
-    "$class": "io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest",
+    "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest",
     "forceMajeure": false,
     "agreedDelivery": "2017-12-17T03:24:00-05:00",
     "deliveredAt": null,
     "goodsValue": 200.00,
     "currencyConversion":{
-        "$class": "io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion",
+        "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion",
         "from": "USD",
         "to": "EUR",
         "rate": 1.1

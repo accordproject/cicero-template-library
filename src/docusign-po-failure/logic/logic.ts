@@ -3,7 +3,7 @@ import {
     IPurchaseOrderFailureResponse,
     IPurchaseOrderFailureState,
     IPurchaseOrderPaymentEvent
-} from "./generated/io.clause.docusignpofailure@0.1.0";
+} from "./generated/org.accordproject.docusignpofailure@0.1.0";
 
 // Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
 enum TemporalUnit {
@@ -80,7 +80,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
     async init(data: ITemplateModel): Promise<InitResponse<IPurchaseOrderFailureState>> {
         return {
             state: {
-                $class: 'io.clause.docusignpofailure@0.1.0.PurchaseOrderFailureState',
+                $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureState',
                 $identifier: data.$identifier,
                 pastFailures: [],
                 nbPastFailures: 0
@@ -186,7 +186,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         if (now <= deliveryMs + lateOneMs) {
             return {
                 result: {
-                    $class: 'io.clause.docusignpofailure@0.1.0.PurchaseOrderFailureResponse',
+                    $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureResponse',
                     $timestamp: new Date(),
                     penaltyAmount: 0.0,
                     currencyCode
@@ -220,14 +220,14 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         }
 
         const newState: IPurchaseOrderFailureState = {
-            $class: 'io.clause.docusignpofailure@0.1.0.PurchaseOrderFailureState',
+            $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureState',
             $identifier: state.$identifier,
             pastFailures: updatedFailures as unknown as Date[],
             nbPastFailures: nbFailures
         };
 
         const event: IPurchaseOrderPaymentEvent = {
-            $class: 'io.clause.docusignpofailure@0.1.0.PurchaseOrderPaymentEvent',
+            $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderPaymentEvent',
             $timestamp: new Date(),
             penaltyAmount,
             currencyCode,
@@ -236,7 +236,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
 
         return {
             result: {
-                $class: 'io.clause.docusignpofailure@0.1.0.PurchaseOrderFailureResponse',
+                $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureResponse',
                 $timestamp: new Date(),
                 penaltyAmount,
                 currencyCode

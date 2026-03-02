@@ -7,9 +7,9 @@
 
 // Import AFTER mocks are set up
 import ServiceLevelAgreementLogic from './logic';
-import { ITemplateModel, IMonthSummary } from './generated/io.clause.servicelevelagreement@0.1.0';
+import { ITemplateModel, IMonthSummary } from './generated/org.accordproject.servicelevelagreement@0.1.0';
 
-const NS = 'io.clause.servicelevelagreement@0.1.0';
+const NS = 'org.accordproject.servicelevelagreement@0.1.0';
 
 describe('ServiceLevelAgreementLogic', () => {
     let logic: ServiceLevelAgreementLogic;

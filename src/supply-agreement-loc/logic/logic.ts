@@ -5,7 +5,7 @@ import {
     ISensorReadingData,
     ICheckContract,
     IDeliveryResponse,
-} from './generated/io.clause.supplyagreementloc@0.1.0';
+} from './generated/org.accordproject.supplyagreementloc@0.1.0';
 
 // @ts-expect-error EngineResponse is injected by the runtime
 interface SupplyAgreementLocResponse extends EngineResponse<ISupplyAgreementState> {
@@ -21,7 +21,7 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
     async init(data: ITemplateModel): Promise<InitResponse<ISupplyAgreementState>> {
         return {
             state: {
-                $class: 'io.clause.supplyagreementloc@0.1.0.SupplyAgreementState',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.SupplyAgreementState',
                 $identifier: data.$identifier,
                 sensorReadings: [],
             }
@@ -36,10 +36,10 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
         const requestClass = request.$class;
         const now = new Date();
 
-        if (requestClass === 'io.clause.supplyagreementloc@0.1.0.SensorReading') {
+        if (requestClass === 'org.accordproject.supplyagreementloc@0.1.0.SensorReading') {
             const reading = request as ISensorReading;
             const readingData: ISensorReadingData = {
-                $class: 'io.clause.supplyagreementloc@0.1.0.SensorReadingData',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.SensorReadingData',
                 temperature: reading.temperature,
                 humidity: reading.humidity,
                 readingTime: now,
@@ -47,14 +47,14 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
             const updatedReadings = [...state.sensorReadings, readingData];
 
             const newState: ISupplyAgreementState = {
-                $class: 'io.clause.supplyagreementloc@0.1.0.SupplyAgreementState',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.SupplyAgreementState',
                 $identifier: state.$identifier,
                 sensorReadings: updatedReadings,
             };
 
             return {
                 result: {
-                    $class: 'io.clause.supplyagreementloc@0.1.0.DeliveryResponse',
+                    $class: 'org.accordproject.supplyagreementloc@0.1.0.DeliveryResponse',
                     $timestamp: now,
                     $identifier: state.$identifier,
                     message: 'Sensor reading received',
@@ -63,7 +63,7 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
                 state: newState,
                 events: [],
             };
-        } else if (requestClass === 'io.clause.supplyagreementloc@0.1.0.CheckContract') {
+        } else if (requestClass === 'org.accordproject.supplyagreementloc@0.1.0.CheckContract') {
             const executionDate = new Date(data.executionDate);
             const elapsedMs = now.getTime() - executionDate.getTime();
             // Convert elapsed time to hours, then days
@@ -80,7 +80,7 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
 
             return {
                 result: {
-                    $class: 'io.clause.supplyagreementloc@0.1.0.DeliveryResponse',
+                    $class: 'org.accordproject.supplyagreementloc@0.1.0.DeliveryResponse',
                     $timestamp: now,
                     $identifier: state.$identifier,
                     message,

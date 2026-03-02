@@ -1,4 +1,4 @@
-import { IMyRequest, IMyResponse, ITemplateModel } from "./generated/io.clause.salescontractru@0.1.0";
+import { IMyRequest, IMyResponse, ITemplateModel } from "./generated/org.accordproject.salescontractru@0.1.0";
 
 type SalesContractRuResponse = {
     result: IMyResponse;
@@ -11,7 +11,7 @@ class SalesContractRuLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 output: request.input,
                 $timestamp: new Date(),
-                $class: 'io.clause.salescontractru@0.1.0.MyResponse'
+                $class: 'org.accordproject.salescontractru@0.1.0.MyResponse'
             }
         };
     }

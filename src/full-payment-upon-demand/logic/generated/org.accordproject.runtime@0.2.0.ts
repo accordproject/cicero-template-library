@@ -7,13 +7,13 @@
 import type {
 	IPaymentDemand,
 	IPaymentReceived
-} from './io.clause.fullpaymentupondemand@0.1.0';
+} from './org.accordproject.fullpaymentupondemand@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentDemandResponse,
 	IPaymentReceivedResponse
-} from './io.clause.fullpaymentupondemand@0.1.0';
+} from './org.accordproject.fullpaymentupondemand@0.1.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 

@@ -1,4 +1,4 @@
-import { ITemplateModel, ILateRequest, ILateResponse } from './generated/io.clause.minilatedeliveryandpenalty@0.1.0';
+import { ITemplateModel, ILateRequest, ILateResponse } from './generated/org.accordproject.minilatedeliveryandpenalty@0.1.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
 
 type MiniLateDeliveryResponse = {
@@ -33,7 +33,7 @@ class MiniLateDeliveryAndPenaltyLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'io.clause.minilatedeliveryandpenalty@0.1.0.LateResponse',
+                $class: 'org.accordproject.minilatedeliveryandpenalty@0.1.0.LateResponse',
                 $timestamp: new Date(),
                 penalty,
                 buyerMayTerminate,

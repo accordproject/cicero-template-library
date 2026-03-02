@@ -19,9 +19,9 @@ import {
     ITemplateModel,
     ICounterState,
     ContractLifecycleStatus,
-} from "./generated/io.clause.paymentuponiot@0.1.0";
+} from "./generated/org.accordproject.paymentuponiot@0.1.0";
 
-const NS = "io.clause.paymentuponiot@0.1.0";
+const NS = "org.accordproject.paymentuponiot@0.1.0";
 
 function makeModel(overrides: Partial<ITemplateModel> = {}): ITemplateModel {
     return {
@@ -255,7 +255,7 @@ describe("PaymentUponIoTLogic", () => {
     describe("trigger — unsupported request type", () => {
         it("should throw for an unknown $class", async () => {
             const state = runningState();
-            const request = { $class: "io.clause.paymentuponiot@0.1.0.UnknownRequest", $identifier: "x" };
+            const request = { $class: "org.accordproject.paymentuponiot@0.1.0.UnknownRequest", $identifier: "x" };
             await expect(logic.trigger(model, request, state))
                 .rejects.toThrow("Unsupported request type");
         });

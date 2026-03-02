@@ -10,7 +10,7 @@ declare global {
 
 // Import AFTER mocks are set up
 import SaftLogic from './logic';
-import { ITemplateModel, ILaunch, ITerminate } from './generated/io.clause.saft@0.1.0';
+import { ITemplateModel, ILaunch, ITerminate } from './generated/org.accordproject.saft@0.1.0';
 
 describe('SaftLogic', () => {
     let logic: SaftLogic;
@@ -19,7 +19,7 @@ describe('SaftLogic', () => {
     beforeEach(() => {
         logic = new SaftLogic();
         model = {
-            $class: 'io.clause.saft@0.1.0.TemplateModel',
+            $class: 'org.accordproject.saft@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             token: 'TestToken',
@@ -45,14 +45,14 @@ describe('SaftLogic', () => {
     describe('trigger - onLaunch', () => {
         it('should pay out 100 tokens to purchaser on network launch', async () => {
             const request: ILaunch = {
-                $class: 'io.clause.saft@0.1.0.Launch',
+                $class: 'org.accordproject.saft@0.1.0.Launch',
                 $timestamp: new Date(),
                 exchangeRate: 123
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.saft@0.1.0.Payout');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.saft@0.1.0.Payout');
             expect(result.result).toHaveProperty('$timestamp');
             expect(result.result.tokenAmount).toBe(100.0);
             expect(result.result.tokenAddress).toBe('Daniel Charles Selman');
@@ -62,7 +62,7 @@ describe('SaftLogic', () => {
     describe('trigger - onTerminate', () => {
         it('should pay out 9 tokens to purchaser on network termination', async () => {
             const request: ITerminate = {
-                $class: 'io.clause.saft@0.1.0.Terminate',
+                $class: 'org.accordproject.saft@0.1.0.Terminate',
                 $timestamp: new Date(),
                 remainingFunds: 246.609,
                 totalInvested: 129.934
@@ -70,7 +70,7 @@ describe('SaftLogic', () => {
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.saft@0.1.0.Payout');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.saft@0.1.0.Payout');
             expect(result.result).toHaveProperty('$timestamp');
             expect(result.result.tokenAmount).toBe(9.0);
             expect(result.result.tokenAddress).toBe('Daniel Charles Selman');
@@ -80,7 +80,7 @@ describe('SaftLogic', () => {
     describe('trigger - unknown request', () => {
         it('should throw for unknown request type', async () => {
             const request = {
-                $class: 'io.clause.saft@0.1.0.Unknown',
+                $class: 'org.accordproject.saft@0.1.0.Unknown',
                 $timestamp: new Date()
             };
 

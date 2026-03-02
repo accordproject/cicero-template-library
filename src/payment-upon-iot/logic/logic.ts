@@ -9,10 +9,10 @@ import {
     ILongButtonPress,
     IPaymentReceived,
     ContractLifecycleStatus,
-} from "./generated/io.clause.paymentuponiot@0.1.0";
+} from "./generated/org.accordproject.paymentuponiot@0.1.0";
 import { IRequest } from "./generated/org.accordproject.runtime@0.2.0";
 
-const NS = "io.clause.paymentuponiot@0.1.0";
+const NS = "org.accordproject.paymentuponiot@0.1.0";
 
 // Union of all possible request types for this contract
 type IoTRequest =

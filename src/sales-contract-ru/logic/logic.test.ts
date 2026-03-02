@@ -7,7 +7,7 @@
 
 // Import AFTER mocks are set up
 import SalesContractRuLogic from './logic';
-import { ITemplateModel, IMyRequest } from './generated/io.clause.salescontractru@0.1.0';
+import { ITemplateModel, IMyRequest } from './generated/org.accordproject.salescontractru@0.1.0';
 
 describe('SalesContractRuLogic', () => {
     let logic: SalesContractRuLogic;
@@ -16,7 +16,7 @@ describe('SalesContractRuLogic', () => {
     beforeEach(() => {
         logic = new SalesContractRuLogic();
         model = {
-            $class: 'io.clause.salescontractru@0.1.0.TemplateModel',
+            $class: 'org.accordproject.salescontractru@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Ivan Ivanov',
@@ -32,21 +32,21 @@ describe('SalesContractRuLogic', () => {
     describe('trigger', () => {
         it('should echo the input as output', async () => {
             const request: IMyRequest = {
-                $class: 'io.clause.salescontractru@0.1.0.MyRequest',
+                $class: 'org.accordproject.salescontractru@0.1.0.MyRequest',
                 $timestamp: new Date(),
                 input: 'Contract Valid'
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.salescontractru@0.1.0.MyResponse');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.salescontractru@0.1.0.MyResponse');
             expect(result.result).toHaveProperty('$timestamp');
             expect(result.result.output).toBe('Contract Valid');
         });
 
         it('should echo different input values', async () => {
             const request: IMyRequest = {
-                $class: 'io.clause.salescontractru@0.1.0.MyRequest',
+                $class: 'org.accordproject.salescontractru@0.1.0.MyRequest',
                 $timestamp: new Date(),
                 input: 'Договор действителен'
             };

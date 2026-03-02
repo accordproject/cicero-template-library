@@ -11,7 +11,7 @@ import SupplyAgreementPerishableGoodsLogic from './logic';
 import {
     ITemplateModel,
     IShipmentReceived,
-} from './generated/io.clause.supplyagreementperishablegoods@0.1.0';
+} from './generated/org.accordproject.supplyagreementperishablegoods@0.1.0';
 
 describe('SupplyAgreementPerishableGoodsLogic', () => {
     let logic: SupplyAgreementPerishableGoodsLogic;
@@ -20,7 +20,7 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
     beforeEach(() => {
         logic = new SupplyAgreementPerishableGoodsLogic();
         model = {
-            $class: 'io.clause.supplyagreementperishablegoods@0.1.0.TemplateModel',
+            $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             dueDate: new Date('2099-12-31T23:59:59Z'), // far future — not late
@@ -44,17 +44,17 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
     });
 
     const makeRequest = (unitCount: number, centigrade: number, humidity: number): IShipmentReceived => ({
-        $class: 'io.clause.supplyagreementperishablegoods@0.1.0.ShipmentReceived',
+        $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.ShipmentReceived',
         $identifier: 'req-1',
         $timestamp: new Date(),
         unitCount,
         shipment: {
-            $class: 'io.clause.supplyagreementperishablegoods@0.1.0.Shipment',
+            $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.Shipment',
             shipmentId: 'SHIP_001',
             status: 'IN_TRANSIT',
             sensorReadings: [
                 {
-                    $class: 'io.clause.supplyagreementperishablegoods@0.1.0.SensorReading',
+                    $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.SensorReading',
                     centigrade,
                     humidity,
                 }
@@ -67,13 +67,13 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
             const request = makeRequest(3002, 5.0, 75.0); // temp and humidity in range
             const result = await logic.trigger(model, request);
 
-            expect(result.result.$class).toBe('io.clause.supplyagreementperishablegoods@0.1.0.PriceCalculation');
+            expect(result.result.$class).toBe('org.accordproject.supplyagreementperishablegoods@0.1.0.PriceCalculation');
             expect(result.result.late).toBe(false);
             expect(result.result.penalty).toBe(0.0);
             expect(result.result.totalPrice).toBeCloseTo(3002 * 1.5);
             expect(result.result.currencyCode).toBe('USD');
             expect(result.events).toHaveLength(1);
-            expect(result.events[0].$class).toBe('io.clause.supplyagreementperishablegoods@0.1.0.PaymentObligationEvent');
+            expect(result.events[0].$class).toBe('org.accordproject.supplyagreementperishablegoods@0.1.0.PaymentObligationEvent');
         });
     });
 
@@ -120,12 +120,12 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
     describe('trigger - no sensor readings', () => {
         it('should throw when shipment has no sensor readings', async () => {
             const request: IShipmentReceived = {
-                $class: 'io.clause.supplyagreementperishablegoods@0.1.0.ShipmentReceived',
+                $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.ShipmentReceived',
                 $identifier: 'req-1',
                 $timestamp: new Date(),
                 unitCount: 3002,
                 shipment: {
-                    $class: 'io.clause.supplyagreementperishablegoods@0.1.0.Shipment',
+                    $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.Shipment',
                     shipmentId: 'SHIP_001',
                     status: 'IN_TRANSIT',
                     sensorReadings: [],

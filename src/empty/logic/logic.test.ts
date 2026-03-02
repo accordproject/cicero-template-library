@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import EmptyLogic from './logic';
-import { ITemplateModel, IEmptyRequest } from './generated/io.clause.empty@0.1.0';
+import { ITemplateModel, IEmptyRequest } from './generated/org.accordproject.empty@0.1.0';
 
 describe('EmptyLogic', () => {
     let logic: EmptyLogic;
@@ -20,7 +20,7 @@ describe('EmptyLogic', () => {
     beforeEach(() => {
         logic = new EmptyLogic();
         model = {
-            $class: 'io.clause.empty@0.1.0.TemplateModel',
+            $class: 'org.accordproject.empty@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
         };
@@ -29,11 +29,11 @@ describe('EmptyLogic', () => {
     describe('trigger', () => {
         it('should return an empty response', async () => {
             const request: IEmptyRequest = {
-                $class: 'io.clause.empty@0.1.0.EmptyRequest',
+                $class: 'org.accordproject.empty@0.1.0.EmptyRequest',
                 $timestamp: new Date(),
             };
             const response = await logic.trigger(model, request);
-            expect(response.result.$class).toBe('io.clause.empty@0.1.0.EmptyResponse');
+            expect(response.result.$class).toBe('org.accordproject.empty@0.1.0.EmptyResponse');
             expect(response.result.$timestamp).toBeInstanceOf(Date);
         });
     });

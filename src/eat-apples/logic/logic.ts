@@ -1,4 +1,4 @@
-import { IFood, IOutcome, IBill, ITemplateModel } from "./generated/io.clause.eatapples@0.1.0";
+import { IFood, IOutcome, IBill, ITemplateModel } from "./generated/org.accordproject.eatapples@0.1.0";
 
 type EatApplesResponse = {
     result: IOutcome;
@@ -13,14 +13,14 @@ class EatApplesLogic extends TemplateLogic<ITemplateModel> {
                 result: {
                     notice: "You're fired!",
                     $timestamp: new Date(),
-                    $class: 'io.clause.eatapples@0.1.0.Outcome'
+                    $class: 'org.accordproject.eatapples@0.1.0.Outcome'
                 },
                 events: []
             };
         }
 
         const bill: IBill = {
-            $class: 'io.clause.eatapples@0.1.0.Bill',
+            $class: 'org.accordproject.eatapples@0.1.0.Bill',
             $timestamp: new Date(),
             billTo: data.employee,
             amount: request.price * (1.0 + data.tax / 100.0)
@@ -30,7 +30,7 @@ class EatApplesLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 notice: 'Very healthy!',
                 $timestamp: new Date(),
-                $class: 'io.clause.eatapples@0.1.0.Outcome'
+                $class: 'org.accordproject.eatapples@0.1.0.Outcome'
             },
             events: [bill]
         };

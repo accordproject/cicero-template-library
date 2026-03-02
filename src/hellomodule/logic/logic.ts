@@ -1,4 +1,4 @@
-import { ITemplateModel, IMyRequest, IMyResponse } from './generated/io.clause.hellomodule@0.1.0';
+import { ITemplateModel, IMyRequest, IMyResponse } from './generated/org.accordproject.hellomodule@0.1.0';
 
 type HelloModuleResponse = {
     result: IMyResponse;
@@ -16,7 +16,7 @@ class HelloModuleLogic extends TemplateLogic<ITemplateModel> {
         const degrees = radiansToDegrees(PI / 2.0);
         return {
             result: {
-                $class: 'io.clause.hellomodule@0.1.0.MyResponse',
+                $class: 'org.accordproject.hellomodule@0.1.0.MyResponse',
                 $timestamp: new Date(),
                 output: `Hello ${data.name} (${request.input}) [motd: PI/2.0 radians is ${degrees} degrees]`,
             },

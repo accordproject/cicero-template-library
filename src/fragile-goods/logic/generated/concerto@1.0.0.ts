@@ -7,7 +7,7 @@
 import type {
 	ShipmentStatus,
 	IMonetaryAmount
-} from './io.clause.fragilegoods@0.1.0';
+} from './org.accordproject.fragilegoods@0.1.0';
 import type {
 	Month,
 	Day,
@@ -35,7 +35,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IFragileGoodsEvent
-} from './io.clause.fragilegoods@0.1.0';
+} from './org.accordproject.fragilegoods@0.1.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

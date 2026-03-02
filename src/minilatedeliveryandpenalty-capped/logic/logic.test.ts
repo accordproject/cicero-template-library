@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import MiniLateDeliveryAndPenaltyCappedLogic from './logic';
-import { ITemplateModel, ILateRequest } from './generated/io.clause.minilatedeliveryandpenaltycapped@0.1.0';
+import { ITemplateModel, ILateRequest } from './generated/org.accordproject.minilatedeliveryandpenaltycapped@0.1.0';
 
 describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
     let logic: MiniLateDeliveryAndPenaltyCappedLogic;
@@ -20,7 +20,7 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
     beforeEach(() => {
         logic = new MiniLateDeliveryAndPenaltyCappedLogic();
         model = {
-            $class: 'io.clause.minilatedeliveryandpenaltycapped@0.1.0.TemplateModel',
+            $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -37,7 +37,7 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
             const agreed = new Date('2020-01-01T00:00:00Z');
             const delivered = new Date('2020-01-15T00:00:00Z'); // 14 days late
             const request: ILateRequest = {
-                $class: 'io.clause.minilatedeliveryandpenaltycapped@0.1.0.LateRequest',
+                $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.1.0.LateRequest',
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
@@ -53,7 +53,7 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
             const agreed = new Date('2020-01-01T00:00:00Z');
             const delivered = new Date('2020-01-15T00:00:00Z'); // 14 days late
             const request: ILateRequest = {
-                $class: 'io.clause.minilatedeliveryandpenaltycapped@0.1.0.LateRequest',
+                $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.1.0.LateRequest',
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,

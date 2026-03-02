@@ -3,9 +3,9 @@ import {
     IMonthSummary,
     IInvoiceCredit,
     IServiceCreditPaymentEvent
-} from "./generated/io.clause.servicelevelagreement@0.1.0";
+} from "./generated/org.accordproject.servicelevelagreement@0.1.0";
 
-const NS = 'io.clause.servicelevelagreement@0.1.0';
+const NS = 'org.accordproject.servicelevelagreement@0.1.0';
 
 type SLAResponse = {
     result: IInvoiceCredit;

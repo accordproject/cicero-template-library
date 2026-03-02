@@ -6,7 +6,7 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	ITemplateModel
-} from './io.clause.latedeliveryandpenalty@0.1.0';
+} from './org.accordproject.latedeliveryandpenalty@0.1.0';
 import {IAsset} from './concerto@1.0.0';
 
 // interfaces

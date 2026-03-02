@@ -1,3 +1,3 @@
 {
-  "$class": "io.clause.isda.irs@0.1.0.RateObservation"
+  "$class": "org.accordproject.isda.irs@0.1.0.RateObservation"
 }

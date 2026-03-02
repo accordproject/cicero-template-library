@@ -1,4 +1,4 @@
 // This file has been superseded by model.cto as part of the v0.25 migration.
 // It should be deleted. All types previously defined here have been consolidated into model.cto.
 // TODO: delete this file
-namespace io.clause.supplyagreementperishablegoods.legacy@0.0.0
+namespace org.accordproject.supplyagreementperishablegoods.legacy@0.0.0

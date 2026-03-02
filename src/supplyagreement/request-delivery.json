@@ -1,17 +1,17 @@
 {
-    "$class": "io.clause.supplyagreement@0.1.0.DeliveryRequest",
+    "$class": "org.accordproject.supplyagreement@0.1.0.DeliveryRequest",
     "$identifier": "request-delivery-1",
     "$timestamp": "2024-01-01T00:00:00Z",
     "products": [
         {
-            "$class": "io.clause.supplyagreement@0.1.0.Product",
+            "$class": "org.accordproject.supplyagreement@0.1.0.Product",
             "partNumber": "PN-001",
             "name": "Pink Umbrella",
             "quantity": 180,
             "unitPrice": 5.99
         },
         {
-            "$class": "io.clause.supplyagreement@0.1.0.Product",
+            "$class": "org.accordproject.supplyagreement@0.1.0.Product",
             "partNumber": "PN-002",
             "name": "Blue Umbrella",
             "quantity": 100,

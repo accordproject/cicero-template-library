@@ -20,9 +20,9 @@ import {
     IShipmentReceived,
     IPerishableGoodsState,
     ISensorReading,
-} from "./generated/io.clause.perishablegoods@0.1.0";
+} from "./generated/org.accordproject.perishablegoods@0.1.0";
 
-const NS = "io.clause.perishablegoods@0.1.0";
+const NS = "org.accordproject.perishablegoods@0.1.0";
 
 // Use a far-future due date by default so shipments are not late
 const FUTURE_DUE_DATE = new Date(Date.now() + 365 * 24 * 3600 * 1000);

@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import OnlinePaymentContractTRLogic from './logic';
-import { ITemplateModel, IMyRequest } from './generated/io.clause.onlinepaymentcontracttr@0.1.0';
+import { ITemplateModel, IMyRequest } from './generated/org.accordproject.onlinepaymentcontracttr@0.1.0';
 
 describe('OnlinePaymentContractTRLogic', () => {
     let logic: OnlinePaymentContractTRLogic;
@@ -20,7 +20,7 @@ describe('OnlinePaymentContractTRLogic', () => {
     beforeEach(() => {
         logic = new OnlinePaymentContractTRLogic();
         model = {
-            $class: 'io.clause.onlinepaymentcontracttr@0.1.0.TemplateModel',
+            $class: 'org.accordproject.onlinepaymentcontracttr@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -34,18 +34,18 @@ describe('OnlinePaymentContractTRLogic', () => {
     describe('trigger', () => {
         it('should echo the input as output', async () => {
             const request: IMyRequest = {
-                $class: 'io.clause.onlinepaymentcontracttr@0.1.0.MyRequest',
+                $class: 'org.accordproject.onlinepaymentcontracttr@0.1.0.MyRequest',
                 $timestamp: new Date(),
                 input: 'test input',
             };
             const result = await logic.trigger(model, request);
             expect(result.result.output).toBe('test input');
-            expect(result.result.$class).toBe('io.clause.onlinepaymentcontracttr@0.1.0.MyResponse');
+            expect(result.result.$class).toBe('org.accordproject.onlinepaymentcontracttr@0.1.0.MyResponse');
         });
 
         it('should return a timestamp', async () => {
             const request: IMyRequest = {
-                $class: 'io.clause.onlinepaymentcontracttr@0.1.0.MyRequest',
+                $class: 'org.accordproject.onlinepaymentcontracttr@0.1.0.MyRequest',
                 $timestamp: new Date(),
                 input: 'hello',
             };

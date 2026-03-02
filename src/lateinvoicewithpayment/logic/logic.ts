@@ -1,4 +1,4 @@
-import { ITemplateModel, ILateInvoiceRequest, ILateInvoiceResponse, IPaymentObligationEvent } from './generated/io.clause.lateinvoicewithpayment@0.1.0';
+import { ITemplateModel, ILateInvoiceRequest, ILateInvoiceResponse, IPaymentObligationEvent } from './generated/org.accordproject.lateinvoicewithpayment@0.1.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
 
 type LateInvoicePaymentResponse = {
@@ -29,7 +29,7 @@ class LateInvoiceWithPaymentLogic extends TemplateLogic<ITemplateModel> {
         if (now >= terminationDate) {
             return {
                 result: {
-                    $class: 'io.clause.lateinvoicewithpayment@0.1.0.LateInvoiceResponse',
+                    $class: 'org.accordproject.lateinvoicewithpayment@0.1.0.LateInvoiceResponse',
                     $timestamp: now,
                     paymentRequired: false,
                     cause: `Invoice delivered after the maximum delay of ${data.maximumDelay.amount} ${data.maximumDelay.unit}`,
@@ -39,7 +39,7 @@ class LateInvoiceWithPaymentLogic extends TemplateLogic<ITemplateModel> {
         }
 
         const event: IPaymentObligationEvent = {
-            $class: 'io.clause.lateinvoicewithpayment@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.lateinvoicewithpayment@0.1.0.PaymentObligationEvent',
             $timestamp: now,
             amount: request.amountDue,
             currencyCode: request.currencyCode,
@@ -48,7 +48,7 @@ class LateInvoiceWithPaymentLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'io.clause.lateinvoicewithpayment@0.1.0.LateInvoiceResponse',
+                $class: 'org.accordproject.lateinvoicewithpayment@0.1.0.LateInvoiceResponse',
                 $timestamp: now,
                 paymentRequired: true,
             },

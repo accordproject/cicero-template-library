@@ -1,4 +1,4 @@
 {
-  "$class": "io.clause.promissorynote@0.1.0.Payment",
+  "$class": "org.accordproject.promissorynote@0.1.0.Payment",
   "amountPaid": 100.0
 }

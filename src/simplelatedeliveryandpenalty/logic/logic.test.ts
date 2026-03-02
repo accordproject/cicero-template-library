@@ -7,7 +7,7 @@
 (global as any).InitResponse = class InitResponse<S> {};
 
 import SimpleLateDeliveryAndPenaltyLogic from './logic';
-import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest } from './generated/io.clause.simplelatedeliveryandpenalty@0.1.0';
+import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest } from './generated/org.accordproject.simplelatedeliveryandpenalty@0.1.0';
 
 describe('SimpleLateDeliveryAndPenaltyLogic', () => {
     let logic: SimpleLateDeliveryAndPenaltyLogic;
@@ -16,7 +16,7 @@ describe('SimpleLateDeliveryAndPenaltyLogic', () => {
     beforeEach(() => {
         logic = new SimpleLateDeliveryAndPenaltyLogic();
         model = {
-            $class: 'io.clause.simplelatedeliveryandpenalty@0.1.0.TemplateModel',
+            $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -33,7 +33,7 @@ describe('SimpleLateDeliveryAndPenaltyLogic', () => {
             const pastDate = new Date();
             pastDate.setDate(pastDate.getDate() - 14); // 14 days ago
             const request: ISimpleLateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.simplelatedeliveryandpenalty@0.1.0.SimpleLateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.SimpleLateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 agreedDelivery: pastDate,
                 goodsValue: 1000,
@@ -47,7 +47,7 @@ describe('SimpleLateDeliveryAndPenaltyLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ISimpleLateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.simplelatedeliveryandpenalty@0.1.0.SimpleLateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.SimpleLateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 agreedDelivery: futureDate,
                 goodsValue: 1000,

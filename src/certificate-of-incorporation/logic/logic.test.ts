@@ -13,7 +13,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import CertificateOfIncorporationLogic from './logic';
-import { ITemplateModel } from './generated/io.clause.certificateofincorporation@0.1.0';
+import { ITemplateModel } from './generated/org.accordproject.certificateofincorporation@0.1.0';
 
 describe('CertificateOfIncorporationLogic', () => {
     let logic: CertificateOfIncorporationLogic;
@@ -23,7 +23,7 @@ describe('CertificateOfIncorporationLogic', () => {
         logic = new CertificateOfIncorporationLogic();
 
         model = {
-            $class: 'io.clause.certificateofincorporation@0.1.0.TemplateModel',
+            $class: 'org.accordproject.certificateofincorporation@0.1.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             companyName: 'Acme Corp',
@@ -72,7 +72,7 @@ describe('CertificateOfIncorporationLogic', () => {
             expect(result.events).toHaveLength(1);
 
             const event = result.events[0] as any;
-            expect(event.$class).toBe('io.clause.certificateofincorporation@0.1.0.IncorporationEvent');
+            expect(event.$class).toBe('org.accordproject.certificateofincorporation@0.1.0.IncorporationEvent');
             expect(event.$timestamp).toBeDefined();
             expect(event.companyName).toBe('Acme Corp');
             expect(event.authorizedShareCapital).toBe(10000000);

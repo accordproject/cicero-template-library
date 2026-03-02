@@ -3,7 +3,7 @@ import {
     IMyResponse,
     IDocuSignEnvelopeCounterState,
     IDocuSignNotificationEvent
-} from "./generated/io.clause.docusignconnect@0.1.0";
+} from "./generated/org.accordproject.docusignconnect@0.1.0";
 
 // Inline types from com.docusign.connect — generated files reference these types
 interface IEnvelopeStatus {
@@ -30,7 +30,7 @@ class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelo
     async init(data: ITemplateModel): Promise<InitResponse<IDocuSignEnvelopeCounterState>> {
         return {
             state: {
-                $class: 'io.clause.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
+                $class: 'org.accordproject.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
                 $identifier: data.$identifier,
                 counter: 0
             }
@@ -53,7 +53,7 @@ class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelo
         if (requestStatus !== contractStatus) {
             return {
                 result: {
-                    $class: 'io.clause.docusignconnect@0.1.0.MyResponse',
+                    $class: 'org.accordproject.docusignconnect@0.1.0.MyResponse',
                     $timestamp: new Date(),
                     output: this.buildMessage(state.counter, contractStatus),
                     counter: state.counter
@@ -68,13 +68,13 @@ class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelo
         const newCounter = state.counter + 1;
 
         const newState: IDocuSignEnvelopeCounterState = {
-            $class: 'io.clause.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
+            $class: 'org.accordproject.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
             $identifier: state.$identifier,
             counter: newCounter
         };
 
         const event: IDocuSignNotificationEvent = {
-            $class: 'io.clause.docusignconnect@0.1.0.DocuSignNotificationEvent',
+            $class: 'org.accordproject.docusignconnect@0.1.0.DocuSignNotificationEvent',
             $timestamp: new Date(),
             title: `Contracts with status ${contractStatus}`,
             message: this.buildMessage(newCounter, contractStatus)
@@ -82,7 +82,7 @@ class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelo
 
         return {
             result: {
-                $class: 'io.clause.docusignconnect@0.1.0.MyResponse',
+                $class: 'org.accordproject.docusignconnect@0.1.0.MyResponse',
                 $timestamp: new Date(),
                 output: this.buildMessage(newCounter, contractStatus),
                 counter: newCounter

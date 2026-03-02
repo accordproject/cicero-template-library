@@ -14,7 +14,7 @@ import {
     IPurchaseObligationEvent,
     IDeliveryObligationEvent,
     IPaymentObligationEvent,
-} from './generated/io.clause.supplyagreement@0.1.0';
+} from './generated/org.accordproject.supplyagreement@0.1.0';
 
 // @ts-expect-error EngineResponse is injected by the runtime
 interface SupplyAgreementResponse extends EngineResponse<IAgreementState> {
@@ -30,7 +30,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
     async init(data: ITemplateModel): Promise<InitResponse<IAgreementState>> {
         return {
             state: {
-                $class: 'io.clause.supplyagreement@0.1.0.AgreementState',
+                $class: 'org.accordproject.supplyagreement@0.1.0.AgreementState',
                 $identifier: data.$identifier,
                 purchaseObligation: undefined,
                 deliveryObligation: undefined,
@@ -60,11 +60,11 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
     ): Promise<SupplyAgreementResponse> {
         const requestClass = request.$class;
 
-        if (requestClass === 'io.clause.supplyagreement@0.1.0.ForecastRequest') {
+        if (requestClass === 'org.accordproject.supplyagreement@0.1.0.ForecastRequest') {
             return this.demandForecast(data, request as IForecastRequest, state);
-        } else if (requestClass === 'io.clause.supplyagreement@0.1.0.PurchaseRequest') {
+        } else if (requestClass === 'org.accordproject.supplyagreement@0.1.0.PurchaseRequest') {
             return this.purchase(data, request as IPurchaseRequest, state);
-        } else if (requestClass === 'io.clause.supplyagreement@0.1.0.DeliveryRequest') {
+        } else if (requestClass === 'org.accordproject.supplyagreement@0.1.0.DeliveryRequest') {
             return this.delivery(data, request as IDeliveryRequest, state);
         } else {
             throw new Error(`Unknown request type: ${requestClass}`);
@@ -87,7 +87,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         const quarter = this.getQuarter(now);
 
         const purchaseObligation: IPurchaseObligationData = {
-            $class: 'io.clause.supplyagreement@0.1.0.PurchaseObligationData',
+            $class: 'org.accordproject.supplyagreement@0.1.0.PurchaseObligationData',
             party: data.buyer,
             requiredPurchase,
             year,
@@ -95,7 +95,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         };
 
         const newState: IAgreementState = {
-            $class: 'io.clause.supplyagreement@0.1.0.AgreementState',
+            $class: 'org.accordproject.supplyagreement@0.1.0.AgreementState',
             $identifier: state.$identifier,
             purchaseObligation,
             deliveryObligation: undefined,
@@ -103,7 +103,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         };
 
         const event: IPurchaseObligationEvent = {
-            $class: 'io.clause.supplyagreement@0.1.0.PurchaseObligationEvent',
+            $class: 'org.accordproject.supplyagreement@0.1.0.PurchaseObligationEvent',
             $timestamp: now,
             party: data.buyer,
             requiredPurchase,
@@ -113,7 +113,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
 
         return {
             result: {
-                $class: 'io.clause.supplyagreement@0.1.0.ForecastResponse',
+                $class: 'org.accordproject.supplyagreement@0.1.0.ForecastResponse',
                 $timestamp: now,
             },
             state: newState,
@@ -132,20 +132,20 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
 
         const now = new Date();
         const orderItems: IOrderItem[] = request.purchaseOrder.products.map(p => ({
-            $class: 'io.clause.supplyagreement@0.1.0.OrderItem',
+            $class: 'org.accordproject.supplyagreement@0.1.0.OrderItem',
             partNumber: p.name,
             quantity: p.quantity,
         }));
 
         const deliveryObligation: IDeliveryObligationData = {
-            $class: 'io.clause.supplyagreement@0.1.0.DeliveryObligationData',
+            $class: 'org.accordproject.supplyagreement@0.1.0.DeliveryObligationData',
             party: data.supplier,
             expectedDelivery: request.purchaseOrder.deliveryDate,
             deliverables: orderItems,
         };
 
         const newState: IAgreementState = {
-            $class: 'io.clause.supplyagreement@0.1.0.AgreementState',
+            $class: 'org.accordproject.supplyagreement@0.1.0.AgreementState',
             $identifier: state.$identifier,
             purchaseObligation: undefined,
             deliveryObligation,
@@ -153,7 +153,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         };
 
         const event: IDeliveryObligationEvent = {
-            $class: 'io.clause.supplyagreement@0.1.0.DeliveryObligationEvent',
+            $class: 'org.accordproject.supplyagreement@0.1.0.DeliveryObligationEvent',
             $timestamp: now,
             party: data.supplier,
             expectedDelivery: request.purchaseOrder.deliveryDate,
@@ -162,7 +162,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
 
         return {
             result: {
-                $class: 'io.clause.supplyagreement@0.1.0.PurchaseResponse',
+                $class: 'org.accordproject.supplyagreement@0.1.0.PurchaseResponse',
                 $timestamp: now,
             },
             state: newState,
@@ -183,13 +183,13 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         const amount = this.purchaseOrderPrice(request.products);
 
         const paymentObligation = {
-            $class: 'io.clause.supplyagreement@0.1.0.PaymentObligationData',
+            $class: 'org.accordproject.supplyagreement@0.1.0.PaymentObligationData',
             party: data.buyer,
             amount,
         };
 
         const newState: IAgreementState = {
-            $class: 'io.clause.supplyagreement@0.1.0.AgreementState',
+            $class: 'org.accordproject.supplyagreement@0.1.0.AgreementState',
             $identifier: state.$identifier,
             purchaseObligation: undefined,
             deliveryObligation: undefined,
@@ -197,7 +197,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         };
 
         const event: IPaymentObligationEvent = {
-            $class: 'io.clause.supplyagreement@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.supplyagreement@0.1.0.PaymentObligationEvent',
             $timestamp: now,
             party: data.buyer,
             amount,
@@ -205,7 +205,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
 
         return {
             result: {
-                $class: 'io.clause.supplyagreement@0.1.0.DeliveryResponse',
+                $class: 'org.accordproject.supplyagreement@0.1.0.DeliveryResponse',
                 $timestamp: now,
             },
             state: newState,

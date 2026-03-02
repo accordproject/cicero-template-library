@@ -6,7 +6,7 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IRateRange
-} from './io.clause.volumediscountolist@0.1.0';
+} from './org.accordproject.volumediscountolist@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {

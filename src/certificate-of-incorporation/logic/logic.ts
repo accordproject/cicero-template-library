@@ -1,4 +1,4 @@
-import { ITemplateModel, IIncorporationEvent } from "./generated/io.clause.certificateofincorporation@0.1.0";
+import { ITemplateModel, IIncorporationEvent } from "./generated/org.accordproject.certificateofincorporation@0.1.0";
 
 // Inline type from org.accordproject.signature@0.2.0
 interface IContractSigned {
@@ -19,7 +19,7 @@ type IncorporationResponse = {
 class CertificateOfIncorporationLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IContractSigned): Promise<IncorporationResponse> {
         const event: IIncorporationEvent = {
-            $class: 'io.clause.certificateofincorporation@0.1.0.IncorporationEvent',
+            $class: 'org.accordproject.certificateofincorporation@0.1.0.IncorporationEvent',
             $timestamp: new Date(),
             companyName: data.companyName,
             incorporationDate: data.incorporationDate,

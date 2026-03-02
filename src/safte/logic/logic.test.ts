@@ -7,7 +7,7 @@
 
 // Import AFTER mocks are set up
 import SafteLogic from './logic';
-import { ITemplateModel, ITokenSale, IEquityFinancing, IDissolutionEvent } from './generated/io.clause.safte@0.1.0';
+import { ITemplateModel, ITokenSale, IEquityFinancing, IDissolutionEvent } from './generated/org.accordproject.safte@0.1.0';
 
 describe('SafteLogic', () => {
     let logic: SafteLogic;
@@ -16,7 +16,7 @@ describe('SafteLogic', () => {
     beforeEach(() => {
         logic = new SafteLogic();
         model = {
-            $class: 'io.clause.safte@0.1.0.TemplateModel',
+            $class: 'org.accordproject.safte@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             companyName: 'ACME',
@@ -37,14 +37,14 @@ describe('SafteLogic', () => {
     describe('trigger - tokenSale', () => {
         it('should compute token share on token sale', async () => {
             const request: ITokenSale = {
-                $class: 'io.clause.safte@0.1.0.TokenSale',
+                $class: 'org.accordproject.safte@0.1.0.TokenSale',
                 $timestamp: new Date(),
                 tokenPrice: 1.23
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.safte@0.1.0.TokenShare');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.safte@0.1.0.TokenShare');
             expect(result.result).toHaveProperty('$timestamp');
             // discountRate = (100 - 7) / 100 = 0.93
             // discountPrice = 1.23 * 0.93 = 1.1439
@@ -57,14 +57,14 @@ describe('SafteLogic', () => {
     describe('trigger - equityFinancing', () => {
         it('should compute equity share on equity financing', async () => {
             const request: IEquityFinancing = {
-                $class: 'io.clause.safte@0.1.0.EquityFinancing',
+                $class: 'org.accordproject.safte@0.1.0.EquityFinancing',
                 $timestamp: new Date(),
                 sharePrice: 3.00
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.safte@0.1.0.EquityShare');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.safte@0.1.0.EquityShare');
             expect(result.result).toHaveProperty('$timestamp');
             // discountRate = (100 - 7) / 100 = 0.93
             // discountPrice = 3.00 * 0.93 = 2.79
@@ -77,14 +77,14 @@ describe('SafteLogic', () => {
     describe('trigger - dissolutionEvent', () => {
         it('should refund the purchase amount on dissolution', async () => {
             const request: IDissolutionEvent = {
-                $class: 'io.clause.safte@0.1.0.DissolutionEvent',
+                $class: 'org.accordproject.safte@0.1.0.DissolutionEvent',
                 $timestamp: new Date(),
                 cause: 'Went Shopping'
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.safte@0.1.0.PayOut');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.safte@0.1.0.PayOut');
             expect(result.result).toHaveProperty('$timestamp');
             const payout = result.result as any;
             expect(payout.amount).toBe(25.0);
@@ -94,7 +94,7 @@ describe('SafteLogic', () => {
     describe('trigger - unknown request', () => {
         it('should throw for unknown request type', async () => {
             const request = {
-                $class: 'io.clause.safte@0.1.0.Unknown',
+                $class: 'org.accordproject.safte@0.1.0.Unknown',
                 $timestamp: new Date()
             };
 

@@ -1,4 +1,4 @@
-import { IMyRequest, IMyResponse, ITemplateModel } from "./generated/io.clause.helloworld@0.1.0";
+import { IMyRequest, IMyResponse, ITemplateModel } from "./generated/org.accordproject.helloworld@0.1.0";
 
 type HelloWorldResponse = {
     result: IMyResponse;
@@ -11,7 +11,7 @@ class HelloWorldLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 output: `Hello ${data.name} ${request.input}`,
                 $timestamp: new Date(),
-                $class: 'io.clause.helloworld@0.1.0.MyResponse'
+                $class: 'org.accordproject.helloworld@0.1.0.MyResponse'
             }
         };
     }

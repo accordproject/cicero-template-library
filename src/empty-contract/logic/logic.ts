@@ -1,4 +1,4 @@
-import { IEmptyRequest, IEmptyResponse, ITemplateModel } from "./generated/io.clause.emptycontract@0.1.0";
+import { IEmptyRequest, IEmptyResponse, ITemplateModel } from "./generated/org.accordproject.emptycontract@0.1.0";
 
 type EmptyContractResponse = {
     result: IEmptyResponse;
@@ -10,7 +10,7 @@ class EmptyContractLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $timestamp: new Date(),
-                $class: 'io.clause.emptycontract@0.1.0.EmptyResponse'
+                $class: 'org.accordproject.emptycontract@0.1.0.EmptyResponse'
             }
         };
     }

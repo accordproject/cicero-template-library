@@ -7,7 +7,7 @@
 (global as any).InitResponse = class InitResponse<S> {};
 
 import VolumeDiscountLogic from './logic';
-import { ITemplateModel, IVolumeDiscountRequest } from './generated/io.clause.volumediscount@0.1.0';
+import { ITemplateModel, IVolumeDiscountRequest } from './generated/org.accordproject.volumediscount@0.1.0';
 
 describe('VolumeDiscountLogic', () => {
     let logic: VolumeDiscountLogic;
@@ -16,7 +16,7 @@ describe('VolumeDiscountLogic', () => {
     beforeEach(() => {
         logic = new VolumeDiscountLogic();
         model = {
-            $class: 'io.clause.volumediscount@0.1.0.TemplateModel',
+            $class: 'org.accordproject.volumediscount@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             firstVolume: 1000000,
@@ -30,7 +30,7 @@ describe('VolumeDiscountLogic', () => {
     describe('trigger', () => {
         it('should return firstRate for volume below firstVolume', async () => {
             const request: IVolumeDiscountRequest = {
-                $class: 'io.clause.volumediscount@0.1.0.VolumeDiscountRequest',
+                $class: 'org.accordproject.volumediscount@0.1.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
                 netAnnualChargeVolume: 100000,
             };
@@ -40,7 +40,7 @@ describe('VolumeDiscountLogic', () => {
 
         it('should return secondRate for volume in middle tier', async () => {
             const request: IVolumeDiscountRequest = {
-                $class: 'io.clause.volumediscount@0.1.0.VolumeDiscountRequest',
+                $class: 'org.accordproject.volumediscount@0.1.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
                 netAnnualChargeVolume: 5000000,
             };
@@ -50,7 +50,7 @@ describe('VolumeDiscountLogic', () => {
 
         it('should return thirdRate for volume above secondVolume', async () => {
             const request: IVolumeDiscountRequest = {
-                $class: 'io.clause.volumediscount@0.1.0.VolumeDiscountRequest',
+                $class: 'org.accordproject.volumediscount@0.1.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
                 netAnnualChargeVolume: 50000000,
             };

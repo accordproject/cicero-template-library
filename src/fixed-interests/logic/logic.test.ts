@@ -10,7 +10,7 @@ declare global {
 
 // Import AFTER mocks are set up
 import FixedInterestsLogic from './logic';
-import { ITemplateModel, IFixedInterestsRequest } from './generated/io.clause.fixedinterests@0.1.0';
+import { ITemplateModel, IFixedInterestsRequest } from './generated/org.accordproject.fixedinterests@0.1.0';
 
 describe('FixedInterestsLogic', () => {
     let logic: FixedInterestsLogic;
@@ -19,7 +19,7 @@ describe('FixedInterestsLogic', () => {
     beforeEach(() => {
         logic = new FixedInterestsLogic();
         model = {
-            $class: 'io.clause.fixedinterests@0.1.0.TemplateModel',
+            $class: 'org.accordproject.fixedinterests@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             loanAmount: 100000.0,
@@ -32,13 +32,13 @@ describe('FixedInterestsLogic', () => {
     describe('trigger', () => {
         it('should return a response with output mentioning the loan amount', async () => {
             const request: IFixedInterestsRequest = {
-                $class: 'io.clause.fixedinterests@0.1.0.FixedInterestsRequest',
+                $class: 'org.accordproject.fixedinterests@0.1.0.FixedInterestsRequest',
                 $timestamp: new Date(),
                 input: 'test'
             };
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.fixedinterests@0.1.0.FixedInterestsResponse');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.fixedinterests@0.1.0.FixedInterestsResponse');
             expect(result.result).toHaveProperty('$timestamp');
             expect(result.result.output).toContain('100000');
         });
@@ -48,7 +48,7 @@ describe('FixedInterestsLogic', () => {
             model.rate = 6.5;
             model.loanDuration = 30;
             const request: IFixedInterestsRequest = {
-                $class: 'io.clause.fixedinterests@0.1.0.FixedInterestsRequest',
+                $class: 'org.accordproject.fixedinterests@0.1.0.FixedInterestsRequest',
                 $timestamp: new Date(),
                 input: 'test'
             };

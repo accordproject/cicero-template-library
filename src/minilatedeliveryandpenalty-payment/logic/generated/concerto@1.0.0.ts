@@ -31,7 +31,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentObligationEvent
-} from './io.clause.minilatedeliveryandpenaltypayment@0.1.0';
+} from './org.accordproject.minilatedeliveryandpenaltypayment@0.1.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

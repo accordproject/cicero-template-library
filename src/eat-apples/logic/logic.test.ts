@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import EatApplesLogic from './logic';
-import { ITemplateModel, IFood } from './generated/io.clause.eatapples@0.1.0';
+import { ITemplateModel, IFood } from './generated/org.accordproject.eatapples@0.1.0';
 
 describe('EatApplesLogic', () => {
     let logic: EatApplesLogic;
@@ -20,7 +20,7 @@ describe('EatApplesLogic', () => {
     beforeEach(() => {
         logic = new EatApplesLogic();
         model = {
-            $class: 'io.clause.eatapples@0.1.0.TemplateModel',
+            $class: 'org.accordproject.eatapples@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             employee: 'John',
@@ -32,7 +32,7 @@ describe('EatApplesLogic', () => {
     describe('trigger', () => {
         it('should approve eating an apple and bill correctly', async () => {
             const request: IFood = {
-                $class: 'io.clause.eatapples@0.1.0.Food',
+                $class: 'org.accordproject.eatapples@0.1.0.Food',
                 $timestamp: new Date(),
                 produce: 'apple',
                 price: 1.49,
@@ -47,7 +47,7 @@ describe('EatApplesLogic', () => {
 
         it('should fire employee for eating non-apple produce', async () => {
             const request: IFood = {
-                $class: 'io.clause.eatapples@0.1.0.Food',
+                $class: 'org.accordproject.eatapples@0.1.0.Food',
                 $timestamp: new Date(),
                 produce: 'banana',
                 price: 0.99,

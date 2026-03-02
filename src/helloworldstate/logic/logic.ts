@@ -1,4 +1,4 @@
-import { ITemplateModel, IMyRequest, IMyResponse } from './generated/io.clause.helloworldstate@0.1.0';
+import { ITemplateModel, IMyRequest, IMyResponse } from './generated/org.accordproject.helloworldstate@0.1.0';
 
 // Inline HelloWorldState since it comes from the generated file
 interface IHelloWorldState {
@@ -21,7 +21,7 @@ class HelloWorldStateLogic extends TemplateLogic<ITemplateModel, IHelloWorldStat
     async init(data: ITemplateModel): Promise<InitResponse<IHelloWorldState>> {
         return {
             state: {
-                $class: 'io.clause.helloworldstate@0.1.0.HelloWorldState',
+                $class: 'org.accordproject.helloworldstate@0.1.0.HelloWorldState',
                 $identifier: data.$identifier,
                 counter: 0,
             },
@@ -37,12 +37,12 @@ class HelloWorldStateLogic extends TemplateLogic<ITemplateModel, IHelloWorldStat
         const currentCounter = state.counter;
         return {
             result: {
-                $class: 'io.clause.helloworldstate@0.1.0.MyResponse',
+                $class: 'org.accordproject.helloworldstate@0.1.0.MyResponse',
                 $timestamp: now,
                 output: `Hello ${data.name} ${request.input}(${currentCounter})`,
             },
             state: {
-                $class: 'io.clause.helloworldstate@0.1.0.HelloWorldState',
+                $class: 'org.accordproject.helloworldstate@0.1.0.HelloWorldState',
                 $identifier: state.$identifier,
                 counter: currentCounter + 1,
             },

@@ -6,7 +6,7 @@ import {
     IDissolutionEvent,
     IPayOut,
     ITemplateModel
-} from "./generated/io.clause.safte@0.1.0";
+} from "./generated/org.accordproject.safte@0.1.0";
 
 type SafteRequest = ITokenSale | IEquityFinancing | IDissolutionEvent;
 type SafteResponseResult = ITokenShare | IEquityShare | IPayOut;
@@ -18,11 +18,11 @@ type SafteResponse = {
 // @ts-ignore
 class SafteLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: SafteRequest): Promise<SafteResponse> {
-        if (request.$class === 'io.clause.safte@0.1.0.TokenSale') {
+        if (request.$class === 'org.accordproject.safte@0.1.0.TokenSale') {
             return this.tokenSale(data, request as ITokenSale);
-        } else if (request.$class === 'io.clause.safte@0.1.0.EquityFinancing') {
+        } else if (request.$class === 'org.accordproject.safte@0.1.0.EquityFinancing') {
             return this.equityFinancing(data, request as IEquityFinancing);
-        } else if (request.$class === 'io.clause.safte@0.1.0.DissolutionEvent') {
+        } else if (request.$class === 'org.accordproject.safte@0.1.0.DissolutionEvent') {
             return this.dissolutionEvent(data, request as IDissolutionEvent);
         } else {
             throw new Error(`Unknown request type: ${(request as any).$class}`);
@@ -38,7 +38,7 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 tokenAmount,
                 $timestamp: new Date(),
-                $class: 'io.clause.safte@0.1.0.TokenShare'
+                $class: 'org.accordproject.safte@0.1.0.TokenShare'
             }
         };
     }
@@ -52,7 +52,7 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 equityAmount,
                 $timestamp: new Date(),
-                $class: 'io.clause.safte@0.1.0.EquityShare'
+                $class: 'org.accordproject.safte@0.1.0.EquityShare'
             }
         };
     }
@@ -62,7 +62,7 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 amount: data.purchaseAmount,
                 $timestamp: new Date(),
-                $class: 'io.clause.safte@0.1.0.PayOut'
+                $class: 'org.accordproject.safte@0.1.0.PayOut'
             }
         };
     }

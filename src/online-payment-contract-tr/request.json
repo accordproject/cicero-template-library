@@ -1,4 +1,4 @@
 {
-    "$class": "io.clause.onlinepaymentcontracttr@0.1.0.MyRequest",
+    "$class": "org.accordproject.onlinepaymentcontracttr@0.1.0.MyRequest",
     "input": "Payment Valid"
 }

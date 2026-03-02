@@ -14,7 +14,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import DocuSignConnectLogic from './logic';
-import { ITemplateModel, IDocuSignEnvelopeCounterState } from './generated/io.clause.docusignconnect@0.1.0';
+import { ITemplateModel, IDocuSignEnvelopeCounterState } from './generated/org.accordproject.docusignconnect@0.1.0';
 
 const makeEnvelopeRequest = (status: string) => ({
     $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
@@ -33,14 +33,14 @@ describe('DocuSignConnectLogic', () => {
         logic = new DocuSignConnectLogic();
 
         model = {
-            $class: 'io.clause.docusignconnect@0.1.0.TemplateModel',
+            $class: 'org.accordproject.docusignconnect@0.1.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             status: 'Completed' as any
         };
 
         initialState = {
-            $class: 'io.clause.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
+            $class: 'org.accordproject.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
             $identifier: 'test-clause-id',
             counter: 0
         };
@@ -50,7 +50,7 @@ describe('DocuSignConnectLogic', () => {
         it('should initialize state with counter = 0', async () => {
             const result = await logic.init(model);
             expect(result.state).toMatchObject({
-                $class: 'io.clause.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
+                $class: 'org.accordproject.docusignconnect@0.1.0.DocuSignEnvelopeCounterState',
                 $identifier: 'test-clause-id',
                 counter: 0
             });
@@ -83,7 +83,7 @@ describe('DocuSignConnectLogic', () => {
             const result = await logic.trigger(model, request, initialState);
 
             const event = result.events[0] as any;
-            expect(event.$class).toBe('io.clause.docusignconnect@0.1.0.DocuSignNotificationEvent');
+            expect(event.$class).toBe('org.accordproject.docusignconnect@0.1.0.DocuSignNotificationEvent');
             expect(event.title).toBe('Contracts with status Completed');
             expect(event.message).toBe('Have received 1 contracts with status Completed');
         });

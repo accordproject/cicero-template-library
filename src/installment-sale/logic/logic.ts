@@ -6,9 +6,9 @@ import {
     IInstallmentSaleState,
     IInstallmentSalePaymentEvent,
     ContractStatus
-} from "./generated/io.clause.installmentsale@0.1.0";
+} from "./generated/org.accordproject.installmentsale@0.1.0";
 
-const NS = 'io.clause.installmentsale@0.1.0';
+const NS = 'org.accordproject.installmentsale@0.1.0';
 
 // @ts-expect-error EngineResponse is imported by the runtime
 interface InstallmentSaleContractResponse extends EngineResponse<IInstallmentSaleState> {

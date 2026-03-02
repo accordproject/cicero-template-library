@@ -10,7 +10,7 @@ declare global {
 
 // Import AFTER mocks are set up
 import PromissoryNoteMdLogic from './logic';
-import { ITemplateModel, IPayment } from './generated/io.clause.promissorynotemd@0.1.0';
+import { ITemplateModel, IPayment } from './generated/org.accordproject.promissorynotemd@0.1.0';
 
 describe('PromissoryNoteMdLogic', () => {
     let logic: PromissoryNoteMdLogic;
@@ -19,7 +19,7 @@ describe('PromissoryNoteMdLogic', () => {
     beforeEach(() => {
         logic = new PromissoryNoteMdLogic();
         model = {
-            $class: 'io.clause.promissorynotemd@0.1.0.TemplateModel',
+            $class: 'org.accordproject.promissorynotemd@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             amount: 1000.0,
@@ -41,14 +41,14 @@ describe('PromissoryNoteMdLogic', () => {
     describe('trigger', () => {
         it('should compute outstanding balance with compound interest', async () => {
             const request: IPayment = {
-                $class: 'io.clause.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
                 $timestamp: new Date(),
                 amountPaid: 100.0
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.promissorynotemd@0.1.0.Result');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.promissorynotemd@0.1.0.Result');
             expect(result.result).toHaveProperty('$timestamp');
             expect(result.result.outstandingBalance).toBeGreaterThan(0);
         });
@@ -56,7 +56,7 @@ describe('PromissoryNoteMdLogic', () => {
         it('should throw when interest rate is negative', async () => {
             const badModel = { ...model, interestRate: -0.01 };
             const request: IPayment = {
-                $class: 'io.clause.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
                 $timestamp: new Date(),
                 amountPaid: 0
             };
@@ -67,7 +67,7 @@ describe('PromissoryNoteMdLogic', () => {
         it('should throw when amount is negative', async () => {
             const badModel = { ...model, amount: -1.0 };
             const request: IPayment = {
-                $class: 'io.clause.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
                 $timestamp: new Date(),
                 amountPaid: 0
             };
@@ -77,7 +77,7 @@ describe('PromissoryNoteMdLogic', () => {
 
         it('should throw when amount paid exceeds outstanding balance', async () => {
             const request: IPayment = {
-                $class: 'io.clause.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
                 $timestamp: new Date(),
                 amountPaid: 2000.0
             };
@@ -87,7 +87,7 @@ describe('PromissoryNoteMdLogic', () => {
 
         it('should return zero outstanding when fully paid', async () => {
             const request: IPayment = {
-                $class: 'io.clause.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
                 $timestamp: new Date(),
                 amountPaid: 1000.0
             };

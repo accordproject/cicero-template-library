@@ -8,7 +8,7 @@ import type {
 	UnitOfMass,
 	ISensorReading,
 	IPerishableGoodsState
-} from './io.clause.perishablegoods@0.1.0';
+} from './org.accordproject.perishablegoods@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -28,7 +28,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPerishableGoodsPaymentEvent
-} from './io.clause.perishablegoods@0.1.0';
+} from './org.accordproject.perishablegoods@0.1.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

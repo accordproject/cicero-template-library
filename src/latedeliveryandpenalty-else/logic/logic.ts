@@ -1,4 +1,4 @@
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/io.clause.latedeliveryandpenaltyelse@0.1.0';
+import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenaltyelse@0.1.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
 
 type LateDeliveryAndPenaltyResult = {
@@ -28,7 +28,7 @@ class LateDeliveryAndPenaltyElseLogic extends TemplateLogic<ITemplateModel> {
         if (data.forceMajeure && request.forceMajeure) {
             return {
                 result: {
-                    $class: 'io.clause.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyResponse',
+                    $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyResponse',
                     $timestamp: now,
                     penalty: 0,
                     buyerMayTerminate: true,
@@ -48,7 +48,7 @@ class LateDeliveryAndPenaltyElseLogic extends TemplateLogic<ITemplateModel> {
         const buyerMayTerminate = diffDays > terminationDays;
 
         const event: IPaymentObligationEvent = {
-            $class: 'io.clause.latedeliveryandpenaltyelse@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.PaymentObligationEvent',
             $timestamp: now,
             amount: capped,
             currencyCode: 'USD',
@@ -57,7 +57,7 @@ class LateDeliveryAndPenaltyElseLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'io.clause.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyResponse',
+                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyResponse',
                 $timestamp: now,
                 penalty: capped,
                 buyerMayTerminate,
