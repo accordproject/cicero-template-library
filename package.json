@@ -1,5 +1,7 @@
 {
   "scripts": {
+    "prebuild": "npm run compile",
+    "pretest": "npm run compile",
     "build": "node run.js",
     "compile": "npm run compile --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
