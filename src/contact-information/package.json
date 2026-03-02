@@ -12,5 +12,8 @@
   "keywords": [
     "contact",
     "information"
-  ]
+  ],
+  "scripts": {
+    "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+  }
 }

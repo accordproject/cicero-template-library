@@ -13,5 +13,8 @@
     "clause",
     "verify",
     "project"
-  ]
+  ],
+  "scripts": {
+    "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+  }
 }

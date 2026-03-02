@@ -10,5 +10,10 @@
         "template": "clause",
         "cicero": "^0.25.0"
     },
-    "keywords": ["signature-block"]
+    "keywords": [
+        "signature-block"
+    ],
+    "scripts": {
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

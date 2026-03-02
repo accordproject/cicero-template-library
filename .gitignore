@@ -63,6 +63,9 @@ typings/
 # Derived CTO files
 @*accordproject*.cto
 
+# Generated TypeScript types from concerto compile
+src/*/logic/generated/
+
 # Windows Directory Cache
 thumbs.db
 
