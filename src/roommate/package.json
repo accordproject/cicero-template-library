@@ -10,5 +10,15 @@
         "template": "contract",
         "cicero": "^0.25.0"
     },
-    "keywords": ["rent", "deposit", "housing", "apartment", "roommate", "lease"]
+    "keywords": [
+        "rent",
+        "deposit",
+        "housing",
+        "apartment",
+        "roommate",
+        "lease"
+    ],
+    "scripts": {
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

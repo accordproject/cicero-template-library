@@ -27,6 +27,7 @@
         "availability"
     ],
     "scripts": {
-        "test": "vitest run"
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
     }
 }

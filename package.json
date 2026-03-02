@@ -1,6 +1,7 @@
 {
   "scripts": {
     "build": "node run.js",
+    "compile": "npm run compile --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "generate": "SKIP_TESTS=true node run.js",
     "update-skip-dropdowns": "SKIP_DROPDOWNS=true node run.js"
