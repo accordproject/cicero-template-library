@@ -1,4 +1,5 @@
 {
-    "$class": "org.accordproject.signature.ContractSigned",
-    "contract": "MY_CONTRACT"
+    "$class": "io.clause.paymentuponiot@0.1.0.ContractSigned",
+    "$identifier": "req-sign-001",
+    "contractId": "payment-upon-iot-contract"
 }

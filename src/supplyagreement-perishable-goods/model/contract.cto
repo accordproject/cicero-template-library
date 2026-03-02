@@ -1,42 +1,4 @@
-/**
-  * A business network for shipping perishable goods
-  * The cargo is temperature controlled and contracts
-  * can be negociated based on the temperature
-  * readings received for the cargo
-  */
-namespace org.accordproject.perishablegoods.contract
-
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
-import org.accordproject.address.PostalAddress from https://models.accordproject.org/address.cto
-import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.value.* from https://models.accordproject.org/value.cto
-
-import org.accordproject.perishablegoods.*
-
-/**
- * Defines a contract between a Grower and an Importer to ship using
- * a Shipper, paying a set unit price. The unit price is multiplied by
- * a penality factor proportional to the deviation from the min and max
- * negociated temperatures for the shipment.
- */
-asset SupplyAgreementPerishableGoodsContract extends Contract {
-  --> Grower grower
-  --> Importer importer
-  --> Shipment shipment
-  o DateTime dueDate
-  o MonetaryAmount unitPrice
-  o Unit unit
-  o Integer minUnits
-  o Integer maxUnits
-  o String product
-  o Integer sensorReadingFrequency
-  o TemporalUnit duration
-  o Double minTemperature
-  o Double maxTemperature
-  o Double minHumidity
-  o Double maxHumidity
-  o Double penaltyFactor
-}
+// This file has been superseded by model.cto as part of the v0.25 migration.
+// It should be deleted. All types previously defined here have been consolidated into model.cto.
+// TODO: delete this file
+namespace io.clause.supplyagreementperishablegoods.legacy@0.0.0

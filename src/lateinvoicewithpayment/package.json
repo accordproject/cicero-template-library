@@ -1,19 +1,27 @@
 {
     "name": "lateinvoicewithpayment",
     "displayName": "Late Invoice with Payment",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "description": "A sample Late invoice clause which emits a payment obligation.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "late",
+        "invoice",
+        "payment",
+        "with",
+        "required",
+        "issued",
+        "clause",
+        "obligation",
+        "emit"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["late", "invoice", "payment", "with", "required", "issued", "clause", "obligation", "emit"]
+        "test": "vitest run"
+    }
 }

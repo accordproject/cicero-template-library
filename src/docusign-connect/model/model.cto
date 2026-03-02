@@ -1,8 +1,7 @@
-namespace com.docusign.connect.counter
+namespace io.clause.docusignconnect@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import com.docusign.connect.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect@0.3.0.cto
 import com.docusign.connect.EnvelopeStatusCode from https://models.accordproject.org/docusign/connect@0.3.0.cto
 
@@ -11,16 +10,22 @@ transaction MyResponse extends Response {
   o Integer counter
 }
 
-asset DocuSignEnvelopeCounterState extends State {
-  o Integer counter
+event DocuSignNotificationEvent {
+  o String title
+  o String message
+}
+
+concept DocuSignEnvelopeCounterState identified {
+  o Integer counter default=0
 }
 
 /**
  * The template model
  */
-asset DocuSignEnvelopeCounterClause extends Contract {
+@template
+asset TemplateModel extends Clause {
   /**
-   * The status of the envelope
+   * The status of the envelope to count
    */
   o EnvelopeStatusCode status
 }

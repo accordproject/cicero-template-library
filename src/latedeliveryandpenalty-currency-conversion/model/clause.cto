@@ -1,130 +1,45 @@
-namespace org.accordproject.latedeliveryandpenalty
+namespace io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
-import org.accordproject.money.CurrencyCode from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
 
-/**
- * Defines the data model for the LateDeliveryAndPenalty template.
- * This defines the structure of the abstract syntax tree that the parser for the template
- * must generate from input source text.
- */
-asset LateDeliveryAndPenaltyContract extends Contract {
-  /**
-   * The buyer
-   */
-  --> Party buyer
-
-  /**
-   * The seller
-   */
-  --> Party seller
-
-  /**
-   * Does the clause include a force majeure provision?
-   */
-  o Boolean forceMajeure
-
-  /**
-   * For every penaltyDuration that the goods are late
-   */
-  o Duration penaltyDuration
-
-  /**
-   * Seller pays the buyer penaltyPercentage % of the value of the goods
-   */
-  o Double penaltyPercentage
-
-  /**
-   * Up to capPercentage % of the value of the goods
-   */
-  o Double capPercentage
-
-  /**
-   * If the goods are >= termination late then the buyer may terminate the contract
-   */
-  o Duration termination
-
-  /**
-   * Fractional part of a ... is considered a whole ...
-   */
-  o TemporalUnit fractionalPart
-
-  /**
-   * Adding new currency related fields
-   */
-
-  /**
-   * Where are the currency versions coming from?
-   */
-  o String conversionSource
-
-  /**
-   * The currency that the goods are valued in
-   */
-  o CurrencyCode fromCurrency
-
-  /**
-   * The currency to be used for the penalty
-   */
-  o CurrencyCode toCurrency
-}
-
-/**
- * Represents a currency conversion pair and exchange rate
- */
 concept CurrencyConversion {
-   o CurrencyCode from
-   o CurrencyCode to
-   o Double rate
+  o String from
+  o String to
+  o Double rate
 }
 
-/**
- * Defines the input data required by the template
- */
 transaction LateDeliveryAndPenaltyRequest extends Request {
-
-  /**
-   * Are we in a force majeure situation? 
-   */
   o Boolean forceMajeure
-
-  /**
-   * What was the agreed delivery date for the goods?
-   */
   o DateTime agreedDelivery
-
-  /**
-   * If the goods have been delivered, when where they delivered?
-   */
   o DateTime deliveredAt optional
-
-  /**
-   * What is the value of the goods?
-   */
   o Double goodsValue
-
-  /**
-   * What is the exchange rate?
-   */
-  /*o Double exchangeValue*/
   o CurrencyConversion currencyConversion
 }
 
-/**
- * Defines the output data for the template
- */
 transaction LateDeliveryAndPenaltyResponse extends Response {
-  /**
-   * The penalty to be paid by the seller
-   */
   o Double penalty
-
-  /**
-   * Whether the buyer may terminate the contract 
-   */
   o Boolean buyerMayTerminate
+}
+
+event PaymentObligationEvent {
+  o Double amount
+  o String currencyCode
+  o String description
+}
+
+@template
+asset TemplateModel extends Clause {
+  o String buyer
+  o String seller
+  o Boolean forceMajeure
+  o Duration penaltyDuration
+  o Double penaltyPercentage
+  o Double capPercentage
+  o Duration termination
+  o TemporalUnit fractionalPart
+  o String conversionSource
+  o String fromCurrency
+  o String toCurrency
 }

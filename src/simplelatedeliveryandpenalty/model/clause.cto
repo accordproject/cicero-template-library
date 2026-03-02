@@ -1,38 +1,32 @@
-namespace org.accordproject.simplelatedeliveryandpenalty
+namespace io.clause.simplelatedeliveryandpenalty@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.time.* from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
 
-/**
- * Defines the data model for the LateDeliveryAndPenalty template.
- * This defines the structure of the abstract syntax tree that the parser for the template
- * must generate from input source text.
- */
-asset SimpleLateDeliveryAndPenaltyContract extends Contract {
-  --> Party buyer
-  --> Party seller
-  o Duration penaltyDuration
-  o Double penaltyPercentage
-  o Double capPercentage
-  o Duration maximumDelay
-}
-
-/**
- * Defines the input data required by the template
- */
 transaction SimpleLateDeliveryAndPenaltyRequest extends Request {
   o DateTime agreedDelivery
   o DateTime deliveredAt optional
   o Double goodsValue
 }
 
-/**
- * Defines the output data for the template
- */
 transaction SimpleLateDeliveryAndPenaltyResponse extends Response {
   o Double penalty
   o Boolean buyerMayTerminate
+}
+
+event PaymentObligationEvent {
+  o Double amount
+  o String currencyCode
+  o String description
+}
+
+@template
+asset TemplateModel extends Clause {
+  o String buyer
+  o String seller
+  o Duration penaltyDuration
+  o Double penaltyPercentage
+  o Double capPercentage
+  o Duration maximumDelay
 }

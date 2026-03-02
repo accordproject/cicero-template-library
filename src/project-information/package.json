@@ -1,18 +1,13 @@
 {
   "name": "project-information",
   "displayName": "Project Information",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Gather project information",
   "license": "Apache-2.0",
   "accordproject": {
+    "runtime": "typescript",
     "template": "clause",
-    "cicero": "^0.22.0"
-  },
-  "devDependencies": {
-      "cucumber": "^5.1.0"
-  },
-  "scripts": {
-      "test": "cucumber-js test -r .cucumber.js"
+    "cicero": "^0.25.0"
   },
   "keywords": [
     "clause",

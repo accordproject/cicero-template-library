@@ -1,11 +1,12 @@
-namespace org.accordproject.roommate
+namespace io.clause.roommate@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 
 /**
  * The template model
  */
-asset RoommageAgreement extends Contract {
+@template
+asset TemplateModel extends Clause {
   o String holder
   o String roommate
   o String landlord

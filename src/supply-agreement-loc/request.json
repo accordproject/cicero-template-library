@@ -1,5 +1,7 @@
 {
-    "$class": "org.cloudsecurityalliance.supplyagreement.SensorReading",
+    "$class": "io.clause.supplyagreementloc@0.1.0.SensorReading",
+    "$identifier": "request-1",
+    "$timestamp": "2024-01-01T00:00:00Z",
     "temperature": 25,
     "humidity": 25
 }

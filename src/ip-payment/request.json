@@ -1,6 +1,6 @@
 {
-    "$class":"org.accordproject.ippayment.PaymentRequest",
-		"netSaleRevenue":1200.00,
-		"sublicensingRevenue":450.00,
-		"permissionGrantedBy":"04-05-2018"
+    "$class": "io.clause.ippayment@0.1.0.PaymentRequest",
+    "netSaleRevenue": 1200.00,
+    "sublicensingRevenue": 450.00,
+    "permissionGrantedBy": "2018-05-04T00:00:00Z"
 }

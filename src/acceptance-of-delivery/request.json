@@ -1,5 +1,7 @@
 {
-    "$class":"org.accordproject.acceptanceofdelivery.InspectDeliverable",
+    "$class": "io.clause.acceptanceofdelivery@0.1.0.InspectDeliverable",
+    "$identifier": "request-1",
+    "$timestamp": "2024-01-01T00:00:00Z",
     "deliverableReceivedAt": "2018-01-01T16:34:00Z",
     "inspectionPassed": true
 }

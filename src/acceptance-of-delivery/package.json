@@ -1,19 +1,14 @@
 {
     "name": "acceptance-of-delivery",
     "displayName": "Acceptance of Delivery",
-    "version": "0.15.0",
+    "version": "0.16.0",
     "description": "This clause allows the receiver of goods to inspect them for a given time period after delivery.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "clause",
-        "cicero": "^0.22.0"
-    },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
-    "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
+        "cicero": "^0.25.0"
     },
     "keywords": [
         "clause",
@@ -30,5 +25,8 @@
         "notice",
         "evaluate",
         "rejecting"
-    ]
+    ],
+    "scripts": {
+        "test": "vitest run"
+    }
 }

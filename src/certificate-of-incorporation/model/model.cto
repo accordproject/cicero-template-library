@@ -1,9 +1,18 @@
-namespace org.accordproject.incorporation
+namespace io.clause.certificateofincorporation@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature@0.2.0.cto
 
-asset IncorporationCertificate extends Contract {
+event IncorporationEvent {
+  o String companyName
+  o DateTime incorporationDate
+  o Long authorizedShareCapital
+  o Double parValue
+}
+
+@template
+asset TemplateModel extends Clause {
   o String companyName
   o String incorporationState
   o String streetAddress
@@ -19,11 +28,4 @@ asset IncorporationCertificate extends Contract {
   o String incorporatorCity
   o String incorporatorState
   o String incorporatorZip
-}
-
-event Contract {
-  o String companyName
-  o DateTime incorporationDate
-  o Long authorizedShareCapital
-  o Double parValue
 }

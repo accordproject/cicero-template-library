@@ -1,20 +1,21 @@
 {
-  "$class": "org.accordproject.supplyagreement.AgreementState",
-  "deliveryObligation": {
-    "$class": "org.accordproject.supplyagreement.DeliveryObligation",
-    "expectedDelivery": "2018-05-10T04:00:00.000Z",
-    "deliverables": [
-      {
-        "$class": "org.accordproject.purchaseorder.OrderItem",
-        "partNumber": "Pink Umbrella",
-        "quantity": 180
-      }, 
-      {
-        "$class": "org.accordproject.purchaseorder.OrderItem",
-        "partNumber": "Blue Umbrella",
-        "quantity": 100
-      }
-    ],
-    "party": "DAN"
-  }
+    "$class": "io.clause.supplyagreement@0.1.0.AgreementState",
+    "$identifier": "state-1",
+    "deliveryObligation": {
+        "$class": "io.clause.supplyagreement@0.1.0.DeliveryObligationData",
+        "expectedDelivery": "2018-05-10T04:00:00.000Z",
+        "deliverables": [
+            {
+                "$class": "io.clause.supplyagreement@0.1.0.OrderItem",
+                "partNumber": "Pink Umbrella",
+                "quantity": 180
+            },
+            {
+                "$class": "io.clause.supplyagreement@0.1.0.OrderItem",
+                "partNumber": "Blue Umbrella",
+                "quantity": 100
+            }
+        ],
+        "party": "DAN"
+    }
 }

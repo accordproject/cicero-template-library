@@ -1,14 +1,116 @@
-namespace org.accordproject.supplyagreement
+namespace io.clause.supplyagreement@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.usa.state.USState from https://models.accordproject.org/usa/state@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
-import org.accordproject.purchaseorder.*
+/**
+ * Purchase order types (inlined from purchaseorder namespace)
+ */
+concept Product {
+  o String partNumber
+  o String name
+  o Double quantity
+  o Double unitPrice
+}
 
-asset SupplyAgreementContract extends Contract {
+concept OrderItem {
+  o String partNumber
+  o Double quantity
+}
+
+concept PurchaseOrder {
+  o Product[] products
+  o String deliveryLocation
+  o DateTime deliveryDate
+}
+
+/**
+ * Defines contract obligations as events
+ */
+event DeliveryObligationEvent {
+  o String party
+  o DateTime expectedDelivery
+  o OrderItem[] deliverables
+}
+
+event PurchaseObligationEvent {
+  o String party
+  o Double requiredPurchase
+  o Integer year
+  o Integer quarter
+}
+
+event PaymentObligationEvent {
+  o String party
+  o Double amount
+}
+
+/**
+ * Defines the state of the contract
+ */
+concept PurchaseObligationData {
+  o String party
+  o Double requiredPurchase
+  o Integer year
+  o Integer quarter
+}
+
+concept DeliveryObligationData {
+  o String party
+  o DateTime expectedDelivery
+  o OrderItem[] deliverables
+}
+
+concept PaymentObligationData {
+  o String party
+  o Double amount
+}
+
+concept AgreementState identified {
+  o PurchaseObligationData purchaseObligation optional
+  o DeliveryObligationData deliveryObligation optional
+  o PaymentObligationData paymentObligation optional
+}
+
+/**
+ * Defines the contract transactions
+ */
+/* Forecast clause */
+transaction ForecastRequest extends Request {
+  o Integer supplyForecast
+}
+transaction ForecastResponse extends Response {
+}
+
+/* Purchase order clause */
+transaction PurchaseRequest extends Request {
+  o PurchaseOrder purchaseOrder
+}
+transaction PurchaseResponse extends Response {
+}
+
+/* Delivery clause */
+transaction DeliveryRequest extends Request {
+  o Product[] products
+}
+transaction DeliveryResponse extends Response {
+}
+
+/* Payment clause */
+transaction PaymentRequest extends Request {
+  o Double amount
+}
+transaction PaymentResponse extends Response {
+  o Double paid
+}
+
+/**
+ * The template model
+ */
+@template
+asset TemplateModel extends Clause {
   o DateTime effectiveDate
-  o String supplier 
+  o String supplier
   o String buyer
   o String shortDescriptionOfTheProducts
   o Integer noticeWindow
@@ -25,67 +127,6 @@ asset SupplyAgreementContract extends Contract {
   o Integer termYears
   o Integer renewalYears
   o Integer renewalWindow
-  o USState governingState
-  o USState venueState
-}
-
-
-/**
- * Defines contract obligations
- */
-concept MyObligation {
-  o String party
-}
-concept DeliveryObligation extends MyObligation {
-  o DateTime expectedDelivery
-  o OrderItem[] deliverables
-}
-concept PurchaseObligation extends MyObligation {
-  o Double requiredPurchase
-  o Integer year
-  o Integer quarter
-}
-concept PaymentObligation extends MyObligation {
-  o Double amount
-}
-
-/**
- * Defines the state of the contract
- */
-asset AgreementState extends State {
-  o PurchaseObligation purchaseObligation optional
-  o DeliveryObligation deliveryObligation optional
-  o PaymentObligation paymentObligation optional
-}
-
-/**
- * Defines the contract transactions
- */
-/* Forecast clause */
-transaction ForecastRequest {
-  o Integer supplyForecast
-}
-transaction ForecastResponse {
-}
-
-/* Purchase order clause */
-transaction PurchaseRequest {
-  o PurchaseOrder purchaseOrder
-}
-transaction PurchaseResponse {
-}
-
-/* Delivery clause */
-transaction DeliveryRequest {
-  o Product[] products
-}
-transaction DeliveryResponse {
-}
-
-/* Payment clause */
-transaction PaymentRequest {
-  o Double amount
-}
-transaction PaymentResponse {
-  o Double paid
+  o String governingState
+  o String venueState
 }

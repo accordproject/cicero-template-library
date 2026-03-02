@@ -1,29 +1,39 @@
-namespace org.accordproject.payment.fullupondemand
+namespace io.clause.fullpaymentupondemand@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 // Template model
-asset FullPaymentUponDemandTemplate extends Contract {
-  --> Party buyer
-  --> Party seller
-  o MonetaryAmount value
+@template
+asset TemplateModel extends Clause {
+  o String buyer
+  o String seller
+  o Double amount
+  o String currencyCode
 }
 
 // Request
 transaction PaymentDemand extends Request {
 }
 
-asset FullPaymentUponDemandState extends State {
-  o ContractLifecycleStatus status default = "INITIALIZED"
+// Response
+transaction PaymentDemandResponse extends Response {
 }
 
-enum ContractLifecycleStatus {
-  o INITIALIZED
-  o OBLIGATION_EMITTED
-  o COMPLETED
+transaction PaymentReceived extends Request {
+}
+
+transaction PaymentReceivedResponse extends Response {
+}
+
+// Event emitted when a payment obligation is triggered
+event PaymentObligationEvent {
+  o Double amount
+  o String currencyCode
+  o String description
+}
+
+// State
+concept FullPaymentUponDemandState identified {
+  o String status default="INITIALIZED"
 }
