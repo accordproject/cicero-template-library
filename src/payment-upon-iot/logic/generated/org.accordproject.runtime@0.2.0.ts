@@ -10,12 +10,12 @@ import type {
 	IDoubleButtonPress,
 	ILongButtonPress,
 	IPaymentReceived
-} from './io.clause.paymentuponiot@0.1.0';
+} from './org.accordproject.paymentuponiot@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	ICounterResponse
-} from './io.clause.paymentuponiot@0.1.0';
+} from './org.accordproject.paymentuponiot@0.1.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 

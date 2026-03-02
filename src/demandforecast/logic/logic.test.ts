@@ -10,7 +10,7 @@ declare global {
 
 // Import AFTER mocks are set up
 import DemandForecastLogic from './logic';
-import { ITemplateModel, IForecastRequest } from './generated/io.clause.demandforecast@0.1.0';
+import { ITemplateModel, IForecastRequest } from './generated/org.accordproject.demandforecast@0.1.0';
 
 describe('DemandForecastLogic', () => {
     let logic: DemandForecastLogic;
@@ -19,7 +19,7 @@ describe('DemandForecastLogic', () => {
     beforeEach(() => {
         logic = new DemandForecastLogic();
         model = {
-            $class: 'io.clause.demandforecast@0.1.0.TemplateModel',
+            $class: 'org.accordproject.demandforecast@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             purchaser: 'ACME Corp',
@@ -32,20 +32,20 @@ describe('DemandForecastLogic', () => {
     describe('trigger', () => {
         it('should compute requiredPurchase as minimumPercentage of supplyForecast', async () => {
             const request: IForecastRequest = {
-                $class: 'io.clause.demandforecast@0.1.0.ForecastRequest',
+                $class: 'org.accordproject.demandforecast@0.1.0.ForecastRequest',
                 $timestamp: new Date(),
                 supplyForecast: 1200.0
             };
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'io.clause.demandforecast@0.1.0.BindingResponse');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.demandforecast@0.1.0.BindingResponse');
             expect(result.result).toHaveProperty('$timestamp');
             expect(result.result.requiredPurchase).toBeCloseTo(900.0, 5);
         });
 
         it('should compute correct quarter from current date', async () => {
             const request: IForecastRequest = {
-                $class: 'io.clause.demandforecast@0.1.0.ForecastRequest',
+                $class: 'org.accordproject.demandforecast@0.1.0.ForecastRequest',
                 $timestamp: new Date(),
                 supplyForecast: 1000.0
             };
@@ -58,7 +58,7 @@ describe('DemandForecastLogic', () => {
 
         it('should handle zero supplyForecast', async () => {
             const request: IForecastRequest = {
-                $class: 'io.clause.demandforecast@0.1.0.ForecastRequest',
+                $class: 'org.accordproject.demandforecast@0.1.0.ForecastRequest',
                 $timestamp: new Date(),
                 supplyForecast: 0.0
             };
@@ -70,7 +70,7 @@ describe('DemandForecastLogic', () => {
         it('should handle 100% minimumPercentage', async () => {
             model.minimumPercentage = 100.0;
             const request: IForecastRequest = {
-                $class: 'io.clause.demandforecast@0.1.0.ForecastRequest',
+                $class: 'org.accordproject.demandforecast@0.1.0.ForecastRequest',
                 $timestamp: new Date(),
                 supplyForecast: 500.0
             };

@@ -1,4 +1,4 @@
-import { ITemplateModel, IPaymentRequest, IPayOut, IPaymentObligationEvent } from "./generated/io.clause.copyrightlicense@0.1.0";
+import { ITemplateModel, IPaymentRequest, IPayOut, IPaymentObligationEvent } from "./generated/org.accordproject.copyrightlicense@0.1.0";
 
 type CopyrightLicenseResponse = {
     result: IPayOut;
@@ -9,7 +9,7 @@ type CopyrightLicenseResponse = {
 class CopyrightLicenseLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IPaymentRequest): Promise<CopyrightLicenseResponse> {
         const event: IPaymentObligationEvent = {
-            $class: 'io.clause.copyrightlicense@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.copyrightlicense@0.1.0.PaymentObligationEvent',
             $timestamp: new Date(),
             amount: data.paymentClause.amount,
             currencyCode: data.paymentClause.currencyCode,
@@ -18,7 +18,7 @@ class CopyrightLicenseLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'io.clause.copyrightlicense@0.1.0.PayOut',
+                $class: 'org.accordproject.copyrightlicense@0.1.0.PayOut',
                 $timestamp: new Date(),
                 amount: data.paymentClause.amount,
                 currencyCode: data.paymentClause.currencyCode

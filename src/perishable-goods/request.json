@@ -1,21 +1,21 @@
 {
-    "$class": "io.clause.perishablegoods@0.1.0.ShipmentReceived",
+    "$class": "org.accordproject.perishablegoods@0.1.0.ShipmentReceived",
     "$identifier": "req-001",
     "shipmentId": "SHIP_001",
     "unitCount": 3000,
     "sensorReadings": [
         {
-            "$class": "io.clause.perishablegoods@0.1.0.SensorReading",
+            "$class": "org.accordproject.perishablegoods@0.1.0.SensorReading",
             "centigrade": 2,
             "humidity": 80
         },
         {
-            "$class": "io.clause.perishablegoods@0.1.0.SensorReading",
+            "$class": "org.accordproject.perishablegoods@0.1.0.SensorReading",
             "centigrade": 5,
             "humidity": 90
         },
         {
-            "$class": "io.clause.perishablegoods@0.1.0.SensorReading",
+            "$class": "org.accordproject.perishablegoods@0.1.0.SensorReading",
             "centigrade": 15,
             "humidity": 65
         }

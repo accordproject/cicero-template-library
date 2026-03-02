@@ -10,9 +10,9 @@ declare global {
 
 // Import AFTER mocks are set up
 import InterestRateSwapLogic from './logic';
-import { ITemplateModel, IRateObservation } from './generated/io.clause.isda.irs@0.1.0';
+import { ITemplateModel, IRateObservation } from './generated/org.accordproject.isda.irs@0.1.0';
 
-const NS = 'io.clause.isda.irs@0.1.0';
+const NS = 'org.accordproject.isda.irs@0.1.0';
 
 describe('InterestRateSwapLogic', () => {
     let logic: InterestRateSwapLogic;

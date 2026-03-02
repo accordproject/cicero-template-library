@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import LateDeliveryAndPenaltyCurrencyConversionLogic from './logic';
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0';
+import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0';
 
 describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
     let logic: LateDeliveryAndPenaltyCurrencyConversionLogic;
@@ -23,7 +23,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
         pastDate = new Date();
         pastDate.setDate(pastDate.getDate() - 14);
         model = {
-            $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.TemplateModel',
+            $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -43,13 +43,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
     describe('trigger', () => {
         it('should return penalty=0 and buyerMayTerminate=true when force majeure applies', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: true,
                 agreedDelivery: pastDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'EUR',
                     rate: 1.1,
@@ -64,13 +64,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
         it('should apply currency conversion when fromCurrency != toCurrency', async () => {
             const conversionRate = 1.1;
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'EUR',
                     rate: conversionRate,
@@ -87,13 +87,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
         it('should not apply currency conversion when fromCurrency == toCurrency', async () => {
             const modelSameCurrency = { ...model, fromCurrency: 'USD', toCurrency: 'USD' };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'USD',
                     rate: 1.5,
@@ -110,13 +110,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
         it('should use toCurrency as the currencyCode in the emitted event', async () => {
             const modelGBP = { ...model, fromCurrency: 'USD', toCurrency: 'GBP' };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'GBP',
                     rate: 0.79,
@@ -136,13 +136,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 toCurrency: 'USD',
             };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'USD',
                     rate: 1.0,
@@ -157,13 +157,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
             veryPastDate.setDate(veryPastDate.getDate() - 100);
             const modelShortTermination = { ...model, termination: { $class: 'org.accordproject.time@0.3.0.Duration', amount: 30, unit: 'days' } };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: veryPastDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'EUR',
                     rate: 1.1,
@@ -177,13 +177,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: futureDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'EUR',
                     rate: 1.1,
@@ -194,13 +194,13 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
 
         it('should emit a PaymentObligationEvent with seller and buyer in description', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
                 goodsValue: 1000,
                 currencyConversion: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion',
                     from: 'USD',
                     to: 'EUR',
                     rate: 1.1,
@@ -209,7 +209,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
             const result = await logic.trigger(model, request);
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
-            expect(event.$class).toBe('io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.PaymentObligationEvent');
+            expect(event.$class).toBe('org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.PaymentObligationEvent');
             expect(event.description).toContain('Bob');
             expect(event.description).toContain('Alice');
         });

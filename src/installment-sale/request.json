@@ -1,5 +1,5 @@
 {
-    "$class": "io.clause.installmentsale@0.1.0.Installment",
+    "$class": "org.accordproject.installmentsale@0.1.0.Installment",
     "amount": 2500.0,
     "currencyCode": "EUR"
 }

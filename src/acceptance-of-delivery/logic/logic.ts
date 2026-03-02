@@ -3,7 +3,7 @@ import {
     IInspectDeliverable,
     IInspectionResponse,
     InspectionStatus,
-} from './generated/io.clause.acceptanceofdelivery@0.1.0';
+} from './generated/org.accordproject.acceptanceofdelivery@0.1.0';
 
 type AcceptanceOfDeliveryResponse = {
     result: IInspectionResponse;
@@ -39,7 +39,7 @@ class AcceptanceOfDeliveryLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'io.clause.acceptanceofdelivery@0.1.0.InspectionResponse',
+                $class: 'org.accordproject.acceptanceofdelivery@0.1.0.InspectionResponse',
                 $timestamp: now,
                 $identifier: request.$identifier,
                 status,

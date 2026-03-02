@@ -1,4 +1,4 @@
-import { ILaunch, ITerminate, IPayout, ITemplateModel } from "./generated/io.clause.saft@0.1.0";
+import { ILaunch, ITerminate, IPayout, ITemplateModel } from "./generated/org.accordproject.saft@0.1.0";
 
 type SaftRequest = ILaunch | ITerminate;
 
@@ -9,9 +9,9 @@ type SaftResponse = {
 // @ts-ignore
 class SaftLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: SaftRequest): Promise<SaftResponse> {
-        if (request.$class === 'io.clause.saft@0.1.0.Launch') {
+        if (request.$class === 'org.accordproject.saft@0.1.0.Launch') {
             return this.onLaunch(data, request as ILaunch);
-        } else if (request.$class === 'io.clause.saft@0.1.0.Terminate') {
+        } else if (request.$class === 'org.accordproject.saft@0.1.0.Terminate') {
             return this.onTerminate(data, request as ITerminate);
         } else {
             throw new Error(`Unknown request type: ${(request as any).$class}`);
@@ -24,7 +24,7 @@ class SaftLogic extends TemplateLogic<ITemplateModel> {
                 tokenAmount: 100.0,
                 tokenAddress: data.purchaser,
                 $timestamp: new Date(),
-                $class: 'io.clause.saft@0.1.0.Payout'
+                $class: 'org.accordproject.saft@0.1.0.Payout'
             }
         };
     }
@@ -35,7 +35,7 @@ class SaftLogic extends TemplateLogic<ITemplateModel> {
                 tokenAmount: 9.0,
                 tokenAddress: data.purchaser,
                 $timestamp: new Date(),
-                $class: 'io.clause.saft@0.1.0.Payout'
+                $class: 'org.accordproject.saft@0.1.0.Payout'
             }
         };
     }

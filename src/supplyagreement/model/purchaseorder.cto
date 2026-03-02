@@ -1,4 +1,4 @@
 // This file has been superseded by model.cto as part of the v0.25 migration.
 // Product, OrderItem, and PurchaseOrder types are now inlined in model.cto.
 // TODO: delete this file
-namespace io.clause.supplyagreement.purchaseorder.legacy@0.0.0
+namespace org.accordproject.supplyagreement.purchaseorder.legacy@0.0.0

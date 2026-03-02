@@ -6,12 +6,12 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	ISimpleLateDeliveryAndPenaltyRequest
-} from './io.clause.simplelatedeliveryandpenalty@0.1.0';
+} from './org.accordproject.simplelatedeliveryandpenalty@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	ISimpleLateDeliveryAndPenaltyResponse
-} from './io.clause.simplelatedeliveryandpenalty@0.1.0';
+} from './org.accordproject.simplelatedeliveryandpenalty@0.1.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 

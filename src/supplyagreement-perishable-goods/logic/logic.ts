@@ -4,7 +4,7 @@ import {
     IPriceCalculation,
     ISensorReading,
     IPaymentObligationEvent,
-} from './generated/io.clause.supplyagreementperishablegoods@0.1.0';
+} from './generated/org.accordproject.supplyagreementperishablegoods@0.1.0';
 
 type PerishableGoodsResponse = {
     result: IPriceCalculation;
@@ -69,7 +69,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
         // Guard: past the due date — return a zero price calculation
         if (now >= new Date(data.dueDate)) {
             const lateEvent: IPaymentObligationEvent = {
-                $class: 'io.clause.supplyagreementperishablegoods@0.1.0.PaymentObligationEvent',
+                $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.PaymentObligationEvent',
                 $timestamp: now,
                 grower: data.grower,
                 importer: data.importer,
@@ -79,7 +79,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
             };
             return {
                 result: {
-                    $class: 'io.clause.supplyagreementperishablegoods@0.1.0.PriceCalculation',
+                    $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.PriceCalculation',
                     $timestamp: now,
                     totalPrice: 0.0,
                     penalty: 0.0,
@@ -111,7 +111,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
         const totalPrice = Math.max(payOut - totalPenalty, 0.0);
 
         const event: IPaymentObligationEvent = {
-            $class: 'io.clause.supplyagreementperishablegoods@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.PaymentObligationEvent',
             $timestamp: now,
             grower: data.grower,
             importer: data.importer,
@@ -122,7 +122,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
 
         return {
             result: {
-                $class: 'io.clause.supplyagreementperishablegoods@0.1.0.PriceCalculation',
+                $class: 'org.accordproject.supplyagreementperishablegoods@0.1.0.PriceCalculation',
                 $timestamp: now,
                 totalPrice,
                 penalty: totalPenalty,

@@ -1,8 +1,8 @@
 {
-    "$class": "io.clause.supplyagreement@0.1.0.AgreementState",
+    "$class": "org.accordproject.supplyagreement@0.1.0.AgreementState",
     "$identifier": "state-1",
     "purchaseObligation": {
-        "$class": "io.clause.supplyagreement@0.1.0.PurchaseObligationData",
+        "$class": "org.accordproject.supplyagreement@0.1.0.PurchaseObligationData",
         "requiredPurchase": 1020,
         "year": 2018,
         "quarter": 4,

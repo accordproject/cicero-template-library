@@ -17,7 +17,7 @@ import AcceptanceOfDeliveryLogic from './logic';
 import {
     ITemplateModel,
     IInspectDeliverable,
-} from './generated/io.clause.acceptanceofdelivery@0.1.0';
+} from './generated/org.accordproject.acceptanceofdelivery@0.1.0';
 
 describe('AcceptanceOfDeliveryLogic', () => {
     let logic: AcceptanceOfDeliveryLogic;
@@ -26,7 +26,7 @@ describe('AcceptanceOfDeliveryLogic', () => {
     beforeEach(() => {
         logic = new AcceptanceOfDeliveryLogic();
         model = {
-            $class: 'io.clause.acceptanceofdelivery@0.1.0.TemplateModel',
+            $class: 'org.accordproject.acceptanceofdelivery@0.1.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             shipper: 'Fast Freight Co',
@@ -38,7 +38,7 @@ describe('AcceptanceOfDeliveryLogic', () => {
     });
 
     const makeRequest = (receivedAt: Date, passed: boolean): IInspectDeliverable => ({
-        $class: 'io.clause.acceptanceofdelivery@0.1.0.InspectDeliverable',
+        $class: 'org.accordproject.acceptanceofdelivery@0.1.0.InspectDeliverable',
         $identifier: 'req-1',
         $timestamp: new Date(),
         deliverableReceivedAt: receivedAt,
@@ -52,7 +52,7 @@ describe('AcceptanceOfDeliveryLogic', () => {
             const request = makeRequest(twoDaysAgo, true);
             const result = await logic.trigger(model, request);
 
-            expect(result.result.$class).toBe('io.clause.acceptanceofdelivery@0.1.0.InspectionResponse');
+            expect(result.result.$class).toBe('org.accordproject.acceptanceofdelivery@0.1.0.InspectionResponse');
             expect(result.result.status).toBe('PASSED_TESTING');
             expect(result.result.shipper).toBe('Fast Freight Co');
             expect(result.result.receiver).toBe('Goods Recipient Inc');

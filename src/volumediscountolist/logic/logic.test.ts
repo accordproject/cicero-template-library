@@ -7,7 +7,7 @@
 (global as any).InitResponse = class InitResponse<S> {};
 
 import VolumeDiscountOListLogic from './logic';
-import { ITemplateModel, IVolumeDiscountRequest } from './generated/io.clause.volumediscountolist@0.1.0';
+import { ITemplateModel, IVolumeDiscountRequest } from './generated/org.accordproject.volumediscountolist@0.1.0';
 
 describe('VolumeDiscountOListLogic', () => {
     let logic: VolumeDiscountOListLogic;
@@ -16,13 +16,13 @@ describe('VolumeDiscountOListLogic', () => {
     beforeEach(() => {
         logic = new VolumeDiscountOListLogic();
         model = {
-            $class: 'io.clause.volumediscountolist@0.1.0.TemplateModel',
+            $class: 'org.accordproject.volumediscountolist@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             rates: [
-                { $class: 'io.clause.volumediscountolist@0.1.0.RateRange', volumeAbove: 0, volumeUpTo: 1000000, rate: 3.0 },
-                { $class: 'io.clause.volumediscountolist@0.1.0.RateRange', volumeAbove: 1000000, volumeUpTo: 10000000, rate: 2.9 },
-                { $class: 'io.clause.volumediscountolist@0.1.0.RateRange', volumeAbove: 10000000, volumeUpTo: Infinity, rate: 2.8 },
+                { $class: 'org.accordproject.volumediscountolist@0.1.0.RateRange', volumeAbove: 0, volumeUpTo: 1000000, rate: 3.0 },
+                { $class: 'org.accordproject.volumediscountolist@0.1.0.RateRange', volumeAbove: 1000000, volumeUpTo: 10000000, rate: 2.9 },
+                { $class: 'org.accordproject.volumediscountolist@0.1.0.RateRange', volumeAbove: 10000000, volumeUpTo: Infinity, rate: 2.8 },
             ],
         };
     });
@@ -30,7 +30,7 @@ describe('VolumeDiscountOListLogic', () => {
     describe('trigger', () => {
         it('should return the correct rate for a given volume', async () => {
             const request: IVolumeDiscountRequest = {
-                $class: 'io.clause.volumediscountolist@0.1.0.VolumeDiscountRequest',
+                $class: 'org.accordproject.volumediscountolist@0.1.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
                 netAnnualChargeVolume: 500000,
             };
@@ -40,7 +40,7 @@ describe('VolumeDiscountOListLogic', () => {
 
         it('should throw if no rate found', async () => {
             const request: IVolumeDiscountRequest = {
-                $class: 'io.clause.volumediscountolist@0.1.0.VolumeDiscountRequest',
+                $class: 'org.accordproject.volumediscountolist@0.1.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
                 netAnnualChargeVolume: -1,
             };

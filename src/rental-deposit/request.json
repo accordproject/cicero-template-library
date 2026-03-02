@@ -1,14 +1,14 @@
 {
-    "$class": "io.clause.rentaldeposit@0.1.0.ProperyInspection",
+    "$class": "org.accordproject.rentaldeposit@0.1.0.ProperyInspection",
     "penalties": [
         {
-            "$class": "io.clause.rentaldeposit@0.1.0.Penalty",
+            "$class": "org.accordproject.rentaldeposit@0.1.0.Penalty",
             "description": "Cleaning carpets",
             "amount": 1000.0,
             "currencyCode": "USD"
         },
         {
-            "$class": "io.clause.rentaldeposit@0.1.0.Penalty",
+            "$class": "org.accordproject.rentaldeposit@0.1.0.Penalty",
             "description": "Pet damage",
             "amount": 450.0,
             "currencyCode": "USD"

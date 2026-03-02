@@ -1,4 +1,4 @@
 {
-    "$class": "io.clause.paymentuponiot@0.1.0.SingleButtonPress",
+    "$class": "org.accordproject.paymentuponiot@0.1.0.SingleButtonPress",
     "$identifier": "req-001"
 }

@@ -14,7 +14,7 @@ import {
     ISensorReading,
     ISensorReadingData,
     ICheckContract,
-} from './generated/io.clause.supplyagreementloc@0.1.0';
+} from './generated/org.accordproject.supplyagreementloc@0.1.0';
 
 describe('SupplyAgreementLocLogic', () => {
     let logic: SupplyAgreementLocLogic;
@@ -24,7 +24,7 @@ describe('SupplyAgreementLocLogic', () => {
     beforeEach(() => {
         logic = new SupplyAgreementLocLogic();
         model = {
-            $class: 'io.clause.supplyagreementloc@0.1.0.TemplateModel',
+            $class: 'org.accordproject.supplyagreementloc@0.1.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             executionDate: new Date('2024-01-01T00:00:00Z'),
@@ -85,7 +85,7 @@ describe('SupplyAgreementLocLogic', () => {
             countPeriod: '30 days',
         };
         initialState = {
-            $class: 'io.clause.supplyagreementloc@0.1.0.SupplyAgreementState',
+            $class: 'org.accordproject.supplyagreementloc@0.1.0.SupplyAgreementState',
             $identifier: 'test-clause-id',
             sensorReadings: [],
         };
@@ -95,7 +95,7 @@ describe('SupplyAgreementLocLogic', () => {
         it('should initialise state with empty sensor readings', async () => {
             const result = await logic.init(model);
             expect(result.state).toMatchObject({
-                $class: 'io.clause.supplyagreementloc@0.1.0.SupplyAgreementState',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.SupplyAgreementState',
                 $identifier: 'test-clause-id',
                 sensorReadings: [],
             });
@@ -105,7 +105,7 @@ describe('SupplyAgreementLocLogic', () => {
     describe('trigger - sensorReading', () => {
         it('should append sensor reading to state', async () => {
             const reading: ISensorReading = {
-                $class: 'io.clause.supplyagreementloc@0.1.0.SensorReading',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.SensorReading',
                 $identifier: 'reading-1',
                 $timestamp: new Date(),
                 temperature: 25,
@@ -113,7 +113,7 @@ describe('SupplyAgreementLocLogic', () => {
             };
             const result = await logic.trigger(model, reading, initialState);
 
-            expect(result.result.$class).toBe('io.clause.supplyagreementloc@0.1.0.DeliveryResponse');
+            expect(result.result.$class).toBe('org.accordproject.supplyagreementloc@0.1.0.DeliveryResponse');
             expect(result.result.inGoodOrder).toBe(true);
             expect(result.result.message).toBe('Sensor reading received');
             expect(result.state.sensorReadings).toHaveLength(1);
@@ -121,7 +121,7 @@ describe('SupplyAgreementLocLogic', () => {
 
         it('should accumulate multiple sensor readings', async () => {
             const reading: ISensorReading = {
-                $class: 'io.clause.supplyagreementloc@0.1.0.SensorReading',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.SensorReading',
                 $identifier: 'reading-1',
                 $timestamp: new Date(),
                 temperature: 25,
@@ -145,13 +145,13 @@ describe('SupplyAgreementLocLogic', () => {
                 sensorReadingFrequency: 1,
             };
             const checkRequest: ICheckContract = {
-                $class: 'io.clause.supplyagreementloc@0.1.0.CheckContract',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.CheckContract',
                 $identifier: 'check-1',
                 $timestamp: new Date(),
             };
             // No readings needed for 1 second, frequency 1/day = ~0 required
             const result = await logic.trigger(recentModel, checkRequest, initialState);
-            expect(result.result.$class).toBe('io.clause.supplyagreementloc@0.1.0.DeliveryResponse');
+            expect(result.result.$class).toBe('org.accordproject.supplyagreementloc@0.1.0.DeliveryResponse');
             expect(result.result.inGoodOrder).toBe(true);
         });
 
@@ -163,7 +163,7 @@ describe('SupplyAgreementLocLogic', () => {
                 sensorReadingFrequency: 10,
             };
             const checkRequest: ICheckContract = {
-                $class: 'io.clause.supplyagreementloc@0.1.0.CheckContract',
+                $class: 'org.accordproject.supplyagreementloc@0.1.0.CheckContract',
                 $identifier: 'check-1',
                 $timestamp: new Date(),
             };

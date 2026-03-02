@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import LateDeliveryAndPenaltyElseLogic from './logic';
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/io.clause.latedeliveryandpenaltyelse@0.1.0';
+import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/org.accordproject.latedeliveryandpenaltyelse@0.1.0';
 
 describe('LateDeliveryAndPenaltyElseLogic', () => {
     let logic: LateDeliveryAndPenaltyElseLogic;
@@ -23,7 +23,7 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
         pastDate = new Date();
         pastDate.setDate(pastDate.getDate() - 14);
         model = {
-            $class: 'io.clause.latedeliveryandpenaltyelse@0.1.0.TemplateModel',
+            $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -40,7 +40,7 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
     describe('trigger', () => {
         it('should return penalty=0 and buyerMayTerminate=true when force majeure applies to both', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: true,
                 agreedDelivery: pastDate,
@@ -53,7 +53,7 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
 
         it('should calculate penalty when no force majeure', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
@@ -68,7 +68,7 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'io.clause.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: futureDate,

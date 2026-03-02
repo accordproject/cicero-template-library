@@ -1,4 +1,4 @@
-import { ITemplateModel, IForecastRequest, IBindingResponse } from "./generated/io.clause.demandforecast@0.1.0";
+import { ITemplateModel, IForecastRequest, IBindingResponse } from "./generated/org.accordproject.demandforecast@0.1.0";
 
 type DemandForecastResponse = {
     result: IBindingResponse;
@@ -27,7 +27,7 @@ class DemandForecastLogic extends TemplateLogic<ITemplateModel> {
                 year,
                 quarter,
                 $timestamp: now,
-                $class: 'io.clause.demandforecast@0.1.0.BindingResponse'
+                $class: 'org.accordproject.demandforecast@0.1.0.BindingResponse'
             }
         };
     }

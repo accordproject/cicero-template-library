@@ -1,3 +1,3 @@
 {
-    "$class": "io.clause.onetimepaymenttr@0.1.0.PaymentReceived"
+    "$class": "org.accordproject.onetimepaymenttr@0.1.0.PaymentReceived"
 }

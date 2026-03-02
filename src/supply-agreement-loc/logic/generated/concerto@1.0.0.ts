@@ -7,7 +7,7 @@
 import type {
 	ISensorReadingData,
 	ISupplyAgreementState
-} from './io.clause.supplyagreementloc@0.1.0';
+} from './org.accordproject.supplyagreementloc@0.1.0';
 import type {
 	Month,
 	Day,

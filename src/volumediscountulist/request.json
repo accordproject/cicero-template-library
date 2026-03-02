@@ -1,4 +1,4 @@
 {
-    "$class": "io.clause.volumediscountulist@0.1.0.VolumeDiscountRequest",
+    "$class": "org.accordproject.volumediscountulist@0.1.0.VolumeDiscountRequest",
     "netAnnualChargeVolume": 10.4
 }

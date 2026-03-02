@@ -1,4 +1,4 @@
 {
-    "$class": "io.clause.carrentaltr@0.1.0.PaymentRequest",
+    "$class": "org.accordproject.carrentaltr@0.1.0.PaymentRequest",
     "$timestamp": "2018-01-02T16:34:00Z"
 }

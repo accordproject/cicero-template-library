@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-// Generated code for namespace: io.clause.latedeliveryandpenalty@0.1.0
+// Generated code for namespace: org.accordproject.latedeliveryandpenalty@0.1.0
 
 // imports
 import {IClause} from './org.accordproject.contract@0.2.0';

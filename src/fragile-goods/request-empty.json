@@ -1,5 +1,5 @@
 {
-    "$class": "io.clause.fragilegoods@0.1.0.DeliveryUpdate",
+    "$class": "org.accordproject.fragilegoods@0.1.0.DeliveryUpdate",
     "startTime": "2018-01-01T16:34:00Z",
     "finishTime": "2018-01-01T16:34:11Z",
     "status": "ARRIVED",

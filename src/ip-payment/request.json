@@ -1,5 +1,5 @@
 {
-    "$class": "io.clause.ippayment@0.1.0.PaymentRequest",
+    "$class": "org.accordproject.ippayment@0.1.0.PaymentRequest",
     "netSaleRevenue": 1200.00,
     "sublicensingRevenue": 450.00,
     "permissionGrantedBy": "2018-05-04T00:00:00Z"

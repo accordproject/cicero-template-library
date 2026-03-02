@@ -14,7 +14,7 @@ import PaymentUponSignatureLogic from './logic';
 import {
     ITemplateModel,
     IPaymentUponSignatureState,
-} from './generated/io.clause.paymentuponssignature@0.1.0';
+} from './generated/org.accordproject.paymentuponssignature@0.1.0';
 
 describe('PaymentUponSignatureLogic', () => {
     let logic: PaymentUponSignatureLogic;
@@ -24,7 +24,7 @@ describe('PaymentUponSignatureLogic', () => {
     beforeEach(() => {
         logic = new PaymentUponSignatureLogic();
         model = {
-            $class: 'io.clause.paymentuponssignature@0.1.0.TemplateModel',
+            $class: 'org.accordproject.paymentuponssignature@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -33,7 +33,7 @@ describe('PaymentUponSignatureLogic', () => {
             currencyCode: 'GBP',
         };
         initializedState = {
-            $class: 'io.clause.paymentuponssignature@0.1.0.PaymentUponSignatureState',
+            $class: 'org.accordproject.paymentuponssignature@0.1.0.PaymentUponSignatureState',
             $identifier: 'test-id',
             status: 'INITIALIZED',
         };
@@ -43,28 +43,28 @@ describe('PaymentUponSignatureLogic', () => {
         it('should initialize with INITIALIZED status', async () => {
             const result = await logic.init(model);
             expect((result.state as any).status).toBe('INITIALIZED');
-            expect((result.state as any).$class).toBe('io.clause.paymentuponssignature@0.1.0.PaymentUponSignatureState');
+            expect((result.state as any).$class).toBe('org.accordproject.paymentuponssignature@0.1.0.PaymentUponSignatureState');
         });
     });
 
     describe('trigger - ContractSigned', () => {
         it('should emit payment obligation and move to OBLIGATION_EMITTED', async () => {
             const request = {
-                $class: 'io.clause.paymentuponssignature@0.1.0.ContractSigned',
+                $class: 'org.accordproject.paymentuponssignature@0.1.0.ContractSigned',
                 $timestamp: new Date(),
             };
             const result = await logic.trigger(model, request, initializedState);
             expect((result.state as any).status).toBe('OBLIGATION_EMITTED');
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
-            expect(event.$class).toBe('io.clause.paymentuponssignature@0.1.0.PaymentObligationEvent');
+            expect(event.$class).toBe('org.accordproject.paymentuponssignature@0.1.0.PaymentObligationEvent');
             expect(event.amount).toBe(2500);
             expect(event.currencyCode).toBe('GBP');
         });
 
         it('should throw if contract already signed', async () => {
             const request = {
-                $class: 'io.clause.paymentuponssignature@0.1.0.ContractSigned',
+                $class: 'org.accordproject.paymentuponssignature@0.1.0.ContractSigned',
                 $timestamp: new Date(),
             };
             const state = { ...initializedState, status: 'OBLIGATION_EMITTED' };
@@ -75,7 +75,7 @@ describe('PaymentUponSignatureLogic', () => {
     describe('trigger - PaymentReceived', () => {
         it('should complete the contract when payment is received', async () => {
             const request = {
-                $class: 'io.clause.paymentuponssignature@0.1.0.PaymentReceived',
+                $class: 'org.accordproject.paymentuponssignature@0.1.0.PaymentReceived',
                 $timestamp: new Date(),
             };
             const state = { ...initializedState, status: 'OBLIGATION_EMITTED' };
@@ -86,7 +86,7 @@ describe('PaymentUponSignatureLogic', () => {
 
         it('should throw if payment received before signing', async () => {
             const request = {
-                $class: 'io.clause.paymentuponssignature@0.1.0.PaymentReceived',
+                $class: 'org.accordproject.paymentuponssignature@0.1.0.PaymentReceived',
                 $timestamp: new Date(),
             };
             await expect(logic.trigger(model, request, initializedState)).rejects.toThrow();

@@ -21,7 +21,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IBill
-} from './io.clause.eatapples@0.1.0';
+} from './org.accordproject.eatapples@0.1.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

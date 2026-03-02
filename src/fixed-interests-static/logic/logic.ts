@@ -1,4 +1,4 @@
-import { ITemplateModel, IFixedInterestsStaticRequest, IFixedInterestsStaticResponse } from "./generated/io.clause.fixedinterestsstatic@0.1.0";
+import { ITemplateModel, IFixedInterestsStaticRequest, IFixedInterestsStaticResponse } from "./generated/org.accordproject.fixedinterestsstatic@0.1.0";
 
 type FixedInterestsStaticResponse = {
     result: IFixedInterestsStaticResponse;
@@ -11,7 +11,7 @@ class FixedInterestsStaticLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 output: `loan for the amount of ${data.loanAmount}`,
                 $timestamp: new Date(),
-                $class: 'io.clause.fixedinterestsstatic@0.1.0.FixedInterestsStaticResponse'
+                $class: 'org.accordproject.fixedinterestsstatic@0.1.0.FixedInterestsStaticResponse'
             }
         };
     }

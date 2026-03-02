@@ -5,7 +5,7 @@ import {
     IPerishableGoodsState,
     ITemplateModel,
     ISensorReading,
-} from "./generated/io.clause.perishablegoods@0.1.0";
+} from "./generated/org.accordproject.perishablegoods@0.1.0";
 
 // @ts-expect-error EngineResponse is imported by the runtime
 interface PerishableGoodsResponse extends EngineResponse<IPerishableGoodsState> {
@@ -21,7 +21,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
     async init(data: ITemplateModel): Promise<InitResponse<IPerishableGoodsState>> {
         return {
             state: {
-                $class: "io.clause.perishablegoods@0.1.0.PerishableGoodsState",
+                $class: "org.accordproject.perishablegoods@0.1.0.PerishableGoodsState",
                 $identifier: data.$identifier,
                 payoutMade: false,
                 totalPaid: 0.0,
@@ -92,7 +92,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         if (now >= dueDate) {
             // Shipment is late — return zero price
             const lateResult: IPriceCalculation = {
-                $class: "io.clause.perishablegoods@0.1.0.PriceCalculation",
+                $class: "org.accordproject.perishablegoods@0.1.0.PriceCalculation",
                 $identifier: new Date().toISOString(),
                 $timestamp: new Date(),
                 totalPrice: 0.0,
@@ -136,7 +136,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         const totalPrice = Math.max(payOut - totalPenalty, 0.0);
 
         const event: IPerishableGoodsPaymentEvent = {
-            $class: "io.clause.perishablegoods@0.1.0.PerishableGoodsPaymentEvent",
+            $class: "org.accordproject.perishablegoods@0.1.0.PerishableGoodsPaymentEvent",
             $timestamp: new Date(),
             totalPrice,
             currencyCode: currency,
@@ -144,7 +144,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         };
 
         const result: IPriceCalculation = {
-            $class: "io.clause.perishablegoods@0.1.0.PriceCalculation",
+            $class: "org.accordproject.perishablegoods@0.1.0.PriceCalculation",
             $identifier: new Date().toISOString(),
             $timestamp: new Date(),
             totalPrice,
@@ -154,7 +154,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         };
 
         const newState: IPerishableGoodsState = {
-            $class: "io.clause.perishablegoods@0.1.0.PerishableGoodsState",
+            $class: "org.accordproject.perishablegoods@0.1.0.PerishableGoodsState",
             $identifier: state.$identifier,
             payoutMade: true,
             totalPaid: state.totalPaid + totalPrice,

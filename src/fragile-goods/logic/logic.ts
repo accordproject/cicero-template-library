@@ -3,7 +3,7 @@ import {
     IPayOut,
     IFragileGoodsEvent,
     ITemplateModel,
-} from "./generated/io.clause.fragilegoods@0.1.0";
+} from "./generated/org.accordproject.fragilegoods@0.1.0";
 
 // Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
 enum TemporalUnit {
@@ -58,7 +58,7 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
         // If not ARRIVED or no finish time, return early with the adjusted amount
         if (request.status !== "ARRIVED" || !request.finishTime) {
             const result: IPayOut = {
-                $class: "io.clause.fragilegoods@0.1.0.PayOut",
+                $class: "org.accordproject.fragilegoods@0.1.0.PayOut",
                 $identifier: new Date().toISOString(),
                 $timestamp: new Date(),
                 paymentAmount: amount,
@@ -78,14 +78,14 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
         }
 
         const event: IFragileGoodsEvent = {
-            $class: "io.clause.fragilegoods@0.1.0.FragileGoodsEvent",
+            $class: "org.accordproject.fragilegoods@0.1.0.FragileGoodsEvent",
             $timestamp: new Date(),
             paymentAmount: amount,
             currencyCode: currency,
         };
 
         const result: IPayOut = {
-            $class: "io.clause.fragilegoods@0.1.0.PayOut",
+            $class: "org.accordproject.fragilegoods@0.1.0.PayOut",
             $identifier: new Date().toISOString(),
             $timestamp: new Date(),
             paymentAmount: amount,

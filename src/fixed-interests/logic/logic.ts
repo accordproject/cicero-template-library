@@ -1,4 +1,4 @@
-import { ITemplateModel, IFixedInterestsRequest, IFixedInterestsResponse } from "./generated/io.clause.fixedinterests@0.1.0";
+import { ITemplateModel, IFixedInterestsRequest, IFixedInterestsResponse } from "./generated/org.accordproject.fixedinterests@0.1.0";
 
 type FixedInterestsResponse = {
     result: IFixedInterestsResponse;
@@ -38,7 +38,7 @@ class FixedInterestsLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 output: `loan for the amount of ${data.loanAmount}`,
                 $timestamp: new Date(),
-                $class: 'io.clause.fixedinterests@0.1.0.FixedInterestsResponse'
+                $class: 'org.accordproject.fixedinterests@0.1.0.FixedInterestsResponse'
             }
         };
     }

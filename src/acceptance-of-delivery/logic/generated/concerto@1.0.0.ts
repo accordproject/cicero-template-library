@@ -6,7 +6,7 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	InspectionStatus
-} from './io.clause.acceptanceofdelivery@0.1.0';
+} from './org.accordproject.acceptanceofdelivery@0.1.0';
 import type {
 	Month,
 	Day,

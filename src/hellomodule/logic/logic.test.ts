@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import HelloModuleLogic from './logic';
-import { ITemplateModel, IMyRequest } from './generated/io.clause.hellomodule@0.1.0';
+import { ITemplateModel, IMyRequest } from './generated/org.accordproject.hellomodule@0.1.0';
 
 describe('HelloModuleLogic', () => {
     let logic: HelloModuleLogic;
@@ -20,7 +20,7 @@ describe('HelloModuleLogic', () => {
     beforeEach(() => {
         logic = new HelloModuleLogic();
         model = {
-            $class: 'io.clause.hellomodule@0.1.0.TemplateModel',
+            $class: 'org.accordproject.hellomodule@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             name: 'World',
@@ -30,14 +30,14 @@ describe('HelloModuleLogic', () => {
     describe('trigger', () => {
         it('should return greeting with PI calculation', async () => {
             const request: IMyRequest = {
-                $class: 'io.clause.hellomodule@0.1.0.MyRequest',
+                $class: 'org.accordproject.hellomodule@0.1.0.MyRequest',
                 $timestamp: new Date(),
                 input: 'test',
             };
             const result = await logic.trigger(model, request);
             expect(result.result.output).toContain('Hello World (test)');
             expect(result.result.output).toContain('90 degrees');
-            expect(result.result.$class).toBe('io.clause.hellomodule@0.1.0.MyResponse');
+            expect(result.result.$class).toBe('org.accordproject.hellomodule@0.1.0.MyResponse');
         });
     });
 });

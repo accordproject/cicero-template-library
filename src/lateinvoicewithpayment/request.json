@@ -1,5 +1,5 @@
 {
-  "$class": "io.clause.lateinvoicewithpayment@0.1.0.LateInvoiceRequest",
+  "$class": "org.accordproject.lateinvoicewithpayment@0.1.0.LateInvoiceRequest",
   "invoiceDue": "2019-01-17T03:24:00Z",
   "amountDue": 200.00,
   "currencyCode": "USD"

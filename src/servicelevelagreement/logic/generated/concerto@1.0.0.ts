@@ -21,7 +21,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IServiceCreditPaymentEvent
-} from './io.clause.servicelevelagreement@0.1.0';
+} from './org.accordproject.servicelevelagreement@0.1.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

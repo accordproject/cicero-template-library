@@ -7,7 +7,7 @@
 import type {
 	IPaymentClause,
 	ITemplateModel
-} from './io.clause.copyrightlicense@0.1.0';
+} from './org.accordproject.copyrightlicense@0.1.0';
 import {IAsset} from './concerto@1.0.0';
 
 // interfaces

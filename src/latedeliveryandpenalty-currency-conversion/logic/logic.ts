@@ -1,4 +1,4 @@
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0';
+import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
 
 type LateDeliveryAndPenaltyResult = {
@@ -28,7 +28,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
         if (data.forceMajeure && request.forceMajeure) {
             return {
                 result: {
-                    $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyResponse',
+                    $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyResponse',
                     $timestamp: now,
                     penalty: 0,
                     buyerMayTerminate: true,
@@ -54,7 +54,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
         const buyerMayTerminate = diffDays > terminationDays;
 
         const event: IPaymentObligationEvent = {
-            $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.PaymentObligationEvent',
             $timestamp: now,
             amount: capped,
             currencyCode: data.toCurrency,
@@ -63,7 +63,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
 
         return {
             result: {
-                $class: 'io.clause.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyResponse',
+                $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyResponse',
                 $timestamp: now,
                 penalty: capped,
                 buyerMayTerminate,

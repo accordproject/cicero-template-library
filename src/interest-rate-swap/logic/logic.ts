@@ -1,4 +1,4 @@
-import { ITemplateModel, IRateObservation, IResult } from "./generated/io.clause.isda.irs@0.1.0";
+import { ITemplateModel, IRateObservation, IResult } from "./generated/org.accordproject.isda.irs@0.1.0";
 
 type InterestRateSwapResponse = {
     result: IResult;
@@ -22,7 +22,7 @@ class InterestRateSwapLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 outstandingBalance: 10.0,
                 $timestamp: new Date(),
-                $class: 'io.clause.isda.irs@0.1.0.Result'
+                $class: 'org.accordproject.isda.irs@0.1.0.Result'
             }
         };
     }

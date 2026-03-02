@@ -7,7 +7,7 @@
 import type {
 	IPenalty,
 	IRentalParty
-} from './io.clause.rentaldepositwith@0.1.0';
+} from './org.accordproject.rentaldepositwith@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -27,7 +27,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IRentalDepositPaymentEvent
-} from './io.clause.rentaldepositwith@0.1.0';
+} from './org.accordproject.rentaldepositwith@0.1.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

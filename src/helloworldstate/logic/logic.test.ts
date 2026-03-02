@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import HelloWorldStateLogic from './logic';
-import { ITemplateModel, IMyRequest } from './generated/io.clause.helloworldstate@0.1.0';
+import { ITemplateModel, IMyRequest } from './generated/org.accordproject.helloworldstate@0.1.0';
 
 describe('HelloWorldStateLogic', () => {
     let logic: HelloWorldStateLogic;
@@ -20,7 +20,7 @@ describe('HelloWorldStateLogic', () => {
     beforeEach(() => {
         logic = new HelloWorldStateLogic();
         model = {
-            $class: 'io.clause.helloworldstate@0.1.0.TemplateModel',
+            $class: 'org.accordproject.helloworldstate@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             name: 'World',
@@ -31,18 +31,18 @@ describe('HelloWorldStateLogic', () => {
         it('should initialize counter to 0', async () => {
             const result = await logic.init(model);
             expect((result.state as any).counter).toBe(0);
-            expect((result.state as any).$class).toBe('io.clause.helloworldstate@0.1.0.HelloWorldState');
+            expect((result.state as any).$class).toBe('org.accordproject.helloworldstate@0.1.0.HelloWorldState');
         });
     });
 
     describe('trigger', () => {
         it('should return a greeting with the current counter value', async () => {
             const request: IMyRequest = {
-                $class: 'io.clause.helloworldstate@0.1.0.MyRequest',
+                $class: 'org.accordproject.helloworldstate@0.1.0.MyRequest',
                 $timestamp: new Date(),
                 input: 'Accord Project',
             };
-            const state = { $class: 'io.clause.helloworldstate@0.1.0.HelloWorldState', $identifier: 'test-id', counter: 0 };
+            const state = { $class: 'org.accordproject.helloworldstate@0.1.0.HelloWorldState', $identifier: 'test-id', counter: 0 };
             const result = await logic.trigger(model, request, state);
             expect(result.result.output).toContain('Hello World Accord Project');
             expect(result.result.output).toContain('0');
@@ -50,11 +50,11 @@ describe('HelloWorldStateLogic', () => {
 
         it('should increment the counter after each trigger', async () => {
             const request: IMyRequest = {
-                $class: 'io.clause.helloworldstate@0.1.0.MyRequest',
+                $class: 'org.accordproject.helloworldstate@0.1.0.MyRequest',
                 $timestamp: new Date(),
                 input: 'test',
             };
-            const state = { $class: 'io.clause.helloworldstate@0.1.0.HelloWorldState', $identifier: 'test-id', counter: 5 };
+            const state = { $class: 'org.accordproject.helloworldstate@0.1.0.HelloWorldState', $identifier: 'test-id', counter: 5 };
             const result = await logic.trigger(model, request, state);
             expect((result.state as any).counter).toBe(6);
         });

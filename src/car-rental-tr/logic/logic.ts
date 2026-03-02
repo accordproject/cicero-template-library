@@ -1,4 +1,4 @@
-import { ITemplateModel, IPaymentRequest, IPayOut } from "./generated/io.clause.carrentaltr@0.1.0";
+import { ITemplateModel, IPaymentRequest, IPayOut } from "./generated/org.accordproject.carrentaltr@0.1.0";
 
 type CarRentalResponse = {
     result: IPayOut;
@@ -9,7 +9,7 @@ class CarRentalLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IPaymentRequest): Promise<CarRentalResponse> {
         return {
             result: {
-                $class: 'io.clause.carrentaltr@0.1.0.PayOut',
+                $class: 'org.accordproject.carrentaltr@0.1.0.PayOut',
                 $timestamp: new Date(),
                 amount: data.paymentClause.amount,
                 currencyCode: data.paymentClause.currencyCode

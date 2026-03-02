@@ -12,7 +12,7 @@ import type {
 	IDeliveryObligationData,
 	IPaymentObligationData,
 	IAgreementState
-} from './io.clause.supplyagreement@0.1.0';
+} from './org.accordproject.supplyagreement@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -34,7 +34,7 @@ import type {
 	IDeliveryObligationEvent,
 	IPurchaseObligationEvent,
 	IPaymentObligationEvent
-} from './io.clause.supplyagreement@0.1.0';
+} from './org.accordproject.supplyagreement@0.1.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

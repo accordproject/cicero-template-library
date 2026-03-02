@@ -1,4 +1,4 @@
-import { IMyRequest, IMyResponse, ITemplateModel } from './generated/io.clause.onlinepaymentcontracttr@0.1.0';
+import { IMyRequest, IMyResponse, ITemplateModel } from './generated/org.accordproject.onlinepaymentcontracttr@0.1.0';
 
 type OnlinePaymentResponse = {
     result: IMyResponse;
@@ -9,7 +9,7 @@ class OnlinePaymentContractTRLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IMyRequest): Promise<OnlinePaymentResponse> {
         return {
             result: {
-                $class: 'io.clause.onlinepaymentcontracttr@0.1.0.MyResponse',
+                $class: 'org.accordproject.onlinepaymentcontracttr@0.1.0.MyResponse',
                 $timestamp: new Date(),
                 output: request.input,
             },

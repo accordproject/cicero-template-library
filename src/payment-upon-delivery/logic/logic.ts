@@ -3,7 +3,7 @@ import {
     IDeliveryAcceptedRequest,
     IDeliveryAcceptedResponse,
     IPaymentObligationEvent,
-} from './generated/io.clause.paymentupondelivery@0.1.0';
+} from './generated/org.accordproject.paymentupondelivery@0.1.0';
 
 type PaymentUponDeliveryResponse = {
     result: IDeliveryAcceptedResponse;
@@ -16,7 +16,7 @@ class PaymentUponDeliveryLogic extends TemplateLogic<ITemplateModel> {
         const now = new Date();
         const totalAmount = data.costOfGoods + data.deliveryFee;
         const event: IPaymentObligationEvent = {
-            $class: 'io.clause.paymentupondelivery@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.paymentupondelivery@0.1.0.PaymentObligationEvent',
             $timestamp: now,
             amount: totalAmount,
             currencyCode: data.currencyCode,
@@ -24,7 +24,7 @@ class PaymentUponDeliveryLogic extends TemplateLogic<ITemplateModel> {
         };
         return {
             result: {
-                $class: 'io.clause.paymentupondelivery@0.1.0.DeliveryAcceptedResponse',
+                $class: 'org.accordproject.paymentupondelivery@0.1.0.DeliveryAcceptedResponse',
                 $timestamp: now,
                 totalAmount,
                 currencyCode: data.currencyCode,

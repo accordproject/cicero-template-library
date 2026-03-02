@@ -7,7 +7,7 @@
 (global as any).InitResponse = class InitResponse<S> {};
 
 import VolumeDiscountUListLogic from './logic';
-import { ITemplateModel, IVolumeDiscountRequest } from './generated/io.clause.volumediscountulist@0.1.0';
+import { ITemplateModel, IVolumeDiscountRequest } from './generated/org.accordproject.volumediscountulist@0.1.0';
 
 describe('VolumeDiscountUListLogic', () => {
     let logic: VolumeDiscountUListLogic;
@@ -16,13 +16,13 @@ describe('VolumeDiscountUListLogic', () => {
     beforeEach(() => {
         logic = new VolumeDiscountUListLogic();
         model = {
-            $class: 'io.clause.volumediscountulist@0.1.0.TemplateModel',
+            $class: 'org.accordproject.volumediscountulist@0.1.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             rates: [
-                { $class: 'io.clause.volumediscountulist@0.1.0.RateRange', volumeAbove: 0, volumeUpTo: 1000000, rate: 3.0 },
-                { $class: 'io.clause.volumediscountulist@0.1.0.RateRange', volumeAbove: 1000000, volumeUpTo: 10000000, rate: 2.9 },
-                { $class: 'io.clause.volumediscountulist@0.1.0.RateRange', volumeAbove: 10000000, volumeUpTo: Infinity, rate: 2.8 },
+                { $class: 'org.accordproject.volumediscountulist@0.1.0.RateRange', volumeAbove: 0, volumeUpTo: 1000000, rate: 3.0 },
+                { $class: 'org.accordproject.volumediscountulist@0.1.0.RateRange', volumeAbove: 1000000, volumeUpTo: 10000000, rate: 2.9 },
+                { $class: 'org.accordproject.volumediscountulist@0.1.0.RateRange', volumeAbove: 10000000, volumeUpTo: Infinity, rate: 2.8 },
             ],
         };
     });
@@ -30,7 +30,7 @@ describe('VolumeDiscountUListLogic', () => {
     describe('trigger', () => {
         it('should return the correct rate for a given volume', async () => {
             const request: IVolumeDiscountRequest = {
-                $class: 'io.clause.volumediscountulist@0.1.0.VolumeDiscountRequest',
+                $class: 'org.accordproject.volumediscountulist@0.1.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
                 netAnnualChargeVolume: 500000,
             };
