@@ -1,19 +1,52 @@
 {
     "name": "supplyagreement-perishable-goods",
     "displayName": "Supply Agreement Perishable Goods",
-    "version": "0.16.0",
+    "version": "0.17.0",
     "description": "This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "supply",
+        "purchase",
+        "order",
+        "perishable",
+        "goods",
+        "agreement",
+        "supplier",
+        "address",
+        "delivery",
+        "pricing",
+        "price",
+        "mutual",
+        "representation",
+        "warranty",
+        "confidentiality",
+        "term",
+        "termination",
+        "provision",
+        "schedule",
+        "annex",
+        "criteria",
+        "acceptance",
+        "shipment",
+        "method",
+        "limitation",
+        "liability",
+        "penalties",
+        "transport",
+        "conditions",
+        "temperature",
+        "humidity",
+        "package",
+        "breached"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["supply", "purchase", "order", "perishable", "goods", "agreement", "supplier", "address", "delivery", "pricing", "price", "mutual", "representation", "warranty", "confidentiality", "term", "termination", "provision", "schedule", "annex", "criteria", "acceptance", "shipment", "method", "limitation", "liability", "penalties", "transport", "conditions", "temperature", "humidity", "package", "breached"]
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

@@ -1,45 +1,84 @@
-namespace org.accordproject.payment.iot
+namespace org.accordproject.paymentuponiot@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
-import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment@0.2.0.cto
-import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature@0.2.0.cto
-
-import org.accordproject.iot.SingleButtonPress from https://models.accordproject.org/iot/iot.cto
-import org.accordproject.iot.DoubleButtonPress from https://models.accordproject.org/iot/iot.cto
-import org.accordproject.iot.LongButtonPress from https://models.accordproject.org/iot/iot.cto
-
-asset CounterState extends State {
-  o ContractLifecycleStatus status
-  o Double counter
-  o Double paymentCount
-}
-
+/**
+ * Lifecycle status of the contract
+ */
 enum ContractLifecycleStatus {
   o INITIALIZED
   o RUNNING
   o COMPLETED
 }
 
+/**
+ * Request: contract signed (transitions INITIALIZED -> RUNNING)
+ */
+transaction ContractSigned extends Request {
+  o String contractId
+}
+
+/**
+ * Request: single button press — increments counter
+ */
+transaction SingleButtonPress extends Request {
+}
+
+/**
+ * Request: double button press — decrements counter
+ */
+transaction DoubleButtonPress extends Request {
+}
+
+/**
+ * Request: long button press — emits payment obligation
+ */
+transaction LongButtonPress extends Request {
+}
+
+/**
+ * Request: payment received — decrements counter by units paid
+ */
+transaction PaymentReceived extends Request {
+  o Double amount
+  o String currencyCode
+}
+
+/**
+ * Response for counter-related operations
+ */
 transaction CounterResponse extends Response {
   o Double counter
   o Double paymentCount
 }
 
-transaction MonetaryAmountPayment extends PaymentReceived {
-  o MonetaryAmount amount
+/**
+ * Event emitted when payment is due
+ */
+event PaymentObligationEvent {
+  o Double amount
+  o String currencyCode
+  o String description
+}
+
+/**
+ * State for the payment upon IoT contract
+ */
+concept CounterState identified {
+  o ContractLifecycleStatus status
+  o Double counter
+  o Double paymentCount
 }
 
 /**
  * The template model
  */
-asset PaymentUponButtonContract extends Contract {
-  --> Party buyer
-  --> Party seller
-  o MonetaryAmount amountPerUnit
+@template
+asset TemplateModel extends Clause {
+  o String buyer
+  o String seller
+  o Double amountPerUnit
+  o String currencyCode
   o Integer paymentCount
 }

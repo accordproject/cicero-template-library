@@ -1,28 +1,40 @@
-namespace org.accordproject.payment.fulluponsignature
+namespace org.accordproject.fullpaymentupondsignature@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.signature.ContractSigned from https://models.accordproject.org/signature/signature@0.2.0.cto
-import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment@0.2.0.cto
-
-asset FullPaymentUponSignatureState extends State {
-  o ContractLifecycleStatus status
-}
-
-enum ContractLifecycleStatus {
-  o INITIALIZED
-  o OBLIGATION_EMITTED
-  o COMPLETED
-}
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 /**
  * The template model
  */
-asset FullPaymentUponSignatureContract extends Contract {
-  --> Party buyer
-  --> Party seller
-  o MonetaryAmount amount
+@template
+asset TemplateModel extends Clause {
+  o String buyer
+  o String seller
+  o Double amount
+  o String currencyCode
+}
+
+// Triggered when contract is signed
+transaction ContractSigned extends Request {
+}
+
+transaction ContractSignedResponse extends Response {
+}
+
+transaction PaymentReceived extends Request {
+}
+
+transaction PaymentReceivedResponse extends Response {
+}
+
+// Event emitted when a payment obligation is triggered
+event PaymentObligationEvent {
+  o Double amount
+  o String currencyCode
+  o String description
+}
+
+// State
+concept FullPaymentUponSignatureState identified {
+  o String status default="INITIALIZED"
 }

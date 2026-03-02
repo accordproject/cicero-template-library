@@ -1,11 +1,6 @@
-namespace org.accordproject.billoflading
+namespace org.accordproject.billoflading@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.time.Duration from https://models.accordproject.org/time@0.2.0.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
-import org.accordproject.value.UnitOfMass from https://models.accordproject.org/value.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 
 enum PackageType {
   o BAG
@@ -73,35 +68,50 @@ enum Hazardous {
   o NO
 }
 
+/**
+ * Unit of mass - inlined from org.accordproject.value to avoid dependency
+ */
+enum UnitOfMass {
+  o KG
+  o TONNE
+  o LB
+  o OZ
+  o STONE
+}
+
 concept Commodity {
   o Integer quantity
   o UnitOfMass unitOfMass
   o PackageType packageType
   o String description
-  o String  nmfcCode optional // National Motor Freight Classification (NMFC) number associated with the commodity classification.
+  o String nmfcCode optional
   o FreightClass freightClass optional
   o Hazardous hazmat optional
 }
 
 /**
  * An (To Order) Bill of Lading is a legal document that gives the
- * holder of the bill of lading legal title to the goods described
+ * holder of the bill of lading legal title to the goods described.
  * Refs: https://www.icecargo.com.au/bill-of-lading/
  * https://www.advancedontrade.com/2015/03/how-to-complete-consignee-and-notify-fields-of-a-bill-of-lading.html
+ *
+ * Note: shipper, consignee and notifyParty are String fields in v0.25
+ * (Party relationships are not supported in the new format)
  */
-asset BillOfLadingClause extends Clause {
+@template
+asset TemplateModel extends Clause {
 
   o String accountName
 
-  o String scac // The Standard Carrier Alpha Code (SCAC) assigned to identify the carrier.
+  o String scac
   o String bolNumber
   o String bookingNumber
   o String exportReferences optional
   o String onwardInstructions optional
 
-  --> Organization shipper
-  --> Organization consignee optional // identifier should be "TO ORDER" or "TO BEARER" if this is a negotiable BoL
-  --> Organization notifyParty optional
+  o String shipper
+  o String consignee optional
+  o String notifyParty optional
 
   o String vessel
   o String voyageNumber
@@ -113,5 +123,6 @@ asset BillOfLadingClause extends Clause {
   o String placeOfDelivery optional
 
   o Commodity[] commodities
-  o MonetaryAmount declaredValue
+  o Double declaredValue
+  o String declaredValueCurrency optional
 }

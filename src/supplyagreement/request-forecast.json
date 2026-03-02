@@ -1,4 +1,6 @@
 {
-    "$class": "org.accordproject.supplyagreement.ForecastRequest",
-    "supplyForecast": 1200.0
+    "$class": "org.accordproject.supplyagreement@0.1.0.ForecastRequest",
+    "$identifier": "request-forecast-1",
+    "$timestamp": "2024-01-01T00:00:00Z",
+    "supplyForecast": 1200
 }

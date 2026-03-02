@@ -1,0 +1,43 @@
+namespace org.accordproject.docusignpofailure@0.1.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.time@0.3.0.Duration from https://models.accordproject.org/time@0.3.0.cto
+import com.docusign.connect@0.3.0.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect@0.3.0.cto
+
+transaction PurchaseOrderFailureResponse extends Response {
+  o Double penaltyAmount
+  o String currencyCode
+}
+
+event PurchaseOrderPaymentEvent {
+  o Double penaltyAmount
+  o String currencyCode
+  o String description
+}
+
+concept PurchaseOrderFailureState identified {
+  o DateTime[] pastFailures
+  o Integer nbPastFailures default=0
+}
+
+@template
+asset TemplateModel extends Clause {
+  o String buyerName
+
+  o Duration lateOne
+  o Duration lateTwo
+  o Duration lateThree
+
+  o Double lateOnePercent
+  o Double lateTwoPercent
+  o Double lateThreePercent
+
+  o String article
+  o String thisSection
+
+  o Integer maxFailures
+  o Duration failureRange
+  o Double repeatedFailureCompensationAmount
+  o String repeatedFailureCompensationCurrency
+}

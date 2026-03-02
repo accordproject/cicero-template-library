@@ -1,20 +1,30 @@
-namespace org.accordproject.payment.upondelivery
+namespace org.accordproject.paymentupondelivery@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 /**
  * The template model
  */
-asset PaymentUponDeliveryContract extends Contract {
-  --> Party buyer
-  --> Party seller
-  o MonetaryAmount costOfGoods
-  o MonetaryAmount deliveryFee  
+@template
+asset TemplateModel extends Clause {
+  o String buyer
+  o String seller
+  o Double costOfGoods
+  o Double deliveryFee
+  o String currencyCode
 }
 
 transaction DeliveryAcceptedRequest extends Request {}
-transaction DeliveryAcceptedResponse extends Response {}
+
+transaction DeliveryAcceptedResponse extends Response {
+  o Double totalAmount
+  o String currencyCode
+}
+
+// Event emitted when a payment obligation is triggered
+event PaymentObligationEvent {
+  o Double amount
+  o String currencyCode
+  o String description
+}

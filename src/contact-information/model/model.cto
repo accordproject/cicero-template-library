@@ -1,15 +1,31 @@
-namespace org.accordproject.contactinformation
+namespace org.accordproject.contactinformation@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.timezone.TimeZone from https://models.accordproject.org/timezone.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+
+enum TimeZone {
+  o America_New_York
+  o America_Chicago
+  o America_Denver
+  o America_Los_Angeles
+  o America_Anchorage
+  o Pacific_Honolulu
+  o Europe_London
+  o Europe_Paris
+  o Europe_Berlin
+  o Asia_Tokyo
+  o Asia_Shanghai
+  o Asia_Kolkata
+  o Australia_Sydney
+  o UTC
+}
 
 enum CommunicationChannel {
     o EMAIL
     o PHONE
 }
 
-asset ContactInformation extends Clause {
+@template
+asset TemplateModel extends Clause {
     o String name
     o String title
     o String email

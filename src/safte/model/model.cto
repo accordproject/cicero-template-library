@@ -1,12 +1,12 @@
-namespace org.accordproject.safte
+namespace org.accordproject.safte@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.usa.state.State from https://models.accordproject.org/usa/state.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 /**
  * Token are issued!
  */
-transaction TokenSale {
+transaction TokenSale extends Request {
   /**
    * The token price
    */
@@ -16,7 +16,7 @@ transaction TokenSale {
 /**
  * Token share
  */
-transaction TokenShare {
+transaction TokenShare extends Response {
   /**
    * The token amount
    */
@@ -26,7 +26,7 @@ transaction TokenShare {
 /**
  * Financing through equity
  */
-transaction EquityFinancing {
+transaction EquityFinancing extends Request {
   /**
    * The share price
    */
@@ -36,7 +36,7 @@ transaction EquityFinancing {
 /**
  * Equity share
  */
-transaction EquityShare {
+transaction EquityShare extends Response {
   /**
    * The token amount
    */
@@ -46,24 +46,25 @@ transaction EquityShare {
 /**
  * Dissolution event
  */
-transaction DissolutionEvent {
+transaction DissolutionEvent extends Request {
   o String cause
 }
 
 /**
  * Payout
  */
-transaction PayOut {
+transaction PayOut extends Response {
   /**
    * The amount to payout
    */
- o Double amount
+  o Double amount
 }
 
 /**
  * Defines the data model for the Safte template.
  */
-asset SafteContract extends Contract {
+@template
+asset TemplateModel extends Clause {
   /**
    * The name of the company selling the token
    */
@@ -82,7 +83,7 @@ asset SafteContract extends Contract {
   /**
    * Jurisdiction
    */
-  o State jurisdiction
+  o String jurisdiction
 
   /**
    * The amount being purchased
@@ -123,5 +124,4 @@ asset SafteContract extends Contract {
    * The aggregate capital raised (text)
    */
   o String amountText
-
 }

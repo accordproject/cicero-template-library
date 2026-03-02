@@ -1,19 +1,25 @@
 {
     "name": "car-rental-tr",
     "displayName": "Car Rental (TR)",
-    "version": "0.12.0",
+    "version": "0.13.0",
     "description": "a Simple Car Rental Contract in Turkish Language",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "car",
+        "rental",
+        "turkish",
+        "araba",
+        "kiralık",
+        "Türk"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["car", "rental", "turkish", "araba", "kiralık", "Türk"]
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

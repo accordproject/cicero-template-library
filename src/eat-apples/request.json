@@ -1,5 +1,5 @@
 {
-    "$class": "org.accordproject.canteen.Food",
+    "$class": "org.accordproject.eatapples@0.1.0.Food",
     "produce": "apple",
     "price": 1.49
 }

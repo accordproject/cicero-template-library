@@ -1,6 +1,0 @@
-{
-    "$class": "org.accordproject.payment.iot.CounterState",
-    "status" : "INITIALIZED",
-    "counter" : 0,
-    "paymentCount" : 0
-}

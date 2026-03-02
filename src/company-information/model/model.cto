@@ -1,10 +1,17 @@
-namespace org.accordproject.companyinformation
+namespace org.accordproject.companyinformation@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.address.PostalAddress from https://models.accordproject.org/address.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 
-asset CompanyInformation extends Clause {
+concept PostalAddress {
+  o String streetAddress optional
+  o String postalCode optional
+  o String addressRegion optional
+  o String addressLocality optional
+  o String addressCountry optional
+}
+
+@template
+asset TemplateModel extends Clause {
     o String name
     o String industry
     o String website

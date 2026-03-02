@@ -1,19 +1,19 @@
 {
     "name": "bill-of-lading",
     "displayName": "Bill of Lading",
-    "version": "0.1.0",
-    "description": "Bill of Lading for transfort of goods via ocean vessel",
+    "version": "0.2.0",
+    "description": "Bill of Lading for transport of goods via ocean vessel",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "clause",
-        "cicero": "^0.22.0"
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "bill of lading"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["bill of lading"]
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

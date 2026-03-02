@@ -1,12 +1,12 @@
 /**
-  * A business network for shipping perishable goods
-  * The cargo is temperature controlled and contracts
-  * can be negociated based on the temperature
-  * readings received for the cargo
-  */
-namespace org.accordproject.perishablegoods
+ * A supply agreement for shipping perishable goods.
+ * The cargo is temperature and humidity controlled and penalties
+ * can be applied based on sensor readings received for the cargo.
+ */
+namespace org.accordproject.supplyagreementperishablegoods@0.1.0
 
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 /**
  * The status of a shipment
@@ -25,103 +25,72 @@ enum Unit {
   o CORD
 }
 
-enum Duration {
-  o WEEK
-  o HOUR
-  o DAY
-  o MONTH
-  o YEAR
-  o MINUTE
-}
-
 /**
- * An abstract transaction that is related to a Shipment
+ * A temperature and humidity reading for a shipment
  */
-abstract transaction ShipmentTransaction {
-    --> Shipment shipment
-}
-
-/**
- * An temperature reading for a shipment. E.g. received from a
- * device within a temperature controlled shipping container
- */
-transaction SensorReading extends ShipmentTransaction {
+concept SensorReading {
   o Double centigrade
   o Double humidity
 }
 
 /**
- * A notification that a shipment has been received by the
- * importer and that funds should be transferred from the importer
- * to the grower to pay for the shipment.
+ * A shipment being tracked
  */
-transaction ShipmentReceived extends ShipmentTransaction {
-    o Integer unitCount
+concept Shipment {
+  o String shipmentId
+  o ShipmentStatus status
+  o SensorReading[] sensorReadings optional
 }
 
 /**
- * The calculation of a price
+ * Payment obligation event emitted when goods are received
  */
-transaction PriceCalculation extends ShipmentTransaction {
-  o MonetaryAmount totalPrice
-  o MonetaryAmount penalty
+event PaymentObligationEvent {
+  o String grower
+  o String importer
+  o Double totalPrice
+  o String currencyCode
   o Boolean late
 }
 
 /**
- * A shipment being tracked as an asset on the ledger
+ * Request sent when a shipment is received by the importer
  */
-asset Shipment identified by shipmentId {
-  o String shipmentId
-  o ShipmentStatus status
-  --> Grower grower
-  --> Importer importer
-  o SensorReading[] sensorReadings optional
-  /**
-   * the link to the smart clause for this shipment
-   */
-  o String smartClause
+transaction ShipmentReceived extends Request {
+  o Integer unitCount
+  o Shipment shipment
 }
 
 /**
- * A concept for a simple street address
+ * Response with price calculation
  */
-concept Address {
-  o String city optional
-  o String country
-  o String street optional
-  o String zip optional
+transaction PriceCalculation extends Response {
+  o Double totalPrice
+  o Double penalty
+  o String currencyCode
+  o Boolean late
 }
 
 /**
- * An abstract participant type in this business network
+ * The template model
  */
-abstract participant Business identified by email {
-  o String email
-  o Address address
-  o Double accountBalance
-}
-
-/**
- * A Grower is a type of participant in the network
- */
-participant Grower extends Business {
-}
-
-/**
- * A Shipper is a type of participant in the network
- */
-participant Shipper extends Business {
-}
-
-/**
- * An Importer is a type of participant in the network
- */
-participant Importer extends Business {
-}
-
-/**
- * JUST FOR INITIALIZING A DEMO
- */
-transaction SetupDemo {
+@template
+asset TemplateModel extends Clause {
+  o DateTime dueDate
+  o String grower
+  o String importer
+  o String shipment
+  o Double unitPrice
+  o String currencyCode
+  o Unit unit
+  o Integer minUnits
+  o Integer maxUnits
+  o String product
+  o Integer sensorReadingFrequency
+  o String duration
+  o Double minTemperature
+  o Double maxTemperature
+  o Double minHumidity
+  o Double maxHumidity
+  o Double penaltyFactor
 }

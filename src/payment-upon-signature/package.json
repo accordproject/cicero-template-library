@@ -1,19 +1,28 @@
 {
     "name": "payment-upon-signature",
     "displayName": "Payment Upon Signature",
-    "version": "0.10.0",
+    "version": "0.11.0",
     "description": "This is a generic payment clause applicable to any type of contract that requires some payment at the time of signature.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "payment",
+        "pay",
+        "upon",
+        "signature",
+        "sign",
+        "signing",
+        "agreement",
+        "clause",
+        "time"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["payment", "pay", "upon", "signature", "sign", "signing", "agreement", "clause", "time"]
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

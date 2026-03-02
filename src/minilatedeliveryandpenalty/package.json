@@ -1,19 +1,23 @@
 {
     "name": "minilatedeliveryandpenalty",
-    "displayName": "Mini-Late Delivery and Penalty",
-    "version": "0.6.0",
-    "description": "A Late Delivery And Penalty Clause (Mini).",
+    "displayName": "Mini Late Delivery And Penalty",
+    "version": "0.12.0",
+    "description": "A simplified late delivery and penalty clause.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
-        "cicero": "^0.22.0"
+        "runtime": "typescript",
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "late",
+        "delivery",
+        "penalty",
+        "clause"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["late", "delivery", "penalty", "delayed", "seller", "exceed", "clause", "demo"]
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

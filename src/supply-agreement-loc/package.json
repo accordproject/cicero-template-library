@@ -1,17 +1,16 @@
 {
     "name": "supply-agreement-loc",
-    "version": "0.1.0",
-    "description": "Supply agreement",
+    "version": "0.2.0",
+    "description": "Supply agreement with letter of credit and sensor reading validation",
     "author": "John Carpenter",
+    "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.22.0",
-        "runtime": "ergo"
-    },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
+        "cicero": "^0.25.0"
     },
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
     }
 }

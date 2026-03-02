@@ -1,4 +1,4 @@
 {
-    "$class": "org.accordru.salescontract.MyRequest",
+    "$class": "org.accordproject.salescontractru@0.1.0.MyRequest",
     "input": "Contract Valid"
 }

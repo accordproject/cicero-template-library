@@ -1,12 +1,17 @@
-namespace org.cloudsecurityalliance.supplyagreement
+namespace org.accordproject.supplyagreementloc@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.geo.Country from https://models.accordproject.org/geo.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.time.Duration from https://models.accordproject.org/time@0.2.0.cto
-import org.accordproject.time.Period from https://models.accordproject.org/time@0.2.0.cto
-import org.accordproject.time.TemporalUnit from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
+
+/**
+ * Data-only concept for storing sensor readings in state
+ */
+concept SensorReadingData {
+  o Double temperature
+  o Double humidity
+  o DateTime readingTime
+}
 
 transaction SensorReading extends Request {
   o Double temperature
@@ -21,77 +26,62 @@ transaction DeliveryResponse extends Response {
   o Boolean inGoodOrder
 }
 
-asset SupplyAgreementState extends State {
-  o SensorReading[] sensorReadings
+concept SupplyAgreementState identified {
+  o SensorReadingData[] sensorReadings
 }
 
 /**
- * The model for the contract
+ * The template model - MonetaryAmount replaced with Double + currencyCode,
+ * Period replaced with String, Party relationships replaced with String
  */
-asset SupplyAgreementContract extends Contract {
+@template
+asset TemplateModel extends Clause {
   o DateTime executionDate
-  o String exporter 
+  o String exporter
   o String importer
   o String product
   o String importerCreditworthiness
   o DateTime issueDate
   o String importerLOCBank
   o Integer importerLOCNumber
-  o MonetaryAmount importerLOCAmount
+  o Double importerLOCAmount
+  o String importerLOCCurrency
   o String orderBillOfLading
   o String packingList
   o Integer renewalTerms
-  o Period termRenewal
-  o Period termTerminationNotice
+  o String termRenewal
+  o String termTerminationNotice
   o String invoice
   o String bookingId
   o String purchaseOrder
   o String exporterAddress
   o Integer turnaroundTime
   o Integer amountOfEachProduct
-  o MonetaryAmount unitPriceOfEachProduct
+  o Double unitPriceOfEachProduct
+  o String unitPriceCurrency
   o String locationForDelivery
   o DateTime deliveryDate
-  // o DateTime turaroundTime
   o Integer exporterBankAccount
   o String modifiedPurchaseOrder
   o Duration cancellationDeadline
   o String shipper
-  // o Integer bookingid
   o String importPort
   o String exportPort
   o String productDescription
   o Integer productWeight
   o String productMeasurement
-  o MonetaryAmount freightCharges
+  o Double freightCharges
+  o String freightCurrency
   o Duration evaluationTime
   o String acceptanceCriteria
   o DateTime termBeginDate
-  o Period termPeriod
-  o Period currentTerm
+  o String termPeriod
+  o String currentTerm
   o String shipment
-  o MonetaryAmount unitPrice
+  o Double unitPrice
+  o String unitCurrency
   o Integer unit
   o Integer sensorReadingFrequency
   o TemporalUnit duration
-  o Period countPeriod
-  // o Integer productCount
-  // o Integer noticeWindow
-  // o Integer cancellationWindow
-  // o Double minimumPercentage
-  // o String deliverables
-  // o Integer deliveryWindow
-  // o String deliveryAttachment
-  // o Integer inspectionWindow
-  // o String acceptanceAttachment
-  // o Integer priceUpdateWindow
-  // o String accountNumber
-  // o String routingNumber
-  // o Integer termYears
-  // o Integer renewalYears
-  // o Integer renewalWindow
-  // o Country governingCountry
-  // o Country venueCountry
-  // o Integer paymentMade
+  o String countPeriod
 }
-

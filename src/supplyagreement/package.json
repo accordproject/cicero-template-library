@@ -1,19 +1,42 @@
 {
     "name": "supplyagreement",
     "displayName": "Supply Agreement",
-    "version": "0.14.0",
+    "version": "0.15.0",
     "description": "A sample supply agreement.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.22.0"
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "supply",
+        "purchase",
+        "order",
+        "agreement",
+        "supplier",
+        "address",
+        "delivery",
+        "pricing",
+        "price",
+        "mutual",
+        "representation",
+        "warranty",
+        "confidentiality",
+        "term",
+        "termination",
+        "provision",
+        "schedule",
+        "annex",
+        "criteria",
+        "acceptance",
+        "method",
+        "limitation",
+        "liability"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["supply", "purchase", "order", "agreement", "supplier", "address", "delivery", "pricing", "price", "mutual", "representation", "warranty", "confidentiality", "term", "termination", "provision", "schedule", "annex", "criteria", "acceptance", "method", "limitation", "liability"]
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

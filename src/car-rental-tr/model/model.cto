@@ -1,18 +1,7 @@
-namespace org.accordtr.carrental
+namespace org.accordproject.carrentaltr@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.organization.Organization from https://models.accordproject.org/organization.cto
-
-// transaction MyRequest extends Request {
-//   o String input
-// }
-
-// transaction MyResponse extends Response {
-//   o String output
-// }
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 /* Requesting a payment */
 transaction PaymentRequest extends Request {
@@ -20,10 +9,19 @@ transaction PaymentRequest extends Request {
 
 /* PayOut response */
 transaction PayOut extends Response {
-  o MonetaryAmount amount
+  o Double amount
+  o String currencyCode
 }
 
-asset CarRentalContract extends Contract {
+asset PaymentClause extends Clause {
+  o String amountText
+  o Double amount
+  o String currencyCode
+  o String paymentProcedure
+}
+
+@template
+asset TemplateModel extends Clause {
 
   // Lessor //
   o String lessorName
@@ -37,8 +35,8 @@ asset CarRentalContract extends Contract {
 
   // Domestic Court //
   o String authorizedCourt
-  
-  // Vechile Details //
+
+  // Vehicle Details //
   o String plateID
   o String carBrand
   o String model
@@ -51,15 +49,8 @@ asset CarRentalContract extends Contract {
   o String endDate
 
   // Payment Details //
-  //o String charge
   o String deliveryStation
-  
+
   /* payment */
   o PaymentClause paymentClause
-}
-
-asset PaymentClause extends Clause {
-  o String amountText
-  o MonetaryAmount amount
-  o String paymentProcedure
 }

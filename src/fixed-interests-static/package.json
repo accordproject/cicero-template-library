@@ -1,18 +1,22 @@
 {
     "name": "fixed-interests-static",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "A Fixed Interests Loan Clause, with a monthly Payment (static)",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
+        "runtime": "typescript",
         "template": "clause",
-        "cicero": "^0.22.0"
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "loan",
+        "interests",
+        "fixed",
+        "principal"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["loan", "interests", "fixed", "principal"]
+        "test": "vitest run",
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    }
 }

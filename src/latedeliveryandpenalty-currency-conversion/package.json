@@ -6,14 +6,27 @@
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
-        "template": "contract",
-        "cicero": "^0.22.0"
+        "template": "clause",
+        "runtime": "typescript",
+        "cicero": "^0.25.0"
     },
-    "devDependencies": {
-        "cucumber": "^5.1.0"
-    },
+    "keywords": [
+        "late",
+        "delivery",
+        "penalty",
+        "delayed",
+        "Majeure",
+        "seller",
+        "pay",
+        "exceed",
+        "terimate",
+        "clause",
+        "currency",
+        "conversion",
+        "oracle"
+    ],
     "scripts": {
-        "test": "cucumber-js test -r .cucumber.js"
-    },
-    "keywords": ["late", "delivery", "penalty", "delayed", "Majeure", "seller", "pay", "exceed", "terimate", "clause", "currency", "conversion", "oracle"]
+        "test": "vitest run",
+        "compile": "concerto compile --model model/clause.cto --target typescript --output logic/generated"
+    }
 }
