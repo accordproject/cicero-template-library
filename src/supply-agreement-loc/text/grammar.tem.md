@@ -82,7 +82,7 @@ This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agree
    2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
    3. Non-Disclosure. The {{importer}} may not disclose Confidential Information to any third party, except to the extent
       1. permitted by this agreement,
-      2. the {[exporter}} consents in writing, or
+      2. the {{exporter}} consents in writing, or
       3. required by Law.
    4. Notice. The {{importer}} shall notify the {{exporter}} if it
       1. is required by Law to disclose any Confidential Information, or

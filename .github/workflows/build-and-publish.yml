@@ -8,8 +8,8 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -28,15 +28,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: NPM Install
-        if: github.ref == 'refs/heads/master'
         run: npm install
 
       - name: NPM Build
-        if: github.ref == 'refs/heads/master'
         run: npm run build
 
       - name: Set S3 
-        if: github.ref == 'refs/heads/master'
         run: |
             echo "AWS_S3_BUCKET=${{secrets.AWS_S3_BUCKET}}" >> $GITHUB_ENV
 
