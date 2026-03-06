@@ -9,8 +9,8 @@
 </h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/accordproject/cicero-template-library">
-    <img src="https://travis-ci.org/accordproject/cicero-template-library.svg" alt="Build Status"/>
+  <a href="https://github.com/accordproject/cicero-template-library/actions/workflows/build.yml">
+    <img src="https://github.com/accordproject/cicero-template-library/actions/workflows/build.yml/badge.svg" alt="Build Status"/>
   </a>
   <a href="https://github.com/accordproject/cicero-template-library/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/accordproject/cicero-template-library" alt="GitHub license"/>
@@ -20,7 +20,7 @@
   </a>
 </p>
 
-Repository for Smart Legal Contract Templates that conform that to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
+Repository for Smart Legal Contract Templates that conform to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
 
 These templates can be parsed and executed by the [Cicero][cicero] engine.
 
