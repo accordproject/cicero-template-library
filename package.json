@@ -31,7 +31,7 @@
     "@accordproject/concerto-core": "1.2.1",
     "@accordproject/concerto-tools": "1.2.1",
     "@accordproject/markdown-cicero": "0.14.1",
-    "@accordproject/markdown-html": "0.14.1",
+    "@accordproject/markdown-html": "0.17.1",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "4.2.0",
