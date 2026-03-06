@@ -48,7 +48,7 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-              {% for name in templateVersions |sort(true)%}
+              {% for name in templateVersions %}
                 <a href="{{name}}.html" class="dropdown-item {{"is-active" if name === template.getIdentifier()}}">
                     {{name}}
                 </a>
