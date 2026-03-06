@@ -51,7 +51,7 @@ const jquery = require("jquery");
 const rootDir = resolve(__dirname, './src');
 const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
-const serverRoot = process.env.SERVER_ROOT ?  process.env.SERVER_ROOT : 'https://templates.accordproject.org';
+const serverRoot = process.env.SERVER_ROOT ? process.env.SERVER_ROOT : 'https://templates.accordproject.org';
 const studioRoot = 'https://studio.accordproject.org';
 const githubRoot = `https://github.dev/accordproject/cicero-template-library/blob/master`;
 
@@ -86,20 +86,20 @@ nunjucks.configure('./views', {
 (async function () {
     try {
         let templateName = process.argv.slice(2);
-        if(templateName && templateName.length > 0) {
+        if (templateName && templateName.length > 0) {
             console.log('Only building template: ' + templateName);
         } else {
             templateName = null;
         }
 
-        if(process.env.DELETE_ALL) {
+        if (process.env.DELETE_ALL) {
             // delete build directory
             rimraf.sync(buildDir);
         }
 
-        const templateIndex = await buildTemplates(templateUnitTester, templatePageGenerator, templateName );
+        const templateIndex = await buildTemplates(templateUnitTester, templatePageGenerator, templateName);
 
-        if(!process.env.SKIP_GENERATION) {
+        if (!process.env.SKIP_GENERATION) {
             // copy the logo to build directory
             await fs.copy('assets', './build/assets');
             await fs.copy('styles.css', './build/styles.css');
@@ -116,7 +116,7 @@ nunjucks.configure('./views', {
             await writeFile('./build/index.html', templateResult);
         }
     }
-    catch(err) {
+    catch (err) {
         console.log(err);
     }
 })();
@@ -133,20 +133,20 @@ function filterTemplateIndex(templateIndex) {
     const nameToVersion = {};
 
     // build a map of the latest version of each template
-    for(let template of Object.keys(templateIndex)) {
+    for (let template of Object.keys(templateIndex)) {
         const atIndex = template.indexOf('@');
-        const name = template.substring(0,atIndex);
-        const version  = template.substring(atIndex+1);
+        const name = template.substring(0, atIndex);
+        const version = template.substring(atIndex + 1);
 
         const existingVersion = nameToVersion[name];
 
-        if(!existingVersion || semver.lt(existingVersion, version)) {
+        if (!existingVersion || semver.lt(existingVersion, version)) {
             nameToVersion[name] = version;
         }
     }
 
     // now build the result
-    for(let name in nameToVersion) {
+    for (let name in nameToVersion) {
         const id = `${name}@${nameToVersion[name]}`;
         result[id] = templateIndex[id];
     }
@@ -183,7 +183,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
     let templateIndex = {};
     const indexExists = await fs.pathExists(templateLibraryPath);
 
-    if(indexExists) {
+    if (indexExists) {
         const indexContent = fs.readFileSync(templateLibraryPath, 'utf8');
         templateIndex = JSON.parse(indexContent);
     }
@@ -200,15 +200,15 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
         }
 
         // unless a given template name has been specified
-        if(selected && selectedTemplate) {
+        if (selected && selectedTemplate) {
             const packageJson = fs.readFileSync(file, 'utf8');
             const pkgJson = JSON.parse(packageJson);
-            if(pkgJson.name != selectedTemplate) {
+            if (pkgJson.name != selectedTemplate) {
                 selected = false;
             }
         }
 
-        if(selected) {
+        if (selected) {
             // read the parent directory as a template
             const templatePath = path.dirname(file);
             console.log(`Processing ${templatePath}`);
@@ -221,14 +221,18 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 // call the pre template processor
                 await preProcessor(templatePath, template);
 
-                if(!process.env.SKIP_GENERATION) {
+                if (!process.env.SKIP_GENERATION) {
                     const templateVersions = Object.keys(templateIndex).filter(
-                    item => {
-                        const atIndex = item.indexOf("@");
-                        const name = item.substring(0, atIndex);
-                        return name == template.getName();
-                    }
-                    );
+                        item => {
+                            const atIndex = item.indexOf("@");
+                            const name = item.substring(0, atIndex);
+                            return name == template.getName();
+                        }
+                    ).sort((a, b) => {
+                        const versionA = a.substring(a.indexOf('@') + 1);
+                        const versionB = b.substring(b.indexOf('@') + 1);
+                        return semver.rcompare(versionA, versionB);
+                    });
 
                     templateVersions.forEach(versionToUpdate => {
                         const templateResult = nunjucks.render("dropdown.njk", {
@@ -251,12 +255,12 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                                     }
                                 }
 
-                                if(process.env.ADD_VSCODE_BUTTON){
+                                if (process.env.ADD_VSCODE_BUTTON) {
                                     const dropdownContentElement = $("a.button.open-studio");
                                     if (dropdownContentElement.length) {
                                         const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
                                         dropdownContentElement.after(`\n<a href="${githubURL}" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>`);
-                                        
+
                                     }
                                 }
 
@@ -268,7 +272,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                                             if (err) {
                                                 console.log(`Failed saving build/${versionToUpdate}.html with ${err}`);
                                             } else {
-                                                console.log("VSCode button added for template: " + "build/" + versionToUpdate + ".html" );
+                                                console.log("VSCode button added for template: " + "build/" + versionToUpdate + ".html");
                                             }
                                         }
                                     );
@@ -288,19 +292,19 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     const ciceroArchiveFilePath = `${archiveDir}/${ciceroArchiveFileName}`;
                     const ciceroArchiveFileExists = await fs.pathExists(ciceroArchiveFilePath);
 
-                    if(!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                    if (!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
                         const ciceroArchive = await template.toArchive('es6');
                         await writeFile(ciceroArchiveFilePath, ciceroArchive);
                         console.log('Copied: ' + ciceroArchiveFilePath);
                     }
 
-                    if(!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                    if (!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
                         const ergoArchive = await template.toArchive('ergo');
                         await writeFile(archiveFilePath, ergoArchive);
                         console.log('Copied: ' + archiveFileName);
                     }
 
-                    if(!ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                    if (!ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
                         // update the index
                         const m = template.getMetadata();
                         const templateHash = template.getHash();
@@ -308,9 +312,9 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             uri: `ap://${template.getIdentifier()}#${templateHash}`,
                             url: `${serverRoot}/archives/${archiveFileName}`,
                             ciceroUrl: `${serverRoot}/archives/${ciceroArchiveFileName}`,
-                            name : m.getName(),
+                            name: m.getName(),
                             displayName: m.getDisplayName(),
-                            description : m.getDescription(),
+                            description: m.getDescription(),
                             version: m.getVersion(),
                             ciceroVersion: m.getCiceroVersion(),
                             type: m.getTemplateType(),
@@ -348,13 +352,13 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 async function templateUnitTester(templatePath, template) {
     // check that all the samples parse
     const samples = template.getMetadata().getSamples();
-    if(samples) {
+    if (samples) {
         const sampleValues = Object.values(samples);
 
         // should be TemplateInstance
         const instance = new Clause(template);
 
-        for(const s of sampleValues ) {
+        for (const s of sampleValues) {
             instance.parse(s);
         }
     }
@@ -379,9 +383,9 @@ function sampleInstance(template, type) {
 
     if (!classDecl.isAbstract()) {
         if (classDecl.getIdentifierFieldName()) {
-            result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
+            result = template.getFactory().newResource(classDecl.getNamespace(), classDecl.getName(), uuidv1(), sampleGenerationOptions);
         } else {
-            result = template.getFactory().newResource( classDecl.getNamespace(), classDecl.getName(), null, sampleGenerationOptions);
+            result = template.getFactory().newResource(classDecl.getNamespace(), classDecl.getName(), null, sampleGenerationOptions);
         }
     }
 
@@ -405,13 +409,13 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     // generate UML
     const modelDecls = template.getTemplateModel().getModelFile();
     const models = template.getModelManager().getModels();
-    const modelFile = models[models.length-1].content;
+    const modelFile = models[models.length - 1].content;
     const visitor = new CodeGen.PlantUMLVisitor();
     const fileWriter = new FileWriter(buildDir);
 
     fileWriter.openFile(pumlFilePath);
     fileWriter.writeLine(0, '@startuml');
-    const params = {fileWriter : fileWriter};
+    const params = { fileWriter: fileWriter };
     modelDecls.accept(visitor, params);
     fileWriter.writeLine(0, '@enduml');
     fileWriter.closeFile();
@@ -429,7 +433,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
 
     // parse the default sample and use it as the sample instance
     const samples = template.getMetadata().getSamples();
-    if(samples.default) {
+    if (samples.default) {
         // should be TemplateInstance
         const instance = new Clause(template);
         instance.parse(samples.default);
@@ -442,45 +446,49 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     }
 
     const requestTypes = {};
-    for(let type of template.getRequestTypes()) {
+    for (let type of template.getRequestTypes()) {
         requestTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
     }
 
     const responseTypes = {};
-    for(let type of template.getResponseTypes()) {
+    for (let type of template.getResponseTypes()) {
         responseTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
     }
 
     const stateTypes = {}
-    for(let type of template.getStateTypes()) {
+    for (let type of template.getStateTypes()) {
         stateTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
     }
 
     const eventTypes = {}
-    for(let type of template.getEmitTypes()) {
+    for (let type of template.getEmitTypes()) {
         eventTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
     }
 
-    // get all the versions of the template
+    // get all the versions of the template (sorted by semver, newest first)
     const templateVersions = Object.keys(templateIndex).filter((item) => {
         const atIndex = item.indexOf('@');
-        const name = item.substring(0,atIndex);
+        const name = item.substring(0, atIndex);
         return name == template.getName();
+    }).sort((a, b) => {
+        const versionA = a.substring(a.indexOf('@') + 1);
+        const versionB = b.substring(b.indexOf('@') + 1);
+        return semver.rcompare(versionA, versionB);
     });
 
     const sample = template.getMetadata().getSample();
     const logo = template.getMetadata().getLogo() ? template.getMetadata().getLogo().toString('base64') : null;
     const author = template.getMetadata().getAuthor() ? template.getMetadata().getAuthor() : null;
-    let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample,'json'));
+    let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample, 'json'));
     // XXX HTML cleanup hack for rendering in page. Would be best done with the right option in markdown-transform
-    sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">','').replace('</div>\n</body>\n</html>','');
+    sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">', '').replace('</div>\n</body>\n</html>', '');
 
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
-        umlURL : umlURL,
-        umlCardURL : umlCardURL,
-        studioURL : studioURL,
-        githubURL : githubURL,
+        umlURL: umlURL,
+        umlCardURL: umlCardURL,
+        studioURL: studioURL,
+        githubURL: githubURL,
         filePath: templatePageHtml,
         template: template,
         modelFile: modelFile,
