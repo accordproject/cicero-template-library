@@ -245,6 +245,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             (err, data) => {
                                 if (err) {
                                     console.log(`Failed reading build/${versionToUpdate}.html with ${err}`);
+                                    return;
                                 }
                                 const dom = new jsdom.JSDOM(data);
                                 const $ = jquery(dom.window);

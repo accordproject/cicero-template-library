@@ -60,7 +60,13 @@
         {% endblock %}
 
         <title>Accord Project Template Library</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="./assets/images/site.webmanifest">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="icon" href="https://i0.wp.com/accordproject.org/wp-content/uploads/2020/08/cropped-ms-icon-310x310-1.png?fit=512%2C512&ssl=1" />
         <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
@@ -189,7 +195,13 @@
           <a class="navbar-item" href="/">
             <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
           </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
+        <div id="main-navbar-menu" class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
               <div class="icon">
@@ -202,6 +214,21 @@
         </div>
       </div>
     </nav>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var burgers = document.querySelectorAll('.navbar-burger');
+        burgers.forEach(function(burger) {
+            burger.addEventListener('click', function() {
+                var targetId = burger.dataset.target;
+                var target = document.getElementById(targetId);
+                burger.classList.toggle('is-active');
+                target.classList.toggle('is-active');
+            });
+        });
+    });
+    </script>
 
     {% block body %} {% endblock %}
 

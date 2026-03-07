@@ -6,30 +6,36 @@ on:
         branches:
             - master
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
     build:
         name: Unit Tests
+        timeout-minutes: 15
 
-        strategy:
-            matrix:
-                node-version:
-                    - 18.x
-                    - 20.x
-                os:
-                    - ubuntu-latest
-                    - windows-latest
-                    - macOS-latest
+    strategy:
+      matrix:
+        node-version:
+          - 18.x
+          - 20.x
+          - 22.x
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
 
         runs-on: ${{ matrix.os }}
 
-        steps:
-            - name: git checkout
-              uses: actions/checkout@v4
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v4
 
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v4
-              with:
-                  node-version: ${{ matrix.node-version }}
-
-            - run: npm ci
-            - run: npm test
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+    
+      - run: npm ci
+      - run: npm test
