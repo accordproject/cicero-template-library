@@ -30,7 +30,6 @@ async function run() {
     } catch(e) {
         console.warn('Could not read template index:', e);
     }
-
     
     for(const f of files) {
         if(f === 'index.html') continue;
