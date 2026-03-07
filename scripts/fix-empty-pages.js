@@ -31,6 +31,7 @@ async function run() {
         console.warn('Could not read template index:', e);
     }
 
+    
     for(const f of files) {
         if(f === 'index.html') continue;
         const filePath = path.join(buildDir, f);
