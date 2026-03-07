@@ -49,6 +49,7 @@ async function run() {
             // Body is clearly non-empty; no need to process further.
             continue;
         }
+        
         // Fallback to JSDOM for files that might be empty or are uncertain.
         const dom = new jsdom.JSDOM(content);
         const bodyContent = dom.window.document && dom.window.document.body ? dom.window.document.body.innerHTML.trim() : '';
