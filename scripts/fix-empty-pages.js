@@ -17,6 +17,9 @@ const studioRoot = 'https://studio.accordproject.org';
 const githubRoot = `https://github.dev/accordproject/cicero-template-library/blob/master`;
 
 async function run() {
+    if (!(await fs.pathExists(buildDir))) {
+        throw new Error(`Build directory "${buildDir}" does not exist. Please run the build (e.g., "npm run build") before running this script.`);
+    }
     const files = (await fs.readdir(buildDir)).filter(f => f.endsWith('.html'));
 
     let templateIndex = {};
