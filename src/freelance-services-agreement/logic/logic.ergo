@@ -47,7 +47,7 @@ contract FreelanceServicesAgreementContract over FreelanceServicesAgreementTempl
 
   clause paymentReceived(request : PaymentReceived) : Response {
     enforce (state.status = PAYMENT_DUE)
-      else throw Error{ message: "No payment obligation has been emitted yet." };
+      else throw Error{ message: "Payment can only be recorded when a payment obligation is due. Either no payment obligation has been emitted yet or the agreement has already been completed." };
 
     set state.status = COMPLETED;
 

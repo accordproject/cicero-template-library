@@ -1,5 +1,5 @@
 Feature: Freelance Services Agreement
-  This describe the expected behavior for the Accord Project's Freelance Services Agreement contract
+  This describes the expected behavior for the Accord Project's Freelance Services Agreement contract
 
   Background:
     Given the default contract
@@ -91,4 +91,4 @@ Feature: Freelance Services Agreement
     "$class": "org.accordproject.payment.PaymentReceived"
 }
 """
-    Then it should reject the request with the error "[Ergo] No payment obligation has been emitted yet."
+    Then it should reject the request with the error "[Ergo] Payment can only be recorded when a payment obligation is due. Either no payment obligation has been emitted yet or the agreement has already been completed."
