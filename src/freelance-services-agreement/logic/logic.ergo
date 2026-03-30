@@ -1,0 +1,56 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.freelanceservicesagreement
+
+import org.accordproject.runtime.*
+import org.accordproject.obligation.*
+import org.accordproject.payment.PaymentReceived
+
+contract FreelanceServicesAgreementContract over FreelanceServicesAgreementTemplate state FreelanceServicesAgreementState {
+
+  clause init(request : Request) : Response {
+    set state FreelanceServicesAgreementState {
+      status: INITIALIZED
+    };
+    return Response{}
+  }
+
+  clause workCompleted(request : WorkCompleted) : Response emits PaymentObligation {
+    enforce (state.status = INITIALIZED)
+      else throw Error{ message: "Work completion has already been notified." };
+
+    emit PaymentObligation{
+      contract: contract,
+      promisor: some(contract.client),
+      promisee: some(contract.provider),
+      deadline: none,
+      amount: contract.paymentAmount,
+      description: toString(contract.client) ++ " should pay " ++ toString(contract.provider) ++ " within " ++ toString(contract.paymentDueDays) ++ " days"
+    };
+
+    set state.status = PAYMENT_DUE;
+
+    return Response{}
+  }
+
+  clause paymentReceived(request : PaymentReceived) : Response {
+    enforce (state.status = PAYMENT_DUE)
+      else throw Error{ message: "No payment obligation has been emitted yet." };
+
+    set state.status = COMPLETED;
+
+    return Response{}
+  }
+}
