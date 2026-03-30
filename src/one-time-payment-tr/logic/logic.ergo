@@ -41,7 +41,7 @@ contract onetimepayment over OneTimePaymentContract state OneTimePaymentState {
   }
 
   /**
-   * Update the contract state once we've recieved a payment
+   * Update the contract state once we've received a payment
    */
   clause paymentReceived(request : PaymentReceived): Response {
     enforce (state.status = OBLIGATION_EMITTED) 

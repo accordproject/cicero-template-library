@@ -28,7 +28,7 @@ contract LateInvoice over LateInvoiceContract {
     // Calculate the time difference between current date and invoice due date
     let diff = diffDurationAs(now(),request.invoiceDue,contract.maximumDelay.unit);
 
-    // Enforce that the invoice has been recieved on time, otherwise terminate
+    // Enforce that the invoice has been received on time, otherwise terminate
     enforce diff.amount <= contract.maximumDelay.amount
     else
       return LateInvoiceResponse{

@@ -84,7 +84,7 @@ Formula for Breach Penalty Calculation:
 ]
 """
 
- Scenario: The contract recieve a shipment with units below the agreed bounds
+ Scenario: The contract receives a shipment with units below the agreed bounds
     When it receives the request
 """
 {
@@ -114,7 +114,7 @@ Formula for Breach Penalty Calculation:
 """
     Then it should reject the request with the error "[Ergo] Units received out of range for the contract"
 
-	Scenario: The contract recieve a shipment with units above the agreed bounds
+	Scenario: The contract receives a shipment with units above the agreed bounds
     When it receives the request
 """
 {
@@ -144,7 +144,7 @@ Formula for Breach Penalty Calculation:
 """
     Then it should reject the request with the error "[Ergo] Units received out of range for the contract"
 
-	Scenario: The contract recieve a shipment with units above the agreed bounds
+	Scenario: The contract receives a shipment with units above the agreed bounds
     When it receives the request
 """
 {
