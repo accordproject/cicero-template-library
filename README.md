@@ -9,8 +9,8 @@
 </h1>
 
 <p align="center">
-  <a href="https://github.com/accordproject/cicero-template-library/actions/workflows/build.yml">
-    <img src="https://github.com/accordproject/cicero-template-library/actions/workflows/build.yml/badge.svg" alt="Build Status"/>
+  <a href="https://github.com/accordproject/cicero-template-library/actions/workflows/ci.yml">
+    <img src="https://github.com/accordproject/cicero-template-library/actions/workflows/ci.yml/badge.svg" alt="Build Status"/>
   </a>
   <a href="https://github.com/accordproject/cicero-template-library/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/accordproject/cicero-template-library" alt="GitHub license"/>
