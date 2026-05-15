@@ -1,0 +1,24 @@
+{
+  "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyContract",
+  "buyer": "resource:org.accordproject.party.Party#Steve",
+  "seller": "resource:org.accordproject.party.Party#Dan",
+  "forceMajeure": {
+    "$class": "org.accordproject.latedeliveryandpenalty.Distance",
+    "miles": 100
+  },
+  "penaltyDuration": {
+    "$class": "org.accordproject.time.Duration",
+    "amount": 2,
+    "unit": "days"
+  },
+  "penaltyPercentage": 10.5,
+  "capPercentage": 55,
+  "termination": {
+    "$class": "org.accordproject.time.Duration",
+    "amount": 15,
+    "unit": "days"
+  },
+  "fractionalPart": "days",
+  "contractId": "daf1242b-6817-442f-b9a6-5e3df39a53b0",
+  "$identifier": "daf1242b-6817-442f-b9a6-5e3df39a53b0"
+}

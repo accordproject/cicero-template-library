@@ -1,13 +1,10 @@
-namespace org.accordproject.promissorynote
+namespace org.accordproject.promissorynote@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.usa.business.BusinessEntity from https://models.accordproject.org/usa/business.cto
-
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 transaction Payment extends Request {
-  o MonetaryAmount amountPaid
+  o Double amountPaid
 }
 
 transaction Result extends Response {
@@ -17,17 +14,18 @@ transaction Result extends Response {
 /**
  * The template model
  */
-asset PromissoryNoteContract extends Contract {
-  o MonetaryAmount amount
+@template
+asset TemplateModel extends Clause {
+  o Double amount
   o DateTime date
   o String maker
   o Double interestRate
   o Boolean individual
   o String makerAddress
   o String lender
-  o BusinessEntity legalEntity
+  o String legalEntity
   o String lenderAddress
-  o MonetaryAmount principal
+  o Double principal
   o DateTime maturityDate
   o Integer defaultDays
   o Integer insolvencyDays

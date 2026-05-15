@@ -1,0 +1,12 @@
+{
+  "$class": "org.accordproject.payment.uponsignature.PaymentUponSignatureContract",
+  "buyer": "resource:org.accordproject.party.Party#Dave",
+  "seller": "resource:org.accordproject.party.Party#Dan",
+  "amount": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 50,
+    "currencyCode": "USD"
+  },
+  "contractId": "86070b3c-23db-4091-9bc5-704148c12668",
+  "$identifier": "86070b3c-23db-4091-9bc5-704148c12668"
+}

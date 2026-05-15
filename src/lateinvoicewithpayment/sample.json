@@ -1,0 +1,12 @@
+{
+  "$class": "org.accordproject.lateinvoicewithpayment.LateInvoiceContract",
+  "maximumDelay": {
+    "$class": "org.accordproject.time.Duration",
+    "amount": 180,
+    "unit": "days"
+  },
+  "purchaser": "resource:org.accordproject.party.Party#Betty%20Buyer",
+  "supplier": "resource:org.accordproject.party.Party#Steve%20Seller",
+  "contractId": "a6d1af73-448e-4892-a357-b11322a22532",
+  "$identifier": "a6d1af73-448e-4892-a357-b11322a22532"
+}

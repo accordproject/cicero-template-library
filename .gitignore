@@ -60,8 +60,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# Derived CTO files
-@*accordproject*.cto
 
 # Windows Directory Cache
 thumbs.db

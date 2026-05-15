@@ -1,0 +1,17 @@
+{
+  "$class": "org.accordproject.payment.upondelivery.PaymentUponDeliveryContract",
+  "buyer": "resource:org.accordproject.party.Party#Michael",
+  "seller": "resource:org.accordproject.party.Party#Diana",
+  "costOfGoods": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 9.99,
+    "currencyCode": "USD"
+  },
+  "deliveryFee": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 1.99,
+    "currencyCode": "USD"
+  },
+  "contractId": "14a1a72f-99da-4d76-947d-d62b26e98c68",
+  "$identifier": "14a1a72f-99da-4d76-947d-d62b26e98c68"
+}

@@ -1,0 +1,22 @@
+{
+  "$class": "org.accordproject.servicelevelagreement.ServiceLevelAgreementContract",
+  "paymentPeriod": 30,
+  "monthlyCapPercentage": 10,
+  "yearlyCapPercentage": 10,
+  "availability1": 99.8,
+  "serviceCredit1": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 2,
+    "currencyCode": "GBP"
+  },
+  "availability2": 98,
+  "serviceCredit2": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 3,
+    "currencyCode": "GBP"
+  },
+  "serviceProvider": "resource:org.accordproject.party.Party#Service%20Provider",
+  "serviceConsumer": "resource:org.accordproject.party.Party#Service%20Consumer",
+  "contractId": "54e49d2c-309f-4cd5-adfe-3ee6b2fca66a",
+  "$identifier": "54e49d2c-309f-4cd5-adfe-3ee6b2fca66a"
+}

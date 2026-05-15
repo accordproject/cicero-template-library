@@ -1,0 +1,30 @@
+{
+  "$class": "org.accordproject.saft.SaftContract",
+  "token": "Clause Token",
+  "company": "Clause",
+  "companyType": "CORP",
+  "state": "NY",
+  "amendmentProvision": true,
+  "purchaseAmount": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 25,
+    "currencyCode": "USD"
+  },
+  "currency": "EUR",
+  "netProceedLimit": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 3000000,
+    "currencyCode": "USD"
+  },
+  "date": "2017-10-04T00:00:00.000+01:00",
+  "deadlineDate": "2018-04-20T00:00:00.000+01:00",
+  "discountRatePercentage": 38,
+  "network": "Clause Network",
+  "coin": "Ether",
+  "exchanges": "itBit",
+  "companyRepresentative": "Peter Hunn",
+  "purchaser": "Daniel Charles Selman",
+  "description": "happiness and intergalactic equality",
+  "contractId": "8fda88c3-f16c-43b5-b65c-2597f3c55328",
+  "$identifier": "8fda88c3-f16c-43b5-b65c-2597f3c55328"
+}

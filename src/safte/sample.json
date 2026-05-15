@@ -1,0 +1,17 @@
+{
+  "$class": "org.accordproject.safte.SafteContract",
+  "companyName": "ACME",
+  "companyRegistrationNumber": 555,
+  "purchaser": "Dan",
+  "jurisdiction": "NY",
+  "purchaseAmount": 25,
+  "discount": 7,
+  "projectName": "Umbrella",
+  "projectDescription": "manages umbrella tokens",
+  "months": 12,
+  "monthsText": "twelve",
+  "amount": 1000,
+  "amountText": "one thousand",
+  "contractId": "6d8c2188-659a-4854-9a3c-800eb595b0dd",
+  "$identifier": "6d8c2188-659a-4854-9a3c-800eb595b0dd"
+}

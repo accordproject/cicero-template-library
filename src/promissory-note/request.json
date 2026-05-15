@@ -1,4 +1,4 @@
 {
-  "$class": "org.accordproject.promissorynote.Payment",
-  "amountPaid": { "doubleValue" : 100.0, "currencyCode" : "USD" }
+  "$class": "org.accordproject.promissorynote@0.1.0.Payment",
+  "amountPaid": 100.0
 }
