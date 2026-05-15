@@ -17,9 +17,9 @@ import DocuSignConnectLogic from './logic';
 import { ITemplateModel, IDocuSignEnvelopeCounterState } from './generated/org.accordproject.docusignconnect@0.1.0';
 
 const makeEnvelopeRequest = (status: string) => ({
-    $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
+    $class: 'com.docusign.connect@0.4.0.DocuSignEnvelopeInformation',
     envelopeStatus: {
-        $class: 'com.docusign.connect.EnvelopeStatus',
+        $class: 'com.docusign.connect@0.4.0.EnvelopeStatus',
         status
     }
 });

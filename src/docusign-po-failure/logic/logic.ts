@@ -123,7 +123,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         if (!env.recipients) return undefined;
         const tabs = this.getAllTabStatuses(env.recipients);
         const tab = this.findTab(tabs, name);
-        if (!tab || tab.$class !== 'com.docusign.connect.DateTabStatus') return undefined;
+        if (!tab || tab.$class !== 'com.docusign.connect@0.4.0.DateTabStatus') return undefined;
         const dateTab = tab as IDateTabStatus;
         return new Date(dateTab.tabValue);
     }
@@ -132,7 +132,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         if (!env.recipients) return undefined;
         const tabs = this.getAllTabStatuses(env.recipients);
         const tab = this.findTab(tabs, name);
-        if (!tab || tab.$class !== 'com.docusign.connect.NumberTabStatus') return undefined;
+        if (!tab || tab.$class !== 'com.docusign.connect@0.4.0.NumberTabStatus') return undefined;
         return (tab as INumberTabStatus).tabValue;
     }
 
@@ -140,7 +140,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         if (!env.recipients) return undefined;
         const tabs = this.getAllTabStatuses(env.recipients);
         const tab = this.findTab(tabs, name);
-        if (!tab || tab.$class !== 'com.docusign.connect.TextTabStatus') return undefined;
+        if (!tab || tab.$class !== 'com.docusign.connect@0.4.0.TextTabStatus') return undefined;
         return (tab as ITextTabStatus).tabValue;
     }
 

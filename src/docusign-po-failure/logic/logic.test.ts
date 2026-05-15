@@ -23,20 +23,20 @@ const makeDuration = (amount: number, unit: string) => ({
 });
 
 const makeEnvelopeRequest = (deliveryDateISO: string, actualPrice: number, currencyCode: string) => ({
-    $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
+    $class: 'com.docusign.connect@0.4.0.DocuSignEnvelopeInformation',
     envelopeStatus: {
-        $class: 'com.docusign.connect.EnvelopeStatus',
+        $class: 'com.docusign.connect@0.4.0.EnvelopeStatus',
         status: 'Completed'
     },
     recipients: [
         {
-            $class: 'com.docusign.connect.Recipient',
+            $class: 'com.docusign.connect@0.4.0.Recipient',
             status: 'Completed',
             email: 'test@example.com',
             userName: 'testUser',
             tabStatuses: [
                 {
-                    $class: 'com.docusign.connect.TextTabStatus',
+                    $class: 'com.docusign.connect@0.4.0.TextTabStatus',
                     tabType: 'Custom',
                     status: 'Signed',
                     tabLabel: 'currencyCode',
@@ -46,7 +46,7 @@ const makeEnvelopeRequest = (deliveryDateISO: string, actualPrice: number, curre
                     originalValue: ''
                 },
                 {
-                    $class: 'com.docusign.connect.NumberTabStatus',
+                    $class: 'com.docusign.connect@0.4.0.NumberTabStatus',
                     tabType: 'Custom',
                     status: 'Signed',
                     tabLabel: 'actualPrice',
@@ -56,7 +56,7 @@ const makeEnvelopeRequest = (deliveryDateISO: string, actualPrice: number, curre
                     originalValue: ''
                 },
                 {
-                    $class: 'com.docusign.connect.DateTabStatus',
+                    $class: 'com.docusign.connect@0.4.0.DateTabStatus',
                     tabType: 'Custom',
                     status: 'Signed',
                     tabLabel: 'deliveryDate',
@@ -133,11 +133,11 @@ describe.skip('PurchaseOrderFailureLogic', () => {
 
         it('should throw if deliveryDate tab is missing', async () => {
             const request = {
-                $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
-                envelopeStatus: { $class: 'com.docusign.connect.EnvelopeStatus', status: 'Completed' },
+                $class: 'com.docusign.connect@0.4.0.DocuSignEnvelopeInformation',
+                envelopeStatus: { $class: 'com.docusign.connect@0.4.0.EnvelopeStatus', status: 'Completed' },
                 recipients: [
                     {
-                        $class: 'com.docusign.connect.Recipient',
+                        $class: 'com.docusign.connect@0.4.0.Recipient',
                         status: 'Completed',
                         email: 'test@example.com',
                         userName: 'testUser',
@@ -152,17 +152,17 @@ describe.skip('PurchaseOrderFailureLogic', () => {
 
         it('should throw if actualPrice tab is missing', async () => {
             const request = {
-                $class: 'com.docusign.connect.DocuSignEnvelopeInformation',
-                envelopeStatus: { $class: 'com.docusign.connect.EnvelopeStatus', status: 'Completed' },
+                $class: 'com.docusign.connect@0.4.0.DocuSignEnvelopeInformation',
+                envelopeStatus: { $class: 'com.docusign.connect@0.4.0.EnvelopeStatus', status: 'Completed' },
                 recipients: [
                     {
-                        $class: 'com.docusign.connect.Recipient',
+                        $class: 'com.docusign.connect@0.4.0.Recipient',
                         status: 'Completed',
                         email: 'test@example.com',
                         userName: 'testUser',
                         tabStatuses: [
                             {
-                                $class: 'com.docusign.connect.DateTabStatus',
+                                $class: 'com.docusign.connect@0.4.0.DateTabStatus',
                                 tabType: 'Custom',
                                 status: 'Signed',
                                 tabLabel: 'deliveryDate',
