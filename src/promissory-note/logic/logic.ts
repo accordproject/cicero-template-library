@@ -1,4 +1,4 @@
-import { IPayment, IResult, ITemplateModel } from "./generated/org.accordproject.promissorynote@0.1.0";
+import { IPayment, IResult, ITemplateModel } from "./generated/org.accordproject.promissorynote@0.2.0";
 
 type PromissoryNoteResponse = {
     result: IResult;
@@ -14,11 +14,11 @@ class PromissoryNoteLogic extends TemplateLogic<ITemplateModel> {
         if (data.interestRate < 0.0) {
             throw new Error('Interest rate must be non-negative');
         }
-        if (data.amount < 0.0) {
+        if (data.amount.doubleValue < 0.0) {
             throw new Error('Amount must be non-negative');
         }
 
-        const outstanding = data.amount - request.amountPaid;
+        const outstanding = data.amount.doubleValue - request.amountPaid;
         if (outstanding < 0.0) {
             throw new Error('Amount paid exceeds outstanding balance');
         }
@@ -39,7 +39,7 @@ class PromissoryNoteLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 outstandingBalance: compounded,
                 $timestamp: new Date(),
-                $class: 'org.accordproject.promissorynote@0.1.0.Result'
+                $class: 'org.accordproject.promissorynote@0.2.0.Result'
             }
         };
     }
