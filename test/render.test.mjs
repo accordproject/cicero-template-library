@@ -11,9 +11,27 @@ const templates = readdirSync(SRC).filter(name => {
     return statSync(p).isDirectory() && existsSync(join(p, 'package.json'));
 });
 
+// Templates that hit upstream @accordproject/template-engine bugs:
+//   bill-of-lading            — markdown-transform#673
+//   fixed-interests           — template-engine#147
+//   supply-agreement-loc      — template-engine#146
+//   volumediscountolist       — template-engine#145
+//   volumediscountulist       — template-engine#145
+// it.fails marks them as expected-to-fail: the suite stays green while
+// they fail, but will turn red once the upstream fix lands so we know
+// to remove the entry.
+const expectedFailures = new Set([
+    'bill-of-lading',
+    'fixed-interests',
+    'supply-agreement-loc',
+    'volumediscountolist',
+    'volumediscountulist',
+]);
+
 describe.concurrent('template-engine render', () => {
     for (const name of templates) {
-        it(name, async () => {
+        const test = expectedFailures.has(name) ? it.fails : it;
+        test(name, async () => {
             const templatePath = join(SRC, name);
             const template = await Template.fromDirectory(templatePath);
             const proc = new TemplateArchiveProcessor(template);

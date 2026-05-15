@@ -29,6 +29,9 @@ const showdown = require('showdown');
 const uuidv1 = require('uuid/v1');
 const semver = require('semver');
 const LZString = require('lz-string');
+const pLimit = require('p-limit');
+
+const BUILD_CONCURRENCY = Number(process.env.BUILD_CONCURRENCY) || 8;
 
 const {
     promisify
@@ -211,177 +214,171 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 
     const files = await getFiles(rootDir);
 
+    // Collect the package.json files that look like templates.
+    const candidates = [];
     for (const file of files) {
         const fileName = path.basename(file);
-        let selected = false;
-
-        // assume all package.json files that are not inside node_modules are templates
-        if (fileName === 'package.json' && file.indexOf('/node_modules/') === -1) {
-            selected = true;
+        if (fileName !== 'package.json' || file.indexOf('/node_modules/') !== -1) continue;
+        if (selectedTemplate) {
+            const pkgJson = JSON.parse(fs.readFileSync(file, 'utf8'));
+            if (pkgJson.name !== selectedTemplate) continue;
         }
+        candidates.push(file);
+    }
 
-        // unless a given template name has been specified
-        if (selected && selectedTemplate) {
-            const packageJson = fs.readFileSync(file, 'utf8');
-            const pkgJson = JSON.parse(packageJson);
-            if (pkgJson.name != selectedTemplate) {
-                selected = false;
+    await fs.ensureDir(archiveDir);
+    const limit = pLimit(BUILD_CONCURRENCY);
+
+    // Per-template work runs in parallel under a bounded pool. Each task
+    // returns a patch describing what should be merged into templateIndex,
+    // so the shared index is only mutated serially after the pool drains.
+    const tasks = candidates.map(file => limit(async () => {
+        const templatePath = path.dirname(file);
+        const dest = templatePath.replace('/src/', '/build/');
+        console.log(`Processing ${templatePath}`);
+        try {
+            const template = await Template.fromDirectory(templatePath);
+            await preProcessor(templatePath, template);
+
+            if (process.env.SKIP_GENERATION) return null;
+
+            const destPath = path.dirname(dest);
+            await fs.ensureDir(destPath);
+            const archiveFileName = `${template.getIdentifier()}.cta`;
+            const archiveFilePath = `${archiveDir}/${archiveFileName}`;
+            const ciceroArchiveFileName = `${template.getIdentifier()}-cicero.cta`;
+            const ciceroArchiveFilePath = `${archiveDir}/${ciceroArchiveFileName}`;
+
+            const [archiveFileExists, ciceroArchiveFileExists] = await Promise.all([
+                fs.pathExists(archiveFilePath),
+                fs.pathExists(ciceroArchiveFilePath),
+            ]);
+
+            if (!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                const ciceroArchive = await template.toArchive('es6');
+                await writeFile(ciceroArchiveFilePath, ciceroArchive);
+                console.log('Copied: ' + ciceroArchiveFilePath);
             }
-        }
+            if (!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                const tsArchive = await template.toArchive('typescript');
+                await writeFile(archiveFilePath, tsArchive);
+                console.log('Copied: ' + archiveFileName);
+            }
 
-        if (selected) {
-            // read the parent directory as a template
-            const templatePath = path.dirname(file);
-            console.log(`Processing ${templatePath}`);
-            const dest = templatePath.replace('/src/', '/build/');
-            await fs.ensureDir(archiveDir);
-
+            const m = template.getMetadata();
+            let tags = [];
             try {
-                const template = await Template.fromDirectory(templatePath);
+                const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
+                if (Array.isArray(rawPkg.tags)) tags = rawPkg.tags;
+            } catch (e) { /* ignore */ }
 
-                // call the pre template processor
-                await preProcessor(templatePath, template);
-
-                if (!process.env.SKIP_GENERATION) {
-                    const templateVersions = Object.keys(templateIndex).filter(
-                        item => {
-                            const atIndex = item.indexOf("@");
-                            const name = item.substring(0, atIndex);
-                            return name == template.getName();
-                        }
-                    ).sort((a, b) => {
-                        const versionA = a.substring(a.indexOf('@') + 1);
-                        const versionB = b.substring(b.indexOf('@') + 1);
-                        return semver.rcompare(versionA, versionB);
-                    });
-
-                    templateVersions.forEach(versionToUpdate => {
-                        const templateResult = nunjucks.render("dropdown.njk", {
-                            identifier: versionToUpdate,
-                            templateVersions: templateVersions,
-                        });
-                        fs.readFile(
-                            "build/" + versionToUpdate + ".html",
-                            "utf8",
-                            (err, data) => {
-                                if (err) {
-                                    console.log(`Failed reading build/${versionToUpdate}.html with ${err}`);
-                                }
-                                const dom = new jsdom.JSDOM(data);
-                                const $ = jquery(dom.window);
-                                if (!process.env.SKIP_DROPDOWNS) {
-                                    const dropdownContentElement = $(".dropdown-content");
-                                    if (dropdownContentElement.length) {
-                                        dropdownContentElement.html(templateResult);
-                                    }
-                                }
-
-                                if (process.env.ADD_VSCODE_BUTTON) {
-                                    const dropdownContentElement = $("a.button.open-studio");
-                                    if (dropdownContentElement.length) {
-                                        const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
-                                        dropdownContentElement.after(`\n<a href="${githubURL}" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>`);
-
-                                    }
-                                }
-
-                                if (!process.env.SKIP_DROPDOWNS || process.env.ADD_VSCODE_BUTTON) {
-                                    fs.writeFile(
-                                        "build/" + versionToUpdate + ".html",
-                                        dom.serialize(),
-                                        err => {
-                                            if (err) {
-                                                console.log(`Failed saving build/${versionToUpdate}.html with ${err}`);
-                                            } else {
-                                                console.log("VSCode button added for template: " + "build/" + versionToUpdate + ".html");
-                                            }
-                                        }
-                                    );
-                                }
-                            }
-                        );
-                    });
-
-                    // get the name of the generated archive
-                    const destPath = path.dirname(dest);
-                    await fs.ensureDir(destPath);
-                    const archiveFileName = `${template.getIdentifier()}.cta`;
-                    const archiveFilePath = `${archiveDir}/${archiveFileName}`;
-                    const archiveFileExists = await fs.pathExists(archiveFilePath);
-
-                    const ciceroArchiveFileName = `${template.getIdentifier()}-cicero.cta`;
-                    const ciceroArchiveFilePath = `${archiveDir}/${ciceroArchiveFileName}`;
-                    const ciceroArchiveFileExists = await fs.pathExists(ciceroArchiveFilePath);
-
-                    if (!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        const ciceroArchive = await template.toArchive('es6');
-                        await writeFile(ciceroArchiveFilePath, ciceroArchive);
-                        console.log('Copied: ' + ciceroArchiveFilePath);
-                    }
-
-                    if (!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        const tsArchive = await template.toArchive('typescript');
-                        await writeFile(archiveFilePath, tsArchive);
-                        console.log('Copied: ' + archiveFileName);
-                    }
-
-                    if (!ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        // update the index
-                        const m = template.getMetadata();
-                        const templateHash = template.getHash();
-                        // read tags directly from package.json since cicero metadata
-                        // does not expose custom fields
-                        let tags = [];
-                        try {
-                            const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
-                            if (Array.isArray(rawPkg.tags)) {
-                                tags = rawPkg.tags;
-                            }
-                        } catch (e) { /* ignore */ }
-                        const indexData = {
-                            uri: `ap://${template.getIdentifier()}#${templateHash}`,
-                            url: `${serverRoot}/archives/${archiveFileName}`,
-                            ciceroUrl: `${serverRoot}/archives/${ciceroArchiveFileName}`,
-                            name: m.getName(),
-                            displayName: m.getDisplayName(),
-                            description: m.getDescription(),
-                            version: m.getVersion(),
-                            ciceroVersion: m.getCiceroVersion(),
-                            type: m.getTemplateType(),
-                            logo: m.getLogo() ? m.getLogo().toString('base64') : null,
-                            author: m.getAuthor() ? m.getAuthor() : null,
-                            tags: tags,
-                        }
-                        templateIndex[template.getIdentifier()] = indexData;
-
-                        // call the post template processor
-                        await postProcessor(templateIndex, templatePath, template);
-                    }
-                    else {
-                        // even when skipping archive regeneration, refresh tags
-                        // so that index reflects current package.json
-                        try {
-                            const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
-                            if (templateIndex[template.getIdentifier()]) {
-                                templateIndex[template.getIdentifier()].tags = Array.isArray(rawPkg.tags) ? rawPkg.tags : [];
-                            }
-                        } catch (e) { /* ignore */ }
-                        console.log(`Skipped: ${archiveFileName} (already exists).`);
-                    }
-                }
-            } catch (err) {
-                console.log(err);
-                console.log(`Failed processing ${file} with ${err}`);
-            }
+            const regenerated = !ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE;
+            const indexData = {
+                uri: `ap://${template.getIdentifier()}#${template.getHash()}`,
+                url: `${serverRoot}/archives/${archiveFileName}`,
+                ciceroUrl: `${serverRoot}/archives/${ciceroArchiveFileName}`,
+                name: m.getName(),
+                displayName: m.getDisplayName(),
+                description: m.getDescription(),
+                version: m.getVersion(),
+                ciceroVersion: m.getCiceroVersion(),
+                type: m.getTemplateType(),
+                logo: m.getLogo() ? m.getLogo().toString('base64') : null,
+                author: m.getAuthor() ? m.getAuthor() : null,
+                tags,
+            };
+            if (!regenerated) console.log(`Skipped: ${archiveFileName} (already exists).`);
+            return { templatePath, template, indexData, regenerated };
+        } catch (err) {
+            console.log(err);
+            console.log(`Failed processing ${file} with ${err}`);
+            return null;
         }
+    }));
+
+    const results = (await Promise.all(tasks)).filter(Boolean);
+
+    // Merge per-template index data serially so write order is deterministic.
+    for (const r of results) {
+        templateIndex[r.template.getIdentifier()] = r.indexData;
+    }
+
+    // Run the page generator + dropdown patches sequentially against the
+    // now-stable templateIndex. This is the cheap, ordering-sensitive pass.
+    for (const r of results) {
+        if (r.regenerated) {
+            await postProcessor(templateIndex, r.templatePath, r.template);
+        }
+        await patchDropdowns(r.template);
     }
 
     // save the index
     await writeFile(templateLibraryPath, JSON.stringify(templateIndex, null, 4));
 
-    // return the updated index
     return templateIndex;
 };
+
+/**
+ * Update the version-dropdown (and optional VSCode-button injection) on every
+ * already-rendered HTML page for this template. Runs sequentially per template
+ * but every callsite uses fs.promises so it doesn't fire-and-forget.
+ */
+async function patchDropdowns(template) {
+    if (process.env.SKIP_GENERATION) return;
+    if (process.env.SKIP_DROPDOWNS && !process.env.ADD_VSCODE_BUTTON) return;
+
+    // load the persisted index once per call so we see every freshly-merged version
+    const templateLibraryPath = `${buildDir}/template-library.json`;
+    let templateIndex = {};
+    if (await fs.pathExists(templateLibraryPath)) {
+        templateIndex = JSON.parse(await fs.promises.readFile(templateLibraryPath, 'utf8'));
+    }
+
+    const templateVersions = Object.keys(templateIndex).filter(item => {
+        const atIndex = item.indexOf('@');
+        return item.substring(0, atIndex) === template.getName();
+    }).sort((a, b) => {
+        const versionA = a.substring(a.indexOf('@') + 1);
+        const versionB = b.substring(b.indexOf('@') + 1);
+        return semver.rcompare(versionA, versionB);
+    });
+
+    for (const versionToUpdate of templateVersions) {
+        const htmlPath = `build/${versionToUpdate}.html`;
+        let data;
+        try {
+            data = await fs.promises.readFile(htmlPath, 'utf8');
+        } catch (err) {
+            console.log(`Failed reading ${htmlPath} with ${err}`);
+            continue;
+        }
+        const templateResult = nunjucks.render('dropdown.njk', {
+            identifier: versionToUpdate,
+            templateVersions,
+        });
+        const dom = new jsdom.JSDOM(data);
+        const $ = jquery(dom.window);
+        if (!process.env.SKIP_DROPDOWNS) {
+            const dropdownContentElement = $('.dropdown-content');
+            if (dropdownContentElement.length) {
+                dropdownContentElement.html(templateResult);
+            }
+        }
+        if (process.env.ADD_VSCODE_BUTTON) {
+            const openStudio = $('a.button.open-studio');
+            if (openStudio.length) {
+                const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
+                openStudio.after(`\n<a href="${githubURL}" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>`);
+            }
+        }
+        try {
+            await fs.promises.writeFile(htmlPath, dom.serialize());
+            console.log(`Updated dropdown in ${htmlPath}`);
+        } catch (err) {
+            console.log(`Failed saving ${htmlPath} with ${err}`);
+        }
+    }
+}
 
 /**
  * Runs the standard tests for a template

@@ -60,11 +60,6 @@ typings/
 # dotenv environment variables file
 .env
 
-# Derived CTO files
-@*accordproject*.cto
-
-# Generated TypeScript types from concerto compile
-src/*/logic/generated
 
 # Windows Directory Cache
 thumbs.db
