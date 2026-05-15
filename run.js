@@ -116,7 +116,6 @@ nunjucks.configure('./views', {
                     groupedByTag[tag][id] = entry;
                 }
             }
-            // sort tags alphabetically, but pin a few common ones first
             const tagOrder = ['finance', 'sales', 'vendor', 'shipping', 'real-estate', 'intellectual-property', 'services', 'HR', 'reference', 'untagged'];
             const sortedTags = Object.keys(groupedByTag).sort((a, b) => {
                 const ai = tagOrder.indexOf(a);

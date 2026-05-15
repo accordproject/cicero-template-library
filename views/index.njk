@@ -18,64 +18,184 @@
         <div class="container">
             <h2 class="title is-2">Templates</h2>
 
+            <div class="filters box">
+                <div class="field">
+                    <div class="control is-expanded">
+                        <input id="filter-search" class="input is-medium" type="text" placeholder="Search by name or description..." style="width: 100%;" />
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label is-small">Type</label>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="filter-type">
+                                        <option value="">All types</option>
+                                        <option value="Contract">Contract</option>
+                                        <option value="Clause">Clause</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <label class="label is-small">Cicero Version</label>
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select id="filter-version">
+                                        <option value="">All versions</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-narrow">
+                        <div class="field">
+                            <label class="label is-small">&nbsp;</label>
+                            <div class="control">
+                                <button id="filter-clear" class="button is-light">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="help"><span id="filter-count">0</span> templates shown</p>
+            </div>
+
             <div class="tags-nav content">
                 <strong>Categories:</strong>
                 {% for group in groupedByTag %}
-                    <a href="#tag-{{group.tag}}" class="tag is-medium">{{group.tag}}</a>
+                    <a href="#tag-{{group.tag}}" class="tag is-medium tag-link" data-tag-link="{{group.tag}}">{{group.tag}}</a>
                 {% endfor %}
             </div>
 
             {% for group in groupedByTag %}
-            <div id="tag-{{group.tag}}" class="tag-group">
+            <div id="tag-{{group.tag}}" class="tag-group" data-tag="{{group.tag}}">
                 <h3 class="title is-3" style="text-transform: capitalize;">{{group.tag}}</h3>
                 <table class="table box versions" style="width: 100%; table-layout: fixed;">
-                <colgroup>
-                    <col style="width: 22%;" />
-                    <col style="width: 44%;" />
-                    <col style="width: 12%;" />
-                    <col style="width: 10%;" />
-                    <col style="width: 12%;" />
-                </colgroup>
-                <thead>
-                    <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Cicero Version</th>
-                    <th>Type</th>
-                    <th>Tags</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for name, val in group.templates |dictsort %}
-                    <tr>
-                    <th>
-                      <a href="{{name}}.html">
-                        {% if val.displayName %}
-                          {{val.displayName}}
-                        {% else %}
-                          {{name}}
-                        {% endif %}
-                      </a>
-                    </th>
-                    <td>{{val.description}}</td>
-                    <td>{{val.ciceroVersion}}</td>
-                    <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
-                    <td>
-                      {% for t in val.tags %}
-                        <span class="tag is-light">{{t}}</span>
-                      {% endfor %}
-                    </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
+                    <colgroup>
+                        <col style="width: 22%;" />
+                        <col style="width: 44%;" />
+                        <col style="width: 12%;" />
+                        <col style="width: 10%;" />
+                        <col style="width: 12%;" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Cicero Version</th>
+                            <th>Type</th>
+                            <th>Tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for name, val in group.templates |dictsort %}
+                        {% set typeLabel = "Contract" if val.type === 0 else "Clause" %}
+                        <tr class="template-row"
+                            data-name="{{ (val.displayName or name) | lower }}"
+                            data-description="{{ val.description | lower }}"
+                            data-type="{{ typeLabel }}"
+                            data-version="{{ val.ciceroVersion }}">
+                            <th>
+                                <a href="{{name}}.html">
+                                    {% if val.displayName %}{{val.displayName}}{% else %}{{name}}{% endif %}
+                                </a>
+                            </th>
+                            <td>{{val.description}}</td>
+                            <td>{{val.ciceroVersion}}</td>
+                            <td>{{ typeLabel }}</td>
+                            <td>
+                                {% for t in val.tags %}
+                                    <span class="tag is-light">{{t}}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
             {% endfor %}
+
+            <p id="no-results" class="notification is-warning" style="display: none;">No templates match the current filters.</p>
 
             <div class="content">
                 <a href="template-library.json" target="_blank">Template Library Index</a>
             </div>
         </div>
     </section>
+
+    <script>
+    (function () {
+        var search = document.getElementById('filter-search');
+        var typeSel = document.getElementById('filter-type');
+        var verSel = document.getElementById('filter-version');
+        var clearBtn = document.getElementById('filter-clear');
+        var countEl = document.getElementById('filter-count');
+        var noResults = document.getElementById('no-results');
+        var groups = Array.prototype.slice.call(document.querySelectorAll('.tag-group'));
+        var tagLinks = Array.prototype.slice.call(document.querySelectorAll('.tag-link'));
+        var allRows = Array.prototype.slice.call(document.querySelectorAll('tr.template-row'));
+
+        var versions = {};
+        allRows.forEach(function (r) {
+            var v = r.getAttribute('data-version');
+            if (v) versions[v] = true;
+        });
+        Object.keys(versions).sort().forEach(function (v) {
+            var opt = document.createElement('option');
+            opt.value = v; opt.textContent = v;
+            verSel.appendChild(opt);
+        });
+
+        function apply() {
+            var q = search.value.trim().toLowerCase();
+            var type = typeSel.value;
+            var ver = verSel.value;
+            var totalShown = 0;
+            var visibleTags = {};
+
+            groups.forEach(function (group) {
+                var rows = group.querySelectorAll('tr.template-row');
+                var groupVisible = 0;
+                rows.forEach(function (r) {
+                    var matchText = !q
+                        || r.getAttribute('data-name').indexOf(q) !== -1
+                        || r.getAttribute('data-description').indexOf(q) !== -1;
+                    var matchType = !type || r.getAttribute('data-type') === type;
+                    var matchVer = !ver || r.getAttribute('data-version') === ver;
+                    var visible = matchText && matchType && matchVer;
+                    r.style.display = visible ? '' : 'none';
+                    if (visible) groupVisible++;
+                });
+                if (groupVisible > 0) {
+                    group.style.display = '';
+                    visibleTags[group.getAttribute('data-tag')] = true;
+                } else {
+                    group.style.display = 'none';
+                }
+                totalShown += groupVisible;
+            });
+
+            tagLinks.forEach(function (a) {
+                a.style.display = visibleTags[a.getAttribute('data-tag-link')] ? '' : 'none';
+            });
+
+            countEl.textContent = totalShown;
+            noResults.style.display = totalShown === 0 ? '' : 'none';
+        }
+
+        [search, typeSel, verSel].forEach(function (el) {
+            el.addEventListener('input', apply);
+            el.addEventListener('change', apply);
+        });
+        clearBtn.addEventListener('click', function () {
+            search.value = ''; typeSel.value = ''; verSel.value = '';
+            apply();
+        });
+        apply();
+    })();
+    </script>
 
 {% endblock %}
