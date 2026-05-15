@@ -11,6 +11,9 @@
   "workspaces": [
     "src/*"
   ],
+  "overrides": {
+    "ajv": "8.17.1"
+  },
   "nyc": {
     "include": [
       "src/**/lib/*.js"
@@ -29,11 +32,12 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.24.0",
-    "@accordproject/concerto-core": "3.25.7",
+    "@accordproject/cicero-core": "0.26.0",
+    "@accordproject/concerto-cli": "4.0.0",
+    "@accordproject/concerto-core": "4.1.0",
     "@accordproject/concerto-tools": "3.7.0",
-    "@accordproject/markdown-cicero": "0.17.2",
-    "@accordproject/markdown-html": "0.17.2",
+    "@accordproject/markdown-cicero": "0.18.0",
+    "@accordproject/markdown-html": "0.18.0",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "4.2.0",

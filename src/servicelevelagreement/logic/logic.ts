@@ -16,7 +16,7 @@ type SLAResponse = {
  * Safety: round to 2 decimal places and clamp to >= 0
  */
 function toFixed(credit: number): number {
-    return Math.max(0.0, Math.round(credit * 100.0 + 0.5) / 100.0);
+    return Math.max(0.0, Math.round(credit * 100.0) / 100.0);
 }
 
 // @ts-ignore TemplateLogic is imported by the runtime

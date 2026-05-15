@@ -8,7 +8,7 @@
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.25.0"
+        "cicero": "^0.26.0"
     },
     "keywords": [
         "supply",

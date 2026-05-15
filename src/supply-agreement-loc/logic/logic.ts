@@ -70,7 +70,7 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
             const elapsedHours = elapsedMs / (1000 * 60 * 60);
             const numberOfDays = elapsedHours / 24;
             // Required readings: 10 readings per day based on sensorReadingFrequency
-            const requiredReadingCount = numberOfDays * data.sensorReadingFrequency;
+            const requiredReadingCount = Math.floor(numberOfDays * data.sensorReadingFrequency);
             const actualReadings = state.sensorReadings.length;
             const sufficientReadings = actualReadings >= requiredReadingCount;
 
