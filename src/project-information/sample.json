@@ -1,0 +1,14 @@
+{
+  "$class": "org.accordproject.projectinformation.ProjectInformation",
+  "name": "Katahdin",
+  "deadline": "2021-01-01T01:00:00.000+01:00",
+  "budget": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 0,
+    "currencyCode": "USD"
+  },
+  "description": "Ensure that signed contract terms are stored in Salesforce",
+  "other": "I don't work on a Friday.",
+  "clauseId": "e3a6048c-c650-4f53-bc6a-13c87cb904ad",
+  "$identifier": "e3a6048c-c650-4f53-bc6a-13c87cb904ad"
+}

@@ -31,7 +31,7 @@ class MiniLateDeliveryAndPenaltyCappedLogic extends TemplateLogic<ITemplateModel
         const cap = (data.capPercentage / 100.0) * request.goodsValue;
         const cappedPenalty = Math.min(penalty, cap);
         const maxDays = durationToDays(data.maximumDelay);
-        const buyerMayTerminate = delayDays > maxDays;
+        const buyerMayTerminate = delayDays >= maxDays;
 
         return {
             result: {

@@ -1,0 +1,19 @@
+{
+  "$class": "org.accordproject.simplelatedeliveryandpenalty.SimpleLateDeliveryAndPenaltyContract",
+  "buyer": "resource:org.accordproject.party.Party#Betty%20Buyer",
+  "seller": "resource:org.accordproject.party.Party#Steve%20Seller",
+  "penaltyDuration": {
+    "$class": "org.accordproject.time.Duration",
+    "amount": 2,
+    "unit": "days"
+  },
+  "penaltyPercentage": 10.5,
+  "capPercentage": 55,
+  "maximumDelay": {
+    "$class": "org.accordproject.time.Duration",
+    "amount": 15,
+    "unit": "days"
+  },
+  "contractId": "35db583f-7d53-4081-9557-e4e75e88e27d",
+  "$identifier": "35db583f-7d53-4081-9557-e4e75e88e27d"
+}

@@ -1,0 +1,18 @@
+{
+  "$class": "org.accordproject.minilatedeliveryandpenalty.MiniLateDeliveryClause",
+  "buyer": "resource:org.accordproject.party.Party#Betty%20Buyer",
+  "seller": "resource:org.accordproject.party.Party#Steve%20Seller",
+  "penaltyDuration": {
+    "$class": "org.accordproject.time.Duration",
+    "amount": 2,
+    "unit": "days"
+  },
+  "penaltyPercentage": 10.5,
+  "maximumDelay": {
+    "$class": "org.accordproject.time.Duration",
+    "amount": 15,
+    "unit": "days"
+  },
+  "clauseId": "462ec0cc-06f8-45ba-afae-5f9d9f9e7cb7",
+  "$identifier": "462ec0cc-06f8-45ba-afae-5f9d9f9e7cb7"
+}

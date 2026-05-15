@@ -1,0 +1,44 @@
+{
+  "$class": "org.accordproject.isda.irs.InterestRateSwapContract",
+  "bank": "resource:org.accordproject.organization.Organization#Deutsche%20Bank",
+  "letterDate": "2005-06-30T00:00:00.000+01:00",
+  "counterparty": "resource:org.accordproject.organization.Organization#MagnaChip%20Semiconductor%20S.A.",
+  "bankReference": "Global No. N397355N",
+  "notionalAmount": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 300000000,
+    "currencyCode": "USD"
+  },
+  "tradeDate": "2005-06-23T00:00:00.000+01:00",
+  "effectiveDate": "2005-06-27T00:00:00.000+01:00",
+  "terminationDate": "2008-06-18T00:00:00.000+01:00",
+  "fixedRatePayer": "resource:org.accordproject.organization.Organization#Counterparty",
+  "fixedRatePayerPeriodEndDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment",
+  "fixedRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
+  "fixedRate": 4.09,
+  "fixedRateDayCountFraction": {
+    "$class": "org.accordproject.isda.irs.DayCountFraction",
+    "value": "30",
+    "dayCountFractionScheme": "360"
+  },
+  "fixedRatePayerBusinessDays": "New York",
+  "fixedRatePayerBusinessDayConvention": "Modified Following",
+  "floatingRatePayer": "resource:org.accordproject.organization.Organization#DBAG",
+  "floatingRatePayerPeriodEndDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment",
+  "floatingRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
+  "floatingRateForInitialCalculationPeriod": 3.41,
+  "floatingRateOption": "USD-LIBOR-BBA",
+  "designatedMaturity": "Three months",
+  "spread": "None",
+  "floatingRateDayCountFraction": {
+    "$class": "org.accordproject.isda.irs.DayCountFraction",
+    "value": "30",
+    "dayCountFractionScheme": "360"
+  },
+  "resetDates": "The first Floating Rate Payer Business Day of each Calculation Period or Compounding Period, if Compounding is applicable.",
+  "compounding": "Inapplicable",
+  "floatingRatePayerBusinessDays": "New York",
+  "floatingRatePayerBusinessDayConvention": "Modified Following",
+  "contractId": "6a27c183-92f1-4795-bd48-a05324123a78",
+  "$identifier": "6a27c183-92f1-4795-bd48-a05324123a78"
+}

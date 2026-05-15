@@ -1,0 +1,29 @@
+{
+  "$class": "org.accordproject.installmentsale.InstallmentSaleContract",
+  "BUYER": "resource:org.accordproject.party.Party#Dan",
+  "SELLER": "resource:org.accordproject.party.Party#Ned",
+  "INITIAL_DUE": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 10000,
+    "currencyCode": "EUR"
+  },
+  "INTEREST_RATE": 1.5,
+  "TOTAL_DUE_BEFORE_CLOSING": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 9500,
+    "currencyCode": "EUR"
+  },
+  "MIN_PAYMENT": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 500,
+    "currencyCode": "EUR"
+  },
+  "DUE_AT_CLOSING": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 500,
+    "currencyCode": "EUR"
+  },
+  "FIRST_MONTH": 3,
+  "contractId": "ae1b4bc2-e558-47d2-9694-39ce42819783",
+  "$identifier": "ae1b4bc2-e558-47d2-9694-39ce42819783"
+}

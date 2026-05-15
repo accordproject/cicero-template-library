@@ -1,0 +1,25 @@
+{
+  "$class": "org.accordproject.perishablegoods.contract.SupplyAgreementPerishableGoodsContract",
+  "grower": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION",
+  "importer": "resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION",
+  "shipment": "resource:org.accordproject.perishablegoods.Shipment#Grade%20I,%20Size%204,%20Zutano%20Mexican%20Avocados",
+  "dueDate": "2099-06-30T00:00:00.000+01:00",
+  "unitPrice": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 1.5,
+    "currencyCode": "USD"
+  },
+  "unit": "KG",
+  "minUnits": 2995,
+  "maxUnits": 3005,
+  "product": "Grade I, Size 4, Zutano Mexican Avocados",
+  "sensorReadingFrequency": 1,
+  "duration": "hours",
+  "minTemperature": 2,
+  "maxTemperature": 13,
+  "minHumidity": 70,
+  "maxHumidity": 90,
+  "penaltyFactor": 0.2,
+  "contractId": "04661b9e-39fc-40dc-a85f-497c0defb9e9",
+  "$identifier": "04661b9e-39fc-40dc-a85f-497c0defb9e9"
+}

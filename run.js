@@ -15,13 +15,12 @@
 'use strict';
 
 const CodeGen = require('@accordproject/concerto-tools').CodeGen;
-const FileWriter = require('@accordproject/concerto-tools').FileWriter;
+const FileWriter = require('@accordproject/concerto-util').FileWriter;
 
 const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
 const CiceroMarkTransformer = require('@accordproject/markdown-cicero').CiceroMarkTransformer;
 
 const Template = require('@accordproject/cicero-core').Template;
-const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
@@ -299,8 +298,8 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                     }
 
                     if (!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        const ergoArchive = await template.toArchive('ergo');
-                        await writeFile(archiveFilePath, ergoArchive);
+                        const tsArchive = await template.toArchive('typescript');
+                        await writeFile(archiveFilePath, tsArchive);
                         console.log('Copied: ' + archiveFileName);
                     }
 
@@ -350,18 +349,8 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
  * @param {Template} template
  */
 async function templateUnitTester(templatePath, template) {
-    // check that all the samples parse
-    const samples = template.getMetadata().getSamples();
-    if (samples) {
-        const sampleValues = Object.values(samples);
-
-        // should be TemplateInstance
-        const instance = new Clause(template);
-
-        for (const s of sampleValues) {
-            instance.parse(s);
-        }
-    }
+    // Cicero 0.26 removed natural-language sample parsing, so loading the
+    // template via Template.fromDirectory is the validation we get.
 }
 
 /**
@@ -429,18 +418,14 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
 
-    let sampleInstanceText = null;
-
-    // parse the default sample and use it as the sample instance
-    const samples = template.getMetadata().getSamples();
-    if (samples.default) {
-        // should be TemplateInstance
-        const instance = new Clause(template);
-        instance.parse(samples.default);
-        sampleInstanceText = JSON.stringify(instance.getData(), null, 4);
-    }
-    else {
-        // no sample was found, so we generate one
+    // Cicero 0.26 no longer parses sample markdown back to JSON. If a
+    // committed sample.json exists (bootstrapped from older archives),
+    // use it; otherwise generate a synthetic instance from the model.
+    const sampleJsonPath = path.join(templatePath, 'sample.json');
+    let sampleInstanceText;
+    if (fs.existsSync(sampleJsonPath)) {
+        sampleInstanceText = fs.readFileSync(sampleJsonPath, 'utf8');
+    } else {
         const classDecl = template.getTemplateModel();
         sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);
     }
@@ -479,6 +464,8 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const sample = template.getMetadata().getSample();
     const logo = template.getMetadata().getLogo() ? template.getMetadata().getLogo().toString('base64') : null;
     const author = template.getMetadata().getAuthor() ? template.getMetadata().getAuthor() : null;
+    const grammarPath = path.join(templatePath, 'text', 'grammar.tem.md');
+    const grammar = fs.existsSync(grammarPath) ? fs.readFileSync(grammarPath, 'utf8') : '';
     let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample, 'json'));
     // XXX HTML cleanup hack for rendering in page. Would be best done with the right option in markdown-transform
     sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">', '').replace('</div>\n</body>\n</html>', '');
@@ -503,6 +490,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         templateVersions: templateVersions,
         logo: logo,
         author: author,
+        grammar: grammar,
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }

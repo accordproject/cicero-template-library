@@ -29,7 +29,7 @@ class MiniLateDeliveryAndPenaltyLogic extends TemplateLogic<ITemplateModel> {
         const penaltyDurationDays = durationToDays(data.penaltyDuration);
         const penalty = (delayDays / penaltyDurationDays) * (data.penaltyPercentage / 100.0) * request.goodsValue;
         const maxDays = durationToDays(data.maximumDelay);
-        const buyerMayTerminate = delayDays > maxDays;
+        const buyerMayTerminate = delayDays >= maxDays;
 
         return {
             result: {
