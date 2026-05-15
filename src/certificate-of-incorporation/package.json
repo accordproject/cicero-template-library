@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
-        "template": "contract",
+        "template": "clause",
         "cicero": "^0.26.0"
     },
     "scripts": {

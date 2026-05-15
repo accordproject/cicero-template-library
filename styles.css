@@ -64,6 +64,10 @@ pre {
   padding: 2.25rem;
 }
 
+.filters.box {
+	display: block;
+}
+
 /* Headings */
 
 .title {

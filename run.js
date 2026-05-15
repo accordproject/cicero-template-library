@@ -28,6 +28,7 @@ const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
 const uuidv1 = require('uuid/v1');
 const semver = require('semver');
+const LZString = require('lz-string');
 
 const {
     promisify
@@ -51,7 +52,7 @@ const rootDir = resolve(__dirname, './src');
 const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
 const serverRoot = process.env.SERVER_ROOT ? process.env.SERVER_ROOT : 'https://templates.accordproject.org';
-const studioRoot = 'https://studio.accordproject.org';
+const playgroundRoot = 'https://playground.accordproject.org';
 const githubRoot = `https://github.dev/accordproject/cicero-template-library/blob/master`;
 
 const ciceroMark = new CiceroMarkTransformer();
@@ -451,7 +452,6 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const encoded = plantumlEncoder.encode(pumlContent);
     const umlURL = `https://www.plantuml.com/plantuml/svg/${encoded}`;
     const umlCardURL = `https://www.plantuml.com/plantuml/png/${encoded}`;
-    const studioURL = `${studioRoot}/?template=${encodeURIComponent('ap://' + template.getIdentifier() + '#hash')}`;
     const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
 
     const converter = new showdown.Converter();
@@ -469,24 +469,29 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);
     }
 
+    const safeSample = (type) => {
+        try { return JSON.stringify(sampleInstance(template, type), null, 4); }
+        catch (e) { return `// sample generation failed: ${e.message}`; }
+    };
+
     const requestTypes = {};
     for (let type of template.getRequestTypes()) {
-        requestTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        requestTypes[type] = safeSample(type);
     }
 
     const responseTypes = {};
     for (let type of template.getResponseTypes()) {
-        responseTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        responseTypes[type] = safeSample(type);
     }
 
     const stateTypes = {}
     for (let type of template.getStateTypes()) {
-        stateTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        stateTypes[type] = safeSample(type);
     }
 
     const eventTypes = {}
     for (let type of template.getEmitTypes()) {
-        eventTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        eventTypes[type] = safeSample(type);
     }
 
     // get all the versions of the template (sorted by semver, newest first)
@@ -506,14 +511,33 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const grammarPath = path.join(templatePath, 'text', 'grammar.tem.md');
     const grammar = fs.existsSync(grammarPath) ? fs.readFileSync(grammarPath, 'utf8') : '';
     let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample, 'json'));
-    // XXX HTML cleanup hack for rendering in page. Would be best done with the right option in markdown-transform
-    sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">', '').replace('</div>\n</body>\n</html>', '');
+    // Strip the outer <html>/<head>/<body>/document wrapper that
+    // @accordproject/markdown-html 0.18 emits, leaving just the inner
+    // body so the snippet renders inline on the template page.
+    const docMatch = sampleHTML.match(/<div class="document">([\s\S]*)<\/div>\s*<\/body>/);
+    if (docMatch) {
+        sampleHTML = docMatch[1];
+    }
+
+    // Build a playground.accordproject.org share link. The playground
+    // reads `#data=<lz-compressed JSON>` and expects four string fields.
+    const modelCto = template.getModelManager().getModels()
+        .filter(m => !m.name.startsWith('@'))
+        .map(m => m.content)
+        .join('\n\n');
+    const playgroundPayload = {
+        templateMarkdown: grammar,
+        modelCto,
+        data: sampleInstanceText,
+        agreementHtml: '',
+    };
+    const playgroundURL = `${playgroundRoot}/#data=${LZString.compressToEncodedURIComponent(JSON.stringify(playgroundPayload))}`;
 
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL: umlURL,
         umlCardURL: umlCardURL,
-        studioURL: studioURL,
+        playgroundURL: playgroundURL,
         githubURL: githubURL,
         filePath: templatePageHtml,
         template: template,
