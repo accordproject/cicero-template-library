@@ -14,7 +14,7 @@
 
 'use strict';
 
-const CodeGen = require('@accordproject/concerto-tools').CodeGen;
+const CodeGen = require('@accordproject/concerto-codegen').CodeGen;
 const FileWriter = require('@accordproject/concerto-util').FileWriter;
 
 const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
