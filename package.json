@@ -34,7 +34,7 @@
     "@accordproject/cicero-core": "0.26.0",
     "@accordproject/concerto-cli": "4.0.0",
     "@accordproject/concerto-core": "4.1.0",
-    "@accordproject/concerto-tools": "3.7.0",
+    "@accordproject/concerto-codegen": "4.0.1",
     "@accordproject/concerto-util": "4.1.0",
     "@accordproject/markdown-cicero": "0.18.0",
     "@accordproject/markdown-html": "0.18.0",
