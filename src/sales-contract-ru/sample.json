@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordru.salescontract.MyContract",
+  "$class": "org.accordproject.salescontractru@0.1.0.TemplateModel",
   "buyer": "покупатель",
   "seller": "продавец",
   "refundPeriod": "6 (шести)",
@@ -7,6 +7,6 @@
   "currencyType": "в российские рубли",
   "appealPeriod": "7",
   "countryLegislation": "законодательством Российская Федерация",
-  "contractId": "dd0a0f1c-78f8-4a33-8090-97c56286833a",
-  "$identifier": "dd0a0f1c-78f8-4a33-8090-97c56286833a"
+  "$identifier": "dd0a0f1c-78f8-4a33-8090-97c56286833a",
+  "clauseId": "dd0a0f1c-78f8-4a33-8090-97c56286833a"
 }

@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordtr.carrental.CarRentalContract",
+  "$class": "org.accordproject.carrentaltr@0.1.0.TemplateModel",
   "lessorName": "Acme Car Rental",
   "lessorAddress": "Dikmen Caddesi No:48/15 Dikmen Ankara",
   "lessorPhone": "+901231231234",
@@ -28,6 +28,6 @@
     "clauseId": "253d77ed-32ea-4dbc-b446-189db93446ee",
     "$identifier": "253d77ed-32ea-4dbc-b446-189db93446ee"
   },
-  "contractId": "e405f89c-4d47-4eea-9cfd-ad6806b2dd64",
-  "$identifier": "e405f89c-4d47-4eea-9cfd-ad6806b2dd64"
+  "$identifier": "e405f89c-4d47-4eea-9cfd-ad6806b2dd64",
+  "clauseId": "e405f89c-4d47-4eea-9cfd-ad6806b2dd64"
 }

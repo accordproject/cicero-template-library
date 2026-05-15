@@ -1,5 +1,5 @@
 {
-  "$class": "io.clause.demo.fragileGoods.FragileGoodsClause",
+  "$class": "org.accordproject.fragilegoods@0.1.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Steve",
   "seller": "resource:org.accordproject.party.Party#Dan",
   "deliveryPrice": {
@@ -15,7 +15,7 @@
     "currencyCode": "USD"
   },
   "deliveryLimitDuration": {
-    "$class": "org.accordproject.time.Duration",
+    "$class": "org.accordproject.time@0.3.0.Duration",
     "amount": 10,
     "unit": "seconds"
   },
@@ -24,6 +24,6 @@
     "doubleValue": 200,
     "currencyCode": "USD"
   },
-  "contractId": "aea19c25-de58-420b-9748-b8ac0d9668c4",
-  "$identifier": "aea19c25-de58-420b-9748-b8ac0d9668c4"
+  "$identifier": "aea19c25-de58-420b-9748-b8ac0d9668c4",
+  "clauseId": "aea19c25-de58-420b-9748-b8ac0d9668c4"
 }

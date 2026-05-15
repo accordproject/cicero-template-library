@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.contactinformation.ContactInformation",
+  "$class": "org.accordproject.contactinformation@0.1.0.TemplateModel",
   "name": "Jane Doe",
   "title": "CIO",
   "email": "jane@example.com",

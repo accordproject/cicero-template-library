@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.companyinformation.CompanyInformation",
+  "$class": "org.accordproject.companyinformation@0.1.0.TemplateModel",
   "name": "Example Corp.",
   "industry": "Healthcare",
   "website": "https://example.org",

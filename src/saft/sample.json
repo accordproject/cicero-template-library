@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.saft.SaftContract",
+  "$class": "org.accordproject.saft@0.1.0.TemplateModel",
   "token": "Clause Token",
   "company": "Clause",
   "companyType": "CORP",
@@ -25,6 +25,6 @@
   "companyRepresentative": "Peter Hunn",
   "purchaser": "Daniel Charles Selman",
   "description": "happiness and intergalactic equality",
-  "contractId": "8fda88c3-f16c-43b5-b65c-2597f3c55328",
-  "$identifier": "8fda88c3-f16c-43b5-b65c-2597f3c55328"
+  "$identifier": "8fda88c3-f16c-43b5-b65c-2597f3c55328",
+  "clauseId": "8fda88c3-f16c-43b5-b65c-2597f3c55328"
 }

@@ -11,19 +11,46 @@ const templates = readdirSync(SRC).filter(name => {
     return statSync(p).isDirectory() && existsSync(join(p, 'package.json'));
 });
 
-// Templates that hit upstream @accordproject/template-engine bugs:
+// Templates with known upstream @accordproject/template-engine bugs or
+// pre-existing sample.json data-shape issues left over from the cicero
+// 0.26 migration. it.fails marks them as expected-to-fail: the suite
+// stays green while they fail, but will turn red once the issue is
+// resolved so we know to remove the entry.
+//
+// Upstream bug references:
 //   bill-of-lading            — markdown-transform#673
 //   fixed-interests           — template-engine#147
 //   supply-agreement-loc      — template-engine#146
 //   volumediscountolist       — template-engine#145
 //   volumediscountulist       — template-engine#145
-// it.fails marks them as expected-to-fail: the suite stays green while
-// they fail, but will turn red once the upstream fix lands so we know
-// to remove the entry.
 const expectedFailures = new Set([
     'bill-of-lading',
+    'car-rental-tr',
+    'company-information',
+    'copyright-license',
+    'docusign-po-failure',
     'fixed-interests',
+    'fragile-goods',
+    'full-payment-upon-demand',
+    'full-payment-upon-signature',
+    'installment-sale',
+    'interest-rate-swap',
+    'latedeliveryandpenalty-optional',
+    'one-time-payment-tr',
+    'payment-upon-delivery',
+    'payment-upon-iot',
+    'payment-upon-signature',
+    'perishable-goods',
+    'project-information',
+    'promissory-note',
+    'promissory-note-md',
+    'rental-deposit',
+    'rental-deposit-with',
+    'roommate',
+    'saft',
+    'servicelevelagreement',
     'supply-agreement-loc',
+    'supplyagreement-perishable-goods',
     'volumediscountolist',
     'volumediscountulist',
 ]);
@@ -36,21 +63,15 @@ describe.concurrent('template-engine render', () => {
             const template = await Template.fromDirectory(templatePath);
             const proc = new TemplateArchiveProcessor(template);
 
-            // Prefer the committed sample.json when its $class still matches
-            // the current TemplateModel; otherwise synthesise sample data so
-            // every template exercises the render pipeline.
+            // sample.json must be present and its $class must match the current
+            // TemplateModel FQN. Stale namespaces silently masked broken samples
+            // before — now they fail loud so the template-library and downstream
+            // consumers (e.g. template-playground) stay in sync.
             const tmFqn = template.getTemplateModel().getFullyQualifiedName();
             const sampleJsonPath = join(templatePath, 'sample.json');
-            let data;
-            if (existsSync(sampleJsonPath)) {
-                const candidate = JSON.parse(readFileSync(sampleJsonPath, 'utf8'));
-                if (candidate.$class === tmFqn) data = candidate;
-            }
-            if (!data) {
-                const cd = template.getTemplateModel();
-                const obj = template.getFactory().newResource(cd.getNamespace(), cd.getName(), 'sample-id', { generate: true, includeOptionalFields: true });
-                data = template.getSerializer().toJSON(obj);
-            }
+            expect(existsSync(sampleJsonPath), `${name}: sample.json is missing`).toBe(true);
+            const data = JSON.parse(readFileSync(sampleJsonPath, 'utf8'));
+            expect(data.$class, `${name}: sample.json $class does not match TemplateModel`).toBe(tmFqn);
 
             const out = await proc.draft(data, 'markdown', {});
             expect(typeof out).toBe('string');

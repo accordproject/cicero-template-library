@@ -1,10 +1,10 @@
 {
-  "$class": "org.accordtr.onlinepayment.MyContract",
+  "$class": "org.accordproject.onlinepaymentcontracttr@0.1.0.TemplateModel",
   "buyer": "Umut",
   "seller": "Serkan",
   "softwareID": "AcmeSoftware-1.0",
   "userCount": "2",
   "authorizedCourt": "ANKARA 1.Bölge İdare Mahkemesi",
-  "contractId": "7b8bebbd-c36e-4387-a877-f5a8e63480b2",
-  "$identifier": "7b8bebbd-c36e-4387-a877-f5a8e63480b2"
+  "$identifier": "7b8bebbd-c36e-4387-a877-f5a8e63480b2",
+  "clauseId": "7b8bebbd-c36e-4387-a877-f5a8e63480b2"
 }

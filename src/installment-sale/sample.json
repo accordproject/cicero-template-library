@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.installmentsale.InstallmentSaleContract",
+  "$class": "org.accordproject.installmentsale@0.1.0.TemplateModel",
   "BUYER": "resource:org.accordproject.party.Party#Dan",
   "SELLER": "resource:org.accordproject.party.Party#Ned",
   "INITIAL_DUE": {
@@ -24,6 +24,6 @@
     "currencyCode": "EUR"
   },
   "FIRST_MONTH": 3,
-  "contractId": "ae1b4bc2-e558-47d2-9694-39ce42819783",
-  "$identifier": "ae1b4bc2-e558-47d2-9694-39ce42819783"
+  "$identifier": "ae1b4bc2-e558-47d2-9694-39ce42819783",
+  "clauseId": "ae1b4bc2-e558-47d2-9694-39ce42819783"
 }

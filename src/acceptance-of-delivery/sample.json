@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.acceptanceofdelivery.AcceptanceOfDeliveryClause",
+  "$class": "org.accordproject.acceptanceofdelivery@0.1.0.TemplateModel",
   "shipper": "resource:org.accordproject.organization.Organization#Party%20A",
   "receiver": "resource:org.accordproject.organization.Organization#Party%20B",
   "deliverable": "Widgets",

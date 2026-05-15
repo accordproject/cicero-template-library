@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.servicelevelagreement.ServiceLevelAgreementContract",
+  "$class": "org.accordproject.servicelevelagreement@0.1.0.TemplateModel",
   "paymentPeriod": 30,
   "monthlyCapPercentage": 10,
   "yearlyCapPercentage": 10,
@@ -17,6 +17,6 @@
   },
   "serviceProvider": "resource:org.accordproject.party.Party#Service%20Provider",
   "serviceConsumer": "resource:org.accordproject.party.Party#Service%20Consumer",
-  "contractId": "54e49d2c-309f-4cd5-adfe-3ee6b2fca66a",
-  "$identifier": "54e49d2c-309f-4cd5-adfe-3ee6b2fca66a"
+  "$identifier": "54e49d2c-309f-4cd5-adfe-3ee6b2fca66a",
+  "clauseId": "54e49d2c-309f-4cd5-adfe-3ee6b2fca66a"
 }

@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.perishablegoods.PerishableGoodsContract",
+  "$class": "org.accordproject.perishablegoods@0.1.0.TemplateModel",
   "grower": "resource:org.accordproject.party.Party#PETER",
   "importer": "resource:org.accordproject.party.Party#DAN",
   "shipment": "resource:org.accordproject.perishablegoods.Shipment#SHIP_001",
@@ -20,6 +20,6 @@
   "minHumidity": 70,
   "maxHumidity": 90,
   "penaltyFactor": 0.2,
-  "contractId": "46467b65-22e0-40cc-900a-0f75dcc366f4",
-  "$identifier": "46467b65-22e0-40cc-900a-0f75dcc366f4"
+  "$identifier": "46467b65-22e0-40cc-900a-0f75dcc366f4",
+  "clauseId": "46467b65-22e0-40cc-900a-0f75dcc366f4"
 }

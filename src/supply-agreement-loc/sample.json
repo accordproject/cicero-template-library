@@ -1,5 +1,5 @@
 {
-  "$class": "org.cloudsecurityalliance.supplyagreement.SupplyAgreementContract",
+  "$class": "org.accordproject.supplyagreementloc@0.1.0.TemplateModel",
   "executionDate": "2021-01-20T01:00:00.000+01:00",
   "exporter": "Acme Exports",
   "importer": "Dan's Imports",
@@ -17,12 +17,12 @@
   "packingList": "PACKING-001",
   "renewalTerms": 2,
   "termRenewal": {
-    "$class": "org.accordproject.time.Period",
+    "$class": "org.accordproject.time@0.3.0.Period",
     "amount": 5,
     "unit": "years"
   },
   "termTerminationNotice": {
-    "$class": "org.accordproject.time.Period",
+    "$class": "org.accordproject.time@0.3.0.Period",
     "amount": 90,
     "unit": "days"
   },
@@ -42,7 +42,7 @@
   "exporterBankAccount": 142635263523,
   "modifiedPurchaseOrder": "PO-001-A",
   "cancellationDeadline": {
-    "$class": "org.accordproject.time.Duration",
+    "$class": "org.accordproject.time@0.3.0.Duration",
     "amount": 7,
     "unit": "days"
   },
@@ -58,19 +58,19 @@
     "currencyCode": "SEK"
   },
   "evaluationTime": {
-    "$class": "org.accordproject.time.Duration",
+    "$class": "org.accordproject.time@0.3.0.Duration",
     "amount": 7,
     "unit": "days"
   },
   "acceptanceCriteria": "good are acceptable",
   "termBeginDate": "2021-01-20T01:00:00.000+01:00",
   "termPeriod": {
-    "$class": "org.accordproject.time.Period",
+    "$class": "org.accordproject.time@0.3.0.Period",
     "amount": 3,
     "unit": "years"
   },
   "currentTerm": {
-    "$class": "org.accordproject.time.Period",
+    "$class": "org.accordproject.time@0.3.0.Period",
     "amount": 2,
     "unit": "years"
   },
@@ -84,10 +84,10 @@
   "sensorReadingFrequency": 10,
   "duration": "days",
   "countPeriod": {
-    "$class": "org.accordproject.time.Period",
+    "$class": "org.accordproject.time@0.3.0.Period",
     "amount": 10,
     "unit": "days"
   },
-  "contractId": "5d084f1a-1380-4887-ae54-72afd091b702",
-  "$identifier": "5d084f1a-1380-4887-ae54-72afd091b702"
+  "$identifier": "5d084f1a-1380-4887-ae54-72afd091b702",
+  "clauseId": "5d084f1a-1380-4887-ae54-72afd091b702"
 }
