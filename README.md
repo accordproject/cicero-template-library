@@ -20,7 +20,7 @@
   </a>
 </p>
 
-Repository for Smart Legal Contract Templates that conform that to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
+Repository for Smart Legal Contract Templates that conform to the [Accord Project Template Specification][techspec], the protocol is managed by the open-source community of the [Accord Project][aphome]. 
 
 These templates can be parsed and executed by the [Cicero][cicero] engine.
 
