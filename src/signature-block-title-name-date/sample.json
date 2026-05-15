@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.signature.tnd.TitleNameDateSignatureBlock",
+  "$class": "org.accordproject.signatureblocktitlenamedate@0.1.0.TemplateModel",
   "title": "Title",
   "signature": "--------",
   "fullName": "Full Name",

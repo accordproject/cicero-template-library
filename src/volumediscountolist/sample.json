@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.volumediscountlist.VolumeDiscountContract",
+  "$class": "org.accordproject.volumediscountolist@0.1.0.TemplateModel",
   "rates": [
     {
       "$class": "org.accordproject.volumediscountlist.RateRange",
@@ -38,6 +38,6 @@
       "rate": 0.1
     }
   ],
-  "contractId": "057a1e41-caac-4574-be60-937803d89d92",
-  "$identifier": "057a1e41-caac-4574-be60-937803d89d92"
+  "$identifier": "057a1e41-caac-4574-be60-937803d89d92",
+  "clauseId": "057a1e41-caac-4574-be60-937803d89d92"
 }

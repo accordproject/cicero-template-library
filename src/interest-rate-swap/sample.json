@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.isda.irs.InterestRateSwapContract",
+  "$class": "org.accordproject.isda.irs@0.1.0.TemplateModel",
   "bank": "resource:org.accordproject.organization.Organization#Deutsche%20Bank",
   "letterDate": "2005-06-30T00:00:00.000+01:00",
   "counterparty": "resource:org.accordproject.organization.Organization#MagnaChip%20Semiconductor%20S.A.",
@@ -17,7 +17,7 @@
   "fixedRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
   "fixedRate": 4.09,
   "fixedRateDayCountFraction": {
-    "$class": "org.accordproject.isda.irs.DayCountFraction",
+    "$class": "org.accordproject.isda.irs@0.1.0.DayCountFraction",
     "value": "30",
     "dayCountFractionScheme": "360"
   },
@@ -31,7 +31,7 @@
   "designatedMaturity": "Three months",
   "spread": "None",
   "floatingRateDayCountFraction": {
-    "$class": "org.accordproject.isda.irs.DayCountFraction",
+    "$class": "org.accordproject.isda.irs@0.1.0.DayCountFraction",
     "value": "30",
     "dayCountFractionScheme": "360"
   },
@@ -39,6 +39,6 @@
   "compounding": "Inapplicable",
   "floatingRatePayerBusinessDays": "New York",
   "floatingRatePayerBusinessDayConvention": "Modified Following",
-  "contractId": "6a27c183-92f1-4795-bd48-a05324123a78",
-  "$identifier": "6a27c183-92f1-4795-bd48-a05324123a78"
+  "$identifier": "6a27c183-92f1-4795-bd48-a05324123a78",
+  "clauseId": "6a27c183-92f1-4795-bd48-a05324123a78"
 }

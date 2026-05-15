@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.payment.fulluponsignature.FullPaymentUponSignatureContract",
+  "$class": "org.accordproject.fullpaymentupondsignature@0.1.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Dan",
   "seller": "resource:org.accordproject.party.Party#Steve",
   "amount": {
@@ -7,6 +7,6 @@
     "doubleValue": 0.01,
     "currencyCode": "USD"
   },
-  "contractId": "eb47cf04-9706-435b-91f9-3da5a8b7dfb7",
-  "$identifier": "eb47cf04-9706-435b-91f9-3da5a8b7dfb7"
+  "$identifier": "eb47cf04-9706-435b-91f9-3da5a8b7dfb7",
+  "clauseId": "eb47cf04-9706-435b-91f9-3da5a8b7dfb7"
 }

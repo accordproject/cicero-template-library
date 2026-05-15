@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.demandforecast.DemandForecastClause",
+  "$class": "org.accordproject.demandforecast@0.1.0.TemplateModel",
   "purchaser": "PETER",
   "supplier": "DAN",
   "effectiveDate": "2018-04-02T00:00:00.000+01:00",

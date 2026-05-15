@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.canteen.CanteenClause",
+  "$class": "org.accordproject.eatapples@0.1.0.TemplateModel",
   "employee": "Dan",
   "company": "ACME",
   "tax": 4.5,

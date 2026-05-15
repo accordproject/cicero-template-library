@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.billoflading.BillOfLadingClause",
+  "$class": "org.accordproject.billoflading@0.1.0.TemplateModel",
   "accountName": "MAERSK LINE",
   "scac": "MAEU",
   "bolNumber": "MAEU-ABC12345678",
@@ -17,7 +17,7 @@
   "placeOfDelivery": "Brisbane, Australia",
   "commodities": [
     {
-      "$class": "org.accordproject.billoflading.Commodity",
+      "$class": "org.accordproject.billoflading@0.1.0.Commodity",
       "quantity": 15,
       "unitOfMass": "TONNE",
       "packageType": "CONTAINER",
@@ -27,7 +27,7 @@
       "hazmat": "NO"
     },
     {
-      "$class": "org.accordproject.billoflading.Commodity",
+      "$class": "org.accordproject.billoflading@0.1.0.Commodity",
       "quantity": 35,
       "unitOfMass": "TONNE",
       "packageType": "CONTAINER",

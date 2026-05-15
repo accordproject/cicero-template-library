@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.promissorynote.PromissoryNoteContract",
+  "$class": "org.accordproject.promissorynotemd@0.1.0.TemplateModel",
   "amount": {
     "$class": "org.accordproject.money.MonetaryAmount",
     "doubleValue": 1000,
@@ -17,6 +17,6 @@
   "defaultDays": 90,
   "insolvencyDays": 90,
   "jurisdiction": "New York, NY",
-  "contractId": "b95a9192-a8ec-49c6-b949-794a14c9e5b6",
-  "$identifier": "b95a9192-a8ec-49c6-b949-794a14c9e5b6"
+  "$identifier": "b95a9192-a8ec-49c6-b949-794a14c9e5b6",
+  "clauseId": "b95a9192-a8ec-49c6-b949-794a14c9e5b6"
 }

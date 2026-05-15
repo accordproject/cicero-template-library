@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.helloworldstate.HelloWorldClause",
+  "$class": "org.accordproject.helloworldstate@0.1.0.TemplateModel",
   "name": "Fred Blogs",
   "clauseId": "41d950d9-d980-4adf-b2ab-91a570e8ef5a",
   "$identifier": "41d950d9-d980-4adf-b2ab-91a570e8ef5a"

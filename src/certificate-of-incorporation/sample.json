@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.incorporation.IncorporationCertificate",
+  "$class": "org.accordproject.certificateofincorporation@0.1.0.TemplateModel",
   "companyName": "ACME",
   "incorporationState": "NY",
   "streetAddress": "555 main street",
@@ -15,6 +15,6 @@
   "incorporatorCity": "Baltimore",
   "incorporatorState": "MD",
   "incorporatorZip": "21201",
-  "contractId": "07a4f261-dbb1-4d2e-bcab-79cff92c4aa4",
-  "$identifier": "07a4f261-dbb1-4d2e-bcab-79cff92c4aa4"
+  "$identifier": "07a4f261-dbb1-4d2e-bcab-79cff92c4aa4",
+  "clauseId": "07a4f261-dbb1-4d2e-bcab-79cff92c4aa4"
 }
