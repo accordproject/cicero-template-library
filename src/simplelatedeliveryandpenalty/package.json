@@ -27,5 +27,8 @@
     "scripts": {
         "test": "vitest run",
         "compile": "concerto compile --model model/clause.cto --target typescript --output logic/generated"
-    }
+    },
+    "tags": [
+        "shipping"
+    ]
 }

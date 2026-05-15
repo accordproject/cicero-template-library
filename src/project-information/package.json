@@ -1,20 +1,23 @@
 {
-  "name": "project-information",
-  "displayName": "Project Information",
-  "version": "0.3.1",
-  "description": "Gather project information",
-  "license": "Apache-2.0",
-  "accordproject": {
-    "runtime": "typescript",
-    "template": "clause",
-    "cicero": "^0.25.0"
-  },
-  "keywords": [
-    "clause",
-    "verify",
-    "project"
-  ],
-  "scripts": {
-    "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
-  }
+    "name": "project-information",
+    "displayName": "Project Information",
+    "version": "0.3.1",
+    "description": "Gather project information",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "template": "clause",
+        "cicero": "^0.25.0"
+    },
+    "keywords": [
+        "clause",
+        "verify",
+        "project"
+    ],
+    "scripts": {
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    },
+    "tags": [
+        "reference"
+    ]
 }

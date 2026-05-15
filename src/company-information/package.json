@@ -1,19 +1,22 @@
 {
-  "name": "company-information",
-  "displayName": "Company Information",
-  "version": "0.3.1",
-  "description": "Gather company information",
-  "license": "Apache-2.0",
-  "accordproject": {
-    "runtime": "typescript",
-    "template": "clause",
-    "cicero": "^0.25.0"
-  },
-  "keywords": [
-    "company",
-    "information"
-  ],
-  "scripts": {
-    "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
-  }
+    "name": "company-information",
+    "displayName": "Company Information",
+    "version": "0.3.1",
+    "description": "Gather company information",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "template": "clause",
+        "cicero": "^0.25.0"
+    },
+    "keywords": [
+        "company",
+        "information"
+    ],
+    "scripts": {
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    },
+    "tags": [
+        "reference"
+    ]
 }

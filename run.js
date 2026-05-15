@@ -108,10 +108,32 @@ nunjucks.configure('./views', {
             // get the latest versions of each template
             const latestIndex = filterTemplateIndex(templateIndex);
 
+            // group templates by tag for the index page
+            const groupedByTag = {};
+            for (const [id, entry] of Object.entries(latestIndex)) {
+                const tags = (entry.tags && entry.tags.length) ? entry.tags : ['untagged'];
+                for (const tag of tags) {
+                    if (!groupedByTag[tag]) groupedByTag[tag] = {};
+                    groupedByTag[tag][id] = entry;
+                }
+            }
+            // sort tags alphabetically, but pin a few common ones first
+            const tagOrder = ['finance', 'sales', 'vendor', 'shipping', 'real-estate', 'intellectual-property', 'services', 'HR', 'reference', 'untagged'];
+            const sortedTags = Object.keys(groupedByTag).sort((a, b) => {
+                const ai = tagOrder.indexOf(a);
+                const bi = tagOrder.indexOf(b);
+                if (ai !== -1 && bi !== -1) return ai - bi;
+                if (ai !== -1) return -1;
+                if (bi !== -1) return 1;
+                return a.localeCompare(b);
+            });
+            const groupedSorted = sortedTags.map(tag => ({ tag, templates: groupedByTag[tag] }));
+
             // generate the index html page
             const templateResult = nunjucks.render('index.njk', {
                 serverRoot: serverRoot,
                 templateIndex: latestIndex,
+                groupedByTag: groupedSorted,
             });
             await writeFile('./build/index.html', templateResult);
         }
@@ -308,6 +330,15 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                         // update the index
                         const m = template.getMetadata();
                         const templateHash = template.getHash();
+                        // read tags directly from package.json since cicero metadata
+                        // does not expose custom fields
+                        let tags = [];
+                        try {
+                            const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
+                            if (Array.isArray(rawPkg.tags)) {
+                                tags = rawPkg.tags;
+                            }
+                        } catch (e) { /* ignore */ }
                         const indexData = {
                             uri: `ap://${template.getIdentifier()}#${templateHash}`,
                             url: `${serverRoot}/archives/${archiveFileName}`,
@@ -320,6 +351,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                             type: m.getTemplateType(),
                             logo: m.getLogo() ? m.getLogo().toString('base64') : null,
                             author: m.getAuthor() ? m.getAuthor() : null,
+                            tags: tags,
                         }
                         templateIndex[template.getIdentifier()] = indexData;
 
@@ -327,6 +359,14 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                         await postProcessor(templateIndex, templatePath, template);
                     }
                     else {
+                        // even when skipping archive regeneration, refresh tags
+                        // so that index reflects current package.json
+                        try {
+                            const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
+                            if (templateIndex[template.getIdentifier()]) {
+                                templateIndex[template.getIdentifier()].tags = Array.isArray(rawPkg.tags) ? rawPkg.tags : [];
+                            }
+                        } catch (e) { /* ignore */ }
                         console.log(`Skipped: ${archiveFileName} (already exists).`);
                     }
                 }

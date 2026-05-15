@@ -17,41 +17,61 @@
     <section class="section">
         <div class="container">
             <h2 class="title is-2">Templates</h2>
-            <table class="table box versions">
-            <thead>
-                <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Cicero Version</th>
-                <th>Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for name, val in templateIndex |dictsort%}
-                <tr>
-                <th>
-                  <a href="{{name}}.html">
-                    {% if val.displayName %}
-                      {{val.displayName}}
-                    {% else %}
-                      {{name}}
-                    {% endif %}
-                  <a>
-                </th>
-                <td>{{val.description}}</td>
-                <td>{{val.ciceroVersion}}</td>
-                <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
+
+            <div class="tags-nav content">
+                <strong>Categories:</strong>
+                {% for group in groupedByTag %}
+                    <a href="#tag-{{group.tag}}" class="tag is-medium">{{group.tag}}</a>
                 {% endfor %}
-            </tbody>            
-            <tfoot>
-                <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Cicero Version</th>
-                <th>Type</th>
-                </tr>
-            </tfoot>
-            </table>
+            </div>
+
+            {% for group in groupedByTag %}
+            <div id="tag-{{group.tag}}" class="tag-group">
+                <h3 class="title is-3" style="text-transform: capitalize;">{{group.tag}}</h3>
+                <table class="table box versions" style="width: 100%; table-layout: fixed;">
+                <colgroup>
+                    <col style="width: 22%;" />
+                    <col style="width: 44%;" />
+                    <col style="width: 12%;" />
+                    <col style="width: 10%;" />
+                    <col style="width: 12%;" />
+                </colgroup>
+                <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Cicero Version</th>
+                    <th>Type</th>
+                    <th>Tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name, val in group.templates |dictsort %}
+                    <tr>
+                    <th>
+                      <a href="{{name}}.html">
+                        {% if val.displayName %}
+                          {{val.displayName}}
+                        {% else %}
+                          {{name}}
+                        {% endif %}
+                      </a>
+                    </th>
+                    <td>{{val.description}}</td>
+                    <td>{{val.ciceroVersion}}</td>
+                    <td>{% if val.type === 0 %}Contract{% else %}Clause{% endif %}</td>
+                    <td>
+                      {% for t in val.tags %}
+                        <span class="tag is-light">{{t}}</span>
+                      {% endfor %}
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+            {% endfor %}
+
             <div class="content">
                 <a href="template-library.json" target="_blank">Template Library Index</a>
             </div>
