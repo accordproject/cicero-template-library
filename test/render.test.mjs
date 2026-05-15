@@ -42,7 +42,6 @@ const expectedFailures = new Set([
     'payment-upon-signature',
     'perishable-goods',
     'project-information',
-    'promissory-note',
     'promissory-note-md',
     'rental-deposit',
     'rental-deposit-with',
@@ -63,15 +62,21 @@ describe.concurrent('template-engine render', () => {
             const template = await Template.fromDirectory(templatePath);
             const proc = new TemplateArchiveProcessor(template);
 
-            // sample.json must be present and its $class must match the current
-            // TemplateModel FQN. Stale namespaces silently masked broken samples
-            // before — now they fail loud so the template-library and downstream
-            // consumers (e.g. template-playground) stay in sync.
+            // sample.json must be present and must round-trip through the
+            // template's serializer. The serializer walks every nested
+            // resource and validates each $class against the ModelManager,
+            // so stale namespaces — including ones buried inside nested
+            // objects — fail loud here rather than slipping through to
+            // template-engine rendering with a generic error.
             const tmFqn = template.getTemplateModel().getFullyQualifiedName();
             const sampleJsonPath = join(templatePath, 'sample.json');
             expect(existsSync(sampleJsonPath), `${name}: sample.json is missing`).toBe(true);
             const data = JSON.parse(readFileSync(sampleJsonPath, 'utf8'));
             expect(data.$class, `${name}: sample.json $class does not match TemplateModel`).toBe(tmFqn);
+            expect(
+                () => template.getSerializer().fromJSON(data),
+                `${name}: sample.json does not deserialize against the template model`,
+            ).not.toThrow();
 
             const out = await proc.draft(data, 'markdown', {});
             expect(typeof out).toBe('string');
