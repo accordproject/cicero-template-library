@@ -47,7 +47,7 @@ describe('MiniLateDeliveryAndPenaltyPaymentLogic', () => {
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.minilatedeliveryandpenaltypayment@0.1.0.PaymentObligationEvent');
-            expect(event.amount).toBeCloseTo(21, 5);
+            expect(event.amount).toBeCloseTo(210, 5);
         });
     });
 });

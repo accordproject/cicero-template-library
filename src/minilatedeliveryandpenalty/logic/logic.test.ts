@@ -43,8 +43,8 @@ describe('MiniLateDeliveryAndPenaltyLogic', () => {
                 goodsValue: 1000,
             };
             const result = await logic.trigger(model, request);
-            // 14 days / 7 days * 10.5% * 1000 = 21
-            expect(result.result.penalty).toBeCloseTo(21, 5);
+            // 14 days / 7 days * 10.5% * 1000 = 210
+            expect(result.result.penalty).toBeCloseTo(210, 5);
             expect(result.result.buyerMayTerminate).toBe(true);
         });
 

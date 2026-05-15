@@ -44,8 +44,8 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
                 goodsValue: 1000,
             };
             const result = await logic.trigger(model, request);
-            // penalty = 14/7 * 10.5% * 1000 = 21, cap = 55% * 1000 = 550
-            expect(result.result.penalty).toBeCloseTo(21, 5);
+            // penalty = 14/7 * 10.5% * 1000 = 210, cap = 55% * 1000 = 550
+            expect(result.result.penalty).toBeCloseTo(210, 5);
         });
 
         it('should cap the penalty when it exceeds the cap', async () => {
