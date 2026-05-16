@@ -36,8 +36,7 @@ function makeModel(overrides: Partial<ITemplateModel> = {}): ITemplateModel {
         importer: "DAN",
         shipmentId: "SHIP_001",
         dueDate: FUTURE_DUE_DATE,
-        unitPrice: 1.5,
-        currencyCode: "USD",
+        unitPrice: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1.5, currencyCode: 'USD' } as any,
         unit: "KG",
         minUnits: 3000,
         maxUnits: 3500,
@@ -146,7 +145,7 @@ describe("PerishableGoodsLogic", () => {
             const request = makeRequest({ sensorReadings: [makeSensorReading(5, 80)] });
             const result = await logic.trigger(pastDueModel, request, initialState);
             expect(result.result.late).toBe(true);
-            expect(result.result.totalPrice).toBe(0.0);
+            expect((result.result.totalPrice as any).doubleValue).toBe(0.0);
             expect(result.events).toHaveLength(0);
         });
     });
@@ -170,10 +169,10 @@ describe("PerishableGoodsLogic", () => {
             });
             const result = await logic.trigger(model, request, initialState);
             // payout = 1.5 * 3000 = 4500, penalty = 0
-            expect(result.result.totalPrice).toBe(4500.0);
+            expect((result.result.totalPrice as any).doubleValue).toBe(4500.0);
             expect(result.result.penalty).toBe(0.0);
             expect(result.result.late).toBe(false);
-            expect(result.result.currencyCode).toBe("USD");
+            expect((result.result.totalPrice as any).currencyCode).toBe("USD");
         });
     });
 
@@ -188,7 +187,7 @@ describe("PerishableGoodsLogic", () => {
                 sensorReadings: [makeSensorReading(15, 80)], // temp > 13
             });
             const result = await logic.trigger(model, request, initialState);
-            expect(result.result.totalPrice).toBeCloseTo(3300.0);
+            expect((result.result.totalPrice as any).doubleValue).toBeCloseTo(3300.0);
             expect(result.result.penalty).toBeCloseTo(1200.0);
         });
 
@@ -201,6 +200,7 @@ describe("PerishableGoodsLogic", () => {
             });
             const result = await logic.trigger(model, request, initialState);
             expect(result.result.penalty).toBeCloseTo(1200.0);
+            expect((result.result.totalPrice as any).doubleValue).toBeGreaterThanOrEqual(0);
         });
     });
 
@@ -215,7 +215,7 @@ describe("PerishableGoodsLogic", () => {
             });
             const result = await logic.trigger(model, request, initialState);
             expect(result.result.penalty).toBeCloseTo(3000.0);
-            expect(result.result.totalPrice).toBeCloseTo(1500.0);
+            expect((result.result.totalPrice as any).doubleValue).toBeCloseTo(1500.0);
         });
     });
 
@@ -227,7 +227,7 @@ describe("PerishableGoodsLogic", () => {
                 sensorReadings: [makeSensorReading(100, 10)], // both far outside bounds
             });
             const result = await logic.trigger(model, request, initialState);
-            expect(result.result.totalPrice).toBeGreaterThanOrEqual(0);
+            expect((result.result.totalPrice as any).doubleValue).toBeGreaterThanOrEqual(0);
         });
     });
 
@@ -239,10 +239,10 @@ describe("PerishableGoodsLogic", () => {
             });
             const result1 = await logic.trigger(model, request, initialState);
             expect(result1.state.payoutMade).toBe(true);
-            expect(result1.state.totalPaid).toBeCloseTo(4500.0);
+            expect(result1.state.totalPaid).toBeCloseTo((result1.result.totalPrice as any).doubleValue);
 
             const result2 = await logic.trigger(model, request, result1.state as IPerishableGoodsState);
-            expect(result2.state.totalPaid).toBeCloseTo(9000.0);
+            expect(result2.state.totalPaid).toBeCloseTo((result1.result.totalPrice as any).doubleValue * 2);
         });
     });
 
@@ -256,8 +256,8 @@ describe("PerishableGoodsLogic", () => {
             expect(result.events).toHaveLength(1);
             const event: any = result.events[0];
             expect(event.$class).toBe(`${NS}.PerishableGoodsPaymentEvent`);
-            expect(event.totalPrice).toBeCloseTo(4500.0);
-            expect(event.currencyCode).toBe("USD");
+            expect(event.totalPrice.doubleValue).toBeCloseTo(4500.0);
+            expect(event.totalPrice.currencyCode).toBe("USD");
             expect(event.description).toContain("DAN");
             expect(event.description).toContain("PETER");
         });

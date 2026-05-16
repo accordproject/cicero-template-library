@@ -6,6 +6,15 @@ import {
     ITemplateModel,
     ISensorReading,
 } from "./generated/org.accordproject.perishablegoods@0.1.0";
+import { IMonetaryAmount } from "./generated/org.accordproject.money@0.3.0";
+
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
 
 // @ts-expect-error EngineResponse is imported by the runtime
 interface PerishableGoodsResponse extends EngineResponse<IPerishableGoodsState> {
@@ -83,7 +92,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
             throw new Error("Units received out of range for the contract");
         }
 
-        const currency = data.currencyCode;
+        const currency = (data.unitPrice as any).currencyCode;
 
         // Guard: check if shipment is late (past dueDate)
         const now = new Date();
@@ -95,11 +104,10 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
                 $class: "org.accordproject.perishablegoods@0.1.0.PriceCalculation",
                 $identifier: new Date().toISOString(),
                 $timestamp: new Date(),
-                totalPrice: 0.0,
+                totalPrice: monetary(0.0, currency),
                 penalty: 0.0,
-                currencyCode: currency,
                 late: true,
-            };
+            } as any;
             const newState: IPerishableGoodsState = {
                 ...state,
                 payoutMade: true,
@@ -115,7 +123,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         }
 
         // Calculate base payout
-        const payOut = data.unitPrice * request.unitCount;
+        const payOut = (data.unitPrice as any).doubleValue * request.unitCount;
 
         // Calculate penalties
         const tempPenalty = this.calculateTempPenalty(
@@ -138,20 +146,18 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         const event: IPerishableGoodsPaymentEvent = {
             $class: "org.accordproject.perishablegoods@0.1.0.PerishableGoodsPaymentEvent",
             $timestamp: new Date(),
-            totalPrice,
-            currencyCode: currency,
+            totalPrice: monetary(totalPrice, currency),
             description: `${data.importer} should pay shipment amount to ${data.grower}`,
-        };
+        } as any;
 
         const result: IPriceCalculation = {
             $class: "org.accordproject.perishablegoods@0.1.0.PriceCalculation",
             $identifier: new Date().toISOString(),
             $timestamp: new Date(),
-            totalPrice,
+            totalPrice: monetary(totalPrice, currency),
             penalty: totalPenalty,
-            currencyCode: currency,
             late: false,
-        };
+        } as any;
 
         const newState: IPerishableGoodsState = {
             $class: "org.accordproject.perishablegoods@0.1.0.PerishableGoodsState",
