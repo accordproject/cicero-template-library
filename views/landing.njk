@@ -1,24 +1,162 @@
-{% extends "page.njk" %}
+{%set pre_style="white-space: pre-wrap; border: 0; background-color: transparent;"%}
+{%set html_style="white-space: pre-wrap; border: 0; background-color: transparent;"%}
+{%set code_style="white-space: pre-wrap;"%}
 
-{% block unfurl %}
-    <!-— facebook open graph tags -->
-    <meta property="og:url" content="{{serverRoot}}/t/{{templateName}}/" />
-    <meta property="og:title" content="{{displayName}}" />
-    <meta property="og:description" content="{{description}}" />
-    {% if logo %}
-    <meta property="og:image" content="data:image/png;base64,{{logo}}" />
-    {% endif %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
 
-    <!-— twitter card tags additive with the og: tags -->
-    <meta name="twitter:title" content="{{displayName}}" />
-    <meta name="twitter:description" content="{{description}}" />
-    {% if logo %}
-    <meta name="twitter:image" content="data:image/png;base64,{{logo}}" />
-    {% endif %}
-    <meta name="twitter:url" content="{{serverRoot}}/t/{{templateName}}/" />
-{% endblock %}
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
 
-{% block body %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {%set accord_logo="accord_logo_large.png"%}
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        <!-— facebook open graph tags -->
+        <meta property="og:url" content="{{serverRoot}}/t/{{templateName}}/" />
+        <meta property="og:title" content="{{displayName}}" />
+        <meta property="og:description" content="{{description}}" />
+        {% if logo %}
+        <meta property="og:image" content="data:image/png;base64,{{logo}}" />
+        {% endif %}
+
+        <!-— twitter card tags additive with the og: tags -->
+        <meta name="twitter:title" content="{{displayName}}" />
+        <meta name="twitter:site" content="@AccordHQ" />
+        <meta name="twitter:description" content="{{description}}" />
+        {% if logo %}
+        <meta name="twitter:image" content="data:image/png;base64,{{logo}}" />
+        {% endif %}
+        <meta name="twitter:image:alt" content="{{displayName}}" />
+        <meta name="twitter:url" content="{{serverRoot}}/t/{{templateName}}/" />
+
+        <title>Accord Project Template Library</title>
+        <link rel="icon" type="image/svg+xml" href="../../assets/images/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="../../assets/images/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="icon" href="https://i0.wp.com/accordproject.org/wp-content/uploads/2020/08/cropped-ms-icon-310x310-1.png?fit=512%2C512&ssl=1" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="../../assets/fonts.css" />
+        <link rel="stylesheet" href="../../styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>{% raw %}
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+      {% endraw %}</script>
+    </head>
+
+    <body>
     <section class="section inner-content">
         <div class="container">
             <h1 class="title is-1">
@@ -66,4 +204,5 @@
             </div>
         </div>
     </section>
-{% endblock %}
+    </body>
+</html>
