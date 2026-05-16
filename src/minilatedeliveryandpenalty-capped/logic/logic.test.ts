@@ -41,11 +41,11 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
             // penalty = 14/7 * 10.5% * 1000 = 210, cap = 55% * 1000 = 550
-            expect(result.result.penalty).toBeCloseTo(210, 5);
+            expect(result.result.penalty.doubleValue).toBeCloseTo(210, 5);
         });
 
         it('should cap the penalty when it exceeds the cap', async () => {
@@ -57,10 +57,10 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeCloseTo(10, 5); // capped at 1% of 1000
+            expect(result.result.penalty.doubleValue).toBeCloseTo(10, 5); // capped at 1% of 1000
         });
     });
 });

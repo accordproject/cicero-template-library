@@ -40,11 +40,12 @@ describe('MiniLateDeliveryAndPenaltyLogic', () => {
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
             // 14 days / 7 days * 10.5% * 1000 = 210
-            expect(result.result.penalty).toBeCloseTo(210, 5);
+            expect(result.result.penalty.doubleValue).toBeCloseTo(210, 5);
+            expect(result.result.penalty.currencyCode).toBe('USD');
             expect(result.result.buyerMayTerminate).toBe(true);
         });
 
@@ -56,7 +57,7 @@ describe('MiniLateDeliveryAndPenaltyLogic', () => {
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             await expect(logic.trigger(model, request)).rejects.toThrow();
         });
