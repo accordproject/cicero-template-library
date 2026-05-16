@@ -47,6 +47,17 @@ const expectedFailures = new Set([
     'volumediscountulist',
 ]);
 
+// Templates with TypeScript type errors in their logic.ts files.
+// These are pre-existing issues that should be fixed separately.
+const typeCheckingFailures = new Set([
+    'acceptance-of-delivery',
+    'docusign-po-failure',
+    'fragile-goods',
+    'payment-upon-iot',
+    'perishable-goods',
+    'supply-agreement-loc',
+]);
+
 describe.concurrent('template compilation', () => {
     for (const name of templates) {
         // Compilation tests should not be expected to fail — compilation errors are
@@ -69,6 +80,41 @@ describe.concurrent('template compilation', () => {
                 });
             } catch (error) {
                 throw new Error(`${name}: template compilation failed: ${error.message}`);
+            }
+        });
+    }
+});
+
+describe.concurrent('template TypeScript type checking', () => {
+    for (const name of templates) {
+        const test = typeCheckingFailures.has(name) ? it.fails : it;
+        test(name, () => {
+            const templatePath = join(SRC, name);
+            const logicDir = join(templatePath, 'logic');
+
+            // Only type-check templates with TypeScript logic files
+            if (!existsSync(logicDir)) {
+                return;
+            }
+
+            const tsFiles = readdirSync(logicDir).filter(f => f.endsWith('.ts') && !f.endsWith('.test.ts'));
+            if (tsFiles.length === 0) {
+                return;
+            }
+
+            try {
+                // Run tsc --noEmit on the logic directory to catch type errors
+                // without emitting JavaScript files
+                const files = tsFiles.map(f => join(logicDir, f)).join(' ');
+                execSync(`npx tsc --noEmit --skipLibCheck --moduleResolution node ${files}`, {
+                    cwd: templatePath,
+                    stdio: 'pipe',
+                    encoding: 'utf8',
+                });
+            } catch (error) {
+                // Capture stderr which contains the actual type errors
+                const output = error.stderr || error.stdout || error.message;
+                throw new Error(`${name}: TypeScript type errors:\n${output}`);
             }
         });
     }
