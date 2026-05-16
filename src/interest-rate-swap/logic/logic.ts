@@ -1,8 +1,17 @@
 import { ITemplateModel, IRateObservation, IResult } from "./generated/org.accordproject.isda.irs@0.2.0";
+import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
 
 type InterestRateSwapResponse = {
     result: IResult;
 };
+
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
 
 function compoundInterestMultiple(annualInterest: number, numberOfDays: number): number {
     return Math.pow(1.0 + annualInterest, numberOfDays / 365.0);
@@ -14,13 +23,13 @@ class InterestRateSwapLogic extends TemplateLogic<ITemplateModel> {
         if (data.fixedRate < 0.0) {
             throw new Error('Fixed rate cannot be negative');
         }
-        if (data.notionalAmount < 0.0) {
+        if (data.notionalAmount.doubleValue < 0.0) {
             throw new Error('Notional amount cannot be negative');
         }
 
         return {
             result: {
-                outstandingBalance: 10.0,
+                outstandingBalance: monetary(10.0, data.notionalAmount.currencyCode),
                 $timestamp: new Date(),
                 $class: 'org.accordproject.isda.irs@0.2.0.Result'
             }
