@@ -36,12 +36,12 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IState
+} from './org.accordproject.runtime@0.2.0';
+import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
-import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
 import type {
 	IBinaryResource
 } from './org.accordproject.binary@0.2.0';
@@ -80,9 +80,9 @@ export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IContract | 
+export type AssetUnion = IState | 
+IContract | 
 IClause | 
-IState | 
 IBinaryResource;
 
 export interface IParticipant extends IConcept {

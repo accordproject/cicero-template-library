@@ -215,8 +215,9 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         }
 
         // Update past failures within range
+        const pastFailureDates = state.pastFailures.map(d => d.toISOString());
         const updatedFailures = this.failuresInRange(
-            [...(state.pastFailures as string[]), deliveryDate.toISOString()],
+            [...pastFailureDates, deliveryDate.toISOString()],
             failureRangeDuration
         );
         const nbFailures = updatedFailures.length;
@@ -230,7 +231,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         const newState: IPurchaseOrderFailureState = {
             $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
             $identifier: state.$identifier,
-            pastFailures: updatedFailures as unknown as Date[],
+            pastFailures: updatedFailures.map(d => new Date(d)),
             nbPastFailures: nbFailures
         };
 

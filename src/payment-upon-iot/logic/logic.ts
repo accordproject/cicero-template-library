@@ -48,7 +48,6 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
     private makeCounterResponse(state: ICounterState): ICounterResponse {
         return {
             $class: `${NS}.CounterResponse`,
-            $identifier: new Date().toISOString(),
             $timestamp: new Date(),
             counter: state.counter,
             paymentCount: state.paymentCount,
@@ -168,7 +167,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
 
         const newPaymentCount = state.paymentCount + 1.0;
         const newStatus: ContractLifecycleStatus =
-            newPaymentCount >= data.paymentCount ? "COMPLETED" : "RUNNING";
+            newPaymentCount >= data.paymentCount ? ContractLifecycleStatus.COMPLETED : ContractLifecycleStatus.RUNNING;
 
         const unitsPaid = Math.max(
             0,

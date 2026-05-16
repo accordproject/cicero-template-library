@@ -93,7 +93,6 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
             // Shipment is late — return zero price
             const lateResult: IPriceCalculation = {
                 $class: "org.accordproject.perishablegoods@0.2.0.PriceCalculation",
-                $identifier: new Date().toISOString(),
                 $timestamp: new Date(),
                 totalPrice: 0.0,
                 penalty: 0.0,
@@ -145,7 +144,6 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
 
         const result: IPriceCalculation = {
             $class: "org.accordproject.perishablegoods@0.2.0.PriceCalculation",
-            $identifier: new Date().toISOString(),
             $timestamp: new Date(),
             totalPrice,
             penalty: totalPenalty,

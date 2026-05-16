@@ -57,12 +57,7 @@ const expectedFailures = new Set([
 
 // Templates with TypeScript type errors in their logic.ts files.
 // These are pre-existing issues that should be fixed separately.
-const typeCheckingFailures = new Set([
-    'docusign-po-failure',
-    'payment-upon-iot',
-    'perishable-goods',
-    'supply-agreement-loc',
-]);
+const typeCheckingFailures = new Set([]);
 
 describe('template compilation', () => {
     for (const name of templates) {
