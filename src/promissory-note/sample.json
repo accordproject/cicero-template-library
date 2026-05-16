@@ -1,0 +1,27 @@
+{
+  "$class": "org.accordproject.promissorynote@0.2.0.TemplateModel",
+  "amount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1000,
+    "currencyCode": "USD"
+  },
+  "date": "2018-01-30T01:00:00.000+01:00",
+  "maker": "Daniel",
+  "interestRate": 3.8,
+  "individual": true,
+  "makerAddress": "1 Main Street",
+  "lender": "Clause Inc.",
+  "legalEntity": "CORP",
+  "lenderAddress": "246 5th Ave, 3rd Fl, New York, NY 10001",
+  "principal": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 500,
+    "currencyCode": "USD"
+  },
+  "maturityDate": "2019-01-20T01:00:00.000+01:00",
+  "defaultDays": 90,
+  "insolvencyDays": 90,
+  "jurisdiction": "New York, NY",
+  "$identifier": "363b4c84-9587-45c4-983d-a950b914e8b4",
+  "clauseId": "363b4c84-9587-45c4-983d-a950b914e8b4"
+}

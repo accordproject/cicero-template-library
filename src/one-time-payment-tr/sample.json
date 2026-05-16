@@ -1,0 +1,12 @@
+{
+  "$class": "org.accordproject.onetimepaymenttr@0.1.0.TemplateModel",
+  "buyer": "resource:org.accordproject.party.Party#Can%20Do%C4%9Fan",
+  "seller": "resource:org.accordproject.party.Party#ACME%20Corp.",
+  "totalPurchasePrice": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 1922.99,
+    "currencyCode": "TRY"
+  },
+  "$identifier": "600ed083-59c4-4208-a8ba-8b9967547df1",
+  "clauseId": "600ed083-59c4-4208-a8ba-8b9967547df1"
+}

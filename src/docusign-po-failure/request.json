@@ -1,8 +1,8 @@
 {
-    "$class": "com.docusign.connect.DocuSignEnvelopeInformation",
+    "$class": "com.docusign.connect@0.4.0.DocuSignEnvelopeInformation",
     "envelopeStatus": {
-        "$class": "com.docusign.connect.EnvelopeStatus",
-        "status" : "Completed"
+        "$class": "com.docusign.connect@0.4.0.EnvelopeStatus",
+        "status": "Completed"
     },
     "recipients": [
         {
@@ -18,7 +18,7 @@
                     "customTabType": "Text",
                     "tabValue": "USD",
                     "originalValue": "",
-                    "$class": "com.docusign.connect.TextTabStatus"
+                    "$class": "com.docusign.connect@0.4.0.TextTabStatus"
                 },
                 {
                     "tabType": "Custom",
@@ -28,7 +28,7 @@
                     "customTabType": "Number",
                     "tabValue": 375.88,
                     "originalValue": "",
-                    "$class": "com.docusign.connect.NumberTabStatus"
+                    "$class": "com.docusign.connect@0.4.0.NumberTabStatus"
                 },
                 {
                     "tabType": "Custom",
@@ -38,10 +38,10 @@
                     "customTabType": "Date",
                     "tabValue": "2019-03-25T00:00:00-07:00",
                     "originalValue": "",
-                    "$class": "com.docusign.connect.DateTabStatus"
+                    "$class": "com.docusign.connect@0.4.0.DateTabStatus"
                 }
             ],
-            "$class": "com.docusign.connect.Recipient"
+            "$class": "com.docusign.connect@0.4.0.Recipient"
         }
     ]
 }

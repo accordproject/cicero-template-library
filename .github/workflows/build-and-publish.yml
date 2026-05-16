@@ -2,25 +2,28 @@ name: Build and Deploy
 
 on:
   push:
-    branches: 
-      - master
+    branches:
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
 jobs:
 
   build:
+
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    environment: production
+    timeout-minutes: 30
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [22.x]
 
     steps:
       - name: Checkout code
@@ -30,6 +33,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
 
       - name: NPM Install
         run: npm install
@@ -37,20 +41,25 @@ jobs:
       - name: NPM Build
         run: npm run build
 
-      - name: Set S3 
-        run: |
-            echo "AWS_S3_BUCKET=${{secrets.AWS_S3_BUCKET}}" >> $GITHUB_ENV
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete
+        run: |
+          aws s3 sync build s3://${{ secrets.AWS_S3_BUCKET }} \
+            --acl public-read \
+            --follow-symlinks \
+            --delete
         env:
-          SOURCE_DIR: 'build'
+          AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: Invalidate Cloudfront
-        uses: chetan/invalidate-cloudfront-action@master
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
         env:
-          DISTRIBUTION: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
-          PATHS: '/*'
           AWS_REGION: ${{ secrets.AWS_REGION }}

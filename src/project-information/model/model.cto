@@ -1,12 +1,13 @@
-namespace org.accordproject.projectinformation
+namespace org.accordproject.projectinformation@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 
-asset ProjectInformation extends Clause {
+@template
+asset TemplateModel extends Clause {
     o String name
     o DateTime deadline
-    o MonetaryAmount budget
+    o Double budgetAmount
+    o String budgetCurrency
     o String description
     o String other
 }

@@ -1,0 +1,8 @@
+{
+  "$class": "org.accordproject.eatapples@0.1.0.TemplateModel",
+  "employee": "Dan",
+  "company": "ACME",
+  "tax": 4.5,
+  "clauseId": "0956261f-a7be-468d-b2dd-809c22fbc9c2",
+  "$identifier": "0956261f-a7be-468d-b2dd-809c22fbc9c2"
+}

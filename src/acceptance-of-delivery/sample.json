@@ -1,0 +1,10 @@
+{
+  "$class": "org.accordproject.acceptanceofdelivery@0.1.0.TemplateModel",
+  "shipper": "resource:org.accordproject.organization.Organization#Party%20A",
+  "receiver": "resource:org.accordproject.organization.Organization#Party%20B",
+  "deliverable": "Widgets",
+  "businessDays": 10,
+  "attachment": "Attachment X",
+  "clauseId": "c828dbee-4100-4172-adbd-a4f11c9a4847",
+  "$identifier": "c828dbee-4100-4172-adbd-a4f11c9a4847"
+}

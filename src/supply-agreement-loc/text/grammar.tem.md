@@ -9,13 +9,13 @@ This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agree
    Letter Of Issue Date: {{issueDate}}\
    {{importerCreditworthiness}}\
    L/C Number: {{importerLOCNumber}}\
-   {{importerLOCBank}} hereby issues this irrevocable documentary Letter of Credit, {{importerLOCNumber}} to {{importer}} for {{importerLOCAmount}}. An initial payment of {{% importerLOCAmount.doubleValue / 2.0 %}} will be made immediately upon sight by a draft drawn against {{importerLOCBank}} in accordance with {{importerLOCNumber}}.\
+   {{importerLOCBank}} hereby issues this irrevocable documentary Letter of Credit, {{importerLOCNumber}} to {{importer}} for {{importerLOCAmount}}. An initial payment of {{% importerLOCAmount / 2.0 %}} will be made immediately upon sight by a draft drawn against {{importerLOCBank}} in accordance with {{importerLOCNumber}}.\
    The draft is to be accompanied by the following documents:
    1. {{orderBillOfLading}}
    2. {{packingList}}
    3. {{invoice}}
    
-   The remaining {{% importerLOCAmount.doubleValue / 2.0 %}} will be made upon acceptance of the {{product}} by the {{importer}} defined in section 6. below.
+   The remaining {{% importerLOCAmount / 2.0 %}} will be made upon acceptance of the {{product}} by the {{importer}} defined in section 6. below.
 
 3. Orders.
    1. Purchase Orders. The {{importer}} shall submit all orders for {{product}} to the {{exporter}} in writing to the {{exporterAddress}} and include in each {{purchaseOrder}}
@@ -54,7 +54,7 @@ This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agree
    1. Acceptance of Delivery.  The {{exporter}} will be deemed to have completed its delivery obligations if
       1. the {{importer}} notifies the {{exporter}} in writing that it is accepting the {{product}}. This will trigger the second and final payment installation as documented in section 2 above.
       2. Inspection and Notice. The {{importer}} will have {{evaluationTime}} to inspect and evaluate the {{product}} on the {{deliveryDate}} before notifying the {{exporter}} that it is either accepting or rejecting the {{product}}.
-      3. Acceptance Criteria. If {{acceptanceCriteria}} is true based on Annex B, attached to this agreement, then {{importer}} shall pay {{exporter}} {{% importerLOCAmount.doubleValue / 2.0 %}}
+      3. Acceptance Criteria. If {{acceptanceCriteria}} is true based on Annex B, attached to this agreement, then {{importer}} shall pay {{exporter}} {{% importerLOCAmount / 2.0 %}}
 
 6. Term
    1. Initial Term. The initial term of this agreement begins on {{termBeginDate}} and will continue for {{termPeriod}}, unless terminated earlier (the "Initial Term").

@@ -14,21 +14,24 @@
 
 'use strict';
 
-const CodeGen = require('@accordproject/concerto-tools').CodeGen;
-const FileWriter = require('@accordproject/concerto-tools').FileWriter;
+const CodeGen = require('@accordproject/concerto-codegen').CodeGen;
+const FileWriter = require('@accordproject/concerto-util').FileWriter;
 
 const HtmlTransformer = require('@accordproject/markdown-html').HtmlTransformer;
 const CiceroMarkTransformer = require('@accordproject/markdown-cicero').CiceroMarkTransformer;
 
 const Template = require('@accordproject/cicero-core').Template;
-const Clause = require('@accordproject/cicero-core').Clause;
 const rimraf = require('rimraf');
 const path = require('path');
 const nunjucks = require('nunjucks');
 const plantumlEncoder = require('plantuml-encoder');
 const showdown = require('showdown');
-const { v1: uuidv1 } = require('uuid');
+const uuidv1 = require('uuid/v1');
 const semver = require('semver');
+const LZString = require('lz-string');
+const pLimit = require('p-limit');
+
+const BUILD_CONCURRENCY = Number(process.env.BUILD_CONCURRENCY) || 8;
 
 const {
     promisify
@@ -52,7 +55,7 @@ const rootDir = resolve(__dirname, './src');
 const buildDir = resolve(__dirname, './build/');
 const archiveDir = resolve(__dirname, './build/archives');
 const serverRoot = process.env.SERVER_ROOT ? process.env.SERVER_ROOT : 'https://templates.accordproject.org';
-const studioRoot = 'https://studio.accordproject.org';
+const playgroundRoot = 'https://playground.accordproject.org';
 const githubRoot = `https://github.dev/accordproject/cicero-template-library/blob/master`;
 
 const ciceroMark = new CiceroMarkTransformer();
@@ -108,10 +111,31 @@ nunjucks.configure('./views', {
             // get the latest versions of each template
             const latestIndex = filterTemplateIndex(templateIndex);
 
+            // group templates by tag for the index page
+            const groupedByTag = {};
+            for (const [id, entry] of Object.entries(latestIndex)) {
+                const tags = (entry.tags && entry.tags.length) ? entry.tags : ['untagged'];
+                for (const tag of tags) {
+                    if (!groupedByTag[tag]) groupedByTag[tag] = {};
+                    groupedByTag[tag][id] = entry;
+                }
+            }
+            const tagOrder = ['finance', 'sales', 'vendor', 'shipping', 'real-estate', 'intellectual-property', 'services', 'HR', 'reference', 'untagged'];
+            const sortedTags = Object.keys(groupedByTag).sort((a, b) => {
+                const ai = tagOrder.indexOf(a);
+                const bi = tagOrder.indexOf(b);
+                if (ai !== -1 && bi !== -1) return ai - bi;
+                if (ai !== -1) return -1;
+                if (bi !== -1) return 1;
+                return a.localeCompare(b);
+            });
+            const groupedSorted = sortedTags.map(tag => ({ tag, templates: groupedByTag[tag] }));
+
             // generate the index html page
             const templateResult = nunjucks.render('index.njk', {
                 serverRoot: serverRoot,
                 templateIndex: latestIndex,
+                groupedByTag: groupedSorted,
             });
             await writeFile('./build/index.html', templateResult);
         }
@@ -190,160 +214,171 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 
     const files = await getFiles(rootDir);
 
+    // Collect the package.json files that look like templates.
+    const candidates = [];
     for (const file of files) {
         const fileName = path.basename(file);
-        let selected = false;
-
-        // assume all package.json files that are not inside node_modules are templates
-        if (fileName === 'package.json' && file.indexOf('/node_modules/') === -1) {
-            selected = true;
+        if (fileName !== 'package.json' || file.indexOf('/node_modules/') !== -1) continue;
+        if (selectedTemplate) {
+            const pkgJson = JSON.parse(fs.readFileSync(file, 'utf8'));
+            if (pkgJson.name !== selectedTemplate) continue;
         }
+        candidates.push(file);
+    }
 
-        // unless a given template name has been specified
-        if (selected && selectedTemplate) {
-            const packageJson = fs.readFileSync(file, 'utf8');
-            const pkgJson = JSON.parse(packageJson);
-            if (pkgJson.name != selectedTemplate) {
-                selected = false;
+    await fs.ensureDir(archiveDir);
+    const limit = pLimit(BUILD_CONCURRENCY);
+
+    // Per-template work runs in parallel under a bounded pool. Each task
+    // returns a patch describing what should be merged into templateIndex,
+    // so the shared index is only mutated serially after the pool drains.
+    const tasks = candidates.map(file => limit(async () => {
+        const templatePath = path.dirname(file);
+        const dest = templatePath.replace('/src/', '/build/');
+        console.log(`Processing ${templatePath}`);
+        try {
+            const template = await Template.fromDirectory(templatePath);
+            await preProcessor(templatePath, template);
+
+            if (process.env.SKIP_GENERATION) return null;
+
+            const destPath = path.dirname(dest);
+            await fs.ensureDir(destPath);
+            const archiveFileName = `${template.getIdentifier()}.cta`;
+            const archiveFilePath = `${archiveDir}/${archiveFileName}`;
+            const ciceroArchiveFileName = `${template.getIdentifier()}-cicero.cta`;
+            const ciceroArchiveFilePath = `${archiveDir}/${ciceroArchiveFileName}`;
+
+            const [archiveFileExists, ciceroArchiveFileExists] = await Promise.all([
+                fs.pathExists(archiveFilePath),
+                fs.pathExists(ciceroArchiveFilePath),
+            ]);
+
+            if (!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                const ciceroArchive = await template.toArchive('es6');
+                await writeFile(ciceroArchiveFilePath, ciceroArchive);
+                console.log('Copied: ' + ciceroArchiveFilePath);
             }
-        }
+            if (!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
+                const tsArchive = await template.toArchive('typescript');
+                await writeFile(archiveFilePath, tsArchive);
+                console.log('Copied: ' + archiveFileName);
+            }
 
-        if (selected) {
-            // read the parent directory as a template
-            const templatePath = path.dirname(file);
-            console.log(`Processing ${templatePath}`);
-            const dest = templatePath.replace('/src/', '/build/');
-            await fs.ensureDir(archiveDir);
-
+            const m = template.getMetadata();
+            let tags = [];
             try {
-                const template = await Template.fromDirectory(templatePath);
+                const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
+                if (Array.isArray(rawPkg.tags)) tags = rawPkg.tags;
+            } catch (e) { /* ignore */ }
 
-                // call the pre template processor
-                await preProcessor(templatePath, template);
-
-                if (!process.env.SKIP_GENERATION) {
-                    const templateVersions = Object.keys(templateIndex).filter(
-                        item => {
-                            const atIndex = item.indexOf("@");
-                            const name = item.substring(0, atIndex);
-                            return name == template.getName();
-                        }
-                    ).sort((a, b) => {
-                        const versionA = a.substring(a.indexOf('@') + 1);
-                        const versionB = b.substring(b.indexOf('@') + 1);
-                        return semver.rcompare(versionA, versionB);
-                    });
-
-                    templateVersions.forEach(versionToUpdate => {
-                        const templateResult = nunjucks.render("dropdown.njk", {
-                            identifier: versionToUpdate,
-                            templateVersions: templateVersions,
-                        });
-                        fs.readFile(
-                            "build/" + versionToUpdate + ".html",
-                            "utf8",
-                            (err, data) => {
-                                if (err) {
-                                    console.log(`Failed reading build/${versionToUpdate}.html with ${err}`);
-                                    return;
-                                }
-                                const dom = new jsdom.JSDOM(data);
-                                const $ = jquery(dom.window);
-                                if (!process.env.SKIP_DROPDOWNS) {
-                                    const dropdownContentElement = $(".dropdown-content");
-                                    if (dropdownContentElement.length) {
-                                        dropdownContentElement.html(templateResult);
-                                    }
-                                }
-
-                                if (process.env.ADD_VSCODE_BUTTON) {
-                                    const dropdownContentElement = $("a.button.open-studio");
-                                    if (dropdownContentElement.length) {
-                                        const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
-                                        dropdownContentElement.after(`\n<a href="${githubURL}" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>`);
-
-                                    }
-                                }
-
-                                if (!process.env.SKIP_DROPDOWNS || process.env.ADD_VSCODE_BUTTON) {
-                                    fs.writeFile(
-                                        "build/" + versionToUpdate + ".html",
-                                        dom.serialize(),
-                                        err => {
-                                            if (err) {
-                                                console.log(`Failed saving build/${versionToUpdate}.html with ${err}`);
-                                            } else {
-                                                console.log("VSCode button added for template: " + "build/" + versionToUpdate + ".html");
-                                            }
-                                        }
-                                    );
-                                }
-                            }
-                        );
-                    });
-
-                    // get the name of the generated archive
-                    const destPath = path.dirname(dest);
-                    await fs.ensureDir(destPath);
-                    const archiveFileName = `${template.getIdentifier()}.cta`;
-                    const archiveFilePath = `${archiveDir}/${archiveFileName}`;
-                    const archiveFileExists = await fs.pathExists(archiveFilePath);
-
-                    const ciceroArchiveFileName = `${template.getIdentifier()}-cicero.cta`;
-                    const ciceroArchiveFilePath = `${archiveDir}/${ciceroArchiveFileName}`;
-                    const ciceroArchiveFileExists = await fs.pathExists(ciceroArchiveFilePath);
-
-                    if (!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        const ciceroArchive = await template.toArchive('es6');
-                        await writeFile(ciceroArchiveFilePath, ciceroArchive);
-                        console.log('Copied: ' + ciceroArchiveFilePath);
-                    }
-
-                    if (!archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        const ergoArchive = await template.toArchive('ergo');
-                        await writeFile(archiveFilePath, ergoArchive);
-                        console.log('Copied: ' + archiveFileName);
-                    }
-
-                    if (!ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
-                        // update the index
-                        const m = template.getMetadata();
-                        const templateHash = template.getHash();
-                        const indexData = {
-                            uri: `ap://${template.getIdentifier()}#${templateHash}`,
-                            url: `${serverRoot}/archives/${archiveFileName}`,
-                            ciceroUrl: `${serverRoot}/archives/${ciceroArchiveFileName}`,
-                            name: m.getName(),
-                            displayName: m.getDisplayName(),
-                            description: m.getDescription(),
-                            version: m.getVersion(),
-                            ciceroVersion: m.getCiceroVersion(),
-                            type: m.getTemplateType(),
-                            logo: m.getLogo() ? m.getLogo().toString('base64') : null,
-                            author: m.getAuthor() ? m.getAuthor() : null,
-                        }
-                        templateIndex[template.getIdentifier()] = indexData;
-
-                        // call the post template processor
-                        await postProcessor(templateIndex, templatePath, template);
-                    }
-                    else {
-                        console.log(`Skipped: ${archiveFileName} (already exists).`);
-                    }
-                }
-            } catch (err) {
-                console.log(err);
-                console.log(`Failed processing ${file} with ${err}`);
-            }
+            const regenerated = !ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE;
+            const indexData = {
+                uri: `ap://${template.getIdentifier()}#${template.getHash()}`,
+                url: `${serverRoot}/archives/${archiveFileName}`,
+                ciceroUrl: `${serverRoot}/archives/${ciceroArchiveFileName}`,
+                name: m.getName(),
+                displayName: m.getDisplayName(),
+                description: m.getDescription(),
+                version: m.getVersion(),
+                ciceroVersion: m.getCiceroVersion(),
+                type: m.getTemplateType(),
+                logo: m.getLogo() ? m.getLogo().toString('base64') : null,
+                author: m.getAuthor() ? m.getAuthor() : null,
+                tags,
+            };
+            if (!regenerated) console.log(`Skipped: ${archiveFileName} (already exists).`);
+            return { templatePath, template, indexData, regenerated };
+        } catch (err) {
+            console.log(err);
+            console.log(`Failed processing ${file} with ${err}`);
+            return null;
         }
+    }));
+
+    const results = (await Promise.all(tasks)).filter(Boolean);
+
+    // Merge per-template index data serially so write order is deterministic.
+    for (const r of results) {
+        templateIndex[r.template.getIdentifier()] = r.indexData;
+    }
+
+    // Run the page generator + dropdown patches sequentially against the
+    // now-stable templateIndex. This is the cheap, ordering-sensitive pass.
+    for (const r of results) {
+        if (r.regenerated) {
+            await postProcessor(templateIndex, r.templatePath, r.template);
+        }
+        await patchDropdowns(r.template);
     }
 
     // save the index
     await writeFile(templateLibraryPath, JSON.stringify(templateIndex, null, 4));
 
-    // return the updated index
     return templateIndex;
 };
+
+/**
+ * Update the version-dropdown (and optional VSCode-button injection) on every
+ * already-rendered HTML page for this template. Runs sequentially per template
+ * but every callsite uses fs.promises so it doesn't fire-and-forget.
+ */
+async function patchDropdowns(template) {
+    if (process.env.SKIP_GENERATION) return;
+    if (process.env.SKIP_DROPDOWNS && !process.env.ADD_VSCODE_BUTTON) return;
+
+    // load the persisted index once per call so we see every freshly-merged version
+    const templateLibraryPath = `${buildDir}/template-library.json`;
+    let templateIndex = {};
+    if (await fs.pathExists(templateLibraryPath)) {
+        templateIndex = JSON.parse(await fs.promises.readFile(templateLibraryPath, 'utf8'));
+    }
+
+    const templateVersions = Object.keys(templateIndex).filter(item => {
+        const atIndex = item.indexOf('@');
+        return item.substring(0, atIndex) === template.getName();
+    }).sort((a, b) => {
+        const versionA = a.substring(a.indexOf('@') + 1);
+        const versionB = b.substring(b.indexOf('@') + 1);
+        return semver.rcompare(versionA, versionB);
+    });
+
+    for (const versionToUpdate of templateVersions) {
+        const htmlPath = `build/${versionToUpdate}.html`;
+        let data;
+        try {
+            data = await fs.promises.readFile(htmlPath, 'utf8');
+        } catch (err) {
+            console.log(`Failed reading ${htmlPath} with ${err}`);
+            continue;
+        }
+        const templateResult = nunjucks.render('dropdown.njk', {
+            identifier: versionToUpdate,
+            templateVersions,
+        });
+        const dom = new jsdom.JSDOM(data);
+        const $ = jquery(dom.window);
+        if (!process.env.SKIP_DROPDOWNS) {
+            const dropdownContentElement = $('.dropdown-content');
+            if (dropdownContentElement.length) {
+                dropdownContentElement.html(templateResult);
+            }
+        }
+        if (process.env.ADD_VSCODE_BUTTON) {
+            const openStudio = $('a.button.open-studio');
+            if (openStudio.length) {
+                const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
+                openStudio.after(`\n<a href="${githubURL}" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>`);
+            }
+        }
+        try {
+            await fs.promises.writeFile(htmlPath, dom.serialize());
+            console.log(`Updated dropdown in ${htmlPath}`);
+        } catch (err) {
+            console.log(`Failed saving ${htmlPath} with ${err}`);
+        }
+    }
+}
 
 /**
  * Runs the standard tests for a template
@@ -351,18 +386,8 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
  * @param {Template} template
  */
 async function templateUnitTester(templatePath, template) {
-    // check that all the samples parse
-    const samples = template.getMetadata().getSamples();
-    if (samples) {
-        const sampleValues = Object.values(samples);
-
-        // should be TemplateInstance
-        const instance = new Clause(template);
-
-        for (const s of sampleValues) {
-            instance.parse(s);
-        }
-    }
+    // Cicero 0.26 removed natural-language sample parsing, so loading the
+    // template via Template.fromDirectory is the validation we get.
 }
 
 /**
@@ -424,46 +449,46 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const encoded = plantumlEncoder.encode(pumlContent);
     const umlURL = `https://www.plantuml.com/plantuml/svg/${encoded}`;
     const umlCardURL = `https://www.plantuml.com/plantuml/png/${encoded}`;
-    const studioURL = `${studioRoot}/?template=${encodeURIComponent('ap://' + template.getIdentifier() + '#hash')}`;
     const githubURL = `${githubRoot}/src/${encodeURIComponent(template.getName())}/README.md`;
 
     const converter = new showdown.Converter();
     const readmeHtml = converter.makeHtml(template.getMetadata().getREADME());
 
-    let sampleInstanceText = null;
-
-    // parse the default sample and use it as the sample instance
-    const samples = template.getMetadata().getSamples();
-    if (samples.default) {
-        // should be TemplateInstance
-        const instance = new Clause(template);
-        instance.parse(samples.default);
-        sampleInstanceText = JSON.stringify(instance.getData(), null, 4);
-    }
-    else {
-        // no sample was found, so we generate one
+    // Cicero 0.26 no longer parses sample markdown back to JSON. If a
+    // committed sample.json exists (bootstrapped from older archives),
+    // use it; otherwise generate a synthetic instance from the model.
+    const sampleJsonPath = path.join(templatePath, 'sample.json');
+    let sampleInstanceText;
+    if (fs.existsSync(sampleJsonPath)) {
+        sampleInstanceText = fs.readFileSync(sampleJsonPath, 'utf8');
+    } else {
         const classDecl = template.getTemplateModel();
         sampleInstanceText = JSON.stringify(sampleInstance(template, classDecl.getFullyQualifiedName()), null, 4);
     }
 
+    const safeSample = (type) => {
+        try { return JSON.stringify(sampleInstance(template, type), null, 4); }
+        catch (e) { return `// sample generation failed: ${e.message}`; }
+    };
+
     const requestTypes = {};
     for (let type of template.getRequestTypes()) {
-        requestTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        requestTypes[type] = safeSample(type);
     }
 
     const responseTypes = {};
     for (let type of template.getResponseTypes()) {
-        responseTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        responseTypes[type] = safeSample(type);
     }
 
     const stateTypes = {}
     for (let type of template.getStateTypes()) {
-        stateTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        stateTypes[type] = safeSample(type);
     }
 
     const eventTypes = {}
     for (let type of template.getEmitTypes()) {
-        eventTypes[type] = JSON.stringify(sampleInstance(template, type), null, 4);
+        eventTypes[type] = safeSample(type);
     }
 
     // get all the versions of the template (sorted by semver, newest first)
@@ -480,15 +505,36 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
     const sample = template.getMetadata().getSample();
     const logo = template.getMetadata().getLogo() ? template.getMetadata().getLogo().toString('base64') : null;
     const author = template.getMetadata().getAuthor() ? template.getMetadata().getAuthor() : null;
+    const grammarPath = path.join(templatePath, 'text', 'grammar.tem.md');
+    const grammar = fs.existsSync(grammarPath) ? fs.readFileSync(grammarPath, 'utf8') : '';
     let sampleHTML = htmlMark.toHtml(ciceroMark.fromMarkdown(sample, 'json'));
-    // XXX HTML cleanup hack for rendering in page. Would be best done with the right option in markdown-transform
-    sampleHTML = sampleHTML.replace('<html>\n<body>\n<div class="document">', '').replace('</div>\n</body>\n</html>', '');
+    // Strip the outer <html>/<head>/<body>/document wrapper that
+    // @accordproject/markdown-html 0.18 emits, leaving just the inner
+    // body so the snippet renders inline on the template page.
+    const docMatch = sampleHTML.match(/<div class="document">([\s\S]*)<\/div>\s*<\/body>/);
+    if (docMatch) {
+        sampleHTML = docMatch[1];
+    }
+
+    // Build a playground.accordproject.org share link. The playground
+    // reads `#data=<lz-compressed JSON>` and expects four string fields.
+    const modelCto = template.getModelManager().getModels()
+        .filter(m => !m.name.startsWith('@'))
+        .map(m => m.content)
+        .join('\n\n');
+    const playgroundPayload = {
+        templateMarkdown: grammar,
+        modelCto,
+        data: sampleInstanceText,
+        agreementHtml: '',
+    };
+    const playgroundURL = `${playgroundRoot}/#data=${LZString.compressToEncodedURIComponent(JSON.stringify(playgroundPayload))}`;
 
     const templateResult = nunjucks.render('template.njk', {
         serverRoot: serverRoot,
         umlURL: umlURL,
         umlCardURL: umlCardURL,
-        studioURL: studioURL,
+        playgroundURL: playgroundURL,
         githubURL: githubURL,
         filePath: templatePageHtml,
         template: template,
@@ -504,6 +550,7 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         templateVersions: templateVersions,
         logo: logo,
         author: author,
+        grammar: grammar,
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
 }

@@ -6,16 +6,24 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	InspectionStatus
-} from './io.clause.acceptanceofdelivery@0.1.0';
+} from './org.accordproject.acceptanceofdelivery@0.1.0';
+import type {
+	Month,
+	Day,
+	TemporalUnit,
+	IDuration,
+	PeriodUnit,
+	IPeriod
+} from './org.accordproject.time@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IState
+} from './org.accordproject.runtime@0.2.0';
 import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
-import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -33,15 +41,16 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = ;
+export type ConceptUnion = IDuration | 
+IPeriod;
 
 export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IContract | 
-IClause | 
-IState;
+export type AssetUnion = IState | 
+IContract | 
+IClause;
 
 export interface IParticipant extends IConcept {
    $identifier: string;

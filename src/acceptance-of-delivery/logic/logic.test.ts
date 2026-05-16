@@ -8,13 +8,16 @@ declare global {
 // Mock runtime globals BEFORE importing logic
 (global as any).TemplateLogic = class TemplateLogic<T, S> {
     async init(data: T): Promise<any> { return { state: {} }; }
-    async trigger(data: T, request: any, state: S): Promise<any> { return {}; }
+    async trigger(data: T, request: any, state?: S): Promise<any> { return {}; }
 };
 (global as any).EngineResponse = class EngineResponse<S> {};
 (global as any).InitResponse = class InitResponse<S> {};
 
 import AcceptanceOfDeliveryLogic from './logic';
-import { ITemplateModel, IInspectDeliverable } from './generated/io.clause.acceptanceofdelivery@0.1.0';
+import {
+    ITemplateModel,
+    IInspectDeliverable,
+} from './generated/org.accordproject.acceptanceofdelivery@0.1.0';
 
 describe('AcceptanceOfDeliveryLogic', () => {
     let logic: AcceptanceOfDeliveryLogic;
@@ -23,59 +26,77 @@ describe('AcceptanceOfDeliveryLogic', () => {
     beforeEach(() => {
         logic = new AcceptanceOfDeliveryLogic();
         model = {
-            $class: 'io.clause.acceptanceofdelivery@0.1.0.TemplateModel',
-            $identifier: 'test-id',
-            clauseId: 'test-id',
-            shipper: 'Party A',
-            receiver: 'Party B',
-            deliverable: 'Widgets',
+            $class: 'org.accordproject.acceptanceofdelivery@0.1.0.TemplateModel',
+            $identifier: 'test-clause-id',
+            clauseId: 'test-clause-id',
+            shipper: 'Fast Freight Co',
+            receiver: 'Goods Recipient Inc',
+            deliverable: 'Computer Equipment',
             businessDays: 10,
-            attachment: 'Attachment X'
+            attachment: 'Annex A',
         };
     });
 
-    describe('trigger', () => {
-        it('should pass if inspection passed within time limit', async () => {
-            const request: IInspectDeliverable = {
-                $class: 'io.clause.acceptanceofdelivery@0.1.0.InspectDeliverable',
-                deliverableReceivedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
-                inspectionPassed: true
-            };
+    const makeRequest = (receivedAt: Date, passed: boolean): IInspectDeliverable => ({
+        $class: 'org.accordproject.acceptanceofdelivery@0.1.0.InspectDeliverable',
+        $identifier: 'req-1',
+        $timestamp: new Date(),
+        deliverableReceivedAt: receivedAt,
+        inspectionPassed: passed,
+    });
+
+    describe('trigger - inspection passed', () => {
+        it('should return PASSED_TESTING within inspection window', async () => {
+            // Received 2 days ago, businessDays=10 → still within inspection window
+            const twoDaysAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000);
+            const request = makeRequest(twoDaysAgo, true);
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class');
+            expect(result.result.$class).toBe('org.accordproject.acceptanceofdelivery@0.1.0.InspectionResponse');
             expect(result.result.status).toBe('PASSED_TESTING');
+            expect(result.result.shipper).toBe('Fast Freight Co');
+            expect(result.result.receiver).toBe('Goods Recipient Inc');
         });
+    });
 
-        it('should fail if inspection failed within time limit', async () => {
-            const request: IInspectDeliverable = {
-                $class: 'io.clause.acceptanceofdelivery@0.1.0.InspectDeliverable',
-                deliverableReceivedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
-                inspectionPassed: false
-            };
+    describe('trigger - inspection failed', () => {
+        it('should return FAILED_TESTING when inspection does not pass', async () => {
+            const twoDaysAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000);
+            const request = makeRequest(twoDaysAgo, false);
             const result = await logic.trigger(model, request);
 
             expect(result.result.status).toBe('FAILED_TESTING');
         });
+    });
 
-        it('should be outside inspection period if deadline missed', async () => {
-            const request: IInspectDeliverable = {
-                $class: 'io.clause.acceptanceofdelivery@0.1.0.InspectDeliverable',
-                deliverableReceivedAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(), // 15 days ago
-                inspectionPassed: true
-            };
+    describe('trigger - outside inspection period', () => {
+        it('should return OUTSIDE_INSPECTION_PERIOD when beyond businessDays', async () => {
+            // Received 15 days ago, businessDays=10 → outside inspection window
+            const fifteenDaysAgo = new Date(Date.now() - 15 * 24 * 60 * 60 * 1000);
+            const request = makeRequest(fifteenDaysAgo, true);
             const result = await logic.trigger(model, request);
 
             expect(result.result.status).toBe('OUTSIDE_INSPECTION_PERIOD');
         });
+    });
 
-        it('should throw an error if received date is in the future', async () => {
-            const request: IInspectDeliverable = {
-                $class: 'io.clause.acceptanceofdelivery@0.1.0.InspectDeliverable',
-                deliverableReceivedAt: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days in future
-                inspectionPassed: true
-            };
-            await expect(logic.trigger(model, request)).rejects.toThrow('Transaction time is before the deliverable date.');
+    describe('trigger - future delivery date', () => {
+        it('should throw when deliverableReceivedAt is in the future', async () => {
+            const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
+            const request = makeRequest(tomorrow, true);
+            await expect(logic.trigger(model, request))
+                .rejects.toThrow('Transaction time is before the deliverable date.');
+        });
+    });
+
+    describe('trigger - response structure', () => {
+        it('should include $timestamp in result', async () => {
+            const oneDayAgo = new Date(Date.now() - 1 * 24 * 60 * 60 * 1000);
+            const request = makeRequest(oneDayAgo, true);
+            const result = await logic.trigger(model, request);
+
+            expect(result.result).toHaveProperty('$timestamp');
+            expect(result.result.$timestamp).toBeInstanceOf(Date);
         });
     });
 });

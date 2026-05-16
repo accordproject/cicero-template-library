@@ -1,0 +1,17 @@
+{
+  "$class": "org.accordproject.companyinformation@0.1.0.TemplateModel",
+  "name": "Example Corp.",
+  "industry": "Healthcare",
+  "website": "https://example.org",
+  "address": {
+    "$class": "org.accordproject.address.PostalAddress",
+    "streetAddress": "1 Main Street",
+    "postalCode": "12345",
+    "addressRegion": "ME",
+    "addressLocality": "Portland",
+    "addressCountry": "USA"
+  },
+  "numberOfEmployees": 250,
+  "clauseId": "3eb531fc-ba68-48a2-9503-c6d712abb041",
+  "$identifier": "3eb531fc-ba68-48a2-9503-c6d712abb041"
+}
