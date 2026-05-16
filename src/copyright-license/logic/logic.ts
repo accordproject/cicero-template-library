@@ -12,7 +12,6 @@ class CopyrightLicenseLogic extends TemplateLogic<ITemplateModel> {
             $class: 'org.accordproject.copyrightlicense@0.2.0.PaymentObligationEvent',
             $timestamp: new Date(),
             amount: data.paymentClause.amount,
-            currencyCode: data.paymentClause.currencyCode,
             description: `${data.licensee} should pay contract amount to ${data.licensor}`
         };
 
@@ -20,8 +19,7 @@ class CopyrightLicenseLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 $class: 'org.accordproject.copyrightlicense@0.2.0.PayOut',
                 $timestamp: new Date(),
-                amount: data.paymentClause.amount,
-                currencyCode: data.paymentClause.currencyCode
+                amount: data.paymentClause.amount
             },
             events: [event]
         };

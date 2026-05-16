@@ -27,8 +27,7 @@ describe('CopyrightLicenseLogic', () => {
             $identifier: 'payment-test-id',
             clauseId: 'payment-test-id',
             amountText: 'one hundred US Dollars',
-            amount: 100.0,
-            currencyCode: 'USD',
+            amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 100.0, currencyCode: 'USD' },
             paymentProcedure: 'bank transfer'
         };
 
@@ -64,8 +63,8 @@ describe('CopyrightLicenseLogic', () => {
             expect(result.result).toBeDefined();
             expect(result.result.$class).toBe('org.accordproject.copyrightlicense@0.2.0.PayOut');
             expect(result.result.$timestamp).toBeDefined();
-            expect(result.result.amount).toBe(100.0);
-            expect(result.result.currencyCode).toBe('USD');
+            expect(result.result.amount.doubleValue).toBe(100.0);
+            expect(result.result.amount.currencyCode).toBe('USD');
         });
 
         it('should emit a PaymentObligationEvent with correct description', async () => {
@@ -81,14 +80,13 @@ describe('CopyrightLicenseLogic', () => {
 
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.copyrightlicense@0.2.0.PaymentObligationEvent');
-            expect(event.amount).toBe(100.0);
-            expect(event.currencyCode).toBe('USD');
+            expect(event.amount.doubleValue).toBe(100.0);
+            expect(event.amount.currencyCode).toBe('USD');
             expect(event.description).toBe('Me should pay contract amount to Myself');
         });
 
         it('should reflect different payment amounts correctly', async () => {
-            model.paymentClause.amount = 250.0;
-            model.paymentClause.currencyCode = 'GBP';
+            model.paymentClause.amount = { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 250.0, currencyCode: 'GBP' };
 
             const request: IPaymentRequest = {
                 $class: 'org.accordproject.copyrightlicense@0.2.0.PaymentRequest',
@@ -97,9 +95,9 @@ describe('CopyrightLicenseLogic', () => {
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result.amount).toBe(250.0);
-            expect(result.result.currencyCode).toBe('GBP');
-            expect((result.events[0] as any).amount).toBe(250.0);
+            expect(result.result.amount.doubleValue).toBe(250.0);
+            expect(result.result.amount.currencyCode).toBe('GBP');
+            expect((result.events[0] as any).amount.doubleValue).toBe(250.0);
         });
     });
 });
