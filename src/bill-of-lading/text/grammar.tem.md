@@ -16,14 +16,14 @@ Booking Number: {{bookingNumber}}
 
 ### Consignee
 
-{{consignee}}
+{{#optional consignee}}{{this}}{{/optional}}
 
 ### Notify Party
 
-{{notifyParty}}
+{{#optional notifyParty}}{{this}}{{/optional}}
 
-Exporter References: {{exportReferences}}  
-Onward Instructions: {{onwardInstructions}}
+Exporter References: {{#optional exportReferences}}{{this}}{{/optional}}  
+Onward Instructions: {{#optional onwardInstructions}}{{this}}{{/optional}}
 
 Vessel: {{vessel}}  
 Voyage number: {{voyageNumber}}
@@ -31,13 +31,13 @@ Voyage number: {{voyageNumber}}
 Port of Loading: {{portOfLoading}}  
 Port of Discharge: {{portOfDischarge}}
 
-Place of Receipt: {{placeOfReceipt}}  
-Place of Delivery: {{placeOfDelivery}}
+Place of Receipt: {{#optional placeOfReceipt}}{{this}}{{/optional}}  
+Place of Delivery: {{#optional placeOfDelivery}}{{this}}{{/optional}}
 
 ### Freight
 
 {{#olist commodities}}
-Amount: {{quantity}} {{unitOfMass}} Package: {{packageType}} Description: {{description}} NMFC: {{nmfcCode}} Freight Class: {{freightClass}} Hazardous: {{hazmat}}
+Amount: {{quantity}} {{unitOfMass}} Package: {{packageType}} Description: {{description}}{{#optional nmfcCode}} NMFC: {{this}}{{/optional}}{{#optional freightClass}} Freight Class: {{this}}{{/optional}}{{#optional hazmat}} Hazardous: {{this}}{{/optional}}
 {{/olist}}
 
 ### Declared value: {{declaredValue}}.

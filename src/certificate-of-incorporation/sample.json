@@ -1,0 +1,20 @@
+{
+  "$class": "org.accordproject.certificateofincorporation@0.1.0.TemplateModel",
+  "companyName": "ACME",
+  "incorporationState": "NY",
+  "streetAddress": "555 main street",
+  "addressRegion": "Manhattan",
+  "addressLocality": "New York",
+  "postalCode": "10001",
+  "registeredAgentName": "Andie Agent",
+  "incorporationDate": "2019-04-01T00:00:00.000+01:00",
+  "authorizedShareCapital": 400,
+  "parValue": 0.1,
+  "incorporatorName": "FooBarAtor",
+  "incorporatorAddress": "555 oak street",
+  "incorporatorCity": "Baltimore",
+  "incorporatorState": "MD",
+  "incorporatorZip": "21201",
+  "$identifier": "07a4f261-dbb1-4d2e-bcab-79cff92c4aa4",
+  "clauseId": "07a4f261-dbb1-4d2e-bcab-79cff92c4aa4"
+}

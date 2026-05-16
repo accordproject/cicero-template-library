@@ -1,0 +1,12 @@
+{
+  "$class": "org.accordproject.fullpaymentupondemand@0.1.0.TemplateModel",
+  "buyer": "resource:org.accordproject.party.Party#Dan",
+  "seller": "resource:org.accordproject.party.Party#Jerome",
+  "value": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 3.14,
+    "currencyCode": "EUR"
+  },
+  "$identifier": "c8648553-53af-400d-bf8c-f2102a17c28c",
+  "clauseId": "c8648553-53af-400d-bf8c-f2102a17c28c"
+}

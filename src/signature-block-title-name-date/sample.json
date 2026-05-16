@@ -1,0 +1,10 @@
+{
+  "$class": "org.accordproject.signatureblocktitlenamedate@0.1.0.TemplateModel",
+  "title": "Title",
+  "signature": "--------",
+  "fullName": "Full Name",
+  "dateSigned": "Date Signed",
+  "signatory": "resource:org.accordproject.party.Party#buyer@example.com",
+  "clauseId": "7a642106-a9ef-4f2c-b9cf-929f01ed559e",
+  "$identifier": "7a642106-a9ef-4f2c-b9cf-929f01ed559e"
+}

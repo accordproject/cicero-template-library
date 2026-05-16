@@ -58,7 +58,7 @@
           </div>
           <a href="./archives/{{template.getIdentifier()}}.cta" class="button is-rounded is-primary download-button">Download Archive</a>
           <a href="./archives/{{template.getIdentifier()}}-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
-          <a href="{{studioURL}}" class="button is-rounded is-primary open-studio">Open in Template Studio</a>
+          <a href="{{playgroundURL}}" class="button is-rounded is-primary open-studio">Open in Template Playground</a>
           <a href="{{githubURL}}" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>
         </p>
 
@@ -102,7 +102,7 @@
                 <pre style="{{pre_style}}"><code class="markdown">{{sample}}</code></pre>
             </div>
             <div class="content box" data-content="3">
-                <pre style="{{pre_style}}"><code class="tem">{{template.getParserManager().getTemplate()}}</code></pre>
+                <pre style="{{pre_style}}"><code class="tem">{{grammar}}</code></pre>
             </div>
             <div class="box" data-content="4">
                 <pre style="{{pre_style}}"><code style="{{code_style}}">{{instance}}</code></pre>

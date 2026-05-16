@@ -1,7 +1,7 @@
-namespace org.accordproject.helloworld
+namespace org.accordproject.helloworld@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 transaction MyRequest extends Request {
   o String input
@@ -11,14 +11,7 @@ transaction MyResponse extends Response {
   o String output
 }
 
-/**
- * The template model
- */
-asset HelloWorldClause extends Clause {
-  /**
-   * The name for the clause
-   */
+@template
+asset TemplateModel extends Clause {
   o String name
 }
-
-// this is a change!

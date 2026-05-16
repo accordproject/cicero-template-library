@@ -1,6 +1,0 @@
-{
-    "$class": "org.accordproject.supplyagreement.AgreementState",
-    "purchaseObligation": null,
-    "deliveryObligation": null,
-    "paymentObligation": null
-}

@@ -1,4 +1,4 @@
 {
-    "$class": "org.accordproject.helloworldstate.MyRequest",
+    "$class": "org.accordproject.helloworldstate@0.1.0.MyRequest",
     "input": "Accord Project"
 }

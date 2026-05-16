@@ -1,22 +1,23 @@
-namespace org.accordproject.installmentsale
+namespace org.accordproject.installmentsale@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 transaction Installment extends Request {
-  o MonetaryAmount amount
+  o Double amount
+  o String currencyCode
 }
 
 transaction ClosingPayment extends Request {
-  o MonetaryAmount amount
+  o Double amount
+  o String currencyCode
 }
 
-transaction Balance extends Request {
-  o MonetaryAmount balance
-  o MonetaryAmount total_paid
+transaction Balance extends Response {
+  o Double balance
+  o String balanceCurrency
+  o Double total_paid
+  o String totalPaidCurrency
 }
 
 enum ContractStatus {
@@ -24,23 +25,32 @@ enum ContractStatus {
   o Fulfilled
 }
 
-asset InstallmentSaleState extends State {
+concept InstallmentSaleState identified {
   o ContractStatus status
-  o MonetaryAmount balance_remaining
+  o Double balance_remaining
+  o String currencyCode
   o Integer next_payment_month
-  o MonetaryAmount total_paid
+  o Double total_paid
+}
+
+event InstallmentSalePaymentEvent {
+  o Double amount
+  o String currencyCode
+  o String description
 }
 
 /**
  * The template model
  */
-asset InstallmentSaleContract extends Contract {
-  --> Party BUYER
-  --> Party SELLER
-  o MonetaryAmount INITIAL_DUE
+@template
+asset TemplateModel extends Clause {
+  o String BUYER
+  o String SELLER
+  o Double INITIAL_DUE
+  o String CURRENCY_CODE
   o Double INTEREST_RATE
-  o MonetaryAmount TOTAL_DUE_BEFORE_CLOSING
-  o MonetaryAmount MIN_PAYMENT
-  o MonetaryAmount DUE_AT_CLOSING
+  o Double TOTAL_DUE_BEFORE_CLOSING
+  o Double MIN_PAYMENT
+  o Double DUE_AT_CLOSING
   o Integer FIRST_MONTH
 }

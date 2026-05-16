@@ -1,0 +1,9 @@
+{
+  "$class": "org.accordproject.demandforecast@0.1.0.TemplateModel",
+  "purchaser": "PETER",
+  "supplier": "DAN",
+  "effectiveDate": "2018-04-02T00:00:00.000+01:00",
+  "minimumPercentage": 85,
+  "clauseId": "47beeea5-ae0e-4882-824b-7adcfaa2f5f1",
+  "$identifier": "47beeea5-ae0e-4882-824b-7adcfaa2f5f1"
+}

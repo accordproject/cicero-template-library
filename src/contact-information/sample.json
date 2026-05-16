@@ -1,0 +1,11 @@
+{
+  "$class": "org.accordproject.contactinformation@0.1.0.TemplateModel",
+  "name": "Jane Doe",
+  "title": "CIO",
+  "email": "jane@example.com",
+  "phone": "123-456-789",
+  "timezone": "America_New_York",
+  "communicationChannel": "EMAIL",
+  "clauseId": "889c0110-e081-4ceb-854e-0c162a77925d",
+  "$identifier": "889c0110-e081-4ceb-854e-0c162a77925d"
+}

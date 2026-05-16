@@ -1,0 +1,93 @@
+{
+  "$class": "org.accordproject.supplyagreementloc@0.1.0.TemplateModel",
+  "executionDate": "2021-01-20T01:00:00.000+01:00",
+  "exporter": "Acme Exports",
+  "importer": "Dan's Imports",
+  "product": "Widgets",
+  "importerCreditworthiness": "Credit worthy.",
+  "issueDate": "2021-01-21T01:00:00.000+01:00",
+  "importerLOCBank": "Big Bank Corp.",
+  "importerLOCNumber": 1234567,
+  "importerLOCAmount": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 1000000,
+    "currencyCode": "SEK"
+  },
+  "orderBillOfLading": "ORDER-001",
+  "packingList": "PACKING-001",
+  "renewalTerms": 2,
+  "termRenewal": {
+    "$class": "org.accordproject.time@0.3.0.Period",
+    "amount": 5,
+    "unit": "years"
+  },
+  "termTerminationNotice": {
+    "$class": "org.accordproject.time@0.3.0.Period",
+    "amount": 90,
+    "unit": "days"
+  },
+  "invoice": "INVOICE-001",
+  "bookingId": "BOOKING-001",
+  "purchaseOrder": "PO-001",
+  "exporterAddress": "123 Main Street.",
+  "turnaroundTime": 7,
+  "amountOfEachProduct": 100,
+  "unitPriceOfEachProduct": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 300,
+    "currencyCode": "SEK"
+  },
+  "locationForDelivery": "34 Elm Street",
+  "deliveryDate": "2021-01-30T01:00:00.000+01:00",
+  "exporterBankAccount": 142635263523,
+  "modifiedPurchaseOrder": "PO-001-A",
+  "cancellationDeadline": {
+    "$class": "org.accordproject.time@0.3.0.Duration",
+    "amount": 7,
+    "unit": "days"
+  },
+  "shipper": "DHS",
+  "importPort": "Los Angeles",
+  "exportPort": "Malmo",
+  "productDescription": "Widgets",
+  "productWeight": 100,
+  "productMeasurement": "50 cm x 10 cm x 60 cm",
+  "freightCharges": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 4000,
+    "currencyCode": "SEK"
+  },
+  "evaluationTime": {
+    "$class": "org.accordproject.time@0.3.0.Duration",
+    "amount": 7,
+    "unit": "days"
+  },
+  "acceptanceCriteria": "good are acceptable",
+  "termBeginDate": "2021-01-20T01:00:00.000+01:00",
+  "termPeriod": {
+    "$class": "org.accordproject.time@0.3.0.Period",
+    "amount": 3,
+    "unit": "years"
+  },
+  "currentTerm": {
+    "$class": "org.accordproject.time@0.3.0.Period",
+    "amount": 2,
+    "unit": "years"
+  },
+  "shipment": "Shipment 001",
+  "unitPrice": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 4000,
+    "currencyCode": "SEK"
+  },
+  "unit": 10,
+  "sensorReadingFrequency": 10,
+  "duration": "days",
+  "countPeriod": {
+    "$class": "org.accordproject.time@0.3.0.Period",
+    "amount": 10,
+    "unit": "days"
+  },
+  "$identifier": "5d084f1a-1380-4887-ae54-72afd091b702",
+  "clauseId": "5d084f1a-1380-4887-ae54-72afd091b702"
+}

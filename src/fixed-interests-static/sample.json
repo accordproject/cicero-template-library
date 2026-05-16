@@ -1,0 +1,10 @@
+{
+  "$class": "org.accordproject.fixedinterestsstatic@0.1.0.TemplateModel",
+  "loanAmount": 100000,
+  "currencyCode": "USD",
+  "rate": 2.5,
+  "loanDuration": 15,
+  "monthlyPayment": 667,
+  "clauseId": "ddce2edb-7884-4e76-8777-3be3dcbf4ff1",
+  "$identifier": "ddce2edb-7884-4e76-8777-3be3dcbf4ff1"
+}

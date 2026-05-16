@@ -1,23 +1,17 @@
 {
-    "$class":"org.accordproject.rentaldeposit.ProperyInspection",
+    "$class": "org.accordproject.rentaldepositwith@0.1.0.ProperyInspection",
     "penalties": [
         {
-            "$class":"org.accordproject.rentaldeposit.Penalty",
-            "description" : "Cleaning carpets",
-            "amount" : {
-                "$class":"org.accordproject.money.MonetaryAmount",
-                "doubleValue" : 1000,
-                "currencyCode" : "USD"
-            }
+            "$class": "org.accordproject.rentaldepositwith@0.1.0.Penalty",
+            "description": "Cleaning carpets",
+            "amount": 1000.0,
+            "currencyCode": "USD"
         },
         {
-            "$class":"org.accordproject.rentaldeposit.Penalty",
-            "description" : "Pet damage",
-            "amount" : {
-                "$class":"org.accordproject.money.MonetaryAmount",
-                "doubleValue" : 450,
-                "currencyCode" : "USD"
-            }
+            "$class": "org.accordproject.rentaldepositwith@0.1.0.Penalty",
+            "description": "Pet damage",
+            "amount": 450.0,
+            "currencyCode": "USD"
         }
     ]
 }

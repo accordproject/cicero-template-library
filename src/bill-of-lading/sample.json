@@ -1,0 +1,47 @@
+{
+  "$class": "org.accordproject.billoflading@0.1.0.TemplateModel",
+  "accountName": "MAERSK LINE",
+  "scac": "MAEU",
+  "bolNumber": "MAEU-ABC12345678",
+  "bookingNumber": "2021030264747",
+  "exportReferences": "",
+  "onwardInstructions": "",
+  "shipper": "resource:org.accordproject.organization.Organization#CLAUSE%20TECHNOLOGIES",
+  "consignee": "resource:org.accordproject.organization.Organization#TO%20ORDER",
+  "notifyParty": "resource:org.accordproject.organization.Organization#SAME%20AS%20CONSIGNEE",
+  "vessel": "Lagua",
+  "voyageNumber": "725",
+  "portOfLoading": "Shanghai, China",
+  "portOfDischarge": "Brisbane, Australia",
+  "placeOfReceipt": "Brisbane, Australia",
+  "placeOfDelivery": "Brisbane, Australia",
+  "commodities": [
+    {
+      "$class": "org.accordproject.billoflading@0.1.0.Commodity",
+      "quantity": 15,
+      "unitOfMass": "TONNE",
+      "packageType": "CONTAINER",
+      "description": "Corn",
+      "nmfcCode": "",
+      "freightClass": "CLASS_400",
+      "hazmat": "NO"
+    },
+    {
+      "$class": "org.accordproject.billoflading@0.1.0.Commodity",
+      "quantity": 35,
+      "unitOfMass": "TONNE",
+      "packageType": "CONTAINER",
+      "description": "Wheat",
+      "nmfcCode": "",
+      "freightClass": "CLASS_400",
+      "hazmat": "NO"
+    }
+  ],
+  "declaredValue": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 2500,
+    "currencyCode": "USD"
+  },
+  "clauseId": "8b089844-c8dc-41fe-93bb-2d4bf1f85a71",
+  "$identifier": "8b089844-c8dc-41fe-93bb-2d4bf1f85a71"
+}

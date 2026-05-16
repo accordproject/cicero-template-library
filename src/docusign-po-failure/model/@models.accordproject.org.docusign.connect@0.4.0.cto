@@ -1,0 +1,167 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+concerto version "^3.0.0"
+
+/**
+ * Based on https://www.docusign.net/api/3.0/schema/dsx.xsd
+ */
+namespace com.docusign.connect@0.4.0
+
+import org.accordproject.runtime@0.2.0.Request from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.binary@0.2.0.BinaryResource from https://models.accordproject.org/binary@0.2.0.cto
+
+enum EnvelopeStatusCode {
+  o Any
+  o Voided
+  o Created
+  o Deleted
+  o Sent
+  o Delivered
+  o Signed
+  o Completed
+  o Declined
+  o TimedOut
+  o Template
+  o Processing
+}
+
+enum RecipientStatusCode {
+  o Created
+  o Sent
+  o Delivered
+  o Signed
+  o Declined
+  o Completed
+  o FaxPending
+  o AutoResponded
+}
+
+enum TabTypeCode {
+  o InitialHere
+  o SignHere
+  o FullName
+  o FirstName
+  o LastName
+  o EmailAddress
+  o Company
+  o Title
+  o DateSigned
+  o InitialHereOptional
+  o EnvelopeID
+  o Custom
+  o SignerAttachment
+  o SignHereOptional
+  o Approve
+  o Decline
+  o SignerAttachmentOptional
+  o DigitalSignature
+}
+
+enum CustomTabTypeCode {
+  o Text
+  o Checkbox
+  o Radio
+  o List
+  o Date
+  o Number
+  o SSN
+  o ZIP5
+  o ZIP5DASH4
+  o Email
+  o Note
+  o Formula
+}
+
+enum DocumentType {
+  o Principal
+  o CertificateOfCompletion
+  o SignerAttachment
+}
+
+concept EnvelopeStatus {
+  o EnvelopeStatusCode status
+  o String envelopeId optional
+  o DateTime created optional
+  o DateTime sent optional
+  o DateTime delivered optional
+  o DateTime signed optional
+  o DateTime completed optional
+  o DateTime declined optional
+  o String email optional
+}
+
+concept Recipient {
+  o RecipientStatusCode status
+  o String email
+  o String userName
+  o DateTime sent optional
+  o DateTime delivered optional
+  o DateTime signed optional
+  o DateTime declined optional
+  o String declineReason optional
+  o TabStatus[] tabStatuses optional
+}
+
+concept CustomField {
+  o String name
+  o String value
+}
+
+abstract concept TabStatus {
+  o TabTypeCode tabType
+  o String status
+  o String tabLabel
+  o String originalValue optional
+  o DateTime signed optional
+  o CustomTabTypeCode customTabType optional
+}
+
+concept NumberTabStatus extends TabStatus {
+  o String tabName optional
+  o Double tabValue optional
+}
+
+concept TextTabStatus extends TabStatus {
+  o String tabName optional
+  o String tabValue optional
+}
+
+concept DateTabStatus extends TabStatus {
+  o String tabName optional
+  o DateTime tabValue optional
+}
+
+concept BooleanTabStatus extends TabStatus {
+  o String tabName optional
+  o Boolean tabValue optional
+}
+
+concept ListTabStatus extends TabStatus {
+  o String[] tabNames
+  o String tabValue optional
+  o String[] listValues
+  o String listSelectedValue optional
+}
+
+asset Attachment extends BinaryResource {
+  o DocumentType docType
+}
+
+transaction DocuSignEnvelopeInformation extends Request {
+  o EnvelopeStatus envelopeStatus
+  o Recipient[] recipients optional
+  o CustomField[] customFields optional
+  o Attachment[] attachments optional
+}

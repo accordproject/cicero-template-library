@@ -1,0 +1,13 @@
+{
+  "$class": "org.accordproject.paymentuponiot@0.1.0.TemplateModel",
+  "buyer": "resource:org.accordproject.party.Party#Dan",
+  "seller": "resource:org.accordproject.party.Party#Grant",
+  "amountPerUnit": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 10,
+    "currencyCode": "USD"
+  },
+  "paymentCount": 5,
+  "$identifier": "4fdf51f3-d431-400a-b38b-3e37c83e6cea",
+  "clauseId": "4fdf51f3-d431-400a-b38b-3e37c83e6cea"
+}

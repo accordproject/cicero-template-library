@@ -1,15 +1,12 @@
-namespace org.accordproject.rentaldeposit
+namespace org.accordproject.rentaldeposit@0.1.0
 
-import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
-import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
-import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
-import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
-import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
-import org.accordproject.time.Period from https://models.accordproject.org/time@0.2.0.cto
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 concept Penalty {
   o String description
-  o MonetaryAmount amount
+  o Double amount
+  o String currencyCode
 }
 
 /**
@@ -23,21 +20,30 @@ transaction ProperyInspection extends Request {
  * The clause response
  */
 transaction PropertyInspectionResponse extends Response {
-    o MonetaryAmount balance
+  o Double balance
+  o String currencyCode
+}
+
+event RentalDepositPaymentEvent {
+  o Double amount
+  o String currencyCode
+  o String description
 }
 
 /**
  * The template model
  */
-asset RentalDepositClause extends Contract {
-  --> Party tenant
-  --> Party landlord
-  o MonetaryAmount depositAmount
-  o Period tenantDepositRestorationPeriod
+@template
+asset TemplateModel extends Clause {
+  o String tenant
+  o String landlord
+  o Double depositAmount
+  o String currencyCode
+  o String tenantDepositRestorationPeriod
   o Double monthlyBaseRentMultiple
   o String applicableLaw
   o String statute
   o String bankName
-  o Period landlordDepositReturnPeriod
+  o String landlordDepositReturnPeriod
   o String exhibit
 }

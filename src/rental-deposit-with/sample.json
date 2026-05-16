@@ -1,0 +1,37 @@
+{
+  "$class": "org.accordproject.rentaldepositwith@0.1.0.TemplateModel",
+  "tenant": {
+    "$class": "org.accordproject.rentaldeposit.RentalParty",
+    "address": "111, main street",
+    "partyId": "Michael",
+    "$identifier": "Michael"
+  },
+  "landlord": {
+    "$class": "org.accordproject.rentaldeposit.RentalParty",
+    "address": "222, chestnut road",
+    "partyId": "Parsa",
+    "$identifier": "Parsa"
+  },
+  "depositAmount": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 3000,
+    "currencyCode": "USD"
+  },
+  "tenantDepositRestorationPeriod": {
+    "$class": "org.accordproject.time.Period",
+    "amount": 30,
+    "unit": "days"
+  },
+  "monthlyBaseRentMultiple": 0.98,
+  "applicableLaw": "New Jersey",
+  "statute": "NJSD",
+  "bankName": "Bank of America",
+  "landlordDepositReturnPeriod": {
+    "$class": "org.accordproject.time.Period",
+    "amount": 3,
+    "unit": "weeks"
+  },
+  "exhibit": "Schedule A",
+  "$identifier": "81b1697a-f120-476c-a3d3-6ce760c1bffb",
+  "clauseId": "81b1697a-f120-476c-a3d3-6ce760c1bffb"
+}

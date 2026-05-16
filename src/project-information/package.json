@@ -1,22 +1,23 @@
 {
-  "name": "project-information",
-  "displayName": "Project Information",
-  "version": "0.3.0",
-  "description": "Gather project information",
-  "license": "Apache-2.0",
-  "accordproject": {
-    "template": "clause",
-    "cicero": "^0.22.0"
-  },
-  "devDependencies": {
-      "cucumber": "^5.1.0"
-  },
-  "scripts": {
-      "test": "cucumber-js test -r .cucumber.js"
-  },
-  "keywords": [
-    "clause",
-    "verify",
-    "project"
-  ]
+    "name": "project-information",
+    "displayName": "Project Information",
+    "version": "0.3.1",
+    "description": "Gather project information",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "template": "clause",
+        "cicero": "^0.26.0"
+    },
+    "keywords": [
+        "clause",
+        "verify",
+        "project"
+    ],
+    "scripts": {
+        "compile": "concerto compile --model model/model.cto --target typescript --output logic/generated"
+    },
+    "tags": [
+        "reference"
+    ]
 }
