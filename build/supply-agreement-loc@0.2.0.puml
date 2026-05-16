@@ -1,0 +1,77 @@
+@startuml
+class org.accordproject.supplyagreementloc_0_1_0.SensorReadingData {
+   + Double temperature
+   + Double humidity
+   + DateTime readingTime
+}
+org.accordproject.supplyagreementloc_0_1_0.SensorReadingData --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreementloc_0_1_0.SensorReading << (T,yellow) >> {
+   + Double temperature
+   + Double humidity
+}
+org.accordproject.supplyagreementloc_0_1_0.SensorReading --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.supplyagreementloc_0_1_0.CheckContract << (T,yellow) >> {
+}
+org.accordproject.supplyagreementloc_0_1_0.CheckContract --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.supplyagreementloc_0_1_0.DeliveryResponse << (T,yellow) >> {
+   + String message
+   + Boolean inGoodOrder
+}
+org.accordproject.supplyagreementloc_0_1_0.DeliveryResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.supplyagreementloc_0_1_0.SupplyAgreementState {
+   + String $identifier
+   + SensorReadingData[] sensorReadings
+}
+org.accordproject.supplyagreementloc_0_1_0.SupplyAgreementState --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreementloc_0_1_0.TemplateModel << (A,green) >> {
+   + DateTime executionDate
+   + String exporter
+   + String importer
+   + String product
+   + String importerCreditworthiness
+   + DateTime issueDate
+   + String importerLOCBank
+   + Integer importerLOCNumber
+   + Double importerLOCAmount
+   + String importerLOCCurrency
+   + String orderBillOfLading
+   + String packingList
+   + Integer renewalTerms
+   + String termRenewal
+   + String termTerminationNotice
+   + String invoice
+   + String bookingId
+   + String purchaseOrder
+   + String exporterAddress
+   + Integer turnaroundTime
+   + Integer amountOfEachProduct
+   + Double unitPriceOfEachProduct
+   + String unitPriceCurrency
+   + String locationForDelivery
+   + DateTime deliveryDate
+   + Integer exporterBankAccount
+   + String modifiedPurchaseOrder
+   + Duration cancellationDeadline
+   + String shipper
+   + String importPort
+   + String exportPort
+   + String productDescription
+   + Integer productWeight
+   + String productMeasurement
+   + Double freightCharges
+   + String freightCurrency
+   + Duration evaluationTime
+   + String acceptanceCriteria
+   + DateTime termBeginDate
+   + String termPeriod
+   + String currentTerm
+   + String shipment
+   + Double unitPrice
+   + String unitCurrency
+   + Integer unit
+   + Integer sensorReadingFrequency
+   + TemporalUnit duration
+   + String countPeriod
+}
+org.accordproject.supplyagreementloc_0_1_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

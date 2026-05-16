@@ -1,0 +1,36 @@
+@startuml
+class org.accordproject.saft_0_1_0.Launch << (T,yellow) >> {
+   + Double exchangeRate
+}
+org.accordproject.saft_0_1_0.Launch --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.saft_0_1_0.Terminate << (T,yellow) >> {
+   + Double remainingFunds
+   + Double totalInvested
+}
+org.accordproject.saft_0_1_0.Terminate --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.saft_0_1_0.Payout << (T,yellow) >> {
+   + Double tokenAmount
+   + String tokenAddress
+}
+org.accordproject.saft_0_1_0.Payout --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.saft_0_1_0.TemplateModel << (A,green) >> {
+   + String token
+   + String company
+   + String companyType
+   + String state
+   + Boolean amendmentProvision
+   + Double purchaseAmount
+   + String currency
+   + Double netProceedLimit
+   + DateTime date
+   + DateTime deadlineDate
+   + Double discountRatePercentage
+   + String network
+   + String coin
+   + String exchanges
+   + String companyRepresentative
+   + String purchaser
+   + String description
+}
+org.accordproject.saft_0_1_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

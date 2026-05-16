@@ -1,0 +1,786 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/interest-rate-swap@0.9.0.html" />
+    <meta property="og:title" content="interest-rate-swap@0.9.0" />
+    <meta property="og:description" content="A simple ISDA Interest Rate Swap" />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/bLN1Rjim3BtdAtJSiDR8TYw2jiuAx52qQ7Ct68dnrCgKHr7PZ6x_FiXBKyUk3UyeyV7fyP6IBeC0IwpSGZi8GNakCz3QiwdPFw6Mp0O3cULGB8lFnJ9RGvFxI7B3eCLwKYyBfTGdzIXigLHxS15FTamluL5_nmeNVnR_VzJv-U-LqfuqilW4APPPdfQrp9N_089tsu2yXvRoua9zs9mrw9p_-L6jLkfbZh8-IojicCMHn5POB8ilAGb_H0ppbMA8JjuJsBgxzd7hKFaeGO2CfV8Q792UvUo1UwRiK7iAE5Vt1glQWU2jD-XQ-LTd9IDIL_rXDhP0puToG71ZArGEHP3JyWIfqo0Wry3I32WUS8UCgVQkDUHJRy1TLIdt9Earb4TEUKrFWp0OV9DmtCVT3hNO_NinGQuijUCm4B-plz2acRc71daYT8zilVbA9b64AI0q5P9qO8UYZx1NURqhT8pt8nE7NSTW2KDOGnFcmN9FUwGXhVCWbieHA_hHAJS6s553EiWRpz_8YWMNWzFHjTtwTyee-rqzACDWi2M1eBa5YMnx4nbgHZ1Z_dUe9rl06526XMjVrJwszttQaF6cJI0xVPlnYfpUz977H7kILD_XDSaTn82BIoIJFfs_" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="interest-rate-swap@0.9.0" />
+    <meta name="twitter:description" content="A simple ISDA Interest Rate Swap" />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bLN1Rjim3BtdAtJSiDR8TYw2jiuAx52qQ7Ct68dnrCgKHr7PZ6x_FiXBKyUk3UyeyV7fyP6IBeC0IwpSGZi8GNakCz3QiwdPFw6Mp0O3cULGB8lFnJ9RGvFxI7B3eCLwKYyBfTGdzIXigLHxS15FTamluL5_nmeNVnR_VzJv-U-LqfuqilW4APPPdfQrp9N_089tsu2yXvRoua9zs9mrw9p_-L6jLkfbZh8-IojicCMHn5POB8ilAGb_H0ppbMA8JjuJsBgxzd7hKFaeGO2CfV8Q792UvUo1UwRiK7iAE5Vt1glQWU2jD-XQ-LTd9IDIL_rXDhP0puToG71ZArGEHP3JyWIfqo0Wry3I32WUS8UCgVQkDUHJRy1TLIdt9Earb4TEUKrFWp0OV9DmtCVT3hNO_NinGQuijUCm4B-plz2acRc71daYT8zilVbA9b64AI0q5P9qO8UYZx1NURqhT8pt8nE7NSTW2KDOGnFcmN9FUwGXhVCWbieHA_hHAJS6s553EiWRpz_8YWMNWzFHjTtwTyee-rqzACDWi2M1eBa5YMnx4nbgHZ1Z_dUe9rl06526XMjVrJwszttQaF6cJI0xVPlnYfpUz977H7kILD_XDSaTn82BIoIJFfs_" />
+    <meta name="twitter:image:alt" content="UML diagram of interest-rate-swap@0.9.0 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/interest-rate-swap@0.9.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="./assets/images/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="icon" href="https://i0.wp.com/accordproject.org/wp-content/uploads/2020/08/cropped-ms-icon-310x310-1.png?fit=512%2C512&ssl=1" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="main-navbar-menu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var burgers = document.querySelectorAll('.navbar-burger');
+        burgers.forEach(function(burger) {
+            burger.addEventListener('click', function() {
+                var targetId = burger.dataset.target;
+                var target = document.getElementById(targetId);
+                burger.classList.toggle('is-active');
+                target.classList.toggle('is-active');
+            });
+        });
+    });
+    </script>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Interest Rate Swap
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">interest-rate-swap@0.9.0</span>
+                <span class="tag is-light">Clause</span>
+                <span class="tag is-light">^0.26.0</span>
+                <span class="tag is-light">a23b3ae256947499fc0c69937fe9ce935afad7b2a78fd960ead5d732b972365f</span>
+            </div>
+            <p class="subtitle">
+                A simple ISDA Interest Rate Swap
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="interest-rate-swap@0.9.0.html" class="dropdown-item is-active">
+                    interest-rate-swap@0.9.0
+                </a>
+              
+                <a href="interest-rate-swap@0.8.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.8.0
+                </a>
+              
+                <a href="interest-rate-swap@0.7.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.7.0
+                </a>
+              
+                <a href="interest-rate-swap@0.6.1.html" class="dropdown-item ">
+                    interest-rate-swap@0.6.1
+                </a>
+              
+                <a href="interest-rate-swap@0.6.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.6.0
+                </a>
+              
+                <a href="interest-rate-swap@0.5.1.html" class="dropdown-item ">
+                    interest-rate-swap@0.5.1
+                </a>
+              
+                <a href="interest-rate-swap@0.5.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.5.0
+                </a>
+              
+                <a href="interest-rate-swap@0.4.1.html" class="dropdown-item ">
+                    interest-rate-swap@0.4.1
+                </a>
+              
+                <a href="interest-rate-swap@0.4.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.4.0
+                </a>
+              
+                <a href="interest-rate-swap@0.3.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.3.0
+                </a>
+              
+                <a href="interest-rate-swap@0.2.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.2.0
+                </a>
+              
+                <a href="interest-rate-swap@0.1.0.html" class="dropdown-item ">
+                    interest-rate-swap@0.1.0
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/interest-rate-swap@0.9.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/interest-rate-swap@0.9.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://playground.accordproject.org/#data=N4IgLgpgtgDgNgQ0gWQQJwNYBMD2B3AOxAC4QBJAOQBUBRAJRoGUqACOgQVpcYHV2AFFlQ4VG7AMJUyAeQosAMjSq06LdgHEGNZDWoAdAsGAAjBAQwBfCwZYGAIkgjEWRuBDCQ0DyFYNUczkYAxjgArgSeMOhgAJ6+BOweEBEAljgEzox4CDAAzix2OEGhUMlgSGkEBRBRaGClEQbSoWhsEABmEGjJQU4uJmYYdB1dPRDxw85kEaO5YGyO3NkwQmhmuQhBYJU2BvIIWCkQ+WZYLOplbg3EBn4AFhAsMC0wOLmPOO0sYHcp+W5JVoIADm3WgZRYf2+OBY73m7RwdTu3we3y6UBOBDOISxKW26XynxRjyoawIGy2lRYZVGZxSERhxnceAgyX6pnMVhYp36IXCkWicQsLAAFIAcAnEYRmaFqsUAuAQAShY6WJqwOj28j1yMAgQRS7SOZyZcHwop+jzFpPWm3xBEVADohL9-u5PNzQayGvMcXM8aFICcWBL0ga0FAKuk5dz8t1OmhumcwDD6ar2B7wRFYTq9QaIEaICa8PbbgQqKisB16XjKpizjA0DgAG5-GssHHlel5yFVc0sABMAAYhywyIw7OxqgaCNWCWbUWK7JXp7bcoro09QsY4H8HkaYqrpp4CBHj3Aljla9U0ClGxVG8c1LlckUUieADQjghBR3oR70kIyoijh7iwsajF+jwPN09KOtMqoQPemZEmY+7-gSfyQF++5MmALJsr2i5TjO5LcliKJQpKBChuGtofj8FEhikYYniweApHAZ7Ak2XQEMWVQGAAYoiqrPIB7zKl89H5JR1HvtyHGgSM3QQfkKYEUuxGEq0vZpmCXrQtyQZZDkarkjalRRrkdwIApTIsBW4KJoyjxgcpvT5Em5H5FaZmUukfG2AQACMjplgxVFMTRVIISkFYqYZISwACjw8sY9KHAQwLunpEI4XhVRGByljCuK-CCmoa48pK-JdLK+6leVABClUeTCvaeBiEmqj5FK2gZeC-EEyJSSwMmRSx3SIAGsFVAchy0SwZV1PuE48ktsQsI12WsgZoTiTZZ7dAgz7HlujwdAidStSwBAQFx2yOB+EAAB66v6KVkRW273kCs3pvpamopdUBdb2o7jv2Q59iwqBzF0aj-RCbE-LCoRDSwUA4IcBpBCeJz5OtK2kWchObax7FnimXFYyw7QIHiyIgmCc4WuDE5CWGUbCb2Yq6Z6ZQOiwACqrxVC9b19cY+69rKRyEl8uRo8ifMZmAdHOqNjHMX1bEKYrMDwKrH7A4ZspdalWqbgAVrq8yeTpiMRI67AKfWTYtrO7b07dZzCWhgFrJAIGuWM3ao+jKv6aEouQmA+Ti8UfVWQdLBcT9PYa2N2vRc9vQwPMx3Us99bHLkcD7pj2OGiwxr4I6QupGepOrWRpNbQn73E-ZBY3vDDs5RE6vhbJC1JsC7hQeTKMpzg5qtLgxRejGSnXplBlg2O7OIiDIoQJsjNBlnUWRkqOLUfSWU9eZs67-vhmWmSvUWUqNIJt2nl5ayVR7aKBCz8jdw5inAvqRGI9E1721RO2NYaBUKzU1hFbO6QlTJz1tHQ2Xpjbb1NtECSH4Lao2MDbLYBkzDbVVmHXsJsiQbwhhzEGhd9SLXKi3EmTUWDWTOB3IOpFyH6RVL2K0FYCiLBoUDJicxw7Iivn5Kon82Q-xTIrdGwMPwANVIwIaeZQhuGJN0TyIoUgoOzPqGIID0jlxREgUUCAlS9jTjxEBiA8CQnyDQTK24rIsGcR+N2zYKxYHVtY5RyIho4BSL0LqzjYTWVspbHUaB3gBJrvuFCbY7jhMiUSaJfiPZVG1LqfU1dAaPEjhCaOKo8Tx1eonSo+CyIimMHY1EVB0T0hYuIFoblUL5CFvaRgjpCgcXQJeQxRjuwAVeIHEBvY5rEXXuWDSfUiRimmBWKA04DQIDOkIBAz0oxe07HSKoIoojjxYAAFgAJwSWaY8NmQYhbvDQIATAJ8jqFCLFR4kDHiDgHNDB5sM3RlIiKuPifZQqog6vLES0QIk6PQKZJ+AiYQDQicNTOWtj5VEmo4E43R1wIg4vgXINx+IEAoLPSoNk1CY35IEYAf9bQ2XYHSiI8QhEakcAysAawKyaniDQdonRKT3hEZABlF1ba9wFdYUsbTjx9U1DyhVJ5ZUlgEikV6ZxWVSjjmSzV2qFiQGYTELoDKDTaroI4MqZq0DxENV2a1JrbXw34F0NIZx3FnE1KS-olq8zOogK6tA7rrxY29b6h1WqnWLBDaa-SvqLUxqwEGkNtqvRRrlY6s4Qbk1WscFYAApIJFNxquX7mqpmASaxZH5sDY4BwMQq1gBrdfAg0ajVBtNfDRqe1OxPhETEUlRgA2pptQgO1fbcgDtyE23InbY0usnb2-tt1B1NoQYhW09bx2QBDdO2dTbKLbsqPEQSJoKhr11fyP1F6cBXqyt2kNFrL3bEymmld9rs1vpAc+r9i0PU029eK44r6H3vuBJ+u1YbPWRrxQ639a9-12oTRCJN-qkNQYnTBydmaEM-og3+xYl1uzVhpeIGyxQppUlg1jcDj6g0c2mORuAlG4DUZPHRrAxb72PvLSwaQ+dKgMcg0GoTtp4iLhncCRVXZUBgBaHiGIDKKwybk1gBTSnYjxEYCXA4DLtRHR44R-j3bN0tpYG2utmGiMfsbZOlt1nJNyuGHCUDfqjDdDhFmgwkpYBSgysCBliVXjhCC4huzT640AcPeu-I87RMX2g10OLpd52RbMzF1DaWN2Tq3WUETtnGM4dS2u9Ljn0invSFYEAb4QCVwLOIJMJAQDHlKNqTYHw0DAntJsACWA3bELAPaP4WAECjcSQAAQHPaEKA4SwpAC3UZUPW+tBAG0N229poE2hm-aCFs3xCID2o8doDYQZ3A8HkYgAB6W7jW4C5HW5thsw37SImBLd-riJBtvdtrd3bWx9uHZ20mAwS2pnzE+y937W2tj2jQPyJbEAQf2lm8AYYABHUIxw1ZudFu8YU52cCXeu6S+7j3ns-bQH9nA73PvfY23D-7WxbtI9SKUNHs2tg4BLLdgAVALmwAunRahMTjFipGMkuN7AQEoTJWhEnG8OmuzIv7fDwDCcbAZXFtiowinhpHRKvHeLkEXXVcYccN1SZCtMy3CXaFhp4eGIQIDZQXMivZTAzvyNL004YCD7hV-iiAFvjqK1KE5NXYcEAsDNegQZ+XLPOapFCMhDyOoBQF7dgwOI87zGPXq1PKpgA2GVNwXlIDbxwFx8qYT6QbLl5hIwKva8VdOdrbaTRDxSj1+ZXAAwcqDC8utLI8t0hjDPNvH1F6mEsD5Gx7jyRZeO0llH75PqbmdHzDn8kBfbRtQEkeKvlgFfCibl0WEOO5RcSZUajZMwvQh-86Fxbss3zoDwEWI92mwk48zpJT3KbyfieB44CbGQwAi654EBTaQBJSOAGAR7uBCBf5TQQDIBYwFhFzz7SQnbiSn4V6t6rxZRFTN6gZUAo7eKuhdCajkHEEgJ8jSh1T0Ft6kGDDDBxhjDkEX47JMrUpwA3qNBVBEFsE3RUqN5sZdI9AxA8GOCUF96j78qIEiEwiagKHnTCrSr3h0GqEUFUEdTtK2i6GsEkH24Fr7pfqmEgJjopahpAZYDwYBjWFry2Glahqu4RC+o8FhA7JuGQByHNrF5d5Uj+EQBF78gl4EAuFZRhEHrlZPjzoxHmENqWFToJFzqVYEDVbRG5Fn4t5iFO5RZ2HJFFElZpFdDcZOHHClFYZ2EZplDeF6G8G6JlFiaODMbLivhsYG40bpDca1HFGOASY7B6EMHt7HApCybARabXixDJFGZ7xYCBGd7tq0x1EOZBGREhHpDJHebuBNH5GV5mGhaBYXyDHlHBpfq5aZHDoXHtEVFoA3FF7ZGFa7Fr5ED1Y64ICtaEF6AgAAAkQQiAT4-xzg-xMONOdO72Y2E2Ei+2829orSCBKAWBg+dW5e-xZBJAtgIA3mYQaAvQxAkJzOtO8OI2n2ZgKQAAXiePaNID1lSbSbaAAMSLj+i5BaJFqDgP7mD-FviYkgAAieB0E4n-F-IACsAAtAOAAGxSkADMA4VAQ4xAqpQ46OQ4AA1AOEFGqQthiSIf8UwQKMtGCbifiS0ESSSa9vTttpSdOMyZUPSYyY6SeCyagNMeIL8DANyQOIwNABEukFgGjEmGgH6QMuwMWIaWfliRwUpNwWKSAOoCaKYGeJSo6BQAqVcgAOwKkSkSkUD8mCn8GSFCFgDmmEGxmAnAkR7mkQlrZQnkn2iYy3QxD2iYG3TlCwLlnFkiHVm4CX4QAABqNkuO5pSpQ4U5Q4Ap-ZuJxQ8YMhkoFY9ZIAQsY4-x5eFgs51ZSh4RiBSZkpMp8pfYCpKpA4+p+pmpA4OpepQ4fZ1ZUqoq+5ARh5Q40pcpUpfYOZ55l5GpU5t5+pD5uJhhiqlQop4JIAfyAAHMeVKUFNBb+eqbNgBbqUBTGbiXEVYUmZaYSU4DaSznaQjg6TSXSQycCEye6S2rVIKMBf8VhTBg4dUebkmR-iwEFBKSjCrl1KgISXcB+AAFLhAQAfgBn5zQCK5dyLi9BQCSVEh7zowJ5oAfiJQNB6hrxiXwGSUcUfiSnqwNihDAiMxkT-i15BbdSqpKqLDqKUpqBYBWx7T1BlB0UgAMWVGeFgDeGsWogcVcX5ZEi8VDSCXCWiU1BaXww8jSUSXwzyV3xKUqWk5qUgKaXRWtA6WQwDgSn6VhBGVdymWhDmWCKWVUiik7mYUppBrmkXLo5XJlX0UVWbGrGyKVnl7VlAkgksWQUEVkms4jawmTa5AIno72gRERBRHAXVk17jlJlKkTW4kd7BHto97girkKmykGlbl1WuUNWPHPGTqdW4kUAQAuIACaiIGALlblTxGRLxORq5mBVcXYQkxKbEmUl1Gxjxq5uF1pjZpJ0J9prppFtoLpFFbprJdgjUGg71QxjxVRWIXlkFbFvlyI3FAV6AQVLAQlt0oV4lslEVZEUVeNSuXwClyI8VbYiVPQyVYVqV7FWVGV9NPwBluVPI+VhVLSxVKomoU8yItl7A9ljlXo0Nlx6aHlCNuJSNnFKN-lXwgV-FmNIV3ANNRNUluotNsVile8ylFNUASVGlyt2l9NelKIzNxlxywJBVMyHNYYRhJVB5W1bRyWHRiILGD0PR1ufRBAAxOJCp9oFyQUDtH1EAIxuxSZ65dgUp8gZAjU0gdAUpjUkNLlamUxGmsxymq5ZYzMrZPwLFW1ixBwq5lKt0wtDx+5WxY1Ox0ROJVZuJ7VdZSZ3V-1CO-V8Js2iJo1raldc1-xU1YeM1BpZVA5lW2xS1WipQq161m5Ih25gp+xnleKGd4iiS8wAkzuKGq6M68WQ6XUpNo0vRLE3Gq2msAW4WIC3GH4TC-mYWd+WU6eBs24uMZ00ZW1pxp9b1SZ0wOQ8AES2ybgJdTtu1N1+1hdx1LAZ1mA-99mgDm9FWQRrxqQodkFD1RST1OAL15xGF-xAJXyqQuYaAq5spCA35QQCFCpUpVyfY7QQUUpFyOZVy0pxgWAFysFCAmVCpfY-tp5CAOZ0FLltZp2ZAyxSZhDxDpD5DlD1DtD9DUpjDzDUprDEp7DnDCp3DvDIAL+nxIATM-MEQAAEvUHAK1iABYEAA" class="button is-rounded is-primary open-studio">Open in Template Playground</a>
+          <a href="https://github.dev/accordproject/cicero-template-library/blob/master/src/interest-rate-swap/README.md" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="isdainterestrateswap">ISDA Interest Rate Swap</h1>
+<p>This contract specifies an ISDA Interest Rate Swap. It is based on this real IRS:</p>
+<ul>
+<li>https://www.sec.gov/Archives/edgar/data/1325702/000119312505180322/dex1035.htm</li>
+</ul>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT
+"Deutsche Bank"</p>
+<p>Date: 06/30/2005
+To: "MagnaChip Semiconductor S.A."
+Attention: Swaps Documentation Department
+Our Reference: "Global No. N397355N"
+Re: Interest Rate Swap Transaction</p>
+<p>Ladies and Gentlemen:</p>
+<p>The purpose of this letter agreement is to set forth the terms and conditions of the Transaction entered into between "Deutsche Bank" and "MagnaChip Semiconductor S.A." (“Counterparty”) on the Trade Date specified below (the “Transaction”). This letter agreement constitutes a “Confirmation” as referred to in the Agreement specified below.</p>
+<p>The definitions and provisions contained in the 2000 ISDA Definitions (the “Definitions”) as published by the International Swaps and Derivatives Association, Inc. are incorporated by reference herein. In the event of any inconsistency between the Definitions and this Confirmation, this Confirmation will govern.</p>
+<p>For the purpose of this Confirmation, all references in the Definitions or the Agreement to a “Swap Transaction” shall be deemed to be references to this Transaction.</p>
+
+<ol delimiter=period start=1 tight=true>
+<li><p>This Confirmation evidences a complete and binding agreement between "Deutsche Bank" (“Party A”) and Counterparty (“Party B”) as to the terms of the Transaction to which this Confirmation relates. In addition, Party A and Party B agree to use all reasonable efforts to negotiate, execute and deliver an agreement in the form of the ISDA 2002 Master Agreement with such modifications as Party A and Party B will in good faith agree (the “ISDA Form” or the “Agreement”). Upon execution by the parties of such Agreement, this Confirmation will supplement, form a part of and be subject to the Agreement. All provisions contained or incorporated by reference in such Agreement upon its execution shall govern this Confirmation except as expressly modified below. Until Party A and Party B execute and deliver the Agreement, this Confirmation, together with all other documents referring to the ISDA Form (each a “Confirmation”) confirming Transactions (each a “Transaction”) entered into between us (notwithstanding anything to the contrary in a Confirmation) shall supplement, form a part of, and be subject to an agreement in the form of the ISDA Form as if Party A and Party B had executed an agreement on the Trade Date of the first such Transaction between us in such form, with the Schedule thereto (i) specifying only that (a) the governing law is English law, provided, that such choice of law shall be superseded by any choice of law provision specified in the Agreement upon its execution, and (b) the Termination Currency is U.S. Dollars and (ii) incorporating the addition to the definition of “Indemnifiable Tax” contained in (page 49 of) the ISDA “User’s Guide to the 2002 ISDA Master Agreements”.</p>
+</li>
+<li><p>The terms of the particular Transaction to which this Confirmation relates are as follows:</p>
+</li></ol><p>Notional Amount: 300000000.00 USD
+Trade Date: 06/23/2005
+Effective Date: 06/27/2005
+Termination Date: 06/18/2008</p>
+<p>Fixed Amounts:
+Fixed Rate Payer: "Counterparty"
+Fixed Rate Payer Period End Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment"
+Fixed Rate Payer Payment Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date"
+Fixed Rate: 4.09%
+Fixed Rate Day Count Fraction: "30" "360"
+Fixed Rate Payer Business Days:"New York"
+Fixed Rate Payer Business Day Convention: "Modified Following"</p>
+<p>Floating Amounts:
+Floating Rate Payer: "DBAG"
+Floating Rate Payer Period End Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment"
+Floating Rate Payer Payment Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date"
+Floating Rate for initial Calculation Period: 3.41%
+Floating Rate Option: "USD-LIBOR-BBA"
+Designated Maturity: "Three months"
+Spread: "None"
+Floating Rate Day Count Fraction: "30" "360"
+Reset Dates: "The first Floating Rate Payer Business Day of each Calculation Period or Compounding Period, if Compounding is applicable."
+Compounding: "Inapplicable"
+Floating Rate Payer Business Days: "New York"
+Floating Rate Payer Business Day Convention: "Modified Following"</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT
+"Deutsche Bank"
+ 
+Date: 06/30/2005
+To: "MagnaChip Semiconductor S.A."
+Attention: Swaps Documentation Department
+Our Reference: "Global No. N397355N"
+Re: Interest Rate Swap Transaction
+ 
+Ladies and Gentlemen:
+
+The purpose of this letter agreement is to set forth the terms and conditions of the Transaction entered into between "Deutsche Bank" and "MagnaChip Semiconductor S.A." (“Counterparty”) on the Trade Date specified below (the “Transaction”). This letter agreement constitutes a “Confirmation” as referred to in the Agreement specified below.
+
+The definitions and provisions contained in the 2000 ISDA Definitions (the “Definitions”) as published by the International Swaps and Derivatives Association, Inc. are incorporated by reference herein. In the event of any inconsistency between the Definitions and this Confirmation, this Confirmation will govern.
+ 
+For the purpose of this Confirmation, all references in the Definitions or the Agreement to a “Swap Transaction” shall be deemed to be references to this Transaction.
+ 
+1. This Confirmation evidences a complete and binding agreement between "Deutsche Bank" (“Party A”) and Counterparty (“Party B”) as to the terms of the Transaction to which this Confirmation relates. In addition, Party A and Party B agree to use all reasonable efforts to negotiate, execute and deliver an agreement in the form of the ISDA 2002 Master Agreement with such modifications as Party A and Party B will in good faith agree (the “ISDA Form” or the “Agreement”). Upon execution by the parties of such Agreement, this Confirmation will supplement, form a part of and be subject to the Agreement. All provisions contained or incorporated by reference in such Agreement upon its execution shall govern this Confirmation except as expressly modified below. Until Party A and Party B execute and deliver the Agreement, this Confirmation, together with all other documents referring to the ISDA Form (each a “Confirmation”) confirming Transactions (each a “Transaction”) entered into between us (notwithstanding anything to the contrary in a Confirmation) shall supplement, form a part of, and be subject to an agreement in the form of the ISDA Form as if Party A and Party B had executed an agreement on the Trade Date of the first such Transaction between us in such form, with the Schedule thereto (i) specifying only that (a) the governing law is English law, provided, that such choice of law shall be superseded by any choice of law provision specified in the Agreement upon its execution, and (b) the Termination Currency is U.S. Dollars and (ii) incorporating the addition to the definition of “Indemnifiable Tax” contained in (page 49 of) the ISDA “User’s Guide to the 2002 ISDA Master Agreements”.
+2. The terms of the particular Transaction to which this Confirmation relates are as follows:
+ 
+Notional Amount: 300000000.00 USD
+Trade Date: 06/23/2005
+Effective Date: 06/27/2005
+Termination Date: 06/18/2008
+
+Fixed Amounts:
+Fixed Rate Payer: "Counterparty"
+Fixed Rate Payer Period End Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment"
+Fixed Rate Payer Payment Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date"
+Fixed Rate: 4.09%
+Fixed Rate Day Count Fraction: "30" "360"
+Fixed Rate Payer Business Days:"New York"
+Fixed Rate Payer Business Day Convention: "Modified Following"
+
+Floating Amounts: 
+Floating Rate Payer: "DBAG"
+Floating Rate Payer Period End Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment"
+Floating Rate Payer Payment Dates: "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date"
+Floating Rate for initial Calculation Period: 3.41%
+Floating Rate Option: "USD-LIBOR-BBA"
+Designated Maturity: "Three months"
+Spread: "None"
+Floating Rate Day Count Fraction: "30" "360"
+Reset Dates: "The first Floating Rate Payer Business Day of each Calculation Period or Compounding Period, if Compounding is applicable."
+Compounding: "Inapplicable"
+Floating Rate Payer Business Days: "New York"
+Floating Rate Payer Business Day Convention: "Modified Following"</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">INTEREST RATE SWAP TRANSACTION LETTER AGREEMENT
+{{bank}}
+ 
+Date: {{letterDate}}
+To: {{counterparty}}
+Attention: Swaps Documentation Department
+Our Reference: {{bankReference}}
+Re: Interest Rate Swap Transaction
+ 
+Ladies and Gentlemen:
+
+The purpose of this letter agreement is to set forth the terms and conditions of the Transaction entered into between {{bank}} and {{counterparty}} (“Counterparty”) on the Trade Date specified below (the “Transaction”). This letter agreement constitutes a “Confirmation” as referred to in the Agreement specified below.
+
+The definitions and provisions contained in the 2000 ISDA Definitions (the “Definitions”) as published by the International Swaps and Derivatives Association, Inc. are incorporated by reference herein. In the event of any inconsistency between the Definitions and this Confirmation, this Confirmation will govern.
+ 
+For the purpose of this Confirmation, all references in the Definitions or the Agreement to a “Swap Transaction” shall be deemed to be references to this Transaction.
+ 
+1. This Confirmation evidences a complete and binding agreement between {{bank}} (“Party A”) and Counterparty (“Party B”) as to the terms of the Transaction to which this Confirmation relates. In addition, Party A and Party B agree to use all reasonable efforts to negotiate, execute and deliver an agreement in the form of the ISDA 2002 Master Agreement with such modifications as Party A and Party B will in good faith agree (the “ISDA Form” or the “Agreement”). Upon execution by the parties of such Agreement, this Confirmation will supplement, form a part of and be subject to the Agreement. All provisions contained or incorporated by reference in such Agreement upon its execution shall govern this Confirmation except as expressly modified below. Until Party A and Party B execute and deliver the Agreement, this Confirmation, together with all other documents referring to the ISDA Form (each a “Confirmation”) confirming Transactions (each a “Transaction”) entered into between us (notwithstanding anything to the contrary in a Confirmation) shall supplement, form a part of, and be subject to an agreement in the form of the ISDA Form as if Party A and Party B had executed an agreement on the Trade Date of the first such Transaction between us in such form, with the Schedule thereto (i) specifying only that (a) the governing law is English law, provided, that such choice of law shall be superseded by any choice of law provision specified in the Agreement upon its execution, and (b) the Termination Currency is U.S. Dollars and (ii) incorporating the addition to the definition of “Indemnifiable Tax” contained in (page 49 of) the ISDA “User’s Guide to the 2002 ISDA Master Agreements”.
+2. The terms of the particular Transaction to which this Confirmation relates are as follows:
+ 
+Notional Amount: {{notionalAmount}}
+Trade Date: {{tradeDate}}
+Effective Date: {{effectiveDate}}
+Termination Date: {{terminationDate}}
+
+Fixed Amounts:
+Fixed Rate Payer: {{fixedRatePayer}}
+Fixed Rate Payer Period End Dates: {{fixedRatePayerPeriodEndDates}}
+Fixed Rate Payer Payment Dates: {{fixedRatePayerPaymentDates}}
+Fixed Rate: {{fixedRate}}%
+Fixed Rate Day Count Fraction: {{fixedRateDayCountFraction}}
+Fixed Rate Payer Business Days:{{fixedRatePayerBusinessDays}}
+Fixed Rate Payer Business Day Convention: {{fixedRatePayerBusinessDayConvention}}
+
+Floating Amounts: 
+Floating Rate Payer: {{floatingRatePayer}}
+Floating Rate Payer Period End Dates: {{floatingRatePayerPeriodEndDates}}
+Floating Rate Payer Payment Dates: {{floatingRatePayerPaymentDates}}
+Floating Rate for initial Calculation Period: {{floatingRateForInitialCalculationPeriod}}%
+Floating Rate Option: {{floatingRateOption}}
+Designated Maturity: {{designatedMaturity}}
+Spread: {{spread}}
+Floating Rate Day Count Fraction: {{floatingRateDayCountFraction}}
+Reset Dates: {{resetDates}}
+Compounding: {{compounding}}
+Floating Rate Payer Business Days: {{floatingRatePayerBusinessDays}}
+Floating Rate Payer Business Day Convention: {{floatingRatePayerBusinessDayConvention}}</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+  "$class": "org.accordproject.isda.irs@0.1.0.TemplateModel",
+  "bank": "resource:org.accordproject.organization.Organization#Deutsche%20Bank",
+  "letterDate": "2005-06-30T00:00:00.000+01:00",
+  "counterparty": "resource:org.accordproject.organization.Organization#MagnaChip%20Semiconductor%20S.A.",
+  "bankReference": "Global No. N397355N",
+  "notionalAmount": {
+    "$class": "org.accordproject.money.MonetaryAmount",
+    "doubleValue": 300000000,
+    "currencyCode": "USD"
+  },
+  "tradeDate": "2005-06-23T00:00:00.000+01:00",
+  "effectiveDate": "2005-06-27T00:00:00.000+01:00",
+  "terminationDate": "2008-06-18T00:00:00.000+01:00",
+  "fixedRatePayer": "resource:org.accordproject.organization.Organization#Counterparty",
+  "fixedRatePayerPeriodEndDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment",
+  "fixedRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
+  "fixedRate": 4.09,
+  "fixedRateDayCountFraction": {
+    "$class": "org.accordproject.isda.irs@0.1.0.DayCountFraction",
+    "value": "30",
+    "dayCountFractionScheme": "360"
+  },
+  "fixedRatePayerBusinessDays": "New York",
+  "fixedRatePayerBusinessDayConvention": "Modified Following",
+  "floatingRatePayer": "resource:org.accordproject.organization.Organization#DBAG",
+  "floatingRatePayerPeriodEndDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment",
+  "floatingRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
+  "floatingRateForInitialCalculationPeriod": 3.41,
+  "floatingRateOption": "USD-LIBOR-BBA",
+  "designatedMaturity": "Three months",
+  "spread": "None",
+  "floatingRateDayCountFraction": {
+    "$class": "org.accordproject.isda.irs@0.1.0.DayCountFraction",
+    "value": "30",
+    "dayCountFractionScheme": "360"
+  },
+  "resetDates": "The first Floating Rate Payer Business Day of each Calculation Period or Compounding Period, if Compounding is applicable.",
+  "compounding": "Inapplicable",
+  "floatingRatePayerBusinessDays": "New York",
+  "floatingRatePayerBusinessDayConvention": "Modified Following",
+  "$identifier": "6a27c183-92f1-4795-bd48-a05324123a78",
+  "clauseId": "6a27c183-92f1-4795-bd48-a05324123a78"
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/bLN1Rjim3BtdAtJSiDR8TYw2jiuAx52qQ7Ct68dnrCgKHr7PZ6x_FiXBKyUk3UyeyV7fyP6IBeC0IwpSGZi8GNakCz3QiwdPFw6Mp0O3cULGB8lFnJ9RGvFxI7B3eCLwKYyBfTGdzIXigLHxS15FTamluL5_nmeNVnR_VzJv-U-LqfuqilW4APPPdfQrp9N_089tsu2yXvRoua9zs9mrw9p_-L6jLkfbZh8-IojicCMHn5POB8ilAGb_H0ppbMA8JjuJsBgxzd7hKFaeGO2CfV8Q792UvUo1UwRiK7iAE5Vt1glQWU2jD-XQ-LTd9IDIL_rXDhP0puToG71ZArGEHP3JyWIfqo0Wry3I32WUS8UCgVQkDUHJRy1TLIdt9Earb4TEUKrFWp0OV9DmtCVT3hNO_NinGQuijUCm4B-plz2acRc71daYT8zilVbA9b64AI0q5P9qO8UYZx1NURqhT8pt8nE7NSTW2KDOGnFcmN9FUwGXhVCWbieHA_hHAJS6s553EiWRpz_8YWMNWzFHjTtwTyee-rqzACDWi2M1eBa5YMnx4nbgHZ1Z_dUe9rl06526XMjVrJwszttQaF6cJI0xVPlnYfpUz977H7kILD_XDSaTn82BIoIJFfs_"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.isda.irs@0.1.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+
+/**
+ * The specification for how the number of days between two dates is calculated for purposes
+ * of calculation of a fixed or floating payment amount and the basis for how many days are
+ * assumed to be in a year. Day Count Fraction is an ISDA term.
+ */
+concept DayCountFraction {
+  o String value optional
+  o String dayCountFractionScheme optional
+}
+
+transaction RateObservation extends Request {
+}
+
+transaction Result extends Response {
+  o Double outstandingBalance
+}
+
+/**
+ * The template model for a simple ISDA Interest Rate Swap
+ */
+@template
+asset TemplateModel extends Clause {
+  o String bank
+  o DateTime letterDate
+  o String counterparty
+  o String bankReference
+  o Double notionalAmount
+  o String notionalCurrency
+  o DateTime tradeDate
+  o DateTime effectiveDate
+  o DateTime terminationDate
+
+  o String fixedRatePayer
+  o String fixedRatePayerPeriodEndDates
+  o String fixedRatePayerPaymentDates
+  o Double fixedRate
+  o DayCountFraction fixedRateDayCountFraction
+  o String fixedRatePayerBusinessDays
+  o String fixedRatePayerBusinessDayConvention
+
+  o String floatingRatePayer
+  o String floatingRatePayerPeriodEndDates
+  o String floatingRatePayerPaymentDates
+  o Double floatingRateForInitialCalculationPeriod
+  o String floatingRateOption
+  o String designatedMaturity
+  o String spread
+  o DayCountFraction floatingRateDayCountFraction
+  o String resetDates
+  o String compounding
+  o String floatingRatePayerBusinessDays
+  o String floatingRatePayerBusinessDayConvention
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract@0.2.0.html">org.accordproject.contract@0.2.0.Clause</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime@0.2.0.html">org.accordproject.runtime@0.2.0.Request</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/interest-rate-swap/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.State",
+    "$identifier": "3d475b50-5131-11f1-adf9-9bf70193c0d3"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.isda.irs@0.1.0.RateObservation</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.isda.irs@0.1.0.RateObservation",
+    "$timestamp": "2026-05-16T15:12:14.853+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Request</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Request",
+    "$timestamp": "2026-05-16T15:12:14.853+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.isda.irs@0.1.0.Result</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.isda.irs@0.1.0.Result",
+    "outstandingBalance": 21.921,
+    "$timestamp": "2026-05-16T15:12:14.853+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Response</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Response",
+    "$timestamp": "2026-05-16T15:12:14.853+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello.html">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs.html">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/interest-rate-swap">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

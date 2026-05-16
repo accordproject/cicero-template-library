@@ -1,0 +1,797 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/car-rental-tr@0.13.0.html" />
+    <meta property="og:title" content="car-rental-tr@0.13.0" />
+    <meta property="og:description" content="a Simple Car Rental Contract in Turkish Language" />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/dLHDJm8n4BtpAthK20Gz6uB2nODAb8kdpTY-m9fkPvrEKVpuxmQM0ojBP3tspVJDU_EQZgAIQ2fyntgAqR3C-sGjYok5Ns2rRqa4GSchP8FiF1lqfxGg4FG1hmbHpUMbEPbrL_2UtqxDS6W-Ez-TV_3qUb_3XlcIWkO5ia5saGtws-PsQkzJeqfZp9cPS7hsC5Hm2bf1Zofvc1kRrbHsDMQ7unsjPntf99OS8jelVkmfHMmSNNNd0eHTGrlrbQ4PthMLpzr2MOsR2bku96WNwrRbWLrO3YfaTRkCghd5AcOeIa-AMtRmVwp28qQMEohG05yv9uYneJ9TSDY_0JGI0OU8W7qYIhfWoJ_Wnfoa7iV6risa7X79jL1mDR1OMzz7da1IlyoUwyWITf7xtqCsFy64j2uLmUrX3ZvVGbQFIffpg6hrsClTqv4FfvvfguSpGd3hJ-m7" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="car-rental-tr@0.13.0" />
+    <meta name="twitter:description" content="a Simple Car Rental Contract in Turkish Language" />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/dLHDJm8n4BtpAthK20Gz6uB2nODAb8kdpTY-m9fkPvrEKVpuxmQM0ojBP3tspVJDU_EQZgAIQ2fyntgAqR3C-sGjYok5Ns2rRqa4GSchP8FiF1lqfxGg4FG1hmbHpUMbEPbrL_2UtqxDS6W-Ez-TV_3qUb_3XlcIWkO5ia5saGtws-PsQkzJeqfZp9cPS7hsC5Hm2bf1Zofvc1kRrbHsDMQ7unsjPntf99OS8jelVkmfHMmSNNNd0eHTGrlrbQ4PthMLpzr2MOsR2bku96WNwrRbWLrO3YfaTRkCghd5AcOeIa-AMtRmVwp28qQMEohG05yv9uYneJ9TSDY_0JGI0OU8W7qYIhfWoJ_Wnfoa7iV6risa7X79jL1mDR1OMzz7da1IlyoUwyWITf7xtqCsFy64j2uLmUrX3ZvVGbQFIffpg6hrsClTqv4FfvvfguSpGd3hJ-m7" />
+    <meta name="twitter:image:alt" content="UML diagram of car-rental-tr@0.13.0 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/car-rental-tr@0.13.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="./assets/images/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="icon" href="https://i0.wp.com/accordproject.org/wp-content/uploads/2020/08/cropped-ms-icon-310x310-1.png?fit=512%2C512&ssl=1" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="main-navbar-menu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var burgers = document.querySelectorAll('.navbar-burger');
+        burgers.forEach(function(burger) {
+            burger.addEventListener('click', function() {
+                var targetId = burger.dataset.target;
+                var target = document.getElementById(targetId);
+                burger.classList.toggle('is-active');
+                target.classList.toggle('is-active');
+            });
+        });
+    });
+    </script>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Car Rental (TR)
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">car-rental-tr@0.13.0</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^0.26.0</span>
+                <span class="tag is-light">74b5867369aea83d8d93d94848aa4180ae0be8a785355ef1a7d76427fb4fb468</span>
+            </div>
+            <p class="subtitle">
+                a Simple Car Rental Contract in Turkish Language
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="car-rental-tr@0.13.0.html" class="dropdown-item is-active">
+                    car-rental-tr@0.13.0
+                </a>
+              
+                <a href="car-rental-tr@0.12.0.html" class="dropdown-item ">
+                    car-rental-tr@0.12.0
+                </a>
+              
+                <a href="car-rental-tr@0.11.0.html" class="dropdown-item ">
+                    car-rental-tr@0.11.0
+                </a>
+              
+                <a href="car-rental-tr@0.10.1.html" class="dropdown-item ">
+                    car-rental-tr@0.10.1
+                </a>
+              
+                <a href="car-rental-tr@0.10.0.html" class="dropdown-item ">
+                    car-rental-tr@0.10.0
+                </a>
+              
+                <a href="car-rental-tr@0.9.1.html" class="dropdown-item ">
+                    car-rental-tr@0.9.1
+                </a>
+              
+                <a href="car-rental-tr@0.9.0.html" class="dropdown-item ">
+                    car-rental-tr@0.9.0
+                </a>
+              
+                <a href="car-rental-tr@0.8.1.html" class="dropdown-item ">
+                    car-rental-tr@0.8.1
+                </a>
+              
+                <a href="car-rental-tr@0.8.0.html" class="dropdown-item ">
+                    car-rental-tr@0.8.0
+                </a>
+              
+                <a href="car-rental-tr@0.7.0.html" class="dropdown-item ">
+                    car-rental-tr@0.7.0
+                </a>
+              
+                <a href="car-rental-tr@0.6.0.html" class="dropdown-item ">
+                    car-rental-tr@0.6.0
+                </a>
+              
+                <a href="car-rental-tr@0.5.3.html" class="dropdown-item ">
+                    car-rental-tr@0.5.3
+                </a>
+              
+                <a href="car-rental-tr@0.5.2.html" class="dropdown-item ">
+                    car-rental-tr@0.5.2
+                </a>
+              
+                <a href="car-rental-tr@0.5.1.html" class="dropdown-item ">
+                    car-rental-tr@0.5.1
+                </a>
+              
+                <a href="car-rental-tr@0.5.0.html" class="dropdown-item ">
+                    car-rental-tr@0.5.0
+                </a>
+              
+                <a href="car-rental-tr@0.4.0.html" class="dropdown-item ">
+                    car-rental-tr@0.4.0
+                </a>
+              
+                <a href="car-rental-tr@0.3.0.html" class="dropdown-item ">
+                    car-rental-tr@0.3.0
+                </a>
+              
+                <a href="car-rental-tr@0.2.0.html" class="dropdown-item ">
+                    car-rental-tr@0.2.0
+                </a>
+              
+                <a href="car-rental-tr@0.1.0.html" class="dropdown-item ">
+                    car-rental-tr@0.1.0
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/car-rental-tr@0.13.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/car-rental-tr@0.13.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://playground.accordproject.org/#data=N4IgLgpgtgDgNgQ0gWQQJwNYBMD2B3AOxAC4QB5AFTIAIBpQBkAAlAQQBlnlnqBlANYC1WAUUB6gMiHd6AHQIBGAHTUKzFgDF2jGTOo6FsugEs0CAJ4JqANQhoIBaiKMYIYADT2EAC0CMgAGc3tAFc0AKhqYGA4CB8fHDQAOQQoCABfZO1deQAmamYsGx8DMIiomLRcvJLU9OoFAGYlCEiAMxw7cMjo2IAFD1aUtIIZACEAgiwEOwAjADeTSLomZgBNLgshRiE46hxEYwxqCa9EAGMEDDAvNHktOwyAFkNjRDMCLztcrx4cMyxP9pKIBAEkkqrcavIAKw5CoFIodHyA8r5HygnTggBsDWarThAIgPT6oOGo3GU1m8wYLHYKy2O3QZwOrxOZwuVxumUUKmYAHHqAARITKJYaACSNzRHP0XUQGHMcRwRXgSAgIr5qJ0HOyqEw5nCpzQQ2MY3V1A59WQOCwjSKUEtjRNHIeFGMTQMgHxACDUbleDBeQD6gNQlkc-sBbVa4EsIOgHZDqIxbPs9TtYjHMSIEAjqPKigA3CDHDwGSKqokEWqKSlsDhcAVC0XinTl2QycIAYmOiACmZgpiSBDAAGFOwjQeFEjhRmAKBAAB5gVLUAAUY9tk4XeqCNgIxxMA7tqQAlIre7YwF00DhjhAsEF+tcCOEAPQdhBd-rVcvZWhGBCIKDmIYED9RACAAcy8ABzpR0AMQsih8MB0DAPllRNct6m-J5EgAgwwAMAMKBguDwlsLAUMgND5CdKI4AMf8wCzHBzgzENwwMPM0BMbhELw1pSwUHgBGEMRNnoLZaDIOIAFVuCkxVEEgEtkmoaUznMAgQnpOAQ31Q0JiwBd-x1bYwBwW1JiLAw7EralmDiABycwMB-MxqA4oskgKe8ZA5QTBFEcQ4jE6h6G5dZ6EAPEB6GoYhqBGagfGmAAvSI-SSahEJdXY3gyhBPA8AAfsBIjQKzPTzA5jGOHLnKwgh-x8T4-SQ7LXmoWUYB8dBvLLRRlGYAAJAaAB2KDiDghBinhktSvsrIOZysEKOk9moDx0AgJwGOvWwFhYFZLHWTY3M9Gzljsg5mrdLxxmoSZGiMPDaLdQoCqS6xPRMAqMAKqA4AK-6MBKqzCllNA-WDIHPgstAYeBghPUQ-Kiuoa8DBgdqEEmAI4GoItPTopLf0Sf1dl+NlBgIO5FD4fyRPsFQKFFGKGx0BAj0rA61g2OI3HpaqMt+6gWgIDAChMVpsuoCDf39S43IQJKDBMZxID2qsaUcjKaLo1GwCgfC8Kuahqjuo9uBmiA0sRoirKtOxcIMSYNrsekIMQ6gkhMUlzFAxoIAsyIr32DxrEFtB-sqrwibcZ3fSgNxWnQLxQgqsxfQY0CDCtCPrEKM7NfMBBcKNxQBoMKCYYS28wDVrOc5K+Yiyz2jtl2BlOdWI6HPt6gCuOGwGMQyILLGT1sbgUYcf-MxTnOS4K0WWytn5nLduVwo-U2osrXa2JRgaz4K-mv2bCcOxpgISI-rzg5mX2CrQ7QcPI7jlO3k+HwCvyQoK7zgox7UDMDAVkCA56sh6vQAM2MEqW2tr3XAbowEMifutMChQq4TEQGlRW2l9g3mCFAEkupgCvjAL0Uq70sB7iCPOZS-4PBOCSPDeaKswDOVbjsG8bop65SyugTGE89YG2AtYJaVwQAuBAGGRoA5TIkBAAQRIUQexXm2GgUC8gwHHFiFgGAF4ABW+YwDyH1FuYeYA0AAAEAAM8gFA2JuHRGAsQGKxE0do3R+icBGOOCYnR-YqpgFsVkeQdihyvkzE0C8oQPC106sQR8j4ZFwB8Fo44Oi0B6MMcY+Q7jHyeKyd43xYBnytEsWA4JdiOR2L8TgGQzjXHqI8RkrxOS-HyGCP2OiEAQk1PkMAeMABHAIURXDxh8C4ggI5hYxLWvEnwiTkl2lSekzJ2SfG5PyYUjZJTHxdLwkkPpYTTGmRuI+AAVHGCAIyxlWVAgcagPYTB9gYhcx8MgKnTMqQYHEXQTz9mGaMhCqM5ykR8Nc25ILgAyAGDIS5KlTBkACAxfIUzMzvM+UaLqfjfl2H+SYZF20wVjAhRM9FnoYW3AVHyCckx5jjknOkBU3FSpgWoMcTctgdx7itLCm4GYEQMQJa8iJb5QWQFJdQMVmYqU6BZZY+5BxVz9mnHOZl-I6UMpVWADVrKlWcrQFuHldo9WKvZc81555LzXlvPyymVjICwAUhAGQgrnANGdcqC04YJXgulcOSlDYknUFYCUWI1AklmrZQ8+EsRgSuupTwc1sbw1lCwDCHw0alVxrQASBGwbHyhrxJGj5Sb9XsvhICBN2bK14iRCUWtqboiAnzYm9IIbaWeTwscaVE40AMSjeWlNBwUUUIMFQmhA7C2WAgIWDsno+TOGLqk0tTankutVOu3SRosDrpSfulZkZ0DbuTGgddeYCz4y3ZTHQnblT8mXUWCFQ75XJpjQlTKyFlTrtIuRdttwQ0itPI+xCz613Do-WxDiXEeJ4uDVcy1IHMVJuA-2GVnokPocDfayRIBxiIQUXKk2IAAAkL5ohSBICR9xay2mbI6WY08v5LEhIcfIacXqUArKoy4dIVHc01uo1R5gxx0oDgEfGfsv5eP8ZALmhtlHhMgD5AYDAfZpUIAzVEQo8piB3AAByPlkFCVT6ndrMFFvSWTtwBNprbVR2KVGADUABOGxshMi1E895rzdwbM6Dsy2oEyjHMkYk3YWlSDBiSLk1WiAims3KYAFI4A8HYVQFZbAIywCYL4sp9h6a88Zr8CAcxnG0jnT0lmwYIACyR+LDnlNuY835iE6IADsBn3P1ao2Q8dk7+26uUzV6zsXbMgCVIpPkYWqOqVlPKXrIAd36VmyACwOwxZ4AQH7GLfGJsHuUwAcR2E0DESg+Qij7VAFoA7aIFvG4F6RR6oznuU5kDzHWls6LgLENbtBLhQGjl4Jbl7CzFhm8pgA6hYKH-B4e1AHPwAAGlDmx6P0fNkeyRhCSF-1rdkOWGxHWsgeYM0tv9P7lOyBJ8T0nshyfY6o9B6wsGkDwZG2Jz0Enn5SeHtQZA1gnBJWoGQV0SX9tPaw4OHD1HiNPfI4gJTTmQC0Z2ZY0x6BzG-nkGhmXkTXXY6e4y1Vs5hsq-oM5QMb1Rd2EjEtHISRSqykiytEHRuSMm-N2EU2CuKNJZV2r1pRT2kmNtAjEw8gLQI0yiYZgOr6tohI7gAI9KIAWF-KMsLmQafyFc65yXSeSOGuNbuU1ymZKQ9NskQvUuAVngvFeAhhuVfO1FhlbFTRrCJ+L4GkUe73sQlqFgDrHXrwAFpaiZCjOPu4WBJjHHH5MO4dx0Tj4Z65+frnagr-RICHvVHSPZ1PAYV03fB-D9HxPqfM+58L6X7v9f3Wt879X-vkA6Qa9yaP-bPCZ+3sq4QB3A2IQhNDdaL5z53Adaz6AgIDj6ubHBNBYDj5abogGY2LoiTCZAZroj+ZM7LZ94D6AHAGgHgGz5YBQEwEz4IFIEoFYBoEYFYE4F4G4ZSI7Y2DQCngDT6xwAKIgDJBAA" class="button is-rounded is-primary open-studio">Open in Template Playground</a>
+          <a href="https://github.dev/accordproject/cicero-template-library/blob/master/src/car-rental-tr/README.md" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="accordprojecttemplatecarrentaltr">Accord Project Template: car-rental-tr</h1>
+<p>This is a Simple Car Rental Contract in Turkish Language.</p>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>OTO KİRALAMA SÖZLEŞMESİ</p>
+
+<ol delimiter=period start=1 tight=false>
+<li><p>TARAFLAR</p>
+<p>1.1 Kiraya Veren Şirket, Şahıs, Kurum "Acme Car Rental"
+1.2 Adresi "Dikmen Caddesi No:48/15 Dikmen Ankara"
+1.3 Telefon "+901231231234"</p>
+</li></ol><p>Bundan böyle KİRAYA VEREN olarak anılacaktır.</p>
+<p>1.4 Kiralayanın Adı Soyadı "Can Doğan"
+1.5 Adresi "John F. Kennedy Sokak No:23/12 Kavaklıdere Ankara"
+1.6 Telefon "+901234567890"</p>
+<p>Bundan böyle KİRALAYAN olarak anılacaktır.</p>
+
+<ol delimiter=period start=2 tight=false>
+<li><p>ARAÇ DETAYLARI</p>
+<p>2.1 Plaka No "PlakaNo"
+2.2 Marka "Volkswagen"
+2.3 Model "Golf 1.6 TDI Comfortline"
+2.4 Trafiğe Çıkış Yılı "2017"
+2.5 Renk "Kırmızı"
+2.6 Şase No "WVWZZZ3CZXW000001"</p>
+</li>
+<li><p>KİRALAMA DETAYLARI</p>
+<p>3.1
+{{#clause payment}}
+"İki Yüz On Yedi Amerikan Doları" (217.99 USD) "bank transfer".
+{{/clause}}
+3.2 Kiralama Başlangıç Tarihi "13.07.2018"
+3.3 Kiralama Bitiş Tarihi "17.07.2018"
+3.4 Teslimat Noktası "Acme Car Rental Merkez Ofis"</p>
+</li>
+<li><p>SÖZLEŞMENİN KONUSU "PlakaNo" Plaka numaralı "Volkswagen" marka otomobilin KİRALAYAN'a kiraya verilmesi.</p>
+</li>
+<li><p>SÖZLEŞMENİN İÇERİĞİ : Bu sözleşme tarafların taahhütlerine ve aracın kiralanması şartlarını kapsar.</p>
+</li>
+<li><p>TAAHHÜTNAME : Sözleşmenin akidi olarak hareket eden KİRAYA VEREN ve KİRALAYAN aşağıda belirtiliği üzere yükümlülüklerini karşılıklı birbirlerine taahhüt edip kabul ile imzalamışlardır.</p>
+</li>
+<li><p>SÖZLEŞME ŞARTLARI :</p>
+<p>a) KİRAYA VEREN, aracı tüm fonksiyonları çalışır vaziyette KİRALAYAN'a teslim etmiştir.
+b) Sözleşme tarihinden itibaren araçta meydana gelebilecek her türlü arıza, bakım, onarım ve yakıt giderleri KİRALAYAN'a aittir. Hiç bir surette giderlerle ilgili olarak KİRAYA VEREN'den ücret talebinde bulunulmayacaktır. KİRALAYAN aracın en iyi şekilde korunması için gereken önlemleri alacak ve her türlü bakımını süresi içerisinde yaptıracaktır.</p>
+</li></ol><p>İş bu sözleşmeden doğacak herhangi bir anlaşmazlık durumunda "Ankara" mahkemelerinin yetkili olduğunu taraflar kabul etmişlerdir.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">OTO KİRALAMA SÖZLEŞMESİ
+1. TARAFLAR
+
+   1.1 Kiraya Veren Şirket, Şahıs, Kurum "Acme Car Rental"
+   1.2 Adresi "Dikmen Caddesi No:48/15 Dikmen Ankara"
+   1.3 Telefon "+901231231234"
+
+Bundan böyle KİRAYA VEREN olarak anılacaktır.
+
+   1.4 Kiralayanın Adı Soyadı "Can Doğan"
+   1.5 Adresi "John F. Kennedy Sokak No:23/12 Kavaklıdere Ankara"
+   1.6 Telefon "+901234567890"
+
+Bundan böyle KİRALAYAN olarak anılacaktır.
+
+2. ARAÇ DETAYLARI
+
+   2.1 Plaka No "PlakaNo"
+   2.2 Marka "Volkswagen"
+   2.3 Model "Golf 1.6 TDI Comfortline"
+   2.4 Trafiğe Çıkış Yılı "2017"
+   2.5 Renk "Kırmızı"
+   2.6 Şase No "WVWZZZ3CZXW000001"
+
+3. KİRALAMA DETAYLARI
+
+   3.1
+{{#clause payment}}
+"İki Yüz On Yedi Amerikan Doları" (217.99 USD) "bank transfer".
+{{/clause}}
+   3.2 Kiralama Başlangıç Tarihi "13.07.2018"
+   3.3 Kiralama Bitiş Tarihi "17.07.2018"
+   3.4 Teslimat Noktası "Acme Car Rental Merkez Ofis"
+
+1. SÖZLEŞMENİN KONUSU "PlakaNo" Plaka numaralı "Volkswagen" marka otomobilin KİRALAYAN'a kiraya verilmesi.
+
+2. SÖZLEŞMENİN İÇERİĞİ : Bu sözleşme tarafların taahhütlerine ve aracın kiralanması şartlarını kapsar.
+
+3. TAAHHÜTNAME : Sözleşmenin akidi olarak hareket eden KİRAYA VEREN ve KİRALAYAN aşağıda belirtiliği üzere yükümlülüklerini karşılıklı birbirlerine taahhüt edip kabul ile imzalamışlardır.
+
+4. SÖZLEŞME ŞARTLARI :
+
+    a) KİRAYA VEREN, aracı tüm fonksiyonları çalışır vaziyette KİRALAYAN'a teslim etmiştir. 
+    b) Sözleşme tarihinden itibaren araçta meydana gelebilecek her türlü arıza, bakım, onarım ve yakıt giderleri KİRALAYAN'a aittir. Hiç bir surette giderlerle ilgili olarak KİRAYA VEREN'den ücret talebinde bulunulmayacaktır. KİRALAYAN aracın en iyi şekilde korunması için gereken önlemleri alacak ve her türlü bakımını süresi içerisinde yaptıracaktır.
+
+İş bu sözleşmeden doğacak herhangi bir anlaşmazlık durumunda "Ankara" mahkemelerinin yetkili olduğunu taraflar kabul etmişlerdir.</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">OTO KİRALAMA SÖZLEŞMESİ
+1. TARAFLAR
+
+   1.1 Kiraya Veren Şirket, Şahıs, Kurum {{lessorName}}
+   1.2 Adresi {{lessorAddress}}
+   1.3 Telefon {{lessorPhone}}
+
+Bundan böyle KİRAYA VEREN olarak anılacaktır.
+
+   1.4 Kiralayanın Adı Soyadı {{lesseeName}}
+   1.5 Adresi {{lesseeAddress}}
+   1.6 Telefon {{lesseePhone}}
+
+Bundan böyle KİRALAYAN olarak anılacaktır.
+
+2. ARAÇ DETAYLARI
+
+   2.1 Plaka No {{plateID}}
+   2.2 Marka {{carBrand}}
+   2.3 Model {{model}}
+   2.4 Trafiğe Çıkış Yılı {{modelYear}}
+   2.5 Renk {{color}}
+   2.6 Şase No {{vechileID}}
+
+3. KİRALAMA DETAYLARI
+
+   3.1
+{{#clause paymentClause}}
+{{amountText}} ({{amount}} {{currencyCode}}) {{paymentProcedure}}.
+{{/clause}}
+   3.2 Kiralama Başlangıç Tarihi {{startDate}}
+   3.3 Kiralama Bitiş Tarihi {{endDate}}
+   3.4 Teslimat Noktası {{deliveryStation}}
+
+1. SÖZLEŞMENİN KONUSU {{plateID}} Plaka numaralı {{carBrand}} marka otomobilin KİRALAYAN'a kiraya verilmesi.
+
+2. SÖZLEŞMENİN İÇERİĞİ : Bu sözleşme tarafların taahhütlerine ve aracın kiralanması şartlarını kapsar.
+
+3. TAAHHÜTNAME : Sözleşmenin akidi olarak hareket eden KİRAYA VEREN ve KİRALAYAN aşağıda belirtiliği üzere yükümlülüklerini karşılıklı birbirlerine taahhüt edip kabul ile imzalamışlardır.
+
+4. SÖZLEŞME ŞARTLARI :
+
+    a) KİRAYA VEREN, aracı tüm fonksiyonları çalışır vaziyette KİRALAYAN'a teslim etmiştir. 
+    b) Sözleşme tarihinden itibaren araçta meydana gelebilecek her türlü arıza, bakım, onarım ve yakıt giderleri KİRALAYAN'a aittir. Hiç bir surette giderlerle ilgili olarak KİRAYA VEREN'den ücret talebinde bulunulmayacaktır. KİRALAYAN aracın en iyi şekilde korunması için gereken önlemleri alacak ve her türlü bakımını süresi içerisinde yaptıracaktır.
+
+İş bu sözleşmeden doğacak herhangi bir anlaşmazlık durumunda {{authorizedCourt}} mahkemelerinin yetkili olduğunu taraflar kabul etmişlerdir.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+  "$class": "org.accordproject.carrentaltr@0.1.0.TemplateModel",
+  "lessorName": "Acme Car Rental",
+  "lessorAddress": "Dikmen Caddesi No:48/15 Dikmen Ankara",
+  "lessorPhone": "+901231231234",
+  "lesseeName": "Can Doğan",
+  "lesseeAddress": "John F. Kennedy Sokak No:23/12 Kavaklıdere Ankara",
+  "lesseePhone": "+901234567890",
+  "authorizedCourt": "Ankara",
+  "plateID": "PlakaNo",
+  "carBrand": "Volkswagen",
+  "model": "Golf 1.6 TDI Comfortline",
+  "modelYear": "2017",
+  "color": "Kırmızı",
+  "vechileID": "WVWZZZ3CZXW000001",
+  "startDate": "13.07.2018",
+  "endDate": "17.07.2018",
+  "deliveryStation": "Acme Car Rental Merkez Ofis",
+  "paymentClause": {
+    "$class": "org.accordtr.carrental.PaymentClause",
+    "amountText": "İki Yüz On Yedi Amerikan Doları",
+    "amount": {
+      "$class": "org.accordproject.money.MonetaryAmount",
+      "doubleValue": 217.99,
+      "currencyCode": "USD"
+    },
+    "paymentProcedure": "bank transfer",
+    "clauseId": "253d77ed-32ea-4dbc-b446-189db93446ee",
+    "$identifier": "253d77ed-32ea-4dbc-b446-189db93446ee"
+  },
+  "$identifier": "e405f89c-4d47-4eea-9cfd-ad6806b2dd64",
+  "clauseId": "e405f89c-4d47-4eea-9cfd-ad6806b2dd64"
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/dLHDJm8n4BtpAthK20Gz6uB2nODAb8kdpTY-m9fkPvrEKVpuxmQM0ojBP3tspVJDU_EQZgAIQ2fyntgAqR3C-sGjYok5Ns2rRqa4GSchP8FiF1lqfxGg4FG1hmbHpUMbEPbrL_2UtqxDS6W-Ez-TV_3qUb_3XlcIWkO5ia5saGtws-PsQkzJeqfZp9cPS7hsC5Hm2bf1Zofvc1kRrbHsDMQ7unsjPntf99OS8jelVkmfHMmSNNNd0eHTGrlrbQ4PthMLpzr2MOsR2bku96WNwrRbWLrO3YfaTRkCghd5AcOeIa-AMtRmVwp28qQMEohG05yv9uYneJ9TSDY_0JGI0OU8W7qYIhfWoJ_Wnfoa7iV6risa7X79jL1mDR1OMzz7da1IlyoUwyWITf7xtqCsFy64j2uLmUrX3ZvVGbQFIffpg6hrsClTqv4FfvvfguSpGd3hJ-m7"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.carrentaltr@0.1.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+
+/* Requesting a payment */
+transaction PaymentRequest extends Request {
+}
+
+/* PayOut response */
+transaction PayOut extends Response {
+  o Double amount
+  o String currencyCode
+}
+
+asset PaymentClause extends Clause {
+  o String amountText
+  o Double amount
+  o String currencyCode
+  o String paymentProcedure
+}
+
+@template
+asset TemplateModel extends Clause {
+
+  // Lessor //
+  o String lessorName
+  o String lessorAddress
+  o String lessorPhone
+
+  // Lessee //
+  o String lesseeName
+  o String lesseeAddress
+  o String lesseePhone
+
+  // Domestic Court //
+  o String authorizedCourt
+
+  // Vehicle Details //
+  o String plateID
+  o String carBrand
+  o String model
+  o String modelYear
+  o String color
+  o String vechileID
+
+  // Date Details //
+  o String startDate
+  o String endDate
+
+  // Payment Details //
+  o String deliveryStation
+
+  /* payment */
+  o PaymentClause paymentClause
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract@0.2.0.html">org.accordproject.contract@0.2.0.Clause</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime@0.2.0.html">org.accordproject.runtime@0.2.0.Request</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/car-rental-tr/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.State",
+    "$identifier": "3a06af40-5131-11f1-adf9-9bf70193c0d3"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.carrentaltr@0.1.0.PaymentRequest</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.carrentaltr@0.1.0.PaymentRequest",
+    "$timestamp": "2026-05-16T15:12:09.395+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Request</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Request",
+    "$timestamp": "2026-05-16T15:12:09.395+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.carrentaltr@0.1.0.PayOut</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.carrentaltr@0.1.0.PayOut",
+    "amount": 184.142,
+    "currencyCode": "Id commodo deserunt eu.",
+    "$timestamp": "2026-05-16T15:12:09.395+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Response</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Response",
+    "$timestamp": "2026-05-16T15:12:09.395+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello.html">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs.html">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/car-rental-tr">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+@startuml
+class org.accordproject.supplyagreement_0_1_0.Product {
+   + String partNumber
+   + String name
+   + Double quantity
+   + Double unitPrice
+}
+org.accordproject.supplyagreement_0_1_0.Product --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreement_0_1_0.OrderItem {
+   + String partNumber
+   + Double quantity
+}
+org.accordproject.supplyagreement_0_1_0.OrderItem --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreement_0_1_0.PurchaseOrder {
+   + Product[] products
+   + String deliveryLocation
+   + DateTime deliveryDate
+}
+org.accordproject.supplyagreement_0_1_0.PurchaseOrder --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreement_0_1_0.DeliveryObligationEvent {
+   + String party
+   + DateTime expectedDelivery
+   + OrderItem[] deliverables
+}
+org.accordproject.supplyagreement_0_1_0.DeliveryObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.supplyagreement_0_1_0.PurchaseObligationEvent {
+   + String party
+   + Double requiredPurchase
+   + Integer year
+   + Integer quarter
+}
+org.accordproject.supplyagreement_0_1_0.PurchaseObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.supplyagreement_0_1_0.PaymentObligationEvent {
+   + String party
+   + Double amount
+}
+org.accordproject.supplyagreement_0_1_0.PaymentObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.supplyagreement_0_1_0.PurchaseObligationData {
+   + String party
+   + Double requiredPurchase
+   + Integer year
+   + Integer quarter
+}
+org.accordproject.supplyagreement_0_1_0.PurchaseObligationData --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreement_0_1_0.DeliveryObligationData {
+   + String party
+   + DateTime expectedDelivery
+   + OrderItem[] deliverables
+}
+org.accordproject.supplyagreement_0_1_0.DeliveryObligationData --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreement_0_1_0.PaymentObligationData {
+   + String party
+   + Double amount
+}
+org.accordproject.supplyagreement_0_1_0.PaymentObligationData --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreement_0_1_0.AgreementState {
+   + String $identifier
+   + PurchaseObligationData purchaseObligation
+   + DeliveryObligationData deliveryObligation
+   + PaymentObligationData paymentObligation
+}
+org.accordproject.supplyagreement_0_1_0.AgreementState --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreement_0_1_0.ForecastRequest << (T,yellow) >> {
+   + Integer supplyForecast
+}
+org.accordproject.supplyagreement_0_1_0.ForecastRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.supplyagreement_0_1_0.ForecastResponse << (T,yellow) >> {
+}
+org.accordproject.supplyagreement_0_1_0.ForecastResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.supplyagreement_0_1_0.PurchaseRequest << (T,yellow) >> {
+   + PurchaseOrder purchaseOrder
+}
+org.accordproject.supplyagreement_0_1_0.PurchaseRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.supplyagreement_0_1_0.PurchaseResponse << (T,yellow) >> {
+}
+org.accordproject.supplyagreement_0_1_0.PurchaseResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.supplyagreement_0_1_0.DeliveryRequest << (T,yellow) >> {
+   + Product[] products
+}
+org.accordproject.supplyagreement_0_1_0.DeliveryRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.supplyagreement_0_1_0.DeliveryResponse << (T,yellow) >> {
+}
+org.accordproject.supplyagreement_0_1_0.DeliveryResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.supplyagreement_0_1_0.PaymentRequest << (T,yellow) >> {
+   + Double amount
+}
+org.accordproject.supplyagreement_0_1_0.PaymentRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.supplyagreement_0_1_0.PaymentResponse << (T,yellow) >> {
+   + Double paid
+}
+org.accordproject.supplyagreement_0_1_0.PaymentResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.supplyagreement_0_1_0.TemplateModel << (A,green) >> {
+   + DateTime effectiveDate
+   + String supplier
+   + String buyer
+   + String shortDescriptionOfTheProducts
+   + Integer noticeWindow
+   + Integer cancellationWindow
+   + Double minimumPercentage
+   + String deliverables
+   + Integer deliveryWindow
+   + String deliveryAttachment
+   + Integer inspectionWindow
+   + String acceptanceAttachment
+   + Integer priceUpdateWindow
+   + String accountNumber
+   + String routingNumnber
+   + Integer termYears
+   + Integer renewalYears
+   + Integer renewalWindow
+   + String governingState
+   + String venueState
+}
+org.accordproject.supplyagreement_0_1_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

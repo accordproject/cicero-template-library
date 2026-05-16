@@ -1,0 +1,52 @@
+@startuml
+class org.accordproject.paymentuponiot_0_1_0.ContractLifecycleStatus << (E,grey) >> {
+   + INITIALIZED
+   + RUNNING
+   + COMPLETED
+}
+org.accordproject.paymentuponiot_0_1_0.ContractLifecycleStatus --|> concerto_1_0_0.Concept
+class org.accordproject.paymentuponiot_0_1_0.ContractSigned << (T,yellow) >> {
+   + String contractId
+}
+org.accordproject.paymentuponiot_0_1_0.ContractSigned --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.paymentuponiot_0_1_0.SingleButtonPress << (T,yellow) >> {
+}
+org.accordproject.paymentuponiot_0_1_0.SingleButtonPress --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.paymentuponiot_0_1_0.DoubleButtonPress << (T,yellow) >> {
+}
+org.accordproject.paymentuponiot_0_1_0.DoubleButtonPress --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.paymentuponiot_0_1_0.LongButtonPress << (T,yellow) >> {
+}
+org.accordproject.paymentuponiot_0_1_0.LongButtonPress --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.paymentuponiot_0_1_0.PaymentReceived << (T,yellow) >> {
+   + Double amount
+   + String currencyCode
+}
+org.accordproject.paymentuponiot_0_1_0.PaymentReceived --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.paymentuponiot_0_1_0.CounterResponse << (T,yellow) >> {
+   + Double counter
+   + Double paymentCount
+}
+org.accordproject.paymentuponiot_0_1_0.CounterResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.paymentuponiot_0_1_0.PaymentObligationEvent {
+   + Double amount
+   + String currencyCode
+   + String description
+}
+org.accordproject.paymentuponiot_0_1_0.PaymentObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.paymentuponiot_0_1_0.CounterState {
+   + String $identifier
+   + ContractLifecycleStatus status
+   + Double counter
+   + Double paymentCount
+}
+org.accordproject.paymentuponiot_0_1_0.CounterState --|> concerto_1_0_0.Concept
+class org.accordproject.paymentuponiot_0_1_0.TemplateModel << (A,green) >> {
+   + String buyer
+   + String seller
+   + Double amountPerUnit
+   + String currencyCode
+   + Integer paymentCount
+}
+org.accordproject.paymentuponiot_0_1_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml
