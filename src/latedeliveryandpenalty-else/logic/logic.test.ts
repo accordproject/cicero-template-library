@@ -44,10 +44,11 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: true,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBe(0);
+            expect(result.result.penalty.doubleValue).toBe(0);
+            expect(result.result.penalty.currencyCode).toBe('USD');
             expect(result.result.buyerMayTerminate).toBe(true);
         });
 
@@ -57,10 +58,10 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -72,7 +73,7 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: futureDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             await expect(logic.trigger(model, request)).rejects.toThrow();
         });

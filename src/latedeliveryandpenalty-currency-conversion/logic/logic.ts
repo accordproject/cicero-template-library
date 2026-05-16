@@ -1,5 +1,6 @@
 import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
+import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
 
 type LateDeliveryAndPenaltyResult = {
     result: ILateDeliveryAndPenaltyResponse;
@@ -15,6 +16,14 @@ function durationToDays(duration: IDuration): number {
     }
 }
 
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
+
 // @ts-ignore TemplateLogic is injected by the runtime
 class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: ILateDeliveryAndPenaltyRequest): Promise<LateDeliveryAndPenaltyResult> {
@@ -25,12 +34,19 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
             throw new Error('Cannot exercise late delivery before delivery date');
         }
 
+        // Cross-currency by design: the contract is denominated in
+        // data.fromCurrency but pays out in data.toCurrency, applying an
+        // exchange rate when the two differ.
+        if (request.goodsValue.currencyCode !== data.fromCurrency) {
+            throw new Error(`Goods value must be in ${data.fromCurrency} but is in ${request.goodsValue.currencyCode}`);
+        }
+
         if (data.forceMajeure && request.forceMajeure) {
             return {
                 result: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.LateDeliveryAndPenaltyResponse',
                     $timestamp: now,
-                    penalty: 0,
+                    penalty: monetary(0, data.toCurrency),
                     buyerMayTerminate: true,
                 },
                 events: [],
@@ -41,23 +57,23 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
         const diffDays = diffMs / (1000 * 60 * 60 * 24);
         const penaltyDurationDays = durationToDays(data.penaltyDuration);
         const diffRatio = diffDays / penaltyDurationDays;
-        const penalty = diffRatio * (data.penaltyPercentage / 100.0) * request.goodsValue;
-        const cap = (data.capPercentage / 100.0) * request.goodsValue;
+        const goodsValue = request.goodsValue.doubleValue;
+        const penalty = diffRatio * (data.penaltyPercentage / 100.0) * goodsValue;
+        const cap = (data.capPercentage / 100.0) * goodsValue;
         let capped = Math.min(penalty, cap);
 
-        const goodsInDifferentCurrency = data.fromCurrency !== data.toCurrency;
-        if (goodsInDifferentCurrency) {
+        if (data.fromCurrency !== data.toCurrency) {
             capped = capped * request.currencyConversion.rate;
         }
 
+        const cappedAmount = monetary(capped, data.toCurrency);
         const terminationDays = durationToDays(data.termination);
         const buyerMayTerminate = diffDays > terminationDays;
 
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.PaymentObligationEvent',
             $timestamp: now,
-            amount: capped,
-            currencyCode: data.toCurrency,
+            amount: cappedAmount,
             description: `${data.seller} should pay penalty amount to ${data.buyer}`,
         };
 
@@ -65,7 +81,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
             result: {
                 $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.LateDeliveryAndPenaltyResponse',
                 $timestamp: now,
-                penalty: capped,
+                penalty: cappedAmount,
                 buyerMayTerminate,
             },
             events: [event],

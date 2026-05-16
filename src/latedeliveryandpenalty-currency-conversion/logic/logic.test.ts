@@ -47,7 +47,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: true,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',
@@ -56,7 +56,8 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBe(0);
+            expect(result.result.penalty.doubleValue).toBe(0);
+            expect(result.result.penalty.currencyCode).toBe('EUR');
             expect(result.result.buyerMayTerminate).toBe(true);
             expect(result.events).toHaveLength(0);
         });
@@ -68,7 +69,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',
@@ -78,10 +79,10 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
             };
             // model has fromCurrency='USD', toCurrency='EUR' (different)
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
-            expect(event.currencyCode).toBe('EUR');
+            expect(event.amount.currencyCode).toBe('EUR');
         });
 
         it('should not apply currency conversion when fromCurrency == toCurrency', async () => {
@@ -91,7 +92,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',
@@ -104,7 +105,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
             const modelDiffCurrency = { ...model, fromCurrency: 'USD', toCurrency: 'EUR' };
             const resultWithConversion = await logic.trigger(modelDiffCurrency, request);
             // With conversion rate of 1.5 the penalty is multiplied, so it should be larger
-            expect(resultWithConversion.result.penalty).toBeGreaterThan(resultNoConversion.result.penalty);
+            expect(resultWithConversion.result.penalty.doubleValue).toBeGreaterThan(resultNoConversion.result.penalty.doubleValue);
         });
 
         it('should use toCurrency as the currencyCode in the emitted event', async () => {
@@ -114,7 +115,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',
@@ -124,7 +125,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
             };
             const result = await logic.trigger(modelGBP, request);
             const event = result.events[0] as any;
-            expect(event.currencyCode).toBe('GBP');
+            expect(event.amount.currencyCode).toBe('GBP');
         });
 
         it('should cap penalty at capPercentage of goodsValue before conversion', async () => {
@@ -140,7 +141,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',
@@ -149,7 +150,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 },
             };
             const result = await logic.trigger(modelHighPenalty, request);
-            expect(result.result.penalty).toBeLessThanOrEqual(1000 * 0.55);
+            expect(result.result.penalty.doubleValue).toBeLessThanOrEqual(1000 * 0.55);
         });
 
         it('should set buyerMayTerminate=true when delay exceeds termination threshold', async () => {
@@ -161,7 +162,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: veryPastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',
@@ -181,7 +182,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: futureDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',
@@ -198,7 +199,7 @@ describe('LateDeliveryAndPenaltyCurrencyConversionLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 currencyConversion: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion',
                     from: 'USD',

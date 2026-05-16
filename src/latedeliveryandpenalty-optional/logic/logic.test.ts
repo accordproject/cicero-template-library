@@ -44,10 +44,11 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.Distance', miles: 50 },
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBe(0);
+            expect(result.result.penalty.doubleValue).toBe(0);
+            expect(result.result.penalty.currencyCode).toBe('USD');
             expect(result.result.buyerMayTerminate).toBe(true);
             expect(result.events).toHaveLength(0);
         });
@@ -59,10 +60,10 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.Distance', miles: 50 },
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelNoFM, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -72,10 +73,10 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -86,10 +87,10 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelNoFM, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -105,10 +106,10 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelHighPenalty, request);
-            expect(result.result.penalty).toBeLessThanOrEqual(1000 * 0.55);
+            expect(result.result.penalty.doubleValue).toBeLessThanOrEqual(1000 * 0.55);
         });
 
         it('should set buyerMayTerminate=true when delay exceeds termination threshold', async () => {
@@ -120,7 +121,7 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: veryPastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelShortTermination, request);
             expect(result.result.buyerMayTerminate).toBe(true);
@@ -134,7 +135,7 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: futureDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             await expect(logic.trigger(model, request)).rejects.toThrow('Cannot exercise late delivery before delivery date');
         });
@@ -146,14 +147,14 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelNoFM, request);
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.latedeliveryandpenaltyoptional@0.2.0.PaymentObligationEvent');
-            expect(event.amount).toBe(result.result.penalty);
-            expect(event.currencyCode).toBe('USD');
+            expect(event.amount).toEqual(result.result.penalty);
+            expect(event.amount.currencyCode).toBe('USD');
             expect(event.description).toContain('Bob');
             expect(event.description).toContain('Alice');
         });
