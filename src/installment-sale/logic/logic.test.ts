@@ -38,12 +38,11 @@ describe('InstallmentSaleLogic', () => {
             clauseId: 'test-id',
             BUYER: 'Dan',
             SELLER: 'Ned',
-            INITIAL_DUE: 10000.0,
-            CURRENCY_CODE: 'EUR',
+            INITIAL_DUE: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 10000.0, currencyCode: 'EUR' } as any,
             INTEREST_RATE: 1.5,
-            TOTAL_DUE_BEFORE_CLOSING: 9500.0,
-            MIN_PAYMENT: 500.0,
-            DUE_AT_CLOSING: 500.0,
+            TOTAL_DUE_BEFORE_CLOSING: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 9500.0, currencyCode: 'EUR' } as any,
+            MIN_PAYMENT: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 500.0, currencyCode: 'EUR' } as any,
+            DUE_AT_CLOSING: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 500.0, currencyCode: 'EUR' } as any,
             FIRST_MONTH: 3
         };
         initialState = {
@@ -75,14 +74,13 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 2500.0,
-                currencyCode: 'EUR'
+                amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 2500.0, currencyCode: 'EUR' } as any
             };
             const result = await logic.trigger(model, request, initialState);
 
             expect(result.result).toHaveProperty('$class', `${NS}.Balance`);
-            expect(result.result.total_paid).toBeCloseTo(2500.0, 2);
-            expect(result.result.balance).toBeLessThan(10000.0);
+            expect((result.result.total_paid as any).doubleValue).toBeCloseTo(2500.0, 2);
+            expect((result.result.balance as any).doubleValue).toBeLessThan(10000.0);
             expect(Array.isArray(result.events)).toBe(true);
             expect(result.events).toHaveLength(1);
         });
@@ -91,8 +89,7 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 100.0,
-                currencyCode: 'EUR'
+                amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 100.0, currencyCode: 'EUR' } as any
             };
             await expect(logic.trigger(model, request, initialState)).rejects.toThrow('Underpaying is forbidden.');
         });
@@ -101,13 +98,12 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 2500.0,
-                currencyCode: 'EUR'
+                amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 2500.0, currencyCode: 'EUR' } as any
             };
             const result1 = await logic.trigger(model, request, initialState);
             const result2 = await logic.trigger(model, request, result1.state as IInstallmentSaleState);
 
-            expect(result2.result.total_paid).toBeCloseTo(5000.0, 2);
+            expect((result2.result.total_paid as any).doubleValue).toBeCloseTo(5000.0, 2);
             expect((result2.state as IInstallmentSaleState).next_payment_month).toBe(5);
         });
 
@@ -119,8 +115,7 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 2500.0,
-                currencyCode: 'EUR'
+                amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 2500.0, currencyCode: 'EUR' } as any
             };
             await expect(logic.trigger(model, request, lateState)).rejects.toThrow('please pay the last installment instead');
         });
@@ -138,12 +133,11 @@ describe('InstallmentSaleLogic', () => {
             const request: IClosingPayment = {
                 $class: `${NS}.ClosingPayment`,
                 $timestamp: new Date(),
-                amount: 1000.0,
-                currencyCode: 'EUR'
+                amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000.0, currencyCode: 'EUR' } as any
             };
             const result = await logic.trigger(model, request, closeState);
 
-            expect(result.result.balance).toBe(0.0);
+            expect((result.result.balance as any).doubleValue).toBe(0.0);
             expect((result.state as IInstallmentSaleState).status).toBe(ContractStatus.Fulfilled);
         });
 
@@ -156,8 +150,7 @@ describe('InstallmentSaleLogic', () => {
             const request: IClosingPayment = {
                 $class: `${NS}.ClosingPayment`,
                 $timestamp: new Date(),
-                amount: 999.0,
-                currencyCode: 'EUR'
+                amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 999.0, currencyCode: 'EUR' } as any
             };
             await expect(logic.trigger(model, request, closeState)).rejects.toThrow('sum of remaining balance');
         });
