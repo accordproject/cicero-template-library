@@ -1,7 +1,7 @@
 {
-  "$class": "org.accordproject.fixedinterests@0.1.0.TemplateModel",
+  "$class": "org.accordproject.fixedinterests@0.2.0.TemplateModel",
   "loanAmount": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 100000,
     "currencyCode": "GBP"
   },

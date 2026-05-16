@@ -1,22 +1,23 @@
-namespace org.accordproject.installmentsale@0.1.0
+namespace org.accordproject.installmentsale@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 transaction Installment extends Request {
-  o Double amount
+  o MonetaryAmount amount
   o String currencyCode
 }
 
 transaction ClosingPayment extends Request {
-  o Double amount
+  o MonetaryAmount amount
   o String currencyCode
 }
 
 transaction Balance extends Response {
-  o Double balance
+  o MonetaryAmount balance
   o String balanceCurrency
-  o Double total_paid
+  o MonetaryAmount total_paid
   o String totalPaidCurrency
 }
 
@@ -27,14 +28,14 @@ enum ContractStatus {
 
 concept InstallmentSaleState identified {
   o ContractStatus status
-  o Double balance_remaining
+  o MonetaryAmount balance_remaining
   o String currencyCode
   o Integer next_payment_month
-  o Double total_paid
+  o MonetaryAmount total_paid
 }
 
 event InstallmentSalePaymentEvent {
-  o Double amount
+  o MonetaryAmount amount
   o String currencyCode
   o String description
 }
@@ -49,8 +50,8 @@ asset TemplateModel extends Clause {
   o Double INITIAL_DUE
   o String CURRENCY_CODE
   o Double INTEREST_RATE
-  o Double TOTAL_DUE_BEFORE_CLOSING
-  o Double MIN_PAYMENT
+  o MonetaryAmount TOTAL_DUE_BEFORE_CLOSING
+  o MonetaryAmount MIN_PAYMENT
   o Double DUE_AT_CLOSING
   o Integer FIRST_MONTH
 }

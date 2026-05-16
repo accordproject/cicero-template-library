@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.minilatedeliveryandpenaltycapped@0.1.0.TemplateModel",
+  "$class": "org.accordproject.minilatedeliveryandpenaltycapped@0.2.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Steve%20Seller",
   "seller": "resource:org.accordproject.party.Party#Betty%20Buyer",
   "penaltyDuration": {

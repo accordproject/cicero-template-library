@@ -1,16 +1,24 @@
 {
-  "$class": "org.accordproject.safte@0.1.0.TemplateModel",
+  "$class": "org.accordproject.safte@0.2.0.TemplateModel",
   "companyName": "ACME",
   "companyRegistrationNumber": 555,
   "purchaser": "Dan",
   "jurisdiction": "NY",
-  "purchaseAmount": 25,
+  "purchaseAmount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 25,
+    "currencyCode": "USD"
+  },
   "discount": 7,
   "projectName": "Umbrella",
   "projectDescription": "manages umbrella tokens",
   "months": 12,
   "monthsText": "twelve",
-  "amount": 1000,
+  "amount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1000,
+    "currencyCode": "USD"
+  },
   "amountText": "one thousand",
   "$identifier": "6d8c2188-659a-4854-9a3c-800eb595b0dd",
   "clauseId": "6d8c2188-659a-4854-9a3c-800eb595b0dd"

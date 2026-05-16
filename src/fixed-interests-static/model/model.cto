@@ -12,10 +12,11 @@
  * limitations under the License.
  */
 
-namespace org.accordproject.fixedinterestsstatic@0.1.0
+namespace org.accordproject.fixedinterestsstatic@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 transaction FixedInterestsStaticRequest extends Request {
   o String input
@@ -27,9 +28,9 @@ transaction FixedInterestsStaticResponse extends Response {
 
 @template
 asset TemplateModel extends Clause {
-  o Double loanAmount
+  o MonetaryAmount loanAmount
   o String currencyCode
   o Double rate
   o Integer loanDuration
-  o Double monthlyPayment
+  o MonetaryAmount monthlyPayment
 }

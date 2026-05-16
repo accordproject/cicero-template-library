@@ -1,13 +1,17 @@
 {
-    "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.LateDeliveryAndPenaltyRequest",
-    "forceMajeure": false,
-    "agreedDelivery": "2017-12-17T03:24:00-05:00",
-    "deliveredAt": null,
-    "goodsValue": 200.00,
-    "currencyConversion":{
-        "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0.CurrencyConversion",
-        "from": "USD",
-        "to": "EUR",
-        "rate": 1.1
-    }
+  "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.LateDeliveryAndPenaltyRequest",
+  "forceMajeure": false,
+  "agreedDelivery": "2017-12-17T03:24:00-05:00",
+  "deliveredAt": null,
+  "goodsValue": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 200,
+    "currencyCode": "USD"
+  },
+  "currencyConversion": {
+    "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion",
+    "from": "USD",
+    "to": "EUR",
+    "rate": 1.1
+  }
 }

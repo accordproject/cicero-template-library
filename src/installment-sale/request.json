@@ -1,5 +1,9 @@
 {
-    "$class": "org.accordproject.installmentsale@0.1.0.Installment",
-    "amount": 2500.0,
-    "currencyCode": "EUR"
+  "$class": "org.accordproject.installmentsale@0.2.0.Installment",
+  "amount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 2500,
+    "currencyCode": "USD"
+  },
+  "currencyCode": "EUR"
 }

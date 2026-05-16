@@ -1,7 +1,15 @@
 {
-    "$class": "org.accordproject.servicelevelagreement@0.1.0.MonthSummary",
-    "monthlyServiceLevel": 99.7,
-    "monthlyCharge": 10,
-    "last11MonthCredit": 0,
-    "last11MonthCharge": 0
+  "$class": "org.accordproject.servicelevelagreement@0.2.0.MonthSummary",
+  "monthlyServiceLevel": 99.7,
+  "monthlyCharge": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 10,
+    "currencyCode": "USD"
+  },
+  "last11MonthCredit": 0,
+  "last11MonthCharge": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 0,
+    "currencyCode": "USD"
+  }
 }

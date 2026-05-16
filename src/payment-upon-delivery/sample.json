@@ -1,14 +1,14 @@
 {
-  "$class": "org.accordproject.paymentupondelivery@0.1.0.TemplateModel",
+  "$class": "org.accordproject.paymentupondelivery@0.2.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Michael",
   "seller": "resource:org.accordproject.party.Party#Diana",
   "costOfGoods": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 9.99,
     "currencyCode": "USD"
   },
   "deliveryFee": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 1.99,
     "currencyCode": "USD"
   },

@@ -1,4 +1,8 @@
 {
-    "$class": "org.accordproject.safte@0.1.0.TokenSale",
-    "tokenPrice": 1.23
+  "$class": "org.accordproject.safte@0.2.0.TokenSale",
+  "tokenPrice": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1.23,
+    "currencyCode": "USD"
+  }
 }

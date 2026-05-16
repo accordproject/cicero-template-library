@@ -42,7 +42,6 @@ const expectedFailures = new Set([
     'payment-upon-signature',
     'perishable-goods',
     'project-information',
-    'promissory-note-md',
     'rental-deposit',
     'rental-deposit-with',
     'roommate',

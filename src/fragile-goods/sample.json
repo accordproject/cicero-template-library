@@ -1,16 +1,16 @@
 {
-  "$class": "org.accordproject.fragilegoods@0.1.0.TemplateModel",
+  "$class": "org.accordproject.fragilegoods@0.2.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Steve",
   "seller": "resource:org.accordproject.party.Party#Dan",
   "deliveryPrice": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 1000,
     "currencyCode": "USD"
   },
   "accelerationMin": -0.5,
   "accelerationMax": 0.5,
   "accelerationBreachPenalty": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 5,
     "currencyCode": "USD"
   },
@@ -20,7 +20,7 @@
     "unit": "seconds"
   },
   "lateDeliveryPenalty": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 200,
     "currencyCode": "USD"
   },

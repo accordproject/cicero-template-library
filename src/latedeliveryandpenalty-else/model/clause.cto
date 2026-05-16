@@ -1,23 +1,24 @@
-namespace org.accordproject.latedeliveryandpenaltyelse@0.1.0
+namespace org.accordproject.latedeliveryandpenaltyelse@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 transaction LateDeliveryAndPenaltyRequest extends Request {
   o Boolean forceMajeure
   o DateTime agreedDelivery
   o DateTime deliveredAt optional
-  o Double goodsValue
+  o MonetaryAmount goodsValue
 }
 
 transaction LateDeliveryAndPenaltyResponse extends Response {
-  o Double penalty
+  o MonetaryAmount penalty
   o Boolean buyerMayTerminate
 }
 
 event PaymentObligationEvent {
-  o Double amount
+  o MonetaryAmount amount
   o String currencyCode
   o String description
 }

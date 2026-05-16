@@ -1,17 +1,17 @@
 {
-  "$class": "org.accordproject.servicelevelagreement@0.1.0.TemplateModel",
+  "$class": "org.accordproject.servicelevelagreement@0.2.0.TemplateModel",
   "paymentPeriod": 30,
   "monthlyCapPercentage": 10,
   "yearlyCapPercentage": 10,
   "availability1": 99.8,
   "serviceCredit1": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 2,
     "currencyCode": "GBP"
   },
   "availability2": 98,
   "serviceCredit2": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 3,
     "currencyCode": "GBP"
   },
