@@ -7,10 +7,18 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 
 const SRC = join(dirname(fileURLToPath(import.meta.url)), '..', 'src');
-const templates = readdirSync(SRC).filter(name => {
+let templates = readdirSync(SRC).filter(name => {
     const p = join(SRC, name);
     return statSync(p).isDirectory() && existsSync(join(p, 'package.json'));
 });
+
+// Allow filtering templates via TEMPLATES env var (comma-separated)
+// Usage: TEMPLATES=acceptance-of-delivery,fragile-goods npm run test:render
+if (process.env.TEMPLATES) {
+    const filter = new Set(process.env.TEMPLATES.split(',').map(t => t.trim()));
+    templates = templates.filter(name => filter.has(name));
+    console.log(`\nFiltering to ${templates.length} template(s): ${templates.join(', ')}\n`);
+}
 
 // Templates with known upstream @accordproject/template-engine bugs or
 // pre-existing sample.json data-shape issues left over from the cicero
@@ -50,15 +58,13 @@ const expectedFailures = new Set([
 // Templates with TypeScript type errors in their logic.ts files.
 // These are pre-existing issues that should be fixed separately.
 const typeCheckingFailures = new Set([
-    'acceptance-of-delivery',
     'docusign-po-failure',
-    'fragile-goods',
     'payment-upon-iot',
     'perishable-goods',
     'supply-agreement-loc',
 ]);
 
-describe.concurrent('template compilation', () => {
+describe('template compilation', () => {
     for (const name of templates) {
         // Compilation tests should not be expected to fail — compilation errors are
         // critical and should be caught immediately
@@ -85,7 +91,7 @@ describe.concurrent('template compilation', () => {
     }
 });
 
-describe.concurrent('template TypeScript type checking', () => {
+describe('template TypeScript type checking', () => {
     for (const name of templates) {
         const test = typeCheckingFailures.has(name) ? it.fails : it;
         test(name, () => {
