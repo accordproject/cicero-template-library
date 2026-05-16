@@ -7,8 +7,10 @@ import {
     IInstallmentSalePaymentEvent,
     ContractStatus
 } from "./generated/org.accordproject.installmentsale@0.2.0";
+import { IMonetaryAmount } from "./generated/org.accordproject.money@0.3.0";
 
 const NS = 'org.accordproject.installmentsale@0.2.0';
+const MONEY_NS = 'org.accordproject.money@0.3.0.MonetaryAmount';
 
 // @ts-expect-error EngineResponse is imported by the runtime
 interface InstallmentSaleContractResponse extends EngineResponse<IInstallmentSaleState> {
@@ -22,6 +24,14 @@ function roundn(x: number, n: number): number {
     return Math.round(x * e) / e;
 }
 
+function makeAmount(doubleValue: number, source: IMonetaryAmount): IMonetaryAmount {
+    return {
+        $class: MONEY_NS,
+        doubleValue,
+        currencyCode: source.currencyCode,
+    };
+}
+
 // @ts-ignore TemplateLogic is imported by the runtime
 class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSaleState> {
 
@@ -32,10 +42,9 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
                 $class: `${NS}.InstallmentSaleState`,
                 $identifier: data.$identifier,
                 status: ContractStatus.WaitingForFirstDayOfNextMonth,
-                balance_remaining: data.INITIAL_DUE,
-                currencyCode: data.CURRENCY_CODE,
+                balance_remaining: makeAmount(data.INITIAL_DUE, data.MIN_PAYMENT),
                 next_payment_month: data.FIRST_MONTH,
-                total_paid: 0.0
+                total_paid: makeAmount(0.0, data.MIN_PAYMENT)
             }
         };
     }
@@ -59,29 +68,31 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
         request: IInstallment,
         state: IInstallmentSaleState
     ): Promise<InstallmentSaleContractResponse> {
-        if (data.MIN_PAYMENT > state.balance_remaining) {
+        if (data.MIN_PAYMENT.doubleValue > state.balance_remaining.doubleValue) {
             throw new Error('Payment cannot be made. The balance remaining is less than the minimum payment amount.');
         }
         if (state.next_payment_month >= 23) {
             throw new Error('The payment is due within 24 months, please pay the last installment instead.');
         }
-        if (request.amount < data.MIN_PAYMENT) {
+        if (request.amount.doubleValue < data.MIN_PAYMENT.doubleValue) {
             throw new Error('Underpaying is forbidden.');
         }
-        if (request.amount > state.balance_remaining) {
+        if (request.amount.doubleValue > state.balance_remaining.doubleValue) {
             throw new Error('Overpaying is forbidden.');
         }
 
-        const before_interest = roundn(state.balance_remaining - request.amount, 2);
-        const balance = roundn(before_interest * (1.0 + data.INTEREST_RATE / 100.0), 2);
-        const total_paid = roundn(state.total_paid + request.amount, 2);
+        const before_interest = roundn(state.balance_remaining.doubleValue - request.amount.doubleValue, 2);
+        const balanceValue = roundn(before_interest * (1.0 + data.INTEREST_RATE / 100.0), 2);
+        const total_paidValue = roundn(state.total_paid.doubleValue + request.amount.doubleValue, 2);
+
+        const balance = makeAmount(balanceValue, request.amount);
+        const total_paid = makeAmount(total_paidValue, request.amount);
 
         const newState: IInstallmentSaleState = {
             $class: `${NS}.InstallmentSaleState`,
             $identifier: state.$identifier,
             status: ContractStatus.WaitingForFirstDayOfNextMonth,
             balance_remaining: balance,
-            currencyCode: data.CURRENCY_CODE,
             total_paid,
             next_payment_month: state.next_payment_month + 1
         };
@@ -90,7 +101,6 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
             $class: `${NS}.InstallmentSalePaymentEvent`,
             $timestamp: new Date(),
             amount: request.amount,
-            currencyCode: data.CURRENCY_CODE,
             description: `${data.BUYER} should pay installment to ${data.SELLER}`
         };
 
@@ -113,20 +123,22 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
         request: IClosingPayment,
         state: IInstallmentSaleState
     ): Promise<InstallmentSaleContractResponse> {
-        const expectedPayment = roundn(state.balance_remaining + data.DUE_AT_CLOSING, 2);
-        if (roundn(request.amount, 2) !== expectedPayment) {
+        const expectedPayment = roundn(state.balance_remaining.doubleValue + data.DUE_AT_CLOSING, 2);
+        if (roundn(request.amount.doubleValue, 2) !== expectedPayment) {
             throw new Error('The last installment payment should be equal to the sum of remaining balance plus the amount due at closing.');
         }
 
-        const balance = 0.0;
-        const total_paid = state.total_paid + request.amount;
+        const balanceValue = 0.0;
+        const total_paidValue = state.total_paid.doubleValue + request.amount.doubleValue;
+
+        const balance = makeAmount(balanceValue, request.amount);
+        const total_paid = makeAmount(total_paidValue, request.amount);
 
         const newState: IInstallmentSaleState = {
             $class: `${NS}.InstallmentSaleState`,
             $identifier: state.$identifier,
             status: ContractStatus.Fulfilled,
             balance_remaining: balance,
-            currencyCode: data.CURRENCY_CODE,
             total_paid,
             next_payment_month: 0
         };
@@ -135,7 +147,6 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
             $class: `${NS}.InstallmentSalePaymentEvent`,
             $timestamp: new Date(),
             amount: request.amount,
-            currencyCode: data.CURRENCY_CODE,
             description: `${data.BUYER} should pay installment to ${data.SELLER}`
         };
 

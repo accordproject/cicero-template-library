@@ -5,7 +5,7 @@ import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.ac
 import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
-concept CurrencyConversion {
+concept ExchangeRate {
   o String from
   o String to
   o Double rate
@@ -16,7 +16,7 @@ transaction LateDeliveryAndPenaltyRequest extends Request {
   o DateTime agreedDelivery
   o DateTime deliveredAt optional
   o MonetaryAmount goodsValue
-  o CurrencyConversion currencyConversion
+  o ExchangeRate currencyConversion
 }
 
 transaction LateDeliveryAndPenaltyResponse extends Response {

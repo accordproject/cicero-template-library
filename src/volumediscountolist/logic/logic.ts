@@ -13,7 +13,7 @@ class VolumeDiscountOListLogic extends TemplateLogic<ITemplateModel> {
     }
 
     async trigger(data: ITemplateModel, request: IVolumeDiscountRequest): Promise<VolumeDiscountResult> {
-        const rate = this.findRate(request.netAnnualChargeVolume, data.rates);
+        const rate = this.findRate(request.netAnnualChargeVolume.doubleValue, data.rates);
         if (rate === undefined) {
             throw new Error('Could not find rate for that volume');
         }

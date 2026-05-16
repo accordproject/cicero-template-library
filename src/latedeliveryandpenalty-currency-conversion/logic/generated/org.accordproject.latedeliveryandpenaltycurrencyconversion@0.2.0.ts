@@ -9,7 +9,7 @@ import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 import {IConcept,IEvent} from './concerto@1.0.0';
 
 // interfaces
-export interface ICurrencyConversion extends IConcept {
+export interface IExchangeRate extends IConcept {
    from: string;
    to: string;
    rate: number;
@@ -20,7 +20,7 @@ export interface ILateDeliveryAndPenaltyRequest extends IRequest {
    agreedDelivery: Date;
    deliveredAt?: Date;
    goodsValue: IMonetaryAmount;
-   currencyConversion: ICurrencyConversion;
+   currencyConversion: IExchangeRate;
 }
 
 export interface ILateDeliveryAndPenaltyResponse extends IResponse {

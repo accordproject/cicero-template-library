@@ -32,7 +32,11 @@ describe('VolumeDiscountUListLogic', () => {
             const request: IVolumeDiscountRequest = {
                 $class: 'org.accordproject.volumediscountulist@0.2.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
-                netAnnualChargeVolume: 500000,
+                netAnnualChargeVolume: {
+                    $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                    doubleValue: 500000,
+                    currencyCode: 'USD',
+                },
             };
             const result = await logic.trigger(model, request);
             expect(result.result.discountRate).toBe(3.0);

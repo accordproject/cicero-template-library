@@ -2,7 +2,6 @@ namespace org.accordproject.perishablegoods@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
-import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * Units of mass
@@ -34,8 +33,9 @@ transaction ShipmentReceived extends Request {
  * Response: price calculation result
  */
 transaction PriceCalculation extends Response {
-  o MonetaryAmount totalPrice
-  o MonetaryAmount penalty
+  o Double totalPrice
+  o Double penalty
+  o String currencyCode
   o Boolean late
 }
 
@@ -43,7 +43,8 @@ transaction PriceCalculation extends Response {
  * Event emitted when payment is due
  */
 event PerishableGoodsPaymentEvent {
-  o MonetaryAmount totalPrice
+  o Double totalPrice
+  o String currencyCode
   o String description
 }
 
@@ -52,7 +53,7 @@ event PerishableGoodsPaymentEvent {
  */
 concept PerishableGoodsState identified {
   o Boolean payoutMade default=false
-  o MonetaryAmount totalPaid default=0.0
+  o Double totalPaid default=0.0
 }
 
 /**
@@ -64,13 +65,14 @@ asset TemplateModel extends Clause {
   o String importer
   o String shipmentId
   o DateTime dueDate
-  o MonetaryAmount unitPrice
   o UnitOfMass unit
   o Integer minUnits
   o Integer maxUnits
   o String product
   o Integer sensorReadingFrequency
   o String duration
+  o Double unitPrice
+  o String currencyCode
   o Double minTemperature
   o Double maxTemperature
   o Double minHumidity

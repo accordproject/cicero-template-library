@@ -30,18 +30,17 @@ class AcceptanceOfDeliveryLogic extends TemplateLogic<ITemplateModel> {
 
         let status: InspectionStatus;
         if (now > inspectionDeadline) {
-            status = 'OUTSIDE_INSPECTION_PERIOD';
+            status = InspectionStatus.OUTSIDE_INSPECTION_PERIOD;
         } else if (request.inspectionPassed) {
-            status = 'PASSED_TESTING';
+            status = InspectionStatus.PASSED_TESTING;
         } else {
-            status = 'FAILED_TESTING';
+            status = InspectionStatus.FAILED_TESTING;
         }
 
         return {
             result: {
                 $class: 'org.accordproject.acceptanceofdelivery@0.1.0.InspectionResponse',
                 $timestamp: now,
-                $identifier: request.$identifier,
                 status,
                 shipper: data.shipper,
                 receiver: data.receiver,

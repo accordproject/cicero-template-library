@@ -56,7 +56,6 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
                 result: {
                     $class: 'org.accordproject.supplyagreementloc@0.2.0.DeliveryResponse',
                     $timestamp: now,
-                    $identifier: state.$identifier,
                     message: 'Sensor reading received',
                     inGoodOrder: true,
                 },
@@ -82,7 +81,6 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
                 result: {
                     $class: 'org.accordproject.supplyagreementloc@0.2.0.DeliveryResponse',
                     $timestamp: now,
-                    $identifier: state.$identifier,
                     message,
                     inGoodOrder: sufficientReadings,
                 },

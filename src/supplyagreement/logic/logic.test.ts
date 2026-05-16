@@ -127,7 +127,11 @@ describe('SupplyAgreementLogic', () => {
                             partNumber: 'P001',
                             name: 'Widget A',
                             quantity: 100,
-                            unitPrice: 10.0,
+                            unitPrice: {
+                                $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                                doubleValue: 10.0,
+                                currencyCode: 'USD',
+                            },
                         }
                     ],
                     deliveryLocation: 'Warehouse 1',
@@ -184,7 +188,11 @@ describe('SupplyAgreementLogic', () => {
                         partNumber: 'P001',
                         name: 'Widget A',
                         quantity: 100,
-                        unitPrice: 10.0,
+                        unitPrice: {
+                            $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                            doubleValue: 10.0,
+                            currencyCode: 'USD',
+                        },
                     }
                 ],
             };
@@ -192,7 +200,7 @@ describe('SupplyAgreementLogic', () => {
             const result = await logic.trigger(model, request, stateWithDelivery);
             expect(result.result.$class).toBe('org.accordproject.supplyagreement@0.2.0.DeliveryResponse');
             expect(result.state.paymentObligation).toBeDefined();
-            expect(result.state.paymentObligation.amount).toBe(1000);
+            expect(result.state.paymentObligation.amount.doubleValue).toBe(1000);
             expect(result.state.deliveryObligation).toBeUndefined();
             expect(result.events).toHaveLength(1);
             expect(result.events[0].$class).toBe('org.accordproject.supplyagreement@0.2.0.PaymentObligationEvent');

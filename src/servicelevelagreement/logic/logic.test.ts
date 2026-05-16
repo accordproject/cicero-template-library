@@ -11,6 +11,14 @@ import { ITemplateModel, IMonthSummary } from './generated/org.accordproject.ser
 
 const NS = 'org.accordproject.servicelevelagreement@0.2.0';
 
+function monetaryAmount(doubleValue: number, currencyCode = 'USD') {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode
+    };
+}
+
 describe('ServiceLevelAgreementLogic', () => {
     let logic: ServiceLevelAgreementLogic;
     let model: ITemplateModel;
@@ -40,9 +48,9 @@ describe('ServiceLevelAgreementLogic', () => {
                 $class: `${NS}.MonthSummary`,
                 $timestamp: new Date(),
                 monthlyServiceLevel: 99.7,
-                monthlyCharge: 10.0,
+                monthlyCharge: monetaryAmount(10.0),
                 last11MonthCredit: 0.0,
-                last11MonthCharge: 0.0
+                last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
 
@@ -56,9 +64,9 @@ describe('ServiceLevelAgreementLogic', () => {
                 $class: `${NS}.MonthSummary`,
                 $timestamp: new Date(),
                 monthlyServiceLevel: 99.2,
-                monthlyCharge: 1000.0,
+                monthlyCharge: monetaryAmount(1000.0),
                 last11MonthCredit: 0.0,
-                last11MonthCharge: 0.0
+                last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
 
@@ -72,9 +80,9 @@ describe('ServiceLevelAgreementLogic', () => {
                 $class: `${NS}.MonthSummary`,
                 $timestamp: new Date(),
                 monthlyServiceLevel: 98.5,
-                monthlyCharge: 1000.0,
+                monthlyCharge: monetaryAmount(1000.0),
                 last11MonthCredit: 0.0,
-                last11MonthCharge: 0.0
+                last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
 
@@ -89,9 +97,9 @@ describe('ServiceLevelAgreementLogic', () => {
                 $class: `${NS}.MonthSummary`,
                 $timestamp: new Date(),
                 monthlyServiceLevel: 98.0,
-                monthlyCharge: 1000.0,
+                monthlyCharge: monetaryAmount(1000.0),
                 last11MonthCredit: 0.0,
-                last11MonthCharge: 0.0
+                last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
             expect(result.result.monthlyCredit).toBeLessThanOrEqual(100.0); // 10% of 1000
@@ -103,9 +111,9 @@ describe('ServiceLevelAgreementLogic', () => {
                 $class: `${NS}.MonthSummary`,
                 $timestamp: new Date(),
                 monthlyServiceLevel: 99.0,
-                monthlyCharge: 1000.0,
+                monthlyCharge: monetaryAmount(1000.0),
                 last11MonthCredit: 0.0,
-                last11MonthCharge: 0.0
+                last11MonthCharge: monetaryAmount(0.0)
             };
             await expect(logic.trigger(model, request)).rejects.toThrow('Template variables must not be negative.');
         });
@@ -115,9 +123,9 @@ describe('ServiceLevelAgreementLogic', () => {
                 $class: `${NS}.MonthSummary`,
                 $timestamp: new Date(),
                 monthlyServiceLevel: 101.0,
-                monthlyCharge: 1000.0,
+                monthlyCharge: monetaryAmount(1000.0),
                 last11MonthCredit: 0.0,
-                last11MonthCharge: 0.0
+                last11MonthCharge: monetaryAmount(0.0)
             };
             await expect(logic.trigger(model, request)).rejects.toThrow('service level must be at least 0%');
         });

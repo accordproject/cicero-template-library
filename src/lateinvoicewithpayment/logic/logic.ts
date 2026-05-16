@@ -42,7 +42,6 @@ class LateInvoiceWithPaymentLogic extends TemplateLogic<ITemplateModel> {
             $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.PaymentObligationEvent',
             $timestamp: now,
             amount: request.amountDue,
-            currencyCode: request.currencyCode,
             description: `${data.purchaser} should pay invoice amount to ${data.supplier}`,
         };
 

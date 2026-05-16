@@ -51,7 +51,6 @@ describe('LateInvoiceWithPaymentLogic', () => {
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.lateinvoicewithpayment@0.2.0.PaymentObligationEvent');
             expect(event.amount).toBe(1000);
-            expect(event.currencyCode).toBe('USD');
         });
 
         it('should not require payment when invoice is past the maximum delay', async () => {

@@ -43,7 +43,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
      * Compute the total price of a set of products
      */
     private purchaseOrderPrice(products: IProduct[]): number {
-        return products.reduce((sum, p) => sum + p.quantity * p.unitPrice, 0);
+        return products.reduce((sum, p) => sum + p.quantity * p.unitPrice.doubleValue, 0);
     }
 
     /**
@@ -180,7 +180,14 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         }
 
         const now = new Date();
-        const amount = this.purchaseOrderPrice(request.products);
+        const amountValue = this.purchaseOrderPrice(request.products);
+        const currencyCode = request.products[0].unitPrice.currencyCode;
+
+        const amount = {
+            $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+            doubleValue: amountValue,
+            currencyCode,
+        };
 
         const paymentObligation = {
             $class: 'org.accordproject.supplyagreement@0.2.0.PaymentObligationData',

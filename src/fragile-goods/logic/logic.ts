@@ -4,7 +4,7 @@ import {
     IFragileGoodsEvent,
     ITemplateModel,
 } from "./generated/org.accordproject.fragilegoods@0.2.0";
-import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 // Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
 enum TemporalUnit {
@@ -25,7 +25,7 @@ type FragileGoodsResponse = {
     events: object[];
 };
 
-function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
     return {
         $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
         doubleValue,
@@ -68,7 +68,6 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
         if (request.status !== "ARRIVED" || !request.finishTime) {
             const result: IPayOut = {
                 $class: "org.accordproject.fragilegoods@0.2.0.PayOut",
-                $identifier: new Date().toISOString(),
                 $timestamp: new Date(),
                 paymentAmount: monetary(amount, currency),
             };
@@ -93,7 +92,6 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
 
         const result: IPayOut = {
             $class: "org.accordproject.fragilegoods@0.2.0.PayOut",
-            $identifier: new Date().toISOString(),
             $timestamp: new Date(),
             paymentAmount: monetary(amount, currency),
         };
