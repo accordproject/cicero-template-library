@@ -1,0 +1,69 @@
+{% extends "page.njk" %}
+
+{% block unfurl %}
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="{{serverRoot}}/t/{{templateName}}/" />
+    <meta property="og:title" content="{{displayName}}" />
+    <meta property="og:description" content="{{description}}" />
+    {% if logo %}
+    <meta property="og:image" content="data:image/png;base64,{{logo}}" />
+    {% endif %}
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="{{displayName}}" />
+    <meta name="twitter:description" content="{{description}}" />
+    {% if logo %}
+    <meta name="twitter:image" content="data:image/png;base64,{{logo}}" />
+    {% endif %}
+    <meta name="twitter:url" content="{{serverRoot}}/t/{{templateName}}/" />
+{% endblock %}
+
+{% block body %}
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                {{displayName}}
+            </h1>
+            {% if author or logo %}
+                <h4 class="title is-4 author-section">
+                    Author: {% if logo %} <img height="24" width="24" src="data:image/png;base64, {{logo}}"/> {% endif %} {% if author %} <span class="author"> {{author}} </span> {% endif %}
+                </h4>
+            {% endif %}
+            <div class="tags">
+                <span class="tag is-light">{{templateName}}</span>
+                <span class="tag is-light">{% if templateType === 0 %}Contract{% else %}Clause{% endif %}</span>
+                <span class="tag is-light">{{ciceroVersion}}</span>
+            </div>
+            <p class="subtitle">
+                {{description}}
+            </p>
+
+            <div class="content">
+                <h2>Versions</h2>
+                <p>Latest version: <strong><a href="{{latestVersionUrl}}">{{latestVersion}}</a></strong></p>
+
+                <table class="table is-fullwidth is-striped">
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>Cicero Version</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for versionEntry in versions %}
+                        <tr>
+                            <td><strong>{{versionEntry.version}}</strong></td>
+                            <td>{{versionEntry.ciceroVersion}}</td>
+                            <td>
+                                <a href="{{versionEntry.url}}" class="button is-small is-light">View</a>
+                                <a href="{{versionEntry.archiveUrl}}" class="button is-small is-light" download>Download</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -312,6 +312,24 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
         await patchDropdowns(r.template);
     }
 
+    // Group templates by name and generate landing pages
+    if (!process.env.SKIP_GENERATION) {
+        const templatesByName = {};
+        for (const [id, entry] of Object.entries(templateIndex)) {
+            const atIndex = id.indexOf('@');
+            const name = id.substring(0, atIndex);
+            if (!templatesByName[name]) {
+                templatesByName[name] = [];
+            }
+            templatesByName[name].push({ id, entry });
+        }
+
+        // Generate a landing page for each template name
+        for (const [name, versions] of Object.entries(templatesByName)) {
+            await landingPageGenerator(serverRoot, name, versions);
+        }
+    }
+
     // save the index
     await writeFile(templateLibraryPath, JSON.stringify(templateIndex, null, 4));
 
@@ -553,4 +571,66 @@ async function templatePageGenerator(templateIndex, templatePath, template) {
         grammar: grammar,
     });
     await writeFile(`./build/${templatePageHtml}`, templateResult);
+}
+
+/**
+ * Generates a landing page for a template showing all its versions
+ * @param {string} serverRoot - the server root URL
+ * @param {string} templateName - the template name (e.g. "acceptance-of-delivery")
+ * @param {Array} versions - array of {id, entry} objects, one per version
+ */
+async function landingPageGenerator(serverRoot, templateName, versions) {
+    console.log(`Generating landing page for ${templateName}`);
+
+    // Sort versions by semver descending
+    const sortedVersions = versions.sort((a, b) => {
+        const versionA = a.id.substring(a.id.indexOf('@') + 1);
+        const versionB = b.id.substring(b.id.indexOf('@') + 1);
+        return semver.rcompare(versionA, versionB);
+    });
+
+    const latestId = sortedVersions[0].id;
+    const latestEntry = sortedVersions[0].entry;
+    const latestVersion = latestId.substring(latestId.indexOf('@') + 1);
+
+    // Build the versions list for the template
+    const versionsList = sortedVersions.map(v => {
+        const version = v.id.substring(v.id.indexOf('@') + 1);
+        return {
+            version: version,
+            ciceroVersion: v.entry.ciceroVersion,
+            url: `${v.id}.html`,
+            archiveUrl: `${serverRoot}/archives/${v.id}.cta`,
+        };
+    });
+
+    // Create landing page directory
+    const landingPageDir = resolve(buildDir, 't', templateName);
+    await fs.ensureDir(landingPageDir);
+
+    // Render and write the landing page HTML
+    const landingResult = nunjucks.render('landing.njk', {
+        serverRoot: serverRoot,
+        templateName: templateName,
+        displayName: latestEntry.displayName || templateName,
+        description: latestEntry.description,
+        templateType: latestEntry.type,
+        ciceroVersion: latestEntry.ciceroVersion,
+        author: latestEntry.author,
+        logo: latestEntry.logo,
+        latestVersion: latestVersion,
+        latestVersionUrl: `${versionsList[0].url}`,
+        versions: versionsList,
+    });
+    await writeFile(resolve(landingPageDir, 'index.html'), landingResult);
+    console.log(`Created landing page: ${resolve(landingPageDir, 'index.html')}`);
+
+    // Write versions.json for client-side consumption (future use)
+    const versionsJson = {
+        templateName: templateName,
+        latestVersion: latestVersion,
+        versions: versionsList,
+    };
+    await writeFile(resolve(landingPageDir, 'versions.json'), JSON.stringify(versionsJson, null, 4));
+    console.log(`Created versions manifest: ${resolve(landingPageDir, 'versions.json')}`);
 }
