@@ -29,8 +29,7 @@ describe('FullPaymentUponDemandLogic', () => {
             clauseId: 'test-id',
             buyer: 'Alice',
             seller: 'Bob',
-            amount: 1000,
-            currencyCode: 'USD',
+            amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
         };
         initializedState = {
             $class: 'org.accordproject.fullpaymentupondemand@0.2.0.FullPaymentUponDemandState',
@@ -58,8 +57,8 @@ describe('FullPaymentUponDemandLogic', () => {
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.fullpaymentupondemand@0.2.0.PaymentObligationEvent');
-            expect(event.amount).toBe(1000);
-            expect(event.currencyCode).toBe('USD');
+            expect(event.amount.doubleValue).toBe(1000);
+            expect(event.amount.currencyCode).toBe('USD');
         });
 
         it('should throw if payment already demanded', async () => {

@@ -45,7 +45,6 @@ class FullPaymentUponDemandLogic extends TemplateLogic<ITemplateModel, IFullPaym
                 $class: 'org.accordproject.fullpaymentupondemand@0.2.0.PaymentObligationEvent',
                 $timestamp: now,
                 amount: data.amount,
-                currencyCode: data.currencyCode,
                 description: `${data.buyer} should pay contract amount to ${data.seller}`,
             };
             return {
