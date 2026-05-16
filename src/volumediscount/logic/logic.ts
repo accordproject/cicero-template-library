@@ -8,9 +8,10 @@ type VolumeDiscountResult = {
 class VolumeDiscountLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IVolumeDiscountRequest): Promise<VolumeDiscountResult> {
         let discountRate: number;
-        if (request.netAnnualChargeVolume < data.firstVolume) {
+        const chargeVolume = request.netAnnualChargeVolume.doubleValue;
+        if (chargeVolume < data.firstVolume) {
             discountRate = data.firstRate;
-        } else if (request.netAnnualChargeVolume < data.secondVolume) {
+        } else if (chargeVolume < data.secondVolume) {
             discountRate = data.secondRate;
         } else {
             discountRate = data.thirdRate;

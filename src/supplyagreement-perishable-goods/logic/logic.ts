@@ -68,22 +68,26 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
 
         // Guard: past the due date — return a zero price calculation
         if (now >= new Date(data.dueDate)) {
+            const zeroAmount = {
+                $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                doubleValue: 0.0,
+                currencyCode: data.unitPrice.currencyCode,
+            };
+
             const lateEvent: IPaymentObligationEvent = {
                 $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PaymentObligationEvent',
                 $timestamp: now,
                 grower: data.grower,
                 importer: data.importer,
-                totalPrice: 0.0,
-                currencyCode: data.currencyCode,
+                totalPrice: zeroAmount,
                 late: true,
             };
             return {
                 result: {
                     $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PriceCalculation',
                     $timestamp: now,
-                    totalPrice: 0.0,
-                    penalty: 0.0,
-                    currencyCode: data.currencyCode,
+                    totalPrice: zeroAmount,
+                    penalty: zeroAmount,
                     late: true,
                 },
                 events: [lateEvent],
@@ -97,7 +101,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
         }
 
         // Calculate payout
-        const payOut = data.unitPrice * request.unitCount;
+        const payOut = data.unitPrice.doubleValue * request.unitCount;
 
         // Calculate penalties
         const tempPenaltyPerUnit = calculateTempPenalty(
@@ -107,16 +111,27 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
             data.minHumidity, data.maxHumidity, data.penaltyFactor, readings
         );
         const penaltyPerUnit = tempPenaltyPerUnit + humPenaltyPerUnit;
-        const totalPenalty = penaltyPerUnit * request.unitCount;
-        const totalPrice = Math.max(payOut - totalPenalty, 0.0);
+        const totalPenaltyValue = penaltyPerUnit * request.unitCount;
+        const totalPriceValue = Math.max(payOut - totalPenaltyValue, 0.0);
+
+        const totalPriceAmount = {
+            $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+            doubleValue: totalPriceValue,
+            currencyCode: data.unitPrice.currencyCode,
+        };
+
+        const totalPenaltyAmount = {
+            $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+            doubleValue: totalPenaltyValue,
+            currencyCode: data.unitPrice.currencyCode,
+        };
 
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PaymentObligationEvent',
             $timestamp: now,
             grower: data.grower,
             importer: data.importer,
-            totalPrice,
-            currencyCode: data.currencyCode,
+            totalPrice: totalPriceAmount,
             late: false,
         };
 
@@ -124,9 +139,8 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
             result: {
                 $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PriceCalculation',
                 $timestamp: now,
-                totalPrice,
-                penalty: totalPenalty,
-                currencyCode: data.currencyCode,
+                totalPrice: totalPriceAmount,
+                penalty: totalPenaltyAmount,
                 late: false,
             },
             events: [event],
