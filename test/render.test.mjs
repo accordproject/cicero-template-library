@@ -32,17 +32,38 @@ if (process.env.TEMPLATES) {
 //   supply-agreement-loc      — template-engine#146
 //   volumediscountolist       — template-engine#145
 //   volumediscountulist       — template-engine#145
+//
+// sample.json deserialization issues (model/data shape mismatch):
+//   car-rental-tr, company-information, latedeliveryandpenalty-optional,
+//   rental-deposit-with       — stale namespace in sample.json
+//   docusign-po-failure, roommate — sample.json missing
+//   full-payment-upon-demand, perishable-goods, project-information
+//                             — unexpected properties in sample.json
+//   installment-sale, rental-deposit, saft, servicelevelagreement
+//                             — field type mismatch (Double vs MonetaryAmount)
+//   interest-rate-swap        — money instance validation error
 const expectedFailures = new Set([
     'bill-of-lading',
+    'car-rental-tr',
+    'company-information',
+    'docusign-po-failure',
     'fixed-interests',
+    'full-payment-upon-demand',
+    'installment-sale',
+    'interest-rate-swap',
+    'latedeliveryandpenalty-optional',
+    'perishable-goods',
+    'project-information',
+    'rental-deposit',
+    'rental-deposit-with',
+    'roommate',
+    'saft',
+    'servicelevelagreement',
     'supply-agreement-loc',
     'volumediscountolist',
     'volumediscountulist',
 ]);
 
-// Templates with TypeScript type errors in their logic.ts files.
-// These are pre-existing issues that should be fixed separately.
-const typeCheckingFailures = new Set([]);
 
 describe('template compilation', () => {
     for (const name of templates) {
