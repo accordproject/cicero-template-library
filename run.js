@@ -593,16 +593,21 @@ async function landingPageGenerator(serverRoot, templateName, versions) {
     const latestEntry = sortedVersions[0].entry;
     const latestVersion = latestId.substring(latestId.indexOf('@') + 1);
 
-    // Build the versions list for the template
-    const versionsList = sortedVersions.map(v => {
+    // Build the versions list for the template, filtering to only versions with HTML files
+    const versionsList = [];
+    for (const v of sortedVersions) {
         const version = v.id.substring(v.id.indexOf('@') + 1);
-        return {
-            version: version,
-            ciceroVersion: v.entry.ciceroVersion,
-            url: `${v.id}.html`,
-            archiveUrl: `${serverRoot}/archives/${v.id}.cta`,
-        };
-    });
+        const htmlPath = path.join(buildDir, `${v.id}.html`);
+        // Only include versions that have HTML files (backward compatibility with old builds)
+        if (await fs.pathExists(htmlPath)) {
+            versionsList.push({
+                version: version,
+                ciceroVersion: v.entry.ciceroVersion,
+                url: `/${v.id}.html`,
+                archiveUrl: `${serverRoot}/archives/${v.id}.cta`,
+            });
+        }
+    }
 
     // Create landing page directory
     const landingPageDir = resolve(buildDir, 't', templateName);
