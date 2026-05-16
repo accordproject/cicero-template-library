@@ -1,11 +1,11 @@
 {
-  "$class": "org.accordproject.perishablegoods@0.1.0.TemplateModel",
+  "$class": "org.accordproject.perishablegoods@0.2.0.TemplateModel",
   "grower": "resource:org.accordproject.party.Party#PETER",
   "importer": "resource:org.accordproject.party.Party#DAN",
   "shipment": "resource:org.accordproject.perishablegoods.Shipment#SHIP_001",
   "dueDate": "2018-07-02T00:00:00.000+01:00",
   "unitPrice": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 1.5,
     "currencyCode": "USD"
   },

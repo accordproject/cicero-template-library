@@ -1,7 +1,8 @@
-namespace org.accordproject.supplyagreement@0.1.0
+namespace org.accordproject.supplyagreement@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * Purchase order types (inlined from purchaseorder namespace)
@@ -10,7 +11,7 @@ concept Product {
   o String partNumber
   o String name
   o Double quantity
-  o Double unitPrice
+  o MonetaryAmount unitPrice
 }
 
 concept OrderItem {
@@ -42,7 +43,7 @@ event PurchaseObligationEvent {
 
 event PaymentObligationEvent {
   o String party
-  o Double amount
+  o MonetaryAmount amount
 }
 
 /**
@@ -63,7 +64,7 @@ concept DeliveryObligationData {
 
 concept PaymentObligationData {
   o String party
-  o Double amount
+  o MonetaryAmount amount
 }
 
 concept AgreementState identified {
@@ -98,10 +99,10 @@ transaction DeliveryResponse extends Response {
 
 /* Payment clause */
 transaction PaymentRequest extends Request {
-  o Double amount
+  o MonetaryAmount amount
 }
 transaction PaymentResponse extends Response {
-  o Double paid
+  o MonetaryAmount paid
 }
 
 /**

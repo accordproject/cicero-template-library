@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import MiniLateDeliveryAndPenaltyLogic from './logic';
-import { ITemplateModel, ILateRequest } from './generated/org.accordproject.minilatedeliveryandpenalty@0.1.0';
+import { ITemplateModel, ILateRequest } from './generated/org.accordproject.minilatedeliveryandpenalty@0.2.0';
 
 describe('MiniLateDeliveryAndPenaltyLogic', () => {
     let logic: MiniLateDeliveryAndPenaltyLogic;
@@ -20,7 +20,7 @@ describe('MiniLateDeliveryAndPenaltyLogic', () => {
     beforeEach(() => {
         logic = new MiniLateDeliveryAndPenaltyLogic();
         model = {
-            $class: 'org.accordproject.minilatedeliveryandpenalty@0.1.0.TemplateModel',
+            $class: 'org.accordproject.minilatedeliveryandpenalty@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -36,15 +36,16 @@ describe('MiniLateDeliveryAndPenaltyLogic', () => {
             const agreed = new Date('2020-01-01T00:00:00Z');
             const delivered = new Date('2020-01-15T00:00:00Z'); // 14 days late
             const request: ILateRequest = {
-                $class: 'org.accordproject.minilatedeliveryandpenalty@0.1.0.LateRequest',
+                $class: 'org.accordproject.minilatedeliveryandpenalty@0.2.0.LateRequest',
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
             // 14 days / 7 days * 10.5% * 1000 = 210
-            expect(result.result.penalty).toBeCloseTo(210, 5);
+            expect(result.result.penalty.doubleValue).toBeCloseTo(210, 5);
+            expect(result.result.penalty.currencyCode).toBe('USD');
             expect(result.result.buyerMayTerminate).toBe(true);
         });
 
@@ -52,11 +53,11 @@ describe('MiniLateDeliveryAndPenaltyLogic', () => {
             const agreed = new Date('2020-01-15T00:00:00Z');
             const delivered = new Date('2020-01-01T00:00:00Z');
             const request: ILateRequest = {
-                $class: 'org.accordproject.minilatedeliveryandpenalty@0.1.0.LateRequest',
+                $class: 'org.accordproject.minilatedeliveryandpenalty@0.2.0.LateRequest',
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             await expect(logic.trigger(model, request)).rejects.toThrow();
         });

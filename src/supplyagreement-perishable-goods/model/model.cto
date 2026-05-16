@@ -3,10 +3,11 @@
  * The cargo is temperature and humidity controlled and penalties
  * can be applied based on sensor readings received for the cargo.
  */
-namespace org.accordproject.supplyagreementperishablegoods@0.1.0
+namespace org.accordproject.supplyagreementperishablegoods@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * The status of a shipment
@@ -48,8 +49,7 @@ concept Shipment {
 event PaymentObligationEvent {
   o String grower
   o String importer
-  o Double totalPrice
-  o String currencyCode
+  o MonetaryAmount totalPrice
   o Boolean late
 }
 
@@ -65,9 +65,8 @@ transaction ShipmentReceived extends Request {
  * Response with price calculation
  */
 transaction PriceCalculation extends Response {
-  o Double totalPrice
-  o Double penalty
-  o String currencyCode
+  o MonetaryAmount totalPrice
+  o MonetaryAmount penalty
   o Boolean late
 }
 
@@ -80,8 +79,7 @@ asset TemplateModel extends Clause {
   o String grower
   o String importer
   o String shipment
-  o Double unitPrice
-  o String currencyCode
+  o MonetaryAmount unitPrice
   o Unit unit
   o Integer minUnits
   o Integer maxUnits

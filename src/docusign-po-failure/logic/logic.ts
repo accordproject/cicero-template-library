@@ -3,7 +3,16 @@ import {
     IPurchaseOrderFailureResponse,
     IPurchaseOrderFailureState,
     IPurchaseOrderPaymentEvent
-} from "./generated/org.accordproject.docusignpofailure@0.1.0";
+} from "./generated/org.accordproject.docusignpofailure@0.2.0";
+import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
 
 // Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
 enum TemporalUnit {
@@ -80,7 +89,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
     async init(data: ITemplateModel): Promise<InitResponse<IPurchaseOrderFailureState>> {
         return {
             state: {
-                $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureState',
+                $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
                 $identifier: data.$identifier,
                 pastFailures: [],
                 nbPastFailures: 0
@@ -186,10 +195,9 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         if (now <= deliveryMs + lateOneMs) {
             return {
                 result: {
-                    $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureResponse',
+                    $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureResponse',
                     $timestamp: new Date(),
-                    penaltyAmount: 0.0,
-                    currencyCode
+                    penaltyAmount: monetary(0.0, currencyCode)
                 },
                 state: { ...state },
                 events: []
@@ -216,30 +224,28 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         // Calculate penalty amount
         let penaltyAmount = penaltyPercent / 100.0 * actualPrice;
         if (state.nbPastFailures >= data.maxFailures) {
-            penaltyAmount += data.repeatedFailureCompensationAmount;
+            penaltyAmount += data.repeatedFailureCompensationAmount.doubleValue;
         }
 
         const newState: IPurchaseOrderFailureState = {
-            $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureState',
+            $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
             $identifier: state.$identifier,
             pastFailures: updatedFailures as unknown as Date[],
             nbPastFailures: nbFailures
         };
 
         const event: IPurchaseOrderPaymentEvent = {
-            $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderPaymentEvent',
+            $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderPaymentEvent',
             $timestamp: new Date(),
-            penaltyAmount,
-            currencyCode,
+            penaltyAmount: monetary(penaltyAmount, currencyCode),
             description: `${data.buyerName} should be paid a penalty`
         };
 
         return {
             result: {
-                $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureResponse',
+                $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureResponse',
                 $timestamp: new Date(),
-                penaltyAmount,
-                currencyCode
+                penaltyAmount: monetary(penaltyAmount, currencyCode)
             },
             state: newState,
             events: [event]

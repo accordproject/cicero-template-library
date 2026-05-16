@@ -13,7 +13,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import CarRentalLogic from './logic';
-import { ITemplateModel, IPaymentRequest, IPaymentClause } from './generated/org.accordproject.carrentaltr@0.1.0';
+import { ITemplateModel, IPaymentRequest, IPaymentClause } from './generated/org.accordproject.carrentaltr@0.2.0';
 
 describe('CarRentalLogic', () => {
     let logic: CarRentalLogic;
@@ -23,17 +23,16 @@ describe('CarRentalLogic', () => {
         logic = new CarRentalLogic();
 
         const paymentClause: IPaymentClause = {
-            $class: 'org.accordproject.carrentaltr@0.1.0.PaymentClause',
+            $class: 'org.accordproject.carrentaltr@0.2.0.PaymentClause',
             $identifier: 'payment-test-id',
             clauseId: 'payment-test-id',
             amountText: 'İki Yüz On Yedi Amerikan Doları',
-            amount: 217.99,
-            currencyCode: 'USD',
+            amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 217.99, currencyCode: 'USD' },
             paymentProcedure: 'bank transfer'
         };
 
         model = {
-            $class: 'org.accordproject.carrentaltr@0.1.0.TemplateModel',
+            $class: 'org.accordproject.carrentaltr@0.2.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             lessorName: 'Acme Car Rental',
@@ -59,32 +58,31 @@ describe('CarRentalLogic', () => {
     describe('trigger', () => {
         it('should return the payment amount from the payment clause', async () => {
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.carrentaltr@0.1.0.PaymentRequest',
+                $class: 'org.accordproject.carrentaltr@0.2.0.PaymentRequest',
                 $timestamp: new Date()
             };
 
             const result = await logic.trigger(model, request);
 
             expect(result.result).toBeDefined();
-            expect(result.result.$class).toBe('org.accordproject.carrentaltr@0.1.0.PayOut');
+            expect(result.result.$class).toBe('org.accordproject.carrentaltr@0.2.0.PayOut');
             expect(result.result.$timestamp).toBeDefined();
-            expect(result.result.amount).toBe(217.99);
-            expect(result.result.currencyCode).toBe('USD');
+            expect(result.result.amount.doubleValue).toBe(217.99);
+            expect(result.result.amount.currencyCode).toBe('USD');
         });
 
         it('should return amount and currency from payment clause', async () => {
-            model.paymentClause.amount = 500.0;
-            model.paymentClause.currencyCode = 'EUR';
+            model.paymentClause.amount = { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 500.0, currencyCode: 'EUR' };
 
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.carrentaltr@0.1.0.PaymentRequest',
+                $class: 'org.accordproject.carrentaltr@0.2.0.PaymentRequest',
                 $timestamp: new Date()
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result.amount).toBe(500.0);
-            expect(result.result.currencyCode).toBe('EUR');
+            expect(result.result.amount.doubleValue).toBe(500.0);
+            expect(result.result.amount.currencyCode).toBe('EUR');
         });
     });
 });

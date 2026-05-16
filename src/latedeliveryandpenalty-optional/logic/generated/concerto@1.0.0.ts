@@ -6,7 +6,14 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IDistance
-} from './org.accordproject.latedeliveryandpenaltyoptional@0.1.0';
+} from './org.accordproject.latedeliveryandpenaltyoptional@0.2.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 import type {
 	Month,
 	Day,
@@ -34,7 +41,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentObligationEvent
-} from './org.accordproject.latedeliveryandpenaltyoptional@0.1.0';
+} from './org.accordproject.latedeliveryandpenaltyoptional@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
@@ -45,6 +52,9 @@ export interface IConcept {
 }
 
 export type ConceptUnion = IDistance | 
+IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion | 
 IDuration | 
 IPeriod;
 

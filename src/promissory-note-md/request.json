@@ -1,4 +1,8 @@
 {
-  "$class": "org.accordproject.promissorynotemd@0.1.0.Payment",
-  "amountPaid": 100.0
+  "$class": "org.accordproject.promissorynotemd@0.2.0.Payment",
+  "amountPaid": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 100,
+    "currencyCode": "USD"
+  }
 }

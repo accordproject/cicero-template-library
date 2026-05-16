@@ -5,6 +5,13 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
+import type {
 	Month,
 	Day,
 	TemporalUnit,
@@ -38,7 +45,10 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IDuration | 
+export type ConceptUnion = IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion | 
+IDuration | 
 IPeriod;
 
 export interface IAsset extends IConcept {

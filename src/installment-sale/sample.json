@@ -1,25 +1,25 @@
 {
-  "$class": "org.accordproject.installmentsale@0.1.0.TemplateModel",
+  "$class": "org.accordproject.installmentsale@0.2.0.TemplateModel",
   "BUYER": "resource:org.accordproject.party.Party#Dan",
   "SELLER": "resource:org.accordproject.party.Party#Ned",
   "INITIAL_DUE": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 10000,
     "currencyCode": "EUR"
   },
   "INTEREST_RATE": 1.5,
   "TOTAL_DUE_BEFORE_CLOSING": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 9500,
     "currencyCode": "EUR"
   },
   "MIN_PAYMENT": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 500,
     "currencyCode": "EUR"
   },
   "DUE_AT_CLOSING": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 500,
     "currencyCode": "EUR"
   },

@@ -14,7 +14,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import PurchaseOrderFailureLogic from './logic';
-import { ITemplateModel, IPurchaseOrderFailureState } from './generated/org.accordproject.docusignpofailure@0.1.0';
+import { ITemplateModel, IPurchaseOrderFailureState } from './generated/org.accordproject.docusignpofailure@0.2.0';
 
 const makeDuration = (amount: number, unit: string) => ({
     $class: 'org.accordproject.time@0.3.0.Duration',
@@ -80,7 +80,7 @@ describe.skip('PurchaseOrderFailureLogic', () => {
         logic = new PurchaseOrderFailureLogic();
 
         model = {
-            $class: 'org.accordproject.docusignpofailure@0.1.0.TemplateModel',
+            $class: 'org.accordproject.docusignpofailure@0.2.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             buyerName: 'Buyer Corp',
@@ -94,12 +94,11 @@ describe.skip('PurchaseOrderFailureLogic', () => {
             thisSection: 'Section 3.1',
             maxFailures: 3,
             failureRange: makeDuration(90, 'days') as any,
-            repeatedFailureCompensationAmount: 99.99,
-            repeatedFailureCompensationCurrency: 'USD'
+            repeatedFailureCompensationAmount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 99.99, currencyCode: 'USD' }
         };
 
         initialState = {
-            $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureState',
+            $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
             $identifier: 'test-clause-id',
             pastFailures: [],
             nbPastFailures: 0
@@ -110,7 +109,7 @@ describe.skip('PurchaseOrderFailureLogic', () => {
         it('should initialize state with empty pastFailures and zero count', async () => {
             const result = await logic.init(model);
             expect(result.state).toMatchObject({
-                $class: 'org.accordproject.docusignpofailure@0.1.0.PurchaseOrderFailureState',
+                $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
                 $identifier: 'test-clause-id',
                 pastFailures: [],
                 nbPastFailures: 0
@@ -126,8 +125,8 @@ describe.skip('PurchaseOrderFailureLogic', () => {
 
             const result = await logic.trigger(model, request, initialState);
 
-            expect(result.result.penaltyAmount).toBe(0.0);
-            expect(result.result.currencyCode).toBe('USD');
+            expect(result.result.penaltyAmount.doubleValue).toBe(0.0);
+            expect(result.result.penaltyAmount.currencyCode).toBe('USD');
             expect(result.events).toHaveLength(0);
         });
 

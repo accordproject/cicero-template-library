@@ -1,8 +1,9 @@
-namespace org.accordproject.supplyagreementloc@0.1.0
+namespace org.accordproject.supplyagreementloc@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * Data-only concept for storing sensor readings in state
@@ -44,7 +45,7 @@ asset TemplateModel extends Clause {
   o DateTime issueDate
   o String importerLOCBank
   o Integer importerLOCNumber
-  o Double importerLOCAmount
+  o MonetaryAmount importerLOCAmount
   o String importerLOCCurrency
   o String orderBillOfLading
   o String packingList
@@ -57,7 +58,7 @@ asset TemplateModel extends Clause {
   o String exporterAddress
   o Integer turnaroundTime
   o Integer amountOfEachProduct
-  o Double unitPriceOfEachProduct
+  o MonetaryAmount unitPriceOfEachProduct
   o String unitPriceCurrency
   o String locationForDelivery
   o DateTime deliveryDate
@@ -70,7 +71,7 @@ asset TemplateModel extends Clause {
   o String productDescription
   o Integer productWeight
   o String productMeasurement
-  o Double freightCharges
+  o MonetaryAmount freightCharges
   o String freightCurrency
   o Duration evaluationTime
   o String acceptanceCriteria
@@ -78,7 +79,7 @@ asset TemplateModel extends Clause {
   o String termPeriod
   o String currentTerm
   o String shipment
-  o Double unitPrice
+  o MonetaryAmount unitPrice
   o String unitCurrency
   o Integer unit
   o Integer sensorReadingFrequency

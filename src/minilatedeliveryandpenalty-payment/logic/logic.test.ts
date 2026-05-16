@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import MiniLateDeliveryAndPenaltyPaymentLogic from './logic';
-import { ITemplateModel, ILateRequest } from './generated/org.accordproject.minilatedeliveryandpenaltypayment@0.1.0';
+import { ITemplateModel, ILateRequest } from './generated/org.accordproject.minilatedeliveryandpenaltypayment@0.2.0';
 
 describe('MiniLateDeliveryAndPenaltyPaymentLogic', () => {
     let logic: MiniLateDeliveryAndPenaltyPaymentLogic;
@@ -20,7 +20,7 @@ describe('MiniLateDeliveryAndPenaltyPaymentLogic', () => {
     beforeEach(() => {
         logic = new MiniLateDeliveryAndPenaltyPaymentLogic();
         model = {
-            $class: 'org.accordproject.minilatedeliveryandpenaltypayment@0.1.0.TemplateModel',
+            $class: 'org.accordproject.minilatedeliveryandpenaltypayment@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -37,17 +37,18 @@ describe('MiniLateDeliveryAndPenaltyPaymentLogic', () => {
             const agreed = new Date('2020-01-01T00:00:00Z');
             const delivered = new Date('2020-01-15T00:00:00Z');
             const request: ILateRequest = {
-                $class: 'org.accordproject.minilatedeliveryandpenaltypayment@0.1.0.LateRequest',
+                $class: 'org.accordproject.minilatedeliveryandpenaltypayment@0.2.0.LateRequest',
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
-            expect(event.$class).toBe('org.accordproject.minilatedeliveryandpenaltypayment@0.1.0.PaymentObligationEvent');
-            expect(event.amount).toBeCloseTo(210, 5);
+            expect(event.$class).toBe('org.accordproject.minilatedeliveryandpenaltypayment@0.2.0.PaymentObligationEvent');
+            expect(event.amount.doubleValue).toBeCloseTo(210, 5);
+            expect(event.amount.currencyCode).toBe('USD');
         });
     });
 });

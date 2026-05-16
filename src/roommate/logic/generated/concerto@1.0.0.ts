@@ -5,6 +5,15 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
@@ -13,6 +22,10 @@ import type {
 export interface IConcept {
    $class: string;
 }
+
+export type ConceptUnion = IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion;
 
 export interface IAsset extends IConcept {
    $identifier: string;

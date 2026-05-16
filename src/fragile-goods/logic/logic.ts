@@ -3,7 +3,8 @@ import {
     IPayOut,
     IFragileGoodsEvent,
     ITemplateModel,
-} from "./generated/org.accordproject.fragilegoods@0.1.0";
+} from "./generated/org.accordproject.fragilegoods@0.2.0";
+import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
 
 // Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
 enum TemporalUnit {
@@ -23,6 +24,14 @@ type FragileGoodsResponse = {
     result: IPayOut;
     events: object[];
 };
+
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
 
 // @ts-ignore TemplateLogic is imported by the runtime
 class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
@@ -58,11 +67,10 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
         // If not ARRIVED or no finish time, return early with the adjusted amount
         if (request.status !== "ARRIVED" || !request.finishTime) {
             const result: IPayOut = {
-                $class: "org.accordproject.fragilegoods@0.1.0.PayOut",
+                $class: "org.accordproject.fragilegoods@0.2.0.PayOut",
                 $identifier: new Date().toISOString(),
                 $timestamp: new Date(),
-                paymentAmount: amount,
-                currencyCode: currency,
+                paymentAmount: monetary(amount, currency),
             };
             return { result, events: [] };
         }
@@ -78,18 +86,16 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
         }
 
         const event: IFragileGoodsEvent = {
-            $class: "org.accordproject.fragilegoods@0.1.0.FragileGoodsEvent",
+            $class: "org.accordproject.fragilegoods@0.2.0.FragileGoodsEvent",
             $timestamp: new Date(),
-            paymentAmount: amount,
-            currencyCode: currency,
+            paymentAmount: monetary(amount, currency),
         };
 
         const result: IPayOut = {
-            $class: "org.accordproject.fragilegoods@0.1.0.PayOut",
+            $class: "org.accordproject.fragilegoods@0.2.0.PayOut",
             $identifier: new Date().toISOString(),
             $timestamp: new Date(),
-            paymentAmount: amount,
-            currencyCode: currency,
+            paymentAmount: monetary(amount, currency),
         };
 
         return { result, events: [event] };

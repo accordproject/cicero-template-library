@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import LateDeliveryAndPenaltyElseLogic from './logic';
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/org.accordproject.latedeliveryandpenaltyelse@0.1.0';
+import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/org.accordproject.latedeliveryandpenaltyelse@0.2.0';
 
 describe('LateDeliveryAndPenaltyElseLogic', () => {
     let logic: LateDeliveryAndPenaltyElseLogic;
@@ -23,7 +23,7 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
         pastDate = new Date();
         pastDate.setDate(pastDate.getDate() - 14);
         model = {
-            $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.TemplateModel',
+            $class: 'org.accordproject.latedeliveryandpenaltyelse@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -40,27 +40,28 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
     describe('trigger', () => {
         it('should return penalty=0 and buyerMayTerminate=true when force majeure applies to both', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: true,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBe(0);
+            expect(result.result.penalty.doubleValue).toBe(0);
+            expect(result.result.penalty.currencyCode).toBe('USD');
             expect(result.result.buyerMayTerminate).toBe(true);
         });
 
         it('should calculate penalty when no force majeure', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -68,11 +69,11 @@ describe('LateDeliveryAndPenaltyElseLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyelse@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: false,
                 agreedDelivery: futureDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             await expect(logic.trigger(model, request)).rejects.toThrow();
         });

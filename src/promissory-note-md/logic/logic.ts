@@ -1,4 +1,5 @@
-import { IPayment, IResult, ITemplateModel } from "./generated/org.accordproject.promissorynotemd@0.1.0";
+import { IPayment, IResult, ITemplateModel } from "./generated/org.accordproject.promissorynotemd@0.2.0";
+import { IMonetaryAmount } from "./generated/org.accordproject.money@0.3.0";
 
 type PromissoryNoteMdResponse = {
     result: IResult;
@@ -8,17 +9,28 @@ function compoundInterestMultiple(annualInterest: number, numberOfDays: number):
     return Math.pow(1.0 + annualInterest, numberOfDays / 365.0);
 }
 
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
+
 // @ts-ignore
 class PromissoryNoteMdLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IPayment): Promise<PromissoryNoteMdResponse> {
         if (data.interestRate < 0.0) {
             throw new Error('Interest rate must be non-negative');
         }
-        if (data.amount < 0.0) {
+        if (data.amount.doubleValue < 0.0) {
             throw new Error('Amount must be non-negative');
         }
+        if (request.amountPaid.currencyCode !== data.amount.currencyCode) {
+            throw new Error('Payment currency must match the loan currency');
+        }
 
-        const outstanding = data.amount - request.amountPaid;
+        const outstanding = data.amount.doubleValue - request.amountPaid.doubleValue;
         if (outstanding < 0.0) {
             throw new Error('Amount paid exceeds outstanding balance');
         }
@@ -37,9 +49,9 @@ class PromissoryNoteMdLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                outstandingBalance: compounded,
+                outstandingBalance: monetary(compounded, data.amount.currencyCode),
                 $timestamp: new Date(),
-                $class: 'org.accordproject.promissorynotemd@0.1.0.Result'
+                $class: 'org.accordproject.promissorynotemd@0.2.0.Result'
             }
         };
     }

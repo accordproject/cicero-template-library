@@ -65,7 +65,7 @@ In connection with and prior to the issuance of Tokens by the Company to the Pur
 
 5. Procedures for Purchase of Rights and Valuation of Purchase Amount.
 
-(a) The Company will accept payment for the Right purchased under this SAFT in {{currency}}. Purchaser shall make the required payment to the Company in consideration for Purchaser’s purchase of the Right pursuant to the SAFT through the procedures set forth on Exhibit A hereof. 
+(a) The Company will accept payment for the Right purchased under this SAFT in. Purchaser shall make the required payment to the Company in consideration for Purchaser’s purchase of the Right pursuant to the SAFT through the procedures set forth on Exhibit A hereof. 
 
 (b)   For purposes of this instrument, the value of the Purchase Amount shall be deemed in {{coin}} whether the Purchaser pays in [U.S. Dollars/Bitcoin/[or] Ether], valued at the Applicable Exchange Rate for {{coin}}. The term “Applicable Exchange Rate” shall mean the volume-weighted average daily price of {{coin}} across {{exchanges}} in the 24-hour period (Eastern Time) following the day and time that the Company notifies the Purchaser, in writing, that the Company has accepted Purchaser’s offer to purchase the Right under this SAFT. 
 

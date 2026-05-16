@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import MiniLateDeliveryAndPenaltyCappedLogic from './logic';
-import { ITemplateModel, ILateRequest } from './generated/org.accordproject.minilatedeliveryandpenaltycapped@0.1.0';
+import { ITemplateModel, ILateRequest } from './generated/org.accordproject.minilatedeliveryandpenaltycapped@0.2.0';
 
 describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
     let logic: MiniLateDeliveryAndPenaltyCappedLogic;
@@ -20,7 +20,7 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
     beforeEach(() => {
         logic = new MiniLateDeliveryAndPenaltyCappedLogic();
         model = {
-            $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.1.0.TemplateModel',
+            $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -37,15 +37,15 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
             const agreed = new Date('2020-01-01T00:00:00Z');
             const delivered = new Date('2020-01-15T00:00:00Z'); // 14 days late
             const request: ILateRequest = {
-                $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.1.0.LateRequest',
+                $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.2.0.LateRequest',
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
             // penalty = 14/7 * 10.5% * 1000 = 210, cap = 55% * 1000 = 550
-            expect(result.result.penalty).toBeCloseTo(210, 5);
+            expect(result.result.penalty.doubleValue).toBeCloseTo(210, 5);
         });
 
         it('should cap the penalty when it exceeds the cap', async () => {
@@ -53,14 +53,14 @@ describe('MiniLateDeliveryAndPenaltyCappedLogic', () => {
             const agreed = new Date('2020-01-01T00:00:00Z');
             const delivered = new Date('2020-01-15T00:00:00Z'); // 14 days late
             const request: ILateRequest = {
-                $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.1.0.LateRequest',
+                $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.2.0.LateRequest',
                 $timestamp: new Date(),
                 agreedDelivery: agreed,
                 deliveredAt: delivered,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeCloseTo(10, 5); // capped at 1% of 1000
+            expect(result.result.penalty.doubleValue).toBeCloseTo(10, 5); // capped at 1% of 1000
         });
     });
 });

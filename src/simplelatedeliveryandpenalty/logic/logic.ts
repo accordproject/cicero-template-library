@@ -1,5 +1,6 @@
-import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest, ISimpleLateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.simplelatedeliveryandpenalty@0.1.0';
+import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest, ISimpleLateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.simplelatedeliveryandpenalty@0.2.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
+import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
 
 type SimpleLateDeliveryResponse = {
     result: ISimpleLateDeliveryAndPenaltyResponse;
@@ -15,11 +16,20 @@ function durationToDays(duration: IDuration): number {
     }
 }
 
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
+
 // @ts-ignore TemplateLogic is injected by the runtime
 class SimpleLateDeliveryAndPenaltyLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: ISimpleLateDeliveryAndPenaltyRequest): Promise<SimpleLateDeliveryResponse> {
         const now = new Date();
         const agreed = new Date(request.agreedDelivery);
+        const currencyCode = request.goodsValue.currencyCode;
 
         if (agreed >= now) {
             throw new Error('Cannot exercise late delivery before delivery date');
@@ -29,25 +39,26 @@ class SimpleLateDeliveryAndPenaltyLogic extends TemplateLogic<ITemplateModel> {
         const diffDays = diffMs / (1000 * 60 * 60 * 24);
         const penaltyDurationDays = durationToDays(data.penaltyDuration);
         const diffRatio = diffDays / penaltyDurationDays;
-        const penalty = diffRatio * (data.penaltyPercentage / 100.0) * request.goodsValue;
-        const cap = (data.capPercentage / 100.0) * request.goodsValue;
+        const goodsValue = request.goodsValue.doubleValue;
+        const penalty = diffRatio * (data.penaltyPercentage / 100.0) * goodsValue;
+        const cap = (data.capPercentage / 100.0) * goodsValue;
         const capped = Math.min(penalty, cap);
+        const cappedAmount = monetary(capped, currencyCode);
         const maxDays = durationToDays(data.maximumDelay);
         const buyerMayTerminate = diffDays > maxDays;
 
         const event: IPaymentObligationEvent = {
-            $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.simplelatedeliveryandpenalty@0.2.0.PaymentObligationEvent',
             $timestamp: now,
-            amount: capped,
-            currencyCode: 'USD',
+            amount: cappedAmount,
             description: `${data.seller} should pay penalty amount to ${data.buyer}`,
         };
 
         return {
             result: {
-                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.SimpleLateDeliveryAndPenaltyResponse',
+                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.2.0.SimpleLateDeliveryAndPenaltyResponse',
                 $timestamp: now,
-                penalty: capped,
+                penalty: cappedAmount,
                 buyerMayTerminate,
             },
             events: [event],

@@ -6,7 +6,14 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IOneTimePaymentState
-} from './org.accordproject.onetimepaymenttr@0.1.0';
+} from './org.accordproject.onetimepaymenttr@0.2.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -26,7 +33,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentObligationEvent
-} from './org.accordproject.onetimepaymenttr@0.1.0';
+} from './org.accordproject.onetimepaymenttr@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
@@ -36,7 +43,10 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IOneTimePaymentState;
+export type ConceptUnion = IOneTimePaymentState | 
+IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion;
 
 export interface IAsset extends IConcept {
    $identifier: string;

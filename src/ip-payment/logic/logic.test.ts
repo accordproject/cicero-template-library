@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import IPPaymentLogic from './logic';
-import { ITemplateModel, IPaymentRequest } from './generated/org.accordproject.ippayment@0.1.0';
+import { ITemplateModel, IPaymentRequest } from './generated/org.accordproject.ippayment@0.2.0';
 
 describe('IPPaymentLogic', () => {
     let logic: IPPaymentLogic;
@@ -20,7 +20,7 @@ describe('IPPaymentLogic', () => {
     beforeEach(() => {
         logic = new IPPaymentLogic();
         model = {
-            $class: 'org.accordproject.ippayment@0.1.0.TemplateModel',
+            $class: 'org.accordproject.ippayment@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             royaltyText: 'ten percent',
@@ -43,32 +43,33 @@ describe('IPPaymentLogic', () => {
     describe('trigger', () => {
         it('should calculate total royalties correctly', async () => {
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.ippayment@0.1.0.PaymentRequest',
+                $class: 'org.accordproject.ippayment@0.2.0.PaymentRequest',
                 $timestamp: new Date(),
-                netSaleRevenue: 1000,
-                sublicensingRevenue: 200,
+                netSaleRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
+                sublicensingRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 200, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
             // 10% of 1000 + 5% of 200 = 100 + 10 = 110
-            expect(result.result.totalAmount).toBe(110);
+            expect(result.result.totalAmount.doubleValue).toBe(110);
+            expect(result.result.totalAmount.currencyCode).toBe('USD');
         });
 
         it('should use paymentPeriod when no permission date', async () => {
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.ippayment@0.1.0.PaymentRequest',
+                $class: 'org.accordproject.ippayment@0.2.0.PaymentRequest',
                 $timestamp: new Date(),
-                netSaleRevenue: 1000,
-                sublicensingRevenue: 0,
+                netSaleRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
+                sublicensingRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 0, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
             expect(result.result.dueBy).toBeInstanceOf(Date);
-            expect(result.result.$class).toBe('org.accordproject.ippayment@0.1.0.PayOut');
+            expect(result.result.$class).toBe('org.accordproject.ippayment@0.2.0.PayOut');
         });
 
         it('should use paymentPeriodWithPermission when permission date is given', async () => {
             const permissionDate = new Date('2025-01-01T00:00:00Z');
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.ippayment@0.1.0.PaymentRequest',
+                $class: 'org.accordproject.ippayment@0.2.0.PaymentRequest',
                 $timestamp: new Date(),
                 netSaleRevenue: 500,
                 sublicensingRevenue: 100,

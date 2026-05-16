@@ -1,6 +1,7 @@
-namespace org.accordproject.roommate@0.1.0
+namespace org.accordproject.roommate@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * The template model
@@ -12,8 +13,8 @@ asset TemplateModel extends Clause {
   o String landlord
   o String address
   o String spaceOccupied
-  o Double rentAmount
-  o Double depositAmount
+  o MonetaryAmount rentAmount
+  o MonetaryAmount depositAmount
   o DateTime startDate
   o DateTime endDate
   o String holderSignature

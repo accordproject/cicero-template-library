@@ -14,7 +14,7 @@ import FullPaymentUponSignatureLogic from './logic';
 import {
     ITemplateModel,
     IFullPaymentUponSignatureState,
-} from './generated/org.accordproject.fullpaymentupondsignature@0.1.0';
+} from './generated/org.accordproject.fullpaymentupondsignature@0.2.0';
 
 describe('FullPaymentUponSignatureLogic', () => {
     let logic: FullPaymentUponSignatureLogic;
@@ -24,16 +24,15 @@ describe('FullPaymentUponSignatureLogic', () => {
     beforeEach(() => {
         logic = new FullPaymentUponSignatureLogic();
         model = {
-            $class: 'org.accordproject.fullpaymentupondsignature@0.1.0.TemplateModel',
+            $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
             seller: 'Bob',
-            amount: 5000,
-            currencyCode: 'EUR',
+            amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 5000, currencyCode: 'EUR' },
         };
         initializedState = {
-            $class: 'org.accordproject.fullpaymentupondsignature@0.1.0.FullPaymentUponSignatureState',
+            $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState',
             $identifier: 'test-id',
             status: 'INITIALIZED',
         };
@@ -43,30 +42,30 @@ describe('FullPaymentUponSignatureLogic', () => {
         it('should initialize with INITIALIZED status', async () => {
             const result = await logic.init(model);
             expect((result.state as any).status).toBe('INITIALIZED');
-            expect((result.state as any).$class).toBe('org.accordproject.fullpaymentupondsignature@0.1.0.FullPaymentUponSignatureState');
+            expect((result.state as any).$class).toBe('org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState');
         });
     });
 
     describe('trigger - ContractSigned', () => {
         it('should emit payment obligation and move to OBLIGATION_EMITTED', async () => {
             const request = {
-                $class: 'org.accordproject.fullpaymentupondsignature@0.1.0.ContractSigned',
+                $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.ContractSigned',
                 $timestamp: new Date(),
             };
             const result = await logic.trigger(model, request, initializedState);
             expect((result.state as any).status).toBe('OBLIGATION_EMITTED');
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
-            expect(event.$class).toBe('org.accordproject.fullpaymentupondsignature@0.1.0.PaymentObligationEvent');
-            expect(event.amount).toBe(5000);
-            expect(event.currencyCode).toBe('EUR');
+            expect(event.$class).toBe('org.accordproject.fullpaymentupondsignature@0.2.0.PaymentObligationEvent');
+            expect(event.amount.doubleValue).toBe(5000);
+            expect(event.amount.currencyCode).toBe('EUR');
             expect(event.description).toContain('Alice');
             expect(event.description).toContain('Bob');
         });
 
         it('should throw if contract already signed', async () => {
             const request = {
-                $class: 'org.accordproject.fullpaymentupondsignature@0.1.0.ContractSigned',
+                $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.ContractSigned',
                 $timestamp: new Date(),
             };
             const state = { ...initializedState, status: 'OBLIGATION_EMITTED' };
@@ -77,7 +76,7 @@ describe('FullPaymentUponSignatureLogic', () => {
     describe('trigger - PaymentReceived', () => {
         it('should complete the contract when payment is received', async () => {
             const request = {
-                $class: 'org.accordproject.fullpaymentupondsignature@0.1.0.PaymentReceived',
+                $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.PaymentReceived',
                 $timestamp: new Date(),
             };
             const state = { ...initializedState, status: 'OBLIGATION_EMITTED' };
@@ -88,7 +87,7 @@ describe('FullPaymentUponSignatureLogic', () => {
 
         it('should throw if payment received before signing', async () => {
             const request = {
-                $class: 'org.accordproject.fullpaymentupondsignature@0.1.0.PaymentReceived',
+                $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.PaymentReceived',
                 $timestamp: new Date(),
             };
             await expect(logic.trigger(model, request, initializedState)).rejects.toThrow();

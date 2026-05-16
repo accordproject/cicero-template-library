@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.rentaldepositwith@0.1.0.TemplateModel",
+  "$class": "org.accordproject.rentaldepositwith@0.2.0.TemplateModel",
   "tenant": {
     "$class": "org.accordproject.rentaldeposit.RentalParty",
     "address": "111, main street",
@@ -13,7 +13,7 @@
     "$identifier": "Parsa"
   },
   "depositAmount": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 3000,
     "currencyCode": "USD"
   },

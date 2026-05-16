@@ -2,7 +2,7 @@
   "$class": "org.accordproject.promissorynote.PromissoryNoteContract",
   "contractId": "9559a9b3-2682-438b-8f1d-0314250ca94a",
   "amount": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 1000,
     "currencyCode": "USD"
   },
@@ -15,7 +15,7 @@
   "legalEntity": "CORP",
   "lenderAddress": "246 5th Ave, 3rd Fl, New York, NY 10001",
   "principal": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 500,
     "currencyCode": "USD"
   },

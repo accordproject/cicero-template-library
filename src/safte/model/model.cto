@@ -1,7 +1,8 @@
-namespace org.accordproject.safte@0.1.0
+namespace org.accordproject.safte@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * Token are issued!
@@ -10,7 +11,7 @@ transaction TokenSale extends Request {
   /**
    * The token price
    */
-  o Double tokenPrice
+  o MonetaryAmount tokenPrice
 }
 
 /**
@@ -30,7 +31,7 @@ transaction EquityFinancing extends Request {
   /**
    * The share price
    */
-  o Double sharePrice
+  o MonetaryAmount sharePrice
 }
 
 /**
@@ -40,7 +41,7 @@ transaction EquityShare extends Response {
   /**
    * The token amount
    */
-  o Double equityAmount
+  o MonetaryAmount equityAmount
 }
 
 /**
@@ -57,7 +58,7 @@ transaction PayOut extends Response {
   /**
    * The amount to payout
    */
-  o Double amount
+  o MonetaryAmount amount
 }
 
 /**
@@ -88,7 +89,7 @@ asset TemplateModel extends Clause {
   /**
    * The amount being purchased
    */
-  o Double purchaseAmount
+  o MonetaryAmount purchaseAmount
 
   /**
    * The discount
@@ -118,7 +119,7 @@ asset TemplateModel extends Clause {
   /**
    * The aggregate capital raised
    */
-  o Double amount
+  o MonetaryAmount amount
 
   /**
    * The aggregate capital raised (text)

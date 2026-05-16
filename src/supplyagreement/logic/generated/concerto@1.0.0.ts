@@ -12,7 +12,14 @@ import type {
 	IDeliveryObligationData,
 	IPaymentObligationData,
 	IAgreementState
-} from './org.accordproject.supplyagreement@0.1.0';
+} from './org.accordproject.supplyagreement@0.2.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -34,7 +41,7 @@ import type {
 	IDeliveryObligationEvent,
 	IPurchaseObligationEvent,
 	IPaymentObligationEvent
-} from './org.accordproject.supplyagreement@0.1.0';
+} from './org.accordproject.supplyagreement@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
@@ -50,7 +57,10 @@ IPurchaseOrder |
 IPurchaseObligationData | 
 IDeliveryObligationData | 
 IPaymentObligationData | 
-IAgreementState;
+IAgreementState | 
+IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion;
 
 export interface IAsset extends IConcept {
    $identifier: string;

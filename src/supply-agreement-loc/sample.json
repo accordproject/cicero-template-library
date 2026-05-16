@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.supplyagreementloc@0.1.0.TemplateModel",
+  "$class": "org.accordproject.supplyagreementloc@0.2.0.TemplateModel",
   "executionDate": "2021-01-20T01:00:00.000+01:00",
   "exporter": "Acme Exports",
   "importer": "Dan's Imports",
@@ -9,7 +9,7 @@
   "importerLOCBank": "Big Bank Corp.",
   "importerLOCNumber": 1234567,
   "importerLOCAmount": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 1000000,
     "currencyCode": "SEK"
   },
@@ -33,7 +33,7 @@
   "turnaroundTime": 7,
   "amountOfEachProduct": 100,
   "unitPriceOfEachProduct": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 300,
     "currencyCode": "SEK"
   },
@@ -53,7 +53,7 @@
   "productWeight": 100,
   "productMeasurement": "50 cm x 10 cm x 60 cm",
   "freightCharges": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 4000,
     "currencyCode": "SEK"
   },
@@ -76,7 +76,7 @@
   },
   "shipment": "Shipment 001",
   "unitPrice": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 4000,
     "currencyCode": "SEK"
   },

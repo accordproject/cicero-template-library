@@ -7,7 +7,14 @@
 import type {
 	ISensorReadingData,
 	ISupplyAgreementState
-} from './org.accordproject.supplyagreementloc@0.1.0';
+} from './org.accordproject.supplyagreementloc@0.2.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 import type {
 	Month,
 	Day,
@@ -44,6 +51,9 @@ export interface IConcept {
 
 export type ConceptUnion = ISensorReadingData | 
 ISupplyAgreementState | 
+IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion | 
 IDuration | 
 IPeriod;
 

@@ -1,7 +1,8 @@
-namespace org.accordproject.paymentuponiot@0.1.0
+namespace org.accordproject.paymentuponiot@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * Lifecycle status of the contract
@@ -41,8 +42,7 @@ transaction LongButtonPress extends Request {
  * Request: payment received — decrements counter by units paid
  */
 transaction PaymentReceived extends Request {
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
 }
 
 /**
@@ -57,8 +57,7 @@ transaction CounterResponse extends Response {
  * Event emitted when payment is due
  */
 event PaymentObligationEvent {
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
   o String description
 }
 
@@ -78,7 +77,6 @@ concept CounterState identified {
 asset TemplateModel extends Clause {
   o String buyer
   o String seller
-  o Double amountPerUnit
-  o String currencyCode
+  o MonetaryAmount amountPerUnit
   o Integer paymentCount
 }

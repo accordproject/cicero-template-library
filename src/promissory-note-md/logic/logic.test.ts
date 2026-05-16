@@ -10,7 +10,13 @@ declare global {
 
 // Import AFTER mocks are set up
 import PromissoryNoteMdLogic from './logic';
-import { ITemplateModel, IPayment } from './generated/org.accordproject.promissorynotemd@0.1.0';
+import { ITemplateModel, IPayment } from './generated/org.accordproject.promissorynotemd@0.2.0';
+
+const usd = (doubleValue: number) => ({
+    $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+    doubleValue,
+    currencyCode: 'USD',
+});
 
 describe('PromissoryNoteMdLogic', () => {
     let logic: PromissoryNoteMdLogic;
@@ -19,10 +25,10 @@ describe('PromissoryNoteMdLogic', () => {
     beforeEach(() => {
         logic = new PromissoryNoteMdLogic();
         model = {
-            $class: 'org.accordproject.promissorynotemd@0.1.0.TemplateModel',
+            $class: 'org.accordproject.promissorynotemd@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
-            amount: 1000.0,
+            amount: usd(1000.0),
             date: '2017-03-12T00:00:00.000Z',
             maker: 'John Smith',
             interestRate: 0.03,
@@ -41,35 +47,36 @@ describe('PromissoryNoteMdLogic', () => {
     describe('trigger', () => {
         it('should compute outstanding balance with compound interest', async () => {
             const request: IPayment = {
-                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.2.0.Payment',
                 $timestamp: new Date(),
-                amountPaid: 100.0
+                amountPaid: usd(100.0)
             };
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result).toHaveProperty('$class', 'org.accordproject.promissorynotemd@0.1.0.Result');
+            expect(result.result).toHaveProperty('$class', 'org.accordproject.promissorynotemd@0.2.0.Result');
             expect(result.result).toHaveProperty('$timestamp');
-            expect(result.result.outstandingBalance).toBeGreaterThan(0);
+            expect(result.result.outstandingBalance.doubleValue).toBeGreaterThan(0);
+            expect(result.result.outstandingBalance.currencyCode).toBe('USD');
         });
 
         it('should throw when interest rate is negative', async () => {
             const badModel = { ...model, interestRate: -0.01 };
             const request: IPayment = {
-                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.2.0.Payment',
                 $timestamp: new Date(),
-                amountPaid: 0
+                amountPaid: usd(0)
             };
 
             await expect(logic.trigger(badModel, request)).rejects.toThrow('Interest rate must be non-negative');
         });
 
         it('should throw when amount is negative', async () => {
-            const badModel = { ...model, amount: -1.0 };
+            const badModel = { ...model, amount: usd(-1.0) };
             const request: IPayment = {
-                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.2.0.Payment',
                 $timestamp: new Date(),
-                amountPaid: 0
+                amountPaid: usd(0)
             };
 
             await expect(logic.trigger(badModel, request)).rejects.toThrow('Amount must be non-negative');
@@ -77,9 +84,9 @@ describe('PromissoryNoteMdLogic', () => {
 
         it('should throw when amount paid exceeds outstanding balance', async () => {
             const request: IPayment = {
-                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.2.0.Payment',
                 $timestamp: new Date(),
-                amountPaid: 2000.0
+                amountPaid: usd(2000.0)
             };
 
             await expect(logic.trigger(model, request)).rejects.toThrow('Amount paid exceeds outstanding balance');
@@ -87,13 +94,13 @@ describe('PromissoryNoteMdLogic', () => {
 
         it('should return zero outstanding when fully paid', async () => {
             const request: IPayment = {
-                $class: 'org.accordproject.promissorynotemd@0.1.0.Payment',
+                $class: 'org.accordproject.promissorynotemd@0.2.0.Payment',
                 $timestamp: new Date(),
-                amountPaid: 1000.0
+                amountPaid: usd(1000.0)
             };
 
             const result = await logic.trigger(model, request);
-            expect(result.result.outstandingBalance).toBeCloseTo(0, 5);
+            expect(result.result.outstandingBalance.doubleValue).toBeCloseTo(0, 5);
         });
     });
 });

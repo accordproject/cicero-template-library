@@ -1,12 +1,12 @@
-namespace org.accordproject.rentaldeposit@0.1.0
+namespace org.accordproject.rentaldeposit@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 concept Penalty {
   o String description
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
 }
 
 /**
@@ -20,13 +20,11 @@ transaction ProperyInspection extends Request {
  * The clause response
  */
 transaction PropertyInspectionResponse extends Response {
-  o Double balance
-  o String currencyCode
+  o MonetaryAmount balance
 }
 
 event RentalDepositPaymentEvent {
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
   o String description
 }
 
@@ -37,8 +35,7 @@ event RentalDepositPaymentEvent {
 asset TemplateModel extends Clause {
   o String tenant
   o String landlord
-  o Double depositAmount
-  o String currencyCode
+  o MonetaryAmount depositAmount
   o String tenantDepositRestorationPeriod
   o Double monthlyBaseRentMultiple
   o String applicableLaw

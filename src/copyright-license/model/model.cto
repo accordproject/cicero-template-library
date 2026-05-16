@@ -1,7 +1,8 @@
-namespace org.accordproject.copyrightlicense@0.1.0
+namespace org.accordproject.copyrightlicense@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /* Requesting a payment */
 transaction PaymentRequest extends Request {
@@ -9,20 +10,17 @@ transaction PaymentRequest extends Request {
 
 /* PayOut response */
 transaction PayOut extends Response {
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
 }
 
 event PaymentObligationEvent {
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
   o String description
 }
 
 asset PaymentClause extends Clause {
   o String amountText
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
   o String paymentProcedure
 }
 

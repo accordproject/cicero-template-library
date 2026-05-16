@@ -6,7 +6,7 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPurchaseOrderFailureState
-} from './org.accordproject.docusignpofailure@0.1.0';
+} from './org.accordproject.docusignpofailure@0.2.0';
 import type {
 	Month,
 	Day,
@@ -15,6 +15,13 @@ import type {
 	PeriodUnit,
 	IPeriod
 } from './org.accordproject.time@0.3.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 import type {
 	EnvelopeStatusCode,
 	RecipientStatusCode,
@@ -48,7 +55,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPurchaseOrderPaymentEvent
-} from './org.accordproject.docusignpofailure@0.1.0';
+} from './org.accordproject.docusignpofailure@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
@@ -61,6 +68,9 @@ export interface IConcept {
 export type ConceptUnion = IPurchaseOrderFailureState | 
 IDuration | 
 IPeriod | 
+IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion | 
 IEnvelopeStatus | 
 IRecipient | 
 ICustomField | 

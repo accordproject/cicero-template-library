@@ -1,7 +1,8 @@
-namespace org.accordproject.saft@0.1.0
+namespace org.accordproject.saft@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * The network has launched!
@@ -25,7 +26,7 @@ transaction Terminate extends Request {
   /**
    * What was the total amount invested
    */
-  o Double totalInvested
+  o MonetaryAmount totalInvested
 }
 
 /**
@@ -76,13 +77,11 @@ asset TemplateModel extends Clause {
   /**
    * The amount of coin being purchased
    */
-  o Double purchaseAmount
+  o MonetaryAmount purchaseAmount
 
   /**
    * The currency for the purchase
    */
-  o String currency
-
   /**
    * The minimum amount that needs to be raised
    */

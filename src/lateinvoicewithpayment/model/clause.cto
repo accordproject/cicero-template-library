@@ -1,8 +1,9 @@
-namespace org.accordproject.lateinvoicewithpayment@0.1.0
+namespace org.accordproject.lateinvoicewithpayment@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.time@0.3.0.{Duration,TemporalUnit} from https://models.accordproject.org/time@0.3.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
  * Defines the data model for the LateInvoice template.
@@ -27,8 +28,7 @@ transaction LateInvoiceRequest extends Request {
    * What was the agreed delivery date for the invoice?
    */
   o DateTime invoiceDue
-  o Double amountDue
-  o String currencyCode
+  o MonetaryAmount amountDue
 }
 
 /**
@@ -41,7 +41,6 @@ transaction LateInvoiceResponse extends Response {
 
 // Event emitted when payment is required
 event PaymentObligationEvent {
-  o Double amount
-  o String currencyCode
+  o MonetaryAmount amount
   o String description
 }

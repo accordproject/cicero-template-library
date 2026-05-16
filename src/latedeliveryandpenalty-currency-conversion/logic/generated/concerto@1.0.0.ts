@@ -6,7 +6,7 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	ICurrencyConversion
-} from './org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0';
+} from './org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0';
 import type {
 	Month,
 	Day,
@@ -15,6 +15,13 @@ import type {
 	PeriodUnit,
 	IPeriod
 } from './org.accordproject.time@0.3.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -34,7 +41,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentObligationEvent
-} from './org.accordproject.latedeliveryandpenaltycurrencyconversion@0.1.0';
+} from './org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
@@ -46,7 +53,10 @@ export interface IConcept {
 
 export type ConceptUnion = ICurrencyConversion | 
 IDuration | 
-IPeriod;
+IPeriod | 
+IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion;
 
 export interface IAsset extends IConcept {
    $identifier: string;

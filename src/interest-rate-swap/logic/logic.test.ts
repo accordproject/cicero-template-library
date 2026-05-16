@@ -10,9 +10,9 @@ declare global {
 
 // Import AFTER mocks are set up
 import InterestRateSwapLogic from './logic';
-import { ITemplateModel, IRateObservation } from './generated/org.accordproject.isda.irs@0.1.0';
+import { ITemplateModel, IRateObservation } from './generated/org.accordproject.isda.irs@0.2.0';
 
-const NS = 'org.accordproject.isda.irs@0.1.0';
+const NS = 'org.accordproject.isda.irs@0.2.0';
 
 describe('InterestRateSwapLogic', () => {
     let logic: InterestRateSwapLogic;
@@ -28,8 +28,7 @@ describe('InterestRateSwapLogic', () => {
             letterDate: new Date('2018-01-01T00:00:00Z'),
             counterparty: 'Counterparty B',
             bankReference: 'REF-001',
-            notionalAmount: 1000000.0,
-            notionalCurrency: 'USD',
+            notionalAmount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000000.0, currencyCode: 'USD' },
             tradeDate: new Date('2018-01-01T00:00:00Z'),
             effectiveDate: new Date('2018-01-03T00:00:00Z'),
             terminationDate: new Date('2021-01-03T00:00:00Z'),
@@ -65,7 +64,8 @@ describe('InterestRateSwapLogic', () => {
 
             expect(result.result).toHaveProperty('$class', `${NS}.Result`);
             expect(result.result).toHaveProperty('$timestamp');
-            expect(result.result.outstandingBalance).toBe(10.0);
+            expect(result.result.outstandingBalance.doubleValue).toBe(10.0);
+            expect(result.result.outstandingBalance.currencyCode).toBe('USD');
         });
 
         it('should throw when fixedRate is negative', async () => {
@@ -78,7 +78,7 @@ describe('InterestRateSwapLogic', () => {
         });
 
         it('should throw when notionalAmount is negative', async () => {
-            model.notionalAmount = -1000.0;
+            model.notionalAmount = { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: -1000.0, currencyCode: 'USD' };
             const request: IRateObservation = {
                 $class: `${NS}.RateObservation`,
                 $timestamp: new Date()

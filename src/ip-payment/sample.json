@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.ippayment@0.1.0.TemplateModel",
+  "$class": "org.accordproject.ippayment@0.2.0.TemplateModel",
   "royaltyText": "four point five",
   "royaltyRate": 4.5,
   "sublicensingRoyaltyText": "five point two",

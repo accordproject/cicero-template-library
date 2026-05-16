@@ -1,11 +1,11 @@
 {
-  "$class": "org.accordproject.supplyagreementperishablegoods@0.1.0.TemplateModel",
+  "$class": "org.accordproject.supplyagreementperishablegoods@0.2.0.TemplateModel",
   "grower": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION",
   "importer": "resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION",
   "shipment": "resource:org.accordproject.perishablegoods.Shipment#Grade%20I,%20Size%204,%20Zutano%20Mexican%20Avocados",
   "dueDate": "2099-06-30T00:00:00.000+01:00",
   "unitPrice": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 1.5,
     "currencyCode": "USD"
   },

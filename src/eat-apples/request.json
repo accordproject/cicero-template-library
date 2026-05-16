@@ -1,5 +1,9 @@
 {
-    "$class": "org.accordproject.eatapples@0.1.0.Food",
-    "produce": "apple",
-    "price": 1.49
+  "$class": "org.accordproject.eatapples@0.2.0.Food",
+  "produce": "apple",
+  "price": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1.49,
+    "currencyCode": "USD"
+  }
 }

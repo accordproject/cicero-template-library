@@ -1,4 +1,13 @@
-import { ITemplateModel, IPaymentRequest, IPayOut } from './generated/org.accordproject.ippayment@0.1.0';
+import { ITemplateModel, IPaymentRequest, IPayOut } from './generated/org.accordproject.ippayment@0.2.0';
+import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
 
 // Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
 enum TemporalUnit {
@@ -42,9 +51,9 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
     }
 
     async trigger(data: ITemplateModel, request: IPaymentRequest): Promise<IPPaymentResponse> {
-        const royaltiesAmount = request.netSaleRevenue * data.royaltyRate / 100.0;
-        const sublicensingAmount = request.sublicensingRevenue * data.sublicensingRoyaltyRate / 100.0;
-        const totalAmount = royaltiesAmount + sublicensingAmount;
+        const royaltiesAmount = request.netSaleRevenue.doubleValue * data.royaltyRate / 100.0;
+        const sublicensingAmount = request.sublicensingRevenue.doubleValue * data.sublicensingRoyaltyRate / 100.0;
+        const totalAmountValue = royaltiesAmount + sublicensingAmount;
 
         let dueBy: Date;
         if (request.permissionGrantedBy) {
@@ -55,9 +64,9 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'org.accordproject.ippayment@0.1.0.PayOut',
+                $class: 'org.accordproject.ippayment@0.2.0.PayOut',
                 $timestamp: new Date(),
-                totalAmount,
+                totalAmount: monetary(totalAmountValue, request.netSaleRevenue.currencyCode),
                 dueBy,
             },
         };

@@ -1,18 +1,17 @@
 {
-  "$class": "org.accordproject.saft@0.1.0.TemplateModel",
+  "$class": "org.accordproject.saft@0.2.0.TemplateModel",
   "token": "Clause Token",
   "company": "Clause",
   "companyType": "CORP",
   "state": "NY",
   "amendmentProvision": true,
   "purchaseAmount": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 25,
     "currencyCode": "USD"
   },
-  "currency": "EUR",
   "netProceedLimit": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 3000000,
     "currencyCode": "USD"
   },

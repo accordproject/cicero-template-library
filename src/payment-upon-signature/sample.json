@@ -1,9 +1,9 @@
 {
-  "$class": "org.accordproject.paymentuponssignature@0.1.0.TemplateModel",
+  "$class": "org.accordproject.paymentuponssignature@0.2.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Dave",
   "seller": "resource:org.accordproject.party.Party#Dan",
   "amount": {
-    "$class": "org.accordproject.money.MonetaryAmount",
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 50,
     "currencyCode": "USD"
   },

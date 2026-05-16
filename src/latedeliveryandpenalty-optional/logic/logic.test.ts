@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import LateDeliveryAndPenaltyOptionalLogic from './logic';
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/org.accordproject.latedeliveryandpenaltyoptional@0.1.0';
+import { ITemplateModel, ILateDeliveryAndPenaltyRequest } from './generated/org.accordproject.latedeliveryandpenaltyoptional@0.2.0';
 
 describe('LateDeliveryAndPenaltyOptionalLogic', () => {
     let logic: LateDeliveryAndPenaltyOptionalLogic;
@@ -23,12 +23,12 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
         pastDate = new Date();
         pastDate.setDate(pastDate.getDate() - 14);
         model = {
-            $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.TemplateModel',
+            $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
             seller: 'Bob',
-            forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.Distance', miles: 100 },
+            forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.Distance', miles: 100 },
             penaltyDuration: { $class: 'org.accordproject.time@0.3.0.Duration', amount: 7, unit: 'days' },
             penaltyPercentage: 10.5,
             capPercentage: 55,
@@ -40,14 +40,15 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
     describe('trigger', () => {
         it('should return penalty=0 and buyerMayTerminate=true when both contract and request have force majeure set', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
-                forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.Distance', miles: 50 },
+                forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.Distance', miles: 50 },
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBe(0);
+            expect(result.result.penalty.doubleValue).toBe(0);
+            expect(result.result.penalty.currencyCode).toBe('USD');
             expect(result.result.buyerMayTerminate).toBe(true);
             expect(result.events).toHaveLength(0);
         });
@@ -55,41 +56,41 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
         it('should calculate penalty when contract has no force majeure', async () => {
             const modelNoFM = { ...model, forceMajeure: null };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
-                forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.Distance', miles: 50 },
+                forceMajeure: { $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.Distance', miles: 50 },
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelNoFM, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
         it('should calculate penalty when request has no force majeure', async () => {
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
         it('should calculate penalty when neither contract nor request has force majeure', async () => {
             const modelNoFM = { ...model, forceMajeure: null };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelNoFM, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -101,14 +102,14 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
                 capPercentage: 55,
             };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelHighPenalty, request);
-            expect(result.result.penalty).toBeLessThanOrEqual(1000 * 0.55);
+            expect(result.result.penalty.doubleValue).toBeLessThanOrEqual(1000 * 0.55);
         });
 
         it('should set buyerMayTerminate=true when delay exceeds termination threshold', async () => {
@@ -116,11 +117,11 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
             veryPastDate.setDate(veryPastDate.getDate() - 100);
             const modelShortTermination = { ...model, forceMajeure: null, termination: { $class: 'org.accordproject.time@0.3.0.Duration', amount: 30, unit: 'days' } };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: veryPastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelShortTermination, request);
             expect(result.result.buyerMayTerminate).toBe(true);
@@ -130,11 +131,11 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: futureDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             await expect(logic.trigger(model, request)).rejects.toThrow('Cannot exercise late delivery before delivery date');
         });
@@ -142,18 +143,18 @@ describe('LateDeliveryAndPenaltyOptionalLogic', () => {
         it('should emit a PaymentObligationEvent with correct fields', async () => {
             const modelNoFM = { ...model, forceMajeure: null };
             const request: ILateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.1.0.LateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 forceMajeure: null,
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(modelNoFM, request);
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
-            expect(event.$class).toBe('org.accordproject.latedeliveryandpenaltyoptional@0.1.0.PaymentObligationEvent');
-            expect(event.amount).toBe(result.result.penalty);
-            expect(event.currencyCode).toBe('USD');
+            expect(event.$class).toBe('org.accordproject.latedeliveryandpenaltyoptional@0.2.0.PaymentObligationEvent');
+            expect(event.amount).toEqual(result.result.penalty);
+            expect(event.amount.currencyCode).toBe('USD');
             expect(event.description).toContain('Bob');
             expect(event.description).toContain('Alice');
         });

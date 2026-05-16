@@ -7,7 +7,7 @@
 (global as any).InitResponse = class InitResponse<S> {};
 
 import SimpleLateDeliveryAndPenaltyLogic from './logic';
-import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest } from './generated/org.accordproject.simplelatedeliveryandpenalty@0.1.0';
+import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest } from './generated/org.accordproject.simplelatedeliveryandpenalty@0.2.0';
 
 describe('SimpleLateDeliveryAndPenaltyLogic', () => {
     let logic: SimpleLateDeliveryAndPenaltyLogic;
@@ -16,7 +16,7 @@ describe('SimpleLateDeliveryAndPenaltyLogic', () => {
     beforeEach(() => {
         logic = new SimpleLateDeliveryAndPenaltyLogic();
         model = {
-            $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.TemplateModel',
+            $class: 'org.accordproject.simplelatedeliveryandpenalty@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             buyer: 'Alice',
@@ -33,13 +33,14 @@ describe('SimpleLateDeliveryAndPenaltyLogic', () => {
             const pastDate = new Date();
             pastDate.setDate(pastDate.getDate() - 14); // 14 days ago
             const request: ISimpleLateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.SimpleLateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.2.0.SimpleLateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 agreedDelivery: pastDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.penalty).toBeGreaterThan(0);
+            expect(result.result.penalty.doubleValue).toBeGreaterThan(0);
+            expect(result.result.penalty.currencyCode).toBe('USD');
             expect(result.events).toHaveLength(1);
         });
 
@@ -47,10 +48,10 @@ describe('SimpleLateDeliveryAndPenaltyLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ISimpleLateDeliveryAndPenaltyRequest = {
-                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.1.0.SimpleLateDeliveryAndPenaltyRequest',
+                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.2.0.SimpleLateDeliveryAndPenaltyRequest',
                 $timestamp: new Date(),
                 agreedDelivery: futureDate,
-                goodsValue: 1000,
+                goodsValue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
             };
             await expect(logic.trigger(model, request)).rejects.toThrow();
         });
