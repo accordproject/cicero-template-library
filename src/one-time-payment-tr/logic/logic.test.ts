@@ -29,8 +29,7 @@ describe('OneTimePaymentLogic', () => {
             clauseId: 'test-id',
             buyer: 'Alice',
             seller: 'Bob',
-            totalPurchasePrice: 3000,
-            currencyCode: 'USD',
+            totalPurchasePrice: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 3000, currencyCode: 'USD' },
         };
         initializedState = {
             $class: 'org.accordproject.onetimepaymenttr@0.2.0.OneTimePaymentState',
@@ -50,8 +49,8 @@ describe('OneTimePaymentLogic', () => {
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.onetimepaymenttr@0.2.0.PaymentObligationEvent');
-            expect(event.amount).toBe(3000);
-            expect(event.currencyCode).toBe('USD');
+            expect(event.amount.doubleValue).toBe(3000);
+            expect(event.amount.currencyCode).toBe('USD');
             expect(event.description).toContain('Alice');
             expect(event.description).toContain('Bob');
         });

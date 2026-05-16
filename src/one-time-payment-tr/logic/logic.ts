@@ -23,7 +23,6 @@ class OneTimePaymentLogic extends TemplateLogic<ITemplateModel, IOneTimePaymentS
             $class: 'org.accordproject.onetimepaymenttr@0.2.0.PaymentObligationEvent',
             $timestamp: now,
             amount: data.totalPurchasePrice,
-            currencyCode: data.currencyCode,
             description: `${data.buyer} should pay total purchase price to ${data.seller}`,
         };
         return {
