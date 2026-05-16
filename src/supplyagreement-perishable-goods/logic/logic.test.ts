@@ -27,8 +27,7 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
             grower: 'Grower Farm LLC',
             importer: 'Import Co Ltd',
             shipment: 'SHIP_001',
-            unitPrice: 1.5,
-            currencyCode: 'USD',
+            unitPrice: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1.5, currencyCode: 'USD' } as any,
             unit: 'KG',
             minUnits: 3000,
             maxUnits: 5000,
@@ -70,8 +69,8 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
             expect(result.result.$class).toBe('org.accordproject.supplyagreementperishablegoods@0.1.0.PriceCalculation');
             expect(result.result.late).toBe(false);
             expect(result.result.penalty).toBe(0.0);
-            expect(result.result.totalPrice).toBeCloseTo(3002 * 1.5);
-            expect(result.result.currencyCode).toBe('USD');
+            expect((result.result.totalPrice as any).doubleValue).toBeCloseTo(3002 * 1.5);
+            expect((result.result.totalPrice as any).currencyCode).toBe('USD');
             expect(result.events).toHaveLength(1);
             expect(result.events[0].$class).toBe('org.accordproject.supplyagreementperishablegoods@0.1.0.PaymentObligationEvent');
         });
@@ -87,7 +86,7 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
             // total penalty = 0.4 * 3002 = 1200.8
             expect(result.result.penalty).toBeCloseTo(0.4 * 3002);
             const expectedTotal = Math.max(3002 * 1.5 - 0.4 * 3002, 0);
-            expect(result.result.totalPrice).toBeCloseTo(expectedTotal);
+            expect((result.result.totalPrice as any).doubleValue).toBeCloseTo(expectedTotal);
         });
     });
 
@@ -98,7 +97,7 @@ describe('SupplyAgreementPerishableGoodsLogic', () => {
             const result = await logic.trigger(pastModel, request);
 
             expect(result.result.late).toBe(true);
-            expect(result.result.totalPrice).toBe(0.0);
+            expect((result.result.totalPrice as any).doubleValue).toBe(0.0);
             expect(result.result.penalty).toBe(0.0);
         });
     });
