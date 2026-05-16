@@ -3,7 +3,6 @@
   "amount": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 2500,
-    "currencyCode": "USD"
-  },
-  "currencyCode": "EUR"
+    "currencyCode": "EUR"
+  }
 }

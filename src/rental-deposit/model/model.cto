@@ -7,7 +7,6 @@ import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordpr
 concept Penalty {
   o String description
   o MonetaryAmount amount
-  o String currencyCode
 }
 
 /**
@@ -22,12 +21,10 @@ transaction ProperyInspection extends Request {
  */
 transaction PropertyInspectionResponse extends Response {
   o MonetaryAmount balance
-  o String currencyCode
 }
 
 event RentalDepositPaymentEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }
 
@@ -39,7 +36,6 @@ asset TemplateModel extends Clause {
   o String tenant
   o String landlord
   o MonetaryAmount depositAmount
-  o String currencyCode
   o String tenantDepositRestorationPeriod
   o Double monthlyBaseRentMultiple
   o String applicableLaw

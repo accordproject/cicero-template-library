@@ -28,12 +28,10 @@ transaction DeliveryUpdate extends Request {
 
 transaction PayOut extends Response {
   o MonetaryAmount paymentAmount
-  o String currencyCode
 }
 
 event FragileGoodsEvent {
   o MonetaryAmount paymentAmount
-  o String currencyCode
 }
 
 /**

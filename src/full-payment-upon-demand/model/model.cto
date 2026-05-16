@@ -10,7 +10,6 @@ asset TemplateModel extends Clause {
   o String buyer
   o String seller
   o MonetaryAmount amount
-  o String currencyCode
 }
 
 // Request
@@ -30,7 +29,6 @@ transaction PaymentReceivedResponse extends Response {
 // Event emitted when a payment obligation is triggered
 event PaymentObligationEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }
 

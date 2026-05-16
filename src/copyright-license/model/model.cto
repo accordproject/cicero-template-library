@@ -11,19 +11,16 @@ transaction PaymentRequest extends Request {
 /* PayOut response */
 transaction PayOut extends Response {
   o MonetaryAmount amount
-  o String currencyCode
 }
 
 event PaymentObligationEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }
 
 asset PaymentClause extends Clause {
   o String amountText
   o MonetaryAmount amount
-  o String currencyCode
   o String paymentProcedure
 }
 

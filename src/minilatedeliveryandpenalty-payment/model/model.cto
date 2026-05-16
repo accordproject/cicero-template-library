@@ -18,7 +18,6 @@ transaction LateResponse extends Response {
 
 event PaymentObligationEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }
 

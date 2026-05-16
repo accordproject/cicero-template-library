@@ -8,8 +8,7 @@
         "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
         "doubleValue": 1000,
         "currencyCode": "USD"
-      },
-      "currencyCode": "USD"
+      }
     },
     {
       "$class": "org.accordproject.rentaldepositwith@0.2.0.Penalty",
@@ -18,8 +17,7 @@
         "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
         "doubleValue": 450,
         "currencyCode": "USD"
-      },
-      "currencyCode": "USD"
+      }
     }
   ]
 }

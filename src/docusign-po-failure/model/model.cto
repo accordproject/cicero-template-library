@@ -8,12 +8,10 @@ import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordpr
 
 transaction PurchaseOrderFailureResponse extends Response {
   o MonetaryAmount penaltyAmount
-  o String currencyCode
 }
 
 event PurchaseOrderPaymentEvent {
   o MonetaryAmount penaltyAmount
-  o String currencyCode
   o String description
 }
 

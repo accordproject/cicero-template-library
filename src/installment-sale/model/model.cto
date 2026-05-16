@@ -6,12 +6,10 @@ import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordpr
 
 transaction Installment extends Request {
   o MonetaryAmount amount
-  o String currencyCode
 }
 
 transaction ClosingPayment extends Request {
   o MonetaryAmount amount
-  o String currencyCode
 }
 
 transaction Balance extends Response {
@@ -29,14 +27,12 @@ enum ContractStatus {
 concept InstallmentSaleState identified {
   o ContractStatus status
   o MonetaryAmount balance_remaining
-  o String currencyCode
   o Integer next_payment_month
   o MonetaryAmount total_paid
 }
 
 event InstallmentSalePaymentEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }
 

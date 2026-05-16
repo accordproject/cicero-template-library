@@ -82,8 +82,6 @@ asset TemplateModel extends Clause {
   /**
    * The currency for the purchase
    */
-  o String currency
-
   /**
    * The minimum amount that needs to be raised
    */

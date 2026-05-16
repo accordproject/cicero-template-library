@@ -36,7 +36,6 @@ transaction ShipmentReceived extends Request {
 transaction PriceCalculation extends Response {
   o MonetaryAmount totalPrice
   o MonetaryAmount penalty
-  o String currencyCode
   o Boolean late
 }
 
@@ -45,7 +44,6 @@ transaction PriceCalculation extends Response {
  */
 event PerishableGoodsPaymentEvent {
   o MonetaryAmount totalPrice
-  o String currencyCode
   o String description
 }
 
@@ -67,7 +65,6 @@ asset TemplateModel extends Clause {
   o String shipmentId
   o DateTime dueDate
   o MonetaryAmount unitPrice
-  o String currencyCode
   o UnitOfMass unit
   o Integer minUnits
   o Integer maxUnits

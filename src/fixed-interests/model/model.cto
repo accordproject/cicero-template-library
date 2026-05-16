@@ -29,7 +29,6 @@ transaction FixedInterestsResponse extends Response {
 @template
 asset TemplateModel extends Clause {
   o MonetaryAmount loanAmount
-  o String currencyCode
   o Double rate
   o Integer loanDuration
 }

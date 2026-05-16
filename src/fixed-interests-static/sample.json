@@ -5,7 +5,6 @@
     "doubleValue": 100000,
     "currencyCode": "USD"
   },
-  "currencyCode": "USD",
   "rate": 2.5,
   "loanDuration": 15,
   "monthlyPayment": {

@@ -29,7 +29,6 @@ transaction LateInvoiceRequest extends Request {
    */
   o DateTime invoiceDue
   o MonetaryAmount amountDue
-  o String currencyCode
 }
 
 /**
@@ -43,6 +42,5 @@ transaction LateInvoiceResponse extends Response {
 // Event emitted when payment is required
 event PaymentObligationEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }

@@ -115,6 +115,31 @@ function findCtoFile(modelDir) {
     return null;
 }
 
+// Walk the .cto source and drop `o String currencyCode` / `o String currency`
+// declarations from any transaction/asset/concept block that has at least
+// one MonetaryAmount field — the currency now travels with the money value.
+// Returns { source, removedCurrencyFromTypes } where removedCurrencyFromTypes
+// is a Set of type names whose currency field was stripped, used to drive
+// the matching cleanup in JSON files.
+function stripRedundantCurrency(src) {
+    const removed = new Set();
+    // Match each top-level block (transaction/asset/concept/event etc) and
+    // inspect its body for MonetaryAmount fields + a currency declaration.
+    const blockRe = /((?:abstract\s+)?(?:transaction|asset|concept|event|participant|enum)\s+(\w+)[^{]*\{)([\s\S]*?)(^\})/gm;
+    src = src.replace(blockRe, (match, header, typeName, body, close) => {
+        if (!/MonetaryAmount\s+\w/.test(body)) return match;
+        const currencyRe = /^\s*o\s+String\s+(currencyCode|currency)\s+optional\s*$\n|^\s*o\s+String\s+(currencyCode|currency)\s*$\n/gm;
+        let stripped = false;
+        const newBody = body.replace(currencyRe, () => {
+            stripped = true;
+            return '';
+        });
+        if (stripped) removed.add(typeName);
+        return header + newBody + close;
+    });
+    return { source: src, removed };
+}
+
 function updateModelCto(ctoPath, fields) {
     let src = readFileSync(ctoPath, 'utf8');
     const before = src;
@@ -148,10 +173,15 @@ function updateModelCto(ctoPath, fields) {
         src = src.replace(re, `$1MonetaryAmount$2`);
     }
 
-    return { ctoPath, before, after: src, oldNs, newNs };
+    // After retyping, drop sibling `o String currencyCode` declarations
+    // inside types that now have at least one MonetaryAmount field.
+    const stripped = stripRedundantCurrency(src);
+    src = stripped.source;
+
+    return { ctoPath, before, after: src, oldNs, newNs, removedCurrencyFromTypes: stripped.removed };
 }
 
-function rewriteJson(filePath, fields, oldNs, newNs, currency) {
+function rewriteJson(filePath, fields, oldNs, newNs, currency, removedCurrencyFromTypes) {
     if (!existsSync(filePath)) return null;
     const raw = readFileSync(filePath, 'utf8');
     let data;
@@ -184,12 +214,27 @@ function rewriteJson(filePath, fields, oldNs, newNs, currency) {
             }
             const ownerInTemplateNs = typeof obj.$class === 'string'
                 && obj.$class.startsWith(newNs + '.');
+            const ownerTypeName = ownerInTemplateNs
+                ? obj.$class.slice(newNs.length + 1)
+                : null;
+            const ownerLostCurrency = ownerTypeName
+                && removedCurrencyFromTypes.has(ownerTypeName);
+            // Prefer the sibling currencyCode (about to be deleted) over the
+            // CLI default — the original sample data is the source of truth.
+            const localCurrency = (typeof obj.currencyCode === 'string' && obj.currencyCode)
+                || (typeof obj.currency === 'string' && obj.currency)
+                || currency;
             for (const k of Object.keys(obj)) {
+                if (ownerLostCurrency && (k === 'currencyCode' || k === 'currency')) {
+                    delete obj[k];
+                    touched = true;
+                    continue;
+                }
                 if (ownerInTemplateNs && fields.includes(k) && typeof obj[k] === 'number') {
                     obj[k] = {
                         $class: MONEY_FQN,
                         doubleValue: obj[k],
-                        currencyCode: currency,
+                        currencyCode: localCurrency,
                     };
                     touched = true;
                 } else {
@@ -221,8 +266,25 @@ function migrateTemplate(name, fields) {
 
     const jsonResults = [];
     for (const j of ['sample.json', 'request.json', 'state.json', 'contract.json']) {
-        const r = rewriteJson(join(dir, j), fields, cto.oldNs, cto.newNs, opts.currency);
+        const r = rewriteJson(join(dir, j), fields, cto.oldNs, cto.newNs, opts.currency, cto.removedCurrencyFromTypes);
         if (r) jsonResults.push(r);
+    }
+
+    // If any template-owned types lost their currency field, scrub matching
+    // `{{currencyCode}}` / `{{currency}}` placeholders out of the grammar.
+    // The currency is now embedded in the MonetaryAmount via the `as` format
+    // specifier (added in a follow-up PR), so the standalone placeholder is
+    // redundant and would render `undefined` if left in place.
+    let grammarResult = null;
+    if (cto.removedCurrencyFromTypes.size > 0) {
+        const gPath = join(dir, 'text', 'grammar.tem.md');
+        if (existsSync(gPath)) {
+            const before = readFileSync(gPath, 'utf8');
+            const after = before
+                .replace(/\s*\{\{\s*currencyCode\s*\}\}/g, '')
+                .replace(/\s*\{\{\s*currency\s*\}\}/g, '');
+            if (after !== before) grammarResult = { filePath: gPath, after };
+        }
     }
 
     const pkgPath = join(dir, 'package.json');
@@ -240,6 +302,7 @@ function migrateTemplate(name, fields) {
         if (cto.before !== cto.after) writeFileSync(cto.ctoPath, cto.after);
         if (needsCache && existsSync(cacheSource)) copyFileSync(cacheSource, cacheTarget);
         for (const r of jsonResults) writeFileSync(r.filePath, r.after);
+        if (grammarResult) writeFileSync(grammarResult.filePath, grammarResult.after);
         if (pkgResult) writeFileSync(pkgResult.filePath, pkgResult.after);
     }
 
@@ -250,6 +313,8 @@ function migrateTemplate(name, fields) {
             model: cto.before !== cto.after,
             cache: needsCache,
             json: jsonResults.map((r) => r.filePath.replace(dir + '/', '')),
+            grammar: !!grammarResult,
+            droppedCurrencyTypes: [...cto.removedCurrencyFromTypes],
             pkg: !!pkgResult,
         },
     };
@@ -271,7 +336,7 @@ for (const name of targets) {
     try {
         const r = migrateTemplate(name, fields);
         if (r.error) console.error(`error: ${name}: ${r.error}`);
-        else console.log(`${name}: ${r.ns.from} -> ${r.ns.to}  json=[${r.files.json.join(',')}]  cache=${r.files.cache}  pkg=${r.files.pkg}`);
+        else console.log(`${name}: ${r.ns.from} -> ${r.ns.to}  json=[${r.files.json.join(',')}]  cache=${r.files.cache}  grammar=${r.files.grammar}  droppedCurrency=[${r.files.droppedCurrencyTypes.join(',')}]  pkg=${r.files.pkg}`);
     } catch (e) {
         console.error(`error: ${name}: ${e.message}`);
     }

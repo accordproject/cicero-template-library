@@ -43,7 +43,6 @@ transaction LongButtonPress extends Request {
  */
 transaction PaymentReceived extends Request {
   o MonetaryAmount amount
-  o String currencyCode
 }
 
 /**
@@ -59,7 +58,6 @@ transaction CounterResponse extends Response {
  */
 event PaymentObligationEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }
 
@@ -80,6 +78,5 @@ asset TemplateModel extends Clause {
   o String buyer
   o String seller
   o MonetaryAmount amountPerUnit
-  o String currencyCode
   o Integer paymentCount
 }

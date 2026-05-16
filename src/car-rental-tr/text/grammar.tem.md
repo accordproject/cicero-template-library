@@ -26,7 +26,7 @@ Bundan böyle KİRALAYAN olarak anılacaktır.
 
    3.1
 {{#clause paymentClause}}
-{{amountText}} ({{amount}} {{currencyCode}}) {{paymentProcedure}}.
+{{amountText}} ({{amount}}) {{paymentProcedure}}.
 {{/clause}}
    3.2 Kiralama Başlangıç Tarihi {{startDate}}
    3.3 Kiralama Bitiş Tarihi {{endDate}}

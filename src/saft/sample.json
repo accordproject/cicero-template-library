@@ -10,7 +10,6 @@
     "doubleValue": 25,
     "currencyCode": "USD"
   },
-  "currency": "EUR",
   "netProceedLimit": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 3000000,

@@ -31,6 +31,5 @@ transaction InvoiceCredit extends Response {
 
 event ServiceCreditPaymentEvent {
   o MonetaryAmount amount
-  o String currencyCode
   o String description
 }

@@ -50,7 +50,6 @@ event PaymentObligationEvent {
   o String grower
   o String importer
   o MonetaryAmount totalPrice
-  o String currencyCode
   o Boolean late
 }
 
@@ -68,7 +67,6 @@ transaction ShipmentReceived extends Request {
 transaction PriceCalculation extends Response {
   o MonetaryAmount totalPrice
   o MonetaryAmount penalty
-  o String currencyCode
   o Boolean late
 }
 
@@ -82,7 +80,6 @@ asset TemplateModel extends Clause {
   o String importer
   o String shipment
   o MonetaryAmount unitPrice
-  o String currencyCode
   o Unit unit
   o Integer minUnits
   o Integer maxUnits
