@@ -1,0 +1,36 @@
+{
+    "templateName": "certificate-of-incorporation",
+    "latestVersion": "0.6.0",
+    "versions": [
+        {
+            "version": "0.6.0",
+            "ciceroVersion": "^0.26.0",
+            "url": "/certificate-of-incorporation@0.6.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/certificate-of-incorporation@0.6.0.cta"
+        },
+        {
+            "version": "0.5.0",
+            "ciceroVersion": "^0.22.0",
+            "url": "/certificate-of-incorporation@0.5.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/certificate-of-incorporation@0.5.0.cta"
+        },
+        {
+            "version": "0.4.0",
+            "ciceroVersion": "^0.21.0",
+            "url": "/certificate-of-incorporation@0.4.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/certificate-of-incorporation@0.4.0.cta"
+        },
+        {
+            "version": "0.3.1",
+            "ciceroVersion": "^0.20.10",
+            "url": "/certificate-of-incorporation@0.3.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/certificate-of-incorporation@0.3.1.cta"
+        },
+        {
+            "version": "0.3.0",
+            "ciceroVersion": "^0.20.0",
+            "url": "/certificate-of-incorporation@0.3.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/certificate-of-incorporation@0.3.0.cta"
+        }
+    ]
+}

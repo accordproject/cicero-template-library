@@ -1,0 +1,36 @@
+@startuml
+class org.accordproject.copyrightlicense_0_2_0.PaymentRequest << (T,yellow) >> {
+}
+org.accordproject.copyrightlicense_0_2_0.PaymentRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.copyrightlicense_0_2_0.PayOut << (T,yellow) >> {
+   + MonetaryAmount amount
+}
+org.accordproject.copyrightlicense_0_2_0.PayOut --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.copyrightlicense_0_2_0.PaymentObligationEvent {
+   + MonetaryAmount amount
+   + String description
+}
+org.accordproject.copyrightlicense_0_2_0.PaymentObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.copyrightlicense_0_2_0.PaymentClause << (A,green) >> {
+   + String amountText
+   + MonetaryAmount amount
+   + String paymentProcedure
+}
+org.accordproject.copyrightlicense_0_2_0.PaymentClause --|> org.accordproject.contract_0_2_0.Clause
+class org.accordproject.copyrightlicense_0_2_0.TemplateModel << (A,green) >> {
+   + DateTime effectiveDate
+   + String licensee
+   + String licenseeState
+   + String licenseeEntityType
+   + String licenseeAddress
+   + String licensor
+   + String licensorState
+   + String licensorEntityType
+   + String licensorAddress
+   + String territory
+   + String purposeDescription
+   + String workDescription
+   + PaymentClause paymentClause
+}
+org.accordproject.copyrightlicense_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

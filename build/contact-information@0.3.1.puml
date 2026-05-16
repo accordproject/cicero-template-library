@@ -1,0 +1,33 @@
+@startuml
+class org.accordproject.contactinformation_0_1_0.TimeZone << (E,grey) >> {
+   + America_New_York
+   + America_Chicago
+   + America_Denver
+   + America_Los_Angeles
+   + America_Anchorage
+   + Pacific_Honolulu
+   + Europe_London
+   + Europe_Paris
+   + Europe_Berlin
+   + Asia_Tokyo
+   + Asia_Shanghai
+   + Asia_Kolkata
+   + Australia_Sydney
+   + UTC
+}
+org.accordproject.contactinformation_0_1_0.TimeZone --|> concerto_1_0_0.Concept
+class org.accordproject.contactinformation_0_1_0.CommunicationChannel << (E,grey) >> {
+   + EMAIL
+   + PHONE
+}
+org.accordproject.contactinformation_0_1_0.CommunicationChannel --|> concerto_1_0_0.Concept
+class org.accordproject.contactinformation_0_1_0.TemplateModel << (A,green) >> {
+   + String name
+   + String title
+   + String email
+   + String phone
+   + TimeZone timezone
+   + CommunicationChannel communicationChannel
+}
+org.accordproject.contactinformation_0_1_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

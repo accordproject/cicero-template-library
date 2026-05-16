@@ -93,14 +93,15 @@
                     <tbody>
                         {% for name, val in group.templates |dictsort %}
                         {% set typeLabel = "Contract" if val.type === 0 else "Clause" %}
+                        {% set templateName = name.split('@')[0] %}
                         <tr class="template-row"
                             data-name="{{ (val.displayName or name) | lower }}"
                             data-description="{{ val.description | lower }}"
                             data-type="{{ typeLabel }}"
                             data-version="{{ val.ciceroVersion }}">
                             <th>
-                                <a href="{{name}}.html">
-                                    {% if val.displayName %}{{val.displayName}}{% else %}{{name}}{% endif %}
+                                <a href="t/{{templateName}}/">
+                                    {% if val.displayName %}{{val.displayName}}{% else %}{{val.displayName or templateName}}{% endif %}
                                 </a>
                             </th>
                             <td>{{val.description}}</td>

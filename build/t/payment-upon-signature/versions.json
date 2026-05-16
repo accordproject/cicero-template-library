@@ -1,0 +1,96 @@
+{
+    "templateName": "payment-upon-signature",
+    "latestVersion": "0.12.0",
+    "versions": [
+        {
+            "version": "0.12.0",
+            "ciceroVersion": "^0.26.0",
+            "url": "/payment-upon-signature@0.12.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.12.0.cta"
+        },
+        {
+            "version": "0.10.0",
+            "ciceroVersion": "^0.22.0",
+            "url": "/payment-upon-signature@0.10.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.10.0.cta"
+        },
+        {
+            "version": "0.9.0",
+            "ciceroVersion": "^0.21.0",
+            "url": "/payment-upon-signature@0.9.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.9.0.cta"
+        },
+        {
+            "version": "0.8.2",
+            "ciceroVersion": "^0.20.10",
+            "url": "/payment-upon-signature@0.8.2.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.8.2.cta"
+        },
+        {
+            "version": "0.8.1",
+            "ciceroVersion": "^0.20.10",
+            "url": "/payment-upon-signature@0.8.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.8.1.cta"
+        },
+        {
+            "version": "0.8.0",
+            "ciceroVersion": "^0.20.0",
+            "url": "/payment-upon-signature@0.8.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.8.0.cta"
+        },
+        {
+            "version": "0.7.1",
+            "ciceroVersion": "^0.13.0",
+            "url": "/payment-upon-signature@0.7.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.7.1.cta"
+        },
+        {
+            "version": "0.7.0",
+            "ciceroVersion": "^0.13.0",
+            "url": "/payment-upon-signature@0.7.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.7.0.cta"
+        },
+        {
+            "version": "0.6.1",
+            "ciceroVersion": "^0.12.0",
+            "url": "/payment-upon-signature@0.6.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.6.1.cta"
+        },
+        {
+            "version": "0.6.0",
+            "ciceroVersion": "^0.12.0",
+            "url": "/payment-upon-signature@0.6.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.6.0.cta"
+        },
+        {
+            "version": "0.5.0",
+            "ciceroVersion": "^0.11.1",
+            "url": "/payment-upon-signature@0.5.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.5.0.cta"
+        },
+        {
+            "version": "0.4.0",
+            "ciceroVersion": "^0.10.0",
+            "url": "/payment-upon-signature@0.4.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.4.0.cta"
+        },
+        {
+            "version": "0.3.0",
+            "ciceroVersion": "^0.9.1",
+            "url": "/payment-upon-signature@0.3.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.3.0.cta"
+        },
+        {
+            "version": "0.2.1",
+            "ciceroVersion": "^0.9.1",
+            "url": "/payment-upon-signature@0.2.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.2.1.cta"
+        },
+        {
+            "version": "0.2.0",
+            "ciceroVersion": "^0.9.1",
+            "url": "/payment-upon-signature@0.2.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@0.2.0.cta"
+        }
+    ]
+}

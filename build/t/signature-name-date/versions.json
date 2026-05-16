@@ -1,0 +1,36 @@
+{
+    "templateName": "signature-name-date",
+    "latestVersion": "0.1.4",
+    "versions": [
+        {
+            "version": "0.1.4",
+            "ciceroVersion": "^0.20.10",
+            "url": "/signature-name-date@0.1.4.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/signature-name-date@0.1.4.cta"
+        },
+        {
+            "version": "0.1.3",
+            "ciceroVersion": "^0.20.10",
+            "url": "/signature-name-date@0.1.3.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/signature-name-date@0.1.3.cta"
+        },
+        {
+            "version": "0.1.2",
+            "ciceroVersion": "^0.20.10",
+            "url": "/signature-name-date@0.1.2.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/signature-name-date@0.1.2.cta"
+        },
+        {
+            "version": "0.1.1",
+            "ciceroVersion": "^0.20.10",
+            "url": "/signature-name-date@0.1.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/signature-name-date@0.1.1.cta"
+        },
+        {
+            "version": "0.1.0",
+            "ciceroVersion": "^0.20.10",
+            "url": "/signature-name-date@0.1.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/signature-name-date@0.1.0.cta"
+        }
+    ]
+}

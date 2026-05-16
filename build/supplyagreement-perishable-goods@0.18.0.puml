@@ -1,0 +1,64 @@
+@startuml
+class org.accordproject.supplyagreementperishablegoods_0_2_0.ShipmentStatus << (E,grey) >> {
+   + CREATED
+   + IN_TRANSIT
+   + ARRIVED
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.ShipmentStatus --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreementperishablegoods_0_2_0.Unit << (E,grey) >> {
+   + KG
+   + BUSHEL
+   + TONNE
+   + BARREL
+   + CORD
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.Unit --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreementperishablegoods_0_2_0.SensorReading {
+   + Double centigrade
+   + Double humidity
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.SensorReading --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreementperishablegoods_0_2_0.Shipment {
+   + String shipmentId
+   + ShipmentStatus status
+   + SensorReading[] sensorReadings
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.Shipment --|> concerto_1_0_0.Concept
+class org.accordproject.supplyagreementperishablegoods_0_2_0.PaymentObligationEvent {
+   + String grower
+   + String importer
+   + MonetaryAmount totalPrice
+   + Boolean late
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.PaymentObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.supplyagreementperishablegoods_0_2_0.ShipmentReceived << (T,yellow) >> {
+   + Integer unitCount
+   + Shipment shipment
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.ShipmentReceived --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.supplyagreementperishablegoods_0_2_0.PriceCalculation << (T,yellow) >> {
+   + MonetaryAmount totalPrice
+   + MonetaryAmount penalty
+   + Boolean late
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.PriceCalculation --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.supplyagreementperishablegoods_0_2_0.TemplateModel << (A,green) >> {
+   + DateTime dueDate
+   + String grower
+   + String importer
+   + String shipment
+   + MonetaryAmount unitPrice
+   + Unit unit
+   + Integer minUnits
+   + Integer maxUnits
+   + String product
+   + Integer sensorReadingFrequency
+   + String duration
+   + Double minTemperature
+   + Double maxTemperature
+   + Double minHumidity
+   + Double maxHumidity
+   + Double penaltyFactor
+}
+org.accordproject.supplyagreementperishablegoods_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

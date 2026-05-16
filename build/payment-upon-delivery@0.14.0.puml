@@ -1,0 +1,21 @@
+@startuml
+class org.accordproject.paymentupondelivery_0_2_0.TemplateModel << (A,green) >> {
+   + String buyer
+   + String seller
+   + MonetaryAmount costOfGoods
+   + MonetaryAmount deliveryFee
+}
+org.accordproject.paymentupondelivery_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+class org.accordproject.paymentupondelivery_0_2_0.DeliveryAcceptedRequest << (T,yellow) >> {
+}
+org.accordproject.paymentupondelivery_0_2_0.DeliveryAcceptedRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.paymentupondelivery_0_2_0.DeliveryAcceptedResponse << (T,yellow) >> {
+   + MonetaryAmount totalAmount
+}
+org.accordproject.paymentupondelivery_0_2_0.DeliveryAcceptedResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.paymentupondelivery_0_2_0.PaymentObligationEvent {
+   + MonetaryAmount amount
+   + String description
+}
+org.accordproject.paymentupondelivery_0_2_0.PaymentObligationEvent --|> concerto_1_0_0.Event
+@enduml
