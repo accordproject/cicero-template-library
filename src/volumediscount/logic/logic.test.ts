@@ -32,7 +32,11 @@ describe('VolumeDiscountLogic', () => {
             const request: IVolumeDiscountRequest = {
                 $class: 'org.accordproject.volumediscount@0.2.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
-                netAnnualChargeVolume: 100000,
+                netAnnualChargeVolume: {
+                    $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                    doubleValue: 100000,
+                    currencyCode: 'USD',
+                },
             };
             const result = await logic.trigger(model, request);
             expect(result.result.discountRate).toBe(3.0);
@@ -42,7 +46,11 @@ describe('VolumeDiscountLogic', () => {
             const request: IVolumeDiscountRequest = {
                 $class: 'org.accordproject.volumediscount@0.2.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
-                netAnnualChargeVolume: 5000000,
+                netAnnualChargeVolume: {
+                    $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                    doubleValue: 5000000,
+                    currencyCode: 'USD',
+                },
             };
             const result = await logic.trigger(model, request);
             expect(result.result.discountRate).toBe(2.9);
@@ -52,7 +60,11 @@ describe('VolumeDiscountLogic', () => {
             const request: IVolumeDiscountRequest = {
                 $class: 'org.accordproject.volumediscount@0.2.0.VolumeDiscountRequest',
                 $timestamp: new Date(),
-                netAnnualChargeVolume: 50000000,
+                netAnnualChargeVolume: {
+                    $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                    doubleValue: 50000000,
+                    currencyCode: 'USD',
+                },
             };
             const result = await logic.trigger(model, request);
             expect(result.result.discountRate).toBe(2.8);
