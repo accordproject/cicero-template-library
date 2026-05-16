@@ -1,7 +1,7 @@
 {
   "$class": "org.accordproject.paymentuponiot@0.2.0.TemplateModel",
-  "buyer": "resource:org.accordproject.party.Party#Dan",
-  "seller": "resource:org.accordproject.party.Party#Grant",
+  "buyer": "resource:org.accordproject.party@0.2.0.Party#Dan",
+  "seller": "resource:org.accordproject.party@0.2.0.Party#Grant",
   "amountPerUnit": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 10,

@@ -85,7 +85,7 @@ asset TemplateModel extends Clause {
   /**
    * The minimum amount that needs to be raised
    */
-  o Double netProceedLimit
+  o MonetaryAmount netProceedLimit
 
   /**
    * The date of the purchase

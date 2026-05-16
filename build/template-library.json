@@ -7402,7 +7402,7 @@
         "author": "Accord Project"
     },
     "acceptance-of-delivery@0.16.0": {
-        "uri": "ap://acceptance-of-delivery@0.16.0#bb50a94cff1eef36f7ce13d9f498cf45a95d8d7af28343d2afee281915a5eb8b",
+        "uri": "ap://acceptance-of-delivery@0.16.0#60ee45de6f5b76ec9a591f895df7e475f5fc916121da1bad15a06328d1dd00bb",
         "url": "https://templates.accordproject.org/archives/acceptance-of-delivery@0.16.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/acceptance-of-delivery@0.16.0-cicero.cta",
         "name": "acceptance-of-delivery",
@@ -7436,7 +7436,7 @@
         ]
     },
     "car-rental-tr@0.14.0": {
-        "uri": "ap://car-rental-tr@0.14.0#3663ccd09968edafd289706cf709b16aa37cad67bb78464b8875cee447cd3e95",
+        "uri": "ap://car-rental-tr@0.14.0#400ea9c6327b689d33e92fc52642d8a5517664025aea94fa99b8235f3c51d449",
         "url": "https://templates.accordproject.org/archives/car-rental-tr@0.14.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/car-rental-tr@0.14.0-cicero.cta",
         "name": "car-rental-tr",
@@ -7452,7 +7452,7 @@
         ]
     },
     "certificate-of-incorporation@0.6.0": {
-        "uri": "ap://certificate-of-incorporation@0.6.0#9ecea7c2c1b652bc5408e066e843b8a3df51f7a5ac3dd03a4d2b7e90b5626217",
+        "uri": "ap://certificate-of-incorporation@0.6.0#6c726e223d2d5049e02d849eb593507d02d59aa1c5637b1e2994dcf518294b53",
         "url": "https://templates.accordproject.org/archives/certificate-of-incorporation@0.6.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/certificate-of-incorporation@0.6.0-cicero.cta",
         "name": "certificate-of-incorporation",
@@ -7500,7 +7500,7 @@
         ]
     },
     "copyright-license@0.18.0": {
-        "uri": "ap://copyright-license@0.18.0#d25c1714b5c3b0291b2aac326bb8b2c665c2e46b998ec912de58f3be2433bb29",
+        "uri": "ap://copyright-license@0.18.0#396233b2284351b0e14589f0d59794c81ba856e53eafb7dbdac33a5cf5d63c3b",
         "url": "https://templates.accordproject.org/archives/copyright-license@0.18.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/copyright-license@0.18.0-cicero.cta",
         "name": "copyright-license",
@@ -7549,7 +7549,7 @@
         ]
     },
     "purchase-order-failure@0.13.0": {
-        "uri": "ap://purchase-order-failure@0.13.0#aedee97d8ea22b62e3401a2163927e7e831b8c5233f1274f1b188ccaccf9431c",
+        "uri": "ap://purchase-order-failure@0.13.0#2174e324cd79101d688baee6be95e494caa5edfc9a53be1538f09eaf853ada05",
         "url": "https://templates.accordproject.org/archives/purchase-order-failure@0.13.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/purchase-order-failure@0.13.0-cicero.cta",
         "name": "purchase-order-failure",
@@ -7567,7 +7567,7 @@
         ]
     },
     "eat-apples@0.14.0": {
-        "uri": "ap://eat-apples@0.14.0#ddac151bfb2f57ca84dbd3a149b50f031360b47c7082288cf2cfe4e7821b7f0a",
+        "uri": "ap://eat-apples@0.14.0#068f190bb182776060ef5c27fe32775f678ae5aa5d87e2496a3c53298b7f960a",
         "url": "https://templates.accordproject.org/archives/eat-apples@0.14.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/eat-apples@0.14.0-cicero.cta",
         "name": "eat-apples",
@@ -7583,7 +7583,7 @@
         ]
     },
     "empty@0.10.0": {
-        "uri": "ap://empty@0.10.0#68a54eae00236bac0779bda382e9f2b678a25a1fca27177f0259cc5774d6d24d",
+        "uri": "ap://empty@0.10.0#facf6b86b081aee74c6ab92b42d0310da85c5fb98a7b2b0d4f0ba6468a6dad23",
         "url": "https://templates.accordproject.org/archives/empty@0.10.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/empty@0.10.0-cicero.cta",
         "name": "empty",
@@ -7615,7 +7615,7 @@
         ]
     },
     "fixed-interests@0.8.0": {
-        "uri": "ap://fixed-interests@0.8.0#4e8fde739db92d5bccebb87a76a4669dc930ebed423837c1894f8b08b4166880",
+        "uri": "ap://fixed-interests@0.8.0#d475b9f6b362d01f4f904cf4511404501474ff09c405f6a16a5d568ebbdeb686",
         "url": "https://templates.accordproject.org/archives/fixed-interests@0.8.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/fixed-interests@0.8.0-cicero.cta",
         "name": "fixed-interests",
@@ -7631,7 +7631,7 @@
         ]
     },
     "fixed-interests-static@0.7.0": {
-        "uri": "ap://fixed-interests-static@0.7.0#442daa23e746dd15fdec4bab98665734e2649b06a691e4c4d7434d21abaa4c3b",
+        "uri": "ap://fixed-interests-static@0.7.0#c82c8b8cb0612b535634efebc97a1690c7f9ee4953d7f6d8907a4bd2f5205ec2",
         "url": "https://templates.accordproject.org/archives/fixed-interests-static@0.7.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/fixed-interests-static@0.7.0-cicero.cta",
         "name": "fixed-interests-static",
@@ -7679,7 +7679,7 @@
         ]
     },
     "hellomodule@0.10.0": {
-        "uri": "ap://hellomodule@0.10.0#2a5eb013e76cd830142f6ea4a9e1f3a98e9b4001eecb9e61fc7642038c23335f",
+        "uri": "ap://hellomodule@0.10.0#6db9b4ac337841cd96be6d7275e9aa5270507eabdbdf6eeb0a4101714682b7a1",
         "url": "https://templates.accordproject.org/archives/hellomodule@0.10.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/hellomodule@0.10.0-cicero.cta",
         "name": "hellomodule",
@@ -7695,7 +7695,7 @@
         ]
     },
     "helloworld@0.15.0": {
-        "uri": "ap://helloworld@0.15.0#c48b8af08f13dfa83db4cfdd0fc67e3967a7f152144fa36e2dd4ea7a896f212d",
+        "uri": "ap://helloworld@0.15.0#b6a13807ecbb974386123b349a87e52b8d7d4219f6465ec08d0b68b8031f6e01",
         "url": "https://templates.accordproject.org/archives/helloworld@0.15.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/helloworld@0.15.0-cicero.cta",
         "name": "helloworld",
@@ -7711,7 +7711,7 @@
         ]
     },
     "installment-sale@5.2.0": {
-        "uri": "ap://installment-sale@5.2.0#8b52e7c6cbd426f8275bc20fb7afc1ccabfce1cc65926f1ce0c32ff2b6e0dd9d",
+        "uri": "ap://installment-sale@5.2.0#1693c85c81aa7fec728a496e4b0848a461556400292f16b0ff6f749651678c31",
         "url": "https://templates.accordproject.org/archives/installment-sale@5.2.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/installment-sale@5.2.0-cicero.cta",
         "name": "installment-sale",
@@ -7728,7 +7728,7 @@
         ]
     },
     "interest-rate-swap@0.10.0": {
-        "uri": "ap://interest-rate-swap@0.10.0#2f0196c8913e5048cbfd22ad92e2ac7fe17a850c88a5890c820f3fae87e5301b",
+        "uri": "ap://interest-rate-swap@0.10.0#43cbece53d6b84ca31bae1583b1460d8394d08a5679b2e97c330260756a4d295",
         "url": "https://templates.accordproject.org/archives/interest-rate-swap@0.10.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/interest-rate-swap@0.10.0-cicero.cta",
         "name": "interest-rate-swap",
@@ -7744,7 +7744,7 @@
         ]
     },
     "ip-payment@0.16.0": {
-        "uri": "ap://ip-payment@0.16.0#551d2eaf6ad60f3824166a1df5ce5f3767e29ecab7560daf48bf4b5d1d57100b",
+        "uri": "ap://ip-payment@0.16.0#5c5dec8bc0e7bdf620bc0f243b8ab351b3219bb5b194a6a6267f7960a888d14d",
         "url": "https://templates.accordproject.org/archives/ip-payment@0.16.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/ip-payment@0.16.0-cicero.cta",
         "name": "ip-payment",
@@ -7761,7 +7761,7 @@
         ]
     },
     "latedeliveryandpenalty@0.18.0": {
-        "uri": "ap://latedeliveryandpenalty@0.18.0#e9b225daee6fa6624c251a3dfc412728020b9c76e51c2b6ab685e4ddcf87f3aa",
+        "uri": "ap://latedeliveryandpenalty@0.18.0#8a9e3f7a97f2889843396131ff70f63149094c8eea4034bd27c68f7b0953dc78",
         "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.18.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/latedeliveryandpenalty@0.18.0-cicero.cta",
         "name": "latedeliveryandpenalty",
@@ -7777,7 +7777,7 @@
         ]
     },
     "latedeliveryandpenalty-currency-conversion@0.3.0": {
-        "uri": "ap://latedeliveryandpenalty-currency-conversion@0.3.0#70cdb6052f4355af1ba9e8da2b3b22658680126f2f17c2a22bc427c226597b6c",
+        "uri": "ap://latedeliveryandpenalty-currency-conversion@0.3.0#c627a98181104452af9be789e0c6eb449c1274bf380e891f33aa134b92d3a684",
         "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty-currency-conversion@0.3.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/latedeliveryandpenalty-currency-conversion@0.3.0-cicero.cta",
         "name": "latedeliveryandpenalty-currency-conversion",
@@ -7794,7 +7794,7 @@
         ]
     },
     "latedeliveryandpenalty-else@0.4.0": {
-        "uri": "ap://latedeliveryandpenalty-else@0.4.0#735c0bbbd7e7b47a9ac2a7dfceaa484d712fb0b2bf70657f34799fe7f39dfdf3",
+        "uri": "ap://latedeliveryandpenalty-else@0.4.0#2fe0636ecf3a79a0c7c46d314b33951fe94c2d629820bd4320a7b8750c232a3a",
         "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty-else@0.4.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/latedeliveryandpenalty-else@0.4.0-cicero.cta",
         "name": "latedeliveryandpenalty-else",
@@ -7810,7 +7810,7 @@
         ]
     },
     "latedeliveryandpenalty-optional@0.3.0": {
-        "uri": "ap://latedeliveryandpenalty-optional@0.3.0#f67aeca1e307aeff55c1735b792899a37ddae7dbce07433b572f3a2c97c1eddc",
+        "uri": "ap://latedeliveryandpenalty-optional@0.3.0#b6292b74666b13450eb300ca80f904c3ca9ea130d782ceb4f4ebd8c3a976ae47",
         "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty-optional@0.3.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/latedeliveryandpenalty-optional@0.3.0-cicero.cta",
         "name": "latedeliveryandpenalty-optional",
@@ -7826,7 +7826,7 @@
         ]
     },
     "latedeliveryandpenalty-optional-this@0.3.0": {
-        "uri": "ap://latedeliveryandpenalty-optional-this@0.3.0#d175f98f9a2e47f4610772165494bf5c4ceb35f4cb51584bfe97a26d71ca11fe",
+        "uri": "ap://latedeliveryandpenalty-optional-this@0.3.0#f667e0a9006389149420f5d701ede3d9db1d1b46d22df6ba06c4a4c4c80a2e76",
         "url": "https://templates.accordproject.org/archives/latedeliveryandpenalty-optional-this@0.3.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/latedeliveryandpenalty-optional-this@0.3.0-cicero.cta",
         "name": "latedeliveryandpenalty-optional-this",
@@ -7842,7 +7842,7 @@
         ]
     },
     "lateinvoicewithpayment@0.9.0": {
-        "uri": "ap://lateinvoicewithpayment@0.9.0#79ed95f1fb70f828d042444ad42a2675e31ebbffab38bf2a3c2acceb96b6b0c4",
+        "uri": "ap://lateinvoicewithpayment@0.9.0#97116b8bcf8aeb7bf9effab38cf4ddfbd20529ceaf4cf12af3fe9b52fc647f20",
         "url": "https://templates.accordproject.org/archives/lateinvoicewithpayment@0.9.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/lateinvoicewithpayment@0.9.0-cicero.cta",
         "name": "lateinvoicewithpayment",
@@ -7858,7 +7858,7 @@
         ]
     },
     "minilatedeliveryandpenalty@0.13.0": {
-        "uri": "ap://minilatedeliveryandpenalty@0.13.0#8948340a939999472c6ab03a6535678308fafc746aadfdd12fa93479c09a52a5",
+        "uri": "ap://minilatedeliveryandpenalty@0.13.0#addc8778d005732fecfa6580984e5735c8ed33ccf6a3693aa5958fe1049b4685",
         "url": "https://templates.accordproject.org/archives/minilatedeliveryandpenalty@0.13.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/minilatedeliveryandpenalty@0.13.0-cicero.cta",
         "name": "minilatedeliveryandpenalty",
@@ -7874,7 +7874,7 @@
         ]
     },
     "minilatedeliveryandpenalty-capped@0.7.0": {
-        "uri": "ap://minilatedeliveryandpenalty-capped@0.7.0#54baa36c2ea6f261f6558f7745b68d4b71a2eb084a8c171ab871e3f46c7464e3",
+        "uri": "ap://minilatedeliveryandpenalty-capped@0.7.0#5b1553531caf7308b60b584dd1c80832893f304cb6a851bd02eb9961b5fb8b49",
         "url": "https://templates.accordproject.org/archives/minilatedeliveryandpenalty-capped@0.7.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/minilatedeliveryandpenalty-capped@0.7.0-cicero.cta",
         "name": "minilatedeliveryandpenalty-capped",
@@ -7890,7 +7890,7 @@
         ]
     },
     "minilatedeliveryandpenalty-payment@0.7.0": {
-        "uri": "ap://minilatedeliveryandpenalty-payment@0.7.0#29ec65dc0b8782466ce7ba0461a53dc70ee977580d1a3812be7847c25de03acb",
+        "uri": "ap://minilatedeliveryandpenalty-payment@0.7.0#cf231eca1bcaf28b07f575ccedba5573a10d507e1c07056aaf69b42e8d550ddd",
         "url": "https://templates.accordproject.org/archives/minilatedeliveryandpenalty-payment@0.7.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/minilatedeliveryandpenalty-payment@0.7.0-cicero.cta",
         "name": "minilatedeliveryandpenalty-payment",
@@ -7923,7 +7923,7 @@
         ]
     },
     "online-payment-contract-tr@0.13.0": {
-        "uri": "ap://online-payment-contract-tr@0.13.0#d1ab1bacbe5f1aa71f06d2f3cabfa19ba02702e89ceff3190745b45e23b5621a",
+        "uri": "ap://online-payment-contract-tr@0.13.0#7440b3c58ec73763c07e7e8f9440f6c118d3e2e283b7ff9422e307061751d8a1",
         "url": "https://templates.accordproject.org/archives/online-payment-contract-tr@0.13.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/online-payment-contract-tr@0.13.0-cicero.cta",
         "name": "online-payment-contract-tr",
@@ -7939,7 +7939,7 @@
         ]
     },
     "payment-upon-delivery@0.14.0": {
-        "uri": "ap://payment-upon-delivery@0.14.0#6bd6491c4e8907843c30bff32aed23eb65b3fc8fc05849175a397c0debe4dad5",
+        "uri": "ap://payment-upon-delivery@0.14.0#6cba223ed7e702da1ad7c0e7e566ddd29151c89bc1685c667a34ac95d96f9a66",
         "url": "https://templates.accordproject.org/archives/payment-upon-delivery@0.14.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/payment-upon-delivery@0.14.0-cicero.cta",
         "name": "payment-upon-delivery",
@@ -7956,7 +7956,7 @@
         ]
     },
     "payment-upon-iot@0.10.0": {
-        "uri": "ap://payment-upon-iot@0.10.0#216a066db89375b78fd64ebe3d78f7f632d4d5b99f8653b67648bd95b0e45c8f",
+        "uri": "ap://payment-upon-iot@0.10.0#d8107da90ddddae336d445184693eb0fcdbd7d3ea6be126699ca2e5c3786e3a7",
         "url": "https://templates.accordproject.org/archives/payment-upon-iot@0.10.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/payment-upon-iot@0.10.0-cicero.cta",
         "name": "payment-upon-iot",
@@ -7989,7 +7989,7 @@
         ]
     },
     "project-information@0.4.0": {
-        "uri": "ap://project-information@0.4.0#c71896e444b36b1e57ab1f1c1c7a62dfee055cc2fd731a771152dc2e33775e1f",
+        "uri": "ap://project-information@0.4.0#14e2873baafe3dcac3ee9c451829e316aededeea509d5082cf7a0d3fe2be6bb0",
         "url": "https://templates.accordproject.org/archives/project-information@0.4.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/project-information@0.4.0-cicero.cta",
         "name": "project-information",
@@ -8021,7 +8021,7 @@
         ]
     },
     "promissory-note-md@0.7.0": {
-        "uri": "ap://promissory-note-md@0.7.0#cc4362b2257a20c7b31f3e7da562dc1f4d5dce78c078e9e1e208edb346f0426e",
+        "uri": "ap://promissory-note-md@0.7.0#4cf53e11e7a62b626dd39656984339a19db20760579713aea292cb48f2a30d35",
         "url": "https://templates.accordproject.org/archives/promissory-note-md@0.7.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/promissory-note-md@0.7.0-cicero.cta",
         "name": "promissory-note-md",
@@ -8037,7 +8037,7 @@
         ]
     },
     "rental-deposit@0.9.0": {
-        "uri": "ap://rental-deposit@0.9.0#8f731223bf03b21d80f2acc11d480ca72c88392d1f519eb6ebb1457444a7f55d",
+        "uri": "ap://rental-deposit@0.9.0#44bb889ebe6d0b75877d77bd8940f20d635246b166d0509f844b3f185380a8cf",
         "url": "https://templates.accordproject.org/archives/rental-deposit@0.9.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/rental-deposit@0.9.0-cicero.cta",
         "name": "rental-deposit",
@@ -8053,7 +8053,7 @@
         ]
     },
     "rental-deposit-with@0.6.0": {
-        "uri": "ap://rental-deposit-with@0.6.0#7d5bbf29e68175df80b0fbbe261de1db7ba8b70432fd850ca5e6cac17e0ae03d",
+        "uri": "ap://rental-deposit-with@0.6.0#57b92a46f7299967e50208f79a0be85c6743f43a7bed35cbc8c2c9ec6780c425",
         "url": "https://templates.accordproject.org/archives/rental-deposit-with@0.6.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/rental-deposit-with@0.6.0-cicero.cta",
         "name": "rental-deposit-with",
@@ -8085,7 +8085,7 @@
         ]
     },
     "saft@0.18.0": {
-        "uri": "ap://saft@0.18.0#8f5cbc114c1d7e012c109b04dc8c0f70e42f23a5a88bd250284cdd080b99f537",
+        "uri": "ap://saft@0.18.0#c6e833d0e416e13a30dcfd35b1aeafd40d1871e9f5d92635eada5fc34e7e7969",
         "url": "https://templates.accordproject.org/archives/saft@0.18.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/saft@0.18.0-cicero.cta",
         "name": "saft",
@@ -8102,7 +8102,7 @@
         ]
     },
     "safte@0.18.0": {
-        "uri": "ap://safte@0.18.0#38df11472a63ad4cfb151006ee9a5c3d355f8dd27de9ef943c54fc0fb6505004",
+        "uri": "ap://safte@0.18.0#3a323b3ac84d197ce5cd38466e56612202f279e6248b75d91578199fbe5b986d",
         "url": "https://templates.accordproject.org/archives/safte@0.18.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/safte@0.18.0-cicero.cta",
         "name": "safte",
@@ -8135,7 +8135,7 @@
         ]
     },
     "servicelevelagreement@0.18.0": {
-        "uri": "ap://servicelevelagreement@0.18.0#86e282403ca96edc1b9006e878e7ffefb245d0ba3bcb89513c0057863467c218",
+        "uri": "ap://servicelevelagreement@0.18.0#6f13a3e56a74f286d237723177898e97a5eb7cb8f9671c5662b5af0c5664bc46",
         "url": "https://templates.accordproject.org/archives/servicelevelagreement@0.18.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/servicelevelagreement@0.18.0-cicero.cta",
         "name": "servicelevelagreement",
@@ -8167,7 +8167,7 @@
         ]
     },
     "simplelatedeliveryandpenalty@0.11.0": {
-        "uri": "ap://simplelatedeliveryandpenalty@0.11.0#a8aec1fd10f8baeaf008a23f33bed2801e06174f7bd57cee9865445a18bd1835",
+        "uri": "ap://simplelatedeliveryandpenalty@0.11.0#cb0bf36c9b7eefc830f8d78111a6127dff13d37358616f9ada4ac11be27beae0",
         "url": "https://templates.accordproject.org/archives/simplelatedeliveryandpenalty@0.11.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/simplelatedeliveryandpenalty@0.11.0-cicero.cta",
         "name": "simplelatedeliveryandpenalty",
@@ -8183,7 +8183,7 @@
         ]
     },
     "supply-agreement-loc@0.3.0": {
-        "uri": "ap://supply-agreement-loc@0.3.0#fb25e0201e72dafe066f21f25add961b4d9f59120e735576a72bc5b203272efe",
+        "uri": "ap://supply-agreement-loc@0.3.0#c859f05fd4e359570669c9912be71642c8129f8b69c8f5bd3bfd48791c89546c",
         "url": "https://templates.accordproject.org/archives/supply-agreement-loc@0.3.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/supply-agreement-loc@0.3.0-cicero.cta",
         "name": "supply-agreement-loc",
@@ -8200,7 +8200,7 @@
         ]
     },
     "supplyagreement@0.16.0": {
-        "uri": "ap://supplyagreement@0.16.0#d66927ee7505d165d76a130cd8666c7c138303786610271a6aca712b0c93536d",
+        "uri": "ap://supplyagreement@0.16.0#f35debf8f3319b640c61b99c1dca6bcc28075684cc578bee428b8b356cb90892",
         "url": "https://templates.accordproject.org/archives/supplyagreement@0.16.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/supplyagreement@0.16.0-cicero.cta",
         "name": "supplyagreement",
@@ -8216,7 +8216,7 @@
         ]
     },
     "supplyagreement-perishable-goods@0.18.0": {
-        "uri": "ap://supplyagreement-perishable-goods@0.18.0#2d901d8f2529750c82d4c99f1b174343b3398b53d6a3dce1cd35c06af4f2700b",
+        "uri": "ap://supplyagreement-perishable-goods@0.18.0#d8be06643be2cba5cbbfbcd0c13121663d27753275bee6e339d40b9a430abab0",
         "url": "https://templates.accordproject.org/archives/supplyagreement-perishable-goods@0.18.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/supplyagreement-perishable-goods@0.18.0-cicero.cta",
         "name": "supplyagreement-perishable-goods",
@@ -8233,7 +8233,7 @@
         ]
     },
     "volumediscount@0.18.0": {
-        "uri": "ap://volumediscount@0.18.0#0a8a8aa56797132fcd651c29a52c6423ddda4836ec04f30860807bcf93739c8b",
+        "uri": "ap://volumediscount@0.18.0#562c4e6572cbc49208ecaadf3fe65206cc40a357486c11b0e0db8f25f416a3de",
         "url": "https://templates.accordproject.org/archives/volumediscount@0.18.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/volumediscount@0.18.0-cicero.cta",
         "name": "volumediscount",
@@ -8249,7 +8249,7 @@
         ]
     },
     "volumediscountolist@0.5.0": {
-        "uri": "ap://volumediscountolist@0.5.0#0d79ec200c812468727ef4884a0f6b54a4afb36813806dbd6648ea5b049728aa",
+        "uri": "ap://volumediscountolist@0.5.0#28b2f3dea4c9f652167b421eb1b5fa46c3c1e0f18c7258f318b9ff0c3a8c5179",
         "url": "https://templates.accordproject.org/archives/volumediscountolist@0.5.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/volumediscountolist@0.5.0-cicero.cta",
         "name": "volumediscountolist",
@@ -8265,7 +8265,7 @@
         ]
     },
     "volumediscountulist@0.5.0": {
-        "uri": "ap://volumediscountulist@0.5.0#0533fae03fd0185208a73e6960af84f4d48085e144953de9930686f12a08c7c6",
+        "uri": "ap://volumediscountulist@0.5.0#e12bd49eedbfc278544339b7586a4167f53c481f0696c86551f8d93e0d362144",
         "url": "https://templates.accordproject.org/archives/volumediscountulist@0.5.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/volumediscountulist@0.5.0-cicero.cta",
         "name": "volumediscountulist",
@@ -8278,6 +8278,38 @@
         "author": "Accord Project",
         "tags": [
             "sales"
+        ]
+    },
+    "fragile-goods@0.17.0": {
+        "uri": "ap://fragile-goods@0.17.0#831b75b4db8e4d5dafa5f8220b7abd3fabbd4542d78945fe817d366330ae14bb",
+        "url": "https://templates.accordproject.org/archives/fragile-goods@0.17.0.cta",
+        "ciceroUrl": "https://templates.accordproject.org/archives/fragile-goods@0.17.0-cicero.cta",
+        "name": "fragile-goods",
+        "displayName": "Fragile Goods",
+        "description": "This clause specifies penalties for shocks caused to a fragile package in transport.",
+        "version": "0.17.0",
+        "ciceroVersion": "^0.26.0",
+        "type": 0,
+        "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
+        "author": "Accord Project",
+        "tags": [
+            "shipping"
+        ]
+    },
+    "perishable-goods@0.17.0": {
+        "uri": "ap://perishable-goods@0.17.0#df70cd0586b4cea5ab84c4b8b98b08a21bf59ee21a765eca4c2d12b5c1c738d7",
+        "url": "https://templates.accordproject.org/archives/perishable-goods@0.17.0.cta",
+        "ciceroUrl": "https://templates.accordproject.org/archives/perishable-goods@0.17.0-cicero.cta",
+        "name": "perishable-goods",
+        "displayName": "Perishable Goods",
+        "description": "This clause specifies penalties if the transport conditions (temperature and humidity) for a package are breached.",
+        "version": "0.17.0",
+        "ciceroVersion": "^0.26.0",
+        "type": 0,
+        "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
+        "author": "Accord Project",
+        "tags": [
+            "shipping"
         ]
     }
 }

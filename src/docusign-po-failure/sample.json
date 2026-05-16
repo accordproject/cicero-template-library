@@ -1,0 +1,38 @@
+{
+  "$class": "org.accordproject.docusignpofailure@0.2.0.TemplateModel",
+  "buyerName": "ACME Corp",
+  "lateOne": {
+    "$class": "org.accordproject.time@0.3.0.Duration",
+    "amount": 2,
+    "unit": "days"
+  },
+  "lateTwo": {
+    "$class": "org.accordproject.time@0.3.0.Duration",
+    "amount": 5,
+    "unit": "days"
+  },
+  "lateThree": {
+    "$class": "org.accordproject.time@0.3.0.Duration",
+    "amount": 10,
+    "unit": "days"
+  },
+  "lateOnePercent": 2.0,
+  "lateTwoPercent": 5.0,
+  "lateThreePercent": 10.0,
+  "article": "Article 5.2",
+  "thisSection": "Section 7.1",
+  "maxFailures": 3,
+  "failureRange": {
+    "$class": "org.accordproject.time@0.3.0.Duration",
+    "amount": 30,
+    "unit": "days"
+  },
+  "repeatedFailureCompensationAmount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 5000.0,
+    "currencyCode": "USD"
+  },
+  "repeatedFailureCompensationCurrency": "USD",
+  "clauseId": "d3e3a1c4-7f2b-4e6a-9c8d-1a2b3c4d5e6f",
+  "$identifier": "d3e3a1c4-7f2b-4e6a-9c8d-1a2b3c4d5e6f"
+}

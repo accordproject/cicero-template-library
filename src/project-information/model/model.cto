@@ -7,8 +7,7 @@ import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordpr
 asset TemplateModel extends Clause {
     o String name
     o DateTime deadline
-    o MonetaryAmount budgetAmount
-    o String budgetCurrency
+    o MonetaryAmount budget
     o String description
     o String other
 }

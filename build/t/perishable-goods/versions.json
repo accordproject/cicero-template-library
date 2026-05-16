@@ -1,7 +1,13 @@
 {
     "templateName": "perishable-goods",
-    "latestVersion": "0.15.0",
+    "latestVersion": "0.17.0",
     "versions": [
+        {
+            "version": "0.17.0",
+            "ciceroVersion": "^0.26.0",
+            "url": "/perishable-goods@0.17.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/perishable-goods@0.17.0.cta"
+        },
         {
             "version": "0.15.0",
             "ciceroVersion": "^0.22.0",

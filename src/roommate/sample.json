@@ -1,0 +1,26 @@
+{
+  "$class": "org.accordproject.roommate@0.2.0.TemplateModel",
+  "holder": "Jane Smith",
+  "roommate": "John Doe",
+  "landlord": "Robert Johnson",
+  "address": "123 Main Street, Apt 4B, New York, NY 10001",
+  "spaceOccupied": "the second bedroom and shared common areas",
+  "rentAmount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1200.0,
+    "currencyCode": "USD"
+  },
+  "depositAmount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 2400.0,
+    "currencyCode": "USD"
+  },
+  "startDate": "2024-01-15T00:00:00.000Z",
+  "endDate": "2025-01-14T00:00:00.000Z",
+  "holderSignature": "Jane Smith",
+  "holderDateSigned": "2024-01-10T00:00:00.000Z",
+  "roommateSignature": "John Doe",
+  "roommateDateSigned": "2024-01-10T00:00:00.000Z",
+  "clauseId": "a1b2c3d4-5e6f-7a8b-9c0d-e1f2a3b4c5d6",
+  "$identifier": "a1b2c3d4-5e6f-7a8b-9c0d-e1f2a3b4c5d6"
+}

@@ -17,7 +17,7 @@
   "endDate": "17.07.2018",
   "deliveryStation": "Acme Car Rental Merkez Ofis",
   "paymentClause": {
-    "$class": "org.accordtr.carrental.PaymentClause",
+    "$class": "org.accordproject.carrentaltr@0.2.0.PaymentClause",
     "amountText": "İki Yüz On Yedi Amerikan Doları",
     "amount": {
       "$class": "org.accordproject.money@0.3.0.MonetaryAmount",

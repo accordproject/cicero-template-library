@@ -4,7 +4,7 @@
   "signature": "--------",
   "fullName": "Full Name",
   "dateSigned": "Date Signed",
-  "signatory": "resource:org.accordproject.party.Party#buyer@example.com",
+  "signatory": "resource:org.accordproject.party@0.2.0.Party#buyer@example.com",
   "clauseId": "7a642106-a9ef-4f2c-b9cf-929f01ed559e",
   "$identifier": "7a642106-a9ef-4f2c-b9cf-929f01ed559e"
 }
