@@ -25,9 +25,8 @@ describe('PaymentUponDeliveryLogic', () => {
             clauseId: 'test-id',
             buyer: 'Alice',
             seller: 'Bob',
-            costOfGoods: 500,
-            deliveryFee: 50,
-            currencyCode: 'USD',
+            costOfGoods: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 500, currencyCode: 'USD' },
+            deliveryFee: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 50, currencyCode: 'USD' },
         };
     });
 
@@ -38,8 +37,8 @@ describe('PaymentUponDeliveryLogic', () => {
                 $timestamp: new Date(),
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.totalAmount).toBe(550);
-            expect(result.result.currencyCode).toBe('USD');
+            expect(result.result.totalAmount.doubleValue).toBe(550);
+            expect(result.result.totalAmount.currencyCode).toBe('USD');
             expect(result.result.$class).toBe('org.accordproject.paymentupondelivery@0.2.0.DeliveryAcceptedResponse');
         });
 
@@ -52,8 +51,8 @@ describe('PaymentUponDeliveryLogic', () => {
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.paymentupondelivery@0.2.0.PaymentObligationEvent');
-            expect(event.amount).toBe(550);
-            expect(event.currencyCode).toBe('USD');
+            expect(event.amount.doubleValue).toBe(550);
+            expect(event.amount.currencyCode).toBe('USD');
         });
 
         it('should include buyer and seller names in the event description', async () => {

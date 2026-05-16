@@ -4,30 +4,37 @@ import {
     IDeliveryAcceptedResponse,
     IPaymentObligationEvent,
 } from './generated/org.accordproject.paymentupondelivery@0.2.0';
+import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
 
 type PaymentUponDeliveryResponse = {
     result: IDeliveryAcceptedResponse;
     events: object[];
 };
 
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
+
 // @ts-ignore TemplateLogic is injected by the runtime
 class PaymentUponDeliveryLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IDeliveryAcceptedRequest): Promise<PaymentUponDeliveryResponse> {
         const now = new Date();
-        const totalAmount = data.costOfGoods + data.deliveryFee;
+        const totalAmountValue = data.costOfGoods.doubleValue + data.deliveryFee.doubleValue;
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.paymentupondelivery@0.2.0.PaymentObligationEvent',
             $timestamp: now,
-            amount: totalAmount,
-            currencyCode: data.currencyCode,
+            amount: monetary(totalAmountValue, data.costOfGoods.currencyCode),
             description: `${data.buyer} should pay cost of goods and delivery fee to ${data.seller}`,
         };
         return {
             result: {
                 $class: 'org.accordproject.paymentupondelivery@0.2.0.DeliveryAcceptedResponse',
                 $timestamp: now,
-                totalAmount,
-                currencyCode: data.currencyCode,
+                totalAmount: monetary(totalAmountValue, data.costOfGoods.currencyCode),
             },
             events: [event],
         };
