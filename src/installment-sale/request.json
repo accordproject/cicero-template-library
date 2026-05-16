@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.installmentsale@0.3.0.Installment",
+  "$class": "org.accordproject.installmentsale@0.2.0.Installment",
   "amount": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 2500,

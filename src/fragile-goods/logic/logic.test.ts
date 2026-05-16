@@ -18,9 +18,9 @@ import {
     ITemplateModel,
     IDeliveryUpdate,
     IMonetaryAmount,
-} from "./generated/org.accordproject.fragilegoods@0.3.0";
+} from "./generated/org.accordproject.fragilegoods@0.2.0";
 
-const NS = "org.accordproject.fragilegoods@0.3.0";
+const NS = "org.accordproject.fragilegoods@0.2.0";
 
 function makeModel(overrides: Partial<ITemplateModel> = {}): ITemplateModel {
     const deliveryPrice: IMonetaryAmount = {

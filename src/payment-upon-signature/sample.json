@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.paymentuponssignature@0.3.0.TemplateModel",
+  "$class": "org.accordproject.paymentuponssignature@0.2.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Dave",
   "seller": "resource:org.accordproject.party.Party#Dan",
   "amount": {

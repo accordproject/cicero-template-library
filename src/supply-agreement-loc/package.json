@@ -1,6 +1,6 @@
 {
     "name": "supply-agreement-loc",
-    "version": "0.4.0",
+    "version": "0.3.0",
     "description": "Supply agreement with letter of credit and sensor reading validation",
     "author": "John Carpenter",
     "license": "Apache-2.0",

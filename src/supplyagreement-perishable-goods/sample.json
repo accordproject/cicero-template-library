@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.supplyagreementperishablegoods@0.3.0.TemplateModel",
+  "$class": "org.accordproject.supplyagreementperishablegoods@0.2.0.TemplateModel",
   "grower": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION",
   "importer": "resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION",
   "shipment": "resource:org.accordproject.perishablegoods.Shipment#Grade%20I,%20Size%204,%20Zutano%20Mexican%20Avocados",

@@ -7,7 +7,7 @@
 import type {
 	ContractStatus,
 	IInstallmentSaleState
-} from './org.accordproject.installmentsale@0.3.0';
+} from './org.accordproject.installmentsale@0.2.0';
 import type {
 	IDigitalMonetaryAmount,
 	DigitalCurrencyCode,
@@ -34,7 +34,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IInstallmentSalePaymentEvent
-} from './org.accordproject.installmentsale@0.3.0';
+} from './org.accordproject.installmentsale@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

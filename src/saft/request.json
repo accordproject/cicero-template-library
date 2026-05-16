@@ -1,4 +1,4 @@
 {
-  "$class": "org.accordproject.saft@0.3.0.Launch",
+  "$class": "org.accordproject.saft@0.2.0.Launch",
   "exchangeRate": 123
 }

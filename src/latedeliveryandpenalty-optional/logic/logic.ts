@@ -1,4 +1,4 @@
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenaltyoptional@0.3.0';
+import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenaltyoptional@0.2.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
 
 type LateDeliveryAndPenaltyResult = {
@@ -28,7 +28,7 @@ class LateDeliveryAndPenaltyOptionalLogic extends TemplateLogic<ITemplateModel> 
         if (data.forceMajeure != null && request.forceMajeure != null) {
             return {
                 result: {
-                    $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.3.0.LateDeliveryAndPenaltyResponse',
+                    $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyResponse',
                     $timestamp: now,
                     penalty: 0,
                     buyerMayTerminate: true,
@@ -48,7 +48,7 @@ class LateDeliveryAndPenaltyOptionalLogic extends TemplateLogic<ITemplateModel> 
         const buyerMayTerminate = diffDays > terminationDays;
 
         const event: IPaymentObligationEvent = {
-            $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.3.0.PaymentObligationEvent',
+            $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.PaymentObligationEvent',
             $timestamp: now,
             amount: capped,
             currencyCode: 'USD',
@@ -57,7 +57,7 @@ class LateDeliveryAndPenaltyOptionalLogic extends TemplateLogic<ITemplateModel> 
 
         return {
             result: {
-                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.3.0.LateDeliveryAndPenaltyResponse',
+                $class: 'org.accordproject.latedeliveryandpenaltyoptional@0.2.0.LateDeliveryAndPenaltyResponse',
                 $timestamp: now,
                 penalty: capped,
                 buyerMayTerminate,

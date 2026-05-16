@@ -3,9 +3,9 @@ import {
     IProperyInspection,
     IPropertyInspectionResponse,
     IRentalDepositPaymentEvent
-} from "./generated/org.accordproject.rentaldepositwith@0.3.0";
+} from "./generated/org.accordproject.rentaldepositwith@0.2.0";
 
-const NS = 'org.accordproject.rentaldepositwith@0.3.0';
+const NS = 'org.accordproject.rentaldepositwith@0.2.0';
 
 type RentalDepositWithResponse = {
     result: IPropertyInspectionResponse;

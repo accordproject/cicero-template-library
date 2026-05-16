@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.3.0.LateDeliveryAndPenaltyRequest",
+  "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.LateDeliveryAndPenaltyRequest",
   "forceMajeure": false,
   "agreedDelivery": "2017-12-17T03:24:00-05:00",
   "deliveredAt": null,
@@ -9,7 +9,7 @@
     "currencyCode": "USD"
   },
   "currencyConversion": {
-    "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.3.0.CurrencyConversion",
+    "$class": "org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.CurrencyConversion",
     "from": "USD",
     "to": "EUR",
     "rate": 1.1

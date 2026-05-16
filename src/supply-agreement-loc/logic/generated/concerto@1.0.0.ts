@@ -7,7 +7,14 @@
 import type {
 	ISensorReadingData,
 	ISupplyAgreementState
-} from './org.accordproject.supplyagreementloc@0.3.0';
+} from './org.accordproject.supplyagreementloc@0.2.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 import type {
 	Month,
 	Day,
@@ -16,13 +23,6 @@ import type {
 	PeriodUnit,
 	IPeriod
 } from './org.accordproject.time@0.3.0';
-import type {
-	IDigitalMonetaryAmount,
-	DigitalCurrencyCode,
-	IMonetaryAmount,
-	CurrencyCode,
-	ICurrencyConversion
-} from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -51,11 +51,11 @@ export interface IConcept {
 
 export type ConceptUnion = ISensorReadingData | 
 ISupplyAgreementState | 
-IDuration | 
-IPeriod | 
 IDigitalMonetaryAmount | 
 IMonetaryAmount | 
-ICurrencyConversion;
+ICurrencyConversion | 
+IDuration | 
+IPeriod;
 
 export interface IAsset extends IConcept {
    $identifier: string;

@@ -1,4 +1,4 @@
-import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest, ISimpleLateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.simplelatedeliveryandpenalty@0.3.0';
+import { ITemplateModel, ISimpleLateDeliveryAndPenaltyRequest, ISimpleLateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.simplelatedeliveryandpenalty@0.2.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
 
 type SimpleLateDeliveryResponse = {
@@ -36,7 +36,7 @@ class SimpleLateDeliveryAndPenaltyLogic extends TemplateLogic<ITemplateModel> {
         const buyerMayTerminate = diffDays > maxDays;
 
         const event: IPaymentObligationEvent = {
-            $class: 'org.accordproject.simplelatedeliveryandpenalty@0.3.0.PaymentObligationEvent',
+            $class: 'org.accordproject.simplelatedeliveryandpenalty@0.2.0.PaymentObligationEvent',
             $timestamp: now,
             amount: capped,
             currencyCode: 'USD',
@@ -45,7 +45,7 @@ class SimpleLateDeliveryAndPenaltyLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.3.0.SimpleLateDeliveryAndPenaltyResponse',
+                $class: 'org.accordproject.simplelatedeliveryandpenalty@0.2.0.SimpleLateDeliveryAndPenaltyResponse',
                 $timestamp: now,
                 penalty: capped,
                 buyerMayTerminate,

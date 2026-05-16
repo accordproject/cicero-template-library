@@ -6,7 +6,14 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IRateRange
-} from './org.accordproject.volumediscountolist@0.1.0';
+} from './org.accordproject.volumediscountolist@0.2.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -33,7 +40,10 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IRateRange;
+export type ConceptUnion = IRateRange | 
+IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion;
 
 export interface IAsset extends IConcept {
    $identifier: string;

@@ -6,7 +6,7 @@ import {
     IPaymentReceived,
     IPaymentReceivedResponse,
     IPaymentObligationEvent,
-} from './generated/org.accordproject.fullpaymentupondsignature@0.3.0';
+} from './generated/org.accordproject.fullpaymentupondsignature@0.2.0';
 
 // @ts-expect-error EngineResponse is injected by the runtime
 interface FullPaymentUponSignatureEngineResponse extends EngineResponse<IFullPaymentUponSignatureState> {
@@ -22,7 +22,7 @@ class FullPaymentUponSignatureLogic extends TemplateLogic<ITemplateModel, IFullP
     async init(data: ITemplateModel): Promise<InitResponse<IFullPaymentUponSignatureState>> {
         return {
             state: {
-                $class: 'org.accordproject.fullpaymentupondsignature@0.3.0.FullPaymentUponSignatureState',
+                $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState',
                 $identifier: data.$identifier,
                 status: 'INITIALIZED',
             }
@@ -42,15 +42,15 @@ class FullPaymentUponSignatureLogic extends TemplateLogic<ITemplateModel, IFullP
                 throw new Error('Contract has already been signed.');
             }
             const event: IPaymentObligationEvent = {
-                $class: 'org.accordproject.fullpaymentupondsignature@0.3.0.PaymentObligationEvent',
+                $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.PaymentObligationEvent',
                 $timestamp: now,
                 amount: data.amount,
                 currencyCode: data.currencyCode,
                 description: `${data.buyer} should pay contract amount to ${data.seller}`,
             };
             return {
-                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.3.0.ContractSignedResponse', $timestamp: now },
-                state: { $class: 'org.accordproject.fullpaymentupondsignature@0.3.0.FullPaymentUponSignatureState', $identifier: state.$identifier, status: 'OBLIGATION_EMITTED' },
+                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.ContractSignedResponse', $timestamp: now },
+                state: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState', $identifier: state.$identifier, status: 'OBLIGATION_EMITTED' },
                 events: [event],
             };
         } else if (requestClass.endsWith('.PaymentReceived')) {
@@ -58,8 +58,8 @@ class FullPaymentUponSignatureLogic extends TemplateLogic<ITemplateModel, IFullP
                 throw new Error("Either a payment obligation hasn't yet been emitted or payment has already been received.");
             }
             return {
-                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.3.0.PaymentReceivedResponse', $timestamp: now },
-                state: { $class: 'org.accordproject.fullpaymentupondsignature@0.3.0.FullPaymentUponSignatureState', $identifier: state.$identifier, status: 'COMPLETED' },
+                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.PaymentReceivedResponse', $timestamp: now },
+                state: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState', $identifier: state.$identifier, status: 'COMPLETED' },
                 events: [],
             };
         } else {

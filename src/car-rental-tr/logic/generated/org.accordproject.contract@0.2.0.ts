@@ -7,7 +7,7 @@
 import type {
 	IPaymentClause,
 	ITemplateModel
-} from './org.accordproject.carrentaltr@0.3.0';
+} from './org.accordproject.carrentaltr@0.2.0';
 import {IAsset} from './concerto@1.0.0';
 
 // interfaces

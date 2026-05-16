@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import LateInvoiceWithPaymentLogic from './logic';
-import { ITemplateModel, ILateInvoiceRequest } from './generated/org.accordproject.lateinvoicewithpayment@0.3.0';
+import { ITemplateModel, ILateInvoiceRequest } from './generated/org.accordproject.lateinvoicewithpayment@0.2.0';
 
 describe('LateInvoiceWithPaymentLogic', () => {
     let logic: LateInvoiceWithPaymentLogic;
@@ -20,7 +20,7 @@ describe('LateInvoiceWithPaymentLogic', () => {
     beforeEach(() => {
         logic = new LateInvoiceWithPaymentLogic();
         model = {
-            $class: 'org.accordproject.lateinvoicewithpayment@0.3.0.TemplateModel',
+            $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             purchaser: 'Alice',
@@ -39,7 +39,7 @@ describe('LateInvoiceWithPaymentLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ILateInvoiceRequest = {
-                $class: 'org.accordproject.lateinvoicewithpayment@0.3.0.LateInvoiceRequest',
+                $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.LateInvoiceRequest',
                 $timestamp: new Date(),
                 invoiceDue: futureDate,
                 amountDue: 1000,
@@ -49,7 +49,7 @@ describe('LateInvoiceWithPaymentLogic', () => {
             expect(result.result.paymentRequired).toBe(true);
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
-            expect(event.$class).toBe('org.accordproject.lateinvoicewithpayment@0.3.0.PaymentObligationEvent');
+            expect(event.$class).toBe('org.accordproject.lateinvoicewithpayment@0.2.0.PaymentObligationEvent');
             expect(event.amount).toBe(1000);
             expect(event.currencyCode).toBe('USD');
         });
@@ -59,7 +59,7 @@ describe('LateInvoiceWithPaymentLogic', () => {
             const pastDate = new Date();
             pastDate.setDate(pastDate.getDate() - 60);
             const request: ILateInvoiceRequest = {
-                $class: 'org.accordproject.lateinvoicewithpayment@0.3.0.LateInvoiceRequest',
+                $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.LateInvoiceRequest',
                 $timestamp: new Date(),
                 invoiceDue: pastDate,
                 amountDue: 1000,
@@ -74,7 +74,7 @@ describe('LateInvoiceWithPaymentLogic', () => {
             const futureDate = new Date();
             futureDate.setFullYear(futureDate.getFullYear() + 1);
             const request: ILateInvoiceRequest = {
-                $class: 'org.accordproject.lateinvoicewithpayment@0.3.0.LateInvoiceRequest',
+                $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.LateInvoiceRequest',
                 $timestamp: new Date(),
                 invoiceDue: futureDate,
                 amountDue: 500,

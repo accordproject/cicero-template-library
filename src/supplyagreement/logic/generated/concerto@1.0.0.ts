@@ -12,7 +12,7 @@ import type {
 	IDeliveryObligationData,
 	IPaymentObligationData,
 	IAgreementState
-} from './org.accordproject.supplyagreement@0.3.0';
+} from './org.accordproject.supplyagreement@0.2.0';
 import type {
 	IDigitalMonetaryAmount,
 	DigitalCurrencyCode,
@@ -41,7 +41,7 @@ import type {
 	IDeliveryObligationEvent,
 	IPurchaseObligationEvent,
 	IPaymentObligationEvent
-} from './org.accordproject.supplyagreement@0.3.0';
+} from './org.accordproject.supplyagreement@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

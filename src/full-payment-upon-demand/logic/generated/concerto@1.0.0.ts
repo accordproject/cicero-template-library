@@ -6,7 +6,7 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IFullPaymentUponDemandState
-} from './org.accordproject.fullpaymentupondemand@0.3.0';
+} from './org.accordproject.fullpaymentupondemand@0.2.0';
 import type {
 	IDigitalMonetaryAmount,
 	DigitalCurrencyCode,
@@ -33,7 +33,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentObligationEvent
-} from './org.accordproject.fullpaymentupondemand@0.3.0';
+} from './org.accordproject.fullpaymentupondemand@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';

@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.carrentaltr@0.3.0.TemplateModel",
+  "$class": "org.accordproject.carrentaltr@0.2.0.TemplateModel",
   "lessorName": "Acme Car Rental",
   "lessorAddress": "Dikmen Caddesi No:48/15 Dikmen Ankara",
   "lessorPhone": "+901231231234",

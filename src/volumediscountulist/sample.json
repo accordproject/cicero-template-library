@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.volumediscountulist@0.3.0.TemplateModel",
+  "$class": "org.accordproject.volumediscountulist@0.2.0.TemplateModel",
   "rates": [
     {
       "$class": "org.accordproject.volumediscountlist.RateRange",

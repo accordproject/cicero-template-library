@@ -1,4 +1,4 @@
-import { ITemplateModel, IPaymentRequest, IPayOut } from './generated/org.accordproject.ippayment@0.3.0';
+import { ITemplateModel, IPaymentRequest, IPayOut } from './generated/org.accordproject.ippayment@0.2.0';
 
 // Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
 enum TemporalUnit {
@@ -55,7 +55,7 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'org.accordproject.ippayment@0.3.0.PayOut',
+                $class: 'org.accordproject.ippayment@0.2.0.PayOut',
                 $timestamp: new Date(),
                 totalAmount,
                 dueBy,

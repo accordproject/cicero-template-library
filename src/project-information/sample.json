@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.projectinformation@0.3.0.TemplateModel",
+  "$class": "org.accordproject.projectinformation@0.2.0.TemplateModel",
   "name": "Katahdin",
   "deadline": "2021-01-01T01:00:00.000+01:00",
   "budget": {

@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.safte@0.3.0.TemplateModel",
+  "$class": "org.accordproject.safte@0.2.0.TemplateModel",
   "companyName": "ACME",
   "companyRegistrationNumber": 555,
   "purchaser": "Dan",

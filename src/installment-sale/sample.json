@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.installmentsale@0.3.0.TemplateModel",
+  "$class": "org.accordproject.installmentsale@0.2.0.TemplateModel",
   "BUYER": "resource:org.accordproject.party.Party#Dan",
   "SELLER": "resource:org.accordproject.party.Party#Ned",
   "INITIAL_DUE": {

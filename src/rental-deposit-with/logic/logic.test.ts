@@ -10,9 +10,9 @@ declare global {
 
 // Import AFTER mocks are set up
 import RentalDepositWithLogic from './logic';
-import { ITemplateModel, IProperyInspection } from './generated/org.accordproject.rentaldepositwith@0.3.0';
+import { ITemplateModel, IProperyInspection } from './generated/org.accordproject.rentaldepositwith@0.2.0';
 
-const NS = 'org.accordproject.rentaldepositwith@0.3.0';
+const NS = 'org.accordproject.rentaldepositwith@0.2.0';
 
 describe('RentalDepositWithLogic', () => {
     let logic: RentalDepositWithLogic;

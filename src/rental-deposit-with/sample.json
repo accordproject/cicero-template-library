@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.rentaldepositwith@0.3.0.TemplateModel",
+  "$class": "org.accordproject.rentaldepositwith@0.2.0.TemplateModel",
   "tenant": {
     "$class": "org.accordproject.rentaldeposit.RentalParty",
     "address": "111, main street",

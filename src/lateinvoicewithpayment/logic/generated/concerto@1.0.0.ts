@@ -5,6 +5,13 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
+import type {
 	Month,
 	Day,
 	TemporalUnit,
@@ -31,7 +38,7 @@ import type {
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentObligationEvent
-} from './org.accordproject.lateinvoicewithpayment@0.1.0';
+} from './org.accordproject.lateinvoicewithpayment@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
@@ -41,7 +48,10 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IDuration | 
+export type ConceptUnion = IDigitalMonetaryAmount | 
+IMonetaryAmount | 
+ICurrencyConversion | 
+IDuration | 
 IPeriod;
 
 export interface IAsset extends IConcept {

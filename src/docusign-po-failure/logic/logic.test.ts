@@ -14,7 +14,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import PurchaseOrderFailureLogic from './logic';
-import { ITemplateModel, IPurchaseOrderFailureState } from './generated/org.accordproject.docusignpofailure@0.3.0';
+import { ITemplateModel, IPurchaseOrderFailureState } from './generated/org.accordproject.docusignpofailure@0.2.0';
 
 const makeDuration = (amount: number, unit: string) => ({
     $class: 'org.accordproject.time@0.3.0.Duration',
@@ -80,7 +80,7 @@ describe.skip('PurchaseOrderFailureLogic', () => {
         logic = new PurchaseOrderFailureLogic();
 
         model = {
-            $class: 'org.accordproject.docusignpofailure@0.3.0.TemplateModel',
+            $class: 'org.accordproject.docusignpofailure@0.2.0.TemplateModel',
             $identifier: 'test-clause-id',
             clauseId: 'test-clause-id',
             buyerName: 'Buyer Corp',
@@ -99,7 +99,7 @@ describe.skip('PurchaseOrderFailureLogic', () => {
         };
 
         initialState = {
-            $class: 'org.accordproject.docusignpofailure@0.3.0.PurchaseOrderFailureState',
+            $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
             $identifier: 'test-clause-id',
             pastFailures: [],
             nbPastFailures: 0
@@ -110,7 +110,7 @@ describe.skip('PurchaseOrderFailureLogic', () => {
         it('should initialize state with empty pastFailures and zero count', async () => {
             const result = await logic.init(model);
             expect(result.state).toMatchObject({
-                $class: 'org.accordproject.docusignpofailure@0.3.0.PurchaseOrderFailureState',
+                $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
                 $identifier: 'test-clause-id',
                 pastFailures: [],
                 nbPastFailures: 0
