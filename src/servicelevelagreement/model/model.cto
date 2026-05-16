@@ -10,10 +10,9 @@ asset TemplateModel extends Clause {
   o Double monthlyCapPercentage
   o Double yearlyCapPercentage
   o Double availability1
-  o Double serviceCredit1
-  o String currencyCode
+  o MonetaryAmount serviceCredit1
   o Double availability2
-  o Double serviceCredit2
+  o MonetaryAmount serviceCredit2
   o String serviceProvider
   o String serviceConsumer
 }
@@ -21,12 +20,12 @@ asset TemplateModel extends Clause {
 transaction MonthSummary extends Request {
   o Double monthlyServiceLevel
   o MonetaryAmount monthlyCharge
-  o Double last11MonthCredit
+  o MonetaryAmount last11MonthCredit
   o MonetaryAmount last11MonthCharge
 }
 
 transaction InvoiceCredit extends Response {
-  o Double monthlyCredit
+  o MonetaryAmount monthlyCredit
 }
 
 event ServiceCreditPaymentEvent {

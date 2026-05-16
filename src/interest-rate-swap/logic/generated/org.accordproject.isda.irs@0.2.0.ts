@@ -26,7 +26,6 @@ export interface ITemplateModel extends IClause {
    counterparty: string;
    bankReference: string;
    notionalAmount: IMonetaryAmount;
-   notionalCurrency: string;
    tradeDate: Date;
    effectiveDate: Date;
    terminationDate: Date;

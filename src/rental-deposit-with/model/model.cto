@@ -3,6 +3,7 @@ namespace org.accordproject.rentaldepositwith@0.2.0
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+import org.accordproject.time@0.3.0.{Period} from https://models.accordproject.org/time@0.3.0.cto
 
 concept Penalty {
   o String description
@@ -44,11 +45,11 @@ asset TemplateModel extends Clause {
   o RentalParty tenant
   o RentalParty landlord
   o MonetaryAmount depositAmount
-  o String tenantDepositRestorationPeriod
+  o Period tenantDepositRestorationPeriod
   o Double monthlyBaseRentMultiple
   o String applicableLaw
   o String statute
   o String bankName
-  o String landlordDepositReturnPeriod
+  o Period landlordDepositReturnPeriod
   o String exhibit
 }

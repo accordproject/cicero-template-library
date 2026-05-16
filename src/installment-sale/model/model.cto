@@ -43,11 +43,10 @@ event InstallmentSalePaymentEvent {
 asset TemplateModel extends Clause {
   o String BUYER
   o String SELLER
-  o Double INITIAL_DUE
-  o String CURRENCY_CODE
+  o MonetaryAmount INITIAL_DUE
   o Double INTEREST_RATE
   o MonetaryAmount TOTAL_DUE_BEFORE_CLOSING
   o MonetaryAmount MIN_PAYMENT
-  o Double DUE_AT_CLOSING
+  o MonetaryAmount DUE_AT_CLOSING
   o Integer FIRST_MONTH
 }

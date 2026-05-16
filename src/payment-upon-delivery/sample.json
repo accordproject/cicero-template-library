@@ -1,7 +1,7 @@
 {
   "$class": "org.accordproject.paymentupondelivery@0.2.0.TemplateModel",
-  "buyer": "resource:org.accordproject.party.Party#Michael",
-  "seller": "resource:org.accordproject.party.Party#Diana",
+  "buyer": "Michael",
+  "seller": "Diana",
   "costOfGoods": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 9.99,

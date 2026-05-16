@@ -9,8 +9,7 @@ import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 export interface ITemplateModel extends IClause {
    name: string;
    deadline: Date;
-   budgetAmount: IMonetaryAmount;
-   budgetCurrency: string;
+   budget: IMonetaryAmount;
    description: string;
    other: string;
 }

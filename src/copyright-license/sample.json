@@ -1,11 +1,11 @@
 {
   "$class": "org.accordproject.copyrightlicense@0.2.0.TemplateModel",
   "effectiveDate": "2018-01-01T01:00:00.000+01:00",
-  "licensee": "resource:org.accordproject.party.Party#Me",
+  "licensee": "resource:org.accordproject.party@0.2.0.Party#Me",
   "licenseeState": "NY",
   "licenseeEntityType": "Company",
   "licenseeAddress": "1 Broadway",
-  "licensor": "resource:org.accordproject.party.Party#Myself",
+  "licensor": "resource:org.accordproject.party@0.2.0.Party#Myself",
   "licensorState": "NY",
   "licensorEntityType": "Company",
   "licensorAddress": "2 Broadway",

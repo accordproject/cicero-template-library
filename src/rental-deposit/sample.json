@@ -1,14 +1,14 @@
 {
   "$class": "org.accordproject.rentaldeposit@0.2.0.TemplateModel",
-  "tenant": "resource:org.accordproject.party.Party#Michael",
-  "landlord": "resource:org.accordproject.party.Party#Parsa",
+  "tenant": "Michael",
+  "landlord": "Parsa",
   "depositAmount": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 3000,
     "currencyCode": "USD"
   },
   "tenantDepositRestorationPeriod": {
-    "$class": "org.accordproject.time.Period",
+    "$class": "org.accordproject.time@0.3.0.Period",
     "amount": 30,
     "unit": "days"
   },
@@ -17,7 +17,7 @@
   "statute": "NJSD",
   "bankName": "Bank of America",
   "landlordDepositReturnPeriod": {
-    "$class": "org.accordproject.time.Period",
+    "$class": "org.accordproject.time@0.3.0.Period",
     "amount": 3,
     "unit": "weeks"
   },

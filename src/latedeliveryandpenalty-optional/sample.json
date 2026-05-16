@@ -1,9 +1,9 @@
 {
   "$class": "org.accordproject.latedeliveryandpenaltyoptional@0.2.0.TemplateModel",
-  "buyer": "resource:org.accordproject.party.Party#Steve",
-  "seller": "resource:org.accordproject.party.Party#Dan",
+  "buyer": "resource:org.accordproject.party@0.2.0.Party#Steve",
+  "seller": "resource:org.accordproject.party@0.2.0.Party#Dan",
   "forceMajeure": {
-    "$class": "org.accordproject.latedeliveryandpenalty.Distance",
+    "$class": "org.accordproject.latedeliveryandpenaltyoptional@0.2.0.Distance",
     "miles": 100
   },
   "penaltyDuration": {

@@ -4,7 +4,7 @@
   "industry": "Healthcare",
   "website": "https://example.org",
   "address": {
-    "$class": "org.accordproject.address.PostalAddress",
+    "$class": "org.accordproject.companyinformation@0.1.0.PostalAddress",
     "streetAddress": "1 Main Street",
     "postalCode": "12345",
     "addressRegion": "ME",

@@ -31,7 +31,6 @@ asset TemplateModel extends Clause {
   o String counterparty
   o String bankReference
   o MonetaryAmount notionalAmount
-  o String notionalCurrency
   o DateTime tradeDate
   o DateTime effectiveDate
   o DateTime terminationDate

@@ -1,8 +1,8 @@
 {
   "$class": "org.accordproject.isda.irs@0.2.0.TemplateModel",
-  "bank": "resource:org.accordproject.organization.Organization#Deutsche%20Bank",
+  "bank": "Deutsche Bank",
   "letterDate": "2005-06-30T00:00:00.000+01:00",
-  "counterparty": "resource:org.accordproject.organization.Organization#MagnaChip%20Semiconductor%20S.A.",
+  "counterparty": "MagnaChip Semiconductor S.A.",
   "bankReference": "Global No. N397355N",
   "notionalAmount": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
@@ -12,7 +12,7 @@
   "tradeDate": "2005-06-23T00:00:00.000+01:00",
   "effectiveDate": "2005-06-27T00:00:00.000+01:00",
   "terminationDate": "2008-06-18T00:00:00.000+01:00",
-  "fixedRatePayer": "resource:org.accordproject.organization.Organization#Counterparty",
+  "fixedRatePayer": "Counterparty",
   "fixedRatePayerPeriodEndDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment",
   "fixedRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
   "fixedRate": 4.09,
@@ -23,7 +23,7 @@
   },
   "fixedRatePayerBusinessDays": "New York",
   "fixedRatePayerBusinessDayConvention": "Modified Following",
-  "floatingRatePayer": "resource:org.accordproject.organization.Organization#DBAG",
+  "floatingRatePayer": "DBAG",
   "floatingRatePayerPeriodEndDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date with No Adjustment",
   "floatingRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
   "floatingRateForInitialCalculationPeriod": 3.41,

@@ -44,12 +44,11 @@ export interface IInstallmentSalePaymentEvent extends IEvent {
 export interface ITemplateModel extends IClause {
    BUYER: string;
    SELLER: string;
-   INITIAL_DUE: number;
-   CURRENCY_CODE: string;
+   INITIAL_DUE: IMonetaryAmount;
    INTEREST_RATE: number;
    TOTAL_DUE_BEFORE_CLOSING: IMonetaryAmount;
    MIN_PAYMENT: IMonetaryAmount;
-   DUE_AT_CLOSING: number;
+   DUE_AT_CLOSING: IMonetaryAmount;
    FIRST_MONTH: number;
 }
 

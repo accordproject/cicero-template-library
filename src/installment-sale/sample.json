@@ -1,7 +1,7 @@
 {
   "$class": "org.accordproject.installmentsale@0.2.0.TemplateModel",
-  "BUYER": "resource:org.accordproject.party.Party#Dan",
-  "SELLER": "resource:org.accordproject.party.Party#Ned",
+  "BUYER": "Dan",
+  "SELLER": "Ned",
   "INITIAL_DUE": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 10000,

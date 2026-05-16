@@ -4,6 +4,7 @@
 // imports
 import {IClause} from './org.accordproject.contract@0.2.0';
 import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 import {IConcept,IEvent} from './concerto@1.0.0';
 
 // interfaces
@@ -54,8 +55,7 @@ export interface ITemplateModel extends IClause {
    product: string;
    sensorReadingFrequency: number;
    duration: string;
-   unitPrice: number;
-   currencyCode: string;
+   unitPrice: IMonetaryAmount;
    minTemperature: number;
    maxTemperature: number;
    minHumidity: number;
