@@ -27,8 +27,7 @@ describe('CarRentalLogic', () => {
             $identifier: 'payment-test-id',
             clauseId: 'payment-test-id',
             amountText: 'İki Yüz On Yedi Amerikan Doları',
-            amount: 217.99,
-            currencyCode: 'USD',
+            amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 217.99, currencyCode: 'USD' },
             paymentProcedure: 'bank transfer'
         };
 
@@ -68,13 +67,12 @@ describe('CarRentalLogic', () => {
             expect(result.result).toBeDefined();
             expect(result.result.$class).toBe('org.accordproject.carrentaltr@0.2.0.PayOut');
             expect(result.result.$timestamp).toBeDefined();
-            expect(result.result.amount).toBe(217.99);
-            expect(result.result.currencyCode).toBe('USD');
+            expect(result.result.amount.doubleValue).toBe(217.99);
+            expect(result.result.amount.currencyCode).toBe('USD');
         });
 
         it('should return amount and currency from payment clause', async () => {
-            model.paymentClause.amount = 500.0;
-            model.paymentClause.currencyCode = 'EUR';
+            model.paymentClause.amount = { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 500.0, currencyCode: 'EUR' };
 
             const request: IPaymentRequest = {
                 $class: 'org.accordproject.carrentaltr@0.2.0.PaymentRequest',
@@ -83,8 +81,8 @@ describe('CarRentalLogic', () => {
 
             const result = await logic.trigger(model, request);
 
-            expect(result.result.amount).toBe(500.0);
-            expect(result.result.currencyCode).toBe('EUR');
+            expect(result.result.amount.doubleValue).toBe(500.0);
+            expect(result.result.amount.currencyCode).toBe('EUR');
         });
     });
 });

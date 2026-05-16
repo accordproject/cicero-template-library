@@ -11,8 +11,7 @@ class CarRentalLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 $class: 'org.accordproject.carrentaltr@0.2.0.PayOut',
                 $timestamp: new Date(),
-                amount: data.paymentClause.amount,
-                currencyCode: data.paymentClause.currencyCode
+                amount: data.paymentClause.amount
             }
         };
     }
