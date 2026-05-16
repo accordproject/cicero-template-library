@@ -1,0 +1,132 @@
+{
+    "templateName": "fragile-goods",
+    "latestVersion": "0.15.0",
+    "versions": [
+        {
+            "version": "0.15.0",
+            "ciceroVersion": "^0.22.0",
+            "url": "/fragile-goods@0.15.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.15.0.cta"
+        },
+        {
+            "version": "0.14.0",
+            "ciceroVersion": "^0.21.0",
+            "url": "/fragile-goods@0.14.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.14.0.cta"
+        },
+        {
+            "version": "0.13.1",
+            "ciceroVersion": "^0.20.10",
+            "url": "/fragile-goods@0.13.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.13.1.cta"
+        },
+        {
+            "version": "0.13.0",
+            "ciceroVersion": "^0.20.0",
+            "url": "/fragile-goods@0.13.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.13.0.cta"
+        },
+        {
+            "version": "0.12.1",
+            "ciceroVersion": "^0.13.0",
+            "url": "/fragile-goods@0.12.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.12.1.cta"
+        },
+        {
+            "version": "0.12.0",
+            "ciceroVersion": "^0.13.0",
+            "url": "/fragile-goods@0.12.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.12.0.cta"
+        },
+        {
+            "version": "0.11.1",
+            "ciceroVersion": "^0.12.0",
+            "url": "/fragile-goods@0.11.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.11.1.cta"
+        },
+        {
+            "version": "0.11.0",
+            "ciceroVersion": "^0.12.0",
+            "url": "/fragile-goods@0.11.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.11.0.cta"
+        },
+        {
+            "version": "0.10.0",
+            "ciceroVersion": "^0.11.1",
+            "url": "/fragile-goods@0.10.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.10.0.cta"
+        },
+        {
+            "version": "0.9.1",
+            "ciceroVersion": "^0.10.0",
+            "url": "/fragile-goods@0.9.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.9.1.cta"
+        },
+        {
+            "version": "0.9.0",
+            "ciceroVersion": "^0.10.0",
+            "url": "/fragile-goods@0.9.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.9.0.cta"
+        },
+        {
+            "version": "0.8.0",
+            "ciceroVersion": "^0.9.1",
+            "url": "/fragile-goods@0.8.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.8.0.cta"
+        },
+        {
+            "version": "0.7.1",
+            "ciceroVersion": "^0.8.0",
+            "url": "/fragile-goods@0.7.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.7.1.cta"
+        },
+        {
+            "version": "0.7.0",
+            "ciceroVersion": "^0.8.0",
+            "url": "/fragile-goods@0.7.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.7.0.cta"
+        },
+        {
+            "version": "0.6.0",
+            "ciceroVersion": "^0.7.1",
+            "url": "/fragile-goods@0.6.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.6.0.cta"
+        },
+        {
+            "version": "0.5.0",
+            "ciceroVersion": "^0.6.0",
+            "url": "/fragile-goods@0.5.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.5.0.cta"
+        },
+        {
+            "version": "0.4.0",
+            "ciceroVersion": "^0.5.0",
+            "url": "/fragile-goods@0.4.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.4.0.cta"
+        },
+        {
+            "version": "0.3.0",
+            "ciceroVersion": "^0.4.6",
+            "url": "/fragile-goods@0.3.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.3.0.cta"
+        },
+        {
+            "version": "0.2.0",
+            "ciceroVersion": "^0.4.4",
+            "url": "/fragile-goods@0.2.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.2.0.cta"
+        },
+        {
+            "version": "0.1.0",
+            "ciceroVersion": "^0.4.3",
+            "url": "/fragile-goods@0.1.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.1.0.cta"
+        },
+        {
+            "version": "0.0.4",
+            "ciceroVersion": "^0.3.0",
+            "url": "/fragile-goods@0.0.4.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/fragile-goods@0.0.4.cta"
+        }
+    ]
+}

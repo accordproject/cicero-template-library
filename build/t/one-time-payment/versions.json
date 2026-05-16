@@ -1,0 +1,72 @@
+{
+    "templateName": "one-time-payment",
+    "latestVersion": "0.11.0",
+    "versions": [
+        {
+            "version": "0.11.0",
+            "ciceroVersion": "^0.9.1",
+            "url": "/one-time-payment@0.11.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.11.0.cta"
+        },
+        {
+            "version": "0.10.1",
+            "ciceroVersion": "^0.9.1",
+            "url": "/one-time-payment@0.10.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.10.1.cta"
+        },
+        {
+            "version": "0.10.0",
+            "ciceroVersion": "^0.9.1",
+            "url": "/one-time-payment@0.10.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.10.0.cta"
+        },
+        {
+            "version": "0.9.0",
+            "ciceroVersion": "^0.8.0",
+            "url": "/one-time-payment@0.9.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.9.0.cta"
+        },
+        {
+            "version": "0.8.0",
+            "ciceroVersion": "^0.7.1",
+            "url": "/one-time-payment@0.8.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.8.0.cta"
+        },
+        {
+            "version": "0.7.0",
+            "ciceroVersion": "^0.6.0",
+            "url": "/one-time-payment@0.7.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.7.0.cta"
+        },
+        {
+            "version": "0.6.0",
+            "ciceroVersion": "^0.6.0",
+            "url": "/one-time-payment@0.6.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.6.0.cta"
+        },
+        {
+            "version": "0.5.0",
+            "ciceroVersion": "^0.5.0",
+            "url": "/one-time-payment@0.5.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.5.0.cta"
+        },
+        {
+            "version": "0.4.0",
+            "ciceroVersion": "^0.4.4",
+            "url": "/one-time-payment@0.4.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.4.0.cta"
+        },
+        {
+            "version": "0.2.0",
+            "ciceroVersion": "^0.4.4",
+            "url": "/one-time-payment@0.2.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.2.0.cta"
+        },
+        {
+            "version": "0.1.0",
+            "ciceroVersion": "^0.4.4",
+            "url": "/one-time-payment@0.1.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/one-time-payment@0.1.0.cta"
+        }
+    ]
+}

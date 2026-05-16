@@ -1,0 +1,33 @@
+@startuml
+class org.accordproject.docusignpofailure_0_2_0.PurchaseOrderFailureResponse << (T,yellow) >> {
+   + MonetaryAmount penaltyAmount
+}
+org.accordproject.docusignpofailure_0_2_0.PurchaseOrderFailureResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.docusignpofailure_0_2_0.PurchaseOrderPaymentEvent {
+   + MonetaryAmount penaltyAmount
+   + String description
+}
+org.accordproject.docusignpofailure_0_2_0.PurchaseOrderPaymentEvent --|> concerto_1_0_0.Event
+class org.accordproject.docusignpofailure_0_2_0.PurchaseOrderFailureState {
+   + String $identifier
+   + DateTime[] pastFailures
+   + Integer nbPastFailures
+}
+org.accordproject.docusignpofailure_0_2_0.PurchaseOrderFailureState --|> concerto_1_0_0.Concept
+class org.accordproject.docusignpofailure_0_2_0.TemplateModel << (A,green) >> {
+   + String buyerName
+   + Duration lateOne
+   + Duration lateTwo
+   + Duration lateThree
+   + Double lateOnePercent
+   + Double lateTwoPercent
+   + Double lateThreePercent
+   + String article
+   + String thisSection
+   + Integer maxFailures
+   + Duration failureRange
+   + MonetaryAmount repeatedFailureCompensationAmount
+   + String repeatedFailureCompensationCurrency
+}
+org.accordproject.docusignpofailure_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

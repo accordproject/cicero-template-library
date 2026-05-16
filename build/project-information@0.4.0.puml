@@ -1,0 +1,11 @@
+@startuml
+class org.accordproject.projectinformation_0_2_0.TemplateModel << (A,green) >> {
+   + String name
+   + DateTime deadline
+   + MonetaryAmount budgetAmount
+   + String budgetCurrency
+   + String description
+   + String other
+}
+org.accordproject.projectinformation_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

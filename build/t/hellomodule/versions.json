@@ -1,0 +1,84 @@
+{
+    "templateName": "hellomodule",
+    "latestVersion": "0.10.0",
+    "versions": [
+        {
+            "version": "0.10.0",
+            "ciceroVersion": "^0.26.0",
+            "url": "/hellomodule@0.10.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.10.0.cta"
+        },
+        {
+            "version": "0.8.0",
+            "ciceroVersion": "^0.22.0",
+            "url": "/hellomodule@0.8.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.8.0.cta"
+        },
+        {
+            "version": "0.7.0",
+            "ciceroVersion": "^0.21.0",
+            "url": "/hellomodule@0.7.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.7.0.cta"
+        },
+        {
+            "version": "0.6.1",
+            "ciceroVersion": "^0.20.10",
+            "url": "/hellomodule@0.6.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.6.1.cta"
+        },
+        {
+            "version": "0.6.0",
+            "ciceroVersion": "^0.20.0",
+            "url": "/hellomodule@0.6.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.6.0.cta"
+        },
+        {
+            "version": "0.5.1",
+            "ciceroVersion": "^0.13.0",
+            "url": "/hellomodule@0.5.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.5.1.cta"
+        },
+        {
+            "version": "0.5.0",
+            "ciceroVersion": "^0.13.0",
+            "url": "/hellomodule@0.5.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.5.0.cta"
+        },
+        {
+            "version": "0.4.1",
+            "ciceroVersion": "^0.12.0",
+            "url": "/hellomodule@0.4.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.4.1.cta"
+        },
+        {
+            "version": "0.4.0",
+            "ciceroVersion": "^0.12.0",
+            "url": "/hellomodule@0.4.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.4.0.cta"
+        },
+        {
+            "version": "0.3.0",
+            "ciceroVersion": "^0.11.1",
+            "url": "/hellomodule@0.3.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.3.0.cta"
+        },
+        {
+            "version": "0.2.0",
+            "ciceroVersion": "^0.10.0",
+            "url": "/hellomodule@0.2.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.2.0.cta"
+        },
+        {
+            "version": "0.1.1",
+            "ciceroVersion": "^0.9.7",
+            "url": "/hellomodule@0.1.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.1.1.cta"
+        },
+        {
+            "version": "0.1.0",
+            "ciceroVersion": "^0.9.7",
+            "url": "/hellomodule@0.1.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/hellomodule@0.1.0.cta"
+        }
+    ]
+}

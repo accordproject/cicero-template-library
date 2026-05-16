@@ -1,0 +1,40 @@
+@startuml
+class org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.CurrencyConversion {
+   + String from
+   + String to
+   + Double rate
+}
+org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.CurrencyConversion --|> concerto_1_0_0.Concept
+class org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.LateDeliveryAndPenaltyRequest << (T,yellow) >> {
+   + Boolean forceMajeure
+   + DateTime agreedDelivery
+   + DateTime deliveredAt
+   + MonetaryAmount goodsValue
+   + CurrencyConversion currencyConversion
+}
+org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.LateDeliveryAndPenaltyRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.LateDeliveryAndPenaltyResponse << (T,yellow) >> {
+   + MonetaryAmount penalty
+   + Boolean buyerMayTerminate
+}
+org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.LateDeliveryAndPenaltyResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.PaymentObligationEvent {
+   + MonetaryAmount amount
+   + String description
+}
+org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.PaymentObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.TemplateModel << (A,green) >> {
+   + String buyer
+   + String seller
+   + Boolean forceMajeure
+   + Duration penaltyDuration
+   + Double penaltyPercentage
+   + Double capPercentage
+   + Duration termination
+   + TemporalUnit fractionalPart
+   + String conversionSource
+   + String fromCurrency
+   + String toCurrency
+}
+org.accordproject.latedeliveryandpenaltycurrencyconversion_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

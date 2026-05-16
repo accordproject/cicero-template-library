@@ -1,0 +1,36 @@
+{
+    "templateName": "rental-deposit-with",
+    "latestVersion": "0.6.0",
+    "versions": [
+        {
+            "version": "0.6.0",
+            "ciceroVersion": "^0.26.0",
+            "url": "/rental-deposit-with@0.6.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/rental-deposit-with@0.6.0.cta"
+        },
+        {
+            "version": "0.3.0",
+            "ciceroVersion": "^0.22.0",
+            "url": "/rental-deposit-with@0.3.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/rental-deposit-with@0.3.0.cta"
+        },
+        {
+            "version": "0.2.0",
+            "ciceroVersion": "^0.21.0",
+            "url": "/rental-deposit-with@0.2.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/rental-deposit-with@0.2.0.cta"
+        },
+        {
+            "version": "0.1.1",
+            "ciceroVersion": "^0.20.10",
+            "url": "/rental-deposit-with@0.1.1.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/rental-deposit-with@0.1.1.cta"
+        },
+        {
+            "version": "0.1.0",
+            "ciceroVersion": "^0.20.0",
+            "url": "/rental-deposit-with@0.1.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/rental-deposit-with@0.1.0.cta"
+        }
+    ]
+}
