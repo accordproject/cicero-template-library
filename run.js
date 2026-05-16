@@ -88,11 +88,10 @@ nunjucks.configure('./views', {
  */
 (async function () {
     try {
-        let templateName = process.argv.slice(2);
-        if (templateName && templateName.length > 0) {
+        const templateArgs = process.argv.slice(2);
+        const templateName = templateArgs.length > 0 ? templateArgs[0] : null;
+        if (templateName) {
             console.log('Only building template: ' + templateName);
-        } else {
-            templateName = null;
         }
 
         if (process.env.DELETE_ALL) {
@@ -249,9 +248,11 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
             const ciceroArchiveFileName = `${template.getIdentifier()}-cicero.cta`;
             const ciceroArchiveFilePath = `${archiveDir}/${ciceroArchiveFileName}`;
 
-            const [archiveFileExists, ciceroArchiveFileExists] = await Promise.all([
+            const htmlFilePath = `${buildDir}/${template.getIdentifier()}.html`;
+            const [archiveFileExists, ciceroArchiveFileExists, htmlFileExists] = await Promise.all([
                 fs.pathExists(archiveFilePath),
                 fs.pathExists(ciceroArchiveFilePath),
+                fs.pathExists(htmlFilePath),
             ]);
 
             if (!ciceroArchiveFileExists || process.env.FORCE_CREATE_ARCHIVE) {
@@ -272,7 +273,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 if (Array.isArray(rawPkg.tags)) tags = rawPkg.tags;
             } catch (e) { /* ignore */ }
 
-            const regenerated = !ciceroArchiveFileExists || !archiveFileExists || process.env.FORCE_CREATE_ARCHIVE;
+            const regenerated = !ciceroArchiveFileExists || !archiveFileExists || !htmlFileExists || process.env.FORCE_CREATE_ARCHIVE;
             const indexData = {
                 uri: `ap://${template.getIdentifier()}#${template.getHash()}`,
                 url: `${serverRoot}/archives/${archiveFileName}`,
@@ -589,6 +590,10 @@ async function landingPageGenerator(serverRoot, templateName, versions) {
         return semver.rcompare(versionA, versionB);
     });
 
+    const latestId = sortedVersions[0].id;
+    const latestEntry = sortedVersions[0].entry;
+    const latestVersion = latestId.substring(latestId.indexOf('@') + 1);
+
     // Build the versions list for the template, filtering to only versions with HTML files
     const versionsList = [];
     for (const v of sortedVersions) {
@@ -605,10 +610,7 @@ async function landingPageGenerator(serverRoot, templateName, versions) {
         }
     }
 
-    // Use the first available version (with HTML file) as latest, not the semantic latest
-    const latestVersion = versionsList.length > 0 ? versionsList[0].version : '';
     const latestVersionUrl = versionsList.length > 0 ? versionsList[0].url : '';
-    const latestEntry = sortedVersions[0].entry;
 
     // Create landing page directory
     const landingPageDir = resolve(buildDir, 't', templateName);
