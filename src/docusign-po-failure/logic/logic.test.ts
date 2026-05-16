@@ -94,8 +94,7 @@ describe.skip('PurchaseOrderFailureLogic', () => {
             thisSection: 'Section 3.1',
             maxFailures: 3,
             failureRange: makeDuration(90, 'days') as any,
-            repeatedFailureCompensationAmount: 99.99,
-            repeatedFailureCompensationCurrency: 'USD'
+            repeatedFailureCompensationAmount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 99.99, currencyCode: 'USD' }
         };
 
         initialState = {
@@ -126,8 +125,8 @@ describe.skip('PurchaseOrderFailureLogic', () => {
 
             const result = await logic.trigger(model, request, initialState);
 
-            expect(result.result.penaltyAmount).toBe(0.0);
-            expect(result.result.currencyCode).toBe('USD');
+            expect(result.result.penaltyAmount.doubleValue).toBe(0.0);
+            expect(result.result.penaltyAmount.currencyCode).toBe('USD');
             expect(result.events).toHaveLength(0);
         });
 
