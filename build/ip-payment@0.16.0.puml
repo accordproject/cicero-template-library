@@ -1,0 +1,22 @@
+@startuml
+class org.accordproject.ippayment_0_2_0.PaymentRequest << (T,yellow) >> {
+   + Double netSaleRevenue
+   + Double sublicensingRevenue
+   + DateTime permissionGrantedBy
+}
+org.accordproject.ippayment_0_2_0.PaymentRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.ippayment_0_2_0.PayOut << (T,yellow) >> {
+   + MonetaryAmount totalAmount
+   + DateTime dueBy
+}
+org.accordproject.ippayment_0_2_0.PayOut --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.ippayment_0_2_0.TemplateModel << (A,green) >> {
+   + String royaltyText
+   + Double royaltyRate
+   + String sublicensingRoyaltyText
+   + Double sublicensingRoyaltyRate
+   + Duration paymentPeriod
+   + Duration paymentPeriodWithPermission
+}
+org.accordproject.ippayment_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

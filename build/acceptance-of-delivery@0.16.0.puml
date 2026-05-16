@@ -1,0 +1,27 @@
+@startuml
+class org.accordproject.acceptanceofdelivery_0_1_0.InspectDeliverable << (T,yellow) >> {
+   + DateTime deliverableReceivedAt
+   + Boolean inspectionPassed
+}
+org.accordproject.acceptanceofdelivery_0_1_0.InspectDeliverable --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.acceptanceofdelivery_0_1_0.InspectionStatus << (E,grey) >> {
+   + PASSED_TESTING
+   + FAILED_TESTING
+   + OUTSIDE_INSPECTION_PERIOD
+}
+org.accordproject.acceptanceofdelivery_0_1_0.InspectionStatus --|> concerto_1_0_0.Concept
+class org.accordproject.acceptanceofdelivery_0_1_0.InspectionResponse << (T,yellow) >> {
+   + InspectionStatus status
+   + String shipper
+   + String receiver
+}
+org.accordproject.acceptanceofdelivery_0_1_0.InspectionResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.acceptanceofdelivery_0_1_0.TemplateModel << (A,green) >> {
+   + String shipper
+   + String receiver
+   + String deliverable
+   + Long businessDays
+   + String attachment
+}
+org.accordproject.acceptanceofdelivery_0_1_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml
