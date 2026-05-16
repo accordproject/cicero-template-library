@@ -11,6 +11,15 @@ import {
     ContractLifecycleStatus,
 } from "./generated/org.accordproject.paymentuponiot@0.1.0";
 import { IRequest } from "./generated/org.accordproject.runtime@0.2.0";
+import { IMonetaryAmount } from "./generated/org.accordproject.money@0.3.0";
+
+function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode,
+    };
+}
 
 const NS = "org.accordproject.paymentuponiot@0.1.0";
 
@@ -131,12 +140,11 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
         if (state.status !== "RUNNING") {
             throw new Error("Contract is not running.");
         }
-        const amount = data.amountPerUnit * state.counter;
+        const amount = monetary((data.amountPerUnit as any).doubleValue * state.counter, (data.amountPerUnit as any).currencyCode);
         const event: IPaymentObligationEvent = {
             $class: `${NS}.PaymentObligationEvent`,
             $timestamp: new Date(),
             amount,
-            currencyCode: data.currencyCode,
             description: `${data.buyer} should pay outstanding balance to ${data.seller}`,
         };
         return {
@@ -159,10 +167,10 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
         if (state.status !== "RUNNING") {
             throw new Error("Contract is not running.");
         }
-        if (request.amount < 0.0) {
+        if ((request.amount as any).doubleValue < 0.0) {
             throw new Error("Payment must be positive.");
         }
-        if (request.currencyCode !== data.currencyCode) {
+        if ((request.amount as any).currencyCode !== (data.amountPerUnit as any).currencyCode) {
             throw new Error("Payments must be in the currency of the contract.");
         }
 
@@ -172,7 +180,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
 
         const unitsPaid = Math.max(
             0,
-            Math.floor(request.amount / data.amountPerUnit)
+            Math.floor((request.amount as any).doubleValue / (data.amountPerUnit as any).doubleValue)
         );
         const newCounter = Math.max(0.0, state.counter - unitsPaid);
 
