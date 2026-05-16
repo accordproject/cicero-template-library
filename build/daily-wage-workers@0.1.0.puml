@@ -1,0 +1,19 @@
+@startuml
+class org.accordproject.dailywage.DailyWageContract << (A,green) >> {
+   + Party employer
+   + Party worker
+   + MonetaryAmount dailyRate
+   + MonetaryAmount overtimeRate
+}
+org.accordproject.dailywage.DailyWageContract --|> org.accordproject.contract.Contract
+class org.accordproject.dailywage.PaymentRequest << (T,yellow) >> {
+   + Integer daysWorked
+   + Double overtimeHours
+}
+org.accordproject.dailywage.PaymentRequest --|> org.accordproject.runtime.Request
+class org.accordproject.dailywage.PaymentResponse << (T,yellow) >> {
+   + MonetaryAmount totalAmount
+   + String breakdown
+}
+org.accordproject.dailywage.PaymentResponse --|> org.accordproject.runtime.Response
+@enduml

@@ -1,0 +1,5 @@
+{
+    "$class": "org.accordproject.dailywage.PaymentRequest",
+    "daysWorked": 5,
+    "overtimeHours": 4.0
+}

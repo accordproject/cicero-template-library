@@ -1,0 +1,49 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.dailywage
+
+import org.accordproject.money.*
+
+/**
+ * Daily Wage Workers Payment Contract
+ * Calculates total payment based on days worked and overtime hours
+ */
+contract DailyWage over DailyWageContract {
+  
+  /**
+   * Calculate the total payment owed to the worker
+   * @param request - contains daysWorked and overtimeHours
+   * @return PaymentResponse with total amount and breakdown
+   */
+  clause calculatePayment(request : PaymentRequest) : PaymentResponse {
+    
+    // Calculate base payment (days × daily rate)
+    let basePay = integerToDouble(request.daysWorked) * contract.dailyRate.doubleValue;
+    
+    // Calculate overtime payment (hours × overtime rate)
+    let overtimePay = request.overtimeHours * contract.overtimeRate.doubleValue;
+    
+    // Total payment
+    let total = basePay + overtimePay;
+    
+    return PaymentResponse{
+      totalAmount: MonetaryAmount{
+        doubleValue: total,
+        currencyCode: contract.dailyRate.currencyCode
+      },
+      breakdown: "Base pay plus overtime"
+    }
+  }
+}

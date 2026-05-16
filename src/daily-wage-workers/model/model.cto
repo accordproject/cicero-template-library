@@ -1,0 +1,35 @@
+namespace org.accordproject.dailywage
+
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.party.Party from https://models.accordproject.org/accordproject/party.cto
+
+/**
+ * The contract data
+ * Defines the parties and payment rates for daily wage work
+ */
+asset DailyWageContract extends Contract {
+  --> Party employer            // The hiring party
+  --> Party worker              // The worker receiving payment
+  o MonetaryAmount dailyRate    // Payment per day worked
+  o MonetaryAmount overtimeRate // Payment per overtime hour
+}
+
+/**
+ * Request to calculate payment
+ * Submitted when requesting payment calculation
+ */
+transaction PaymentRequest extends Request {
+  o Integer daysWorked      // Number of regular days worked
+  o Double overtimeHours    // Number of overtime hours worked
+}
+
+/**
+ * Response with calculated payment
+ * Contains the total amount owed and breakdown
+ */
+transaction PaymentResponse extends Response {
+  o MonetaryAmount totalAmount  // Total payment amount
+  o String breakdown            // Description of calculation
+}

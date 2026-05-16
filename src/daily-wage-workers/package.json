@@ -1,0 +1,19 @@
+{
+    "name": "daily-wage-workers",
+    "displayName": "Daily Wage Workers Payment",
+    "version": "0.1.0",
+    "description": "A simple contract for calculating daily wage worker payments including overtime",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "contract",
+        "cicero": "^0.22.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["daily", "wage", "worker", "payment", "overtime", "labor"]
+}
