@@ -35,14 +35,15 @@ describe('EatApplesLogic', () => {
                 $class: 'org.accordproject.eatapples@0.2.0.Food',
                 $timestamp: new Date(),
                 produce: 'apple',
-                price: 1.49,
+                price: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1.49, currencyCode: 'USD' },
             };
             const response = await logic.trigger(model, request);
             expect(response.result.notice).toBe('Very healthy!');
             expect(response.events).toHaveLength(1);
             const bill = response.events[0] as any;
             expect(bill.billTo).toBe('John');
-            expect(bill.amount).toBeCloseTo(1.49 * 1.1);
+            expect(bill.amount.doubleValue).toBeCloseTo(1.49 * 1.1);
+            expect(bill.amount.currencyCode).toBe('USD');
         });
 
         it('should fire employee for eating non-apple produce', async () => {
@@ -50,7 +51,7 @@ describe('EatApplesLogic', () => {
                 $class: 'org.accordproject.eatapples@0.2.0.Food',
                 $timestamp: new Date(),
                 produce: 'banana',
-                price: 0.99,
+                price: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 0.99, currencyCode: 'USD' },
             };
             const response = await logic.trigger(model, request);
             expect(response.result.notice).toBe("You're fired!");
