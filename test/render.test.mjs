@@ -4,6 +4,7 @@ import { describe, it, expect } from 'vitest';
 import { readdirSync, existsSync, readFileSync, statSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const SRC = join(dirname(fileURLToPath(import.meta.url)), '..', 'src');
 const templates = readdirSync(SRC).filter(name => {
@@ -45,6 +46,33 @@ const expectedFailures = new Set([
     'volumediscountolist',
     'volumediscountulist',
 ]);
+
+describe.concurrent('template compilation', () => {
+    for (const name of templates) {
+        // Compilation tests should not be expected to fail — compilation errors are
+        // critical and should be caught immediately
+        it(name, () => {
+            const templatePath = join(SRC, name);
+            const packageJsonPath = join(templatePath, 'package.json');
+            const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf8'));
+
+            // Only test templates that have a compile script
+            if (!packageJson.scripts?.compile) {
+                return;
+            }
+
+            try {
+                // Run npm compile from the template directory
+                execSync('npm run compile', {
+                    cwd: templatePath,
+                    stdio: 'pipe',
+                });
+            } catch (error) {
+                throw new Error(`${name}: template compilation failed: ${error.message}`);
+            }
+        });
+    }
+});
 
 describe.concurrent('template-engine render', () => {
     for (const name of templates) {
