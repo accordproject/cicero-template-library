@@ -45,7 +45,6 @@ class PaymentUponSignatureLogic extends TemplateLogic<ITemplateModel, IPaymentUp
                 $class: 'org.accordproject.paymentuponssignature@0.2.0.PaymentObligationEvent',
                 $timestamp: now,
                 amount: data.amount,
-                currencyCode: data.currencyCode,
                 description: `${data.buyer} should pay contract amount to ${data.seller}`,
             };
             return {

@@ -29,8 +29,7 @@ describe('PaymentUponSignatureLogic', () => {
             clauseId: 'test-id',
             buyer: 'Alice',
             seller: 'Bob',
-            amount: 2500,
-            currencyCode: 'GBP',
+            amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 2500, currencyCode: 'GBP' },
         };
         initializedState = {
             $class: 'org.accordproject.paymentuponssignature@0.2.0.PaymentUponSignatureState',
@@ -58,8 +57,8 @@ describe('PaymentUponSignatureLogic', () => {
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.paymentuponssignature@0.2.0.PaymentObligationEvent');
-            expect(event.amount).toBe(2500);
-            expect(event.currencyCode).toBe('GBP');
+            expect(event.amount.doubleValue).toBe(2500);
+            expect(event.amount.currencyCode).toBe('GBP');
         });
 
         it('should throw if contract already signed', async () => {
