@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.onetimepaymenttr@0.2.0.TemplateModel",
+  "$class": "org.accordproject.onetimepaymenttr@0.3.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Can%20Do%C4%9Fan",
   "seller": "resource:org.accordproject.party.Party#ACME%20Corp.",
   "totalPurchasePrice": {

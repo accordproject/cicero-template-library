@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.perishablegoods@0.2.0.TemplateModel",
+  "$class": "org.accordproject.perishablegoods@0.3.0.TemplateModel",
   "grower": "resource:org.accordproject.party.Party#PETER",
   "importer": "resource:org.accordproject.party.Party#DAN",
   "shipment": "resource:org.accordproject.perishablegoods.Shipment#SHIP_001",

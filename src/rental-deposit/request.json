@@ -1,8 +1,8 @@
 {
-  "$class": "org.accordproject.rentaldeposit@0.2.0.ProperyInspection",
+  "$class": "org.accordproject.rentaldeposit@0.3.0.ProperyInspection",
   "penalties": [
     {
-      "$class": "org.accordproject.rentaldeposit@0.2.0.Penalty",
+      "$class": "org.accordproject.rentaldeposit@0.3.0.Penalty",
       "description": "Cleaning carpets",
       "amount": {
         "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
@@ -11,7 +11,7 @@
       }
     },
     {
-      "$class": "org.accordproject.rentaldeposit@0.2.0.Penalty",
+      "$class": "org.accordproject.rentaldeposit@0.3.0.Penalty",
       "description": "Pet damage",
       "amount": {
         "$class": "org.accordproject.money@0.3.0.MonetaryAmount",

@@ -1,4 +1,4 @@
-import { IPayment, IResult, ITemplateModel } from "./generated/org.accordproject.promissorynotemd@0.1.0";
+import { IPayment, IResult, ITemplateModel } from "./generated/org.accordproject.promissorynotemd@0.3.0";
 
 type PromissoryNoteMdResponse = {
     result: IResult;
@@ -39,7 +39,7 @@ class PromissoryNoteMdLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 outstandingBalance: compounded,
                 $timestamp: new Date(),
-                $class: 'org.accordproject.promissorynotemd@0.1.0.Result'
+                $class: 'org.accordproject.promissorynotemd@0.3.0.Result'
             }
         };
     }

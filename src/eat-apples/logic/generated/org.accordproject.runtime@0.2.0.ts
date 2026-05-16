@@ -6,12 +6,12 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IFood
-} from './org.accordproject.eatapples@0.1.0';
+} from './org.accordproject.eatapples@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IOutcome
-} from './org.accordproject.eatapples@0.1.0';
+} from './org.accordproject.eatapples@0.3.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 

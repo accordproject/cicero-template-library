@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.fullpaymentupondemand@0.2.0.TemplateModel",
+  "$class": "org.accordproject.fullpaymentupondemand@0.3.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Dan",
   "seller": "resource:org.accordproject.party.Party#Jerome",
   "value": {

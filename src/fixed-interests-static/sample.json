@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.fixedinterestsstatic@0.2.0.TemplateModel",
+  "$class": "org.accordproject.fixedinterestsstatic@0.3.0.TemplateModel",
   "loanAmount": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 100000,

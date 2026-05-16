@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.rentaldeposit@0.2.0.TemplateModel",
+  "$class": "org.accordproject.rentaldeposit@0.3.0.TemplateModel",
   "tenant": "resource:org.accordproject.party.Party#Michael",
   "landlord": "resource:org.accordproject.party.Party#Parsa",
   "depositAmount": {

@@ -21,9 +21,9 @@ import {
     IClosingPayment,
     IInstallmentSaleState,
     ContractStatus
-} from './generated/org.accordproject.installmentsale@0.1.0';
+} from './generated/org.accordproject.installmentsale@0.3.0';
 
-const NS = 'org.accordproject.installmentsale@0.1.0';
+const NS = 'org.accordproject.installmentsale@0.3.0';
 
 describe('InstallmentSaleLogic', () => {
     let logic: InstallmentSaleLogic;

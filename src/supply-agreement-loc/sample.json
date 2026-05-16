@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.supplyagreementloc@0.2.0.TemplateModel",
+  "$class": "org.accordproject.supplyagreementloc@0.3.0.TemplateModel",
   "executionDate": "2021-01-20T01:00:00.000+01:00",
   "exporter": "Acme Exports",
   "importer": "Dan's Imports",

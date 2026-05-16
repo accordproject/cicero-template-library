@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.lateinvoicewithpayment@0.2.0.LateInvoiceRequest",
+  "$class": "org.accordproject.lateinvoicewithpayment@0.3.0.LateInvoiceRequest",
   "invoiceDue": "2019-01-17T03:24:00Z",
   "amountDue": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",

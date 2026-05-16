@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.latedeliveryandpenalty@0.2.0.LateDeliveryAndPenaltyRequest",
+  "$class": "org.accordproject.latedeliveryandpenalty@0.3.0.LateDeliveryAndPenaltyRequest",
   "forceMajeure": false,
   "agreedDelivery": "2017-12-17T03:24:00-05:00",
   "deliveredAt": null,

@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.eatapples@0.2.0.Food",
+  "$class": "org.accordproject.eatapples@0.3.0.Food",
   "produce": "apple",
   "price": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",

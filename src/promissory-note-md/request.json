@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.promissorynotemd@0.2.0.Payment",
+  "$class": "org.accordproject.promissorynotemd@0.3.0.Payment",
   "amountPaid": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 100,

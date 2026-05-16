@@ -287,6 +287,20 @@ function migrateTemplate(name, fields) {
         }
     }
 
+    // Rewrite the template's old namespace to the new one inside any
+    // logic.ts / logic.test.ts files. The math itself (e.g. `data.amount`
+    // vs `data.amount.doubleValue`) still needs per-template hand-editing;
+    // this is the safe mechanical part so the import paths and `$class`
+    // string literals at least line up with the bumped model.
+    const logicResults = [];
+    for (const f of ['logic/logic.ts', 'logic/logic.test.ts']) {
+        const lp = join(dir, f);
+        if (!existsSync(lp)) continue;
+        const before = readFileSync(lp, 'utf8');
+        const after = before.split(cto.oldNs).join(cto.newNs);
+        if (after !== before) logicResults.push({ filePath: lp, after });
+    }
+
     const pkgPath = join(dir, 'package.json');
     let pkgResult = null;
     if (existsSync(pkgPath)) {
@@ -303,6 +317,7 @@ function migrateTemplate(name, fields) {
         if (needsCache && existsSync(cacheSource)) copyFileSync(cacheSource, cacheTarget);
         for (const r of jsonResults) writeFileSync(r.filePath, r.after);
         if (grammarResult) writeFileSync(grammarResult.filePath, grammarResult.after);
+        for (const r of logicResults) writeFileSync(r.filePath, r.after);
         if (pkgResult) writeFileSync(pkgResult.filePath, pkgResult.after);
     }
 

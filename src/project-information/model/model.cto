@@ -1,4 +1,4 @@
-namespace org.accordproject.projectinformation@0.2.0
+namespace org.accordproject.projectinformation@0.3.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto

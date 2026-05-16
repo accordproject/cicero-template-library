@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.copyrightlicense@0.2.0.TemplateModel",
+  "$class": "org.accordproject.copyrightlicense@0.3.0.TemplateModel",
   "effectiveDate": "2018-01-01T01:00:00.000+01:00",
   "licensee": "resource:org.accordproject.party.Party#Me",
   "licenseeState": "NY",
@@ -13,7 +13,7 @@
   "purposeDescription": "stuff",
   "workDescription": "other stuff",
   "paymentClause": {
-    "$class": "org.accordproject.copyrightlicense@0.2.0.PaymentClause",
+    "$class": "org.accordproject.copyrightlicense@0.3.0.PaymentClause",
     "amountText": "one hundred US Dollars",
     "amount": {
       "$class": "org.accordproject.money@0.3.0.MonetaryAmount",

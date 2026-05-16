@@ -1,4 +1,4 @@
 {
-  "$class": "org.accordproject.fixedinterestsstatic@0.2.0.FixedInterestsStaticRequest",
+  "$class": "org.accordproject.fixedinterestsstatic@0.3.0.FixedInterestsStaticRequest",
   "input": "test"
 }

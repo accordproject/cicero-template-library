@@ -1,4 +1,4 @@
-import { ITemplateModel, IVolumeDiscountRequest, IVolumeDiscountResponse, IRateRange } from './generated/org.accordproject.volumediscountulist@0.1.0';
+import { ITemplateModel, IVolumeDiscountRequest, IVolumeDiscountResponse, IRateRange } from './generated/org.accordproject.volumediscountulist@0.3.0';
 
 type VolumeDiscountResult = {
     result: IVolumeDiscountResponse;
@@ -19,7 +19,7 @@ class VolumeDiscountUListLogic extends TemplateLogic<ITemplateModel> {
         }
         return {
             result: {
-                $class: 'org.accordproject.volumediscountulist@0.1.0.VolumeDiscountResponse',
+                $class: 'org.accordproject.volumediscountulist@0.3.0.VolumeDiscountResponse',
                 $timestamp: new Date(),
                 discountRate: rate,
             },

@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.isda.irs@0.2.0.TemplateModel",
+  "$class": "org.accordproject.isda.irs@0.3.0.TemplateModel",
   "bank": "resource:org.accordproject.organization.Organization#Deutsche%20Bank",
   "letterDate": "2005-06-30T00:00:00.000+01:00",
   "counterparty": "resource:org.accordproject.organization.Organization#MagnaChip%20Semiconductor%20S.A.",
@@ -17,7 +17,7 @@
   "fixedRatePayerPaymentDates": "The 15th day of March, June, September and December of each year, commencing September 15, 2005, through and including the Termination Date",
   "fixedRate": 4.09,
   "fixedRateDayCountFraction": {
-    "$class": "org.accordproject.isda.irs@0.2.0.DayCountFraction",
+    "$class": "org.accordproject.isda.irs@0.3.0.DayCountFraction",
     "value": "30",
     "dayCountFractionScheme": "360"
   },
@@ -31,7 +31,7 @@
   "designatedMaturity": "Three months",
   "spread": "None",
   "floatingRateDayCountFraction": {
-    "$class": "org.accordproject.isda.irs@0.2.0.DayCountFraction",
+    "$class": "org.accordproject.isda.irs@0.3.0.DayCountFraction",
     "value": "30",
     "dayCountFractionScheme": "360"
   },

@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.lateinvoicewithpayment@0.2.0.TemplateModel",
+  "$class": "org.accordproject.lateinvoicewithpayment@0.3.0.TemplateModel",
   "maximumDelay": {
     "$class": "org.accordproject.time@0.3.0.Duration",
     "amount": 180,

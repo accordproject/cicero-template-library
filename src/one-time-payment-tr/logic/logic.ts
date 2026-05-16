@@ -4,7 +4,7 @@ import {
     IPaymentReceived,
     IPaymentReceivedResponse,
     IPaymentObligationEvent,
-} from './generated/org.accordproject.onetimepaymenttr@0.1.0';
+} from './generated/org.accordproject.onetimepaymenttr@0.3.0';
 
 // @ts-expect-error EngineResponse is injected by the runtime
 interface OneTimePaymentEngineResponse extends EngineResponse<IOneTimePaymentState> {
@@ -20,7 +20,7 @@ class OneTimePaymentLogic extends TemplateLogic<ITemplateModel, IOneTimePaymentS
     async init(data: ITemplateModel): Promise<InitResponse<IOneTimePaymentState>> {
         const now = new Date();
         const event: IPaymentObligationEvent = {
-            $class: 'org.accordproject.onetimepaymenttr@0.1.0.PaymentObligationEvent',
+            $class: 'org.accordproject.onetimepaymenttr@0.3.0.PaymentObligationEvent',
             $timestamp: now,
             amount: data.totalPurchasePrice,
             currencyCode: data.currencyCode,
@@ -28,7 +28,7 @@ class OneTimePaymentLogic extends TemplateLogic<ITemplateModel, IOneTimePaymentS
         };
         return {
             state: {
-                $class: 'org.accordproject.onetimepaymenttr@0.1.0.OneTimePaymentState',
+                $class: 'org.accordproject.onetimepaymenttr@0.3.0.OneTimePaymentState',
                 $identifier: data.$identifier,
                 status: 'INITIALIZED',
             },
@@ -46,8 +46,8 @@ class OneTimePaymentLogic extends TemplateLogic<ITemplateModel, IOneTimePaymentS
             throw new Error('Payment has already been received.');
         }
         return {
-            result: { $class: 'org.accordproject.onetimepaymenttr@0.1.0.PaymentReceivedResponse', $timestamp: now },
-            state: { $class: 'org.accordproject.onetimepaymenttr@0.1.0.OneTimePaymentState', $identifier: state.$identifier, status: 'COMPLETED' },
+            result: { $class: 'org.accordproject.onetimepaymenttr@0.3.0.PaymentReceivedResponse', $timestamp: now },
+            state: { $class: 'org.accordproject.onetimepaymenttr@0.3.0.OneTimePaymentState', $identifier: state.$identifier, status: 'COMPLETED' },
             events: [],
         };
     }

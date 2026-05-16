@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.latedeliveryandpenaltyoptional@0.2.0.TemplateModel",
+  "$class": "org.accordproject.latedeliveryandpenaltyoptional@0.3.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Steve",
   "seller": "resource:org.accordproject.party.Party#Dan",
   "forceMajeure": {

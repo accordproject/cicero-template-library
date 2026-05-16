@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.volumediscount@0.2.0.VolumeDiscountRequest",
+  "$class": "org.accordproject.volumediscount@0.3.0.VolumeDiscountRequest",
   "netAnnualChargeVolume": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 0.4,

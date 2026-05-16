@@ -1,5 +1,5 @@
 {
-  "$class": "org.accordproject.paymentuponiot@0.2.0.TemplateModel",
+  "$class": "org.accordproject.paymentuponiot@0.3.0.TemplateModel",
   "buyer": "resource:org.accordproject.party.Party#Dan",
   "seller": "resource:org.accordproject.party.Party#Grant",
   "amountPerUnit": {
