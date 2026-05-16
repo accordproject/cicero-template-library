@@ -88,8 +88,8 @@ describe("FragileGoodsLogic", () => {
                 finishTime: new Date("2018-01-01T16:34:05Z"), // 5s < 10s limit
             });
             const response = await logic.trigger(model, request);
-            expect(response.result.paymentAmount).toBe(1000.0);
-            expect(response.result.currencyCode).toBe("USD");
+            expect(response.result.paymentAmount.doubleValue).toBe(1000.0);
+            expect(response.result.paymentAmount.currencyCode).toBe("USD");
             expect(response.result.$class).toBe(`${NS}.PayOut`);
             expect(response.result.$timestamp).toBeInstanceOf(Date);
             expect(Array.isArray(response.events)).toBe(true);
@@ -107,7 +107,7 @@ describe("FragileGoodsLogic", () => {
                 finishTime: new Date("2018-01-01T16:34:05Z"), // on time
             });
             const response = await logic.trigger(model, request);
-            expect(response.result.paymentAmount).toBe(990.0);
+            expect(response.result.paymentAmount.doubleValue).toBe(990.0);
         });
 
         it("should handle an empty accelerometer readings array", async () => {
@@ -117,7 +117,7 @@ describe("FragileGoodsLogic", () => {
                 finishTime: new Date("2018-01-01T16:34:05Z"),
             });
             const response = await logic.trigger(model, request);
-            expect(response.result.paymentAmount).toBe(1000.0);
+            expect(response.result.paymentAmount.doubleValue).toBe(1000.0);
         });
     });
 
@@ -132,12 +132,12 @@ describe("FragileGoodsLogic", () => {
                 finishTime: new Date("2018-01-01T16:44:31Z"), // 601 seconds later
             });
             const response = await logic.trigger(model, request);
-            expect(response.result.paymentAmount).toBe(790.0);
+            expect(response.result.paymentAmount.doubleValue).toBe(790.0);
             expect(response.events).toHaveLength(1);
             const event: any = response.events[0];
             expect(event.$class).toBe(`${NS}.FragileGoodsEvent`);
-            expect(event.paymentAmount).toBe(790.0);
-            expect(event.currencyCode).toBe("USD");
+            expect(event.paymentAmount.doubleValue).toBe(790.0);
+            expect(event.paymentAmount.currencyCode).toBe("USD");
         });
 
         it("should not apply late penalty when delivery is within the limit", async () => {
@@ -148,7 +148,7 @@ describe("FragileGoodsLogic", () => {
                 finishTime: new Date("2018-01-01T16:34:05Z"),
             });
             const response = await logic.trigger(model, request);
-            expect(response.result.paymentAmount).toBe(1000.0);
+            expect(response.result.paymentAmount.doubleValue).toBe(1000.0);
         });
 
         it("should apply late penalty when delivery equals the limit duration exactly + 1ms", async () => {
@@ -161,7 +161,7 @@ describe("FragileGoodsLogic", () => {
                 finishTime: finish,
             });
             const response = await logic.trigger(model, request);
-            expect(response.result.paymentAmount).toBe(800.0); // 1000 - 200 late penalty
+            expect(response.result.paymentAmount.doubleValue).toBe(800.0); // 1000 - 200 late penalty
         });
     });
 
@@ -173,7 +173,7 @@ describe("FragileGoodsLogic", () => {
             });
             const response = await logic.trigger(model, request);
             // 2 violations x $5 = $10 penalty; no late penalty because not ARRIVED
-            expect(response.result.paymentAmount).toBe(990.0);
+            expect(response.result.paymentAmount.doubleValue).toBe(990.0);
             expect(response.events).toHaveLength(0);
         });
 
@@ -183,7 +183,7 @@ describe("FragileGoodsLogic", () => {
                 accelerometerReadings: [],
             });
             const response = await logic.trigger(model, request);
-            expect(response.result.paymentAmount).toBe(1000.0);
+            expect(response.result.paymentAmount.doubleValue).toBe(1000.0);
             expect(response.events).toHaveLength(0);
         });
     });
@@ -197,7 +197,7 @@ describe("FragileGoodsLogic", () => {
             });
             const response = await logic.trigger(model, request);
             // 1 violation x $5 = $5 penalty; no late delivery check
-            expect(response.result.paymentAmount).toBe(995.0);
+            expect(response.result.paymentAmount.doubleValue).toBe(995.0);
             expect(response.events).toHaveLength(0);
         });
     });
@@ -223,7 +223,7 @@ describe("FragileGoodsLogic", () => {
             });
             const request = makeRequest({ accelerometerReadings: [] });
             const response = await logic.trigger(customModel, request);
-            expect(response.result.currencyCode).toBe("EUR");
+            expect(response.result.paymentAmount.currencyCode).toBe("EUR");
         });
     });
 });
