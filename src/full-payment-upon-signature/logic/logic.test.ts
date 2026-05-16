@@ -29,8 +29,7 @@ describe('FullPaymentUponSignatureLogic', () => {
             clauseId: 'test-id',
             buyer: 'Alice',
             seller: 'Bob',
-            amount: 5000,
-            currencyCode: 'EUR',
+            amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 5000, currencyCode: 'EUR' },
         };
         initializedState = {
             $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState',
@@ -58,8 +57,8 @@ describe('FullPaymentUponSignatureLogic', () => {
             expect(result.events).toHaveLength(1);
             const event = result.events[0] as any;
             expect(event.$class).toBe('org.accordproject.fullpaymentupondsignature@0.2.0.PaymentObligationEvent');
-            expect(event.amount).toBe(5000);
-            expect(event.currencyCode).toBe('EUR');
+            expect(event.amount.doubleValue).toBe(5000);
+            expect(event.amount.currencyCode).toBe('EUR');
             expect(event.description).toContain('Alice');
             expect(event.description).toContain('Bob');
         });
