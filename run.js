@@ -589,10 +589,6 @@ async function landingPageGenerator(serverRoot, templateName, versions) {
         return semver.rcompare(versionA, versionB);
     });
 
-    const latestId = sortedVersions[0].id;
-    const latestEntry = sortedVersions[0].entry;
-    const latestVersion = latestId.substring(latestId.indexOf('@') + 1);
-
     // Build the versions list for the template, filtering to only versions with HTML files
     const versionsList = [];
     for (const v of sortedVersions) {
@@ -609,6 +605,11 @@ async function landingPageGenerator(serverRoot, templateName, versions) {
         }
     }
 
+    // Use the first available version (with HTML file) as latest, not the semantic latest
+    const latestVersion = versionsList.length > 0 ? versionsList[0].version : '';
+    const latestVersionUrl = versionsList.length > 0 ? versionsList[0].url : '';
+    const latestEntry = sortedVersions[0].entry;
+
     // Create landing page directory
     const landingPageDir = resolve(buildDir, 't', templateName);
     await fs.ensureDir(landingPageDir);
@@ -624,7 +625,7 @@ async function landingPageGenerator(serverRoot, templateName, versions) {
         author: latestEntry.author,
         logo: latestEntry.logo,
         latestVersion: latestVersion,
-        latestVersionUrl: `${versionsList[0].url}`,
+        latestVersionUrl: latestVersionUrl,
         versions: versionsList,
     });
     await writeFile(resolve(landingPageDir, 'index.html'), landingResult);
