@@ -26,8 +26,7 @@ describe('RentalDepositWithLogic', () => {
             clauseId: 'test-id',
             tenant: { $class: `${NS}.RentalParty`, partyId: 'Alice Smith', address: '123 Main St' },
             landlord: { $class: `${NS}.RentalParty`, partyId: 'Bob Jones', address: '456 Oak Ave' },
-            depositAmount: 2500.0,
-            currencyCode: 'USD',
+            depositAmount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 2500.0, currencyCode: 'USD' },
             tenantDepositRestorationPeriod: '30 days',
             monthlyBaseRentMultiple: 2.0,
             applicableLaw: 'California Civil Code',
@@ -48,7 +47,7 @@ describe('RentalDepositWithLogic', () => {
             const result = await logic.trigger(model, request);
 
             expect(result.result).toHaveProperty('$class', `${NS}.PropertyInspectionResponse`);
-            expect(result.result.balance).toBe(2500.0);
+            expect(result.result.balance.doubleValue).toBe(2500.0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -60,20 +59,18 @@ describe('RentalDepositWithLogic', () => {
                     {
                         $class: `${NS}.Penalty`,
                         description: 'Cleaning carpets',
-                        amount: 1000.0,
-                        currencyCode: 'USD'
+                        amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000.0, currencyCode: 'USD' }
                     },
                     {
                         $class: `${NS}.Penalty`,
                         description: 'Pet damage',
-                        amount: 450.0,
-                        currencyCode: 'USD'
+                        amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 450.0, currencyCode: 'USD' }
                     }
                 ]
             };
             const result = await logic.trigger(model, request);
 
-            expect(result.result.balance).toBe(1050.0);
+            expect(result.result.balance.doubleValue).toBe(1050.0);
         });
 
         it('should preserve tenant and landlord party data', async () => {
@@ -87,7 +84,7 @@ describe('RentalDepositWithLogic', () => {
             expect(model.landlord.address).toBe('456 Oak Ave');
 
             const result = await logic.trigger(model, request);
-            expect(result.result.balance).toBe(2500.0);
+            expect(result.result.balance.doubleValue).toBe(2500.0);
         });
     });
 });
