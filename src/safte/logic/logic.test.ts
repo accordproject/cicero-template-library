@@ -9,6 +9,14 @@
 import SafteLogic from './logic';
 import { ITemplateModel, ITokenSale, IEquityFinancing, IDissolutionEvent } from './generated/org.accordproject.safte@0.2.0';
 
+function monetaryAmount(doubleValue: number, currencyCode = 'USD') {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode
+    };
+}
+
 describe('SafteLogic', () => {
     let logic: SafteLogic;
     let model: ITemplateModel;
@@ -23,13 +31,13 @@ describe('SafteLogic', () => {
             companyRegistrationNumber: 555,
             purchaser: 'Dan',
             jurisdiction: 'NY',
-            purchaseAmount: 25.0,
+            purchaseAmount: monetaryAmount(25.0),
             discount: 7.0,
             projectName: 'Umbrella',
             projectDescription: 'manages umbrella tokens',
             months: 12,
             monthsText: 'twelve',
-            amount: 1000.0,
+            amount: monetaryAmount(1000.0),
             amountText: 'one thousand'
         };
     });
@@ -39,7 +47,7 @@ describe('SafteLogic', () => {
             const request: ITokenSale = {
                 $class: 'org.accordproject.safte@0.2.0.TokenSale',
                 $timestamp: new Date(),
-                tokenPrice: 1.23
+                tokenPrice: monetaryAmount(1.23)
             };
 
             const result = await logic.trigger(model, request);
@@ -59,7 +67,7 @@ describe('SafteLogic', () => {
             const request: IEquityFinancing = {
                 $class: 'org.accordproject.safte@0.2.0.EquityFinancing',
                 $timestamp: new Date(),
-                sharePrice: 3.00
+                sharePrice: monetaryAmount(3.00)
             };
 
             const result = await logic.trigger(model, request);
@@ -70,7 +78,7 @@ describe('SafteLogic', () => {
             // discountPrice = 3.00 * 0.93 = 2.79
             // equityAmount = 25 / 2.79 ≈ 8.961
             const equityShare = result.result as any;
-            expect(equityShare.equityAmount).toBeCloseTo(8.960573476702509, 5);
+            expect(equityShare.equityAmount.doubleValue).toBeCloseTo(8.960573476702509, 5);
         });
     });
 
@@ -87,7 +95,7 @@ describe('SafteLogic', () => {
             expect(result.result).toHaveProperty('$class', 'org.accordproject.safte@0.2.0.PayOut');
             expect(result.result).toHaveProperty('$timestamp');
             const payout = result.result as any;
-            expect(payout.amount).toBe(25.0);
+            expect(payout.amount.doubleValue).toBe(25.0);
         });
     });
 

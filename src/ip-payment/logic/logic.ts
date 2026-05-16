@@ -1,7 +1,7 @@
 import { ITemplateModel, IPaymentRequest, IPayOut } from './generated/org.accordproject.ippayment@0.2.0';
-import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
-function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
     return {
         $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
         doubleValue,
@@ -51,8 +51,10 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
     }
 
     async trigger(data: ITemplateModel, request: IPaymentRequest): Promise<IPPaymentResponse> {
-        const royaltiesAmount = request.netSaleRevenue.doubleValue * data.royaltyRate / 100.0;
-        const sublicensingAmount = request.sublicensingRevenue.doubleValue * data.sublicensingRoyaltyRate / 100.0;
+        const netSaleRevenue = request.netSaleRevenue as unknown as IMonetaryAmount;
+        const sublicensingRevenue = request.sublicensingRevenue as unknown as IMonetaryAmount;
+        const royaltiesAmount = netSaleRevenue.doubleValue * data.royaltyRate / 100.0;
+        const sublicensingAmount = sublicensingRevenue.doubleValue * data.sublicensingRoyaltyRate / 100.0;
         const totalAmountValue = royaltiesAmount + sublicensingAmount;
 
         let dueBy: Date;
@@ -66,7 +68,7 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 $class: 'org.accordproject.ippayment@0.2.0.PayOut',
                 $timestamp: new Date(),
-                totalAmount: monetary(totalAmountValue, request.netSaleRevenue.currencyCode),
+                totalAmount: monetary(totalAmountValue, netSaleRevenue.currencyCode),
                 dueBy,
             },
         };

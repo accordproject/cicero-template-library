@@ -1,6 +1,6 @@
 import { ITemplateModel, ILateRequest, ILateResponse, IPaymentObligationEvent } from './generated/org.accordproject.minilatedeliveryandpenaltypayment@0.2.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
-import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 type MiniLateDeliveryPaymentResponse = {
     result: ILateResponse;
@@ -16,7 +16,7 @@ function durationToDays(duration: IDuration): number {
     }
 }
 
-function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
     return {
         $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
         doubleValue,

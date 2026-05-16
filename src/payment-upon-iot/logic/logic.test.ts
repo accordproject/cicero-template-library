@@ -20,6 +20,7 @@ import {
     ICounterState,
     ContractLifecycleStatus,
 } from "./generated/org.accordproject.paymentuponiot@0.2.0";
+import { CurrencyCode } from "./generated/org.accordproject.money@0.3.0";
 
 const NS = "org.accordproject.paymentuponiot@0.2.0";
 
@@ -30,8 +31,11 @@ function makeModel(overrides: Partial<ITemplateModel> = {}): ITemplateModel {
         clauseId: "test-clause-id",
         buyer: "Dan",
         seller: "Grant",
-        amountPerUnit: 10.0,
-        currencyCode: "USD",
+        amountPerUnit: {
+            $class: "org.accordproject.money@0.3.0.MonetaryAmount",
+            doubleValue: 10.0,
+            currencyCode: CurrencyCode.USD,
+        },
         paymentCount: 5,
         ...overrides,
     };
@@ -162,8 +166,8 @@ describe("PaymentUponIoTLogic", () => {
             expect(result.events).toHaveLength(1);
             const event: any = result.events[0];
             expect(event.$class).toBe(`${NS}.PaymentObligationEvent`);
-            expect(event.amount).toBe(30.0);
-            expect(event.currencyCode).toBe("USD");
+            expect(event.amount.doubleValue).toBe(30.0);
+            expect(event.amount.currencyCode).toBe(CurrencyCode.USD);
             expect(event.description).toContain("Dan");
             expect(event.description).toContain("Grant");
         });
@@ -189,8 +193,7 @@ describe("PaymentUponIoTLogic", () => {
             // counter=5, pay $30 = 3 units, counter -> 2
             const state = runningState({ counter: 5.0, paymentCount: 0.0 });
             const request = makeRequest("PaymentReceived", {
-                amount: 30.0,
-                currencyCode: "USD",
+                amount: { $class: "org.accordproject.money@0.3.0.MonetaryAmount", doubleValue: 30.0, currencyCode: CurrencyCode.USD },
             });
             const result = await logic.trigger(model, request, state);
             expect(result.state.counter).toBe(2.0);
@@ -202,8 +205,7 @@ describe("PaymentUponIoTLogic", () => {
             // model.paymentCount = 5, state.paymentCount = 4 (one more = 5 >= 5 → COMPLETED)
             const state = runningState({ counter: 2.0, paymentCount: 4.0 });
             const request = makeRequest("PaymentReceived", {
-                amount: 20.0,
-                currencyCode: "USD",
+                amount: { $class: "org.accordproject.money@0.3.0.MonetaryAmount", doubleValue: 20.0, currencyCode: CurrencyCode.USD },
             });
             const result = await logic.trigger(model, request, state);
             expect(result.state.status).toBe("COMPLETED");
@@ -213,8 +215,7 @@ describe("PaymentUponIoTLogic", () => {
         it("should floor the counter at 0 (overpayment)", async () => {
             const state = runningState({ counter: 1.0, paymentCount: 0.0 });
             const request = makeRequest("PaymentReceived", {
-                amount: 1000.0, // way more than outstanding
-                currencyCode: "USD",
+                amount: { $class: "org.accordproject.money@0.3.0.MonetaryAmount", doubleValue: 1000.0, currencyCode: CurrencyCode.USD }, // way more than outstanding
             });
             const result = await logic.trigger(model, request, state);
             expect(result.state.counter).toBe(0.0);
@@ -223,8 +224,7 @@ describe("PaymentUponIoTLogic", () => {
         it("should throw for negative payment amount", async () => {
             const state = runningState();
             const request = makeRequest("PaymentReceived", {
-                amount: -10.0,
-                currencyCode: "USD",
+                amount: { $class: "org.accordproject.money@0.3.0.MonetaryAmount", doubleValue: -10.0, currencyCode: CurrencyCode.USD },
             });
             await expect(logic.trigger(model, request, state))
                 .rejects.toThrow("Payment must be positive.");
@@ -233,8 +233,7 @@ describe("PaymentUponIoTLogic", () => {
         it("should throw for wrong currency", async () => {
             const state = runningState();
             const request = makeRequest("PaymentReceived", {
-                amount: 10.0,
-                currencyCode: "EUR",
+                amount: { $class: "org.accordproject.money@0.3.0.MonetaryAmount", doubleValue: 10.0, currencyCode: CurrencyCode.EUR },
             });
             await expect(logic.trigger(model, request, state))
                 .rejects.toThrow("Payments must be in the currency of the contract.");
@@ -243,8 +242,7 @@ describe("PaymentUponIoTLogic", () => {
         it("should throw if contract is not RUNNING", async () => {
             const state = makeState({ status: "COMPLETED" as ContractLifecycleStatus });
             const request = makeRequest("PaymentReceived", {
-                amount: 10.0,
-                currencyCode: "USD",
+                amount: { $class: "org.accordproject.money@0.3.0.MonetaryAmount", doubleValue: 10.0, currencyCode: CurrencyCode.USD },
             });
             await expect(logic.trigger(model, request, state))
                 .rejects.toThrow("Contract is not running.");
@@ -292,13 +290,13 @@ describe("PaymentUponIoTLogic", () => {
 
             // 5. request payment (counter=2, amount=$20 expected in event)
             result = await logic.trigger(model, makeRequest("LongButtonPress"), state);
-            expect((result.events[0] as any).amount).toBe(20.0);
+            expect((result.events[0] as any).amount.doubleValue).toBe(20.0);
             state = result.state as ICounterState;
 
             // 6. pay $20 = 2 units
             result = await logic.trigger(
                 model,
-                makeRequest("PaymentReceived", { amount: 20.0, currencyCode: "USD" }),
+                makeRequest("PaymentReceived", { amount: { $class: "org.accordproject.money@0.3.0.MonetaryAmount", doubleValue: 20.0, currencyCode: CurrencyCode.USD } }),
                 state
             );
             state = result.state as ICounterState;

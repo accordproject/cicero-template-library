@@ -32,11 +32,11 @@ function monthlyPaymentFormula(loanAmount: number, rate: number, loanDuration: n
 // @ts-ignore TemplateLogic is imported by the runtime
 class FixedInterestsLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IFixedInterestsRequest): Promise<FixedInterestsResponse> {
-        const monthly = monthlyPaymentFormula(data.loanAmount, data.rate, data.loanDuration);
+        const monthly = monthlyPaymentFormula(data.loanAmount.doubleValue, data.rate, data.loanDuration);
 
         return {
             result: {
-                output: `loan for the amount of ${data.loanAmount}`,
+                output: `loan for the amount of ${data.loanAmount.doubleValue}`,
                 $timestamp: new Date(),
                 $class: 'org.accordproject.fixedinterests@0.2.0.FixedInterestsResponse'
             }

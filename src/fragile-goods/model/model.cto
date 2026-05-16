@@ -14,11 +14,6 @@ enum ShipmentStatus {
   o ARRIVED
 }
 
-concept MonetaryAmount {
-  o Double doubleValue
-  o String currencyCode
-}
-
 transaction DeliveryUpdate extends Request {
   o DateTime startTime
   o DateTime finishTime optional

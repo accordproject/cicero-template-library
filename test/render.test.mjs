@@ -38,7 +38,6 @@ const expectedFailures = new Set([
     'company-information',
     'docusign-po-failure',
     'fixed-interests',
-    'fragile-goods',
     'full-payment-upon-demand',
     'installment-sale',
     'interest-rate-swap',

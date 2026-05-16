@@ -4,9 +4,9 @@ import {
     IPurchaseOrderFailureState,
     IPurchaseOrderPaymentEvent
 } from "./generated/org.accordproject.docusignpofailure@0.2.0";
-import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
-function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
     return {
         $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
         doubleValue,
@@ -174,10 +174,11 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
             throw new Error('Could not find an actualPrice tab');
         }
 
-        const currencyCode = this.getTextTabFromRecipients(request, 'currencyCode');
-        if (!currencyCode) {
+        const currencyCodeStr = this.getTextTabFromRecipients(request, 'currencyCode');
+        if (!currencyCodeStr) {
             throw new Error('Could not find a currencyCode tab');
         }
+        const currencyCode = currencyCodeStr as CurrencyCode;
 
         const lateOneDuration = data.lateOne as unknown as IDuration;
         const lateTwoDuration = data.lateTwo as unknown as IDuration;

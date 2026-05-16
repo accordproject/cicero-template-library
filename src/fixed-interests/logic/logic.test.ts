@@ -12,6 +12,14 @@ declare global {
 import FixedInterestsLogic from './logic';
 import { ITemplateModel, IFixedInterestsRequest } from './generated/org.accordproject.fixedinterests@0.2.0';
 
+function monetaryAmount(doubleValue: number, currencyCode = 'USD') {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode
+    };
+}
+
 describe('FixedInterestsLogic', () => {
     let logic: FixedInterestsLogic;
     let model: ITemplateModel;
@@ -22,8 +30,7 @@ describe('FixedInterestsLogic', () => {
             $class: 'org.accordproject.fixedinterests@0.2.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
-            loanAmount: 100000.0,
-            currencyCode: 'USD',
+            loanAmount: monetaryAmount(100000.0),
             rate: 2.5,
             loanDuration: 15
         };
@@ -44,7 +51,7 @@ describe('FixedInterestsLogic', () => {
         });
 
         it('should handle different loan amounts', async () => {
-            model.loanAmount = 200000.0;
+            model.loanAmount = monetaryAmount(200000.0);
             model.rate = 6.5;
             model.loanDuration = 30;
             const request: IFixedInterestsRequest = {

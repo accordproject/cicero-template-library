@@ -1,5 +1,5 @@
 import { IPayment, IResult, ITemplateModel } from "./generated/org.accordproject.promissorynotemd@0.2.0";
-import { IMonetaryAmount } from "./generated/org.accordproject.money@0.3.0";
+import { IMonetaryAmount, CurrencyCode } from "./generated/org.accordproject.money@0.3.0";
 
 type PromissoryNoteMdResponse = {
     result: IResult;
@@ -9,7 +9,7 @@ function compoundInterestMultiple(annualInterest: number, numberOfDays: number):
     return Math.pow(1.0 + annualInterest, numberOfDays / 365.0);
 }
 
-function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
     return {
         $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
         doubleValue,

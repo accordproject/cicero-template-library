@@ -1,11 +1,11 @@
 import { ITemplateModel, IRateObservation, IResult } from "./generated/org.accordproject.isda.irs@0.2.0";
-import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 type InterestRateSwapResponse = {
     result: IResult;
 };
 
-function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
     return {
         $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
         doubleValue,

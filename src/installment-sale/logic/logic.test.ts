@@ -25,6 +25,14 @@ import {
 
 const NS = 'org.accordproject.installmentsale@0.2.0';
 
+function monetaryAmount(doubleValue: number, currencyCode = 'EUR') {
+    return {
+        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+        doubleValue,
+        currencyCode
+    };
+}
+
 describe('InstallmentSaleLogic', () => {
     let logic: InstallmentSaleLogic;
     let model: ITemplateModel;
@@ -41,8 +49,8 @@ describe('InstallmentSaleLogic', () => {
             INITIAL_DUE: 10000.0,
             CURRENCY_CODE: 'EUR',
             INTEREST_RATE: 1.5,
-            TOTAL_DUE_BEFORE_CLOSING: 9500.0,
-            MIN_PAYMENT: 500.0,
+            TOTAL_DUE_BEFORE_CLOSING: monetaryAmount(9500.0),
+            MIN_PAYMENT: monetaryAmount(500.0),
             DUE_AT_CLOSING: 500.0,
             FIRST_MONTH: 3
         };
@@ -50,10 +58,9 @@ describe('InstallmentSaleLogic', () => {
             $class: `${NS}.InstallmentSaleState`,
             $identifier: 'test-id',
             status: ContractStatus.WaitingForFirstDayOfNextMonth,
-            balance_remaining: 10000.0,
-            currencyCode: 'EUR',
+            balance_remaining: monetaryAmount(10000.0),
             next_payment_month: 3,
-            total_paid: 0.0
+            total_paid: monetaryAmount(0.0)
         };
     });
 
@@ -64,9 +71,9 @@ describe('InstallmentSaleLogic', () => {
                 $class: `${NS}.InstallmentSaleState`,
                 $identifier: 'test-id',
                 status: ContractStatus.WaitingForFirstDayOfNextMonth,
-                balance_remaining: 10000.0,
-                total_paid: 0.0
             });
+            expect(result.state.balance_remaining.doubleValue).toBe(10000.0);
+            expect(result.state.total_paid.doubleValue).toBe(0.0);
         });
     });
 
@@ -75,14 +82,13 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 2500.0,
-                currencyCode: 'EUR'
+                amount: monetaryAmount(2500.0),
             };
             const result = await logic.trigger(model, request, initialState);
 
             expect(result.result).toHaveProperty('$class', `${NS}.Balance`);
-            expect(result.result.total_paid).toBeCloseTo(2500.0, 2);
-            expect(result.result.balance).toBeLessThan(10000.0);
+            expect(result.result.total_paid.doubleValue).toBeCloseTo(2500.0, 2);
+            expect(result.result.balance.doubleValue).toBeLessThan(10000.0);
             expect(Array.isArray(result.events)).toBe(true);
             expect(result.events).toHaveLength(1);
         });
@@ -91,8 +97,7 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 100.0,
-                currencyCode: 'EUR'
+                amount: monetaryAmount(100.0),
             };
             await expect(logic.trigger(model, request, initialState)).rejects.toThrow('Underpaying is forbidden.');
         });
@@ -101,13 +106,12 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 2500.0,
-                currencyCode: 'EUR'
+                amount: monetaryAmount(2500.0),
             };
             const result1 = await logic.trigger(model, request, initialState);
             const result2 = await logic.trigger(model, request, result1.state as IInstallmentSaleState);
 
-            expect(result2.result.total_paid).toBeCloseTo(5000.0, 2);
+            expect(result2.result.total_paid.doubleValue).toBeCloseTo(5000.0, 2);
             expect((result2.state as IInstallmentSaleState).next_payment_month).toBe(5);
         });
 
@@ -119,8 +123,7 @@ describe('InstallmentSaleLogic', () => {
             const request: IInstallment = {
                 $class: `${NS}.Installment`,
                 $timestamp: new Date(),
-                amount: 2500.0,
-                currencyCode: 'EUR'
+                amount: monetaryAmount(2500.0),
             };
             await expect(logic.trigger(model, request, lateState)).rejects.toThrow('please pay the last installment instead');
         });
@@ -131,33 +134,31 @@ describe('InstallmentSaleLogic', () => {
             // balance_remaining = 500.0 (just enough for a closing payment)
             const closeState: IInstallmentSaleState = {
                 ...initialState,
-                balance_remaining: 500.0,
-                total_paid: 9500.0
+                balance_remaining: monetaryAmount(500.0),
+                total_paid: monetaryAmount(9500.0)
             };
             // Closing payment = balance_remaining + DUE_AT_CLOSING = 500 + 500 = 1000
             const request: IClosingPayment = {
                 $class: `${NS}.ClosingPayment`,
                 $timestamp: new Date(),
-                amount: 1000.0,
-                currencyCode: 'EUR'
+                amount: monetaryAmount(1000.0),
             };
             const result = await logic.trigger(model, request, closeState);
 
-            expect(result.result.balance).toBe(0.0);
+            expect(result.result.balance.doubleValue).toBe(0.0);
             expect((result.state as IInstallmentSaleState).status).toBe(ContractStatus.Fulfilled);
         });
 
         it('should throw when closing payment amount is wrong', async () => {
             const closeState: IInstallmentSaleState = {
                 ...initialState,
-                balance_remaining: 500.0,
-                total_paid: 9500.0
+                balance_remaining: monetaryAmount(500.0),
+                total_paid: monetaryAmount(9500.0)
             };
             const request: IClosingPayment = {
                 $class: `${NS}.ClosingPayment`,
                 $timestamp: new Date(),
-                amount: 999.0,
-                currencyCode: 'EUR'
+                amount: monetaryAmount(999.0),
             };
             await expect(logic.trigger(model, request, closeState)).rejects.toThrow('sum of remaining balance');
         });

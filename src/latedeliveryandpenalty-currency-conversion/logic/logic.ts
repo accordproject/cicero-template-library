@@ -1,6 +1,6 @@
 import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0';
 import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
-import { IMonetaryAmount } from './generated/org.accordproject.money@0.3.0';
+import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 type LateDeliveryAndPenaltyResult = {
     result: ILateDeliveryAndPenaltyResponse;
@@ -16,7 +16,7 @@ function durationToDays(duration: IDuration): number {
     }
 }
 
-function monetary(doubleValue: number, currencyCode: string): IMonetaryAmount {
+function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
     return {
         $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
         doubleValue,
@@ -46,7 +46,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
                 result: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.LateDeliveryAndPenaltyResponse',
                     $timestamp: now,
-                    penalty: monetary(0, data.toCurrency),
+                    penalty: monetary(0, data.toCurrency as CurrencyCode),
                     buyerMayTerminate: true,
                 },
                 events: [],
@@ -66,7 +66,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
             capped = capped * request.currencyConversion.rate;
         }
 
-        const cappedAmount = monetary(capped, data.toCurrency);
+        const cappedAmount = monetary(capped, data.toCurrency as CurrencyCode);
         const terminationDays = durationToDays(data.termination);
         const buyerMayTerminate = diffDays > terminationDays;
 

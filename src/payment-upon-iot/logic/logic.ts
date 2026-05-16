@@ -130,12 +130,14 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
         if (state.status !== "RUNNING") {
             throw new Error("Contract is not running.");
         }
-        const amount = data.amountPerUnit * state.counter;
         const event: IPaymentObligationEvent = {
             $class: `${NS}.PaymentObligationEvent`,
             $timestamp: new Date(),
-            amount,
-            currencyCode: data.currencyCode,
+            amount: {
+                $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                doubleValue: data.amountPerUnit.doubleValue * state.counter,
+                currencyCode: data.amountPerUnit.currencyCode,
+            },
             description: `${data.buyer} should pay outstanding balance to ${data.seller}`,
         };
         return {
@@ -158,10 +160,10 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
         if (state.status !== "RUNNING") {
             throw new Error("Contract is not running.");
         }
-        if (request.amount < 0.0) {
+        if (request.amount.doubleValue < 0.0) {
             throw new Error("Payment must be positive.");
         }
-        if (request.currencyCode !== data.currencyCode) {
+        if (request.amount.currencyCode !== data.amountPerUnit.currencyCode) {
             throw new Error("Payments must be in the currency of the contract.");
         }
 
@@ -171,7 +173,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
 
         const unitsPaid = Math.max(
             0,
-            Math.floor(request.amount / data.amountPerUnit)
+            Math.floor(request.amount.doubleValue / data.amountPerUnit.doubleValue)
         );
         const newCounter = Math.max(0.0, state.counter - unitsPaid);
 

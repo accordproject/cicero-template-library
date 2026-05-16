@@ -39,19 +39,19 @@ class ServiceLevelAgreementLogic extends TemplateLogic<ITemplateModel> {
         let monthlyCredit: number;
         if (request.monthlyServiceLevel < data.availability2) {
             // Row 2
-            monthlyCredit = (data.serviceCredit2 / 100.0) * request.monthlyCharge;
+            monthlyCredit = (data.serviceCredit2 / 100.0) * request.monthlyCharge.doubleValue;
         } else if (request.monthlyServiceLevel < data.availability1) {
             // Row 1
-            monthlyCredit = (data.serviceCredit1 / 100.0) * request.monthlyCharge;
+            monthlyCredit = (data.serviceCredit1 / 100.0) * request.monthlyCharge.doubleValue;
         } else {
             monthlyCredit = 0.0;
         }
 
         // Clause 3.3: Monthly cap
-        monthlyCredit = Math.min(monthlyCredit, (data.monthlyCapPercentage / 100.0) * request.monthlyCharge);
+        monthlyCredit = Math.min(monthlyCredit, (data.monthlyCapPercentage / 100.0) * request.monthlyCharge.doubleValue);
 
         // Clause 3.4: Yearly cap
-        const yearlyCreditCap = (data.yearlyCapPercentage / 100.0) * (request.last11MonthCharge + request.monthlyCharge);
+        const yearlyCreditCap = (data.yearlyCapPercentage / 100.0) * (request.last11MonthCharge.doubleValue + request.monthlyCharge.doubleValue);
         monthlyCredit = Math.min(monthlyCredit, yearlyCreditCap - request.last11MonthCredit);
 
         // No credit owed
@@ -69,8 +69,11 @@ class ServiceLevelAgreementLogic extends TemplateLogic<ITemplateModel> {
         const event: IServiceCreditPaymentEvent = {
             $class: `${NS}.ServiceCreditPaymentEvent`,
             $timestamp: new Date(),
-            amount: monthlyCredit,
-            currencyCode: data.currencyCode,
+            amount: {
+                $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                doubleValue: monthlyCredit,
+                currencyCode: request.monthlyCharge.currencyCode,
+            },
             description: `payment owed by ${data.serviceProvider} to ${data.serviceConsumer} for delivery of service downtimes`
         };
 

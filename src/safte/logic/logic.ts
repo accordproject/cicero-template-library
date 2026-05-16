@@ -31,8 +31,8 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
 
     private async tokenSale(data: ITemplateModel, request: ITokenSale): Promise<SafteResponse> {
         const discountRate = (100.0 - data.discount) / 100.0;
-        const discountPrice = request.tokenPrice * discountRate;
-        const tokenAmount = data.purchaseAmount / discountPrice;
+        const discountPrice = request.tokenPrice.doubleValue * discountRate;
+        const tokenAmount = data.purchaseAmount.doubleValue / discountPrice;
 
         return {
             result: {
@@ -45,12 +45,16 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
 
     private async equityFinancing(data: ITemplateModel, request: IEquityFinancing): Promise<SafteResponse> {
         const discountRate = (100.0 - data.discount) / 100.0;
-        const discountPrice = request.sharePrice * discountRate;
-        const equityAmount = data.purchaseAmount / discountPrice;
+        const discountPrice = request.sharePrice.doubleValue * discountRate;
+        const equityAmount = data.purchaseAmount.doubleValue / discountPrice;
 
         return {
             result: {
-                equityAmount,
+                equityAmount: {
+                    $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                    doubleValue: equityAmount,
+                    currencyCode: data.purchaseAmount.currencyCode,
+                },
                 $timestamp: new Date(),
                 $class: 'org.accordproject.safte@0.2.0.EquityShare'
             }
