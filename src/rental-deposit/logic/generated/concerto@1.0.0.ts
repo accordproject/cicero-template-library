@@ -8,6 +8,14 @@ import type {
 	IPenalty
 } from './org.accordproject.rentaldeposit@0.2.0';
 import type {
+	Month,
+	Day,
+	TemporalUnit,
+	IDuration,
+	PeriodUnit,
+	IPeriod
+} from './org.accordproject.time@0.3.0';
+import type {
 	IDigitalMonetaryAmount,
 	DigitalCurrencyCode,
 	IMonetaryAmount,
@@ -44,6 +52,8 @@ export interface IConcept {
 }
 
 export type ConceptUnion = IPenalty | 
+IDuration | 
+IPeriod | 
 IDigitalMonetaryAmount | 
 IMonetaryAmount | 
 ICurrencyConversion;

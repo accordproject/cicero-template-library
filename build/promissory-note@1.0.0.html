@@ -1,0 +1,819 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/promissory-note@1.0.0.html" />
+    <meta property="og:title" content="promissory-note@1.0.0" />
+    <meta property="og:description" content="A promissory note" />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/bPDDJnj138Rl-olcM5I846SK4GW73aWev1wvC-xAOSPUR0zeLVZlLUaci7o8v6fxNh-FxJap1_LQSXCpc0NHTW8nYgPEPOtH9vrA8JFHdiLnTRmwMHrFRg0lo1vEJyEFvM6FESlZGPXEmvycXF0ppAN-oXYWI6M_0KhDSxEdzD7Hq_GJErhPgMoA5tXVqNm_ymkqch_rBjNDWHDnUmuPEEBk34E77H6i4pRSZs69fSlWU2q9ymlAxB1LH7vBSYsC3jhFNjOmR6E01CSb5Gm97F-7Rbs9sr3W3dKq2M97HVF5jlHS92Dm84xqGAb2_YWnIqdHR9J8o6aZlWsra2_PoVjFIaSYxt0w9OxKRNflYGfuLV9-lhLxnOujQaZu6shsEVGsJX2Rv0VasB_c1X_hgcI9efFmxWSmNiyNTn25NI7wyEOYGpLipf3Jl__u5m00" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="promissory-note@1.0.0" />
+    <meta name="twitter:description" content="A promissory note" />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/bPDDJnj138Rl-olcM5I846SK4GW73aWev1wvC-xAOSPUR0zeLVZlLUaci7o8v6fxNh-FxJap1_LQSXCpc0NHTW8nYgPEPOtH9vrA8JFHdiLnTRmwMHrFRg0lo1vEJyEFvM6FESlZGPXEmvycXF0ppAN-oXYWI6M_0KhDSxEdzD7Hq_GJErhPgMoA5tXVqNm_ymkqch_rBjNDWHDnUmuPEEBk34E77H6i4pRSZs69fSlWU2q9ymlAxB1LH7vBSYsC3jhFNjOmR6E01CSb5Gm97F-7Rbs9sr3W3dKq2M97HVF5jlHS92Dm84xqGAb2_YWnIqdHR9J8o6aZlWsra2_PoVjFIaSYxt0w9OxKRNflYGfuLV9-lhLxnOujQaZu6shsEVGsJX2Rv0VasB_c1X_hgcI9efFmxWSmNiyNTn25NI7wyEOYGpLipf3Jl__u5m00" />
+    <meta name="twitter:image:alt" content="UML diagram of promissory-note@1.0.0 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/promissory-note@1.0.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="./assets/images/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="icon" href="https://i0.wp.com/accordproject.org/wp-content/uploads/2020/08/cropped-ms-icon-310x310-1.png?fit=512%2C512&ssl=1" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="main-navbar-menu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var burgers = document.querySelectorAll('.navbar-burger');
+        burgers.forEach(function(burger) {
+            burger.addEventListener('click', function() {
+                var targetId = burger.dataset.target;
+                var target = document.getElementById(targetId);
+                burger.classList.toggle('is-active');
+                target.classList.toggle('is-active');
+            });
+        });
+    });
+    </script>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Promissory Note
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">promissory-note@1.0.0</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^1.0.0</span>
+                <span class="tag is-light">8c8d10b1f298ae0c319d2ccd2458d925b7ce0144e92a9762e5ea94c5d5ca651d</span>
+            </div>
+            <p class="subtitle">
+                A promissory note
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="promissory-note@1.0.0.html" class="dropdown-item is-active">
+                    promissory-note@1.0.0
+                </a>
+              
+                <a href="promissory-note@0.19.0.html" class="dropdown-item ">
+                    promissory-note@0.19.0
+                </a>
+              
+                <a href="promissory-note@0.17.0.html" class="dropdown-item ">
+                    promissory-note@0.17.0
+                </a>
+              
+                <a href="promissory-note@0.16.0.html" class="dropdown-item ">
+                    promissory-note@0.16.0
+                </a>
+              
+                <a href="promissory-note@0.15.2.html" class="dropdown-item ">
+                    promissory-note@0.15.2
+                </a>
+              
+                <a href="promissory-note@0.15.1.html" class="dropdown-item ">
+                    promissory-note@0.15.1
+                </a>
+              
+                <a href="promissory-note@0.14.0.html" class="dropdown-item ">
+                    promissory-note@0.14.0
+                </a>
+              
+                <a href="promissory-note@0.13.0.html" class="dropdown-item ">
+                    promissory-note@0.13.0
+                </a>
+              
+                <a href="promissory-note@0.12.1.html" class="dropdown-item ">
+                    promissory-note@0.12.1
+                </a>
+              
+                <a href="promissory-note@0.12.0.html" class="dropdown-item ">
+                    promissory-note@0.12.0
+                </a>
+              
+                <a href="promissory-note@0.11.1.html" class="dropdown-item ">
+                    promissory-note@0.11.1
+                </a>
+              
+                <a href="promissory-note@0.11.0.html" class="dropdown-item ">
+                    promissory-note@0.11.0
+                </a>
+              
+                <a href="promissory-note@0.10.0.html" class="dropdown-item ">
+                    promissory-note@0.10.0
+                </a>
+              
+                <a href="promissory-note@0.9.1.html" class="dropdown-item ">
+                    promissory-note@0.9.1
+                </a>
+              
+                <a href="promissory-note@0.9.0.html" class="dropdown-item ">
+                    promissory-note@0.9.0
+                </a>
+              
+                <a href="promissory-note@0.8.0.html" class="dropdown-item ">
+                    promissory-note@0.8.0
+                </a>
+              
+                <a href="promissory-note@0.7.1.html" class="dropdown-item ">
+                    promissory-note@0.7.1
+                </a>
+              
+                <a href="promissory-note@0.7.0.html" class="dropdown-item ">
+                    promissory-note@0.7.0
+                </a>
+              
+                <a href="promissory-note@0.6.0.html" class="dropdown-item ">
+                    promissory-note@0.6.0
+                </a>
+              
+                <a href="promissory-note@0.5.0.html" class="dropdown-item ">
+                    promissory-note@0.5.0
+                </a>
+              
+                <a href="promissory-note@0.4.0.html" class="dropdown-item ">
+                    promissory-note@0.4.0
+                </a>
+              
+                <a href="promissory-note@0.3.0.html" class="dropdown-item ">
+                    promissory-note@0.3.0
+                </a>
+              
+                <a href="promissory-note@0.2.0.html" class="dropdown-item ">
+                    promissory-note@0.2.0
+                </a>
+              
+                <a href="promissory-note@0.1.1.html" class="dropdown-item ">
+                    promissory-note@0.1.1
+                </a>
+              
+                <a href="promissory-note@0.1.0.html" class="dropdown-item ">
+                    promissory-note@0.1.0
+                </a>
+              
+                <a href="promissory-note@0.0.4.html" class="dropdown-item ">
+                    promissory-note@0.0.4
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/promissory-note@1.0.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/promissory-note@1.0.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://playground.accordproject.org/#data=N4IgLgpgtgDgNgQ0gWQQJwNYBMD2B3AOxAC4QBiAAgAUAlAeWQEkBlZumgTQoDk6AVAKIAdAiODAEUHAFcCYCggDOFISAAMAGjUA6NWooBhI6oC+JiuKxIIZkSIBi7CgDUAggBkAqgIo0BBgUZnAQARDQowAAsIClksCDRFAEsAcwIILHDxKAQMBLMs4DIkgDMKJIIsJIA3JKxpBDgzBAJyypq6hrgKNAhkqoIU8Qg4RRsTBAoAYxxYFoBPHogUpMVIXqxxAHpSswV5bNyE1ywsXsVFPYAKQBwCVDy0QFwCAEpw6N6AI0WYNFnVvoiOAoMAQizAQKiMRwaHiaAoODK4jgEEq+RM4UmSOWjQEciSYHmBQokQQtUG8JKJSSUwBSAswGRqLQJzOfUu6PhcPxykU0imNIu0OULSwwISUHxkFFSmSaWUt3cKNhj05EWiFBuBlmIII8xe4UhwLQFSmSRB3V5UAp9J+JrNjQUylUmh0ekMxhARPg0mFuoUlQUcG6FXWfXkCH5aGkGTVCQgOFadMN3BwkF81goV3iVPSoo+I3wrwoEAjkQo9RiIuBoIQH2RbWmSjLFQoiDwJWk3Sk6UWCNjFE8BHxMeYYGsygT-askF9opbhpyBHScLG8hK0KiDaiq2ovwlgrQixTaau2+UN2PEBe2jsBDIlEYcjjaxvogIfHVtoIpvNCiksnkPszx4VMYkUEkgwofN0DaUM1n2ekQ2fMAaGsMwAFIxThFoCGkK1T3VC9QPTSBrwoR84PkcDGm6fNpm1aQpXhVpDQ+JQdz7SYol6GJIjiDZ-VFZIAA8CQAWipaoYiuABmAA2ABWZ5y1BCh5hLbCAymEk0BSGN1zhQ0IzALoKFwqB8zhPsrHmZQRgQGAxiwbRyKfc4qIg7oIymKMoRY9VoVSCoHS-H8HTYxBvz8uBFirSFegoajILogggW8qMHT7JD3NiGBJ2ysNXxEe9qFBKAUUAsoqGNb97S8gMKOQor30-Gqwq8-85GtYDL0E-sCvg+L41aJLaJiCs+pBeZa3rFsO0gydDQ0uAkgSa0rgQZTDhM40CRCNDzGhTMPmUyBWiuABGNRlJs5RbSO8F+y1OY-SpFbyRaChmDEi6lhWNY0CQJJJzWaxyq6vB8TLQ1PG0ZgXOYCApmkXbVtnCgBGE7SWj0wxZn3ZJ8taGYn1gRAwGB1pONaCp8SSELpDrakKRKBIKhSTMbkYKg6DI1xlB9GN3ggCpwm5ugKHKlplENKY4BwZJyU4igqTQK0ZigCUwHB+Q4gSPBdrO4FGZWqYWbZ8kYBR3kWnkR7Jl6f6wEBimQbHSAddiJl+0R5HUYBVwpkqigLoAThkmSMWFcH4mc28SuqiApp15qPxie41pyb5eim-1vg3Snutau1fwiloaSLnderpBYIiScqKEhqIZHkGAUUaAlmpKkIIBKBBOzAZqBFLIuYnXIN8HZxLPPogg1nxRjK1aCApK66ze-7uB5FuARV+Dnu+4Hl4vdhNUq9A4gRA2071QzlcZ77pJuke3O8GiVoJquN+IHiqDYv5EYCQgaTiOqmd4kMxjKVCnVVUA1AL+XPpADEAZeTaXLBvAe08aLElJDEEmFNcL6SOpMNuxocCij7JYDBW99q2T2LdAA3FfE6CgjQ4BpBkKeVwwFrSiJ9EhvwOEDA5hrcGNI8xglvkcNAylRo4KklBCAKI2jzxMkxFskwZgo3kCSMkHMABWKNVhVCDoXMYEAMBT0mPEHySjVTQlPgZJYK1e4NnOG3IOo8KB3wbJ9Co1QcBwAAugRYUwlAxD1ppWKMB4DUhmjENiBAMBRhgGAKY8xwgVEUIE1e6T7G-2SBKRAcI2xmXwKqYWCASjrAbL3VmQdkFCT5GWH47ClHCJ5DPXoOQWxxFWATGMR1ZCg3UtKAMLY6lIzXMQrCwMKGImAFknJKJ0m0PZCpWymZsmtgTBzJQ-YfE7iqCtPScgYpsKEVPR6kzPGoLLFURQBNMorjHPMZSR07n0W0VgyCFU1rWKRjxexMI1opEBnickhpeguLKNk6QKRIjyBbJ81plzBgMM5FfKYN907SPoprFZtIKABKCXIEJjYxgn3+X6BysSwl1gSS0ZJ0hUnpMyXPZZ35exWQKfXJ+MFSmpTwBUuMVSakTMpFM8IJMxhyBlhCdUFVDzWk+g4taTjoWrTKBommBASXBOVWEylkS86JWaa2BAeBwhHRyHkYUFBTlAK8hcVIBBPZONYiiXu+JrS2KqOCRI1q4SP1GA6r1gMgxgiBLnSIRyIAfDAMKGW0RFj5g1uNaMQaIhHF9P-V2uqVbaPeOXKEZRa5AXVAZZYOB2Zd0oDQaAnC+jNU8HlfyUJ+Qo16FFFVfpd4VWtAfTeYADTqkVN7LO4Qm6RBbmUimFcjrxEXKKR6ho77hAgMJBIppKXluwgtMohpx7y0huSbpTbFCXwINfdBct0CVkgrIEEdQjQl0yqejmJqeqgQNDgPSv9p2Bi8pGaMYzRRPoQC+uBfUeHYU6om+EH7iRxkib+xR5QCVVGsOciaVYprxMblDWdS6RThFaTOEdc7qSlrYRR8IqV500ezMOsj5wKruqOsnAdR0OxoF-gx6jvbFiWMqBi6EzCoGCPaYCYsBADIV0+bBvqCBTh0wTA6Y0CKENVnPVUWkyaYjjtPlndDrTaixz-goGJpsCNtjrRQAA4jgKSaAhzkncJa1OsblC9TkXRFIzmEi5j-o02eANQN9RRPJmMGj+QOJLYRqIo6YjZQIA6Ns8olN8PbdMGdgm+ylOgfAAEQ0ETvIWYY40igTH5rMPZgA6pBlzzUUwq0g0EhK1yt1oB3UvUUqV0GIEWBM7rO6rF+k04isj+A1qceNLUZEuNhYmrkTgUhGZ9mTDwE13hwsET0Y+TPWuisUj1k4+gCmDpN3bv+EJnoqQpvAhm1ZOEtoFvLF4ih72PwkZBPiKapTPGi1rWuz127pWygPUVaN271Ney-0m5RvKeBZuvfm0-D7Lk073a0+jXTaNkO9BbGZuoMZ73TDwp2IGCiqwMeLFjIJyQFFw5x4iiccJ8cAhJxZr4Fq8D2eYKSdmygDCIEFi11M07QbtA+n6EnhNiYJjHBUGLCCfM-v7EZtaci6d0QqviZEK6gS9BpDUCA0rAnIk8cQ6zsVlDQcWt5kCaZa6SBkF1EbAoJyHvVLGhFYY+fzR6BmUhBMkgMqpVEvnjdY1oM0TIPjvrtQ-wHZV4x1J82S1UvEaAVm6UEeFuCFyjAfeGaVCDlzSxTdSUUBboMUz2d55cUm2CyFTWfM3V75Lf53d2xJPIPAMg4B5hiJ3tkZvW85T8+NJR5UjfoZIRd+m3QuNrzKEVh0cVejWFFMt72+y7mNMyaX19tVS6NASxWxBKW7qQbnK0eacBkGLG6ZBtzHMx8XB+SvvcqTzl0WfXnzXWkXs1cBjhTlvA-Gvyz1TUrBjkGThCkCqCpEGQIHORZUdxiANklGURlW4zKA+DAU13L00hXSkQeBclcBpXAIHSgB9Cog8VKDiUjUSndhiENHl0Ljm2c1WEpnlQX3gLA37EXGXAbDfmpDLBRV+FqAV1VE4ITGFE6yBDokkHLzjjfBKlxApgSlcDBVnwqi82gJlQpjURK0VTxASgQD0MbTXwOTxTijHRIMSzLHcSmRk0NF5A+H0TcJyDABqT2zLRQRZQSCclpAWl-numwjQHBT0h1lr0j2lw6XCFBg9gqniJzjYzJXzXRm22iNtjRg3WEh+wuAQIw1iQyFCwG2hAdBSJsIQzm2BjhGwL8OUVqLiLnVnmV2C3nCd18xnl0SXkWGi0i0lSDnsy1AAgSBBD40UEMPVzTBMz1y3WRnUUV0mLQGmMTQ3RHj7HELQTkWMIXhdypk02CnqmlAPRjwkO-zCxMMXmYj637EUFUJUWdjwgMPjkoH5llDdQ+LfCgPmJiBM110rBdTSDJ0qC2AenBUUFZmiNVxj0CShC5FaE2Ms2AIeGcNnQ4LISaMNlwIUPwOIKZCnVjzLDwK6mny3EcKZEAEwCHkJE5TD4bJIJNMB5WxfNLHXo4iRY0En4iErAKEwyGEuEgSFsN+Rko6YnC7dEmk0+GuP0CmcqLkqEJmFIYBOeLxHxPfU+PzCoXfHcaIJIRISacUHA6UMEueULbBRHeI-MdIKkbTAMN7DHPSZQEmUU1A4k0+Xnb9NMKkqsYWXncnTdM6CzcEC3OTBIASDAggULXk2TaLCRbvVBL3IUZTS073b0hIZqRgbgCgerRgPgbgAQVgAsgACQED8DoHsG721P2WuxWJjD9NBK8WnEePUhglVnglrEC0bnxIIG0BAA0BACQJGAMHBBIBADS3KkUBBAXV0m0G8gcVaW8LGNaQJmhHmAYwgAAAEdAAAmXQW8euPKRPaEFIJcuLGEVcqZbQfBQGIOfc7QI8nQUXfuSlEoPcYkPwxyYgLYLYMc0YK8mYG834NcweC8rYZcsCnACCrYB84yZ818+88EEQU8jcTkS8mCrAW8sYqMPEcqZC3QbQYABtAAR2jDWA0AbTnMJPMC-NmB-LAD-IAqAtmJwrwsgt0mguvNwvAqmS2AIqVL3MPJIqDhwHQtgEwovJApXIErGO7AgHmGfJkhIuQATB-hCTAN7xVm-MRRYsvTYvIRGA4r4q4u0CgqUpUp0DUp0AktvGdmlmMkLioDKgHVDKVGUAoqooOBEAoHhAoBCBkAjzdwAjcrqBEBMEcphJcsnFoswU8sqG8r6DbUpWAH8sCuCpNihEYkSPZgACEL8ooorbwtgAAqcq-y8qigbHD2eADMIC6qrYEQXc+q8mCAEQGUH+Wq6ABqlAEy7oJKrAEXMXdKzKoEDS9IMcQ8HSgCHvACCaoK6wPgeucaawJa0cGqDmW1BIJa7KiPOBVCSAJagqnAJEvxdoczLoTa52KeXa5kU4c4RQW67a1sEg16qeRbHEPEAkT68kRkWEFkZ6paqarS2a+DU-dqfalatarPHafEeYfaE61oQKxqPSOEZjAeNZJa9GtaJZOAXJJG0EF61GoELaqeNParDPSmUqogEc6cBAKcjK1G1QAAEjvQuFUGIBUBAFks4oUsHg3NWGyUPB3OIp0D4D6o6o0viDgFUA0EytUDCrkG5osEyoCvZs5pepIF5v5vMsFu0GstUvUs0pmvmDmtVuHI1t5twByucEaGjDVquj0EVtRs1pAD9m7XSS1HiDVtUE8GYBCFUEyvRCVpAHbP9pAAPLUAugAA4xJY6xIZI1A+BY7iA9AM7XQ9AABqdOvQBW8Oh6qO-aIcEYQu1mkAI6ja3WtSuOt2j2-UjoeoRoNWt483Iu6RYGtkKO36VAFsLapRMACuj2wGva3W1Qd8wWVyKYG8a2yu76uALQxGqOgwdgKgEe3msex61kLmie6OgAFjkgoAUk3FcCknCBkhhAoHsCfx4AgGFQ4GhAwHCG4C4Bdtjs3tUA33lt1pZoCo9o5sQD3p5tUH1tAv4rgrvONtstNumu0vg03o9rtoZQdqCU6t1oUldpttUC9pWXmF9owdAZAEDuDpAFDobt5t8KMT2hruIZjrDkToujEhjrTouizqzt0FzvzrUC-ojuoTABxt1tDk0HDoJqJqEZ5pEcodUCppq1pv3u4AfooCfswFfo4D4bZtJzxBQLQCjvkhkg+APqmDjoPrElDgUjjoAHYxID6FIpgzHQ446ZIsAxIEALG1APhQ4LoD6IA46jG+G71BZGAsB9G5JDHjHTHzHLGbG7GHHzHnHXH3GsGvGfG-GAnyGCBor6aQArCeIdZyztY4ApzPQgA" class="button is-rounded is-primary open-studio">Open in Template Playground</a>
+          <a href="https://github.dev/accordproject/cicero-template-library/blob/master/src/promissory-note/README.md" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="promissorynote">Promissory Note</h1>
+<p>This contract specifies how an interest bearing loan should be repaid.</p>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<h1>PROMISSORY NOTE</h1>
+<p>1,000.00 USD 01/30/2018</p>
+<p>FOR VALUE RECEIVED, the undersigned, "Daniel", an individual residing at "1 Main Street" (“Maker”), hereby promises to pay to the order of "Clause Inc.", a CORP, having offices at "246 5th Ave, 3rd Fl, New York, NY 10001", or its successors and permitted assigns (“Lender” or the “Company”), the principal sum of 500.00 USD, plus any and all interest accrued thereon at the Note Rate (defined below), each due and payable in cash in lawful money of the United States on the dates and in the manner set forth in this Promissory Note (this “Note”).</p>
+<h2>Interest.</h2>
+<p>The principal amount of this Note shall bear interest at 3.8% per annum (the “Note Rate”). Interest shall be computed on the basis of a three hundred and sixty-five (365) day year and charged for the actual number of days elapsed. Interest shall accrue on the original principal balance only and there shall be no accrual of interest upon interest.</p>
+<h2>Payment of Principal and Interest.</h2>
+<p>The principal amount of this Note and the interest thereon shall be due and payable in full on the earlier of (a) 01/20/2019 or (b) ten (10) days prior to the Company filing an S-1 registration statement with the U.S. Securities and Exchange Commission in contemplation of an initial public offering (“IPO”). As used herein, IPO means the closing of a firm commitment underwritten public offering pursuant to a registration statement under the Securities Act of 1933, as amended.</p>
+<h2>Prepayment.</h2>
+<p>The Maker may prepay any portion of the principal balance of this Note at any time without penalty.</p>
+<h2>Default.</h2>
+<p>Each of the following shall constitute an event of default (“Event of Default”) under this Note:
+(a) the Maker shall fail to pay when due (whether by acceleration or otherwise) principal or interest on this Note, and such default shall have continued for a period of 90 days;
+(b) a proceeding (other than a proceeding commenced by the Maker) shall have been instituted in a court having jurisdiction seeking a decree or order for relief in respect of the Maker in an involuntary case under any applicable bankruptcy, insolvency or other similar law now or hereafter in effect, and such proceedings shall remain undismissed or unstayed and in effect for a period of 90 days (so long as the Maker is diligently proceeding to effect such dismissal or stay) or such court shall enter a decree or order granting the relief sought in such proceeding; or
+(c) the Maker commences a voluntary case under any applicable bankruptcy, insolvency or other similar law now or hereafter in effect, consents to the entry of an order for relief in an involuntary case under any such law, or makes a general assignment for the benefit of creditors, or fails generally to pay his debts as they become due, or takes any action in furtherance of any of the foregoing.</p>
+<h2>Remedies.</h2>
+<p>Upon the occurrence of any Event of Default, the Lender may, without notice or demand to the Maker, exercise any or all of the following remedies:
+(a) declare all unpaid principal owing under this Note, together with all accrued and unpaid interest and other amounts owing hereunder, to be immediately due and payable without demand, protest, notice of protest, notice of default, presentment for payment or further notice of any kind; or
+(b) proceed to enforce such other and additional rights and remedies as the Lender may be provided by applicable law.</p>
+<h2>Governing Law.</h2>
+<p>This Note shall be governed by, and construed and enforced in accordance with, the internal laws (other than the choice of law principles thereof) of "New York, NY".</p>
+<h2>Waiver.</h2>
+<p>No failure to exercise and no delay in exercising any right, power or privilege hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any right, power or privilege hereunder preclude any other or further exercise thereof or the exercise of any other right, power or privilege. The rights and remedies herein provided are cumulative and not exclusive of any rights or remedies provided by law.</p>
+<h2>Savings Clause.</h2>
+<p>Notwithstanding any provision contained in this Note, the Lender shall not be entitled to receive, collect or apply as interest on this Note any amount in excess of the highest lawful rate permissible under any law which a court of competent jurisdiction may deem applicable hereto. If the Lender ever receives, collects or applies as interest any such excess, the amount that would be excessive interest shall be deemed to be a partial payment of principal and treated hereunder as such, and, if the principal balance of this Note is paid in full, any remaining excess shall promptly be paid to the Maker.</p>
+<h2>Amendment.</h2>
+<p>This Note may be amended or modified only upon the written consent of both the Lender and the Maker. Any amendment must specifically state the provision or provisions to be amended and the manner in which such provision or provisions are to be amended.</p>
+<h2>Entire Agreement.</h2>
+<p>This Note constitutes the entire agreement of the Maker and the Lender with respect to the subject matter hereof and supersedes all other prior arrangements, understandings, statements, representations and warranties, expressed or implied, and no oral statements or prior written statements not contained in this Note shall have any force and effect.</p>
+<h2>Counterparts.</h2>
+<p>This Note may be executed in counterparts, each of which shall constitute an original and all of which shall constitute one and the same instrument.</p>
+<h2>Assignment.</h2>
+<p>This Note may not be assigned and/or transferred in whole or in part by the Maker without the prior written consent of the Lender, which consent shall be in the Lender’s sole and absolute discretion. This Note may be assigned and/or transferred in whole or in part by the Lender at any time. The obligations of the Maker hereunder shall bind his heirs and permitted assigns, and all rights, benefits and privileges conferred on the Lender by this Note shall be and hereby are extended to, conferred upon, and may be enforced by, the successors and assigns of the Lender.</p>
+<p>IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year first above written.</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown"># PROMISSORY NOTE
+
+1,000.00 USD 01/30/2018
+
+FOR VALUE RECEIVED, the undersigned, "Daniel", an individual residing at "1 Main Street" (“Maker”), hereby promises to pay to the order of "Clause Inc.", a CORP, having offices at "246 5th Ave, 3rd Fl, New York, NY 10001", or its successors and permitted assigns (“Lender” or the “Company”), the principal sum of 500.00 USD, plus any and all interest accrued thereon at the Note Rate (defined below), each due and payable in cash in lawful money of the United States on the dates and in the manner set forth in this Promissory Note (this “Note”).
+
+## Interest.
+
+The principal amount of this Note shall bear interest at 3.8% per annum (the “Note Rate”). Interest shall be computed on the basis of a three hundred and sixty-five (365) day year and charged for the actual number of days elapsed. Interest shall accrue on the original principal balance only and there shall be no accrual of interest upon interest.
+
+## Payment of Principal and Interest.
+
+The principal amount of this Note and the interest thereon shall be due and payable in full on the earlier of (a) 01/20/2019 or (b) ten (10) days prior to the Company filing an S-1 registration statement with the U.S. Securities and Exchange Commission in contemplation of an initial public offering (“IPO”). As used herein, IPO means the closing of a firm commitment underwritten public offering pursuant to a registration statement under the Securities Act of 1933, as amended.
+
+## Prepayment.
+
+The Maker may prepay any portion of the principal balance of this Note at any time without penalty.
+
+## Default.
+
+Each of the following shall constitute an event of default (“Event of Default”) under this Note:
+(a) the Maker shall fail to pay when due (whether by acceleration or otherwise) principal or interest on this Note, and such default shall have continued for a period of 90 days;
+(b) a proceeding (other than a proceeding commenced by the Maker) shall have been instituted in a court having jurisdiction seeking a decree or order for relief in respect of the Maker in an involuntary case under any applicable bankruptcy, insolvency or other similar law now or hereafter in effect, and such proceedings shall remain undismissed or unstayed and in effect for a period of 90 days (so long as the Maker is diligently proceeding to effect such dismissal or stay) or such court shall enter a decree or order granting the relief sought in such proceeding; or
+(c) the Maker commences a voluntary case under any applicable bankruptcy, insolvency or other similar law now or hereafter in effect, consents to the entry of an order for relief in an involuntary case under any such law, or makes a general assignment for the benefit of creditors, or fails generally to pay his debts as they become due, or takes any action in furtherance of any of the foregoing.
+
+## Remedies.
+
+Upon the occurrence of any Event of Default, the Lender may, without notice or demand to the Maker, exercise any or all of the following remedies:
+(a) declare all unpaid principal owing under this Note, together with all accrued and unpaid interest and other amounts owing hereunder, to be immediately due and payable without demand, protest, notice of protest, notice of default, presentment for payment or further notice of any kind; or
+(b) proceed to enforce such other and additional rights and remedies as the Lender may be provided by applicable law.
+
+## Governing Law.
+
+This Note shall be governed by, and construed and enforced in accordance with, the internal laws (other than the choice of law principles thereof) of "New York, NY".
+
+## Waiver.
+
+No failure to exercise and no delay in exercising any right, power or privilege hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any right, power or privilege hereunder preclude any other or further exercise thereof or the exercise of any other right, power or privilege. The rights and remedies herein provided are cumulative and not exclusive of any rights or remedies provided by law.
+
+## Savings Clause.
+
+Notwithstanding any provision contained in this Note, the Lender shall not be entitled to receive, collect or apply as interest on this Note any amount in excess of the highest lawful rate permissible under any law which a court of competent jurisdiction may deem applicable hereto. If the Lender ever receives, collects or applies as interest any such excess, the amount that would be excessive interest shall be deemed to be a partial payment of principal and treated hereunder as such, and, if the principal balance of this Note is paid in full, any remaining excess shall promptly be paid to the Maker.
+
+## Amendment.
+
+This Note may be amended or modified only upon the written consent of both the Lender and the Maker. Any amendment must specifically state the provision or provisions to be amended and the manner in which such provision or provisions are to be amended.
+
+## Entire Agreement.
+
+This Note constitutes the entire agreement of the Maker and the Lender with respect to the subject matter hereof and supersedes all other prior arrangements, understandings, statements, representations and warranties, expressed or implied, and no oral statements or prior written statements not contained in this Note shall have any force and effect.
+
+## Counterparts.
+
+This Note may be executed in counterparts, each of which shall constitute an original and all of which shall constitute one and the same instrument.
+
+## Assignment.
+
+This Note may not be assigned and/or transferred in whole or in part by the Maker without the prior written consent of the Lender, which consent shall be in the Lender’s sole and absolute discretion. This Note may be assigned and/or transferred in whole or in part by the Lender at any time. The obligations of the Maker hereunder shall bind his heirs and permitted assigns, and all rights, benefits and privileges conferred on the Lender by this Note shall be and hereby are extended to, conferred upon, and may be enforced by, the successors and assigns of the Lender.
+
+IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year first above written.</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem"># PROMISSORY NOTE
+
+{{amount as "0,0.00 CCC"}} {{date}}
+
+FOR VALUE RECEIVED, the undersigned, {{maker}}, {{#if individual}}an individual residing{{else}}a company registered{{/if}} at {{makerAddress}} (“Maker”), hereby promises to pay to the order of {{lender}}, a {{legalEntity}}, having offices at {{lenderAddress}}, or its successors and permitted assigns (“Lender” or the “Company”), the principal sum of {{principal as "0,0.00 CCC"}}, plus any and all interest accrued thereon at the Note Rate (defined below), each due and payable in cash in lawful money of the United States on the dates and in the manner set forth in this Promissory Note (this “Note”).
+
+## Interest.
+
+The principal amount of this Note shall bear interest at {{interestRate}}% per annum (the “Note Rate”). Interest shall be computed on the basis of a three hundred and sixty-five (365) day year and charged for the actual number of days elapsed. Interest shall accrue on the original principal balance only and there shall be no accrual of interest upon interest.
+
+## Payment of Principal and Interest.
+
+The principal amount of this Note and the interest thereon shall be due and payable in full on the earlier of (a) {{maturityDate}} or (b) ten (10) days prior to the Company filing an S-1 registration statement with the U.S. Securities and Exchange Commission in contemplation of an initial public offering (“IPO”). As used herein, IPO means the closing of a firm commitment underwritten public offering pursuant to a registration statement under the Securities Act of 1933, as amended.
+
+## Prepayment.
+
+The Maker may prepay any portion of the principal balance of this Note at any time without penalty.
+
+## Default.
+
+Each of the following shall constitute an event of default (“Event of Default”) under this Note:
+(a) the Maker shall fail to pay when due (whether by acceleration or otherwise) principal or interest on this Note, and such default shall have continued for a period of {{defaultDays}} days;
+(b) a proceeding (other than a proceeding commenced by the Maker) shall have been instituted in a court having jurisdiction seeking a decree or order for relief in respect of the Maker in an involuntary case under any applicable bankruptcy, insolvency or other similar law now or hereafter in effect, and such proceedings shall remain undismissed or unstayed and in effect for a period of {{insolvencyDays}} days (so long as the Maker is diligently proceeding to effect such dismissal or stay) or such court shall enter a decree or order granting the relief sought in such proceeding; or
+(c) the Maker commences a voluntary case under any applicable bankruptcy, insolvency or other similar law now or hereafter in effect, consents to the entry of an order for relief in an involuntary case under any such law, or makes a general assignment for the benefit of creditors, or fails generally to pay his debts as they become due, or takes any action in furtherance of any of the foregoing.
+
+## Remedies.
+
+Upon the occurrence of any Event of Default, the Lender may, without notice or demand to the Maker, exercise any or all of the following remedies:
+(a) declare all unpaid principal owing under this Note, together with all accrued and unpaid interest and other amounts owing hereunder, to be immediately due and payable without demand, protest, notice of protest, notice of default, presentment for payment or further notice of any kind; or
+(b) proceed to enforce such other and additional rights and remedies as the Lender may be provided by applicable law.
+
+## Governing Law.
+
+This Note shall be governed by, and construed and enforced in accordance with, the internal laws (other than the choice of law principles thereof) of {{jurisdiction}}.
+
+## Waiver.
+
+No failure to exercise and no delay in exercising any right, power or privilege hereunder shall operate as a waiver thereof, nor shall any single or partial exercise of any right, power or privilege hereunder preclude any other or further exercise thereof or the exercise of any other right, power or privilege. The rights and remedies herein provided are cumulative and not exclusive of any rights or remedies provided by law.
+
+## Savings Clause.
+
+Notwithstanding any provision contained in this Note, the Lender shall not be entitled to receive, collect or apply as interest on this Note any amount in excess of the highest lawful rate permissible under any law which a court of competent jurisdiction may deem applicable hereto. If the Lender ever receives, collects or applies as interest any such excess, the amount that would be excessive interest shall be deemed to be a partial payment of principal and treated hereunder as such, and, if the principal balance of this Note is paid in full, any remaining excess shall promptly be paid to the Maker.
+
+## Amendment.
+
+This Note may be amended or modified only upon the written consent of both the Lender and the Maker. Any amendment must specifically state the provision or provisions to be amended and the manner in which such provision or provisions are to be amended.
+
+## Entire Agreement.
+
+This Note constitutes the entire agreement of the Maker and the Lender with respect to the subject matter hereof and supersedes all other prior arrangements, understandings, statements, representations and warranties, expressed or implied, and no oral statements or prior written statements not contained in this Note shall have any force and effect.
+
+## Counterparts.
+
+This Note may be executed in counterparts, each of which shall constitute an original and all of which shall constitute one and the same instrument.
+
+## Assignment.
+
+This Note may not be assigned and/or transferred in whole or in part by the Maker without the prior written consent of the Lender, which consent shall be in the Lender’s sole and absolute discretion. This Note may be assigned and/or transferred in whole or in part by the Lender at any time. The obligations of the Maker hereunder shall bind his heirs and permitted assigns, and all rights, benefits and privileges conferred on the Lender by this Note shall be and hereby are extended to, conferred upon, and may be enforced by, the successors and assigns of the Lender.
+
+IN WITNESS WHEREOF, the Maker has executed this Note as of the date and year first above written.</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+  "$class": "org.accordproject.promissorynote@0.2.0.TemplateModel",
+  "amount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1000,
+    "currencyCode": "USD"
+  },
+  "date": "2018-01-30T01:00:00.000+01:00",
+  "maker": "Daniel",
+  "interestRate": 3.8,
+  "individual": true,
+  "makerAddress": "1 Main Street",
+  "lender": "Clause Inc.",
+  "legalEntity": "CORP",
+  "lenderAddress": "246 5th Ave, 3rd Fl, New York, NY 10001",
+  "principal": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 500,
+    "currencyCode": "USD"
+  },
+  "maturityDate": "2019-01-20T01:00:00.000+01:00",
+  "defaultDays": 90,
+  "insolvencyDays": 90,
+  "jurisdiction": "New York, NY",
+  "$identifier": "363b4c84-9587-45c4-983d-a950b914e8b4",
+  "clauseId": "363b4c84-9587-45c4-983d-a950b914e8b4"
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/bPDDJnj138Rl-olcM5I846SK4GW73aWev1wvC-xAOSPUR0zeLVZlLUaci7o8v6fxNh-FxJap1_LQSXCpc0NHTW8nYgPEPOtH9vrA8JFHdiLnTRmwMHrFRg0lo1vEJyEFvM6FESlZGPXEmvycXF0ppAN-oXYWI6M_0KhDSxEdzD7Hq_GJErhPgMoA5tXVqNm_ymkqch_rBjNDWHDnUmuPEEBk34E77H6i4pRSZs69fSlWU2q9ymlAxB1LH7vBSYsC3jhFNjOmR6E01CSb5Gm97F-7Rbs9sr3W3dKq2M97HVF5jlHS92Dm84xqGAb2_YWnIqdHR9J8o6aZlWsra2_PoVjFIaSYxt0w9OxKRNflYGfuLV9-lhLxnOujQaZu6shsEVGsJX2Rv0VasB_c1X_hgcI9efFmxWSmNiyNTn25NI7wyEOYGpLipf3Jl__u5m00"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.promissorynote@0.2.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+
+transaction Payment extends Request {
+  o Double amountPaid
+}
+
+transaction Result extends Response {
+  o Double outstandingBalance
+}
+
+/**
+ * The template model
+ */
+@template
+asset TemplateModel extends Clause {
+  o MonetaryAmount amount
+  o DateTime date
+  o String maker
+  o Double interestRate
+  o Boolean individual
+  o String makerAddress
+  o String lender
+  o String legalEntity
+  o String lenderAddress
+  o MonetaryAmount principal
+  o DateTime maturityDate
+  o Integer defaultDays
+  o Integer insolvencyDays
+  o String jurisdiction
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract@0.2.0.html">org.accordproject.contract@0.2.0.Clause</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime@0.2.0.html">org.accordproject.runtime@0.2.0.Request</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money@0.3.0.html">org.accordproject.money@0.3.0.MonetaryAmount</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/promissory-note/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.State",
+    "$identifier": "1dab2e80-603f-11f1-9952-b99097577248"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.promissorynote@0.2.0.Payment</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.promissorynote@0.2.0.Payment",
+    "amountPaid": 5.151,
+    "$timestamp": "2026-06-04T18:59:22.216+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Request</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Request",
+    "$timestamp": "2026-06-04T18:59:22.216+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.promissorynote@0.2.0.Result</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.promissorynote@0.2.0.Result",
+    "outstandingBalance": 78.739,
+    "$timestamp": "2026-06-04T18:59:22.216+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Response</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Response",
+    "$timestamp": "2026-06-04T18:59:22.216+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello.html">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs.html">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/promissory-note">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

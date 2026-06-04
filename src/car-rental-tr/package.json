@@ -1,14 +1,14 @@
 {
     "name": "car-rental-tr",
     "displayName": "Car Rental (TR)",
-    "version": "0.14.0",
+    "version": "1.0.0",
     "description": "a Simple Car Rental Contract in Turkish Language",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "car",

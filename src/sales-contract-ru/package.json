@@ -1,14 +1,14 @@
 {
     "name": "sales-contract-ru",
     "displayName": "Sales Contract (RU)",
-    "version": "0.13.0",
+    "version": "1.0.0",
     "description": "This is a Sales Contract prepared in Russian Language.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "russian",

@@ -5,6 +5,7 @@
 import {IClause} from './org.accordproject.contract@0.2.0';
 import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
+import {IPeriod} from './org.accordproject.time@0.3.0';
 import {IConcept,IEvent} from './concerto@1.0.0';
 
 // interfaces
@@ -35,12 +36,12 @@ export interface ITemplateModel extends IClause {
    tenant: IRentalParty;
    landlord: IRentalParty;
    depositAmount: IMonetaryAmount;
-   tenantDepositRestorationPeriod: string;
+   tenantDepositRestorationPeriod: IPeriod;
    monthlyBaseRentMultiple: number;
    applicableLaw: string;
    statute: string;
    bankName: string;
-   landlordDepositReturnPeriod: string;
+   landlordDepositReturnPeriod: IPeriod;
    exhibit: string;
 }
 

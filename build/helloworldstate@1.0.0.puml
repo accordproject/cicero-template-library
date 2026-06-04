@@ -1,0 +1,19 @@
+@startuml
+class org.accordproject.helloworldstate_0_1_0.MyRequest << (T,yellow) >> {
+   + String input
+}
+org.accordproject.helloworldstate_0_1_0.MyRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.helloworldstate_0_1_0.MyResponse << (T,yellow) >> {
+   + String output
+}
+org.accordproject.helloworldstate_0_1_0.MyResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.helloworldstate_0_1_0.HelloWorldState {
+   + String $identifier
+   + Double counter
+}
+org.accordproject.helloworldstate_0_1_0.HelloWorldState --|> concerto_1_0_0.Concept
+class org.accordproject.helloworldstate_0_1_0.TemplateModel << (A,green) >> {
+   + String name
+}
+org.accordproject.helloworldstate_0_1_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

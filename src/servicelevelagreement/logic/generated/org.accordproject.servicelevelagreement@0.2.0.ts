@@ -13,10 +13,9 @@ export interface ITemplateModel extends IClause {
    monthlyCapPercentage: number;
    yearlyCapPercentage: number;
    availability1: number;
-   serviceCredit1: number;
-   currencyCode: string;
+   serviceCredit1: IMonetaryAmount;
    availability2: number;
-   serviceCredit2: number;
+   serviceCredit2: IMonetaryAmount;
    serviceProvider: string;
    serviceConsumer: string;
 }
@@ -24,12 +23,12 @@ export interface ITemplateModel extends IClause {
 export interface IMonthSummary extends IRequest {
    monthlyServiceLevel: number;
    monthlyCharge: IMonetaryAmount;
-   last11MonthCredit: number;
+   last11MonthCredit: IMonetaryAmount;
    last11MonthCharge: IMonetaryAmount;
 }
 
 export interface IInvoiceCredit extends IResponse {
-   monthlyCredit: number;
+   monthlyCredit: IMonetaryAmount;
 }
 
 export interface IServiceCreditPaymentEvent extends IEvent {

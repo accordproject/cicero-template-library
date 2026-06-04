@@ -28,7 +28,7 @@ export interface ITemplateModel extends IClause {
    state: string;
    amendmentProvision: boolean;
    purchaseAmount: IMonetaryAmount;
-   netProceedLimit: number;
+   netProceedLimit: IMonetaryAmount;
    date: Date;
    deadlineDate: Date;
    discountRatePercentage: number;

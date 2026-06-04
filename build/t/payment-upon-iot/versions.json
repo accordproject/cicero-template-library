@@ -1,7 +1,13 @@
 {
     "templateName": "payment-upon-iot",
-    "latestVersion": "0.10.0",
+    "latestVersion": "1.0.0",
     "versions": [
+        {
+            "version": "1.0.0",
+            "ciceroVersion": "^1.0.0",
+            "url": "/payment-upon-iot@1.0.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-iot@1.0.0.cta"
+        },
         {
             "version": "0.10.0",
             "ciceroVersion": "^0.26.0",

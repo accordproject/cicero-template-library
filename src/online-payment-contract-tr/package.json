@@ -1,14 +1,14 @@
 {
     "name": "online-payment-contract-tr",
     "displayName": "Online Payment Contract (TR)",
-    "version": "0.13.0",
+    "version": "1.0.0",
     "description": "This is an Online Payment Contract prepared in Turkish Language.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "turkish",

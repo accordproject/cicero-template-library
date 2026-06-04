@@ -1,7 +1,13 @@
 {
     "templateName": "payment-upon-signature",
-    "latestVersion": "0.12.0",
+    "latestVersion": "1.0.0",
     "versions": [
+        {
+            "version": "1.0.0",
+            "ciceroVersion": "^1.0.0",
+            "url": "/payment-upon-signature@1.0.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/payment-upon-signature@1.0.0.cta"
+        },
         {
             "version": "0.12.0",
             "ciceroVersion": "^0.26.0",

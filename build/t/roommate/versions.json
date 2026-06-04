@@ -1,7 +1,13 @@
 {
     "templateName": "roommate",
-    "latestVersion": "0.3.0",
+    "latestVersion": "1.0.0",
     "versions": [
+        {
+            "version": "1.0.0",
+            "ciceroVersion": "^1.0.0",
+            "url": "/roommate@1.0.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/roommate@1.0.0.cta"
+        },
         {
             "version": "0.3.0",
             "ciceroVersion": "^0.26.0",

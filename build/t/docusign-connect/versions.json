@@ -1,7 +1,13 @@
 {
     "templateName": "docusign-connect",
-    "latestVersion": "0.11.0",
+    "latestVersion": "1.0.0",
     "versions": [
+        {
+            "version": "1.0.0",
+            "ciceroVersion": "^1.0.0",
+            "url": "/docusign-connect@1.0.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/docusign-connect@1.0.0.cta"
+        },
         {
             "version": "0.11.0",
             "ciceroVersion": "^0.26.0",
