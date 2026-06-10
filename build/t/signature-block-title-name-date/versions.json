@@ -1,7 +1,13 @@
 {
     "templateName": "signature-block-title-name-date",
-    "latestVersion": "0.20.1",
+    "latestVersion": "1.0.0",
     "versions": [
+        {
+            "version": "1.0.0",
+            "ciceroVersion": "^1.0.0",
+            "url": "/signature-block-title-name-date@1.0.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/signature-block-title-name-date@1.0.0.cta"
+        },
         {
             "version": "0.20.1",
             "ciceroVersion": "^0.26.0",

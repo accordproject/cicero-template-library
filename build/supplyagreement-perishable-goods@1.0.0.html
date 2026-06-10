@@ -1,0 +1,1097 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/supplyagreement-perishable-goods@1.0.0.html" />
+    <meta property="og:title" content="supplyagreement-perishable-goods@1.0.0" />
+    <meta property="og:description" content="This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached." />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/jLPHRzCm47xlh_0ZYAqgF4_LiZHZ5QoTqemNX2BNEQL6ZXtEvsqHyD-HqtHAibR0qZxP_auNt_Vvio-NbZYIAzH8A6ujCvYFkH06inBDTn0qjguiLSLp12X0KmaexOQl5UJ6P3QTf1_IoNYraQMFheYJi-pYWhs9pdA4wYsRJjdF4MFi7GlZA4YYsNOnNwH972nMysIx3k9u_YMQZNwFZbF2-VclAHD62q0owVjqaax6eL-MD8pglPPqWE2dZzlnwdvr4ttUpfFbOX4rS137EpXSnWEurZMSZE4Aj3KO0y-apdVSPiQj5J01ccIEF8CEl765p2HL0uwli-dfk3KksT5Q4VhzR0FFimRkcidMGnDg5_hr6xFjjHtktzDnl-EL3oxNIkQSfD7HmqibSZIFW1r85gL1se6tHWDnh8B2E4sC375rXr8qXhWoHW7NJ762rujneDHzqjIHuvWY1W7o0RBwUYTd5IXb7jiNVAu9Sa3cjAJGq--wvTb6mrtmN4fD-UN7q6cI1JHPCVnmO8VQmnzYo9LmgfRye0f_SK0lN8BcYggZkgDVwJ-AP4kZBGnJAO6YzDNVcWnKBL7W-m3eja8pJf380bZcmC__xuRrtgIzgde7jZIl6uB7kZujfFOHsqFvKmjjTYlHP4xqyZjlspLwbsbHTV8oX_KPTDf18RNN2P2JmswdAFZJmP3KDxi-qalPYpVEkkQ23BxUJTqJFM0bOJGX5zJaX8ex2wDBq9d_T_e3" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="supplyagreement-perishable-goods@1.0.0" />
+    <meta name="twitter:description" content="This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached." />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/jLPHRzCm47xlh_0ZYAqgF4_LiZHZ5QoTqemNX2BNEQL6ZXtEvsqHyD-HqtHAibR0qZxP_auNt_Vvio-NbZYIAzH8A6ujCvYFkH06inBDTn0qjguiLSLp12X0KmaexOQl5UJ6P3QTf1_IoNYraQMFheYJi-pYWhs9pdA4wYsRJjdF4MFi7GlZA4YYsNOnNwH972nMysIx3k9u_YMQZNwFZbF2-VclAHD62q0owVjqaax6eL-MD8pglPPqWE2dZzlnwdvr4ttUpfFbOX4rS137EpXSnWEurZMSZE4Aj3KO0y-apdVSPiQj5J01ccIEF8CEl765p2HL0uwli-dfk3KksT5Q4VhzR0FFimRkcidMGnDg5_hr6xFjjHtktzDnl-EL3oxNIkQSfD7HmqibSZIFW1r85gL1se6tHWDnh8B2E4sC375rXr8qXhWoHW7NJ762rujneDHzqjIHuvWY1W7o0RBwUYTd5IXb7jiNVAu9Sa3cjAJGq--wvTb6mrtmN4fD-UN7q6cI1JHPCVnmO8VQmnzYo9LmgfRye0f_SK0lN8BcYggZkgDVwJ-AP4kZBGnJAO6YzDNVcWnKBL7W-m3eja8pJf380bZcmC__xuRrtgIzgde7jZIl6uB7kZujfFOHsqFvKmjjTYlHP4xqyZjlspLwbsbHTV8oX_KPTDf18RNN2P2JmswdAFZJmP3KDxi-qalPYpVEkkQ23BxUJTqJFM0bOJGX5zJaX8ex2wDBq9d_T_e3" />
+    <meta name="twitter:image:alt" content="UML diagram of supplyagreement-perishable-goods@1.0.0 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/supplyagreement-perishable-goods@1.0.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="./assets/images/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="icon" href="https://i0.wp.com/accordproject.org/wp-content/uploads/2020/08/cropped-ms-icon-310x310-1.png?fit=512%2C512&ssl=1" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="main-navbar-menu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var burgers = document.querySelectorAll('.navbar-burger');
+        burgers.forEach(function(burger) {
+            burger.addEventListener('click', function() {
+                var targetId = burger.dataset.target;
+                var target = document.getElementById(targetId);
+                burger.classList.toggle('is-active');
+                target.classList.toggle('is-active');
+            });
+        });
+    });
+    </script>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                Supply Agreement Perishable Goods
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">supplyagreement-perishable-goods@1.0.0</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^1.0.0</span>
+                <span class="tag is-light">9a497d84b662c47acdd73e3c9939c4abc936d501755505c2ffccc75c954d8e3a</span>
+            </div>
+            <p class="subtitle">
+                This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="supplyagreement-perishable-goods@1.0.0.html" class="dropdown-item is-active">
+                    supplyagreement-perishable-goods@1.0.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.18.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.18.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.16.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.16.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.15.1.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.15.1
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.15.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.15.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.14.1.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.14.1
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.14.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.14.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.13.1.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.13.1
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.13.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.13.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.12.1.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.12.1
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.12.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.12.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.11.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.11.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.10.1.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.10.1
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.10.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.10.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.9.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.9.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.8.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.8.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.7.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.7.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.6.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.6.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.5.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.5.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.4.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.4.0
+                </a>
+              
+                <a href="supplyagreement-perishable-goods@0.1.0.html" class="dropdown-item ">
+                    supplyagreement-perishable-goods@0.1.0
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/supplyagreement-perishable-goods@1.0.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/supplyagreement-perishable-goods@1.0.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://playground.accordproject.org/#data=N4IgLgpgtgDgNgQ0gWQQJwNYBMD2B3AOxAC4QBlAVxngE8ACAQQHM0JoICwAdAngFQAWASwDOdMgFUAClIAyATUYBxAEoBRNcjUA5PnQAUYHEwhgBENHTxCzdBHDh0RAY3NYKcCGKRgEriFh05qxGADR0ZhB0gDgEzKzsnIC4BACUdKJ0HJCsgUKcOHZiOABmdMDA7hAAIkgQAL61BpExagAeEM4UYEI4BHTVkCl0AEameGy9ZSz4FvXhCH0QiHjoUc44aDDrSN29+tGU1HBCFinhAggAbrlMdnQwaLnOQjD2d4jOUcXDFCK5Xt5gOgARgATABmAAsAFY6KhcuIwPEwOEAML2IRFdYEITzACcIIA7AAGKFzAiBMpCWDrLKzW5rWAIAj0dZMJlCABeATs5IyLVEXQINwo5IsEXMdCWhRKlUWCGWrAM0SkFDQrgQIhOyXC1ls83gfk+JSGPz+IgBwPB0PE7R6gQYFw4FAg4W0EDwdHk6wwrsUQKJAaBADoeDxg+IqLQeYEVWrzpq6F8pGgcO5nGAREG6IIogd4MdLCJzg4nJG4PQmYEmrH1ZrC8XHDBVbWomV7qmKOn6o0JVwQMmO+mRH3wmUi88oJl6ql4X41mgsEyPlYbAJxVEslBpeL0ggWGxJ5wQ7wCCCswB5BcWYenoPhmvxqKXrDXrM5ugPjViov2RwiChDFANh2CW6wvmgYiYpYA5phmET5E0eZHGK8J4A8go3EY64RocBYAOTeFgWCsOakoCty8JNLkiKDl0PTwTu3j7gkyKJpYGrYUhBaJpEaDWAmIgwO0GLHGIqHodc4T6BAfhrvMfafgmz4WH2qSVmkBDOHAFAvhpGSyR+zaPnQyloDw+gIKkMmuB+KawWkgLpGBFiSWkL6cCJ3JDPQUCposbF3OggIEBQUAjGgoTmUMqRNAgvkioCXzWWuMGdo5jmFFeDxCpFBD6M4MUSiKwH3EIy5JQZqXpg5aSZeBknmVghVRHAODONs9FQXQL5HI6aA0GSWDmRAzXdYsQh9fQi6QHMDj4NcdCsBqPQIEMngRFSURdYhZbcVhrAfBNLqLRAVzuuE7YfKR1ZGV+JlZYNTjCDA2FVXBhi9iAsq9RY9D9BAqnHmeZ6MM4HwwBh4TIKmGI0K56kqBAABW7QYYZcZ3aZN4WakABC9DaDgXQfFmADqq7wiCdC46aBD-H0CA0CIeGJiUB0QBNC3zIpT5ZXQRQplAr23XW4Q7bh34NnYYMQBD4SsCj6bhOsdwppsCbzL5WAie1dG9FhN0Y0pfPeU4HDa0KwtG2KaE2JAvQEETZVGg53gyxDS7HQrqM7Mrljtur3JazrHUEMe+jRQs7D2u7viaRAWYAJIlOL+ZikUCBCHAYhYY7XRFPQhstpYXw2G74Nxx88vIz7PR+6rOCB4EwdFGVodixKPOWFAjNjdA4pIJxu1inOsuQFWnci7z4HhwVsIw63us7Kz6MtvdM-ZhKXFij39ABzgGt0C3bd6wx3NT+vYqm482kWzc8Jl3QefOwxRePuxR8L8cMYX6Z-Mq2-L8lgsKjwhgFb21U5xgQWgbCUoDK5RHUhA0+l0Aiqi8HQEU4FApoD3LgmAAgxDAxxtGOgxDopAyDGCLMaJ45HEtjzS+EE3yT2tt3Rmcxgr5AgC0ISBAExYTLosIo4R2p0JwYldioESjn2tkwzBL0sL+mprTem1QmbDAgFBDcEpvpHX6gzSAx4eDUIWD9fqLDczD3rL+Ma5jsIKTsmlPspCuhgHWrAqIjjaIuM8avd+iZegqxGNo7CejJqGOOoPJo4TfqMCIiREQ4RaY3CZBWXC7U1pRB6vonypgBCpjGr4LOFF9afQYAQOmLRGAjjsGAXw-gqwIWEExeIh4wDGIIFCLMDBY6ex4N08MvSK6exXrEixm8rES0sNYEsIw+6TiaUES4qwcCwE8OPV2djcmJjWkINkesxJFHMpZPSgC6wEUTDAXIvsHH9icemFxIhtgiFbhgpowyx6jJROhFyCBBpRVGl3J+Ts3k5y3tYvSts0ZmEHsBXcscYGfTen2Y83SQaJ34UJdMy91KE2JgnSZ-igErhLOcR0dAwQqN+HTUi6ic75FyIJVGpDTr2AoDUO5KKQCBOwjkiJ00oghPWFEZ+BckVTLTsA846VaoZFXCPRFlsVbIIlXQbxsFUUDKoT0vp8c6A-JsH8yx6qQCfI9vqw1WQcQuJWNhZlTxF6h3BV4+5PieVQB+ICScph-7SslchYB+QGRRl1GuR+rAACOFAhCsHad4XkOA9kHJ2GILBYozC7mYu08IL5imeByL0PsFSqnU1qT4WS3JYFZraZkTpAA2LMtkyrXB4I28MtlaLNquiam5XRXilSun6kCjg3reEVJqQEUFbDwjII0jwUQGA9JLIOjBdqABi55cZD2mZcl8vwmAEBqIEcc1AFqbGoseRtIM6ASBgIKmMDxlyyAFCa7eNiSxUEFVs1dZERCAmSnQdqnhyToDoNGoKI9eRMCOnQfFL8vhNC-cev9gI-HAsdpKGo0qmTAhhIuDRwrFRNHNivQDwHzZgYg2gLInSCRZkYcmZ2JrgU-hXb3c5UQmPLj8e+ng9HwzwiKB4OAuV6Mg3ovyuJ6lONoEufAz2YmdV6SpIsnEkByx2AuJnRAWT+ZYKSdGfjQYIRvmaYgsGOAEo7qlahsQ2sDruPoCMVqeBiA8GGVZzgcHQrhWIKagAGkFgAtEFvsPAVBWbRtoXzFh-N9nkIl4LiXwsngABxvgsFAHgGXwyYpsDiRwfAsu9uxP2xwm4V6ZtaQeTImiYP8N5USCEAB6IkIIWsgiJECNLpDZmODWB5EKW0VZUxoDJCCySCCeGull3IKGJuBp7K6-L5XsxZcBjloMINEZ02WEVrLwwCZOxJkS4Fu8Tp7cYnYbNdWur-hluaWDrA9uvE3NuIEdBxvoDECBpgth9B9l2+6V4xW0BblUlNmbOc5tHs2Ytgs4RTYwauJbVOS3n7lRThKaidX9ocHdNdvBtXOCcMlDJf9lKiTUrNGIelmjQkkcTdjqIKJVQvcBGDqAx4MumK5wsVuZWdhZj7Fzlxk4mRiA5rxbCq3CvrfBwFJokQCDBY6GgDndBgf7YV9z0MBBcRZmQJ0DljhEb3C8JkZ1PBDdDM6AU9CFZeRoheE8MANATUvBo6JZZFLYr2-WDYJ3gR2qu6DwxTIKE8hE9u0eG322sytHaJ0XFvJxke6JV7roGDyVRB4cnzZ6kpPZBj7WuPBvlNqAIFBD4q0s5B5YTWkngJBv-psJ0Nd5O2SiboNpo4WBHpDFyHfXZRwU11wyNX9Yte9N7kzvwtDEos8+6gQuGBjK4LvePIb0zcH8goh6EUI4Q4sxugVf7IK9B0jpvYsyE6-6n2nxVkmsfocB7et7ggIoRQWVNCEmgKCHufVUuOCF-fZZ1TBUUaVJvFiTpf0LMF9ICTZUmdAXBTgGgMMIkO8MmVApkd3FjKeGZXAzgcFaJTuB5DME5VIfrTRfmeIOgtZI+bDeXF8H-IccIQFOwRUHuXSMNKwb0IAo4DAKICDI4d3R6cyOeGgwbQAnUCmB2dYHuAbNZScNUeXIwTwNAq6MWczOwDJVadaB1EOQ5Y8eAnbWWd4FiTtWCTMCMIYRWNDfIL3PBBAAhMQeAqldSeAiEbqWNVGTTFzfADuLjQgy5EQHAdaONAIegLqIYJaGyRDFpMiJA7kBUNA93UlRweZdHbidsK4EfWTFcPUE6A0D4dpawtKMnHIiwMIiIvPXhDgTUUwrA0xeDZcRGaNPw9pN9SFGgnoAIqIKNGNEvfHUorjCgtNKAnBFwghYELAqmDEGqdmI6MQaFe2EFAlBgoWQor4B7NcVgllFWR2TSQ-RQ8PMNeEXEanAjbwIoLIbZCJRI8Y2iTMTAkzRPFoLSU0HoWwwQdINIvAqaHADBPOPke2JZNJCo6qQo1aH4LwcIOmJgTwdggKICf8TUcuaBNHXQ1w-MTJdaXADodpN-FWIwp1Q5euEBO-N6K2YuZZMQc4QIVgF4PwwIFWewLILyCsD8a8eiImYIAeMpANAsOA8MA-avIQdycrIPMMYMMUw-SUzIQrcPc8ZNUOE1ZY1HG4LPegNjRwApOAQtIDBU9yZcWxcU1uKU+XTFQAt-bWFwVqTUQIU2Joe0rSA+c9S-V+CUTUz0mjD3WUhPW9BMMgOozTLqWMQOHpE6Q6LUiRHyXufo+gOE7CC0xUjyV4G0xQt-VfAo3Q97KrJI4nWAwM1onoYLSoUQd0-8VgAgthJg+gUEt0x01nE0pUzMqfcHN-KkwuYQBceM8IHhCub0+o+2bgPKU5f-JAzZF0os2PZETg6oywVvTIMSXoaFVydYSQ1IIY1ko7OgWQeUUw4MXfNowld8VjKWMVXs4UlCEoGwKguVXckvU2Q8j0LCZsg+RBO-NMq0js20vWP2TgzwdARrL4SEkUBAAPB4LkQIT8msl2X89sxwLMrsvWOAkGNQb-Q4koLnebPWMMM8cMPCuHZeL4VU1-EwuwhwhiZwlgVwtcUEbbZWfWWHEkywHha5XBJ-bHGAnNfSGyHUy5B4JgAQOCdSMA8fRrG-UvZvTIoDCnKIVTAIdTRYAMggJikGKQRmcoii8AqitQR0XoL-e4zcfCsiji3hWNEk3imrFiQcgyHUp6X8R8l4J3CseKEgmqaYBlbCfksUHU8IG+HST0mgcoySiA+7CwK4IdewJaLAegF7cCAIHUb0ECeKveCwQAlKugJgHAVMbwOADKh4iwHKlWTixotdIqmSBKjSdXbIAFPKSOVgYTXkSEty+NGMjmR0Z0zoDYr7X1CbOmAfOq2+UKzqqKtAGKkEomS7ZKkavANK0E--bKkalWPKgq-q4vHKiq-hDBKCBUF8LAUws8MsugddVUGXF9OvMQjPc8Vi8Hcyvkyyrimy2S+yp+aXAUpymg+ZI4AwjcXQ-yi-f0wcz4seYdf6ofW6x82FQEdAL8hnEVbCMy0i56vkV6ni96-ircpqtSB4GlVJO4jNCUVG9ijG6yrG6rG7MvDpfXIEUxRAmwEk3oa66GhvODL6gKr036lqHEPTWI+IgQYLYoNXHoREPwQERcHuEwUg+GxUONImT4QsbFDwbYR0SkmVbCOI5KP0jItYDwQIUEpacIo9NaegXPP1S3DgXlTIAxaiZpPiutem3fJQAnXBUdFMK4X4H4sMUzcMKvLoRUOIZvT3IKH3XHXkOG7GzIHQkwGXPg2xCtVweNcIFwNwBdQzHhYQIfDMR6YG7qNqUKVc9-YYfkrgwYrRUq+OI06m4s8opBKuoNGO0nR85kkiPHCUQXV4TixJMilnCRUSFmSOwEVgRAGFXQ-8ewllHuepMURIp21uvGugY0zgefEdFGrLF1QetdZiJZMe7YbE+1ACGi2erIRq-KHciww0Dep4ne5mVWU6boH4XwlwH4H2-hKbcCf9Ssa4QzdSeukug+ie4+6e6qM++e2ymm0Ov2oMhgQ8LAbozeRelvXDeZOKc2bkJM-c+YDcy2A9Ya-coYcu5fLwUw0zUxBgJ7Q9JBs-GXJyi7DUAhluyRHkFkFnWNRafZMSzKUffS1NSA7BOu+coogpPqpoAuoS1Y9CdYlc8vIEUzU8k7LwR85AfJQpL4M8sO73DBPU3K2DWxTHNdXkBkT1bEJeH4zRMAMYG2v-cOjBcSArS2U2fQIQVIf-U214YvAaAwIQNx24NGo9BwGgYLA6YwbEWChEnhMAYLAjY01UbiOsaaqSPx-x1uCCGJrSJhk6GDf9Uqtk5ciwfOb+JgrOC6A+XwEwR+lkka1xi4VIDOFoeufQepjIZEmicx0pirXQqRuwBJemMkkpyiOc2myknE-p66LW-UL0+MDYzyJZbIrW3phACZyCABJfVUQObcamzUHFHocOSORGQ6MBTR5R6Mox-RoywRkmlB+S+ZLRNgroClHocyfxiR+hy-YS9oDmE5+81iXG1x-xxYnuEpEakjdAJbO+yRz5sQZY35mqGTLujEWwE0GlemOJkyneHTBaGwEXDS0zbpG0PqG6jm5ONhiRQs259IF8LJkvEUDgGvGSPTFWXIPvSU4Ik6EFqY6Q8W3IZ0BieZNlwIdSBl6fJlzwchoMRtOgFA-RR8hgb-WNWe2DWVvqWwuh76mF-mHTdBAKRE9piPTss0u-ESnh656Auy8o3mhZKtfIdBqwTOPqQsweXp01jMA51IUmGRm21V18RgB1-RAKaJxo5eJyabegB5n2ClRY+FNcqwCSS2dSAhrk7CJy+iobe+OmvKOeQmOgN2umD2mVx1v1hgeMy5DOLOXVo4iAJE3-bhI1789hrZN1yYoRkZuSmg0E+ZF8aOAVxBANp1xIwedku-AukA2F7h91xqVIXNg-VUBML4WUdEIUU-fIQm9aFWZfHutoNQhdmRE1yd8BaOegGgi3L43SSEsdywYTGjAU-PXdl2SEt1o9xZdShRoMejPNnAPqbES2N80hcUzUbzLCAAKQSZEG1j2eMt5AADUnQAYJzUglBv2LBf2bg3zG9LXY7SFIT7SmxIAuDRAFootCyogp7T6fBIHsJAHSdnK5kog8qf2U2mgpRSOEROVNH5APWDUfi8d8gwOCbIP0K6A1BHKZnSrr4NdTo2oDD6A5HN9dDjjgshztJfgKUkZwOhPU9AgjL+XwK78f6COVYf9wJXgDaaNJQZPNkLihT2OjOShtB5AgrehBs6YoPRHyWIH2ICbiO+qF6sPvN1mNw0DnkoOxBBtIB1kUMZLhHabZ5UhAO+ObQprmMROxP-SggJOr8pOLgZPzbXm1JmI5aG4roxALt5kkmsHeh4VoOEzKkR5oLORmOJQ3ztmt5fB7O4MnOjM8o-HqDi2E0WQwHT48BhAbJgIgJRLEpeJ+IohLasIkmEMShUFSIYuWv5Q2vcwOuXZHPJWMseOEoLAs9sZTkyB9lCH4Q53OAjugpfj22rDyuyPzvSlyWQowoqODbruNhbvuOGASwrushjv7p9l5s4BE8DJPvAego5VcNA8Gt7B4uDuvugf11FCTI6Y+gi6kG+BjB8kLBZplDDvvuaM1nFcegnuhQCSsfnaTw50M71ol0eAxxnp2luwyhiowBuM6gGh-9ShgAOf6h9cS0eFGAsx09YR1GhoCAyBnprlLYIv59rxMEnSj4vVaDIv-8kBdX1IBBQpJTw8IuUwHAcqk3GiVUaq-7VfKc-rjATBhXAQQLKcxwze0BEYVnrh10hiOBnAaBuxeeyh3BuKdh6hOlhfqlcZdURlLVfkHgEB+AJRT1yjPVKcFf4QRhrHxg+egICAJAysRBux1Iyge4Whc+y42f+eytuwvg2wKCQ-+BoBNewBdX4rLftoE+We6tk-AR5l0+bGJhgBs-itYALAtfWB6gAAGlEUhIvhAFoIfxv9BCflEY8AACT1+1gyJb6FFJ-tQ7+8y79oN78z6L9yDX6Ag3999qAAFJp+B-Z+z-9f3d6gr-jwZeJwS7o7Lb5gNeR+m-FQVZde5-cPFvxuBRZfgukWKHvUWhMgqmX-VWC-D4Qcl0kacEPPYA6Dj1uQKSbCKj3Bxq1h0uMIWjySCYZE0QcAdAW-kCJ4ATUOtRyhwCQHat0wACO1lEDhI5AxAbYOgXAHdzrpJa6wOvgQBwGepEA+AwgVIE4EkC0BatPWO5l6Ar1EBXA+gAAF4n4sWEuCUET51YOeYgapNrGwovZlwR-G2kB3CKWAQBOHKAWgSqbVIaBglcQTEV4FmQiAoQEAFrEWAogjAJAEAC1hazINIIJSekpoiMFUBrwAQFNq4LB6MCCgFLO+hcHmIwhJuQffZjwG8F0BE4gIIsFZkNK0EeopgAIMugqw0AhIYgC3FcCswiBNMrBP4IEGCBzcVkgQlzj8QiKSkUMDtT+D1CDCMDjwKQvgOeEqDnh-MOQgjtTVbieAeAR6ScIJBvqsggwuZdsA4SDD-hDgNAGjmAH-yiBzgWSDalgEzCeA2QPvAAAJYEjh+uZIQACpThPAOgKcP9aLCowKw4dKejl7akXIP4PTFsNeK9Brh74dqGgDypyof+3FbXryEAGP85O4tI3gWlITyDs8N4K4UBjQaIIJYzpL8GyV6DGDze7vbfl1SOiBA2+qwdAHlWPBXCWsYwjBpMPKi-CZhlmBcHMNRgLCywyw+cmsNeG7D8q2ww4QniJD64qQmwCztMNmEph5hhvSWhyLPBYEUQiAFMgLEYJiVVhIgYgN4PCGZgBROAeYayBawqiHCLWYUemFFFBgsCjAngDyJpBsQmAVI+cFgFpHpggwaABKJtD1FYFgAHRZ0P+lCCIxBIvHBoNKKFiyiYA8oxUX5GzjmiwIVojpOqM1GowWstojyJOAdEdCjARo6kHyMpERjrRvkOmDQA5HUIsC0MOmL4H6jwMvMU6QWEEHqR+iFRLWJUcGJpGCi6R6o9MRAEzEtF9R8YnAPrhaznDLhXwhPh1xfrgUno7-TgF2JJF0w3u4gPfmADIC9j2BlwxMAanUAMA+AagSoLOPyCJxtAAAfT4AqAGA2gMgInD4CrjGAKgFQInBg7LieAtQfXE6CFil9AQwAI8QAGklAR43GBIDIAr81AsgI8T0O0DaA1Ar4hgCeK-FHiUQ54FQCuIIBXiTwHYi4Z8P9YAjR+35aoev2AEW9LYXUeYBoKHGfCRxg2YcmQBd5u8R8D42QfkEqBWY9MHwDyPRRfBHiKJAEdaCCIv6Xj2xnY+CaW2wnd8OYaOXBM4GEJS9iRPAfCRDTf4wByipElevkCnHZQbgXExOIJLnFiT2kU4rXmIEM4-AjxhE-hOsGInXAAA2gAF0zYOk13uhKYCFAIYOwewKxJgnsS4R2lMKnVgiqnxTodWaAHbFSLmBeg7wiutiJ6rDieAbk7zI5PaR6UpKhlOrJJKUmIgFoUwMYI4KkkIhZJaQJMVkCPG5jTA6AGgIWOsxGBfAcALnq+PyogVegGA2yWcLglwjnRXgdIXVlG420sJE4p8t8xxH7kqIaUlSLhJ4AS1+EktZeMpMyBHNuq3IYNuSDEA1SneR4zFJABMCWAOeAPLSc1K4kVSCAsErsVri8CbA9qHnX9MBnIEEVupnAELv1Pohc9SBB05eGNO2GbSPRO06KfkEyn5icpnlRwgVKKlkT54eY7KblO8zQiMCn03GCVJkhlSagq09afBPfAa8MBbQxYIFIID7DoZYMo9OaF9Tz8MB0MHqGCXNhiAJRUFBMA9MiR8BNo3UZ0P9C0mxTLY8UrqUlJkk4tOpiUmKSlJWmfSnpP016ZARsAfSkpd4zmeOSSkzSa2O8XIHeNhFzjBZc0pgiXzz4UyUp7YTVJ9IlnfgiJ5kz3hAGjTe8AZtMymTcED6hx6JlE9aIPwb6-90EBsxiVEGL7z9TZrAc2Xpmz4P8WJn0hifbPv6oT3cds9aP9J4GMDHB0EkAM4OmgIBPB0UvsAABIsm5oPsPFhAD8jqRlo2sdaNuHlgVhzIjYayIKpxj0ZNQTGXDIDmzi+w1MsyCQFNQkQrMaoCAMQDjkWjQxQYNOQDXeFBglAKYBKQAGJJAMgWQInDUAqAr+XWMCSoCkDgTFxicc8NoBHAFyQAxomjCpBLl9gy5zYSudXJDGJyOk9czYWyMzCJwGZrct8fIB7l9yiQA8oeTuL4Cjzx5+c2QX2BWlzyQAC8iuVXJTHxza568jOdsKDCDTOArc5uSswgCHzE4oQQ+Wdy5CHyIQgCrrAAC1OgTIHAIfLUb8gxEh8h0DJ1wDDhL5K9PsBUHJm3yusuIXEMFiJD1pgsYIIkHwADDEByFAYfUQGAADU3WChVyPQWmoOeRUkudFIwUgAI5iAKObfOXk1jVRdIhsU2J1Q5jyez036dwCYUcLcAFsmDuygBglzgwpIWcRwvqqayD8dE2+e+JXEgBZxtQXKBwo57RzTUz4ieVfJcEiyZZJckEHguUXmLi+os4xSQpJAGLTU8s5xLfJ-m6QAF4gJrnQDAV0AoFccR6Twjbi9BkF7UVBWYo4XoizJmIpgGrI1maQMCii1xZgtVD6zb5YjCCNEtNTGzh+gI22dYrSUuDZ+1swpQov8wM0SlDs92Skv8zEgalbsoAR7JLlXESl3shwcYvmIlKw56ZYprPJjnNZ609aIEEMFxAQBiFuIIoM4GCwQgiQWAWZQgDSxQgigcy3EASGcALKtE4yiALiFyV9gsmcJBScYr7DDLRluyqZTMrmULKllKytZRCA2VbLWCuy-Zboqgk8AA5IAFYSvzABQA4AngkALUCAA" class="button is-rounded is-primary open-studio">Open in Template Playground</a>
+          <a href="https://github.dev/accordproject/cicero-template-library/blob/master/src/supplyagreement-perishable-goods/README.md" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="supplyagreementwithperishablegoods">Supply Agreement with Perishable Goods</h1>
+<p>This supply agreement specifies penalties if the transport conditions (temperature and humidity) for a package are breached.</p>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>Supply Agreement</p>
+<p>This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of 06/30/2099 (the “Execution Date”) between "SUPPLIER CORPORATION", a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and "BUYER CORPORATION", a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.</p>
+
+<ol delimiter=period start=1 tight=false>
+<li><p>Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase "Grade I, Size 4, Zutano Mexican Avocados" (the "Products", "Grade I, Size 4, Zutano Mexican Avocados") in accordance with the terms of this agreement.</p>
+</li>
+<li><p>Orders
+2.1. Purchase Orders. The Purchaser shall submit all orders for Products to the Supplier in writing to the Supplier's address listed in the introduction to this agreement, or as the Supplier otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
+(a) each Product it is ordering, identified by model or part number,
+(b) the amount of each Product it is ordering,
+(c) the unit price of each Product it is ordering,
+(d) the location for delivery, and
+(e) the delivery date, allowing reasonable time for the Supplier to receive, review, process the Purchase Order, and ship the Products (the "Delivery Date").
+2.2. Accepting, Modifying, and Rejecting Purchase Orders
+(a) By Notice. Within 2 Business Days' of receiving a Purchase Order from the Purchaser, the Supplier shall accept, reject, or propose a modification to the Purchase Order by sending the Purchaser written notice of its acceptance, rejection, or proposed modification.
+(b) Deemed Acceptance. If the Supplier fails to notify the Purchaser of its acceptance, rejection, or proposed modification, the Purchaser may deem that the Supplier accepted the Purchase Order.
+(c) Modification of Purchase Order. The Supplier may propose a modification to a Purchase Order by including in its notice to the Purchaser a modified Purchase Order for the Purchaser to accept or reject according to the acceptance and rejection procedures under paragraphs 2.2(a) and 2.2(b).
+2.3. Canceling Purchase Orders. The Purchaser may, at no expense to itself, cancel part or all of a Purchase Order up to 10 Business Days before the Delivery Date.</p>
+</li>
+<li><p>Delivery. The Supplier shall deliver the "Product" and title to the "Product" to the Purchaser on or before the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the "Annex A", attached to this agreement.</p>
+</li>
+<li><p>Acceptance
+5.1. Acceptance of Delivery. The Supplier will be deemed to have completed its delivery obligations if
+(a) in the Purchaser's opinion, the "Product" satisfies the Acceptance Criteria, and
+(b) the Purchaser notifies the Supplier in writing that it is accepting the "Product".
+5.2. Inspection and Notice. The Purchaser will have 3 Business Days to inspect and evaluate the "Product" on the delivery date before notifying the Supplier that it is either accepting or rejecting the "Product".
+5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Product" must meet for the Supplier to comply with its requirements and obligations under this agreement, detailed in "Annex B", attached to this agreement.</p>
+</li>
+<li><p>Pricing
+6.1.  Product Prices. The initial prices for all Products are set forth in Schedule A. All prices are FOB the Supplier's designated shipping point.
+6.2.  Updated Price List. The Supplier shall update its price list each calendar quarter and give Notice of the updated list to the Purchaser no later than 15 days before the end of each calendar quarter.</p>
+</li>
+<li><p>Purchase Price. The Purchaser shall pay the Purchase Price to the Supplier
+7.1. in full,
+7.2. on delivery and the Purchaser's acceptance,
+7.3. in immediately available funds, and
+7.4. To the account the Supplier lists directly below:
+Account Number: "XXX-XX"
+Routing Number: "YYY-YY"</p>
+</li>
+<li><p>Term
+8.1. Initial Term. The initial term of this agreement begins on 04/02/2018 and will continue for 2 years, unless terminated earlier (the "Initial Term").
+8.2. Renewal Term by Notice. The Purchaser may renew this agreement for successive renewal terms of 1 years length ("Renewal Terms"), unless terminated earlier, by giving the Supplier notice of the intent to renew this agreement, at least 30 Business Days before the end of the Current Term.
+8.3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.</p>
+</li>
+<li><p>Mutual Representations
+9.1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+9.2. Execution and Delivery. The parties have executed and delivered this agreement.
+9.3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+9.4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.</p>
+</li>
+<li><p>Limited Warranty
+10.1. Warranty. The Purchaser warrants that the Products
+(a) will be free from material defects,
+(b) are made with workmanlike quality, and
+(c) will conform, within normal commercial tolerances, to the applicable specifications.
+10.2. Replacement Products. Subject to paragraphs 10.3 and 10.4 directly below, the Purchaser's sole remedy for breach of this limited warranty will be the Supplier providing the Purchaser with a replacement Product, at the Supplier's sole expense.
+10.3. Notice Requirement. The Supplier will only be required to replace Products under paragraph 10.2 if it receives written notice from the Purchaser of such defect or nonconformity within 90 days after delivery of the Products.
+10.4. Exclusions. This warranty does not extend to any Product the Purchaser abuses, neglects, or misuses according to the applicable documentation or specifications, or to any Product the Purchaser has had repaired or altered by a Person other than the Supplier.</p>
+</li>
+<li><p>Confidentiality
+11.1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+11.2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+11.3. Non-Disclosure. The Purchaser may not disclose Confidential Information to any third party, except to the extent
+(a) permitted by this agreement,
+(b) the Supplier consents in writing, or
+(c) required by Law.
+11.4. Notice. The Purchaser shall notify the Supplier if it
+(a) is required by Law to disclose any Confidential Information, or
+(b) learns of any unauthorized disclosure of Confidential Information.</p>
+</li>
+<li><p>Effect of Termination
+12.1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+12.2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+(a) pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+(b) refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+12.3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+(a) that arose before the termination or expiration of this agreement, or
+(b) arising after the termination or expiration of this agreement.</p>
+</li>
+<li><p>Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.</p>
+</li>
+<li><p>General Provisions
+14.1. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+(a) represent the final expression of the parties' intent relating to the subject matter of this agreement,
+(b)  contain all the terms the parties agreed to relating to the subject matter, and
+(c) replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+14.2. Amendment. This agreement can be amended only by a writing signed by both parties.
+14.3. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+14.4. Notices
+(a) Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, next-day courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+(b) Receipt of Notice. A notice given under this agreement will be effective on
+(i) the other party's receipt of it, or
+(ii) if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it.
+14.5. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+14.6. Waiver
+(a) Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+(b) Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+(c) No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+(d) No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+14.7. Governing Law and Consent to Jurisdiction and Venue
+(a) Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of NY.
+(b) Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of NY, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+(c) Consent to Service. Each party hereby irrevocably
+(i) agrees that process may be served on it in any manner authorized by the Laws of the State of NY, and
+(ii) waives any objection which it might otherwise have to service of process under the Laws of the State of NY.
+14.8. Counterparts
+(a) Signed in Counterparts. This agreement may be signed in any number of counterparts.
+(b) All Counterparts Original. Each counterpart is an original.
+(c) Counterparts Form One Document. Together, all counterparts form one single document.</p>
+</li></ol><p>Schedule A.
+"Grade I, Size 4, Zutano Mexican Avocados" 1.50 USD per KG</p>
+<p>Annex A. Delivery Method
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per hours.</p>
+<p>Annex B. Acceptance Criteria
+The shipment must contain between 2995 and 3005 KG of "Grade I, Size 4, Zutano Mexican Avocados".
+Temperature readings for the shipment must be between 2°C and 13°C.
+Humidity readings for the shipment must be between 70% and 90%.
+Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is 0.2.
+Formula for Breach Penalty Calculation:
+penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">Supply Agreement
+
+This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of 06/30/2099 (the “Execution Date”) between "SUPPLIER CORPORATION", a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and "BUYER CORPORATION", a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.
+
+1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase "Grade I, Size 4, Zutano Mexican Avocados" (the "Products", "Grade I, Size 4, Zutano Mexican Avocados") in accordance with the terms of this agreement.
+
+2. Orders
+2.1. Purchase Orders. The Purchaser shall submit all orders for Products to the Supplier in writing to the Supplier's address listed in the introduction to this agreement, or as the Supplier otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
+(a) each Product it is ordering, identified by model or part number,
+(b) the amount of each Product it is ordering,
+(c) the unit price of each Product it is ordering,
+(d) the location for delivery, and
+(e) the delivery date, allowing reasonable time for the Supplier to receive, review, process the Purchase Order, and ship the Products (the "Delivery Date").
+2.2. Accepting, Modifying, and Rejecting Purchase Orders
+(a) By Notice. Within 2 Business Days' of receiving a Purchase Order from the Purchaser, the Supplier shall accept, reject, or propose a modification to the Purchase Order by sending the Purchaser written notice of its acceptance, rejection, or proposed modification.
+(b) Deemed Acceptance. If the Supplier fails to notify the Purchaser of its acceptance, rejection, or proposed modification, the Purchaser may deem that the Supplier accepted the Purchase Order.
+(c) Modification of Purchase Order. The Supplier may propose a modification to a Purchase Order by including in its notice to the Purchaser a modified Purchase Order for the Purchaser to accept or reject according to the acceptance and rejection procedures under paragraphs 2.2(a) and 2.2(b).
+2.3. Canceling Purchase Orders. The Purchaser may, at no expense to itself, cancel part or all of a Purchase Order up to 10 Business Days before the Delivery Date.
+
+3. Delivery. The Supplier shall deliver the "Product" and title to the "Product" to the Purchaser on or before the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the "Annex A", attached to this agreement.
+
+5. Acceptance
+5.1. Acceptance of Delivery. The Supplier will be deemed to have completed its delivery obligations if
+(a) in the Purchaser's opinion, the "Product" satisfies the Acceptance Criteria, and
+(b) the Purchaser notifies the Supplier in writing that it is accepting the "Product".
+5.2. Inspection and Notice. The Purchaser will have 3 Business Days to inspect and evaluate the "Product" on the delivery date before notifying the Supplier that it is either accepting or rejecting the "Product".
+5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Product" must meet for the Supplier to comply with its requirements and obligations under this agreement, detailed in "Annex B", attached to this agreement.
+
+6.  Pricing
+6.1.  Product Prices. The initial prices for all Products are set forth in Schedule A. All prices are FOB the Supplier's designated shipping point.
+6.2.  Updated Price List. The Supplier shall update its price list each calendar quarter and give Notice of the updated list to the Purchaser no later than 15 days before the end of each calendar quarter.
+
+7. Purchase Price. The Purchaser shall pay the Purchase Price to the Supplier
+7.1. in full,
+7.2. on delivery and the Purchaser's acceptance,
+7.3. in immediately available funds, and
+7.4. To the account the Supplier lists directly below:
+Account Number: "XXX-XX"
+Routing Number: "YYY-YY"
+
+8. Term
+8.1. Initial Term. The initial term of this agreement begins on 04/02/2018 and will continue for 2 years, unless terminated earlier (the "Initial Term").
+8.2. Renewal Term by Notice. The Purchaser may renew this agreement for successive renewal terms of 1 years length ("Renewal Terms"), unless terminated earlier, by giving the Supplier notice of the intent to renew this agreement, at least 30 Business Days before the end of the Current Term.
+8.3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.
+
+9. Mutual Representations
+9.1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+9.2. Execution and Delivery. The parties have executed and delivered this agreement.
+9.3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+9.4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.
+
+10. Limited Warranty
+10.1. Warranty. The Purchaser warrants that the Products
+(a) will be free from material defects, 
+(b) are made with workmanlike quality, and 
+(c) will conform, within normal commercial tolerances, to the applicable specifications.
+10.2. Replacement Products. Subject to paragraphs 10.3 and 10.4 directly below, the Purchaser's sole remedy for breach of this limited warranty will be the Supplier providing the Purchaser with a replacement Product, at the Supplier's sole expense.
+10.3. Notice Requirement. The Supplier will only be required to replace Products under paragraph 10.2 if it receives written notice from the Purchaser of such defect or nonconformity within 90 days after delivery of the Products.
+10.4. Exclusions. This warranty does not extend to any Product the Purchaser abuses, neglects, or misuses according to the applicable documentation or specifications, or to any Product the Purchaser has had repaired or altered by a Person other than the Supplier.
+
+11. Confidentiality
+11.1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+11.2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+11.3. Non-Disclosure. The Purchaser may not disclose Confidential Information to any third party, except to the extent
+(a) permitted by this agreement,
+(b) the Supplier consents in writing, or
+(c) required by Law.
+11.4. Notice. The Purchaser shall notify the Supplier if it
+(a) is required by Law to disclose any Confidential Information, or
+(b) learns of any unauthorized disclosure of Confidential Information.
+
+12. Effect of Termination
+12.1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+12.2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+(a) pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+(b) refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+12.3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+(a) that arose before the termination or expiration of this agreement, or
+(b) arising after the termination or expiration of this agreement.
+
+13. Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.
+
+14. General Provisions
+14.1. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+(a) represent the final expression of the parties' intent relating to the subject matter of this agreement,
+(b)  contain all the terms the parties agreed to relating to the subject matter, and
+(c) replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+14.2. Amendment. This agreement can be amended only by a writing signed by both parties.
+14.3. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+14.4. Notices
+(a) Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, next-day courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+(b) Receipt of Notice. A notice given under this agreement will be effective on
+(i) the other party's receipt of it, or
+(ii) if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it. 
+14.5. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+14.6. Waiver
+(a) Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+(b) Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+(c) No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+(d) No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+14.7. Governing Law and Consent to Jurisdiction and Venue
+(a) Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of NY.
+(b) Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of NY, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+(c) Consent to Service. Each party hereby irrevocably
+(i) agrees that process may be served on it in any manner authorized by the Laws of the State of NY, and
+(ii) waives any objection which it might otherwise have to service of process under the Laws of the State of NY.
+14.8. Counterparts
+(a) Signed in Counterparts. This agreement may be signed in any number of counterparts.
+(b) All Counterparts Original. Each counterpart is an original.
+(c) Counterparts Form One Document. Together, all counterparts form one single document.
+
+Schedule A.
+"Grade I, Size 4, Zutano Mexican Avocados" 1.50 USD per KG
+
+Annex A. Delivery Method
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least 1 per hours.
+
+Annex B. Acceptance Criteria
+The shipment must contain between 2995 and 3005 KG of "Grade I, Size 4, Zutano Mexican Avocados".
+Temperature readings for the shipment must be between 2°C and 13°C.
+Humidity readings for the shipment must be between 70% and 90%.
+Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is 0.2.
+Formula for Breach Penalty Calculation:
+   penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor
+</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">Supply Agreement
+
+This SUPPLY AGREEMENT (together with all schedules attached hereto, the “Agreement”) is entered into as of {{dueDate}} (the “Execution Date”) between {{grower}}, a Delaware corporation (“Supplier”), having a principal place of business at 12345 Main Street, California 92705, and {{importer}}, a company organized and existing under the laws of Delaware (“Purchaser”), with a place of business at 12345 Second Avenue, New York, NY 10001.
+
+1. Supply and Purchase of Products. The Supplier shall supply and the Purchaser shall purchase {{product}} (the "Products", {{shipment}}) in accordance with the terms of this agreement.
+
+2. Orders
+2.1. Purchase Orders. The Purchaser shall submit all orders for Products to the Supplier in writing to the Supplier's address listed in the introduction to this agreement, or as the Supplier otherwise specifies in writing, (each a "Purchase Order") and include in each Purchase Order
+(a) each Product it is ordering, identified by model or part number,
+(b) the amount of each Product it is ordering,
+(c) the unit price of each Product it is ordering,
+(d) the location for delivery, and
+(e) the delivery date, allowing reasonable time for the Supplier to receive, review, process the Purchase Order, and ship the Products (the "Delivery Date").
+2.2. Accepting, Modifying, and Rejecting Purchase Orders
+(a) By Notice. Within 2 Business Days' of receiving a Purchase Order from the Purchaser, the Supplier shall accept, reject, or propose a modification to the Purchase Order by sending the Purchaser written notice of its acceptance, rejection, or proposed modification.
+(b) Deemed Acceptance. If the Supplier fails to notify the Purchaser of its acceptance, rejection, or proposed modification, the Purchaser may deem that the Supplier accepted the Purchase Order.
+(c) Modification of Purchase Order. The Supplier may propose a modification to a Purchase Order by including in its notice to the Purchaser a modified Purchase Order for the Purchaser to accept or reject according to the acceptance and rejection procedures under paragraphs 2.2(a) and 2.2(b).
+2.3. Canceling Purchase Orders. The Purchaser may, at no expense to itself, cancel part or all of a Purchase Order up to 10 Business Days before the Delivery Date.
+
+3. Delivery. The Supplier shall deliver the "Product" and title to the "Product" to the Purchaser on or before the Delivery Date, at the Delivery Address, using any applicable delivery method detailed in the "Annex A", attached to this agreement.
+
+5. Acceptance
+5.1. Acceptance of Delivery. The Supplier will be deemed to have completed its delivery obligations if
+(a) in the Purchaser's opinion, the "Product" satisfies the Acceptance Criteria, and
+(b) the Purchaser notifies the Supplier in writing that it is accepting the "Product".
+5.2. Inspection and Notice. The Purchaser will have 3 Business Days to inspect and evaluate the "Product" on the delivery date before notifying the Supplier that it is either accepting or rejecting the "Product".
+5.3. Acceptance Criteria. The "Acceptance Criteria" are the specifications the "Product" must meet for the Supplier to comply with its requirements and obligations under this agreement, detailed in "Annex B", attached to this agreement.
+
+6.  Pricing
+6.1.  Product Prices. The initial prices for all Products are set forth in Schedule A. All prices are FOB the Supplier's designated shipping point.
+6.2.  Updated Price List. The Supplier shall update its price list each calendar quarter and give Notice of the updated list to the Purchaser no later than 15 days before the end of each calendar quarter.
+
+7. Purchase Price. The Purchaser shall pay the Purchase Price to the Supplier
+7.1. in full,
+7.2. on delivery and the Purchaser's acceptance,
+7.3. in immediately available funds, and
+7.4. To the account the Supplier lists directly below:
+Account Number: "XXX-XX"
+Routing Number: "YYY-YY"
+
+8. Term
+8.1. Initial Term. The initial term of this agreement begins on 04/02/2018 and will continue for 2 years, unless terminated earlier (the "Initial Term").
+8.2. Renewal Term by Notice. The Purchaser may renew this agreement for successive renewal terms of 1 years length ("Renewal Terms"), unless terminated earlier, by giving the Supplier notice of the intent to renew this agreement, at least 30 Business Days before the end of the Current Term.
+8.3. Term Definition. "Term" means either the Initial Term or the then-current Renewal Term.
+
+9. Mutual Representations
+9.1. Authority and Capacity. The parties have the authority and capacity to enter into this agreement.
+9.2. Execution and Delivery. The parties have executed and delivered this agreement.
+9.3. Enforceability. This agreement constitutes a legal, valid, and binding obligation, enforceable against the parties according to its terms.
+9.4. No Conflicts. Neither party is under any restriction or obligation that may affect the performance of its obligations under this agreement.
+
+10. Limited Warranty
+10.1. Warranty. The Purchaser warrants that the Products
+(a) will be free from material defects, 
+(b) are made with workmanlike quality, and 
+(c) will conform, within normal commercial tolerances, to the applicable specifications.
+10.2. Replacement Products. Subject to paragraphs 10.3 and 10.4 directly below, the Purchaser's sole remedy for breach of this limited warranty will be the Supplier providing the Purchaser with a replacement Product, at the Supplier's sole expense.
+10.3. Notice Requirement. The Supplier will only be required to replace Products under paragraph 10.2 if it receives written notice from the Purchaser of such defect or nonconformity within 90 days after delivery of the Products.
+10.4. Exclusions. This warranty does not extend to any Product the Purchaser abuses, neglects, or misuses according to the applicable documentation or specifications, or to any Product the Purchaser has had repaired or altered by a Person other than the Supplier.
+
+11. Confidentiality
+11.1. Confidentiality Obligation. The receiving party shall hold in confidence all Confidential Information disclosed by the disclosing party to the receiving party.
+11.2. Use Solely for Purpose. A receiving party may only use the Confidential Information according to the terms of this agreement.
+11.3. Non-Disclosure. The Purchaser may not disclose Confidential Information to any third party, except to the extent
+(a) permitted by this agreement,
+(b) the Supplier consents in writing, or
+(c) required by Law.
+11.4. Notice. The Purchaser shall notify the Supplier if it
+(a) is required by Law to disclose any Confidential Information, or
+(b) learns of any unauthorized disclosure of Confidential Information.
+
+12. Effect of Termination
+12.1. Termination of Obligations. Subject to paragraph 12.2, on termination or expiration of this agreement, each party's rights and obligations under this agreement will cease immediately.
+12.2. Payment Obligations. Even after termination or expiration of this agreement, each party shall
+(a) pay any amounts it owes to the other party, including payment obligations for services already rendered, work already performed, goods already delivered, or expenses already incurred, and
+(b) refund any payments received but not yet earned, including payments for services not rendered, work not performed, or goods not delivered, expenses forwarded.
+12.3. No Further Liability. On termination or expiration of this agreement, neither party will be liable to the other party, except for liability
+(a) that arose before the termination or expiration of this agreement, or
+(b) arising after the termination or expiration of this agreement.
+
+13. Limitation on Liability. Neither party will be liable for breach-of-contract damages that are remote or speculative, or that the breaching party could not reasonably have foreseen on entry into this agreement.
+
+14. General Provisions
+14.1. Entire Agreement. The parties intend that this agreement, together with all attachments, schedules, exhibits, and other documents that both are referenced in this agreement and refer to this agreement,
+(a) represent the final expression of the parties' intent relating to the subject matter of this agreement,
+(b)  contain all the terms the parties agreed to relating to the subject matter, and
+(c) replace all of the parties' previous discussions, understandings, and agreements relating to the subject matter of this agreement.
+14.2. Amendment. This agreement can be amended only by a writing signed by both parties.
+14.3. Assignment. Neither party may assign this agreement or any of their rights or obligations under this agreement without the other party's written consent.
+14.4. Notices
+(a) Method of Notice. The parties shall give all notices and communications between the parties in writing by (i) personal delivery, (ii) a nationally-recognized, next-day courier service, (iii) first-class registered or certified mail, postage prepaid, (iv) fax, or (v) electronic mail to the party's address specified in this agreement, or to the address that a party has notified to be that party's address for the purposes of this section.
+(b) Receipt of Notice. A notice given under this agreement will be effective on
+(i) the other party's receipt of it, or
+(ii) if mailed, the earlier of the other party's receipt of it and the fifth business day after mailing it. 
+14.5. Severability. If any part of this agreement is declared unenforceable or invalid, the remainder will continue to be valid and enforceable.
+14.6. Waiver
+(a) Affirmative Waivers. Neither party's failure or neglect to enforce any rights under this agreement will be deemed to be a waiver of that party's rights.
+(b) Written Waivers. A waiver or extension is only effective if it is in writing and signed by the party granting it.
+(c) No General Waivers. A party's failure or neglect to enforce any of its rights under this agreement will not be deemed to be a waiver of that or any other of its rights.
+(d) No Course of Dealing. No single or partial exercise of any right or remedy will preclude any other or further exercise of any right or remedy.
+14.7. Governing Law and Consent to Jurisdiction and Venue
+(a) Governing Law. This agreement, and any dispute arising out of the subject matter of the agreement, shall be governed by the laws of the State of NY.
+(b) Consent to Jurisdiction. Each party hereby irrevocably consents to the non-exclusive jurisdiction and venue of any state or federal court located within the State of NY, in connection with any matter arising out of this agreement or the transactions contemplated under this agreement.
+(c) Consent to Service. Each party hereby irrevocably
+(i) agrees that process may be served on it in any manner authorized by the Laws of the State of NY, and
+(ii) waives any objection which it might otherwise have to service of process under the Laws of the State of NY.
+14.8. Counterparts
+(a) Signed in Counterparts. This agreement may be signed in any number of counterparts.
+(b) All Counterparts Original. Each counterpart is an original.
+(c) Counterparts Form One Document. Together, all counterparts form one single document.
+
+Schedule A.
+{{shipment}} {{unitPrice}} per {{unit}}
+
+Annex A. Delivery Method
+Shipping containers used must be temperature and humidity controlled, and sensor readings must be logged at least {{sensorReadingFrequency}} per {{duration}}.
+
+Annex B. Acceptance Criteria
+The shipment must contain between {{minUnits}} and {{maxUnits}} {{unit}} of {{product}}.
+Temperature readings for the shipment must be between {{minTemperature}}°C and {{maxTemperature}}°C.
+Humidity readings for the shipment must be between {{minHumidity}}% and {{maxHumidity}}%.
+Shipments that have a temperature or humidity reading outside the agreed range have a price penalty applied calculated using the Formula for Breach Penalty Calculation below. The breach penalty factor to be used is {{penaltyFactor}}.
+Formula for Breach Penalty Calculation:
+   penalty = number of shipment units x difference between sensor reading and agreed range x breach penalty factor
+</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+  "$class": "org.accordproject.supplyagreementperishablegoods@0.2.0.TemplateModel",
+  "grower": "resource:org.accordproject.perishablegoods.Grower#SUPPLIER%20CORPORATION",
+  "importer": "resource:org.accordproject.perishablegoods.Importer#BUYER%20CORPORATION",
+  "shipment": "resource:org.accordproject.perishablegoods.Shipment#Grade%20I,%20Size%204,%20Zutano%20Mexican%20Avocados",
+  "dueDate": "2099-06-30T00:00:00.000+01:00",
+  "unitPrice": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1.5,
+    "currencyCode": "USD"
+  },
+  "unit": "KG",
+  "minUnits": 2995,
+  "maxUnits": 3005,
+  "product": "Grade I, Size 4, Zutano Mexican Avocados",
+  "sensorReadingFrequency": 1,
+  "duration": "hours",
+  "minTemperature": 2,
+  "maxTemperature": 13,
+  "minHumidity": 70,
+  "maxHumidity": 90,
+  "penaltyFactor": 0.2,
+  "$identifier": "04661b9e-39fc-40dc-a85f-497c0defb9e9",
+  "clauseId": "04661b9e-39fc-40dc-a85f-497c0defb9e9"
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/jLPHRzCm47xlh_0ZYAqgF4_LiZHZ5QoTqemNX2BNEQL6ZXtEvsqHyD-HqtHAibR0qZxP_auNt_Vvio-NbZYIAzH8A6ujCvYFkH06inBDTn0qjguiLSLp12X0KmaexOQl5UJ6P3QTf1_IoNYraQMFheYJi-pYWhs9pdA4wYsRJjdF4MFi7GlZA4YYsNOnNwH972nMysIx3k9u_YMQZNwFZbF2-VclAHD62q0owVjqaax6eL-MD8pglPPqWE2dZzlnwdvr4ttUpfFbOX4rS137EpXSnWEurZMSZE4Aj3KO0y-apdVSPiQj5J01ccIEF8CEl765p2HL0uwli-dfk3KksT5Q4VhzR0FFimRkcidMGnDg5_hr6xFjjHtktzDnl-EL3oxNIkQSfD7HmqibSZIFW1r85gL1se6tHWDnh8B2E4sC375rXr8qXhWoHW7NJ762rujneDHzqjIHuvWY1W7o0RBwUYTd5IXb7jiNVAu9Sa3cjAJGq--wvTb6mrtmN4fD-UN7q6cI1JHPCVnmO8VQmnzYo9LmgfRye0f_SK0lN8BcYggZkgDVwJ-AP4kZBGnJAO6YzDNVcWnKBL7W-m3eja8pJf380bZcmC__xuRrtgIzgde7jZIl6uB7kZujfFOHsqFvKmjjTYlHP4xqyZjlspLwbsbHTV8oX_KPTDf18RNN2P2JmswdAFZJmP3KDxi-qalPYpVEkkQ23BxUJTqJFM0bOJGX5zJaX8ex2wDBq9d_T_e3"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">/**
+ * A supply agreement for shipping perishable goods.
+ * The cargo is temperature and humidity controlled and penalties
+ * can be applied based on sensor readings received for the cargo.
+ */
+namespace org.accordproject.supplyagreementperishablegoods@0.2.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+
+/**
+ * The status of a shipment
+ */
+enum ShipmentStatus {
+  o CREATED
+  o IN_TRANSIT
+  o ARRIVED
+}
+
+enum Unit {
+  o KG
+  o BUSHEL
+  o TONNE
+  o BARREL
+  o CORD
+}
+
+/**
+ * A temperature and humidity reading for a shipment
+ */
+concept SensorReading {
+  o Double centigrade
+  o Double humidity
+}
+
+/**
+ * A shipment being tracked
+ */
+concept Shipment {
+  o String shipmentId
+  o ShipmentStatus status
+  o SensorReading[] sensorReadings optional
+}
+
+/**
+ * Payment obligation event emitted when goods are received
+ */
+event PaymentObligationEvent {
+  o String grower
+  o String importer
+  o MonetaryAmount totalPrice
+  o Boolean late
+}
+
+/**
+ * Request sent when a shipment is received by the importer
+ */
+transaction ShipmentReceived extends Request {
+  o Integer unitCount
+  o Shipment shipment
+}
+
+/**
+ * Response with price calculation
+ */
+transaction PriceCalculation extends Response {
+  o MonetaryAmount totalPrice
+  o MonetaryAmount penalty
+  o Boolean late
+}
+
+/**
+ * The template model
+ */
+@template
+asset TemplateModel extends Clause {
+  o DateTime dueDate
+  o String grower
+  o String importer
+  o String shipment
+  o MonetaryAmount unitPrice
+  o Unit unit
+  o Integer minUnits
+  o Integer maxUnits
+  o String product
+  o Integer sensorReadingFrequency
+  o String duration
+  o Double minTemperature
+  o Double maxTemperature
+  o Double minHumidity
+  o Double maxHumidity
+  o Double penaltyFactor
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract@0.2.0.html">org.accordproject.contract@0.2.0.Clause</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime@0.2.0.html">org.accordproject.runtime@0.2.0.Request</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money@0.3.0.html">org.accordproject.money@0.3.0.MonetaryAmount</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement-perishable-goods/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.State",
+    "$identifier": "1f0d0870-603f-11f1-9952-b99097577248"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Request</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Request",
+    "$timestamp": "2026-06-04T18:59:24.534+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreementperishablegoods@0.2.0.ShipmentReceived</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreementperishablegoods@0.2.0.ShipmentReceived",
+    "unitCount": 24900,
+    "shipment": {
+        "$class": "org.accordproject.supplyagreementperishablegoods@0.2.0.Shipment",
+        "shipmentId": "Amet ut ea culpa.",
+        "status": "IN_TRANSIT",
+        "sensorReadings": [
+            {
+                "$class": "org.accordproject.supplyagreementperishablegoods@0.2.0.SensorReading",
+                "centigrade": 138.507,
+                "humidity": 127.386
+            }
+        ]
+    },
+    "$timestamp": "2026-06-04T18:59:24.534+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Response</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Response",
+    "$timestamp": "2026-06-04T18:59:24.534+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.supplyagreementperishablegoods@0.2.0.PriceCalculation</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.supplyagreementperishablegoods@0.2.0.PriceCalculation",
+    "totalPrice": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 170.05,
+        "currencyCode": "XSU"
+    },
+    "penalty": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 251.926,
+        "currencyCode": "GEL"
+    },
+    "late": true,
+    "$timestamp": "2026-06-04T18:59:24.534+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello.html">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs.html">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/supplyagreement-perishable-goods">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

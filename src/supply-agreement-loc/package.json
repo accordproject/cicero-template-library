@@ -1,13 +1,13 @@
 {
     "name": "supply-agreement-loc",
-    "version": "0.3.0",
+    "version": "1.0.0",
     "description": "Supply agreement with letter of credit and sensor reading validation",
     "author": "John Carpenter",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "scripts": {
         "test": "vitest run",

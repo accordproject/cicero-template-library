@@ -1,14 +1,14 @@
 {
     "name": "payment-upon-iot",
     "displayName": "Payment Upon IoT",
-    "version": "0.10.0",
+    "version": "1.0.0",
     "description": "This is a payment contract that pays out a fixed amount each time a button is pressed.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "payment",

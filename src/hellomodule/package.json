@@ -1,14 +1,14 @@
 {
     "name": "hellomodule",
     "displayName": "Hello Module",
-    "version": "0.10.0",
+    "version": "1.0.0",
     "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "template": "clause",
         "runtime": "typescript",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "hello",

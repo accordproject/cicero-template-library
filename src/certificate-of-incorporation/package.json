@@ -1,13 +1,13 @@
 {
     "name": "certificate-of-incorporation",
-    "version": "0.6.0",
+    "version": "1.0.0",
     "description": "This is a sample Certificate of Incorporation.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "clause",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "scripts": {
         "test": "vitest run",

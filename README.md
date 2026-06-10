@@ -37,11 +37,20 @@ Can't find something? Then why not make a new template yourself?
 
 ## Testing
 
-To install and test all the templates locally, clone this repository and use lerna:
+The templates are managed as [npm workspaces](https://docs.npmjs.com/cli/using-npm/workspaces). Node.js 22 or later is required.
+
+To install and test all the templates locally, clone this repository and run:
 ```
-npm install -g lerna@^3.15.0
-lerna bootstrap
-lerna run test
+npm install
+npm test
+```
+
+`npm test` runs the unit tests for every template workspace followed by the render tests (template compilation, `sample.json` validation, and template-engine rendering).
+
+To run only the render tests, optionally filtered to specific templates:
+```
+npm run test:render
+TEMPLATES=acceptance-of-delivery,fragile-goods npm run test:render
 ```
 
 ## Building Static Pages

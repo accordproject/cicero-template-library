@@ -1,14 +1,14 @@
 {
     "name": "full-payment-upon-demand",
     "displayName": "Full Payment Upon Demand",
-    "version": "0.11.0",
+    "version": "1.0.0",
     "description": "This is a one-time full payment clause applicable on demand.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "full",

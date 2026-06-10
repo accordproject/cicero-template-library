@@ -1,14 +1,14 @@
 {
     "name": "promissory-note",
     "displayName": "Promissory Note",
-    "version": "0.19.0",
+    "version": "1.0.0",
     "description": "A promissory note",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "promissory",

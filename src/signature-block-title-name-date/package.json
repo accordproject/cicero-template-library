@@ -1,14 +1,14 @@
 {
     "name": "signature-block-title-name-date",
     "displayName": "Signature Block (Title, Name, Date)",
-    "version": "0.20.1",
+    "version": "1.0.0",
     "description": "A signature block with name, title, date input fields",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "clause",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "signature-block"

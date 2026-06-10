@@ -1,13 +1,13 @@
 {
     "name": "project-information",
     "displayName": "Project Information",
-    "version": "0.4.0",
+    "version": "1.0.0",
     "description": "Gather project information",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "clause",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "clause",

@@ -1,0 +1,1000 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120382669-1"></script>
+        <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'UA-120382669-1');
+        </script>
+
+        <script>
+         // handle drop down menus
+         window.addEventListener('load', function () {
+             var dropdown = document.querySelector('.dropdown');
+             if(dropdown) {
+                 dropdown.addEventListener('click', function(event) {
+                     event.stopPropagation();
+                     dropdown.classList.toggle('is-active');
+                 });
+             }
+         }, false);
+        </script>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        
+        
+        
+
+        <!-— generic unfurl tags -->
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="templates.accordproject.org" />
+        <meta name="twitter:label1" content="Apache 2.0 Licensed" />
+        <meta name="twitter:data1" content="on GitHub.com" />
+        <meta name="twitter:label2" content="Contribute" />
+        <meta name="twitter:data2" content="at AccordProject.org" />
+
+        
+    <!-— facebook open graph tags -->
+    <meta property="og:url" content="https://templates.accordproject.org/safte@1.0.0.html" />
+    <meta property="og:title" content="safte@1.0.0" />
+    <meta property="og:description" content="The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company." />
+    <meta property="og:image" content="https://www.plantuml.com/plantuml/png/hPLFJm8n4CNlV8eUDGeXdWt122OceaQuaw4xBiLkkynCrOtwtStkGlWZQ4ts-hBlpUjlccwV1KX2PblQ0hFob7P0Qqz9Jdw1MZeCpuBJxlHYskrC_0kwCLXKbvVgP79UeBN-xLJrUkgZfPGwKoFlK82Agym79qfAmoCPZQslLcnsk_tPEr24WXEJhJz_mcL0bd_KdWCTxptmOMQnxbjtZonSfKOsvjmxngZAmsKmKjmO1quRbyRovh9E7E_z2OrJhmVyZdslFbQMIFxR-SqlO62OlGrYl1k-efEZHnWBbVWq1FuR-e_Knga_Gl4G91OunA5UXJPFUO9PRa5mv1EqLUchyvGGtI72Fil15VUGOQtV-OtwXAbX8IZ9teTiXhJZpGFfEV2UkWXaE36wD1t4ixQjRkJsIv4OrXjnFQO-ugRYhZv0rcJopRXR9vWYgSmxcVEEfPOc-2w_BMxRKKkLuy-dQmVxaRLgxuH0oyfpRQiRtaUNbB-BRm00" />
+
+    <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:title" content="safte@1.0.0" />
+    <meta name="twitter:description" content="The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company." />
+    <meta name="twitter:image" content="https://www.plantuml.com/plantuml/png/hPLFJm8n4CNlV8eUDGeXdWt122OceaQuaw4xBiLkkynCrOtwtStkGlWZQ4ts-hBlpUjlccwV1KX2PblQ0hFob7P0Qqz9Jdw1MZeCpuBJxlHYskrC_0kwCLXKbvVgP79UeBN-xLJrUkgZfPGwKoFlK82Agym79qfAmoCPZQslLcnsk_tPEr24WXEJhJz_mcL0bd_KdWCTxptmOMQnxbjtZonSfKOsvjmxngZAmsKmKjmO1quRbyRovh9E7E_z2OrJhmVyZdslFbQMIFxR-SqlO62OlGrYl1k-efEZHnWBbVWq1FuR-e_Knga_Gl4G91OunA5UXJPFUO9PRa5mv1EqLUchyvGGtI72Fil15VUGOQtV-OtwXAbX8IZ9teTiXhJZpGFfEV2UkWXaE36wD1t4ixQjRkJsIv4OrXjnFQO-ugRYhZv0rcJopRXR9vWYgSmxcVEEfPOc-2w_BMxRKKkLuy-dQmVxaRLgxuH0oyfpRQiRtaUNbB-BRm00" />
+    <meta name="twitter:image:alt" content="UML diagram of safte@1.0.0 namespace." />
+    <meta name="twitter:url" content="https://templates.accordproject.org/safte@1.0.0.html" />
+
+
+        <title>Accord Project Template Library</title>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+        <link rel="manifest" href="./assets/images/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="icon" href="https://i0.wp.com/accordproject.org/wp-content/uploads/2020/08/cropped-ms-icon-310x310-1.png?fit=512%2C512&ssl=1" />
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/idea.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.min.css" />
+        <link rel="stylesheet" href="assets/fonts.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+         $(document).ready(function() {
+             $('#tabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#tabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#tabs-content div').removeClass('is-active');
+                 $('div[data-content="' + tab + '"]').addClass('is-active');
+             });
+             $('#mtabs li').on('click', function() {
+                 var tab = $(this).data('tab');
+
+                 $('#mtabs li').removeClass('is-active');
+                 $(this).addClass('is-active');
+
+                 $('#mtabs-content div').removeClass('is-active');
+                 $('div[mdata-content="' + tab + '"]').addClass('is-active');
+             });
+         });
+        </script>
+      <script>
+       hljs.initHighlightingOnLoad();
+       hljs.registerLanguage('ergo', function(hljs) {
+           var ERGO_KEYWORDS = {
+               keyword: 'namespace import define function transaction concept event asset ' +
+                        'participant enum extends contract over clause throws emits state call ' +
+                        'enforce if then else let foreach return in where throw '+
+                        'constant match set emit with or and ',
+               literal: 'true false unit none',
+               built_in: 'flatten now dateTimeIsSame dateTimeIsBefore dateTimeIsAfter ' +
+                         'dateTimeDiffDays dateTimeDiffSeconds min max average '
+           };
+
+           var TYPE = {
+               className: 'type',
+               begin: '\\b[A-Z]([\\w\']*|{)',
+               relevance: 0
+           };
+           var BLOCK_COMMENT = hljs.COMMENT(
+               '/\\*',
+               '\\*/',
+               {
+                   contains: ['self']
+               }
+           );
+           var SUBST = {
+               className: 'subst',
+               begin: /\\\(/, end: '\\)',
+               keywords: ERGO_KEYWORDS,
+               contains: [] // assigned later
+           };
+           var NUMBERS = {
+               className: 'number',
+               begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+               relevance: 0
+           };
+           var TAGS = {
+               className: 'template-variable',
+               begin: '\{\{\%|\%\}\}',
+               relevance: 0
+           };
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [SUBST, hljs.BACKSLASH_ESCAPE]
+           });
+           SUBST.contains = [NUMBERS];
+
+           return {
+               keywords: ERGO_KEYWORDS,
+               contains: [
+                   QUOTE_STRING_MODE,
+                   hljs.C_LINE_COMMENT_MODE,
+                   BLOCK_COMMENT,
+                   TYPE,
+                   NUMBERS,
+                   TAGS
+               ]
+           };
+       });
+       // highlighting for template grammar
+       hljs.registerLanguage('tem', function(hljs) {
+           var BUILT_INS = {'keyword': 'foreach with if else ulist olist kind as clause'};
+           var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
+               contains: [hljs.BACKSLASH_ESCAPE]
+           });
+           var IDENT = {
+               className: 'template-tag',
+               begin: '[a-zA-Z\.-]+',
+               keywords: BUILT_INS
+           };
+           return {
+               aliases: ['tem.md'],
+               case_insensitive: true,
+               subLanguage: 'markdown',
+               contains: [
+                   hljs.COMMENT('{{!(--)?', '(--)?}}'),
+                   QUOTE_STRING_MODE,
+                   {
+                       begin: /\{\{\%/, end: /\%\}\}/,
+                       subLanguage: 'ergo',
+                       relevance: 0
+                   },
+                   {
+                       className: 'template-variable',
+                       begin: /\{\{[#\/]?/, end: /\}\}/,
+                       contains: [IDENT,QUOTE_STRING_MODE]
+                   }
+               ]
+           };
+       });
+       </script>
+  </head>
+
+  <body>
+    <nav class="navbar has-background-dark is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="./assets/images/A-MARK-ACCORDPROJECT-ONELINE-white.svg" alt="Accord Project" style="height: 35px;">
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="main-navbar-menu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="main-navbar-menu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/accordproject/cicero-template-library" target="_blank">
+              <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16" viewBox="0 0 496 496"><path fill="#fff" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/>
+                </svg>
+              </div>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+    // Hamburger menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        var burgers = document.querySelectorAll('.navbar-burger');
+        burgers.forEach(function(burger) {
+            burger.addEventListener('click', function() {
+                var targetId = burger.dataset.target;
+                var target = document.getElementById(targetId);
+                burger.classList.toggle('is-active');
+                target.classList.toggle('is-active');
+            });
+        });
+    });
+    </script>
+
+    
+    <section class="section inner-content">
+        <div class="container">
+            <h1 class="title is-1">
+                SAFTE
+            </h1>
+            
+                <h4 class="title is-4 author-section">
+                    Author:  <img height="24" width="24" src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII="/>   <span class="author"> Accord Project </span> 
+                </h4>
+            
+            <div class="tags">
+                <span class="tag is-light">safte@1.0.0</span>
+                <span class="tag is-light">Contract</span>
+                <span class="tag is-light">^1.0.0</span>
+                <span class="tag is-light">d66370700b47ebbc21d9179d8a7f9da8dfcd00c811722bd5afbbcda781a03eec</span>
+            </div>
+            <p class="subtitle">
+                The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company.
+            </p>
+
+            <p>
+                <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Versions</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+              
+                <a href="safte@1.0.0.html" class="dropdown-item is-active">
+                    safte@1.0.0
+                </a>
+              
+                <a href="safte@0.18.0.html" class="dropdown-item ">
+                    safte@0.18.0
+                </a>
+              
+                <a href="safte@0.16.0.html" class="dropdown-item ">
+                    safte@0.16.0
+                </a>
+              
+                <a href="safte@0.15.0.html" class="dropdown-item ">
+                    safte@0.15.0
+                </a>
+              
+                <a href="safte@0.14.1.html" class="dropdown-item ">
+                    safte@0.14.1
+                </a>
+              
+                <a href="safte@0.14.0.html" class="dropdown-item ">
+                    safte@0.14.0
+                </a>
+              
+                <a href="safte@0.13.1.html" class="dropdown-item ">
+                    safte@0.13.1
+                </a>
+              
+                <a href="safte@0.13.0.html" class="dropdown-item ">
+                    safte@0.13.0
+                </a>
+              
+                <a href="safte@0.12.1.html" class="dropdown-item ">
+                    safte@0.12.1
+                </a>
+              
+                <a href="safte@0.12.0.html" class="dropdown-item ">
+                    safte@0.12.0
+                </a>
+              
+                <a href="safte@0.11.0.html" class="dropdown-item ">
+                    safte@0.11.0
+                </a>
+              
+                <a href="safte@0.10.0.html" class="dropdown-item ">
+                    safte@0.10.0
+                </a>
+              
+                <a href="safte@0.9.1.html" class="dropdown-item ">
+                    safte@0.9.1
+                </a>
+              
+                <a href="safte@0.9.0.html" class="dropdown-item ">
+                    safte@0.9.0
+                </a>
+              
+                <a href="safte@0.8.0.html" class="dropdown-item ">
+                    safte@0.8.0
+                </a>
+              
+                <a href="safte@0.7.0.html" class="dropdown-item ">
+                    safte@0.7.0
+                </a>
+              
+                <a href="safte@0.6.0.html" class="dropdown-item ">
+                    safte@0.6.0
+                </a>
+              
+                <a href="safte@0.5.0.html" class="dropdown-item ">
+                    safte@0.5.0
+                </a>
+              
+                <a href="safte@0.4.0.html" class="dropdown-item ">
+                    safte@0.4.0
+                </a>
+              
+                <a href="safte@0.3.0.html" class="dropdown-item ">
+                    safte@0.3.0
+                </a>
+              
+                <a href="safte@0.2.0.html" class="dropdown-item ">
+                    safte@0.2.0
+                </a>
+              
+                <a href="safte@0.1.1.html" class="dropdown-item ">
+                    safte@0.1.1
+                </a>
+              
+              </div>
+            </div>
+          </div>
+          <a href="./archives/safte@1.0.0.cta" class="button is-rounded is-primary download-button">Download Archive</a>
+          <a href="./archives/safte@1.0.0-cicero.cta" class="button is-rounded is-primary download-button">Download Compiled Archive</a>
+          <a href="https://playground.accordproject.org/#data=N4IgLgpgtgDgNgQ0gWQQJwNYBMD2B3AOxAC4RhgBjHWBAgTwDkEoIBfVgHQK4GUBBAGIAVAKIACLgAoeAS1hwIYvgHM0EaBAJgxAMxxoxAgK5gjasUJwZNAZzH6xIgI5GZYOgEouXIQAkAkjxiAMIiAEpC-gL+IkF+fEJiMgRiEAAeFAAWtMqKegZgmYowCHQsWmIARnRi5DBmWQg2EGjsYpKFioA4BAAKDdnNaIC4BB72OmIAJHX9TRB8UDhGWm0dRWK9M81KC0tgI2JgOLWU1CX0TCzsADRiCGJwcm4QWGJUNPRJBFRoMPpIz59jgArMwyGxYGQUMAyHAENp4NyZV6nWg1AhGKCVFrHN5nOhhCDKMFgNBIGEEBgYrGtVjtTrrYIo+gjG70xnvGpFNTVJI2GxGCB2Q4HNZ9NCNQYixRoGTKTLaYUQREtYgAWnaAEZRhQ0HQYIdVAgYJlIQcrLZAfS6mgcECIFCLmxaatupZrAQbCMANz2AySABM2paYAQyTENmyajsYbZTLogEwCOwR9CKChGtwIOA3MNKzoGNNbWFSg4tKBJiDafKFKoQOD4AB0EgIQjWXQAImCqLsxGF-kNeWINQAGIdiKDJIx2cgQmxd5asACk9d46jEPHt0KL-t0DgowdDKQQWAhm4ImbEWAgOmSAMgaDLy4IGuXYBEADdNGAbN5uGBJAhRg4MA3U0NdMwgRt-BSekIA-CpCiQYt2TxX1bg+BhqGSf4XhELQ3BqHAYBaf47DuABFIxMxkHQ6GSZQLHNFIeHA1k1mQ1ExAROA4FuExqDJNNuJqMF+UUYV6TFCUWhuBwuJ4kNrFubixDUJpYQQSoFHDSAYCFI4YBtCgzDE7IFTWDDxzPSAcLw9wxAM04wDgYS+QFPTi0kgZpNuMR0UxbEcHGECPVSFxz3E0VNkUeZFgqCE3xkS8Xh5ekO1nWLtF7SA6Ui8UvIMYKbA8SDxnpCiqJouiGPdMCtLBMYdBaAFEIhHRGrUCoDMhQULwgIiCAhAh6KLeloRYW5tDwE0smqi0U3sqKsFYxRPNmbYMs4mRlKxZEPUSpqXmFbIPxrUDEPpBYbG0I831oENckWOxSWy+pNMhZyx3QaxrMffxSrYuNUgUKF3MI4jsrKyiHkqobZqY8CxEnKq7gsrDrMcWy6GzSatp45J8igDyooMMM8BlaEhsbFtihaAnaD3KoanpVGrIBXDoTswLixwN7lDJWE7C52MOURgbsUKeqEFUdRyhx5SsCMD6Z0aNBcm53n+ZCoWAZFiKVuJxtvD-SovFfFx8MMLCvjokqpXMSWUmcVw7IEK2KCqrF8hMxR0hgGRnvJVC70szWxhFSXpY0LQbloQ7cqkgwBl8nBtDUPcZA-F5VslQqFrQfk7rNNcN0DjV-w8ZaQkBuTeMOKABMzD6RIFIuJOJny-OpMP+GEcQeEjHqIDC+SjjbvK1pi7t4v25KmbWNK520HoZT3R8gKg3aCBLosEWrelm-pxQuZ70Q1wHuwUp1lC9bEbPsXqfPKPg0eTTsdcoVLyQTeIJtJBkUZqa33bjXdI9oTCKFjr1B4H4Cgv0UOxD4jcDikg9AgD+RZcBGVlk9Ws2FW5rCdhbV2Z5rZDR9A5BKSVWKIX5DNTBGJPykXMPSGwzBFD0OwUXHan4DqfGFLvJE9IH4J0FuMQhLs3ZVX7imGwNwBG3BgA5Lq-wxC3RlJrOw+Riwnz7ufJI4wjTwEhBpBQMcBr2RtJQgEOgzB5modoWhSIOGMLEMdVMk467oBqOkPc+pyTuQ4lgUkyhVSZlhPRGUcovxoReDzB4fNTykUUQ8NMmkxJwKAePQY2YvhwCMINZQcjESLG0A8ccIZTw3DKU8F4agDKCk-BomJnF0AoOhD1SB1T0YPA0ltC2kDkiXigAQaixjTz2A1ok+w0E1glDQNobW+ssktB9JAqQMh-5AUAXfAwkDhYoRAWkMB2U7jLyOFlO4YRZTyjsCoNQUcwA3CWAoPkRNlkk1InAVSWBhK5PyQCMMjiVLXOiTGNYJJaCsPQSkZxWgcGIHRjfcRNRiH0xtkbICkgKCmzSjYHAeTxnvk-LbPMihJZiFxfikwgciUVE9voEyEd7my1SGkP2UYg6ljRoKSuCCag1xKDUWgtwdgVCHlDfBSypLrV2DcBWEDzGCpMekt5CckhQBYBCf4H0uoOEODJfMsIjJoA6jjQolcqAegxPXcZiyKUiSpYSuCYAqbxy8jKioNcdolEShYmEuzzFhnqe1TQDNhQcTSiSGQlRqVFi5hxO1TRmjRLtXyoumR8WXnzmHEpV1Y5VWCOmEMPFpEcp5KpPFKRFn+3sIQFoEYZAwDthAQKts5CapkNqmourYHFktfyDVoc7WUoJTS51lck0VlEUhQGCg+ZCVuLdLayqdwGBnFGmN4yb47OaUgjNcAs3TqQSnLka5BCiDsC6dYI6Eqwx2Z6Cutw7CXmDjeF4YZlA4BwC8HQoZqyX3gXGRMVQcDoFieMCEadDj5xjvbK1bVIQyE-EXIi943DFkFSym+N6qr3rDp0GtUYiIfxOnfD1X5lozJ9nhcwk6U3-UAyLOdjchVLsQGk1dF5iQyk3YHL17DuPRvAS8eR4rzw9v6Yqm0KkkB3GYOE4sOG73E2jCkJR+gt0ZLI5POFUp+WLAPfYPMCItjcNsgoQ6Rw05KhOg-Auz9w5v23ikMu2K15-iwKbIQXKrLkkbBYV+txI4ssOeyhVh0fMqMkAIkpKlaxIdvfRfZCaDEfDibKJp6AwRVR0DaQmdwe1VFUjNLmDgCCwlVLiHpXxFDyIlqRYLn5RhGF+CkXMp6-6jH3q5Q+Ydc7bvbnZp+Cojjv3GWXACPoHB-3-sWA+NWw7Jg5QN95ed7MjeLtCwcX8PBTb9Bs2bQjSiywNeGCsFN6JNH2pxzDn4ZIGNFdE+Vqr8preG0XMbn83M-n9C+NsV5khuH8T+ICXQ+Af1hmGRkNX5n9iThdCAtAqpEjgkXdDYL4EW0ZJeaZFgEDWBwDA0i5jkAtFyNm16DwIwAgA7fWgtZcdCHxy2onzTSeq3rYCfIDNcvUAOHIFVY0IIg7AF0Qtfti1nxkf2FgkLixLdTEW88qa4w5IoHkgpRTCixa6ZrSuXRkWWxIe7WGpbBT9j2a2HRUuoz1iGEbMX2QhpH3GNDkk+KZeI5Cp1nyELUFbYcIMJD061AItvCgqFUzSbTSRAsZhTvdDUTsqh14yHJAAFZRwLlGHat8KcqqRJuRNEMWQqo33FxmEteiVci3mniwzDh5rCh2vXyz0yab5zjQYVQiwm1c1Q5W25EP6JQ6NcGPb7QNmjDuKw0x9xEeFgMCe7EM5fg2CB3GgxylA9GEqHmvCLGlI8UTXyKd+Gr6okfF0a0toNyOnYJ7uXM-nYu-DPXeZu0IUgyqK4OACyqOOCkoYhiAMAVh4D6AYCcQx7HAOR2hQj-azgyh+KwjsDubtidgbTLzdSP7e6HazIrwd7hgDzn6KCG6oqkL0Rm5JiZqWgELmwSLG5VRQCKzQhGI05zyKALwbRZQQCnYzZdb4HdT2TiyMQkFwzhg0EY5iDlTQy0SwzBS1SKDMF-6NoPDsGKYYHdg8GGy-joFXQ8axoEA4FCjgoR7tTpqZqc5cwV6S5UGMxxZqRVoMY1r4Bbz5wmhNqkqlbjAFhIgODL4GBKLBj8rFImC7Tr5ZqhxTQVino8h4ClBhzTyXjmL+HGZgi8FGanoIQwoZz7QDSCxVpoCDReJEEyL2SlArphj6DFG6ilFRinZCJRSoRqBDLIFOEhBK5V5lG05poOBuBJi74RGdoyg9RaK+GoRBHzIER5gii0A-w+51JRTTrVFYS1EK52BFCGY8jQDwA4B0DqCyINTdQwZcZQb6CCyGpWp-53TTrJZpYkzRL8h76JTDHB5vaFzhqHiNadSWIvFDQxxJJGKpJz53CF4LLjDXj5ypxXiTjK67LApRJFyLHLJ1E9QtYjSRa2rjBAqDAJQMwUL7RoDAY7F1hlDIaB4tB4mCgT78FxbCJeTTo2Hnh2FhiWpbxbZ1ZrDJpOQPKJFgj1CQB2DyIcQK77pZpry6EjqGGODOrGGT7T6qJUpaAlGvq+ab72CoYaI3C0l3C5BuHnhJqygEAspaL0hYhbzXjgkzocjAY6jPBuDnGoQzazYJozEPDmxYB65cZ8iOqByySDJVQtZiFpqSA+Ia7IxiAAAyMgHpFstKYAj60RMxeeeSyptRfRBAKZuwXiaBZBkiQ0cpdwlQ6kieOOfukefpBgQePUQsEeaCUynJxQMo1sJQPED8a+r+pI2WsMaYEumYciXI3sVcIsXZzQz6oIsMHE-axyGcig5ACwWgmQNg3maQYAbQ85sIhQNgbQC5hQkgRUwhMo36gIUs0sCSR8MCxw8muw65wA15WgK5a5tIvO+WKQO6ZWVIAU4w96ZiLwQ2HxRwU0kIgiF+HwzcHS5izQ3Edg7WAURRqxBEgRag7ULRqJpE10ieRyf5agqoC5EANQt0eSmsOhBu9BKK+ZlB58cpLCei4FLwTQ5RH+dqeZjBlMTYQEDu0ZsZdk8ZhZIQTuas1hm5Nox+8J0ZV0Ns7FuhXFrgJ4NQWBe41Fgh+J2ICuoUEqhwP89Iv6Na7+30qimYLcdq1udh504KAuYhMlLxPF46T6vUqp6hyFTUC2N89Ja0XU+JFRHGrJsI7J4y8iQKVlclMpd2XGVis8Gh6UWh-wOhnFxIdEfFVOF2wZnRNuNZh4cWVAygIyzQLwV0OAFAkBPiAlR8S+Mx9Zs5Z2lqnptRelFYJFUEH4V0LKOmewY4XuJhECj2dgPqEVY8aq5egM-5Dm9WQWzKxKXAXQLMeC7M+EfFuICaZVp6+gfMOVXp5WIc6MPRgMwoYMz0Q5Mh1Ech9EChzECgL4k1ZyPYsmPYIKty3xbVsuIUdwZMbgkAXx41dKYB6gABaaluUqr2-45iYpVh4wARZ6vchxDFhiNoyikAowKOZebqsw8JYJKGTR-RFiVmN1al-eMot0L0iAe4nCXMzQxqQOPU21IsBVxqzZl2Ogd4xYLFaK-x4Yu+cBG2Rk+V7+3iGQfUiS-mV1z0dwWi7ZOAY5YhV1Fyt1US91n1csPEO0gkRkYeyUswsSABAcRwXMkgWoxYncX5aFYcTJXRHKrh6h-Vr27a9pXafqeqGS82DMdqZNoI7S7kAYAh6SkuBtS+2J1eYNJg++BSHRfZpt6VPkNiC6EIBKNOV2hxytiseCDFXM1tWqkAOqR5va3W9mTtDGVVrtwe-mHFBAXQh1MMJ1ohZ1EASlR8mp4yVNKEjeHwTxQxKpg53hPklOpos+r+OoeoBopIxopohw7odg7JgorCtRppawe1Q6edN+HN9+rAsV2gXQOihZH1MsyGlqIYgOk5ugJgxkCJ8oRc6xxtqVVBNw6+44iAJMKQBMzSO9yGEUTKW90cecUkEVeG09xQZgHZYcNiA0SNjGeIwGMa6+W8rys9AtDuJlVF7VcuZ9Uhaax0wDSQyR0Igkx9FGfqCUc6PKFiV4zle4xOtSgoUa0KpEnVjgZFRuLNlFMiMkMx2Rm01YRGG4Zo8xeBhBal7pslocwaxD4WfasIROgcHleQDgYtEteN3UqolQ6taE0Iqo0d0pDkkA0KA5wFm0ykYm8k88mhFQClEAqy5itJZpcdnGgSuRyRtSd1WjM0-GVQijI0BjUVRjBBaBp14ENdC0b0FA4YCMXMfd+oOAhoQ9ATI9FoUhC9d+bCbQDFzQZ0Y99oE9JRP9KkSwIysMdqsTDo8Ty9P4YgAAzC+GmgSPUs0MqYkkbOXFsqBS5BeIrL8t8L8PtfReYoRYlB9OkPFbDEsFmsWIgHgNOuQCCDKOCJCKeNcM0vDrMvgNiJAggCYBmuTEzNrYQFUgvsI9A2StEpMW7Y-a0gRCkJjeAzeK8gxeVngLtArFCM8O5jtvUz7EckZJUlArObUZAqhnTAtg3Slo5mNW-doPVAIlIb8HgIbXcUKgNEw1kQnvIuw1CJKrcJQ1wmJMzikNEW1rQ-VM3mSq5LeFpsTDcEnFiKBArB9Ms9rjKAAF7qFILj18glEVUCy45HZMV518quqv28n9oczgKkTz7zo3BdMdPJQBk5OTJ+lcuq6pAEDc6I4cZSwHhXTWkoRhhoLfCekLbyKY3ByHE+L812VdLqEKMEAYBoAtZgAUBYyfD15wS2uoTg3DPTp6nEQ8SGIpKhyh5kiwy7W7JtQlz+trCaCKssrBMtEOn5zxjYN2DuukgLqQIJvibNnuzwA1njDir4T+aWDFgYDXMWaCWyscjYwDjlYgspAJT4pz3ylJDRK03b3BijJpjZQp1fD6BtNDq7LzLvSZtPp4ruxek6kfA2otCdo8R5qmCQA3BWtaQOBqDKCJ3jJevGIcaDXU37ZT5oQ1BjvqJ4xixaBH27jCX1lFxAUzTQsDgFboCcwGBxHQHo4XyxRLRQFNQ5KpBoJIgFgZFArVsIqVm9S-osE5JJFQzOQNFhMxHYjCnKR-swgAdssOCXjAd-7x0GZkOOEmI1DcJsobhEuuIIAnR3B7sTu3BYBE4+xBvIuuMgOX61PYrPOHm-MMyQL9rWq1ujR1lotP3yB4KXy8ssq4DJzXTmI1wVtcOjD-sqIcSkfngghYDKAnbaRIDgKzuKylVxZLuIeHjJJrtaQbt4g+i0lRgsG0EQIUB7gKBa3tGyf-D7ufAYPHuXFf4bYXsgV0dgVCtzJ3v2Huf1sDjFkDM0kHajCmd-7mevCqS2okywDi0b62cfBqEpDomHgfAHN2t0bNGwSaBGUluN0FBcmTj9Tr6wg3D5CNRuDGSnblYEAdQQDxHH6pa7v2dkeoblJVLdQeiafUurMyC0uhyrvAmC4NPYwXxIyQMXEangz+KPOeZAQYThEuKN6KKWKZhMLSjZuoU+UEB+V8aIgYa0z6D1wLbayCehXg3ZGSfquoi2mdt-AnKreE7rfGfbscTDwttNIODXgPBDR2ADOLN6fDf53kxvGuumMvDOmjBMuT01CtMPcQJPeEWaJ6prC9f6D9e1sm1pXRg9YcbDUbafZFjPi1MQBeZHCY0Fv4BFsZFXuuFTdr5jkS2SC7jCo8y71VopBvAsDigTsfQVrqTrulgHn8gIbuzIbMY8RgkBLKQlDvU4MQpDJfSHG4lCF6WHGK+KBngsDocwB0DS+sikg45k1qA4MpK2AEP4zHdekOQkMS2QLg3JDp3AymCpt7V2TS++SpPMtT19HRLnOTd2XXO3NGD3Pit2WNtaAZ2ETi0EdK2wh3PWRa4ZphFTmwg6ApJmqZCnb4x028l2qe+BRwv1oSkAAsL4O6FTUYjSNTv4dTwEyNkoSckdPEkvrwRoaC+ENwELiz5i6PazRcoCbzwjl40C4sgWUs8tzSwoPzx39bgs0rbLg5APaAPLDWU--LVXgpBlDw4flQkrw0i-7RltKNNwYb+ge4lRh4ln1RvWer0SBrZ-fN+oJrjwW1OHtAlr1rtrOSDroaiFmRbEK6zDgptPWQPH1rgmSoBtbg1HKAaGwVYX98+PhKNtBhsCxtPeoAqluYlAF+oWyLyMONm3cAr0nmDfAGijQHBuUIGSWCfg9Wn5ckwEoPHqPi1RbmxUKtOHdMvzFgGAtEmNVwqi0XicZkgTVMAMpwrZ2U7gG1G8D1z1KPJmkYg4UqoiQw3N9UqELRFGARg7c9uO8REJXHXQGEt07dHQL+RezkCk45WQhlU0rby8ZWZ2biHRBuCGg8Ik5dLre0Qxy9A4yQU7AERMwCZ9CQmOAYoFYQsBXUZApvok1D5IgqeeAGns0l9jjtQ0ZKe+pIgNLmIA+E9T6GADvAmEzKoQ7EPVF7IrouYsEQyn62oFKFx20SSBBMwwDTogUQg8hsp0ljrsKeXwMwD5CqwVhFAdYKBtiQiGfBhBIWUIiCxoD+w0GOyYDNeEYLnhqqCXZpE0IM5HAsQ6AYsPaFhCYQAm1QxbH0PqHNVkMWiYVIMgBwjIXo47Y8kLAFw6F08L4ZAJ2FrCIAt4j0WpgBCAh8B0uvxUrsfxoFT964OHLqpoCoQtJZysSAwAsFahIYNaH0VLsWFeqZDQI05CoDXhQj-VMkCcR5ibCAgABVAgC8kFhpEtgvsKMDYA+hTsAQg5TwUfmRAaolgYyfxKLEGajVJ+wLHRorUSGcRQezgl4D8JrCfQccPIBQLCKXwGBoAoYOAI2FeFoh88DMNQKwIBBSMuUsIvql8KZFONLwGgPKkYDF5IZPURQGFPFhgQAgB86kBdA4B5CE4WgIyREl2BGKCizsdKbxPXC2gotQ8xQioEeCCTpCkqsogAuvmyqqdzAJQXIKdlL4AAOVxIsGzQIAGa2ILEFVEvBr4akkXB0Z6zsB7he214WUQYEXbEheESY1hkiDXz3QmyfUUMK+zdGEiCOHLOyMwIrajJmoDiPoT5wTCkRjwhI+4NmI1ry4jSfo4oFLAyLhC984qT8B9FBG1iIqMI96iJ26iPNGOpAlEVbTHopx5WHMCzACR8gg1fagLRkQ8lZBHA88bbTMak0qpJF-hU3HaKqM1TFh1x59UOjjysbpc-6sfG4OVgMA1xUQEsHspuQPCkimoYYePh6BJACg28lqcwrRznGn87KjiMxARDzqF8DEqJK8YiMWo7tsGRcPcZI0K4+wXeNgyDBuEdIOAoRdnAUWzUqDlJEURwUUpYQjGidd26gAIWoCL5BwjgKOTTgIjFJLcHMafH4Aj1RYxckSh4k6DWNzrtUKwdEQ4vbUyo2ZAhgxHUI2nGSF8lqLQHwaLGhCTs9EbiU6Kc0JYvAoRo0YXr1EQLRpvxagZIHN1NigFlQhXc7hUGfHFhPeO9L8S8DJEpAuRO0Q0tlWeA3BTRddGwcM2dZ4iMi2xCyYxTsgxYwiQiTOmyLepwiBY5JPOgESLrcA6+ZPMQBvBgjOpkJsITTnHlfzhTCc2WJDv9CskgsUeAaGoALxSCbE28O0IQVRFfa4xCQcJUWOf3FBKs580efFJpyDS3tUImrD4Ei1kEZkVh6UhCNRPbyoRspYhAkh8NuJKj8+ddFiRhyxo2BiM0ID8B9F2Zo5MytUlRAyIeqUY5haXGoEChy7v0gUU08kPuRzzYiQi20dhFvReDohlIkCPPL6kgTidFxkYxqMi1dKnpzp6pXaVP2RFqAHR2TeiH9K1iFT1+yo3GHFhBnTcA4xHQNPfUVg8RFWsQ2Ac0nenaBXJsAjyYQwU7dRX2yHYkGYCxBxwmo1QWKnXx0BeZZpLKFyS82OTNRzEo-T5gCkOm+RPyG4xeC0B86Gsv2Ycfzti1ZRMzw+rM-UXlWyDKRN+07CBE0yBIqIMeRIM8FmB-zXRlI9IHmT8FvZ6RcgMxZMNLIFgCsIYM9LeECweRUzMUygABHTNCpLNlInvB3kfw2JNQV+RSW6WIE-QwIt4EVNjkbKtbsz+Bt-XVgd3pDACuYYzUEJM2hQzNkRVo+jMCCjkQgY5tIA2TxHUlhkkYJ0cZmCGTmaYzsmQrSNY2WngJbgEzKqJoOcx5jNxD1KmS2CKmEcL4P1EWcPzFl6jeE0NXqF6OLCelHuRELLJOTMiKAsQys0GefnqiqisAEpEQK82EzNJxZHcoVpPPsLkAFq5wAphKRABXAQAoI2sMEEOAkAQA2vQUCUCdqqx6wWraorAQ3D1hWEUYgAAJDh6wv2IcD+DkBtMFk58y+UUWvlQh6wO9UkFCEfnPz6wT84IIgEnB5A8sriTIbpGIAAB6eBbvLgA2AL5N-H+TaA5r1gVq8C7+VgF-lgB4FAC+ssApfn-zDgXAd+Rpl9DKA0F2rAhfWCtZ4QWApC0BfWGAAEgXA5DK4ASGWkxTny0C+UGADgWILkFqCvBQwpwUSLMFG4eBUwqFysKn5UIHAJQri5MUv56C-BTIr-l4U6AwC0pk-OQCZSQwuoVqroEEWwKbACCpBd+lrDiLNFki1WDYq3h6Kn5Bi8hSosSnwKAAVN4q4BiBvF4heaHRQACE-i7xfAq4DllWWKQYKFXVZTvUsAdgThW5G0DAB-FYgHxX4pSBiAAlAWdJDVAkYZKAlkSnJUcCMVbwTFdAMxVEwIDGMuAnALxb4vCXiEFc4S0pdEq2xxLiC6QRJckpPkxTagGSrJcUsCWAJalIqDKKMtKW5KjgbYRYM0PdCtUGlP4EZSkECXkETc1Am0EYDlDqV8I7SqJdx0JRkVNlVUXpSeJ7CDi1W6SnJWstyV5LAEalIpTkpKUZLylxirxGYoVz1K4Qqy5pespobOwjpA8Q5VoGOU0oyKZuBJZct4WtYtgty3JfctyVjLwUohe8mAGmXvKxAFSisF8sez7L3Ayyv5U0uyV5KpS4yE6ZivWUdKIVRYCleSHjIwr8iVyrhTcuxU8Ao0PZZZs0BWWkqWlPQUoCUjBWdLxkgqugAAHkwiFyllXCsGWIrMlAKh5aiq6obQZ+QqkwFirKU4rPlpiglRir5VcB7lgS-7JMKYFrBe5JHWxajNR6KBmIUYksHx0gCPg3lBAe+ZACdUQAuAWXbzJ6qMWj9mVSSkIBAoRXDKlVKK-Jb5DYRiE15R0u4Wg1qVarZla4LlfRFjWOgimiqslRGsASxqtO3GUOD7STX2AoyCmWNQSCJD6FNYlIfyGgEzXIrHlawY+ZNOJjFrRsqaj+vlHrXhq8lAAKSTlTNyQbalNXTTEA5zo5p4btdmsbWqruwMY2GJQOeDDrcVVSsxYuuJVhrp1Kq70ovGHXzLd8WkZWFMsSlIqe126ghVGvGhXoOAIAQqDeq8CvKIlHKjtQQozUnqs1oyyNResvAGS2iw6zlaOoIUIEZJf699Q2u3U+0w405N5pVV3JLkZM3ZNNZ0WHVQRIA5OMcJuSXJTrP1gCSDcExikwaTocGp6KGCoHt8bxHQXpQ+uVUzKS1AGpgphuXK9LsNj6yNaeUXYqJeyleBDblWXW6rql+qx7CxuVVsblAZ5TjalVHIAhKNq5ajSito3trR1GKx8nyq3kgBLVh8hVTeomDq4k0N6n+DepWp0Kr52il1HfMgCKL6wvq+AP8H9W1gb1VwDJTevTVsJ9NEgEAHwGCDIARADmpzSAHLWEgC1p4GtdSDc3p5wtjmnJTesXV1qSA7mtsLQF81RaQA46vOUOri03qGAAATSS25LotUUZZXFoVV5aQAOmxAHyDc2GaNF9C0zfWF0X6K2FK6-FVMq3nFL3NuAA9RAAABqhlL1XFv9Dp5ItDy9zZH1tbY4+tBmkABiJ4Btgb1GS1gENva2GNMVcWgAOyLbotpmjNRlqm2YhQ8iAXLe5qA2CgQNk6nbSd17H-c9tdwu4LUu-CtbktxGtzRqH9Abad5jGlTTtrACQs4AH4Q7TeoNVFa2t2m3TRVp21GbpFt+HRZlNcX1h3FTWvVS1sW0laOtaSHrXkgm2DgRwQ4ZHSNrMAdQxttiyrVNpm1zaclC2vzcpuY3g6zZ2uWEgNH+2la8i0IdMbFsm0AA2LAMGIoD+gNQwY4MaqHZ3p4AAnAgFVAhj08pfVUKLuKYUBVQwYkcBAEqAi708lQIcMeEZ26bIF-gLAMTs53c7ed-OwXSLrF0S6pdMuuXQrqHBK6VdaujXSAFU3bytxssXwCILgCHyQArAIAA" class="button is-rounded is-primary open-studio">Open in Template Playground</a>
+          <a href="https://github.dev/accordproject/cicero-template-library/blob/master/src/safte/README.md" class="button is-rounded is-primary open-studio">Open in VSCode Web</a>
+        </p>
+
+        <div class="content">
+          <p>
+          <h1 id="saftesimpleagreementforfuturetokensorequity">SAFTE (Simple Agreement for Future Tokens or Equity)</h1>
+<p>The SAFTE contract is a futures contract where a person invests in a company in exchange for receiving either utility tokens that may be used when a product launches or equity in the company.</p>
+          </p>
+        </div>
+
+        <h2 class="title is-2">Template Text</h2>
+
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Sample (Rich Text)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Sample (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span>Grammar (Markdown)</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span>Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tabs-content">
+            <div class="is-active content box" data-content="1">
+                <span stype="white-space: pre-wrap; border: 0; background-color: transparent;">
+<p>"ACME"</p>
+<p>SAFTE
+(Simple Agreement for Future Tokens or Equity)</p>
+<p>THIS CERTIFIES THAT in exchange for the payment by "Dan" (the “Purchaser”) of $25.00 (the “Purchase Amount”) to "ACME", a limited company incorporated in NY with company number 555 (the “Company”), the Company hereby issues to the Purchaser the right to either:- (1) cryptographic tokens in the "Umbrella" (the “Tokens”); or (2) certain shares in the Company’s share capital, in either case on the terms set forth below.
+The “Discount Rate” is 100 minus 7%.
+See Section 2 for certain additional defined terms.</p>
+
+<ol delimiter=period start=1 tight=false>
+<li><p>Events</p>
+<p>(a) 	Token Sale. In the event that the Company or any Nominated Entity operates a Qualifying Token Sale, the Company will automatically issue to the Purchaser, or will take all reasonable steps to procure that the Nominated Entity promptly issues to the Purchaser, a number of Tokens equal to the Purchase Amount divided by the Discount Rate (the Purchaser Tokens). If the Qualifying Token Sale is offered at different prices depending on the time at which Tokens are purchased, the Purchase Amount will be considered to have been at the most advantageous rate publicly marketed.
+If the Company elects to operate the Qualifying Token Sale using a Nominated Entity, it will inform the Purchaser in writing. The performance by the Nominated Entity of the obligations of the Company under this agreement will duly discharge the obligations of the Company to the Purchaser.
+(b)	Equity Financing. If there is an Equity Financing before the expiration or termination of this agreement, and the Purchaser has not received Purchaser Tokens pursuant to Section 1(a), the Company will automatically issue to the Purchaser a number of SAFTE Shares equal to the Purchase Amount divided by the Discount Price.
+In connection with the issuance of SAFTE Shares by the Company to the Purchaser pursuant to this Section 1(b):
+(i) The Purchaser will execute and deliver to the Company all transaction documents related to the Equity Financing; provided, that such documents are the same documents to be entered into with the purchasers of Equity Financing Shares, with appropriate variations for the SAFTE Shares if applicable, and provided further, that such documents have customary exceptions to any drag-along rights and obligations applicable to the Purchaser, including, without limitation, limited representations and warranties and limited liability and indemnification obligations on the part of the Purchaser; and
+(ii)	The Purchaser and the Company will execute a Pro Rata Rights Agreement, unless the Purchaser is already included in such rights in the transaction documents related to the Equity Financing.
+(c)	Dissolution Event. If there is a Dissolution Event before this agreement expires or terminates, the Company will pay an amount equal to the Purchase Amount, due and payable to the Purchaser immediately prior to, or concurrent with, the consummation of the Dissolution Event. The Purchase Amount will be paid prior and in preference to any Distribution of any of the assets of the Company to holders of outstanding Capital Shares by reason of their ownership thereof. If immediately prior to the consummation of the Dissolution Event, the assets of the Company legally available for distribution to the Purchaser and all holders of all other SAFTEs (the “Dissolving Purchasers”), as determined in good faith by the Company’s board of directors, are insufficient to permit the payment to the Dissolving Purchasers of their respective Purchase Amounts, then the entire assets of the Company legally available for distribution will be distributed with equal priority and pro rata among the Dissolving Purchasers in proportion to the Purchase Amounts they would otherwise be entitled to receive pursuant to this Section 1(c).
+(d)	Termination.  This agreement will expire and terminate (without relieving the Company of any obligations arising from a prior breach of or non-compliance with this agreement) upon either (i) the issuance of Tokens to the Purchaser pursuant to Section 1(a); or (ii) the issuance of shares to the Purchaser pursuant to Section 1(b); or (iii) the payment, or setting aside for payment, of amounts due the Purchaser pursuant to Section 1(c).</p>
+</li>
+<li><p>Definitions</p>
+<p>“Acting in Concert” has the meaning given to it in the City Code on Takeovers and Mergers published by the Panel on Takeovers and Mergers in force from time to time.</p>
+<p>“Capital Shares” means the share capital of the Company, including, without limitation, the “Equity Financing Shares” and the “SAFTE Shares.”
+“Change of Control” means (i) a transaction or series of related transactions in which more than fifty per cent (50 %) of the voting rights attaching to the Capital Shares of the Company are sold or are to be sold to one person or group of persons Acting in Concert; or (ii) a sale, lease or other disposition of all or substantially all of the assets of the Company.
+“"Umbrella"” means a suite of smart contracts built on the Ethereum Network which "manages umbrella tokens".
+“Discount Price” means (i) the price per share of the Equity Financing Shares sold in the Equity Financing multiplied by the Discount Rate, or (ii) the price per token of the Token sold in the Qualifying Token Sale multiplied by the Discount Rate.
+“Distribution” means the transfer to holders of Capital Shares by reason of their ownership thereof of cash or other property without consideration whether by way of dividend or otherwise, other than dividends on ordinary shares payable in ordinary shares, or the purchase or redemption of Capital Shares by the Company or its subsidiaries for cash or property other than: (i) repurchases of ordinary shares held by employees, officers, directors or consultants of the Company or its subsidiaries pursuant to an agreement providing, as applicable, a right of first refusal or a right to repurchase shares upon termination of such service provider’s employment or services; or (ii) repurchases of Capital Shares in connection with the settlement of disputes with any shareholder.</p>
+<p>“Dissolution Event” means (i) a voluntary termination of operations, (ii) a general assignment for the benefit of the Company’s creditors or (iii) any other liquidation, dissolution or winding up of the Company (excluding a Liquidity Event), whether voluntary or involuntary.
+“Equity Financing” means a bona fide transaction or series of transactions with the principal purpose of raising capital, where the Company raises during any consecutive "twelve" 12 month(s) period in aggregate over 1000.00 "one thousand" from an Purchaser or number of Purchasers, and pursuant to which the Company issues and sells either ordinary or preferred shares at a fixed pre-money valuation.
+“Equity Financing Shares” means the shares issued as part of the Equity Financing.</p>
+<p>“Liquidity Event” means a Change of Control or a Listing.</p>
+<p>“Liquidity Price” means the price per share equal to: the fair market value of the SAFTE Shares at the time of the Liquidity Event, as determined by reference to the purchase price payable in connection with such Liquidity Event, divided by the Discount Rate.</p>
+<p>“Listing” means a listing of the Capital Shares on a recognised stock exchange or other active secondary market.
+“Investment Amount” means the amounts paid by the Purchaser to the Company pursuant to this agreement.
+“Nominated Entity” means a company or other organisation, nominated by the Company to operate the Qualifying Token Sale.	
+“Pro Rata Rights Agreement” means a written agreement between the Company and the Purchaser (and holders of other SAFTEs, as appropriate) giving the Purchaser a right to purchase its pro rata share of private placements of securities by the Company occurring after the Equity Financing, subject to customary exceptions.  Pro rata for purposes of the Pro Rata Rights Agreement will be calculated based on the ratio of (1) the number of shares of Capital Shares owned by the Purchaser immediately prior to the issuance of the securities to (2) the total number of shares of outstanding Capital Shares on a fully diluted basis, calculated as of immediately prior to the issuance of the securities.  	
+“Qualifying Token Sale” means the operation by the Company or any subsidiary thereof of a public sale of cryptographic tokens necessary for the operation of the "Umbrella".
+“SAFTE” means an agreement containing a future right to shares of Capital Shares, similar in form and content to this agreement, purchased by Purchasers for the purpose of funding the Company’s business operations.
+“SAFTE Shares” means shares in the Company having the identical rights, privileges, preferences and restrictions as the Equity Financing Shares, other than with respect to: (i) the per share liquidation preference and the conversion price for purposes of price-based anti-dilution protection, which will equal the Discount Price; and (ii) the basis for any dividend rights, which will be based on the Discount Price.
+“Token Sale” means the public sale of cryptographic tokens in the "Umbrella" as seen as necessary for the running of the "Umbrella".</p>
+</li>
+<li><p>Company Representations
+(a)	The Company is duly incorporated and validly existing under the laws of NY, and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.
+(b)	The execution, delivery and performance by the Company of this agreement is within the power of the Company and, other than with respect to the actions to be taken when equity is to be issued to the Purchaser, has been duly authorized by all necessary actions on the part of the Company. This agreement constitutes a legal, valid and binding obligation of the Company, enforceable against the Company in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.  To the knowledge of the Company, it is not in violation of (i) its current certificate of incorporation or articles of association, (ii) any material statute, rule or regulation applicable to the Company or (iii) any material indenture or contract to which the Company is a party or by which it is bound, where, in each case, such violation or default, individually, or together with all such violations or defaults, could reasonably be expected to have a material adverse effect on the Company.
+(c)	The performance and consummation of the transactions contemplated by this agreement do not and will not: (i) violate any material judgment, statute, rule or regulation applicable to the Company; (ii) result in the acceleration of any material indenture or contract to which the Company is a party or by which it is bound; or (iii) result in the creation or imposition of any lien upon any property, asset or revenue of the Company or the suspension, forfeiture, or nonrenewal of any material permit, license or authorization applicable to the Company, its business or operations.
+(d)	No consents or approvals are required in connection with the performance of this agreement, other than: (i) the Company’s corporate approvals; (ii) any qualifications or filings under applicable securities laws; and (iii) necessary corporate approvals for the authorization of Capital Shares issuable pursuant to Section 1.
+(e)	To its knowledge, the Company owns or possesses (or can obtain on commercially reasonable terms) sufficient legal rights to all patents, trademarks, service marks, trade names, copyrights, trade secrets, licenses, information, processes and other intellectual property rights necessary for its business as now conducted and as currently proposed to be conducted, without any conflict with, or infringement of the rights of, others.</p>
+</li>
+<li><p>Purchaser Representations
+(a)	The Purchaser has full legal capacity, power and authority to execute and deliver this agreement and to perform its obligations hereunder. This agreement constitutes valid and binding obligation of the Purchaser, enforceable in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.
+(b)	The Purchaser is purchasing this agreement and the securities to be acquired by the Purchaser hereunder for its own account for investment, not as a nominee or agent, and not with a view to, or for resale in connection with, the distribution thereof, and the Purchaser has no present intention of selling, granting any participation in, or otherwise distributing the same. The Purchaser has such knowledge and experience in financial and business matters that the Purchaser is capable of evaluating the merits and risks of such investment, is able to incur a complete loss of such investment without impairing the Purchaser’s financial condition and is able to bear the economic risk of such investment for an indefinite period of time.</p>
+</li>
+<li><p>Miscellaneous
+(a)	Any provision of this agreement may be amended, waived or modified only upon the written consent of the Company and the Purchaser.
+(b)	Unless otherwise expressly stated herein, all communications under this agreement will be in writing and may be made by letter or email. Any notice required or permitted by this agreement will be deemed sufficient when delivered personally or by overnight courier or sent by email to the relevant address listed on the signature page, or 48 hours after being deposited in the mail as certified or registered mail with postage prepaid, addressed to the party to be notified at such party’s address listed on the signature page, as subsequently modified by written notice.
+(c)	The Purchaser is not entitled, as a holder of this agreement, to vote or receive dividends or be deemed the holder of Capital Shares for any purpose, nor will anything contained herein be construed to confer on the Purchaser, as such, any of the rights of a shareholder of the Company or any right to vote for the election of directors or upon any matter submitted to shareholders at any meeting thereof, or to give or withhold consent to any corporate action or to receive notice of meetings, or to receive subscription rights or otherwise until shares have been issued upon the terms described herein.
+(d)	Neither this agreement nor the rights contained herein may be assigned, by operation of law or otherwise, by either party without the prior written consent of the other.</p>
+<p>(e) In the event any one or more of the provisions of this agreement is for any reason held to be invalid, illegal or unenforceable, in whole or in part or in any respect, or in the event that any one or more of the provisions of this agreement operate or would prospectively operate to invalidate this agreement, then and in any such event, such provision(s) only will be deemed null and void and will not affect any other provision of this agreement and the remaining provisions of this agreement will remain operative and in full force and effect and will not be affected, prejudiced, or disturbed thereby.</p>
+<p>(f)	This agreement may be executed and delivered in any number of counterparts, each of which when executed and delivered shall constitute a duplicate original, but all the counterparts together shall constitute the one agreement.</p>
+<p>(g) This agreement, and all rights and obligations hereunder, will be governed by and construed in accordance with the laws of NY, and the courts of NY shall have exclusive jurisdiction to settle any dispute arising in connection with this agreement.</p>
+</li></ol><p>This agreement has been executed and delivered as a deed on the date appearing at the beginning of this deed.</p>
+<p>Executed and delivered as a deed by "ACME".</p>
+</span>
+            </div>
+            <div class="content box" data-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="markdown">"ACME"
+
+SAFTE 
+(Simple Agreement for Future Tokens or Equity)
+
+THIS CERTIFIES THAT in exchange for the payment by "Dan" (the “Purchaser”) of $25.00 (the “Purchase Amount”) to "ACME", a limited company incorporated in NY with company number 555 (the “Company”), the Company hereby issues to the Purchaser the right to either:- (1) cryptographic tokens in the "Umbrella" (the “Tokens”); or (2) certain shares in the Company’s share capital, in either case on the terms set forth below. 
+The “Discount Rate” is 100 minus 7%.
+See Section 2 for certain additional defined terms.
+1.	Events
+
+	(a) 	Token Sale. In the event that the Company or any Nominated Entity operates a Qualifying Token Sale, the Company will automatically issue to the Purchaser, or will take all reasonable steps to procure that the Nominated Entity promptly issues to the Purchaser, a number of Tokens equal to the Purchase Amount divided by the Discount Rate (the Purchaser Tokens). If the Qualifying Token Sale is offered at different prices depending on the time at which Tokens are purchased, the Purchase Amount will be considered to have been at the most advantageous rate publicly marketed.
+If the Company elects to operate the Qualifying Token Sale using a Nominated Entity, it will inform the Purchaser in writing. The performance by the Nominated Entity of the obligations of the Company under this agreement will duly discharge the obligations of the Company to the Purchaser. 
+	(b)	Equity Financing. If there is an Equity Financing before the expiration or termination of this agreement, and the Purchaser has not received Purchaser Tokens pursuant to Section 1(a), the Company will automatically issue to the Purchaser a number of SAFTE Shares equal to the Purchase Amount divided by the Discount Price.
+	In connection with the issuance of SAFTE Shares by the Company to the Purchaser pursuant to this Section 1(b): 
+(i) The Purchaser will execute and deliver to the Company all transaction documents related to the Equity Financing; provided, that such documents are the same documents to be entered into with the purchasers of Equity Financing Shares, with appropriate variations for the SAFTE Shares if applicable, and provided further, that such documents have customary exceptions to any drag-along rights and obligations applicable to the Purchaser, including, without limitation, limited representations and warranties and limited liability and indemnification obligations on the part of the Purchaser; and 
+(ii)	The Purchaser and the Company will execute a Pro Rata Rights Agreement, unless the Purchaser is already included in such rights in the transaction documents related to the Equity Financing.
+		(c)	Dissolution Event. If there is a Dissolution Event before this agreement expires or terminates, the Company will pay an amount equal to the Purchase Amount, due and payable to the Purchaser immediately prior to, or concurrent with, the consummation of the Dissolution Event. The Purchase Amount will be paid prior and in preference to any Distribution of any of the assets of the Company to holders of outstanding Capital Shares by reason of their ownership thereof. If immediately prior to the consummation of the Dissolution Event, the assets of the Company legally available for distribution to the Purchaser and all holders of all other SAFTEs (the “Dissolving Purchasers”), as determined in good faith by the Company’s board of directors, are insufficient to permit the payment to the Dissolving Purchasers of their respective Purchase Amounts, then the entire assets of the Company legally available for distribution will be distributed with equal priority and pro rata among the Dissolving Purchasers in proportion to the Purchase Amounts they would otherwise be entitled to receive pursuant to this Section 1(c).
+	(d)	Termination.  This agreement will expire and terminate (without relieving the Company of any obligations arising from a prior breach of or non-compliance with this agreement) upon either (i) the issuance of Tokens to the Purchaser pursuant to Section 1(a); or (ii) the issuance of shares to the Purchaser pursuant to Section 1(b); or (iii) the payment, or setting aside for payment, of amounts due the Purchaser pursuant to Section 1(c).
+
+2.	Definitions
+
+	“Acting in Concert” has the meaning given to it in the City Code on Takeovers and Mergers published by the Panel on Takeovers and Mergers in force from time to time.
+
+	“Capital Shares” means the share capital of the Company, including, without limitation, the “Equity Financing Shares” and the “SAFTE Shares.”
+	“Change of Control” means (i) a transaction or series of related transactions in which more than fifty per cent (50 %) of the voting rights attaching to the Capital Shares of the Company are sold or are to be sold to one person or group of persons Acting in Concert; or (ii) a sale, lease or other disposition of all or substantially all of the assets of the Company.
+“"Umbrella"” means a suite of smart contracts built on the Ethereum Network which "manages umbrella tokens".
+	“Discount Price” means (i) the price per share of the Equity Financing Shares sold in the Equity Financing multiplied by the Discount Rate, or (ii) the price per token of the Token sold in the Qualifying Token Sale multiplied by the Discount Rate. 
+	“Distribution” means the transfer to holders of Capital Shares by reason of their ownership thereof of cash or other property without consideration whether by way of dividend or otherwise, other than dividends on ordinary shares payable in ordinary shares, or the purchase or redemption of Capital Shares by the Company or its subsidiaries for cash or property other than: (i) repurchases of ordinary shares held by employees, officers, directors or consultants of the Company or its subsidiaries pursuant to an agreement providing, as applicable, a right of first refusal or a right to repurchase shares upon termination of such service provider’s employment or services; or (ii) repurchases of Capital Shares in connection with the settlement of disputes with any shareholder.
+
+	“Dissolution Event” means (i) a voluntary termination of operations, (ii) a general assignment for the benefit of the Company’s creditors or (iii) any other liquidation, dissolution or winding up of the Company (excluding a Liquidity Event), whether voluntary or involuntary.
+	“Equity Financing” means a bona fide transaction or series of transactions with the principal purpose of raising capital, where the Company raises during any consecutive "twelve" 12 month(s) period in aggregate over 1000.00 "one thousand" from an Purchaser or number of Purchasers, and pursuant to which the Company issues and sells either ordinary or preferred shares at a fixed pre-money valuation. 
+“Equity Financing Shares” means the shares issued as part of the Equity Financing. 
+	
+	“Liquidity Event” means a Change of Control or a Listing. 
+
+	“Liquidity Price” means the price per share equal to: the fair market value of the SAFTE Shares at the time of the Liquidity Event, as determined by reference to the purchase price payable in connection with such Liquidity Event, divided by the Discount Rate. 
+
+	“Listing” means a listing of the Capital Shares on a recognised stock exchange or other active secondary market. 
+“Investment Amount” means the amounts paid by the Purchaser to the Company pursuant to this agreement.
+“Nominated Entity” means a company or other organisation, nominated by the Company to operate the Qualifying Token Sale.	
+“Pro Rata Rights Agreement” means a written agreement between the Company and the Purchaser (and holders of other SAFTEs, as appropriate) giving the Purchaser a right to purchase its pro rata share of private placements of securities by the Company occurring after the Equity Financing, subject to customary exceptions.  Pro rata for purposes of the Pro Rata Rights Agreement will be calculated based on the ratio of (1) the number of shares of Capital Shares owned by the Purchaser immediately prior to the issuance of the securities to (2) the total number of shares of outstanding Capital Shares on a fully diluted basis, calculated as of immediately prior to the issuance of the securities.  	
+“Qualifying Token Sale” means the operation by the Company or any subsidiary thereof of a public sale of cryptographic tokens necessary for the operation of the "Umbrella". 
+	 “SAFTE” means an agreement containing a future right to shares of Capital Shares, similar in form and content to this agreement, purchased by Purchasers for the purpose of funding the Company’s business operations.
+	“SAFTE Shares” means shares in the Company having the identical rights, privileges, preferences and restrictions as the Equity Financing Shares, other than with respect to: (i) the per share liquidation preference and the conversion price for purposes of price-based anti-dilution protection, which will equal the Discount Price; and (ii) the basis for any dividend rights, which will be based on the Discount Price.
+	“Token Sale” means the public sale of cryptographic tokens in the "Umbrella" as seen as necessary for the running of the "Umbrella".
+
+ 3.	Company Representations
+	(a)	The Company is duly incorporated and validly existing under the laws of NY, and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.
+	(b)	The execution, delivery and performance by the Company of this agreement is within the power of the Company and, other than with respect to the actions to be taken when equity is to be issued to the Purchaser, has been duly authorized by all necessary actions on the part of the Company. This agreement constitutes a legal, valid and binding obligation of the Company, enforceable against the Company in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.  To the knowledge of the Company, it is not in violation of (i) its current certificate of incorporation or articles of association, (ii) any material statute, rule or regulation applicable to the Company or (iii) any material indenture or contract to which the Company is a party or by which it is bound, where, in each case, such violation or default, individually, or together with all such violations or defaults, could reasonably be expected to have a material adverse effect on the Company.
+	(c)	The performance and consummation of the transactions contemplated by this agreement do not and will not: (i) violate any material judgment, statute, rule or regulation applicable to the Company; (ii) result in the acceleration of any material indenture or contract to which the Company is a party or by which it is bound; or (iii) result in the creation or imposition of any lien upon any property, asset or revenue of the Company or the suspension, forfeiture, or nonrenewal of any material permit, license or authorization applicable to the Company, its business or operations.
+	(d)	No consents or approvals are required in connection with the performance of this agreement, other than: (i) the Company’s corporate approvals; (ii) any qualifications or filings under applicable securities laws; and (iii) necessary corporate approvals for the authorization of Capital Shares issuable pursuant to Section 1.
+	(e)	To its knowledge, the Company owns or possesses (or can obtain on commercially reasonable terms) sufficient legal rights to all patents, trademarks, service marks, trade names, copyrights, trade secrets, licenses, information, processes and other intellectual property rights necessary for its business as now conducted and as currently proposed to be conducted, without any conflict with, or infringement of the rights of, others.
+
+4.	Purchaser Representations
+	(a)	The Purchaser has full legal capacity, power and authority to execute and deliver this agreement and to perform its obligations hereunder. This agreement constitutes valid and binding obligation of the Purchaser, enforceable in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity. 
+	(b)	The Purchaser is purchasing this agreement and the securities to be acquired by the Purchaser hereunder for its own account for investment, not as a nominee or agent, and not with a view to, or for resale in connection with, the distribution thereof, and the Purchaser has no present intention of selling, granting any participation in, or otherwise distributing the same. The Purchaser has such knowledge and experience in financial and business matters that the Purchaser is capable of evaluating the merits and risks of such investment, is able to incur a complete loss of such investment without impairing the Purchaser’s financial condition and is able to bear the economic risk of such investment for an indefinite period of time. 
+5.	Miscellaneous
+	(a)	Any provision of this agreement may be amended, waived or modified only upon the written consent of the Company and the Purchaser.
+	(b)	Unless otherwise expressly stated herein, all communications under this agreement will be in writing and may be made by letter or email. Any notice required or permitted by this agreement will be deemed sufficient when delivered personally or by overnight courier or sent by email to the relevant address listed on the signature page, or 48 hours after being deposited in the mail as certified or registered mail with postage prepaid, addressed to the party to be notified at such party’s address listed on the signature page, as subsequently modified by written notice.
+	(c)	The Purchaser is not entitled, as a holder of this agreement, to vote or receive dividends or be deemed the holder of Capital Shares for any purpose, nor will anything contained herein be construed to confer on the Purchaser, as such, any of the rights of a shareholder of the Company or any right to vote for the election of directors or upon any matter submitted to shareholders at any meeting thereof, or to give or withhold consent to any corporate action or to receive notice of meetings, or to receive subscription rights or otherwise until shares have been issued upon the terms described herein.
+	(d)	Neither this agreement nor the rights contained herein may be assigned, by operation of law or otherwise, by either party without the prior written consent of the other.  
+
+	(e) In the event any one or more of the provisions of this agreement is for any reason held to be invalid, illegal or unenforceable, in whole or in part or in any respect, or in the event that any one or more of the provisions of this agreement operate or would prospectively operate to invalidate this agreement, then and in any such event, such provision(s) only will be deemed null and void and will not affect any other provision of this agreement and the remaining provisions of this agreement will remain operative and in full force and effect and will not be affected, prejudiced, or disturbed thereby. 
+
+	(f)	This agreement may be executed and delivered in any number of counterparts, each of which when executed and delivered shall constitute a duplicate original, but all the counterparts together shall constitute the one agreement. 
+
+	(g) This agreement, and all rights and obligations hereunder, will be governed by and construed in accordance with the laws of NY, and the courts of NY shall have exclusive jurisdiction to settle any dispute arising in connection with this agreement. 
+
+This agreement has been executed and delivered as a deed on the date appearing at the beginning of this deed.
+
+Executed and delivered as a deed by "ACME".
+
+</code></pre>
+            </div>
+            <div class="content box" data-content="3">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="tem">{{companyName}}
+
+SAFTE 
+(Simple Agreement for Future Tokens or Equity)
+
+THIS CERTIFIES THAT in exchange for the payment by {{purchaser}} (the “Purchaser”) of ${{purchaseAmount}} (the “Purchase Amount”) to {{companyName}}, a limited company incorporated in {{jurisdiction}} with company number {{companyRegistrationNumber}} (the “Company”), the Company hereby issues to the Purchaser the right to either:- (1) cryptographic tokens in the {{projectName}} (the “Tokens”); or (2) certain shares in the Company’s share capital, in either case on the terms set forth below. 
+The “Discount Rate” is 100 minus {{discount}}%.
+See Section 2 for certain additional defined terms.
+1.	Events
+
+	(a) 	Token Sale. In the event that the Company or any Nominated Entity operates a Qualifying Token Sale, the Company will automatically issue to the Purchaser, or will take all reasonable steps to procure that the Nominated Entity promptly issues to the Purchaser, a number of Tokens equal to the Purchase Amount divided by the Discount Rate (the Purchaser Tokens). If the Qualifying Token Sale is offered at different prices depending on the time at which Tokens are purchased, the Purchase Amount will be considered to have been at the most advantageous rate publicly marketed.
+If the Company elects to operate the Qualifying Token Sale using a Nominated Entity, it will inform the Purchaser in writing. The performance by the Nominated Entity of the obligations of the Company under this agreement will duly discharge the obligations of the Company to the Purchaser. 
+	(b)	Equity Financing. If there is an Equity Financing before the expiration or termination of this agreement, and the Purchaser has not received Purchaser Tokens pursuant to Section 1(a), the Company will automatically issue to the Purchaser a number of SAFTE Shares equal to the Purchase Amount divided by the Discount Price.
+	In connection with the issuance of SAFTE Shares by the Company to the Purchaser pursuant to this Section 1(b): 
+(i) The Purchaser will execute and deliver to the Company all transaction documents related to the Equity Financing; provided, that such documents are the same documents to be entered into with the purchasers of Equity Financing Shares, with appropriate variations for the SAFTE Shares if applicable, and provided further, that such documents have customary exceptions to any drag-along rights and obligations applicable to the Purchaser, including, without limitation, limited representations and warranties and limited liability and indemnification obligations on the part of the Purchaser; and 
+(ii)	The Purchaser and the Company will execute a Pro Rata Rights Agreement, unless the Purchaser is already included in such rights in the transaction documents related to the Equity Financing.
+		(c)	Dissolution Event. If there is a Dissolution Event before this agreement expires or terminates, the Company will pay an amount equal to the Purchase Amount, due and payable to the Purchaser immediately prior to, or concurrent with, the consummation of the Dissolution Event. The Purchase Amount will be paid prior and in preference to any Distribution of any of the assets of the Company to holders of outstanding Capital Shares by reason of their ownership thereof. If immediately prior to the consummation of the Dissolution Event, the assets of the Company legally available for distribution to the Purchaser and all holders of all other SAFTEs (the “Dissolving Purchasers”), as determined in good faith by the Company’s board of directors, are insufficient to permit the payment to the Dissolving Purchasers of their respective Purchase Amounts, then the entire assets of the Company legally available for distribution will be distributed with equal priority and pro rata among the Dissolving Purchasers in proportion to the Purchase Amounts they would otherwise be entitled to receive pursuant to this Section 1(c).
+	(d)	Termination.  This agreement will expire and terminate (without relieving the Company of any obligations arising from a prior breach of or non-compliance with this agreement) upon either (i) the issuance of Tokens to the Purchaser pursuant to Section 1(a); or (ii) the issuance of shares to the Purchaser pursuant to Section 1(b); or (iii) the payment, or setting aside for payment, of amounts due the Purchaser pursuant to Section 1(c).
+
+2.	Definitions
+
+	“Acting in Concert” has the meaning given to it in the City Code on Takeovers and Mergers published by the Panel on Takeovers and Mergers in force from time to time.
+
+	“Capital Shares” means the share capital of the Company, including, without limitation, the “Equity Financing Shares” and the “SAFTE Shares.”
+	“Change of Control” means (i) a transaction or series of related transactions in which more than fifty per cent (50 %) of the voting rights attaching to the Capital Shares of the Company are sold or are to be sold to one person or group of persons Acting in Concert; or (ii) a sale, lease or other disposition of all or substantially all of the assets of the Company.
+“{{projectName}}” means a suite of smart contracts built on the Ethereum Network which {{projectDescription}}.
+	“Discount Price” means (i) the price per share of the Equity Financing Shares sold in the Equity Financing multiplied by the Discount Rate, or (ii) the price per token of the Token sold in the Qualifying Token Sale multiplied by the Discount Rate. 
+	“Distribution” means the transfer to holders of Capital Shares by reason of their ownership thereof of cash or other property without consideration whether by way of dividend or otherwise, other than dividends on ordinary shares payable in ordinary shares, or the purchase or redemption of Capital Shares by the Company or its subsidiaries for cash or property other than: (i) repurchases of ordinary shares held by employees, officers, directors or consultants of the Company or its subsidiaries pursuant to an agreement providing, as applicable, a right of first refusal or a right to repurchase shares upon termination of such service provider’s employment or services; or (ii) repurchases of Capital Shares in connection with the settlement of disputes with any shareholder.
+
+	“Dissolution Event” means (i) a voluntary termination of operations, (ii) a general assignment for the benefit of the Company’s creditors or (iii) any other liquidation, dissolution or winding up of the Company (excluding a Liquidity Event), whether voluntary or involuntary.
+	“Equity Financing” means a bona fide transaction or series of transactions with the principal purpose of raising capital, where the Company raises during any consecutive {{monthsText}} {{months}} month(s) period in aggregate over {{amount}} {{amountText}} from an Purchaser or number of Purchasers, and pursuant to which the Company issues and sells either ordinary or preferred shares at a fixed pre-money valuation. 
+“Equity Financing Shares” means the shares issued as part of the Equity Financing. 
+	
+	“Liquidity Event” means a Change of Control or a Listing. 
+
+	“Liquidity Price” means the price per share equal to: the fair market value of the SAFTE Shares at the time of the Liquidity Event, as determined by reference to the purchase price payable in connection with such Liquidity Event, divided by the Discount Rate. 
+
+	“Listing” means a listing of the Capital Shares on a recognised stock exchange or other active secondary market. 
+“Investment Amount” means the amounts paid by the Purchaser to the Company pursuant to this agreement.
+“Nominated Entity” means a company or other organisation, nominated by the Company to operate the Qualifying Token Sale.	
+“Pro Rata Rights Agreement” means a written agreement between the Company and the Purchaser (and holders of other SAFTEs, as appropriate) giving the Purchaser a right to purchase its pro rata share of private placements of securities by the Company occurring after the Equity Financing, subject to customary exceptions.  Pro rata for purposes of the Pro Rata Rights Agreement will be calculated based on the ratio of (1) the number of shares of Capital Shares owned by the Purchaser immediately prior to the issuance of the securities to (2) the total number of shares of outstanding Capital Shares on a fully diluted basis, calculated as of immediately prior to the issuance of the securities.  	
+“Qualifying Token Sale” means the operation by the Company or any subsidiary thereof of a public sale of cryptographic tokens necessary for the operation of the {{projectName}}. 
+	 “SAFTE” means an agreement containing a future right to shares of Capital Shares, similar in form and content to this agreement, purchased by Purchasers for the purpose of funding the Company’s business operations.
+	“SAFTE Shares” means shares in the Company having the identical rights, privileges, preferences and restrictions as the Equity Financing Shares, other than with respect to: (i) the per share liquidation preference and the conversion price for purposes of price-based anti-dilution protection, which will equal the Discount Price; and (ii) the basis for any dividend rights, which will be based on the Discount Price.
+	“Token Sale” means the public sale of cryptographic tokens in the {{projectName}} as seen as necessary for the running of the {{projectName}}.
+
+ 3.	Company Representations
+	(a)	The Company is duly incorporated and validly existing under the laws of {{jurisdiction}}, and has the power and authority to own, lease and operate its properties and carry on its business as now conducted.
+	(b)	The execution, delivery and performance by the Company of this agreement is within the power of the Company and, other than with respect to the actions to be taken when equity is to be issued to the Purchaser, has been duly authorized by all necessary actions on the part of the Company. This agreement constitutes a legal, valid and binding obligation of the Company, enforceable against the Company in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity.  To the knowledge of the Company, it is not in violation of (i) its current certificate of incorporation or articles of association, (ii) any material statute, rule or regulation applicable to the Company or (iii) any material indenture or contract to which the Company is a party or by which it is bound, where, in each case, such violation or default, individually, or together with all such violations or defaults, could reasonably be expected to have a material adverse effect on the Company.
+	(c)	The performance and consummation of the transactions contemplated by this agreement do not and will not: (i) violate any material judgment, statute, rule or regulation applicable to the Company; (ii) result in the acceleration of any material indenture or contract to which the Company is a party or by which it is bound; or (iii) result in the creation or imposition of any lien upon any property, asset or revenue of the Company or the suspension, forfeiture, or nonrenewal of any material permit, license or authorization applicable to the Company, its business or operations.
+	(d)	No consents or approvals are required in connection with the performance of this agreement, other than: (i) the Company’s corporate approvals; (ii) any qualifications or filings under applicable securities laws; and (iii) necessary corporate approvals for the authorization of Capital Shares issuable pursuant to Section 1.
+	(e)	To its knowledge, the Company owns or possesses (or can obtain on commercially reasonable terms) sufficient legal rights to all patents, trademarks, service marks, trade names, copyrights, trade secrets, licenses, information, processes and other intellectual property rights necessary for its business as now conducted and as currently proposed to be conducted, without any conflict with, or infringement of the rights of, others.
+
+4.	Purchaser Representations
+	(a)	The Purchaser has full legal capacity, power and authority to execute and deliver this agreement and to perform its obligations hereunder. This agreement constitutes valid and binding obligation of the Purchaser, enforceable in accordance with its terms, except as limited by bankruptcy, insolvency or other laws of general application relating to or affecting the enforcement of creditors’ rights generally and general principles of equity. 
+	(b)	The Purchaser is purchasing this agreement and the securities to be acquired by the Purchaser hereunder for its own account for investment, not as a nominee or agent, and not with a view to, or for resale in connection with, the distribution thereof, and the Purchaser has no present intention of selling, granting any participation in, or otherwise distributing the same. The Purchaser has such knowledge and experience in financial and business matters that the Purchaser is capable of evaluating the merits and risks of such investment, is able to incur a complete loss of such investment without impairing the Purchaser’s financial condition and is able to bear the economic risk of such investment for an indefinite period of time. 
+5.	Miscellaneous
+	(a)	Any provision of this agreement may be amended, waived or modified only upon the written consent of the Company and the Purchaser.
+	(b)	Unless otherwise expressly stated herein, all communications under this agreement will be in writing and may be made by letter or email. Any notice required or permitted by this agreement will be deemed sufficient when delivered personally or by overnight courier or sent by email to the relevant address listed on the signature page, or 48 hours after being deposited in the mail as certified or registered mail with postage prepaid, addressed to the party to be notified at such party’s address listed on the signature page, as subsequently modified by written notice.
+	(c)	The Purchaser is not entitled, as a holder of this agreement, to vote or receive dividends or be deemed the holder of Capital Shares for any purpose, nor will anything contained herein be construed to confer on the Purchaser, as such, any of the rights of a shareholder of the Company or any right to vote for the election of directors or upon any matter submitted to shareholders at any meeting thereof, or to give or withhold consent to any corporate action or to receive notice of meetings, or to receive subscription rights or otherwise until shares have been issued upon the terms described herein.
+	(d)	Neither this agreement nor the rights contained herein may be assigned, by operation of law or otherwise, by either party without the prior written consent of the other.  
+
+	(e) In the event any one or more of the provisions of this agreement is for any reason held to be invalid, illegal or unenforceable, in whole or in part or in any respect, or in the event that any one or more of the provisions of this agreement operate or would prospectively operate to invalidate this agreement, then and in any such event, such provision(s) only will be deemed null and void and will not affect any other provision of this agreement and the remaining provisions of this agreement will remain operative and in full force and effect and will not be affected, prejudiced, or disturbed thereby. 
+
+	(f)	This agreement may be executed and delivered in any number of counterparts, each of which when executed and delivered shall constitute a duplicate original, but all the counterparts together shall constitute the one agreement. 
+
+	(g) This agreement, and all rights and obligations hereunder, will be governed by and construed in accordance with the laws of {{jurisdiction}}, and the courts of {{jurisdiction}} shall have exclusive jurisdiction to settle any dispute arising in connection with this agreement. 
+
+This agreement has been executed and delivered as a deed on the date appearing at the beginning of this deed.
+
+Executed and delivered as a deed by {{companyName}}.
+
+</code></pre>
+            </div>
+            <div class="box" data-content="4">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code style="white-space: pre-wrap;">{
+  "$class": "org.accordproject.safte@0.2.0.TemplateModel",
+  "companyName": "ACME",
+  "companyRegistrationNumber": 555,
+  "purchaser": "Dan",
+  "jurisdiction": "NY",
+  "purchaseAmount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 25,
+    "currencyCode": "USD"
+  },
+  "discount": 7,
+  "projectName": "Umbrella",
+  "projectDescription": "manages umbrella tokens",
+  "months": 12,
+  "monthsText": "twelve",
+  "amount": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 1000,
+    "currencyCode": "USD"
+  },
+  "amountText": "one thousand",
+  "$identifier": "6d8c2188-659a-4854-9a3c-800eb595b0dd",
+  "clauseId": "6d8c2188-659a-4854-9a3c-800eb595b0dd"
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title is-2">Template Model</h2>
+
+        <div class="tabs" id="mtabs">
+            <ul>
+                <li class="is-active" data-tab="1">
+                    <a>
+                        <span>Diagram (UML)</span>
+                    </a>
+                </li>
+                <li data-tab="2">
+                    <a>
+                        <span>Source (CTO)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="mtabs-content">
+            <div class="is-active content box" mdata-content="1">
+                <img src="https://www.plantuml.com/plantuml/svg/hPLFJm8n4CNlV8eUDGeXdWt122OceaQuaw4xBiLkkynCrOtwtStkGlWZQ4ts-hBlpUjlccwV1KX2PblQ0hFob7P0Qqz9Jdw1MZeCpuBJxlHYskrC_0kwCLXKbvVgP79UeBN-xLJrUkgZfPGwKoFlK82Agym79qfAmoCPZQslLcnsk_tPEr24WXEJhJz_mcL0bd_KdWCTxptmOMQnxbjtZonSfKOsvjmxngZAmsKmKjmO1quRbyRovh9E7E_z2OrJhmVyZdslFbQMIFxR-SqlO62OlGrYl1k-efEZHnWBbVWq1FuR-e_Knga_Gl4G91OunA5UXJPFUO9PRa5mv1EqLUchyvGGtI72Fil15VUGOQtV-OtwXAbX8IZ9teTiXhJZpGFfEV2UkWXaE36wD1t4ixQjRkJsIv4OrXjnFQO-ugRYhZv0rcJopRXR9vWYgSmxcVEEfPOc-2w_BMxRKKkLuy-dQmVxaRLgxuH0oyfpRQiRtaUNbB-BRm00"/>
+            </div>
+            <div class="content box" mdata-content="2">
+                <pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="ergo">namespace org.accordproject.safte@0.2.0
+
+import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+
+/**
+ * Token are issued!
+ */
+transaction TokenSale extends Request {
+  /**
+   * The token price
+   */
+  o MonetaryAmount tokenPrice
+}
+
+/**
+ * Token share
+ */
+transaction TokenShare extends Response {
+  /**
+   * The token amount
+   */
+  o Double tokenAmount
+}
+
+/**
+ * Financing through equity
+ */
+transaction EquityFinancing extends Request {
+  /**
+   * The share price
+   */
+  o MonetaryAmount sharePrice
+}
+
+/**
+ * Equity share
+ */
+transaction EquityShare extends Response {
+  /**
+   * The token amount
+   */
+  o MonetaryAmount equityAmount
+}
+
+/**
+ * Dissolution event
+ */
+transaction DissolutionEvent extends Request {
+  o String cause
+}
+
+/**
+ * Payout
+ */
+transaction PayOut extends Response {
+  /**
+   * The amount to payout
+   */
+  o MonetaryAmount amount
+}
+
+/**
+ * Defines the data model for the Safte template.
+ */
+@template
+asset TemplateModel extends Clause {
+  /**
+   * The name of the company selling the token
+   */
+  o String companyName
+
+  /**
+   * The company registration number
+   */
+  o Long companyRegistrationNumber
+
+  /**
+   * The name of the purchaser
+   */
+  o String purchaser
+
+  /**
+   * Jurisdiction
+   */
+  o String jurisdiction
+
+  /**
+   * The amount being purchased
+   */
+  o MonetaryAmount purchaseAmount
+
+  /**
+   * The discount
+   */
+  o Double discount
+
+  /**
+   * The project name (the "Tokens")
+   */
+  o String projectName
+
+  /**
+   * The project description
+   */
+  o String projectDescription
+
+  /**
+   * The number of consecutive months raising capital
+   */
+  o Integer months
+
+  /**
+   * The number of consecutive months raising capital (text)
+   */
+  o String monthsText
+
+  /**
+   * The aggregate capital raised
+   */
+  o MonetaryAmount amount
+
+  /**
+   * The aggregate capital raised (text)
+   */
+  o String amountText
+}
+</code></pre>
+            </div>
+        </div>
+
+        <h4 class="title is-4">Model Dependencies</h4>
+        <div class="content">
+            <ul>
+                
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/contract@0.2.0.html">org.accordproject.contract@0.2.0.Clause</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/accordproject/runtime@0.2.0.html">org.accordproject.runtime@0.2.0.Request</a></li>
+                    
+                        <li><a href="https://models.accordproject.org/money@0.3.0.html">org.accordproject.money@0.3.0.MonetaryAmount</a></li>
+                    
+                
+            </ul>
+        </div>
+
+        <div class="container technical-integration">
+    <h2 class="title is-2">Template Logic</h2>
+    <div class="content">
+        <p>
+            Find the full logic for this template on <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/safte/logic">on GitHub.</a>
+        </p>
+    </div>
+
+    <h4 class="title is-4">State Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.State</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.State",
+    "$identifier": "1e3c7200-603f-11f1-9952-b99097577248"
+}</code></pre></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Request Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Request</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Request",
+    "$timestamp": "2026-06-04T18:59:23.167+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.safte@0.2.0.DissolutionEvent</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.safte@0.2.0.DissolutionEvent",
+    "cause": "Eu.",
+    "$timestamp": "2026-06-04T18:59:23.168+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.safte@0.2.0.EquityFinancing</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.safte@0.2.0.EquityFinancing",
+    "sharePrice": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 19.746,
+        "currencyCode": "GTQ"
+    },
+    "$timestamp": "2026-06-04T18:59:23.168+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.safte@0.2.0.TokenSale</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.safte@0.2.0.TokenSale",
+    "tokenPrice": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 167.892,
+        "currencyCode": "TND"
+    },
+    "$timestamp": "2026-06-04T18:59:23.167+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Response Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <th>org.accordproject.runtime@0.2.0.Response</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.runtime@0.2.0.Response",
+    "$timestamp": "2026-06-04T18:59:23.168+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.safte@0.2.0.EquityShare</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.safte@0.2.0.EquityShare",
+    "equityAmount": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 84.383,
+        "currencyCode": "YER"
+    },
+    "$timestamp": "2026-06-04T18:59:23.168+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.safte@0.2.0.PayOut</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.safte@0.2.0.PayOut",
+    "amount": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 9.763,
+        "currencyCode": "AMD"
+    },
+    "$timestamp": "2026-06-04T18:59:23.168+01:00"
+}</pre></code></td>
+                </tr>
+            
+                <tr>
+                    <th>org.accordproject.safte@0.2.0.TokenShare</th>
+                    <td><pre style="white-space: pre-wrap; border: 0; background-color: transparent;"><code class="json" style="white-space: pre-wrap;">{
+    "$class": "org.accordproject.safte@0.2.0.TokenShare",
+    "tokenAmount": 145.725,
+    "$timestamp": "2026-06-04T18:59:23.168+01:00"
+}</pre></code></td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+    <h4 class="title is-4">Events Types</h4>
+    <table class="table box">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Sample JSON</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <h2 class="title is-2">Technical Integration</h2>
+    <div class="content">
+        <p>
+            Please refer to the Accord Project documentation for how to <a href="https://docs.accordproject.org/docs/started-hello.html">use a template</a> or <a href="https://docs.accordproject.org/docs/tutorial-nodejs.html">integrate it within your application.</a>
+        </p>
+        <p>
+            View the Latest code for this template <a href="https://github.com/accordproject/cicero-template-library/tree/master/src/safte">on GitHub.</a>
+        </p>
+    </div>
+
+</div>
+      </div>
+    </section>
+
+
+    <footer class="footer has-background-dark">
+        <div class="container">
+        
+            <div class="content has-text-centered">
+            <div class="linux-foundation-logo">
+                <a href="https://www.linuxfoundation.org/projects/">
+                  <img src="./assets/images/LF-logo.png" width=300 alt="Linux Foundation"/>
+                </a>
+              </div>
+                <p>
+                    Copyright 2018-2019 <a href="https://accordproject.org">Accord Project</a>. Licensed under the
+                    <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache-2.0</a> Open Source software license.
+                </p>
+            </div>
+            <div class="content has-text-centered">
+              <p>
+                The materials on this site are for informational purposes only and do not constitute legal advice. The Accord Project is not a law firm or a substitute for an attorney or law firm. The Accord Project cannot provide any kind of advice, explanation, opinion, or recommendation about possible legal rights, remedies, defenses, options, selection of forms, or strategies. The information provided is not intended to create, and receipt or use of it does not constitute, a lawyer-client relationship. Users should not act upon this information without seeking professional counsel.
+                </p>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

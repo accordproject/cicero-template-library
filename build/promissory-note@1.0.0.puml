@@ -1,0 +1,27 @@
+@startuml
+class org.accordproject.promissorynote_0_2_0.Payment << (T,yellow) >> {
+   + Double amountPaid
+}
+org.accordproject.promissorynote_0_2_0.Payment --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.promissorynote_0_2_0.Result << (T,yellow) >> {
+   + Double outstandingBalance
+}
+org.accordproject.promissorynote_0_2_0.Result --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.promissorynote_0_2_0.TemplateModel << (A,green) >> {
+   + MonetaryAmount amount
+   + DateTime date
+   + String maker
+   + Double interestRate
+   + Boolean individual
+   + String makerAddress
+   + String lender
+   + String legalEntity
+   + String lenderAddress
+   + MonetaryAmount principal
+   + DateTime maturityDate
+   + Integer defaultDays
+   + Integer insolvencyDays
+   + String jurisdiction
+}
+org.accordproject.promissorynote_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

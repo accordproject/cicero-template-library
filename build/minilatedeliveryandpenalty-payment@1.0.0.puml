@@ -1,0 +1,27 @@
+@startuml
+class org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.LateRequest << (T,yellow) >> {
+   + DateTime agreedDelivery
+   + DateTime deliveredAt
+   + MonetaryAmount goodsValue
+}
+org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.LateRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.LateResponse << (T,yellow) >> {
+   + MonetaryAmount penalty
+   + Boolean buyerMayTerminate
+}
+org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.LateResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.PaymentObligationEvent {
+   + MonetaryAmount amount
+   + String description
+}
+org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.PaymentObligationEvent --|> concerto_1_0_0.Event
+class org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.TemplateModel << (A,green) >> {
+   + String buyer
+   + String seller
+   + Duration penaltyDuration
+   + Double penaltyPercentage
+   + Double capPercentage
+   + Duration maximumDelay
+}
+org.accordproject.minilatedeliveryandpenaltypayment_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml

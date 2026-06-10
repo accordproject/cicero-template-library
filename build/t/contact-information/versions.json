@@ -1,7 +1,13 @@
 {
     "templateName": "contact-information",
-    "latestVersion": "0.3.1",
+    "latestVersion": "1.0.0",
     "versions": [
+        {
+            "version": "1.0.0",
+            "ciceroVersion": "^1.0.0",
+            "url": "/contact-information@1.0.0.html",
+            "archiveUrl": "https://templates.accordproject.org/archives/contact-information@1.0.0.cta"
+        },
         {
             "version": "0.3.1",
             "ciceroVersion": "^0.26.0",

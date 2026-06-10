@@ -1,14 +1,14 @@
 {
     "name": "empty",
     "displayName": "Empty",
-    "version": "0.10.0",
+    "version": "1.0.0",
     "description": "This is an empty clause template to get you started.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "clause",
-        "cicero": "^0.26.0"
+        "cicero": "^1.0.0"
     },
     "keywords": [
         "empty",

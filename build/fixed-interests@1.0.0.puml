@@ -1,0 +1,16 @@
+@startuml
+class org.accordproject.fixedinterests_0_2_0.FixedInterestsRequest << (T,yellow) >> {
+   + String input
+}
+org.accordproject.fixedinterests_0_2_0.FixedInterestsRequest --|> org.accordproject.runtime_0_2_0.Request
+class org.accordproject.fixedinterests_0_2_0.FixedInterestsResponse << (T,yellow) >> {
+   + String output
+}
+org.accordproject.fixedinterests_0_2_0.FixedInterestsResponse --|> org.accordproject.runtime_0_2_0.Response
+class org.accordproject.fixedinterests_0_2_0.TemplateModel << (A,green) >> {
+   + MonetaryAmount loanAmount
+   + Double rate
+   + Integer loanDuration
+}
+org.accordproject.fixedinterests_0_2_0.TemplateModel --|> org.accordproject.contract_0_2_0.Clause
+@enduml
