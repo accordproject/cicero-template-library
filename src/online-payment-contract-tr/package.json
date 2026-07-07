@@ -12,14 +12,14 @@
     },
     "keywords": [
         "turkish",
-        "Türk",
+        "T\u00fcrk",
         "online",
-        "internet üzerinden",
+        "internet \u00fczerinden",
         "payment",
-        "ödeme",
+        "\u00f6deme",
         "contract",
-        "sözleşme",
-        "ürünler",
+        "s\u00f6zle\u015fme",
+        "\u00fcr\u00fcnler",
         "satilan",
         "Satici",
         "Alici",
@@ -31,5 +31,6 @@
     },
     "tags": [
         "finance"
-    ]
+    ],
+    "archived": true
 }

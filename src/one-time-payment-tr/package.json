@@ -15,9 +15,9 @@
         "one",
         "time",
         "payment",
-        "Türk",
-        "ödeme",
-        "tek seferlik ödeme"
+        "T\u00fcrk",
+        "\u00f6deme",
+        "tek seferlik \u00f6deme"
     ],
     "scripts": {
         "test": "vitest run",
@@ -25,5 +25,6 @@
     },
     "tags": [
         "finance"
-    ]
+    ],
+    "archived": true
 }

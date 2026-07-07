@@ -323,7 +323,8 @@
         "version": "0.0.1",
         "ciceroVersion": "^0.4.4",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "latedeliveryandpenalty@0.2.0": {
         "uri": "ap://latedeliveryandpenalty@0.2.0#8559cd9df4540e4e57fcf30b4d3ffcd2b6722e3fb77b092c61e2d97537f3ecd4",
@@ -403,7 +404,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.4.4",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "saft@0.4.0": {
         "uri": "ap://saft@0.4.0#9940781a9dd4088722866a82f48dc419b5d0b8f0e53cca154164bc9418cfe0c5",
@@ -443,7 +445,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.4.4",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "acceptance-of-delivery@0.3.0": {
         "uri": "ap://acceptance-of-delivery@0.3.0#f3260fbf274ea95347d6bd549cba9eb9b6abac7ee3629fd9d65e8ff7bb68d9f1",
@@ -523,7 +526,8 @@
         "version": "0.4.0",
         "ciceroVersion": "^0.4.4",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "perishable-goods@0.3.0": {
         "uri": "ap://perishable-goods@0.3.0#7469ea4cee058804c152f841914144ed8d5093ad7c0a0443783994f93486a466",
@@ -603,7 +607,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.5.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "copyright-license@0.5.0": {
         "uri": "ap://copyright-license@0.5.0#5f217055a60203de62b5e80768fde5052df5d46899e89595e95ad2ee14080b2e",
@@ -633,7 +638,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.5.0",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "fragile-goods@0.4.0": {
         "uri": "ap://fragile-goods@0.4.0#a80cf7c90d3cc52db154d4d500a2ee2a2cc01ef265bdf6fb9408ff8e78bf767c",
@@ -702,7 +708,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.5.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.1.0": {
         "uri": "ap://one-time-payment-tr@0.1.0#9290232a12936e9ea3a43943ac852d2051b4ab8ea8abddf4fdeddc7d2904f813",
@@ -712,7 +719,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.5.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "perishable-goods@0.4.0": {
         "uri": "ap://perishable-goods@0.4.0#78a288367f0f4c087afb9961b0499dbe5a57a59215d193ae8a7da1b26af26f95",
@@ -801,7 +809,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.5.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "sales-contract-ru@0.1.0": {
         "uri": "ap://sales-contract-ru@0.1.0#d310e0964211f36dc81e5a93cf52ab5488ddc7921a3be589d868cd71c2aa4d5f",
@@ -811,7 +820,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.5.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.1.0": {
         "uri": "ap://payment-upon-delivery@0.1.0#d3208e8b2bce3a6312ed5879a040bb87001e1c98cd76f4d8785cc9094224015c",
@@ -841,7 +851,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.6.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "copyright-license@0.6.0": {
         "uri": "ap://copyright-license@0.6.0#2aa125169f791e700c81c19cd672793f8ecc65a5254d8cba747a41889cd8f48b",
@@ -871,7 +882,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.6.0",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "fragile-goods@0.5.0": {
         "uri": "ap://fragile-goods@0.5.0#f8ff682dd34abbf79ffc0bf480a16aeffcef8199fcc650456b246824ddb79d61",
@@ -930,7 +942,8 @@
         "version": "0.6.0",
         "ciceroVersion": "^0.6.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.2.0": {
         "uri": "ap://one-time-payment-tr@0.2.0#a34eaab10badf593c08c9334370acc9c9407071c2013c321234eb862583cf8a0",
@@ -940,7 +953,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.6.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.2.0": {
         "uri": "ap://online-payment-contract-tr@0.2.0#50bc3dd7788250c52e79ac500526cdbe3573525e35fdd883a6b06da6dddc8a45",
@@ -950,7 +964,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.6.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.2.0": {
         "uri": "ap://payment-upon-delivery@0.2.0#ba865522088da6420fb0b939b04221de7c21a7fc28234bc7397031b8a755880a",
@@ -1010,7 +1025,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.6.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "servicelevelagreement@0.5.0": {
         "uri": "ap://servicelevelagreement@0.5.0#7e041f74062562ae2853b67e0d76e363eec7a184d1ac1f27072fba60789ba69d",
@@ -1069,7 +1085,8 @@
         "version": "0.7.0",
         "ciceroVersion": "^0.6.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.3.0": {
         "uri": "ap://one-time-payment-tr@0.3.0#8f98605b08e457d0c34b7f93c2cb4043f0fb65b635102546201d7dcf1cc3713c",
@@ -1079,7 +1096,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.6.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "acceptance-of-delivery@0.6.0": {
         "uri": "ap://acceptance-of-delivery@0.6.0#61d62f18b19fb563c358e5a89a59809f35723db1b8811608a11bd1df6585bd78",
@@ -1099,7 +1117,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.7.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "copyright-license@0.7.0": {
         "uri": "ap://copyright-license@0.7.0#ca3c042f85d291b57abf17e0d37c3e1fb0702dcff592d69cad5f521840012494",
@@ -1129,7 +1148,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.7.1",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "fragile-goods@0.6.0": {
         "uri": "ap://fragile-goods@0.6.0#3c73c71ace5cf0aa54897c4de41f0ca750695d7aa7ad022236e6dbf844c5031f",
@@ -1198,7 +1218,8 @@
         "version": "0.8.0",
         "ciceroVersion": "^0.7.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.4.0": {
         "uri": "ap://one-time-payment-tr@0.4.0#64bdac32a9dc66bc3b5ce35f5ff8b35ad6f19f6c854e99b99ca441076f2fb9a8",
@@ -1208,7 +1229,8 @@
         "version": "0.4.0",
         "ciceroVersion": "^0.7.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.3.0": {
         "uri": "ap://online-payment-contract-tr@0.3.0#a7de428c89f849a8f576cf63384b2a4d27f97be4ebced6824c675356704f4619",
@@ -1218,7 +1240,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.7.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.3.0": {
         "uri": "ap://payment-upon-delivery@0.3.0#278c72c424c0d763a7a40f18ab6b820f00f9048c6784adae173805b7f7183390",
@@ -1278,7 +1301,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.7.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "servicelevelagreement@0.6.0": {
         "uri": "ap://servicelevelagreement@0.6.0#45b0f7a499d6810f4b900e533ae5405bdffd687b9170d2c4af3c7daf59967f07",
@@ -1337,7 +1361,8 @@
         "version": "0.4.0",
         "ciceroVersion": "^0.8.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "copyright-license@0.8.0": {
         "uri": "ap://copyright-license@0.8.0#ffefbfcc0897a97f91fc8b432e19d50508e99bff38dd758368070a893319ad0c",
@@ -1367,7 +1392,8 @@
         "version": "0.4.0",
         "ciceroVersion": "^0.8.0",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "fragile-goods@0.7.0": {
         "uri": "ap://fragile-goods@0.7.0#8df4b11f213083d80da8ab0bbe810d67980c032af508aa4dde84a4d0bd0d8acd",
@@ -1436,7 +1462,8 @@
         "version": "0.9.0",
         "ciceroVersion": "^0.8.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.5.0": {
         "uri": "ap://one-time-payment-tr@0.5.0#28d815bd9329b241c89a058dbdd8da32d25a3d420ae181413364dcd893076676",
@@ -1446,7 +1473,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.8.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.4.0": {
         "uri": "ap://online-payment-contract-tr@0.4.0#17f1ab64b7b9ca503f303e5f57c4aec86837181a53d11901c3021978edf454b1",
@@ -1456,7 +1484,8 @@
         "version": "0.4.0",
         "ciceroVersion": "^0.8.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.4.0": {
         "uri": "ap://payment-upon-delivery@0.4.0#8981ef45671a49e4e067d10f881e19ff5ea61314eb60055e36793f7761873683",
@@ -1516,7 +1545,8 @@
         "version": "0.4.0",
         "ciceroVersion": "^0.8.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "servicelevelagreement@0.7.0": {
         "uri": "ap://servicelevelagreement@0.7.0#42b01bfd599443eed1896f597d0bd829d13477621a437c54d3240503b4e8d7db",
@@ -1565,7 +1595,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.8.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "perishable-goods@0.7.1": {
         "uri": "ap://perishable-goods@0.7.1#b284bf02672dbdee674c7ef45ae7859528a3f94982fcd985807759edce73a9b7",
@@ -1675,7 +1706,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.8.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "acceptance-of-delivery@0.8.0": {
         "uri": "ap://acceptance-of-delivery@0.8.0#77d8395363d56fe6d37de1e960cb8dac673ffd4f82f18dfc924e95ab97dce38d",
@@ -1695,7 +1727,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "copyright-license@0.9.0": {
         "uri": "ap://copyright-license@0.9.0#e4d1e753ff73d6ced9a9b7c1db2df8ee0a0c820e46db0131a1193c6ad3d7c4e7",
@@ -1725,7 +1758,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.9.1",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "fragile-goods@0.8.0": {
         "uri": "ap://fragile-goods@0.8.0#14ef6bf72aeab745a4fcbd1e51b75a49d475631afc9269ee25f2b6716e331ba7",
@@ -1745,7 +1779,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "helloworld@0.7.0": {
         "uri": "ap://helloworld@0.7.0#1392378416725ff45d421aac1cba35a80d47725de2550660f4244d2c01b59e81",
@@ -1815,7 +1850,8 @@
         "version": "0.10.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.6.0": {
         "uri": "ap://one-time-payment-tr@0.6.0#6eb84a554b98fbc3cd0c32bc6c73133dd5d39d509dc6418afb4d1060351a32af",
@@ -1825,7 +1861,8 @@
         "version": "0.6.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.5.0": {
         "uri": "ap://online-payment-contract-tr@0.5.0#98651ce632956c12117b46615b26b31ddc0afb4242033f52ef9d90402960a179",
@@ -1835,7 +1872,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.5.0": {
         "uri": "ap://payment-upon-delivery@0.5.0#41aabb0c5185a0a076413571fccc3c3d96831ab18c9b01f07c36410bb7d61abe",
@@ -1895,7 +1933,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "servicelevelagreement@0.8.0": {
         "uri": "ap://servicelevelagreement@0.8.0#3e7b5d4d1064adcfa3977fe595bb3d824f335553b4589dce1da237dfb4f527b3",
@@ -1915,7 +1954,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "supplyagreement@0.6.0": {
         "uri": "ap://supplyagreement@0.6.0#1ac28a086919c74900093c5c80d6831d9f00581813945fbba8cbb35067830cdd",
@@ -1995,7 +2035,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-signature@0.2.0": {
         "uri": "ap://payment-upon-signature@0.2.0#85ffaebed885fb7696ecfa70cdf51a13ff4d4e6c78b9aeceaabed8e6acf45065",
@@ -2025,7 +2066,8 @@
         "version": "0.1.0",
         "ciceroVersion": "^0.9.7",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "car-rental-tr@0.5.1": {
         "uri": "ap://car-rental-tr@0.5.1#20e569f17835d7be31ced034bf82d57cd7d47a7de082bedc69a7ea9124ce1ad1",
@@ -2035,7 +2077,8 @@
         "version": "0.5.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "empty@0.2.1": {
         "uri": "ap://empty@0.2.1#a4002615cbeac3616cbb067923843be4ed821a9189d0d49e83e97c8c23f91c74",
@@ -2075,7 +2118,8 @@
         "version": "0.3.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "helloworld@0.7.1": {
         "uri": "ap://helloworld@0.7.1#8a19884b84379baf54a96d7261e3169d81b3e6f992cdb7d28e49a33dca307aae",
@@ -2115,7 +2159,8 @@
         "version": "0.10.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.6.1": {
         "uri": "ap://one-time-payment-tr@0.6.1#51a6cd6055b11fa7db5b6d97421b2d1fb8103702d847c323040871b35e62ac74",
@@ -2125,7 +2170,8 @@
         "version": "0.6.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.5.1": {
         "uri": "ap://online-payment-contract-tr@0.5.1#4a87bee68c5bc7acd5db51f315dd83b2168409b1003b536bc9c48ef44d951f91",
@@ -2135,7 +2181,8 @@
         "version": "0.5.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.5.1": {
         "uri": "ap://payment-upon-delivery@0.5.1#537fe30c82e7b33f0480c220a1caba421b6f79eac07027ae21fa7fd26ca22979",
@@ -2185,7 +2232,8 @@
         "version": "0.5.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "servicelevelagreement@0.9.1": {
         "uri": "ap://servicelevelagreement@0.9.1#525537bc8f96f48cb94a704ac4ab614e37e930e981b78cfec8431425259f5b96",
@@ -2205,7 +2253,8 @@
         "version": "0.2.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "volumediscount@0.9.1": {
         "uri": "ap://volumediscount@0.9.1#72e4a00625cc14ee5c9fe8b06bba1f32e62477b2207e9e83f971b1cbe2e4f3e9",
@@ -2225,7 +2274,8 @@
         "version": "0.5.2",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "full-payment-upon-demand@0.2.0": {
         "uri": "ap://full-payment-upon-demand@0.2.0#b871a2af63c48e31084cfd1cc69069ed0758f671019b76360b56ef691754e4c5",
@@ -2245,7 +2295,8 @@
         "version": "0.4.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment@0.11.0": {
         "uri": "ap://one-time-payment@0.11.0#515e31445c483c79d9b6861f95e30be457a332d48cd071a4d1011304b88ebbeb",
@@ -2255,7 +2306,8 @@
         "version": "0.11.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.7.0": {
         "uri": "ap://one-time-payment-tr@0.7.0#9657cb00b16e165825e0af2e45a7d6e8de5246aa9bd7dabc4640c1837020a07f",
@@ -2265,7 +2317,8 @@
         "version": "0.7.0",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-signature@0.3.0": {
         "uri": "ap://payment-upon-signature@0.3.0#e524a069f5ac54a497653133fa7821436e517c21c5433f9e4e8c441dd73d5669",
@@ -2315,7 +2368,8 @@
         "version": "0.5.3",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "hellomodule@0.1.1": {
         "uri": "ap://hellomodule@0.1.1#48b7f5d2b6bcbd9528fc20dc2d37655ff180bcf5a8a95982ed4f2bcab4669aef",
@@ -2325,7 +2379,8 @@
         "version": "0.1.1",
         "ciceroVersion": "^0.9.7",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "helloworld@0.7.2": {
         "uri": "ap://helloworld@0.7.2#413eeb3db28b837e188e129486a71d35a1a18801451b920a76fb6210bee4f5b4",
@@ -2355,7 +2410,8 @@
         "version": "0.7.1",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.5.2": {
         "uri": "ap://online-payment-contract-tr@0.5.2#50b68b9808c540382f2f2be7a818a197c6c44ed74eefd3fc1c28780814ee6d1c",
@@ -2365,7 +2421,8 @@
         "version": "0.5.2",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "sales-contract-ru@0.5.2": {
         "uri": "ap://sales-contract-ru@0.5.2#9a9bcfe1b4500b63ab85fbdcbda140982c8c5fffa69fdca27854150b91f15e1f",
@@ -2375,7 +2432,8 @@
         "version": "0.5.2",
         "ciceroVersion": "^0.9.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-iot@0.1.5": {
         "uri": "ap://payment-upon-iot@0.1.5#b6f464c4b30a18468a3fbd579380a1679671902c56671de694ca98a110dda3d1",
@@ -2405,7 +2463,8 @@
         "version": "0.6.0",
         "ciceroVersion": "^0.10.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "copyright-license@0.10.0": {
         "uri": "ap://copyright-license@0.10.0#53c6b87deede31d51ee527cd8c1f8eb821717632ca593aa3d46ca26d1c966548",
@@ -2435,7 +2494,8 @@
         "version": "0.6.0",
         "ciceroVersion": "^0.10.0",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "empty@0.3.0": {
         "uri": "ap://empty@0.3.0#761404e7de242983a04eb5212c69b74a633cf557d8fe6597e13051ed5cfb1a6c",
@@ -2485,7 +2545,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.10.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "hellomodule@0.2.0": {
         "uri": "ap://hellomodule@0.2.0#abb642d838ffef3ab44ce5e2384961e12bcc8ecc339a68ca2c3f084926cbc9a9",
@@ -2495,7 +2556,8 @@
         "version": "0.2.0",
         "ciceroVersion": "^0.10.0",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "helloworld@0.8.0": {
         "uri": "ap://helloworld@0.8.0#1265c34e9a98207dab3fd9eba59a6a4d3be6c0a2d7bec09d556f5183dde8770d",
@@ -2565,7 +2627,8 @@
         "version": "0.8.0",
         "ciceroVersion": "^0.10.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.6.0": {
         "uri": "ap://online-payment-contract-tr@0.6.0#d3c9cf72ea36e0a71f772cc7c83ae5fe3f7b38a6890748aca498b3cc3653eb51",
@@ -2575,7 +2638,8 @@
         "version": "0.6.0",
         "ciceroVersion": "^0.10.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.6.0": {
         "uri": "ap://payment-upon-delivery@0.6.0#8cd6a9940836edb35fbfa3229d0c6714958ee5da73a172d0c0c49269caff15d3",
@@ -2655,7 +2719,8 @@
         "version": "0.6.0",
         "ciceroVersion": "^0.10.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "servicelevelagreement@0.10.0": {
         "uri": "ap://servicelevelagreement@0.10.0#220d009446b3603c57aed8291031ef755092a4a757c77376cabf785425715047",
@@ -2675,7 +2740,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.10.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "supplyagreement@0.8.0": {
         "uri": "ap://supplyagreement@0.8.0#7d5fcaab200b65592bea1239acd0eb5ec29190d493138415653ab52e8e60d326",
@@ -2755,7 +2821,8 @@
         "version": "0.3.1",
         "ciceroVersion": "^0.10.0",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "supplyagreement-perishable-goods@0.10.1": {
         "uri": "ap://supplyagreement-perishable-goods@0.10.1#68f451ec6d680e7bee8e2c8ffe1228df7f96536057d3856afe6fd0e8d8fa3355",
@@ -2855,7 +2922,8 @@
         "version": "0.7.0",
         "ciceroVersion": "^0.11.1",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "empty@0.4.0": {
         "uri": "ap://empty@0.4.0#82cd21ff990793bdf4a978448cc9e05ad59fa1690fd7b61e27fc09470ab93f27",
@@ -2905,7 +2973,8 @@
         "version": "0.6.0",
         "ciceroVersion": "^0.11.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "hellomodule@0.3.0": {
         "uri": "ap://hellomodule@0.3.0#47030da0738cc321ac50c3053466325f2272d252321e3e17d4c6defcc6d05c3e",
@@ -2915,7 +2984,8 @@
         "version": "0.3.0",
         "ciceroVersion": "^0.11.1",
         "type": 1,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "helloworld@0.9.0": {
         "uri": "ap://helloworld@0.9.0#4bad94f9102a2bf693508c8a97f98a7e8cf0ab355f98fe7d91fdd1cf9e738f73",
@@ -2995,7 +3065,8 @@
         "version": "0.9.0",
         "ciceroVersion": "^0.11.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.7.0": {
         "uri": "ap://online-payment-contract-tr@0.7.0#dca2a11ca7e1bb773663038944e72522d5070af4e99b7f7706bbcc76a508f9a9",
@@ -3005,7 +3076,8 @@
         "version": "0.7.0",
         "ciceroVersion": "^0.11.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.7.0": {
         "uri": "ap://payment-upon-delivery@0.7.0#0819411a4981accb69c2d7c9bccc46c164ced4e200e1e599fc4a3ff9eebce30b",
@@ -3095,7 +3167,8 @@
         "version": "0.7.0",
         "ciceroVersion": "^0.11.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "servicelevelagreement@0.11.0": {
         "uri": "ap://servicelevelagreement@0.11.0#be07680708ed8ec90002a956dd6a1ac5974ebe0e41ca5c852969dd02caf593d0",
@@ -3115,7 +3188,8 @@
         "version": "0.5.0",
         "ciceroVersion": "^0.11.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "supplyagreement@0.9.0": {
         "uri": "ap://supplyagreement@0.9.0#3480c86c6313a459391aba34903ca54dba5a827a0a06bfaa6caed8c2bf92a604",
@@ -3165,7 +3239,8 @@
         "version": "0.7.0",
         "ciceroVersion": "^0.11.1",
         "type": 0,
-        "language": 0
+        "language": 0,
+        "archived": true
     },
     "demandforecast@0.10.0": {
         "uri": "ap://demandforecast@0.10.0#007f5912ab42ddb52a0ae7a07132bb4e71b0e9044f451f6737a1079aba3776d5",
@@ -3213,7 +3288,8 @@
         "description": "a Simple Car Rental Contract in Turkish Language",
         "version": "0.8.0",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "copyright-license@0.12.0": {
         "uri": "ap://copyright-license@0.12.0#55d73ab5dacc642d8a7cd0bc95c7da5580bd031e00b955616837abd50be08b6b",
@@ -3249,7 +3325,8 @@
         "description": "This is a clause enforcing healthy eating habits in employees.",
         "version": "0.8.0",
         "ciceroVersion": "^0.12.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "empty@0.5.0": {
         "uri": "ap://empty@0.5.0#b8911075a9de0ab5bf062e069fc4ffcc4f7deafb8877be79d3b77516379d3b4f",
@@ -3294,7 +3371,8 @@
         "description": "This is a one-time full payment clause applicable at the signature of the contract.",
         "version": "0.7.0",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "hellomodule@0.4.0": {
         "uri": "ap://hellomodule@0.4.0#924902fa20e95c18e92b512d32d374fcc9e93f84a17a18a4d7d592d3afab2a9f",
@@ -3303,7 +3381,8 @@
         "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
         "version": "0.4.0",
         "ciceroVersion": "^0.12.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "helloworld@0.10.0": {
         "uri": "ap://helloworld@0.10.0#8a8ad2e502b5156e6eeb0ff364e8a88dc460cd18a817bda4592b14c54a87c891",
@@ -3382,7 +3461,8 @@
         "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
         "version": "0.10.0",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.8.0": {
         "uri": "ap://online-payment-contract-tr@0.8.0#a0cf14a68b6c8db9b8257edc873cc3c4f2a868ee2d7c11eea5e28994cc255083",
@@ -3391,7 +3471,8 @@
         "description": "This is an Online Payment Contract prepared in Turkish Language.",
         "version": "0.8.0",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.8.0": {
         "uri": "ap://payment-upon-delivery@0.8.0#6c71dbfd539e44c4a684cf91a7032866cec8d22da675a190fcd58ac3a48b7d3d",
@@ -3472,7 +3553,8 @@
         "description": "This is a Sales Contract prepared in Russian Language.",
         "version": "0.8.0",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "servicelevelagreement@0.12.0": {
         "uri": "ap://servicelevelagreement@0.12.0#abebc8132c1d56774095b475083736a2e79162733314fe82046f3bdf5f6c4ed9",
@@ -3490,7 +3572,8 @@
         "description": "A Late Delivery And Penalty clause (simple).",
         "version": "0.6.0",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "supplyagreement@0.10.0": {
         "uri": "ap://supplyagreement@0.10.0#81cc1a5b53aabf5de05d43edeb13fe8ff2787116e2058cdc96d0715fe42e1e41",
@@ -3544,7 +3627,8 @@
         "description": "a Simple Car Rental Contract in Turkish Language",
         "version": "0.8.1",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "copyright-license@0.12.1": {
         "uri": "ap://copyright-license@0.12.1#0327a91ec434ae8db90d804834f3550ac398ae15495e307c1d58963c389aaf98",
@@ -3589,7 +3673,8 @@
         "description": "This is a clause enforcing healthy eating habits in employees.",
         "version": "0.8.1",
         "ciceroVersion": "^0.12.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "empty@0.5.1": {
         "uri": "ap://empty@0.5.1#8f5e3de8bba5a2f537a5834226578a7c05f52338b982d392f1db797f5964387b",
@@ -3634,7 +3719,8 @@
         "description": "This is a one-time full payment clause applicable at the signature of the contract.",
         "version": "0.7.1",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "hellomodule@0.4.1": {
         "uri": "ap://hellomodule@0.4.1#0e152a9be5ff28631803d130685031b621f2066f334f8c1324ec33f76e5f53dd",
@@ -3643,7 +3729,8 @@
         "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
         "version": "0.4.1",
         "ciceroVersion": "^0.12.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "helloworld@0.10.1": {
         "uri": "ap://helloworld@0.10.1#6585c6f3833cb04f3b64dcb2d80ef7913eb651f8f5547b7e2765cb94a80f00b4",
@@ -3724,7 +3811,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped)",
         "version": "0.2.1",
         "ciceroVersion": "^0.12.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.2.1": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.2.1#2f97ae38b2c509468150bf3016bb88c99609b1c58860ffa34e572fb16a6e5c2f",
@@ -3733,7 +3821,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped, with Payment)",
         "version": "0.2.1",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.10.1": {
         "uri": "ap://one-time-payment-tr@0.10.1#be84a87214ce3fd8f8280d103ae12f21c0a413bf1562ef87d1ce9beebdc07bdc",
@@ -3742,7 +3831,8 @@
         "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
         "version": "0.10.1",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.8.1": {
         "uri": "ap://online-payment-contract-tr@0.8.1#014eb48f3976a67547d96092509861df7cd1c834ad861d5a92da45992f334ca8",
@@ -3751,7 +3841,8 @@
         "description": "This is an Online Payment Contract prepared in Turkish Language.",
         "version": "0.8.1",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.8.1": {
         "uri": "ap://payment-upon-delivery@0.8.1#42f036112f553a70b2bcfe4361202b7943ec25dc03e45ed72bbf11b17e9a9b2a",
@@ -3832,7 +3923,8 @@
         "description": "This is a Sales Contract prepared in Russian Language.",
         "version": "0.8.1",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "servicelevelagreement@0.12.1": {
         "uri": "ap://servicelevelagreement@0.12.1#e26f07f56ae3ff0255ef4774a654ad7130092805eb0fc6b37b8ac2d7df161d14",
@@ -3850,7 +3942,8 @@
         "description": "A Late Delivery And Penalty clause (simple).",
         "version": "0.6.1",
         "ciceroVersion": "^0.12.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "supplyagreement@0.10.1": {
         "uri": "ap://supplyagreement@0.10.1#5370ee9e4d50277f933a0d6b1146314e631f223e2f2202c11290a1e06662c218",
@@ -3931,7 +4024,8 @@
         "description": "This is a clause enforcing healthy eating habits in employees.",
         "version": "0.9.0",
         "ciceroVersion": "^0.13.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "empty@0.6.0": {
         "uri": "ap://empty@0.6.0#ef8f24d68a76f777c645cb771a158a6767b27f8b71a20f318308fdd7b0ccc946",
@@ -3976,7 +4070,8 @@
         "description": "This is a one-time full payment clause applicable at the signature of the contract.",
         "version": "0.8.0",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "hellomodule@0.5.0": {
         "uri": "ap://hellomodule@0.5.0#b1b2d746a0fd619110ef83213239256af98ee40b38a435dfb277f6ed10db97f3",
@@ -3985,7 +4080,8 @@
         "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
         "version": "0.5.0",
         "ciceroVersion": "^0.13.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "helloworld@0.11.0": {
         "uri": "ap://helloworld@0.11.0#d2ba1f504b74c1dc56e9eabe36a653eb8b437434ea940fb0b0feafd7cc520c9d",
@@ -4066,7 +4162,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped)",
         "version": "0.3.0",
         "ciceroVersion": "^0.13.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.3.0": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.3.0#7b6fe021921dc7997980b3ed94e6c15e9ea3b6dd8d4a54e979efcc0bd237b23e",
@@ -4075,7 +4172,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped, with Payment)",
         "version": "0.3.0",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.11.0": {
         "uri": "ap://one-time-payment-tr@0.11.0#108ed3463474ecfb3f2602ecf732ebe08b04f5c4c1102462926dc9d4ea7376d3",
@@ -4084,7 +4182,8 @@
         "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
         "version": "0.11.0",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.9.0": {
         "uri": "ap://online-payment-contract-tr@0.9.0#63f9283566ef54fe14d5fb4d633bbd1e1e0f981ce3da73a5bfe64b9c1702eb90",
@@ -4093,7 +4192,8 @@
         "description": "This is an Online Payment Contract prepared in Turkish Language.",
         "version": "0.9.0",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.9.0": {
         "uri": "ap://payment-upon-delivery@0.9.0#dce9ef7adc44723569f7405297ee1cf1dd407007d0a1d7dfb9cd21df1c4514b9",
@@ -4174,7 +4274,8 @@
         "description": "This is a Sales Contract prepared in Russian Language.",
         "version": "0.9.0",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "servicelevelagreement@0.13.0": {
         "uri": "ap://servicelevelagreement@0.13.0#241a70d950b626dce08b7935b7f5faf271d438df0feb9890810f66d0fd47223e",
@@ -4192,7 +4293,8 @@
         "description": "A Late Delivery And Penalty clause (simple).",
         "version": "0.7.0",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "supplyagreement@0.11.0": {
         "uri": "ap://supplyagreement@0.11.0#eb9869d16803974d83b8769c0d6c1b6109cbf8c858adfc5b2fa32835638f6fe1",
@@ -4228,7 +4330,8 @@
         "description": "a Simple Car Rental Contract in Turkish Language",
         "version": "0.9.0",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "acceptance-of-delivery@0.12.1": {
         "uri": "ap://acceptance-of-delivery@0.12.1#721d1aa0999a5d278653e211ae2a64b75fdd8ca6fa1f34255533c942404c5c1f",
@@ -4248,7 +4351,8 @@
         "description": "a Simple Car Rental Contract in Turkish Language",
         "version": "0.9.1",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "copyright-license@0.13.1": {
         "uri": "ap://copyright-license@0.13.1#8e0b28629600438a8614cea53ff5d114df1cef167566e1088c387efb8f8a9b47",
@@ -4298,7 +4402,8 @@
         "description": "This is a clause enforcing healthy eating habits in employees.",
         "version": "0.9.1",
         "ciceroVersion": "^0.13.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "empty@0.6.1": {
         "uri": "ap://empty@0.6.1#897af61c336be540d2da077e270d35085b67fd61d7b5eae915cee4beb4556ff7",
@@ -4348,7 +4453,8 @@
         "description": "This is a one-time full payment clause applicable at the signature of the contract.",
         "version": "0.8.1",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "hellomodule@0.5.1": {
         "uri": "ap://hellomodule@0.5.1#8bc5e5fa64dce3ce313e7cb2ce58b306703db0cdb3c8bee0c8eb9000d8603298",
@@ -4358,7 +4464,8 @@
         "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
         "version": "0.5.1",
         "ciceroVersion": "^0.13.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "helloworld@0.11.1": {
         "uri": "ap://helloworld@0.11.1#debfe8c4cdd9ef46e0604943a535718a478f324de0f65032031899ef93fd87bc",
@@ -4448,7 +4555,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped)",
         "version": "0.3.1",
         "ciceroVersion": "^0.13.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.3.1": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.3.1#2faf995c825bc689350de5c16a8339344acf7bd75fd1d0861ffaa0e1fc0edb14",
@@ -4458,7 +4566,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped, with Payment)",
         "version": "0.3.1",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.11.1": {
         "uri": "ap://one-time-payment-tr@0.11.1#9f601a859d206ee491bf9a53413b7cc09a01359d233730ef049c6ad74d74a919",
@@ -4468,7 +4577,8 @@
         "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
         "version": "0.11.1",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.9.1": {
         "uri": "ap://online-payment-contract-tr@0.9.1#a3654648a975c885959ecc742ae3a86084d5dadcd240c7c43781134693df3f4e",
@@ -4478,7 +4588,8 @@
         "description": "This is an Online Payment Contract prepared in Turkish Language.",
         "version": "0.9.1",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.9.1": {
         "uri": "ap://payment-upon-delivery@0.9.1#c97fda784d514cf4d9c8e5fc42bb45d1e3444682c7f17ad5fee38ac3ea3d0417",
@@ -4568,7 +4679,8 @@
         "description": "This is a Sales Contract prepared in Russian Language.",
         "version": "0.9.1",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "servicelevelagreement@0.13.1": {
         "uri": "ap://servicelevelagreement@0.13.1#abf73a6b0d786dfe3a0759231e802f002412b153941a5bc5addec2f0a1e5dced",
@@ -4588,7 +4700,8 @@
         "description": "A Late Delivery And Penalty clause (simple).",
         "version": "0.7.1",
         "ciceroVersion": "^0.13.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "supplyagreement@0.11.1": {
         "uri": "ap://supplyagreement@0.11.1#f84805ba29815a26df3c17f25e8d6c3878a09054f2f147da9a9e482db3cf9181",
@@ -4638,7 +4751,8 @@
         "description": "a Simple Car Rental Contract in Turkish Language",
         "version": "0.10.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "certificate-of-incorporation@0.3.0": {
         "uri": "ap://certificate-of-incorporation@0.3.0#09f6e968ca1ddb9517906de7bad42a4405a65a1c18bd08c085c75f18d07faed4",
@@ -4698,7 +4812,8 @@
         "description": "This is a clause enforcing healthy eating habits in employees.",
         "version": "0.10.0",
         "ciceroVersion": "^0.20.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "empty@0.7.0": {
         "uri": "ap://empty@0.7.0#023750376164177ba57542a4687160b1bd57eaa2bc7313595f3130fd8466f748",
@@ -4758,7 +4873,8 @@
         "description": "This is a one-time full payment clause applicable at the signature of the contract.",
         "version": "0.9.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "hellomodule@0.6.0": {
         "uri": "ap://hellomodule@0.6.0#00f20a5a9d8099158dbd2cc94c9050381aceba5e8c379c1391d93cf3c3459f00",
@@ -4768,7 +4884,8 @@
         "description": "This is the Hello World of Accord Project Templates, with two Ergo modules.",
         "version": "0.6.0",
         "ciceroVersion": "^0.20.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "helloworld@0.12.0": {
         "uri": "ap://helloworld@0.12.0#c0e96b6703a4896e2375f275adf45a16f194962b7ddb7611d317f95065ac4f25",
@@ -4858,7 +4975,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped)",
         "version": "0.4.0",
         "ciceroVersion": "^0.20.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.4.0": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.4.0#fb960d02f929b32b0ea4488cbd8b3b145a95ebcd7567665bf09853c3e3a5be1d",
@@ -4868,7 +4986,8 @@
         "description": "A Late Delivery And Penalty (Mini, Capped, with Payment)",
         "version": "0.4.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "one-time-payment-tr@0.12.0": {
         "uri": "ap://one-time-payment-tr@0.12.0#a0d715a0b6192b3b7212f2c49fe3b11eecb91645ebe1e04ba228d18dd1866df3",
@@ -4878,7 +4997,8 @@
         "description": "This is an Full Payment Upon Signature Template prepared in Turkish Language.",
         "version": "0.12.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "online-payment-contract-tr@0.10.0": {
         "uri": "ap://online-payment-contract-tr@0.10.0#56290cba3e9832153d3f7aebbe8397f2d72ef5a10380f410d2ecc28b4a84365b",
@@ -4888,7 +5008,8 @@
         "description": "This is an Online Payment Contract prepared in Turkish Language.",
         "version": "0.10.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "payment-upon-delivery@0.10.0": {
         "uri": "ap://payment-upon-delivery@0.10.0#ed5c1bc083cde7825aa6609ba8d9cedd240ca7e5b1866f3675f9e1d0f4cc308c",
@@ -4948,7 +5069,8 @@
         "description": "A promissory note",
         "version": "0.1.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "rental-deposit@0.5.0": {
         "uri": "ap://rental-deposit@0.5.0#662a6802abc5ffe54b6e7d0f0548922681d6123d57eedb2d2700df6a208eb28b",
@@ -4968,7 +5090,8 @@
         "description": "This clause specifies how a rental deposit is refunded based on inspection. (using with)",
         "version": "0.1.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "saft@0.14.0": {
         "uri": "ap://saft@0.14.0#dc7ac4330e21fff9de9b68ec98a39514659c51afadb4a9506cb13980f89579e2",
@@ -4998,7 +5121,8 @@
         "description": "This is a Sales Contract prepared in Russian Language.",
         "version": "0.10.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "servicelevelagreement@0.14.0": {
         "uri": "ap://servicelevelagreement@0.14.0#c199109fa44245e9e3a1b69e28870107525aa184852d5c04d4ad4dad42fc0317",
@@ -5018,7 +5142,8 @@
         "description": "A Late Delivery And Penalty clause (simple).",
         "version": "0.8.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "supplyagreement@0.12.0": {
         "uri": "ap://supplyagreement@0.12.0#8549b580a8bc48cb8d4b428a6b4754a85874eb59699ad041fdd15f54a51cad28",
@@ -5058,7 +5183,8 @@
         "description": "A sample volume discount contract (ordered list).",
         "version": "0.2.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "volumediscountulist@0.2.0": {
         "uri": "ap://volumediscountulist@0.2.0#692d91c749067805220739cfb357291bb9f5ef3de422b6e136d7941e67e8133d",
@@ -5068,7 +5194,8 @@
         "description": "A sample volume discount contract (unordered list).",
         "version": "0.2.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "fixed-interests-static@0.2.0": {
         "uri": "ap://fixed-interests-static@0.2.0#a5d67d689ed7c58f64da92239bf12133489d915a0fb93e0a2f0a0edc2f1f67d3",
@@ -5078,7 +5205,8 @@
         "description": "A Fixed Interests Loan Clause, with a monthly Payment (static)",
         "version": "0.2.0",
         "ciceroVersion": "^0.20.0",
-        "type": 1
+        "type": 1,
+        "archived": true
     },
     "volumediscountulist@0.2.1": {
         "uri": "ap://volumediscountulist@0.2.1#8cf849ca763071ed333fde22f3636ed7ef4294dce34f69d71bc3b75d75fca800",
@@ -5088,7 +5216,8 @@
         "description": "A sample volume discount contract (unordered list).",
         "version": "0.2.1",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "acceptance-of-delivery@0.13.1": {
         "uri": "ap://acceptance-of-delivery@0.13.1#b5505785f4de9000be15687601d869cb1719df2f482cd57f3bf4fbd6774127bc",
@@ -5128,7 +5257,8 @@
         "description": "A sample Late Delivery And Penalty clause.",
         "version": "0.1.0",
         "ciceroVersion": "^0.20.0",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "promissory-note@0.14.0": {
         "uri": "ap://promissory-note@0.14.0#171d8e9a69d7ba653014428d2e1b3641108700bb27da19ccc96a3a025c4bf852",
@@ -5148,7 +5278,8 @@
         "description": "A promissory note",
         "version": "0.2.0",
         "ciceroVersion": "^0.20.9",
-        "type": 0
+        "type": 0,
+        "archived": true
     },
     "saft@0.14.1": {
         "uri": "ap://saft@0.14.1#eac9307a916e7a6ceb619a1f1674e17c883afdc480ff55d54e17f9e1245fdef6",
@@ -5184,7 +5315,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "certificate-of-incorporation@0.3.1": {
         "uri": "ap://certificate-of-incorporation@0.3.1#c31f8cf385d607a596018dac9150a3bf9c4ecd6d6b35316d98c1adceefc96a2c",
@@ -5262,7 +5394,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "empty@0.7.1": {
         "uri": "ap://empty@0.7.1#ff1ba5aa9ffc315807a02db7eb5bd85b7403030ceacd8191d0cdeca8a6ee369a",
@@ -5314,7 +5447,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "fragile-goods@0.13.1": {
         "uri": "ap://fragile-goods@0.13.1#7a5d845ab0aa3c25a8dc42895f16db329e90868e41b7376ee6d674d6d2fe0b34",
@@ -5353,7 +5487,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "hellomodule@0.6.1": {
         "uri": "ap://hellomodule@0.6.1#57ba4a5c3a961841ea82d4007eb71b4ff0996fadc220153d143273732c8b65bc",
@@ -5366,7 +5501,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "helloworld@0.12.1": {
         "uri": "ap://helloworld@0.12.1#3702b3c7e68754ce24200560ffb94ac3a2147c6b4a10c8c38dbaf1052223277d",
@@ -5457,7 +5593,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "lateinvoicewithpayment@0.5.2": {
         "uri": "ap://lateinvoicewithpayment@0.5.2#75a29cfce41d96ac42a41da9c5018a03a4a98a86b04c470dbf6a8132285f4611",
@@ -5496,7 +5633,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.4.1": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.4.1#616a8aa59a2efa0d23ddf00128027f7f4414700831939fbd31a2fa940e504b17",
@@ -5509,7 +5647,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "one-time-payment-tr@0.12.1": {
         "uri": "ap://one-time-payment-tr@0.12.1#ac0689db5055c4b05277d5d56f83a2005b8f5d9f5ebfa29c5c86f293134f2982",
@@ -5522,7 +5661,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "online-payment-contract-tr@0.10.1": {
         "uri": "ap://online-payment-contract-tr@0.10.1#e5ed5269a77df85c45f36dae322a6e14f3d0800c690ceed9de2335ce76c49c0a",
@@ -5535,7 +5675,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "payment-upon-delivery@0.10.1": {
         "uri": "ap://payment-upon-delivery@0.10.1#17ba222a41a7ad71c2beb492e46e9aaebff0189b8808ed83329a32ff609f4c38",
@@ -5610,7 +5751,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "rental-deposit@0.5.1": {
         "uri": "ap://rental-deposit@0.5.1#1159065c6e1efb0885d780405414fc985583d890f3fc3100256e92e6783db560",
@@ -5636,7 +5778,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "saft@0.14.2": {
         "uri": "ap://saft@0.14.2#f3389b0afcfec9c7ae5ba953eb9485045e7e751fc76ec0b74380753af77b1467",
@@ -5675,7 +5818,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "servicelevelagreement@0.14.1": {
         "uri": "ap://servicelevelagreement@0.14.1#0e6dfab882a9e378f1f0a637d63903cad1b50e95c935730c46b72bf016126ed0",
@@ -5701,7 +5845,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "supplyagreement@0.12.1": {
         "uri": "ap://supplyagreement@0.12.1#2ade2cc47fc021d3409e1938100774aba8c96984be7537c18a0336724d4afb69",
@@ -5753,7 +5898,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "volumediscountulist@0.2.2": {
         "uri": "ap://volumediscountulist@0.2.2#79305257c8f7cadbc4dcc8c5edd439436fb591b9dc354886b8035010ec7841ff",
@@ -5766,7 +5912,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "promissory-note@0.15.2": {
         "uri": "ap://promissory-note@0.15.2#7ceced78671670993415a2f619424fffc89a94f127032e7409eff20566b44dcf",
@@ -5792,7 +5939,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "signature-name-date@0.1.0": {
         "uri": "ap://signature-name-date@0.1.0#89b4379091d9d376f16d954ff2bc4b97e62b2bebc09d9d17412020a76433afca",
@@ -5804,7 +5952,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "signature-name-date@0.1.1": {
         "uri": "ap://signature-name-date@0.1.1#210453789f6ee1172c65f3f51875aa3279fa65d90c3bfb8420c8b27bf699160a",
@@ -5816,7 +5965,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "signature-name-date@0.1.2": {
         "uri": "ap://signature-name-date@0.1.2#402d7bfe4296906b8951142303117da6ea010a2eb77c9c965525dc7fa6421820",
@@ -5828,7 +5978,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "signature-name-date@0.1.3": {
         "uri": "ap://signature-name-date@0.1.3#36a19149ed75ee2c3dfc246c67c0aff89e55a492978ed7d7d95936d4dd8b829c",
@@ -5840,7 +5991,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "signature-name-date@0.1.4": {
         "uri": "ap://signature-name-date@0.1.4#0011339b24ae847dfe47e3192cd4cd617b74f95d0a97f6b3051050065231f4b3",
@@ -5852,7 +6004,8 @@
         "ciceroVersion": "^0.20.10",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "payment-upon-signature@0.8.2": {
         "uri": "ap://payment-upon-signature@0.8.2#e371a307f688d5499143d4e2d9acc07d1bc420da478b2bd1aae19404068659a1",
@@ -5891,7 +6044,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "certificate-of-incorporation@0.4.0": {
         "uri": "ap://certificate-of-incorporation@0.4.0#5e5c9fe6b7538e740b675e21688248b37a5d2e4dbe30fdb042bedccba3a479e9",
@@ -5969,7 +6123,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "empty@0.8.0": {
         "uri": "ap://empty@0.8.0#e0f225e4af2b609c238f578b3a5e84da23c78e3e7fc4b893b2dabd3a1a2c9002",
@@ -6021,7 +6176,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "fragile-goods@0.14.0": {
         "uri": "ap://fragile-goods@0.14.0#fabaff7454f7ef9444b78fb9995ffaad0dfefb226f634d094e2151adb7d77eef",
@@ -6060,7 +6216,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "hellomodule@0.7.0": {
         "uri": "ap://hellomodule@0.7.0#968fc9a3b8bb693eccf523fc166f1fc92547967e99925b672dfbe5d0ea60772e",
@@ -6073,7 +6230,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "helloworld@0.13.0": {
         "uri": "ap://helloworld@0.13.0#013548af7cdb87262b84296331e1a2e93a9f8b4ec8a8616a5290c8d389921db6",
@@ -6164,7 +6322,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "latedeliveryandpenalty-optional@0.1.0": {
         "uri": "ap://latedeliveryandpenalty-optional@0.1.0#2b276a52fe2aab4e6953b4db79a438b23722bf0fd2d2a32e3a1effe173c6223b",
@@ -6177,7 +6336,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "latedeliveryandpenalty-optional-this@0.1.0": {
         "uri": "ap://latedeliveryandpenalty-optional-this@0.1.0#e27d1b21ec8a7933aee1a181e348acaf7677b7fde2f0ef7a2ed817a0ed3a78f8",
@@ -6190,7 +6350,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "lateinvoicewithpayment@0.6.0": {
         "uri": "ap://lateinvoicewithpayment@0.6.0#02f1c8de643c3148e4352452019132fe7afdd2beeb83b0956267293c01280cb0",
@@ -6229,7 +6390,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.5.0": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.5.0#303af0a4f298615d69b70a99e54212ecbf47f55c9e59f3eaeb5e9e9b03c1fcd2",
@@ -6242,7 +6404,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "one-time-payment-tr@0.13.0": {
         "uri": "ap://one-time-payment-tr@0.13.0#77a11dffc2bd89b74f30c6c5cc9dfead809689fb86a71b6e7568d2b40b275679",
@@ -6255,7 +6418,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "online-payment-contract-tr@0.11.0": {
         "uri": "ap://online-payment-contract-tr@0.11.0#d9147fd4bf076d315672fb81df193bfe559c901cbe18e46509dfc33ad31bb8fc",
@@ -6268,7 +6432,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "payment-upon-delivery@0.11.0": {
         "uri": "ap://payment-upon-delivery@0.11.0#3dabef97c1771a8e6a51f292dcf4c0cb71496da7f25514e6cb5ddb43af1aa3f2",
@@ -6346,7 +6511,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "rental-deposit@0.6.0": {
         "uri": "ap://rental-deposit@0.6.0#7e930e950e231512b4ec64bbbe642964353f211426d360e4015198024e7c9d2f",
@@ -6372,7 +6538,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "saft@0.15.0": {
         "uri": "ap://saft@0.15.0#1c64823fedad6f247afd56ae03a507ae286bbe2df20c369bb5a6b33db186508d",
@@ -6411,7 +6578,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "servicelevelagreement@0.15.0": {
         "uri": "ap://servicelevelagreement@0.15.0#9ccaf4d1cdc32aa3e2492fe9acf634a10acd91b423c31e16e0dc04f6f2ebdcde",
@@ -6437,7 +6605,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "supplyagreement@0.13.0": {
         "uri": "ap://supplyagreement@0.13.0#b115ca666bf56fa124221427302142b6e2ee508f6963e103efbfd0147e58ffe0",
@@ -6489,7 +6658,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "volumediscountulist@0.3.0": {
         "uri": "ap://volumediscountulist@0.3.0#8d60194b2e97f3a92eeccc2656432c6f53696b30980f04c8a2c8cc9c530a5a3d",
@@ -6502,7 +6672,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "fixed-interests@0.5.2": {
         "uri": "ap://fixed-interests@0.5.2#c3e1cbda7422377423fe1e9751044e4647abdbb7df93ed44e28f2f05ed97f73d",
@@ -6528,7 +6699,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "supplyagreement-perishable-goods@0.15.1": {
         "uri": "ap://supplyagreement-perishable-goods@0.15.1#5700896b0a9d7bf2a5fc8954e666ae866bf1e2bbdd6c4b231131d5cb2f720635",
@@ -6554,7 +6726,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "company-information@0.2.1": {
         "uri": "ap://company-information@0.2.1#3765ad87766276f2e24e103fb3aecf4a9caf1c28ed0076d2e041a9c612e55675",
@@ -6606,7 +6779,8 @@
         "ciceroVersion": "^0.21.0",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "supply-agreement-loc@0.0.4": {
         "uri": "ap://supply-agreement-loc@0.0.4#5575f550ba2720905abae313358eb74b22a341675f9b05e287fc609421e2ac7d",
@@ -6710,7 +6884,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "certificate-of-incorporation@0.5.0": {
         "uri": "ap://certificate-of-incorporation@0.5.0#12f8735c0aaabd01a62f49d381b39bffa479f2b00dc350bdf97ba5b1868b9c05",
@@ -6814,7 +6989,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "empty@0.9.0": {
         "uri": "ap://empty@0.9.0#a10499b8bf3b0b1ec4c447f51e0bff56bc2f245f88f99ac9fc083dffab992eb4",
@@ -6866,7 +7042,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "fragile-goods@0.15.0": {
         "uri": "ap://fragile-goods@0.15.0#e662ff8841e4ae2a67041b4604530b92a88c1ffbc3e8d8fe0e6176a6304d33a1",
@@ -6905,7 +7082,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "hellomodule@0.8.0": {
         "uri": "ap://hellomodule@0.8.0#06259cd77d8fc6f7350d10ebef44fb8c377e2f45a3eb02b934411d3ac1b427d0",
@@ -6918,7 +7096,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "helloworld@0.14.0": {
         "uri": "ap://helloworld@0.14.0#4a4eff4a7665015fc3f50a2f33b55f33aaa229a48d1f6b7135e1a5e292a5b63f",
@@ -7009,7 +7188,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "latedeliveryandpenalty-else@0.3.0": {
         "uri": "ap://latedeliveryandpenalty-else@0.3.0#76ea2711b14caf8865bb8b0dfa41311cfd0c0e20fd933b6de0f8c889aacfe66f",
@@ -7022,7 +7202,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "latedeliveryandpenalty-optional@0.2.0": {
         "uri": "ap://latedeliveryandpenalty-optional@0.2.0#6b480b6fe5e31c8b425fa921c22ee6b78b2cc2b86a6878ba45af1639df3ee221",
@@ -7035,7 +7216,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "latedeliveryandpenalty-optional-this@0.2.0": {
         "uri": "ap://latedeliveryandpenalty-optional-this@0.2.0#cc6876e5fdbe61000f96d42d06ec1393d2f33ca71f79e027deeae9d82aa379a0",
@@ -7048,7 +7230,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "lateinvoicewithpayment@0.7.0": {
         "uri": "ap://lateinvoicewithpayment@0.7.0#7e3e4a27bf13e8885b2dedc5d7d36e99ccb5d7f402261f36576da6784a07df2f",
@@ -7087,7 +7270,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 1,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.6.0": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.6.0#002548058583b44fa1aa72b352e9981ecc73ce3508c20d8d8204c00868a4994e",
@@ -7100,7 +7284,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "one-time-payment-tr@0.14.0": {
         "uri": "ap://one-time-payment-tr@0.14.0#01c22d6104238c851ae671d350d0311c69e3a044e5ba5d4f2769e6e37b587618",
@@ -7113,7 +7298,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "online-payment-contract-tr@0.12.0": {
         "uri": "ap://online-payment-contract-tr@0.12.0#7bfd7d94dea73520e72d6f9be5e8a6986cfbb398454b0df68d53910674a0dce2",
@@ -7126,7 +7312,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "payment-upon-delivery@0.12.0": {
         "uri": "ap://payment-upon-delivery@0.12.0#44ee986c8467dba6d833529fa7e51289f755352b87d0f5cca209876eb9173826",
@@ -7217,7 +7404,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "rental-deposit@0.7.0": {
         "uri": "ap://rental-deposit@0.7.0#977b5f14ef6573787bda5c8fdb6f028c67e7de419b77fd3b25c6a6032c14a4f4",
@@ -7243,7 +7431,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "saft@0.16.0": {
         "uri": "ap://saft@0.16.0#ae7041f8c3fd2eca74a0bc2e635464b4891ff5df43f58c5bf8a8365138c08c9a",
@@ -7282,7 +7471,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "servicelevelagreement@0.16.0": {
         "uri": "ap://servicelevelagreement@0.16.0#a1fbc39c7833487139760806760993dcb2b1f39339b79f52418f1782dd045849",
@@ -7308,7 +7498,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 1,
         "logo": null,
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "simplelatedeliveryandpenalty@0.10.0": {
         "uri": "ap://simplelatedeliveryandpenalty@0.10.0#ef59e45719dc1520f0a37dfc1c8afb1614519c2bfa24cb2308af91ab30d319f9",
@@ -7321,7 +7512,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "supply-agreement-loc@0.1.0": {
         "uri": "ap://supply-agreement-loc@0.1.0#fbd22792a23a67efe3352f0fb89fca400c5c684a9e60665fdca0373b99470785",
@@ -7386,7 +7578,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "volumediscountulist@0.4.0": {
         "uri": "ap://volumediscountulist@0.4.0#a1f067b1c748adbc42b178c6f5371dbfd7dfcbc5c7f050edb836ced05a4242aa",
@@ -7399,7 +7592,8 @@
         "ciceroVersion": "^0.22.0",
         "type": 0,
         "logo": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACAAgMAAAC+UIlYAAAADFBMVEX////b29x+fX8lJCigJ+uAAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfkAxwSHAoFbqKeAAAC5ElEQVRYw5WYPfKbMBDF+ShcUHAEjsARYCZn+Oc6MJMz5BLOIXCX1k3q+AguKFwYFAnrY6V9KyZUsuYNEvvT2125KPzTKv9sBXqaM8ElCBQU1EQwIkF1JiiJ4AbX+B/BHQqmIHgKAjs/CIJBrZ9B7wbJ06lXMmCCt6PyhoLWMWhEWrujsku0PBWJ1hgPOK3ZUZkFWjcXdAnGPRkkz6IeLuiPPIxJhHFCq3cM+jMYnQjjnVCRYDRnMC4yjOIMxhgPJBilDOOWh+HnF9E6Iq06thSH4dKLaB2XoETrdFYgWqeP0xe3zmAFonWmOL9x6yxx+uIwfG4RrFPa7YnWKe32ROvUdnuidS52e6IzLnZ7Po+lgtZm116C0drsKlrHsHrE1nkzFM+cdQZ7VkTrTPas1BKtRf09FhWto7Rgy1hH//ztYEDr6Bf+cDCgdfSWvn0WJdZ5xihKBwPSMmH5rC5UHZOTVM46Bs2Us46hPOWsY1bOWmfSgi5nnUV/U5uzjolrm7HOQaZJKj+lVZkf1fV6/UUqP6VFyt0OrUMO2gZbAC/Q4SPWWXnR1gAGBKMNdllhC+Ane/X0b6MC/9rBCIB1/H4mdYfW8Z+2EAGlpVxMdERrx6AiMFxUNZOxAtbxQ4MY9Qj+rceyoOp4VscxW7h1/MaPg0porWlFPoIHrENZwURHUtsKG7aeoIANG0HxgA0b6W3usGHzX36EpubWISf9hho2mtlG1LBVBPCIqg7tEmHVIYdsh90zyfBbEVedNUZhY8tgEBQv2D2TFm9N3rgVBah0TaC1xz63n8Wss0SseFwSFDGt+UPAC2bUsCWsOC1qmxE1bGxPadWhKQ52z23CilmHJ6XkrtOx+aR7HhJWjBYvhIl1poQVawFi26QwRs4qtQ6N/IzuOlr+88s830MVU+rPMfVl3l6Du/ISph7wMh3dTNF1fAhzK7zQ92HuFSqyCgUkmovU6G+CaD3+N8EO79L0y/4BAmrItaOEC2kAAAAASUVORK5CYII=",
-        "author": "Accord Project"
+        "author": "Accord Project",
+        "archived": true
     },
     "acceptance-of-delivery@0.16.0": {
         "uri": "ap://acceptance-of-delivery@0.16.0#60ee45de6f5b76ec9a591f895df7e475f5fc916121da1bad15a06328d1dd00bb",
@@ -7449,7 +7643,8 @@
         "author": "Accord Project",
         "tags": [
             "real-estate"
-        ]
+        ],
+        "archived": true
     },
     "certificate-of-incorporation@0.6.0": {
         "uri": "ap://certificate-of-incorporation@0.6.0#6c726e223d2d5049e02d849eb593507d02d59aa1c5637b1e2994dcf518294b53",
@@ -7580,7 +7775,8 @@
         "author": "Accord Project",
         "tags": [
             "HR"
-        ]
+        ],
+        "archived": true
     },
     "empty@0.10.0": {
         "uri": "ap://empty@0.10.0#facf6b86b081aee74c6ab92b42d0310da85c5fb98a7b2b0d4f0ba6468a6dad23",
@@ -7644,7 +7840,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "full-payment-upon-demand@0.11.0": {
         "uri": "ap://full-payment-upon-demand@0.11.0#b472ea8978d657e3da43a83b169fbca3142d976b80dd0a9f81e1d01276a98ccb",
@@ -7676,7 +7873,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "hellomodule@0.10.0": {
         "uri": "ap://hellomodule@0.10.0#6db9b4ac337841cd96be6d7275e9aa5270507eabdbdf6eeb0a4101714682b7a1",
@@ -7692,7 +7890,8 @@
         "author": "Accord Project",
         "tags": [
             "reference"
-        ]
+        ],
+        "archived": true
     },
     "helloworld@0.15.0": {
         "uri": "ap://helloworld@0.15.0#b6a13807ecbb974386123b349a87e52b8d7d4219f6465ec08d0b68b8031f6e01",
@@ -7791,7 +7990,8 @@
         "tags": [
             "shipping",
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "latedeliveryandpenalty-else@0.4.0": {
         "uri": "ap://latedeliveryandpenalty-else@0.4.0#2fe0636ecf3a79a0c7c46d314b33951fe94c2d629820bd4320a7b8750c232a3a",
@@ -7807,7 +8007,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "latedeliveryandpenalty-optional@0.3.0": {
         "uri": "ap://latedeliveryandpenalty-optional@0.3.0#b6292b74666b13450eb300ca80f904c3ca9ea130d782ceb4f4ebd8c3a976ae47",
@@ -7823,7 +8024,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "latedeliveryandpenalty-optional-this@0.3.0": {
         "uri": "ap://latedeliveryandpenalty-optional-this@0.3.0#f667e0a9006389149420f5d701ede3d9db1d1b46d22df6ba06c4a4c4c80a2e76",
@@ -7839,7 +8041,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "lateinvoicewithpayment@0.9.0": {
         "uri": "ap://lateinvoicewithpayment@0.9.0#97116b8bcf8aeb7bf9effab38cf4ddfbd20529ceaf4cf12af3fe9b52fc647f20",
@@ -7887,7 +8090,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@0.7.0": {
         "uri": "ap://minilatedeliveryandpenalty-payment@0.7.0#cf231eca1bcaf28b07f575ccedba5573a10d507e1c07056aaf69b42e8d550ddd",
@@ -7904,7 +8108,8 @@
         "tags": [
             "shipping",
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "one-time-payment-tr@0.16.0": {
         "uri": "ap://one-time-payment-tr@0.16.0#5db1d81fa3752ed13750570625b416cc1525b364669dc874b80e11eb7c9bbb4e",
@@ -7920,7 +8125,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "online-payment-contract-tr@0.13.0": {
         "uri": "ap://online-payment-contract-tr@0.13.0#7440b3c58ec73763c07e7e8f9440f6c118d3e2e283b7ff9422e307061751d8a1",
@@ -7936,7 +8142,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "payment-upon-delivery@0.14.0": {
         "uri": "ap://payment-upon-delivery@0.14.0#6cba223ed7e702da1ad7c0e7e566ddd29151c89bc1685c667a34ac95d96f9a66",
@@ -8034,7 +8241,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "rental-deposit@0.9.0": {
         "uri": "ap://rental-deposit@0.9.0#44bb889ebe6d0b75877d77bd8940f20d635246b166d0509f844b3f185380a8cf",
@@ -8066,7 +8274,8 @@
         "author": "Accord Project",
         "tags": [
             "real-estate"
-        ]
+        ],
+        "archived": true
     },
     "roommate@0.3.0": {
         "uri": "ap://roommate@0.3.0#6e1f83d58f0f72e76da6652b48514538cb88ec512f59d2730e1ca41d3f1ad8b8",
@@ -8132,7 +8341,8 @@
         "author": "Accord Project",
         "tags": [
             "sales"
-        ]
+        ],
+        "archived": true
     },
     "servicelevelagreement@0.18.0": {
         "uri": "ap://servicelevelagreement@0.18.0#6f13a3e56a74f286d237723177898e97a5eb7cb8f9671c5662b5af0c5664bc46",
@@ -8164,7 +8374,8 @@
         "author": "Accord Project",
         "tags": [
             "reference"
-        ]
+        ],
+        "archived": true
     },
     "simplelatedeliveryandpenalty@0.11.0": {
         "uri": "ap://simplelatedeliveryandpenalty@0.11.0#cb0bf36c9b7eefc830f8d78111a6127dff13d37358616f9ada4ac11be27beae0",
@@ -8180,7 +8391,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "supply-agreement-loc@0.3.0": {
         "uri": "ap://supply-agreement-loc@0.3.0#c859f05fd4e359570669c9912be71642c8129f8b69c8f5bd3bfd48791c89546c",
@@ -8262,7 +8474,8 @@
         "author": "Accord Project",
         "tags": [
             "sales"
-        ]
+        ],
+        "archived": true
     },
     "volumediscountulist@0.5.0": {
         "uri": "ap://volumediscountulist@0.5.0#e12bd49eedbfc278544339b7586a4167f53c481f0696c86551f8d93e0d362144",
@@ -8278,7 +8491,8 @@
         "author": "Accord Project",
         "tags": [
             "sales"
-        ]
+        ],
+        "archived": true
     },
     "fragile-goods@0.17.0": {
         "uri": "ap://fragile-goods@0.17.0#831b75b4db8e4d5dafa5f8220b7abd3fabbd4542d78945fe817d366330ae14bb",
@@ -8360,7 +8574,8 @@
         "author": "Accord Project",
         "tags": [
             "real-estate"
-        ]
+        ],
+        "archived": true
     },
     "certificate-of-incorporation@1.0.0": {
         "uri": "ap://certificate-of-incorporation@1.0.0#0d52e60638a29c937012fac7c88c8f96d979762f73652987cb6dd22b81c52aa3",
@@ -8478,7 +8693,7 @@
         ]
     },
     "eat-apples@1.0.0": {
-        "uri": "ap://eat-apples@1.0.0#16935ea8647aef4743a6188a97bcb4d94ec7695c6f6267b908d0627b634095a0",
+        "uri": "ap://eat-apples@1.0.0#1f0afa463593dfefa5bbb0cbeb7bbcdcd8a512fbe722af22bbad4b6b222819a3",
         "url": "https://templates.accordproject.org/archives/eat-apples@1.0.0.cta",
         "ciceroUrl": "https://templates.accordproject.org/archives/eat-apples@1.0.0-cicero.cta",
         "name": "eat-apples",
@@ -8491,7 +8706,8 @@
         "author": "Accord Project",
         "tags": [
             "HR"
-        ]
+        ],
+        "archived": true
     },
     "empty@1.0.0": {
         "uri": "ap://empty@1.0.0#28982a8b15e3e4a0884ddc61b03fe7f31763e59f8136fdf243a3465fa8d53faa",
@@ -8555,7 +8771,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "fragile-goods@1.0.0": {
         "uri": "ap://fragile-goods@1.0.0#9d27be54a69829dce4fd230915ab531bff493417a384a0990fed4a126e274608",
@@ -8603,7 +8820,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "hellomodule@1.0.0": {
         "uri": "ap://hellomodule@1.0.0#b9337bd6227ab7aa8cb56ab476cc1136bb1da5c3240abc24c0a3113248f261db",
@@ -8619,7 +8837,8 @@
         "author": "Accord Project",
         "tags": [
             "reference"
-        ]
+        ],
+        "archived": true
     },
     "helloworld@1.0.0": {
         "uri": "ap://helloworld@1.0.0#33b7114ba9d02e2e31a26406c3ae534364983433d1ab50cf21c05136827cc2ef",
@@ -8734,7 +8953,8 @@
         "tags": [
             "shipping",
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "latedeliveryandpenalty-else@1.0.0": {
         "uri": "ap://latedeliveryandpenalty-else@1.0.0#c79c916c199c2a19be049a509e676f8ac16c916cda7138db71d1f8fb22d7f236",
@@ -8750,7 +8970,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "latedeliveryandpenalty-optional@1.0.0": {
         "uri": "ap://latedeliveryandpenalty-optional@1.0.0#47068eeef771d5ee53a99e075dfe95886a5b030656f891791824cd85b1d3a2f6",
@@ -8766,7 +8987,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "latedeliveryandpenalty-optional-this@1.0.0": {
         "uri": "ap://latedeliveryandpenalty-optional-this@1.0.0#b618288d0ba08a0b2452a9cc0d407584d3649a60940bbfc14d9d013b207dc641",
@@ -8782,7 +9004,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "lateinvoicewithpayment@1.0.0": {
         "uri": "ap://lateinvoicewithpayment@1.0.0#d970e81c8a95971e789611465837ecb82c48974336f7f0d636f567aff73f11b4",
@@ -8830,7 +9053,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "minilatedeliveryandpenalty-payment@1.0.0": {
         "uri": "ap://minilatedeliveryandpenalty-payment@1.0.0#aae5d44a70df6748631e4d2e061edd175cd0dfdb5670dc90ebf4bcbb62c64024",
@@ -8847,7 +9071,8 @@
         "tags": [
             "shipping",
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "one-time-payment-tr@1.0.0": {
         "uri": "ap://one-time-payment-tr@1.0.0#f068594b7beeae011792b2ed059835553b0a73b3b67254d4c6d270fcb02a9cf1",
@@ -8863,7 +9088,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "online-payment-contract-tr@1.0.0": {
         "uri": "ap://online-payment-contract-tr@1.0.0#3e4f37107d1b64e1feb5a0a575912a650915752787d2ee3c8b7d27251dfba9e8",
@@ -8879,7 +9105,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "payment-upon-delivery@1.0.0": {
         "uri": "ap://payment-upon-delivery@1.0.0#ad9b2d765f92dec631dd1fdcf6df280a44e1b3fba26b2fdc5cf9f433fc1f42aa",
@@ -8993,7 +9220,8 @@
         "author": "Accord Project",
         "tags": [
             "finance"
-        ]
+        ],
+        "archived": true
     },
     "rental-deposit@1.0.0": {
         "uri": "ap://rental-deposit@1.0.0#33a6a967ad7dedf83550763df3353c311f94203e5a57241bb40b30e55082a657",
@@ -9025,7 +9253,8 @@
         "author": "Accord Project",
         "tags": [
             "real-estate"
-        ]
+        ],
+        "archived": true
     },
     "roommate@1.0.0": {
         "uri": "ap://roommate@1.0.0#e2641c26ff7fd8952112f61a18a940ebb661c44df2ff2a2ede97412f2e2d4c95",
@@ -9091,7 +9320,8 @@
         "author": "Accord Project",
         "tags": [
             "sales"
-        ]
+        ],
+        "archived": true
     },
     "servicelevelagreement@1.0.0": {
         "uri": "ap://servicelevelagreement@1.0.0#4595cf672be7fdec0f44047649a1fbc1fb53fa30def205e0a154cd4b3cab6b83",
@@ -9123,7 +9353,8 @@
         "author": "Accord Project",
         "tags": [
             "reference"
-        ]
+        ],
+        "archived": true
     },
     "simplelatedeliveryandpenalty@1.0.0": {
         "uri": "ap://simplelatedeliveryandpenalty@1.0.0#3b1f3213a0720cf22f42a24071701af311831449956a6f06483add69933f58b7",
@@ -9139,7 +9370,8 @@
         "author": "Accord Project",
         "tags": [
             "shipping"
-        ]
+        ],
+        "archived": true
     },
     "supply-agreement-loc@1.0.0": {
         "uri": "ap://supply-agreement-loc@1.0.0#5d234a5b3d39071914d34e612a1668753d392b91e989c6c295bac30807b2d4e5",
@@ -9221,7 +9453,8 @@
         "author": "Accord Project",
         "tags": [
             "sales"
-        ]
+        ],
+        "archived": true
     },
     "volumediscountulist@1.0.0": {
         "uri": "ap://volumediscountulist@1.0.0#715bf731665916e3539db846cb11217f627e65f9e17a09b09162448b80e5aa82",
@@ -9237,6 +9470,7 @@
         "author": "Accord Project",
         "tags": [
             "sales"
-        ]
+        ],
+        "archived": true
     }
 }

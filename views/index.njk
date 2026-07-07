@@ -60,7 +60,17 @@
                         </div>
                     </div>
                 </div>
-                <p class="help"><span id="filter-count">0</span> templates shown</p>
+                <div class="columns" style="margin-top: 0.25rem;">
+                    <div class="column">
+                        <p class="help"><span id="filter-count">0</span> templates shown</p>
+                    </div>
+                    <div class="column is-narrow">
+                        <label class="checkbox help">
+                            <input type="checkbox" id="show-archived" style="margin-right: 0.35rem;" />
+                            Show archived templates
+                        </label>
+                    </div>
+                </div>
             </div>
 
             <div class="tags-nav content">
@@ -119,6 +129,54 @@
             </div>
             {% endfor %}
 
+            <div id="archived-section" style="display: none;">
+                <h3 class="title is-3" style="color: #888;">Archived</h3>
+                <table class="table box versions" style="width: 100%; table-layout: fixed; opacity: 0.7;">
+                    <colgroup>
+                        <col style="width: 22%;" />
+                        <col style="width: 44%;" />
+                        <col style="width: 12%;" />
+                        <col style="width: 10%;" />
+                        <col style="width: 12%;" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Cicero Version</th>
+                            <th>Type</th>
+                            <th>Tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for name, val in archivedTemplates | dictsort %}
+                        {% set typeLabel = "Contract" if val.type === 0 else "Clause" %}
+                        {% set templateName = name.split('@')[0] %}
+                        <tr class="template-row archived-row"
+                            data-name="{{ (val.displayName or name) | lower }}"
+                            data-description="{{ val.description | lower }}"
+                            data-type="{{ typeLabel }}"
+                            data-version="{{ val.ciceroVersion }}"
+                            data-archived="true">
+                            <th>
+                                <a href="t/{{templateName}}/">
+                                    {% if val.displayName %}{{val.displayName}}{% else %}{{templateName}}{% endif %}
+                                </a>
+                            </th>
+                            <td>{{val.description}}</td>
+                            <td>{{val.ciceroVersion}}</td>
+                            <td>{{ typeLabel }}</td>
+                            <td>
+                                {% for t in val.tags %}
+                                    <span class="tag is-light">{{t}}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
             <p id="no-results" class="notification is-warning" style="display: none;">No templates match the current filters.</p>
 
             <div class="content">
@@ -135,6 +193,8 @@
         var clearBtn = document.getElementById('filter-clear');
         var countEl = document.getElementById('filter-count');
         var noResults = document.getElementById('no-results');
+        var showArchivedChk = document.getElementById('show-archived');
+        var archivedSection = document.getElementById('archived-section');
         var groups = Array.prototype.slice.call(document.querySelectorAll('.tag-group'));
         var tagLinks = Array.prototype.slice.call(document.querySelectorAll('.tag-link'));
         var allRows = Array.prototype.slice.call(document.querySelectorAll('tr.template-row'));
@@ -154,6 +214,7 @@
             var q = search.value.trim().toLowerCase();
             var type = typeSel.value;
             var ver = verSel.value;
+            var showArchived = showArchivedChk.checked;
             var totalShown = 0;
             var visibleTags = {};
 
@@ -179,6 +240,27 @@
                 totalShown += groupVisible;
             });
 
+            // handle archived section
+            if (showArchived) {
+                archivedSection.style.display = '';
+                var archivedRows = archivedSection.querySelectorAll('tr.archived-row');
+                var archivedVisible = 0;
+                archivedRows.forEach(function (r) {
+                    var matchText = !q
+                        || r.getAttribute('data-name').indexOf(q) !== -1
+                        || r.getAttribute('data-description').indexOf(q) !== -1;
+                    var matchType = !type || r.getAttribute('data-type') === type;
+                    var matchVer = !ver || r.getAttribute('data-version') === ver;
+                    var visible = matchText && matchType && matchVer;
+                    r.style.display = visible ? '' : 'none';
+                    if (visible) archivedVisible++;
+                });
+                archivedSection.style.display = archivedVisible > 0 ? '' : 'none';
+                totalShown += archivedVisible;
+            } else {
+                archivedSection.style.display = 'none';
+            }
+
             tagLinks.forEach(function (a) {
                 a.style.display = visibleTags[a.getAttribute('data-tag-link')] ? '' : 'none';
             });
@@ -191,6 +273,7 @@
             el.addEventListener('input', apply);
             el.addEventListener('change', apply);
         });
+        showArchivedChk.addEventListener('change', apply);
         clearBtn.addEventListener('click', function () {
             search.value = ''; typeSel.value = ''; verSel.value = '';
             apply();

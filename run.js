@@ -110,9 +110,14 @@ nunjucks.configure('./views', {
             // get the latest versions of each template
             const latestIndex = filterTemplateIndex(templateIndex);
 
-            // group templates by tag for the index page
+            // group templates by tag for the index page (archived templates are excluded)
             const groupedByTag = {};
+            const archivedTemplates = {};
             for (const [id, entry] of Object.entries(latestIndex)) {
+                if (entry.archived) {
+                    archivedTemplates[id] = entry;
+                    continue;
+                }
                 const tags = (entry.tags && entry.tags.length) ? entry.tags : ['untagged'];
                 for (const tag of tags) {
                     if (!groupedByTag[tag]) groupedByTag[tag] = {};
@@ -135,6 +140,7 @@ nunjucks.configure('./views', {
                 serverRoot: serverRoot,
                 templateIndex: latestIndex,
                 groupedByTag: groupedSorted,
+                archivedTemplates: archivedTemplates,
             });
             await writeFile('./build/index.html', templateResult);
         }
@@ -268,9 +274,11 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
 
             const m = template.getMetadata();
             let tags = [];
+            let archived = false;
             try {
                 const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
                 if (Array.isArray(rawPkg.tags)) tags = rawPkg.tags;
+                if (rawPkg.archived === true) archived = true;
             } catch (e) { /* ignore */ }
 
             const regenerated = !ciceroArchiveFileExists || !archiveFileExists || !htmlFileExists || process.env.FORCE_CREATE_ARCHIVE;
@@ -287,6 +295,7 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
                 logo: m.getLogo() ? m.getLogo().toString('base64') : null,
                 author: m.getAuthor() ? m.getAuthor() : null,
                 tags,
+                ...(archived && { archived: true }),
             };
             if (!regenerated) console.log(`Skipped: ${archiveFileName} (already exists).`);
             return { templatePath, template, indexData, regenerated };
@@ -302,6 +311,33 @@ async function buildTemplates(preProcessor, postProcessor, selectedTemplate) {
     // Merge per-template index data serially so write order is deterministic.
     for (const r of results) {
         templateIndex[r.template.getIdentifier()] = r.indexData;
+    }
+
+    // Apply archived flag from package.json to all index entries by template name.
+    // This runs after the build loop so it covers templates that failed to build
+    // (whose existing index entries are carried forward unchanged).
+    const currentNames = new Set();
+    for (const file of candidates) {
+        try {
+            const rawPkg = JSON.parse(fs.readFileSync(file, 'utf8'));
+            currentNames.add(rawPkg.name);
+            if (rawPkg.archived !== true) continue;
+            const name = rawPkg.name;
+            for (const [id, entry] of Object.entries(templateIndex)) {
+                if (id.startsWith(name + '@')) {
+                    entry.archived = true;
+                }
+            }
+        } catch (e) { /* ignore */ }
+    }
+
+    // Mark orphaned entries (templates removed/renamed from src/) as archived
+    // so they don't appear on the home page as untagged active templates.
+    for (const [id, entry] of Object.entries(templateIndex)) {
+        const name = id.substring(0, id.indexOf('@'));
+        if (!currentNames.has(name)) {
+            entry.archived = true;
+        }
     }
 
     // Run the page generator + dropdown patches sequentially against the
