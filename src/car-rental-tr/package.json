@@ -15,8 +15,8 @@
         "rental",
         "turkish",
         "araba",
-        "kiralık",
-        "Türk"
+        "kiral\u0131k",
+        "T\u00fcrk"
     ],
     "scripts": {
         "test": "vitest run",
@@ -24,5 +24,6 @@
     },
     "tags": [
         "real-estate"
-    ]
+    ],
+    "archived": true
 }
