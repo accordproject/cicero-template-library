@@ -1,12 +1,17 @@
-import {
+import type {
     ITemplateModel,
     IInspectDeliverable,
     IInspectionResponse,
-    InspectionStatus,
 } from './generated/org.accordproject.acceptanceofdelivery@0.1.0';
 
 type AcceptanceOfDeliveryResponse = {
     result: IInspectionResponse;
+};
+
+const InspectionStatus = {
+    PASSED_TESTING: 'PASSED_TESTING' as IInspectionResponse['status'],
+    FAILED_TESTING: 'FAILED_TESTING' as IInspectionResponse['status'],
+    OUTSIDE_INSPECTION_PERIOD: 'OUTSIDE_INSPECTION_PERIOD' as IInspectionResponse['status'],
 };
 
 // @ts-ignore TemplateLogic is injected by the runtime
@@ -28,7 +33,7 @@ class AcceptanceOfDeliveryLogic extends TemplateLogic<ITemplateModel> {
         const MS_PER_DAY = 24 * 60 * 60 * 1000;
         const inspectionDeadline = new Date(received.getTime() + data.businessDays * MS_PER_DAY);
 
-        let status: InspectionStatus;
+        let status: IInspectionResponse['status'];
         if (now > inspectionDeadline) {
             status = InspectionStatus.OUTSIDE_INSPECTION_PERIOD;
         } else if (request.inspectionPassed) {

@@ -1,16 +1,19 @@
-import {
+import type {
     ITemplateModel,
     IInstallment,
     IClosingPayment,
     IBalance,
     IInstallmentSaleState,
     IInstallmentSalePaymentEvent,
-    ContractStatus
 } from "./generated/org.accordproject.installmentsale@0.2.0";
-import { IMonetaryAmount } from "./generated/org.accordproject.money@0.3.0";
+import type { IMonetaryAmount } from "./generated/org.accordproject.money@0.3.0";
 
 const NS = 'org.accordproject.installmentsale@0.2.0';
 const MONEY_NS = 'org.accordproject.money@0.3.0.MonetaryAmount';
+const ContractStatus = {
+    WaitingForFirstDayOfNextMonth: 'WaitingForFirstDayOfNextMonth' as IInstallmentSaleState['status'],
+    Fulfilled: 'Fulfilled' as IInstallmentSaleState['status'],
+};
 
 // @ts-expect-error EngineResponse is imported by the runtime
 interface InstallmentSaleContractResponse extends EngineResponse<IInstallmentSaleState> {

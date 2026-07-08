@@ -7,7 +7,8 @@
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^1.0.0"
+        "cicero": "^1.0.0",
+        "stateful": true
     },
     "scripts": {
         "test": "vitest run",

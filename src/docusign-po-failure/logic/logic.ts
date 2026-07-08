@@ -14,7 +14,7 @@ function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmo
     };
 }
 
-// Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
+// Inline types from org.accordproject.time@0.3.0 - generated files may not be available at runtime
 enum TemporalUnit {
     seconds = 'seconds',
     minutes = 'minutes',
@@ -29,7 +29,7 @@ interface IDuration {
     unit: TemporalUnit;
 }
 
-// Inline types from com.docusign.connect — generated files reference these types
+// Inline types from com.docusign.connect - generated files reference these types
 interface ITabStatus {
     $class: string;
     tabType: string;

@@ -1,4 +1,4 @@
-import {
+import type {
     ICounterResponse,
     ICounterState,
     IPaymentObligationEvent,
@@ -8,11 +8,14 @@ import {
     IDoubleButtonPress,
     ILongButtonPress,
     IPaymentReceived,
-    ContractLifecycleStatus,
 } from "./generated/org.accordproject.paymentuponiot@0.2.0";
-import { IRequest } from "./generated/org.accordproject.runtime@0.2.0";
 
 const NS = "org.accordproject.paymentuponiot@0.2.0";
+const ContractLifecycleStatus = {
+    INITIALIZED: 'INITIALIZED' as ICounterState['status'],
+    RUNNING: 'RUNNING' as ICounterState['status'],
+    COMPLETED: 'COMPLETED' as ICounterState['status'],
+};
 
 // Union of all possible request types for this contract
 type IoTRequest =
@@ -38,7 +41,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
             state: {
                 $class: `${NS}.CounterState`,
                 $identifier: data.$identifier,
-                status: "INITIALIZED" as ContractLifecycleStatus,
+                status: ContractLifecycleStatus.INITIALIZED,
                 counter: 0.0,
                 paymentCount: 0.0,
             }
@@ -66,7 +69,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
         }
         const newState: ICounterState = {
             ...state,
-            status: "RUNNING" as ContractLifecycleStatus,
+            status: ContractLifecycleStatus.RUNNING,
         };
         return {
             result: this.makeCounterResponse(newState),
@@ -168,7 +171,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
         }
 
         const newPaymentCount = state.paymentCount + 1.0;
-        const newStatus: ContractLifecycleStatus =
+        const newStatus: ICounterState['status'] =
             newPaymentCount >= data.paymentCount ? ContractLifecycleStatus.COMPLETED : ContractLifecycleStatus.RUNNING;
 
         const unitsPaid = Math.max(
@@ -194,10 +197,10 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
 
     async trigger(
         data: ITemplateModel,
-        request: IRequest,
+        request: IoTRequest,
         state: ICounterState
     ): Promise<IoTResponse> {
-        const req = request as IoTRequest;
+        const req = request;
 
         switch (req.$class) {
             case `${NS}.ContractSigned`:

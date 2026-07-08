@@ -9,7 +9,7 @@ class DemandForecastLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IForecastRequest): Promise<DemandForecastResponse> {
         const now = new Date();
 
-        // isLastDayOfQuarter check — kept always-true per original Ergo logic
+        // isLastDayOfQuarter check - kept always-true per original Ergo logic
         const isLastDayOfQuarter = true;
         if (!isLastDayOfQuarter) {
             throw new Error('Forecast was not received on last day of quarter');

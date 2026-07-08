@@ -6,7 +6,7 @@ import {
 } from "./generated/org.accordproject.fragilegoods@0.2.0";
 import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
-// Inline types from org.accordproject.time@0.3.0 — generated files may not be available at runtime
+// Inline types from org.accordproject.time@0.3.0 - generated files may not be available at runtime
 enum TemporalUnit {
     seconds = "seconds",
     minutes = "minutes",
