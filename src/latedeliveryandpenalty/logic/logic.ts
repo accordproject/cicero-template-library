@@ -1,4 +1,5 @@
 import type { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenalty@0.2.0';
+import type { IDuration } from './generated/org.accordproject.time@0.3.0';
 import type { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 type LateDeliveryAndPenaltyResult = {
@@ -6,19 +7,15 @@ type LateDeliveryAndPenaltyResult = {
     events: object[];
 };
 
-// Inline types from org.accordproject.time@0.3.0 - generated files may not be available at runtime
-enum TemporalUnit {
-    seconds = 'seconds',
-    minutes = 'minutes',
-    hours = 'hours',
-    days = 'days',
-    weeks = 'weeks',
-}
+type DurationUnit = IDuration['unit'];
 
-interface IDuration {
-    amount: number;
-    unit: TemporalUnit;
-}
+const TemporalUnit = {
+    seconds: 'seconds' as DurationUnit,
+    minutes: 'minutes' as DurationUnit,
+    hours: 'hours' as DurationUnit,
+    days: 'days' as DurationUnit,
+    weeks: 'weeks' as DurationUnit,
+};
 
 function durationToDays(duration: IDuration): number {
     switch (duration.unit) {

@@ -4,6 +4,7 @@ import {
     IPurchaseOrderFailureState,
     IPurchaseOrderPaymentEvent
 } from "./generated/org.accordproject.docusignpofailure@0.2.0";
+import type { IDuration } from './generated/org.accordproject.time@0.3.0';
 import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmount {
@@ -14,20 +15,15 @@ function monetary(doubleValue: number, currencyCode: CurrencyCode): IMonetaryAmo
     };
 }
 
-// Inline types from org.accordproject.time@0.3.0 - generated files may not be available at runtime
-enum TemporalUnit {
-    seconds = 'seconds',
-    minutes = 'minutes',
-    hours = 'hours',
-    days = 'days',
-    weeks = 'weeks',
-}
+type DurationUnit = IDuration['unit'];
 
-interface IDuration {
-    $class?: string;
-    amount: number;
-    unit: TemporalUnit;
-}
+const TemporalUnit = {
+    seconds: 'seconds' as DurationUnit,
+    minutes: 'minutes' as DurationUnit,
+    hours: 'hours' as DurationUnit,
+    days: 'days' as DurationUnit,
+    weeks: 'weeks' as DurationUnit,
+};
 
 // Inline types from com.docusign.connect - generated files reference these types
 interface ITabStatus {

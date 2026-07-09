@@ -9,10 +9,10 @@ type AcceptanceOfDeliveryResponse = {
 };
 
 const InspectionStatus = {
-    PASSED_TESTING: 'PASSED_TESTING' as IInspectionResponse['status'],
-    FAILED_TESTING: 'FAILED_TESTING' as IInspectionResponse['status'],
-    OUTSIDE_INSPECTION_PERIOD: 'OUTSIDE_INSPECTION_PERIOD' as IInspectionResponse['status'],
-};
+    PASSED_TESTING: 'PASSED_TESTING',
+    FAILED_TESTING: 'FAILED_TESTING',
+    OUTSIDE_INSPECTION_PERIOD: 'OUTSIDE_INSPECTION_PERIOD',
+} as const satisfies Record<string, IInspectionResponse['status']>;
 
 // @ts-ignore TemplateLogic is injected by the runtime
 class AcceptanceOfDeliveryLogic extends TemplateLogic<ITemplateModel> {
