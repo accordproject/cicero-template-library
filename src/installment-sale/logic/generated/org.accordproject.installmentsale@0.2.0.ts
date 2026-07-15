@@ -2,10 +2,10 @@
 // Generated code for namespace: org.accordproject.installmentsale@0.2.0
 
 // imports
-import {IClause} from './org.accordproject.contract@0.2.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IRequest,IResponse,IState,IObligation} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
-import {IConcept,IEvent} from './concerto@1.0.0';
+import {IParticipant} from './concerto@1.0.0';
 
 // interfaces
 export interface IInstallment extends IRequest {
@@ -28,15 +28,14 @@ export enum ContractStatus {
    Fulfilled = 'Fulfilled',
 }
 
-export interface IInstallmentSaleState extends IConcept {
-   $identifier: string;
+export interface IInstallmentSaleState extends IState {
    status: ContractStatus;
    balance_remaining: IMonetaryAmount;
    next_payment_month: number;
    total_paid: IMonetaryAmount;
 }
 
-export interface IInstallmentSalePaymentEvent extends IEvent {
+export interface IInstallmentSalePaymentEvent extends IObligation {
    amount: IMonetaryAmount;
    description: string;
 }

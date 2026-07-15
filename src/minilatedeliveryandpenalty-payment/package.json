@@ -8,7 +8,7 @@
     "accordproject": {
         "template": "clause",
         "runtime": "typescript",
-        "cicero": "^1.0.0"
+        "cicero": "2.0.0"
     },
     "keywords": [
         "late",

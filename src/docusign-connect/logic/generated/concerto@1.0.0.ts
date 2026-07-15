@@ -5,9 +5,6 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IDocuSignEnvelopeCounterState
-} from './org.accordproject.docusignconnect@0.1.0';
-import type {
 	EnvelopeStatusCode,
 	RecipientStatusCode,
 	TabTypeCode,
@@ -21,12 +18,12 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IState
+} from './org.accordproject.runtime@0.2.0';
+import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
-import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
 import type {
 	IBinaryResource
 } from './org.accordproject.binary@0.2.0';
@@ -39,9 +36,6 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IDocuSignNotificationEvent
-} from './org.accordproject.docusignconnect@0.1.0';
-import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
 
@@ -50,8 +44,7 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IDocuSignEnvelopeCounterState | 
-IEnvelopeStatus | 
+export type ConceptUnion = IEnvelopeStatus | 
 IRecipient | 
 ICustomField | 
 ITabStatus;
@@ -60,9 +53,9 @@ export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IContract | 
+export type AssetUnion = IState | 
+IContract | 
 IClause | 
-IState | 
 IBinaryResource;
 
 export interface IParticipant extends IConcept {
@@ -80,6 +73,5 @@ export interface IEvent extends IConcept {
    $timestamp: Date;
 }
 
-export type EventUnion = IDocuSignNotificationEvent | 
-IObligation;
+export type EventUnion = IObligation;
 

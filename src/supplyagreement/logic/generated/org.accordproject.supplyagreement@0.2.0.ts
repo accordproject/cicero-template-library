@@ -2,10 +2,10 @@
 // Generated code for namespace: org.accordproject.supplyagreement@0.2.0
 
 // imports
-import {IClause} from './org.accordproject.contract@0.2.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IObligation,IState,IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
-import {IConcept,IEvent} from './concerto@1.0.0';
+import {IConcept,IParticipant} from './concerto@1.0.0';
 
 // interfaces
 export interface IProduct extends IConcept {
@@ -26,20 +26,20 @@ export interface IPurchaseOrder extends IConcept {
    deliveryDate: Date;
 }
 
-export interface IDeliveryObligationEvent extends IEvent {
+export interface IDeliveryObligationEvent extends IObligation {
    party: string;
    expectedDelivery: Date;
    deliverables: IOrderItem[];
 }
 
-export interface IPurchaseObligationEvent extends IEvent {
+export interface IPurchaseObligationEvent extends IObligation {
    party: string;
    requiredPurchase: number;
    year: number;
    quarter: number;
 }
 
-export interface IPaymentObligationEvent extends IEvent {
+export interface IPaymentObligationEvent extends IObligation {
    party: string;
    amount: IMonetaryAmount;
 }
@@ -62,8 +62,7 @@ export interface IPaymentObligationData extends IConcept {
    amount: IMonetaryAmount;
 }
 
-export interface IAgreementState extends IConcept {
-   $identifier: string;
+export interface IAgreementState extends IState {
    purchaseObligation?: IPurchaseObligationData;
    deliveryObligation?: IDeliveryObligationData;
    paymentObligation?: IPaymentObligationData;

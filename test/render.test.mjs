@@ -6,6 +6,11 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 
+const originalValidate = Template.prototype.validate;
+Template.prototype.validate = function validateOffline(options = {}) {
+    return originalValidate.call(this, { ...options, offline: true });
+};
+
 const SRC = join(dirname(fileURLToPath(import.meta.url)), '..', 'src');
 let templates = readdirSync(SRC).filter(name => {
     const p = join(SRC, name);
@@ -56,14 +61,6 @@ const expectedFailures = new Set([
     'volumediscountulist',
 ]);
 
-// Shared helpers
-const readPackageJson = (templatePath) =>
-    JSON.parse(readFileSync(join(templatePath, 'package.json'), 'utf8'));
-
-// A template is "stateful" when its package.json declares it.
-// Any template missing the flag, defaults to stateless.
-const isStateful = (packageJson) => packageJson.accordproject?.stateful === true;
-
 // Only templates with compiled logic can be triggered/initialized.
 const hasLogic = (templatePath) => existsSync(join(templatePath, 'logic', 'logic.ts'));
 
@@ -84,18 +81,32 @@ const getRequest = (templatePath) => {
 // filter without re-reading package.json from disk repeatedly.
 const templateInfo = templates.map(name => {
     const templatePath = join(SRC, name);
-    const packageJson = readPackageJson(templatePath);
     return {
         name,
         path: templatePath,
-        packageJson,
-        stateful: isStateful(packageJson),
         hasLogic: hasLogic(templatePath),
     };
 });
 
 const logicTemplates = templateInfo.filter(t => t.hasLogic);
-const statefulLogicTemplates = logicTemplates.filter(t => t.stateful);
+const templateCache = new Map();
+const getTemplate = (templatePath) => {
+    if (!templateCache.has(templatePath)) {
+        templateCache.set(templatePath, Template.fromDirectory(templatePath, { offline: true }));
+    }
+    return templateCache.get(templatePath);
+};
+const isStatefulTemplate = (template) => {
+    const logicScript = template.getLogicManager().getScriptManager().getScript('logic/logic.ts');
+    return /\b(?:async\s+)?init\s*\(/.test(logicScript?.getContents() ?? '');
+};
+const statefulLogicTemplateNames = new Set(
+    (await Promise.all(logicTemplates.map(async ({ name, path: templatePath }) => {
+        const template = await getTemplate(templatePath);
+        return isStatefulTemplate(template) ? name : null;
+    }))).filter(Boolean),
+);
+const statefulLogicTemplates = logicTemplates.filter(t => statefulLogicTemplateNames.has(t.name));
 
 // Compilation
 
@@ -128,12 +139,12 @@ describe('template compilation', () => {
 
 // Draft rendering
 
-describe.concurrent('template-engine render', () => {
+describe('template-engine render', () => {
     for (const name of templates) {
         const test = expectedFailures.has(name) ? it.fails : it;
         test(name, async () => {
             const templatePath = join(SRC, name);
-            const template = await Template.fromDirectory(templatePath);
+            const template = await getTemplate(templatePath);
             const proc = new TemplateArchiveProcessor(template);
 
             // sample.json must be present and must round-trip through the
@@ -160,10 +171,10 @@ describe.concurrent('template-engine render', () => {
 });
 
 // Stateful
-describe.concurrent('stateful: init', () => {
+describe.concurrent('template-engine init', () => {
     for (const { name, path: templatePath } of statefulLogicTemplates) {
         it(name, async () => {
-            const template = await Template.fromDirectory(templatePath);
+            const template = await getTemplate(templatePath);
             const proc = new TemplateArchiveProcessor(template);
             const data = getData(templatePath, name);
 
@@ -177,14 +188,14 @@ describe.concurrent('stateful: init', () => {
 });
 
 describe.concurrent('template-engine trigger', () => {
-    for (const { name, path: templatePath, stateful } of logicTemplates) {
+    for (const { name, path: templatePath } of logicTemplates) {
         it(name, async () => {
-            const template = await Template.fromDirectory(templatePath);
+            const template = await getTemplate(templatePath);
             const proc = new TemplateArchiveProcessor(template);
             const data = getData(templatePath, name);
             const request = getRequest(templatePath);
 
-            if (stateful) {
+            if (statefulLogicTemplateNames.has(name)) {
                 // Stateful templates should only execute the stateful path.
                 const { state } = await proc.init(data);
                 const response = await proc.trigger(data, request, state);

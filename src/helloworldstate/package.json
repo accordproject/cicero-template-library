@@ -8,8 +8,7 @@
     "accordproject": {
         "template": "clause",
         "runtime": "typescript",
-        "cicero": "^1.0.0",
-        "stateful": true
+        "cicero": "2.0.0"
     },
     "keywords": [
         "hello",

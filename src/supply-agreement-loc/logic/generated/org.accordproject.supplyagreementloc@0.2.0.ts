@@ -3,7 +3,7 @@
 
 // imports
 import {IClause} from './org.accordproject.contract@0.2.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IRequest,IResponse,IState} from './org.accordproject.runtime@0.2.0';
 import {IDuration,TemporalUnit} from './org.accordproject.time@0.3.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 import {IConcept} from './concerto@1.0.0';
@@ -28,8 +28,7 @@ export interface IDeliveryResponse extends IResponse {
    inGoodOrder: boolean;
 }
 
-export interface ISupplyAgreementState extends IConcept {
-   $identifier: string;
+export interface ISupplyAgreementState extends IState {
    sensorReadings: ISensorReadingData[];
 }
 

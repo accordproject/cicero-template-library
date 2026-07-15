@@ -3,8 +3,7 @@
 
 // imports
 import {IClause} from './org.accordproject.contract@0.2.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
-import {IConcept} from './concerto@1.0.0';
+import {IRequest,IResponse,IState} from './org.accordproject.runtime@0.2.0';
 
 // interfaces
 export interface IMyRequest extends IRequest {
@@ -15,8 +14,7 @@ export interface IMyResponse extends IResponse {
    output: string;
 }
 
-export interface IHelloWorldState extends IConcept {
-   $identifier: string;
+export interface IHelloWorldState extends IState {
    counter: number;
 }
 

@@ -1,7 +1,7 @@
 namespace org.accordproject.perishablegoods@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
-import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response,State,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
@@ -43,7 +43,7 @@ transaction PriceCalculation extends Response {
 /**
  * Event emitted when payment is due
  */
-event PerishableGoodsPaymentEvent {
+event PerishableGoodsPaymentEvent extends Obligation {
   o Double totalPrice
   o String currencyCode
   o String description
@@ -52,7 +52,7 @@ event PerishableGoodsPaymentEvent {
 /**
  * State for the perishable goods contract
  */
-concept PerishableGoodsState identified {
+asset PerishableGoodsState extends State {
   o Boolean payoutMade default=false
   o Double totalPaid default=0.0
 }

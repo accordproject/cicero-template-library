@@ -10,8 +10,7 @@ import type {
 	IPurchaseOrder,
 	IPurchaseObligationData,
 	IDeliveryObligationData,
-	IPaymentObligationData,
-	IAgreementState
+	IPaymentObligationData
 } from './org.accordproject.supplyagreement@0.2.0';
 import type {
 	IDigitalMonetaryAmount,
@@ -23,12 +22,12 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IState
+} from './org.accordproject.runtime@0.2.0';
+import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
-import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -37,11 +36,6 @@ import type {
 } from './org.accordproject.runtime@0.2.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
-import type {
-	IDeliveryObligationEvent,
-	IPurchaseObligationEvent,
-	IPaymentObligationEvent
-} from './org.accordproject.supplyagreement@0.2.0';
 import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
@@ -57,7 +51,6 @@ IPurchaseOrder |
 IPurchaseObligationData | 
 IDeliveryObligationData | 
 IPaymentObligationData | 
-IAgreementState | 
 IDigitalMonetaryAmount | 
 IMonetaryAmount | 
 ICurrencyConversion;
@@ -66,9 +59,9 @@ export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IContract | 
-IClause | 
-IState;
+export type AssetUnion = IState | 
+IContract | 
+IClause;
 
 export interface IParticipant extends IConcept {
    $identifier: string;
@@ -85,8 +78,5 @@ export interface IEvent extends IConcept {
    $timestamp: Date;
 }
 
-export type EventUnion = IDeliveryObligationEvent | 
-IPurchaseObligationEvent | 
-IPaymentObligationEvent | 
-IObligation;
+export type EventUnion = IObligation;
 

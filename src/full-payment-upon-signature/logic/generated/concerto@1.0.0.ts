@@ -5,9 +5,6 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IFullPaymentUponSignatureState
-} from './org.accordproject.fullpaymentupondsignature@0.2.0';
-import type {
 	IDigitalMonetaryAmount,
 	DigitalCurrencyCode,
 	IMonetaryAmount,
@@ -32,9 +29,6 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IPaymentObligationEvent
-} from './org.accordproject.fullpaymentupondsignature@0.2.0';
-import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
 
@@ -43,8 +37,7 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IFullPaymentUponSignatureState | 
-IDigitalMonetaryAmount | 
+export type ConceptUnion = IDigitalMonetaryAmount | 
 IMonetaryAmount | 
 ICurrencyConversion;
 
@@ -71,6 +64,5 @@ export interface IEvent extends IConcept {
    $timestamp: Date;
 }
 
-export type EventUnion = IPaymentObligationEvent | 
-IObligation;
+export type EventUnion = IObligation;
 
