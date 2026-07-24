@@ -1,4 +1,5 @@
 {
-  "$class": "org.accordproject.paymentuponiot@0.2.0.SingleButtonPress",
-  "$identifier": "req-001"
+  "$class": "org.accordproject.paymentuponiot@0.2.0.ContractSigned",
+  "$identifier": "req-001",
+  "contractId": "contract-001"
 }

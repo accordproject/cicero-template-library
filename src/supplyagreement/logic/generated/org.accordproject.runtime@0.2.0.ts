@@ -18,6 +18,18 @@ import type {
 	IDeliveryResponse,
 	IPaymentResponse
 } from './org.accordproject.supplyagreement@0.2.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IDeliveryObligationEvent,
+	IPurchaseObligationEvent,
+	IPaymentObligationEvent
+} from './org.accordproject.supplyagreement@0.2.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IAgreementState
+} from './org.accordproject.supplyagreement@0.2.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 
@@ -46,6 +58,12 @@ export interface IObligation extends IEvent {
    deadline?: Date;
 }
 
+export type ObligationUnion = IDeliveryObligationEvent | 
+IPurchaseObligationEvent | 
+IPaymentObligationEvent;
+
 export interface IState extends IAsset {
 }
+
+export type StateUnion = IAgreementState;
 

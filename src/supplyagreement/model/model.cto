@@ -1,7 +1,7 @@
 namespace org.accordproject.supplyagreement@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
-import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response,State,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
@@ -28,20 +28,20 @@ concept PurchaseOrder {
 /**
  * Defines contract obligations as events
  */
-event DeliveryObligationEvent {
+event DeliveryObligationEvent extends Obligation {
   o String party
   o DateTime expectedDelivery
   o OrderItem[] deliverables
 }
 
-event PurchaseObligationEvent {
+event PurchaseObligationEvent extends Obligation {
   o String party
   o Double requiredPurchase
   o Integer year
   o Integer quarter
 }
 
-event PaymentObligationEvent {
+event PaymentObligationEvent extends Obligation {
   o String party
   o MonetaryAmount amount
 }
@@ -67,7 +67,7 @@ concept PaymentObligationData {
   o MonetaryAmount amount
 }
 
-concept AgreementState identified {
+asset AgreementState extends State {
   o PurchaseObligationData purchaseObligation optional
   o DeliveryObligationData deliveryObligation optional
   o PaymentObligationData paymentObligation optional

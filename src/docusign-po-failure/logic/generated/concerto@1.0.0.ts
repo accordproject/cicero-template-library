@@ -5,8 +5,12 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IPurchaseOrderFailureState
-} from './org.accordproject.docusignpofailure@0.2.0';
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 import type {
 	Month,
 	Day,
@@ -15,13 +19,6 @@ import type {
 	PeriodUnit,
 	IPeriod
 } from './org.accordproject.time@0.3.0';
-import type {
-	IDigitalMonetaryAmount,
-	DigitalCurrencyCode,
-	IMonetaryAmount,
-	CurrencyCode,
-	ICurrencyConversion
-} from './org.accordproject.money@0.3.0';
 import type {
 	EnvelopeStatusCode,
 	RecipientStatusCode,
@@ -36,12 +33,12 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
-import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
+import type {
+	IState
+} from './org.accordproject.runtime@0.2.0';
 import type {
 	IBinaryResource
 } from './org.accordproject.binary@0.2.0';
@@ -54,9 +51,6 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IPurchaseOrderPaymentEvent
-} from './org.accordproject.docusignpofailure@0.2.0';
-import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
 
@@ -65,12 +59,11 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IPurchaseOrderFailureState | 
-IDuration | 
-IPeriod | 
-IDigitalMonetaryAmount | 
+export type ConceptUnion = IDigitalMonetaryAmount | 
 IMonetaryAmount | 
 ICurrencyConversion | 
+IDuration | 
+IPeriod | 
 IEnvelopeStatus | 
 IRecipient | 
 ICustomField | 
@@ -80,9 +73,9 @@ export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IState | 
-IContract | 
+export type AssetUnion = IContract | 
 IClause | 
+IState | 
 IBinaryResource;
 
 export interface IParticipant extends IConcept {
@@ -100,6 +93,5 @@ export interface IEvent extends IConcept {
    $timestamp: Date;
 }
 
-export type EventUnion = IPurchaseOrderPaymentEvent | 
-IObligation;
+export type EventUnion = IObligation;
 

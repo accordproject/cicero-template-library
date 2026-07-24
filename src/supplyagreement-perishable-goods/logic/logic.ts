@@ -66,7 +66,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
             throw new Error('Units received out of range for the contract.');
         }
 
-        // Guard: past the due date — return a zero price calculation
+        // Guard: past the due date - return a zero price calculation
         if (now >= new Date(data.dueDate)) {
             const zeroAmount = {
                 $class: 'org.accordproject.money@0.3.0.MonetaryAmount',

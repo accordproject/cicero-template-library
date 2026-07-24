@@ -2,10 +2,10 @@
 // Generated code for namespace: org.accordproject.docusignconnect@0.1.0
 
 // imports
-import {IClause} from './org.accordproject.contract@0.2.0';
-import {IResponse} from './org.accordproject.runtime@0.2.0';
+import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IResponse,IObligation,IState} from './org.accordproject.runtime@0.2.0';
 import {EnvelopeStatusCode} from './com.docusign.connect@0.4.0';
-import {IEvent,IConcept} from './concerto@1.0.0';
+import {IParticipant} from './concerto@1.0.0';
 
 // interfaces
 export interface IMyResponse extends IResponse {
@@ -13,13 +13,12 @@ export interface IMyResponse extends IResponse {
    counter: number;
 }
 
-export interface IDocuSignNotificationEvent extends IEvent {
+export interface IDocuSignNotificationEvent extends IObligation {
    title: string;
    message: string;
 }
 
-export interface IDocuSignEnvelopeCounterState extends IConcept {
-   $identifier: string;
+export interface IDocuSignEnvelopeCounterState extends IState {
    counter: number;
 }
 

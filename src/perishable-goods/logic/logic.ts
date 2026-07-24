@@ -90,7 +90,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         const dueDate = new Date(data.dueDate);
 
         if (now >= dueDate) {
-            // Shipment is late — return zero price
+            // Shipment is late - return zero price
             const lateResult: IPriceCalculation = {
                 $class: "org.accordproject.perishablegoods@0.2.0.PriceCalculation",
                 $timestamp: new Date(),

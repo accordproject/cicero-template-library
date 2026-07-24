@@ -1,9 +1,19 @@
-import { ITemplateModel, ILateInvoiceRequest, ILateInvoiceResponse, IPaymentObligationEvent } from './generated/org.accordproject.lateinvoicewithpayment@0.2.0';
-import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
+import type { ITemplateModel, ILateInvoiceRequest, ILateInvoiceResponse, IPaymentObligationEvent } from './generated/org.accordproject.lateinvoicewithpayment@0.2.0';
+import type { IDuration } from './generated/org.accordproject.time@0.3.0';
 
 type LateInvoicePaymentResponse = {
     result: ILateInvoiceResponse;
     events: object[];
+};
+
+type DurationUnit = IDuration['unit'];
+
+const TemporalUnit = {
+    seconds: 'seconds' as DurationUnit,
+    minutes: 'minutes' as DurationUnit,
+    hours: 'hours' as DurationUnit,
+    days: 'days' as DurationUnit,
+    weeks: 'weeks' as DurationUnit,
 };
 
 // @ts-ignore TemplateLogic is injected by the runtime

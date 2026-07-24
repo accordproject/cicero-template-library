@@ -1,10 +1,20 @@
-import { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenalty@0.2.0';
-import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
-import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
+import type { ITemplateModel, ILateDeliveryAndPenaltyRequest, ILateDeliveryAndPenaltyResponse, IPaymentObligationEvent } from './generated/org.accordproject.latedeliveryandpenalty@0.2.0';
+import type { IDuration } from './generated/org.accordproject.time@0.3.0';
+import type { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 type LateDeliveryAndPenaltyResult = {
     result: ILateDeliveryAndPenaltyResponse;
     events: object[];
+};
+
+type DurationUnit = IDuration['unit'];
+
+const TemporalUnit = {
+    seconds: 'seconds' as DurationUnit,
+    minutes: 'minutes' as DurationUnit,
+    hours: 'hours' as DurationUnit,
+    days: 'days' as DurationUnit,
+    weeks: 'weeks' as DurationUnit,
 };
 
 function durationToDays(duration: IDuration): number {

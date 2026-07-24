@@ -1,7 +1,7 @@
 namespace org.accordproject.paymentuponiot@0.2.0
 
 import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
-import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response,State,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
@@ -56,7 +56,7 @@ transaction CounterResponse extends Response {
 /**
  * Event emitted when payment is due
  */
-event PaymentObligationEvent {
+event PaymentObligationEvent extends Obligation {
   o MonetaryAmount amount
   o String description
 }
@@ -64,7 +64,7 @@ event PaymentObligationEvent {
 /**
  * State for the payment upon IoT contract
  */
-concept CounterState identified {
+asset CounterState extends State {
   o ContractLifecycleStatus status
   o Double counter
   o Double paymentCount

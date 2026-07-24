@@ -2,10 +2,10 @@
 // Generated code for namespace: org.accordproject.perishablegoods@0.2.0
 
 // imports
-import {IClause} from './org.accordproject.contract@0.2.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IRequest,IResponse,IObligation,IState} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
-import {IConcept,IEvent} from './concerto@1.0.0';
+import {IConcept,IParticipant} from './concerto@1.0.0';
 
 // interfaces
 export enum UnitOfMass {
@@ -32,14 +32,13 @@ export interface IPriceCalculation extends IResponse {
    late: boolean;
 }
 
-export interface IPerishableGoodsPaymentEvent extends IEvent {
+export interface IPerishableGoodsPaymentEvent extends IObligation {
    totalPrice: number;
    currencyCode: string;
    description: string;
 }
 
-export interface IPerishableGoodsState extends IConcept {
-   $identifier: string;
+export interface IPerishableGoodsState extends IState {
    payoutMade: boolean;
    totalPaid: number;
 }

@@ -12,6 +12,16 @@ import type {
 import type {
 	IMyResponse
 } from './org.accordproject.docusignconnect@0.1.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IDocuSignNotificationEvent
+} from './org.accordproject.docusignconnect@0.1.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IDocuSignEnvelopeCounterState
+} from './org.accordproject.docusignconnect@0.1.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 
@@ -34,6 +44,10 @@ export interface IObligation extends IEvent {
    deadline?: Date;
 }
 
+export type ObligationUnion = IDocuSignNotificationEvent;
+
 export interface IState extends IAsset {
 }
+
+export type StateUnion = IDocuSignEnvelopeCounterState;
 

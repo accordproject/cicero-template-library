@@ -1,9 +1,19 @@
-import { ITemplateModel, ILateRequest, ILateResponse } from './generated/org.accordproject.minilatedeliveryandpenalty@0.2.0';
-import { IDuration, TemporalUnit } from './generated/org.accordproject.time@0.3.0';
-import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
+import type { ITemplateModel, ILateRequest, ILateResponse } from './generated/org.accordproject.minilatedeliveryandpenalty@0.2.0';
+import type { IDuration } from './generated/org.accordproject.time@0.3.0';
+import type { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
 type MiniLateDeliveryResponse = {
     result: ILateResponse;
+};
+
+type DurationUnit = IDuration['unit'];
+
+const TemporalUnit = {
+    seconds: 'seconds' as DurationUnit,
+    minutes: 'minutes' as DurationUnit,
+    hours: 'hours' as DurationUnit,
+    days: 'days' as DurationUnit,
+    weeks: 'weeks' as DurationUnit,
 };
 
 function durationToDays(duration: IDuration): number {

@@ -5,11 +5,6 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IHelloWorldState
-} from './org.accordproject.helloworldstate@0.1.0';
-
-// Warning: Beware of circular dependencies when modifying these imports
-import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
@@ -32,8 +27,6 @@ import type {
 export interface IConcept {
    $class: string;
 }
-
-export type ConceptUnion = IHelloWorldState;
 
 export interface IAsset extends IConcept {
    $identifier: string;
