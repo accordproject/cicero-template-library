@@ -1,0 +1,19 @@
+{
+    "name": "freelance-services-agreement",
+    "displayName": "Freelance Services Agreement",
+    "version": "0.1.0",
+    "description": "A simple agreement between a client and a freelance service provider specifying the scope of work, payment amount, and payment due period.",
+    "author": "Bilal Ahmad",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "template": "contract",
+        "cicero": "^0.22.0"
+    },
+    "devDependencies": {
+        "cucumber": "^5.1.0"
+    },
+    "scripts": {
+        "test": "cucumber-js test -r .cucumber.js"
+    },
+    "keywords": ["freelance", "services", "agreement", "contract", "payment", "client", "provider", "work"]
+}
