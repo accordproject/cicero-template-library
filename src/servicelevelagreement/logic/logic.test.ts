@@ -1,4 +1,3 @@
-
 // @ts-nocheck - Suppress type checking for runtime mocks
 // Mock runtime globals BEFORE importing logic
 (global as any).TemplateLogic = class TemplateLogic<T> {
@@ -49,13 +48,13 @@ describe('ServiceLevelAgreementLogic', () => {
                 $timestamp: new Date(),
                 monthlyServiceLevel: 99.7,
                 monthlyCharge: monetaryAmount(10.0),
-                last11MonthCredit: 0.0,
+                last11MonthCredit: monetaryAmount(0.0),
                 last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
 
             expect(result.result).toHaveProperty('$class', `${NS}.InvoiceCredit`);
-            expect(result.result.monthlyCredit).toBe(0.0);
+            expect(result.result.monthlyCredit.doubleValue).toBe(0.0);
             expect(result.events).toHaveLength(0);
         });
 
@@ -65,13 +64,13 @@ describe('ServiceLevelAgreementLogic', () => {
                 $timestamp: new Date(),
                 monthlyServiceLevel: 99.2,
                 monthlyCharge: monetaryAmount(1000.0),
-                last11MonthCredit: 0.0,
+                last11MonthCredit: monetaryAmount(0.0),
                 last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
 
             // serviceCredit1 = 5% of monthlyCharge = 50.0
-            expect(result.result.monthlyCredit).toBeGreaterThan(0.0);
+            expect(result.result.monthlyCredit.doubleValue).toBeGreaterThan(0.0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -81,13 +80,13 @@ describe('ServiceLevelAgreementLogic', () => {
                 $timestamp: new Date(),
                 monthlyServiceLevel: 98.5,
                 monthlyCharge: monetaryAmount(1000.0),
-                last11MonthCredit: 0.0,
+                last11MonthCredit: monetaryAmount(0.0),
                 last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
 
             // serviceCredit2 = 10% of monthlyCharge = 100.0
-            expect(result.result.monthlyCredit).toBeGreaterThan(0.0);
+            expect(result.result.monthlyCredit.doubleValue).toBeGreaterThan(0.0);
             expect(result.events).toHaveLength(1);
         });
 
@@ -98,11 +97,11 @@ describe('ServiceLevelAgreementLogic', () => {
                 $timestamp: new Date(),
                 monthlyServiceLevel: 98.0,
                 monthlyCharge: monetaryAmount(1000.0),
-                last11MonthCredit: 0.0,
+                last11MonthCredit: monetaryAmount(0.0),
                 last11MonthCharge: monetaryAmount(0.0)
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.monthlyCredit).toBeLessThanOrEqual(100.0); // 10% of 1000
+            expect(result.result.monthlyCredit.doubleValue).toBeLessThanOrEqual(100.0); // 10% of 1000
         });
 
         it('should throw when template variables are negative', async () => {
@@ -112,7 +111,7 @@ describe('ServiceLevelAgreementLogic', () => {
                 $timestamp: new Date(),
                 monthlyServiceLevel: 99.0,
                 monthlyCharge: monetaryAmount(1000.0),
-                last11MonthCredit: 0.0,
+                last11MonthCredit: monetaryAmount(0.0),
                 last11MonthCharge: monetaryAmount(0.0)
             };
             await expect(logic.trigger(model, request)).rejects.toThrow('Template variables must not be negative.');
@@ -124,7 +123,7 @@ describe('ServiceLevelAgreementLogic', () => {
                 $timestamp: new Date(),
                 monthlyServiceLevel: 101.0,
                 monthlyCharge: monetaryAmount(1000.0),
-                last11MonthCredit: 0.0,
+                last11MonthCredit: monetaryAmount(0.0),
                 last11MonthCharge: monetaryAmount(0.0)
             };
             await expect(logic.trigger(model, request)).rejects.toThrow('service level must be at least 0%');
