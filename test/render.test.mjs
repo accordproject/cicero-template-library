@@ -26,9 +26,7 @@ if (process.env.TEMPLATES) {
 }
 
 // Archived templates (package.json `"archived": true`) are retired and no
-// longer expected to compile, render, or trigger. Unlike expectedFailures
-// below — which still run and assert a known failure — archived templates
-// are dropped entirely so they don't appear in the suite at all.
+// longer expected to compile, render, or trigger. 
 const archivedTemplates = templates.filter(name => {
     const packageJson = JSON.parse(readFileSync(join(SRC, name, 'package.json'), 'utf8'));
     return packageJson.archived === true;
@@ -96,10 +94,7 @@ const getTemplate = (templatePath) => {
     }
     return templateCache.get(templatePath);
 };
-const isStatefulTemplate = (template) => {
-    const logicScript = template.getLogicManager().getScriptManager().getScript('logic/logic.ts');
-    return /\b(?:async\s+)?init\s*\(/.test(logicScript?.getContents() ?? '');
-};
+const isStatefulTemplate = (template) => template.isStateful();
 const statefulLogicTemplateNames = new Set(
     (await Promise.all(logicTemplates.map(async ({ name, path: templatePath }) => {
         const template = await getTemplate(templatePath);

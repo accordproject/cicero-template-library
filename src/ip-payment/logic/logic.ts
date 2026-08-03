@@ -47,8 +47,8 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
     }
 
     async trigger(data: ITemplateModel, request: IPaymentRequest): Promise<IPPaymentResponse> {
-        const netSaleRevenue = request.netSaleRevenue;
-        const sublicensingRevenue = request.sublicensingRevenue;
+        const netSaleRevenue = request.netSaleRevenue as unknown as IMonetaryAmount;
+        const sublicensingRevenue = request.sublicensingRevenue as unknown as IMonetaryAmount;
         const royaltiesAmount = netSaleRevenue.doubleValue * data.royaltyRate / 100.0;
         const sublicensingAmount = sublicensingRevenue.doubleValue * data.sublicensingRoyaltyRate / 100.0;
         const totalAmountValue = royaltiesAmount + sublicensingAmount;
@@ -63,14 +63,9 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.ippayment@0.2.0.PayOut',
-                $timestamp: new Date().toISOString() as unknown as Date,
+                $timestamp: new Date(),
                 totalAmount: monetary(totalAmountValue, netSaleRevenue.currencyCode),
-                // NOTE: IPayOut types `dueBy` as `Date` for TS convenience, but the
-                // runtime serializer populates DateTime fields from JSON and expects
-                // an ISO-8601 string here, not a Date instance (see ValidationException
-                // "Expected value at path $.dueBy to be of type DateTime"). Cast to
-                // satisfy the generated type while keeping the runtime-correct value.
-                dueBy: dueBy.toISOString() as unknown as Date,
+                dueBy,
             },
         };
     }
