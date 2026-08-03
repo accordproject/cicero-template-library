@@ -13,9 +13,9 @@ export interface ITemplateModel extends IClause {
    monthlyCapPercentage: number;
    yearlyCapPercentage: number;
    availability1: number;
-   serviceCredit1: IMonetaryAmount;
+   serviceCredit1: number;
    availability2: number;
-   serviceCredit2: IMonetaryAmount;
+   serviceCredit2: number;
    serviceProvider: string;
    serviceConsumer: string;
 }

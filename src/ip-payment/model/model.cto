@@ -9,8 +9,8 @@ import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordpr
  * Requesting a payment
  */
 transaction PaymentRequest extends Request {
-  o Double netSaleRevenue
-  o Double sublicensingRevenue
+  o MonetaryAmount netSaleRevenue
+  o MonetaryAmount sublicensingRevenue
   o DateTime permissionGrantedBy optional
 }
 

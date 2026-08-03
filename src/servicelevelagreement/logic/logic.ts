@@ -52,13 +52,17 @@ class ServiceLevelAgreementLogic extends TemplateLogic<ITemplateModel> {
 
         // Clause 3.4: Yearly cap
         const yearlyCreditCap = (data.yearlyCapPercentage / 100.0) * (request.last11MonthCharge.doubleValue + request.monthlyCharge.doubleValue);
-        monthlyCredit = Math.min(monthlyCredit, yearlyCreditCap - request.last11MonthCredit);
+        monthlyCredit = Math.min(monthlyCredit, yearlyCreditCap - request.last11MonthCredit.doubleValue);
 
         // No credit owed
         if (monthlyCredit <= 0.0) {
             return {
                 result: {
-                    monthlyCredit: 0.0,
+                    monthlyCredit: {
+                        $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                        doubleValue: 0.0,
+                        currencyCode: request.monthlyCharge.currencyCode,
+                    },
                     $timestamp: new Date(),
                     $class: `${NS}.InvoiceCredit`
                 },
@@ -79,7 +83,11 @@ class ServiceLevelAgreementLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                monthlyCredit: toFixed(monthlyCredit),
+                monthlyCredit: {
+                    $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
+                    doubleValue: toFixed(monthlyCredit),
+                    currencyCode: request.monthlyCharge.currencyCode,
+                },
                 $timestamp: new Date(),
                 $class: `${NS}.InvoiceCredit`
             },

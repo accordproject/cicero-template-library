@@ -4,17 +4,9 @@
   "monthlyCapPercentage": 10,
   "yearlyCapPercentage": 10,
   "availability1": 99.8,
-  "serviceCredit1": {
-    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
-    "doubleValue": 2,
-    "currencyCode": "GBP"
-  },
+  "serviceCredit1": 2,
   "availability2": 98,
-  "serviceCredit2": {
-    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
-    "doubleValue": 3,
-    "currencyCode": "GBP"
-  },
+  "serviceCredit2": 3,
   "serviceProvider": "Service Provider",
   "serviceConsumer": "Service Consumer",
   "$identifier": "54e49d2c-309f-4cd5-adfe-3ee6b2fca66a",

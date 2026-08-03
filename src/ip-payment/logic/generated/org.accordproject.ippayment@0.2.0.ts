@@ -9,8 +9,8 @@ import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 
 // interfaces
 export interface IPaymentRequest extends IRequest {
-   netSaleRevenue: number;
-   sublicensingRevenue: number;
+   netSaleRevenue: IMonetaryAmount;
+   sublicensingRevenue: IMonetaryAmount;
    permissionGrantedBy?: Date;
 }
 

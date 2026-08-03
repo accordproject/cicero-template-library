@@ -6,7 +6,11 @@
     "doubleValue": 10,
     "currencyCode": "USD"
   },
-  "last11MonthCredit": 0,
+  "last11MonthCredit": {
+    "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+    "doubleValue": 0,
+    "currencyCode": "USD"
+  },
   "last11MonthCharge": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 0,
