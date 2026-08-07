@@ -6,11 +6,6 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 
-const originalValidate = Template.prototype.validate;
-Template.prototype.validate = function validateOffline(options = {}) {
-    return originalValidate.call(this, { ...options, offline: true });
-};
-
 const SRC = join(dirname(fileURLToPath(import.meta.url)), '..', 'src');
 let templates = readdirSync(SRC).filter(name => {
     const p = join(SRC, name);
