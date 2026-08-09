@@ -1,7 +1,7 @@
 {
     "name": "copyright-license",
     "displayName": "Copyright License",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This clause is a copyright license agreement.",
     "author": "Accord Project",
     "license": "Apache-2.0",

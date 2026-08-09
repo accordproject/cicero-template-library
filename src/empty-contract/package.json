@@ -1,7 +1,7 @@
 {
     "name": "empty-contract",
     "displayName": "Empty Contract",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This is an empty contract template to get you started.",
     "author": "Accord Project",
     "license": "Apache-2.0",

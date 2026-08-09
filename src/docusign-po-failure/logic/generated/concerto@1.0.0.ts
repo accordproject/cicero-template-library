@@ -5,13 +5,6 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IDigitalMonetaryAmount,
-	DigitalCurrencyCode,
-	IMonetaryAmount,
-	CurrencyCode,
-	ICurrencyConversion
-} from './org.accordproject.money@0.3.0';
-import type {
 	Month,
 	Day,
 	TemporalUnit,
@@ -19,6 +12,13 @@ import type {
 	PeriodUnit,
 	IPeriod
 } from './org.accordproject.time@0.3.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 import type {
 	EnvelopeStatusCode,
 	RecipientStatusCode,
@@ -59,11 +59,11 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IDigitalMonetaryAmount | 
+export type ConceptUnion = IDuration | 
+IPeriod | 
+IDigitalMonetaryAmount | 
 IMonetaryAmount | 
 ICurrencyConversion | 
-IDuration | 
-IPeriod | 
 IEnvelopeStatus | 
 IRecipient | 
 ICustomField | 

@@ -34,11 +34,11 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "2.0.0",
-    "@accordproject/concerto-cli": "4.0.1",
-    "@accordproject/concerto-core": "4.1.4",
-    "@accordproject/concerto-codegen": "4.1.3",
-    "@accordproject/concerto-util": "4.1.4",
+    "@accordproject/cicero-core": "2.1.1",
+    "@accordproject/concerto-cli": "4.0.2",
+    "@accordproject/concerto-core": "4.1.5",
+    "@accordproject/concerto-codegen": "5.1.0",
+    "@accordproject/concerto-util": "4.1.5",
     "@accordproject/markdown-cicero": "1.0.1",
     "@accordproject/markdown-html": "1.0.1",
     "@accordproject/template-engine": "4.0.0",

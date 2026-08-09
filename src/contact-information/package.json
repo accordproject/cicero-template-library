@@ -1,7 +1,7 @@
 {
     "name": "contact-information",
     "displayName": "Contact Information",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Gather contact information",
     "license": "Apache-2.0",
     "accordproject": {

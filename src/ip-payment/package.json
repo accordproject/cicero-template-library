@@ -1,7 +1,7 @@
 {
     "name": "ip-payment",
     "displayName": "IP Payment",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This clause is a payment clause for IP agreements, such as trademark or copyright licenses.",
     "author": "Accord Project",
     "license": "Apache-2.0",

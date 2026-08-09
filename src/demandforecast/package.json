@@ -1,7 +1,7 @@
 {
     "name": "demandforecast",
     "displayName": "Demand Forecast",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A sample demandforecast clause.",
     "author": "Accord Project",
     "license": "Apache-2.0",
