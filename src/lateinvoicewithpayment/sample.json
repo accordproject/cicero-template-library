@@ -8,5 +8,5 @@
   "purchaser": "resource:org.accordproject.party@0.2.0.Party#Betty%20Buyer",
   "supplier": "resource:org.accordproject.party@0.2.0.Party#Steve%20Seller",
   "$identifier": "a6d1af73-448e-4892-a357-b11322a22532",
-  "clauseId": "a6d1af73-448e-4892-a357-b11322a22532"
+  "contractId": "a6d1af73-448e-4892-a357-b11322a22532"
 }

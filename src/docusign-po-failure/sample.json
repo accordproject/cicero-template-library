@@ -33,6 +33,6 @@
     "currencyCode": "USD"
   },
   "repeatedFailureCompensationCurrency": "USD",
-  "clauseId": "d3e3a1c4-7f2b-4e6a-9c8d-1a2b3c4d5e6f",
+  "contractId": "d3e3a1c4-7f2b-4e6a-9c8d-1a2b3c4d5e6f",
   "$identifier": "d3e3a1c4-7f2b-4e6a-9c8d-1a2b3c4d5e6f"
 }

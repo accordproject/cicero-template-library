@@ -1,7 +1,7 @@
 namespace org.accordproject.eatapples@0.2.0
 
-import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
-import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.contract@0.2.0.Contract from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 transaction Food extends Request {
@@ -13,13 +13,13 @@ transaction Outcome extends Response {
   o String notice
 }
 
-event Bill {
+event Bill extends Obligation {
   o String billTo
   o MonetaryAmount amount
 }
 
 @template
-asset TemplateModel extends Clause {
+asset TemplateModel extends Contract {
   o String employee
   o String company
   o Double tax

@@ -1,6 +1,6 @@
 namespace org.accordproject.docusignpofailure@0.2.0
 
-import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.contract@0.2.0.Contract from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response,State,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.time@0.3.0.Duration from https://models.accordproject.org/time@0.3.0.cto
 import com.docusign.connect@0.4.0.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect@0.4.0.cto
@@ -21,7 +21,7 @@ asset PurchaseOrderFailureState extends State {
 }
 
 @template
-asset TemplateModel extends Clause {
+asset TemplateModel extends Contract {
   o String buyerName
 
   o Duration lateOne

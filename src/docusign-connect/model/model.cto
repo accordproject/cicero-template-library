@@ -1,6 +1,6 @@
 namespace org.accordproject.docusignconnect@0.1.0
 
-import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.contract@0.2.0.Contract from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response,State,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import com.docusign.connect@0.4.0.DocuSignEnvelopeInformation from https://models.accordproject.org/docusign/connect@0.4.0.cto
 import com.docusign.connect@0.4.0.EnvelopeStatusCode from https://models.accordproject.org/docusign/connect@0.4.0.cto
@@ -23,7 +23,7 @@ asset DocuSignEnvelopeCounterState extends State {
  * The template model
  */
 @template
-asset TemplateModel extends Clause {
+asset TemplateModel extends Contract {
   /**
    * The status of the envelope to count
    */

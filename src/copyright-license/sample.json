@@ -21,7 +21,7 @@
       "currencyCode": "USD"
     },
     "paymentProcedure": "bank transfer",
-    "clauseId": "26149239-4c42-4d57-b503-d5870d2337a8",
+    "contractId": "26149239-4c42-4d57-b503-d5870d2337a8",
     "$identifier": "26149239-4c42-4d57-b503-d5870d2337a8"
   },
   "$identifier": "ed39610c-5572-4381-b2ac-f7d75044edbc",
