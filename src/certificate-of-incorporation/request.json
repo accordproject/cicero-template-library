@@ -1,5 +1,5 @@
 {
-    "$class": "org.accordproject.signature@0.2.0.ContractSigned",
+    "$class": "org.accordproject.signature@0.3.0.ContractSigned",
     "$timestamp": "2020-01-15T00:00:00Z",
     "contract": "MY_CONTRACT"
 }
