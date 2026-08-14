@@ -1,11 +1,11 @@
 namespace org.accordproject.servicelevelagreement@0.2.0
 
-import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
-import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.contract@0.2.0.Contract from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 @template
-asset TemplateModel extends Clause {
+asset TemplateModel extends Contract {
   o Integer paymentPeriod
   o Double monthlyCapPercentage
   o Double yearlyCapPercentage
@@ -28,7 +28,7 @@ transaction InvoiceCredit extends Response {
   o MonetaryAmount monthlyCredit
 }
 
-event ServiceCreditPaymentEvent {
+event ServiceCreditPaymentEvent extends Obligation {
   o MonetaryAmount amount
   o String description
 }

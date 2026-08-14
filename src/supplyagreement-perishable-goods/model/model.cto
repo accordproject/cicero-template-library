@@ -5,8 +5,8 @@
  */
 namespace org.accordproject.supplyagreementperishablegoods@0.2.0
 
-import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
-import org.accordproject.runtime@0.2.0.{Request,Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.contract@0.2.0.Contract from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.runtime@0.2.0.{Request,Response,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
 /**
@@ -44,9 +44,9 @@ concept Shipment {
 }
 
 /**
- * Payment obligation event emitted when goods are received
+ * Payment obligation event emitted extends Obligation when goods are received
  */
-event PaymentObligationEvent {
+event PaymentObligationEvent extends Obligation {
   o String grower
   o String importer
   o MonetaryAmount totalPrice
@@ -74,7 +74,7 @@ transaction PriceCalculation extends Response {
  * The template model
  */
 @template
-asset TemplateModel extends Clause {
+asset TemplateModel extends Contract {
   o DateTime dueDate
   o String grower
   o String importer

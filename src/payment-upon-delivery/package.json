@@ -1,7 +1,7 @@
 {
     "name": "payment-upon-delivery",
     "displayName": "Payment Upon Delivery",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This is a one time payment contract upon acceptance of delivery.",
     "author": "Accord Project",
     "license": "Apache-2.0",

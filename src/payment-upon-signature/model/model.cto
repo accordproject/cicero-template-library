@@ -1,6 +1,6 @@
 namespace org.accordproject.paymentuponssignature@0.2.0
 
-import org.accordproject.contract@0.2.0.Clause from https://models.accordproject.org/accordproject/contract@0.2.0.cto
+import org.accordproject.contract@0.2.0.Contract from https://models.accordproject.org/accordproject/contract@0.2.0.cto
 import org.accordproject.runtime@0.2.0.{Request,Response,State,Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
 
@@ -8,7 +8,7 @@ import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordpr
  * The template model
  */
 @template
-asset TemplateModel extends Clause {
+asset TemplateModel extends Contract {
   o String buyer
   o String seller
   o MonetaryAmount amount
