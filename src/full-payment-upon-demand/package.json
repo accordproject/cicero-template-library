@@ -1,7 +1,7 @@
 {
     "name": "full-payment-upon-demand",
     "displayName": "Full Payment Upon Demand",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This is a one-time full payment clause applicable on demand.",
     "author": "Accord Project",
     "license": "Apache-2.0",
