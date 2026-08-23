@@ -45,9 +45,24 @@ if (archivedTemplates.length) {
 //   volumediscountolist       — template-engine#145
 //   volumediscountulist       — template-engine#145
 //
+// copyright-license-agreement-poc is a prototype migration onto the model
+// design proposed in accordproject/models#200 ("Agreement 1.0 Model
+// Redesign" — itself explicitly "a design target, not migration-ready").
+// Its @template-decorated class composes its variables onto a shared
+// AgreementDocument envelope (`extends AgreementDocument {}`, zero own
+// properties) rather than declaring them directly. TemplateMark's
+// WithDefinition/ClauseDefinition resolution (markdown-template's
+// TypeVisitor) looks properties up via ClassDeclaration#getOwnProperty,
+// which only inspects properties declared directly on that class and does
+// not walk the supertype chain — so no field reachable only through
+// inheritance or composition can be grammar-rendered today. Compilation,
+// sample.json round-tripping, and trigger() logic all pass; see
+// src/copyright-license-agreement-poc/README.md.
+//
 
 const expectedFailures = new Set([
     'bill-of-lading',
+    'copyright-license-agreement-poc',
     'fixed-interests',
     'supply-agreement-loc',
     'volumediscountolist',

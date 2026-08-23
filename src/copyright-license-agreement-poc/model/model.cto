@@ -1,0 +1,95 @@
+/*
+ * PROTOTYPE: migrating `copyright-license`'s nested `PaymentClause` onto
+ * the model design proposed in accordproject/models#200 ("Agreement 1.0
+ * Model Redesign"): https://github.com/accordproject/models/pull/200
+ *
+ * Compare with src/copyright-license/model/model.cto, which has:
+ *
+ *   asset PaymentClause extends Clause { ... }
+ *   asset TemplateModel extends Contract {
+ *     ... licensee/licenseeState/licenseeEntityType/licenseeAddress ...
+ *     ... licensor/licensorState/licensorEntityType/licensorAddress ...
+ *     o PaymentClause paymentClause
+ *   }
+ *
+ * Here, per PR #200's "composition over inheritance" and "unified party
+ * representation" shifts:
+ *   - PaymentTerms is composed ClauseData, not a Clause subclass.
+ *   - CopyrightLicenseData is composed TemplateData, not something the
+ *     envelope subclasses -- TemplateModel itself is just an
+ *     AgreementDocument (see model/agreement.cto).
+ *   - The four duplicated "licensee..." / "licensor..." string fields
+ *     collapse to two relationships into a single, unified Party type
+ *     (see model/party.cto).
+ *
+ * See model/agreement.cto for why this template's render test is
+ * expected to fail: TemplateModel's own body is empty (`extends
+ * AgreementDocument {}`) -- everything it needs (`data`, `clauses`,
+ * `parties`) is inherited, and @accordproject/markdown-template's
+ * grammar resolution (TypeVisitor.js) only looks at properties declared
+ * *directly* on the @template class, never up the supertype chain. So
+ * composing variables onto a shared envelope isn't grammar-renderable
+ * with today's tooling, regardless of how the composed field is typed.
+ * Compilation, sample.json validation/round-trip, and trigger() logic
+ * are unaffected and are expected to pass.
+ */
+
+namespace poc.accordproject.copyrightlicense@0.1.0
+
+import poc.accordproject.agreement@0.1.0.{TemplateData, ClauseData, AgreementDocument}
+import poc.accordproject.party@0.1.0.Party
+import org.accordproject.runtime@0.2.0.{Request, Response, Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+
+/* Requesting a payment */
+transaction PaymentRequest extends Request {
+}
+
+/* PayOut response */
+transaction PayOut extends Response {
+  o MonetaryAmount amount
+}
+
+event PaymentObligationEvent extends Obligation {
+  o MonetaryAmount amount
+  o String description
+}
+
+/*
+ * Composition, not inheritance. Was:
+ *   asset PaymentClause extends Clause { ... }
+ * subclassing the shared Clause envelope. Now it's ClauseData -- an
+ * ordinary concept, composed wherever a document needs it and
+ * addressable by path from a Clauses map (see model/agreement.cto)
+ * rather than pinned to one hand-declared field on every template that
+ * wants a payment clause.
+ */
+concept PaymentTerms extends ClauseData {
+  o String amountText
+  o MonetaryAmount amount
+  o String paymentProcedure
+}
+
+/*
+ * The template's own variables, composed as an AgreementDocument's
+ * `data` instead of defined by subclassing Contract. `licensee` and
+ * `licensor` are relationships into the unified Party type, replacing
+ * eight ad hoc string fields (four per party) with two references to
+ * one shared representation.
+ */
+concept CopyrightLicenseData extends TemplateData {
+  o DateTime effectiveDate
+
+  --> Party licensee
+  --> Party licensor
+
+  o String territory
+  o String purposeDescription
+  o String workDescription
+
+  o PaymentTerms paymentTerms
+}
+
+@template
+asset TemplateModel extends AgreementDocument {
+}

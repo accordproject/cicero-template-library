@@ -1,0 +1,29 @@
+{
+    "name": "copyright-license-agreement-poc",
+    "displayName": "Copyright License (agreement@1.0.0 migration prototype)",
+    "version": "0.1.0",
+    "description": "Prototype migration of copyright-license's nested PaymentClause onto the model design proposed in accordproject/models#200 (composition over inheritance, unified Party, path-addressed clauses).",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "template": "contract",
+        "cicero": "^2.0.0"
+    },
+    "keywords": [
+        "clause",
+        "copyright",
+        "license",
+        "agreement",
+        "prototype",
+        "models#200"
+    ],
+    "scripts": {
+        "test": "vitest run",
+        "compile": "concerto compile --model model/party.cto --model model/agreement.cto --model model/model.cto --target typescript --output logic/generated"
+    },
+    "tags": [
+        "intellectual-property",
+        "prototype"
+    ]
+}

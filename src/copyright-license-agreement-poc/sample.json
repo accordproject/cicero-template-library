@@ -1,0 +1,59 @@
+{
+  "$class": "poc.accordproject.copyrightlicense@0.1.0.TemplateModel",
+  "documentId": "ed39610c-5572-4381-b2ac-f7d75044edbc",
+  "parties": [
+    {
+      "$class": "poc.accordproject.party@0.1.0.Party",
+      "partyId": "me",
+      "name": "Me",
+      "role": "licensee",
+      "entityType": "Company",
+      "state": "NY",
+      "address": "1 Broadway"
+    },
+    {
+      "$class": "poc.accordproject.party@0.1.0.Party",
+      "partyId": "myself",
+      "name": "Myself",
+      "role": "licensor",
+      "entityType": "Company",
+      "state": "NY",
+      "address": "2 Broadway"
+    }
+  ],
+  "data": {
+    "$class": "poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData",
+    "effectiveDate": "2018-01-01T01:00:00.000+01:00",
+    "licensee": "resource:poc.accordproject.party@0.1.0.Party#me",
+    "licensor": "resource:poc.accordproject.party@0.1.0.Party#myself",
+    "territory": "United States",
+    "purposeDescription": "stuff",
+    "workDescription": "other stuff",
+    "paymentTerms": {
+      "$class": "poc.accordproject.copyrightlicense@0.1.0.PaymentTerms",
+      "amountText": "one hundred US Dollars",
+      "amount": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 100,
+        "currencyCode": "USD"
+      },
+      "paymentProcedure": "bank transfer"
+    }
+  },
+  "clauses": {
+    "paymentTerms": {
+      "$class": "poc.accordproject.agreement@0.1.0.Clause",
+      "path": "data.paymentTerms",
+      "data": {
+        "$class": "poc.accordproject.copyrightlicense@0.1.0.PaymentTerms",
+        "amountText": "one hundred US Dollars",
+        "amount": {
+          "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+          "doubleValue": 100,
+          "currencyCode": "USD"
+        },
+        "paymentProcedure": "bank transfer"
+      }
+    }
+  }
+}
