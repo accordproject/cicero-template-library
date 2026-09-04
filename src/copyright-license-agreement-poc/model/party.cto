@@ -15,18 +15,40 @@
 namespace poc.accordproject.party@0.1.0
 
 /*
- * A single, unified representation of a contracting party. Replaces
- * the old pattern of each template declaring its own one-off party
- * fields (e.g. copyright-license's separate `licensee`/`licenseeState`/
- * `licenseeEntityType`/`licenseeAddress` string fields, duplicated a
- * second time for `licensor`).
+ * A single, unified representation of a contracting party, identified
+ * by a stable id. This is the "registry" type: at the agreement
+ * envelope layer (not modeled by this template-only prototype -- see
+ * model/agreement.cto), `--> Party` relationships resolve against
+ * instances of this type. Template *data* never references `Party`
+ * directly; it embeds a `PartyRef` instead (below).
  */
-concept Party identified by partyId {
+participant Party identified by partyId {
   o String partyId
+  o String name optional
+}
 
-  o String name
-  o String role optional
-  o String entityType optional
-  o String state optional
-  o String address optional
+/*
+ * A portable, embedded reference to a party, for use *inside* template
+ * data (see `CopyrightLicenseData.licensee` / `.licensor` in
+ * model/model.cto).
+ *
+ * Earlier revisions of this prototype used a Concerto relationship
+ * (`--> Party licensee`) here instead. That doesn't survive the trip
+ * through `logic.trigger()`: a relationship serializes to an
+ * unresolvable `"resource:...#me"` string, and there is no
+ * relationship-resolution step between the sample data and the logic
+ * sandbox -- so logic.ts had to hand-roll a `resolveParty()` helper
+ * that walked a separate `parties` array looking for a matching id.
+ * `PartyRef` is a plain embedded value instead: it carries whatever a
+ * consuming system needs to identify the party on its own terms (`id`
+ * within `scheme`), plus an optional human-readable `label`, so
+ * template data -- and template logic -- never needs a registry to
+ * look anything up. `--> Party` relationships remain the right tool
+ * where a registry *does* exist, e.g. on the agreement envelope's
+ * `AgreementParty` (model/agreement.cto).
+ */
+concept PartyRef {
+  o String id
+  o String scheme
+  o String label optional
 }

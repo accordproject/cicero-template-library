@@ -13,54 +13,35 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import CopyrightLicenseLogic from './logic';
-import { ITemplateModel, IPaymentRequest } from './generated/poc.accordproject.copyrightlicense@0.1.0';
+import { ICopyrightLicenseData, IPaymentRequest } from './generated/poc.accordproject.copyrightlicense@0.1.0';
 
 describe('CopyrightLicenseLogic', () => {
     let logic: CopyrightLicenseLogic;
-    let model: ITemplateModel;
+    let data: ICopyrightLicenseData;
 
     beforeEach(() => {
         logic = new CopyrightLicenseLogic();
 
         // Raw sample data, mirroring what template-engine hands to
-        // logic.trigger(): relationships and Map-typed fields are still
-        // their serialized JSON shape (see logic.ts comments), not
-        // resolved Concerto resources.
-        model = {
-            $class: 'poc.accordproject.copyrightlicense@0.1.0.TemplateModel',
-            documentId: 'test-document-id',
-            parties: [
-                { $class: 'poc.accordproject.party@0.1.0.Party', partyId: 'me', name: 'Me' },
-                { $class: 'poc.accordproject.party@0.1.0.Party', partyId: 'myself', name: 'Myself' },
-            ],
-            data: {
-                $class: 'poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData',
-                effectiveDate: new Date('2018-01-01T00:00:00Z'),
-                licensee: 'resource:poc.accordproject.party@0.1.0.Party#me',
-                licensor: 'resource:poc.accordproject.party@0.1.0.Party#myself',
-                territory: 'United States',
-                purposeDescription: 'stuff',
-                workDescription: 'other stuff',
-                paymentTerms: {
-                    $class: 'poc.accordproject.copyrightlicense@0.1.0.PaymentTerms',
-                    amountText: 'one hundred US Dollars',
-                    amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 100.0, currencyCode: 'USD' },
-                    paymentProcedure: 'bank transfer',
-                },
+        // logic.trigger(): `data` IS the template model directly (no
+        // envelope to unwrap, and no `clauses` map -- see logic.ts
+        // comments). `licensee`/`licensor` are portable PartyRef values,
+        // not relationships, so there is nothing to resolve.
+        data = {
+            $class: 'poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData',
+            effectiveDate: new Date('2018-01-01T00:00:00Z'),
+            licensee: { $class: 'poc.accordproject.party@0.1.0.PartyRef', id: 'me', scheme: 'poc.accordproject.party@0.1.0.Party', label: 'Me' },
+            licensor: { $class: 'poc.accordproject.party@0.1.0.PartyRef', id: 'myself', scheme: 'poc.accordproject.party@0.1.0.Party', label: 'Myself' },
+            territory: 'United States',
+            purposeDescription: 'stuff',
+            workDescription: 'other stuff',
+            paymentTerms: {
+                $class: 'poc.accordproject.copyrightlicense@0.1.0.PaymentTerms',
+                amountText: 'one hundred US Dollars',
+                amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 100.0, currencyCode: 'USD' },
+                paymentProcedure: 'bank transfer',
             },
-            clauses: {
-                paymentTerms: {
-                    $class: 'poc.accordproject.agreement@0.1.0.Clause',
-                    path: 'data.paymentTerms',
-                    data: {
-                        $class: 'poc.accordproject.copyrightlicense@0.1.0.PaymentTerms',
-                        amountText: 'one hundred US Dollars',
-                        amount: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 100.0, currencyCode: 'USD' },
-                        paymentProcedure: 'bank transfer',
-                    },
-                },
-            },
-        } as unknown as ITemplateModel;
+        } as unknown as ICopyrightLicenseData;
     });
 
     describe('trigger', () => {
@@ -70,7 +51,7 @@ describe('CopyrightLicenseLogic', () => {
                 $timestamp: new Date()
             };
 
-            const result = await logic.trigger(model, request);
+            const result = await logic.trigger(data, request);
 
             expect(result.result).toBeDefined();
             expect(result.result.$class).toBe('poc.accordproject.copyrightlicense@0.1.0.PayOut');
@@ -79,13 +60,13 @@ describe('CopyrightLicenseLogic', () => {
             expect(result.result.amount.currencyCode).toBe('USD');
         });
 
-        it('should emit a PaymentObligationEvent naming the parties resolved from the unified Party list', async () => {
+        it('should emit a PaymentObligationEvent naming the parties from their embedded PartyRef labels', async () => {
             const request: IPaymentRequest = {
                 $class: 'poc.accordproject.copyrightlicense@0.1.0.PaymentRequest',
                 $timestamp: new Date()
             };
 
-            const result = await logic.trigger(model, request);
+            const result = await logic.trigger(data, request);
 
             expect(Array.isArray(result.events)).toBe(true);
             expect(result.events).toHaveLength(1);
@@ -97,15 +78,15 @@ describe('CopyrightLicenseLogic', () => {
             expect(event.description).toBe('Me should pay contract amount to Myself');
         });
 
-        it('should read the payment amount from the path-addressed clauses map, not the embedded fallback', async () => {
-            (model as any).clauses.paymentTerms.data.amount = { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 250.0, currencyCode: 'GBP' };
+        it('should read the payment amount from the nested paymentTerms field', async () => {
+            (data as any).paymentTerms.amount = { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 250.0, currencyCode: 'GBP' };
 
             const request: IPaymentRequest = {
                 $class: 'poc.accordproject.copyrightlicense@0.1.0.PaymentRequest',
                 $timestamp: new Date()
             };
 
-            const result = await logic.trigger(model, request);
+            const result = await logic.trigger(data, request);
 
             expect(result.result.amount.doubleValue).toBe(250.0);
             expect(result.result.amount.currencyCode).toBe('GBP');

@@ -5,14 +5,21 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IParty
+	ITemplateData,
+	IStateData
+} from './poc.accordproject.templatedata@0.1.0';
+import type {
+	IPartyRef
 } from './poc.accordproject.party@0.1.0';
 import type {
-	ITemplateData,
-	IClauseData,
-	IClause,
-	IAgreementDocument
+	IAgreementParty,
+	IAgreementDocument,
+	IAgreementReference,
+	IAgreement
 } from './poc.accordproject.agreement@0.1.0';
+import type {
+	IPaymentTerms
+} from './poc.accordproject.copyrightlicense@0.1.0';
 import type {
 	IDigitalMonetaryAmount,
 	DigitalCurrencyCode,
@@ -32,6 +39,11 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IParty
+} from './poc.accordproject.party@0.1.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
 	IRequest,
 	IResponse
 } from './org.accordproject.runtime@0.2.0';
@@ -46,11 +58,14 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IParty | 
-ITemplateData | 
-IClauseData | 
-IClause | 
+export type ConceptUnion = ITemplateData | 
+IStateData | 
+IPartyRef | 
+IAgreementParty | 
 IAgreementDocument | 
+IAgreementReference | 
+IAgreement | 
+IPaymentTerms | 
 IDigitalMonetaryAmount | 
 IMonetaryAmount | 
 ICurrencyConversion;
@@ -66,6 +81,8 @@ IState;
 export interface IParticipant extends IConcept {
    $identifier: string;
 }
+
+export type ParticipantUnion = IParty;
 
 export interface ITransaction extends IConcept {
    $timestamp: Date;

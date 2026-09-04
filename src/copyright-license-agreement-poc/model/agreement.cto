@@ -15,73 +15,70 @@
 namespace poc.accordproject.agreement@0.1.0
 
 import poc.accordproject.party@0.1.0.Party
+import poc.accordproject.templatedata@0.1.0.TemplateData
 
 /*
- * Extension point for a template's own variables. A template now
- * *composes* one of these into an AgreementDocument, instead of
- * carrying its variables by subclassing the agreement envelope (the
- * old `TemplateModel extends Contract` / `extends Clause` pattern).
+ * One party's role within an agreement, resolved through the party
+ * registry (see model/party.cto's `Party`). Unlike template data's
+ * `PartyRef` (model/party.cto), a registry genuinely exists at this
+ * envelope layer, so a real Concerto relationship is the right tool
+ * here.
  */
-abstract concept TemplateData {
-}
-
-/*
- * Extension point for a single clause's own variables -- the
- * composition-based replacement for a clause type that subclasses a
- * shared `Clause` base (e.g. the old `PaymentClause extends Clause`).
- */
-abstract concept ClauseData {
-}
-
-/*
- * A single instantiated clause, addressable by its TemplateMark
- * instance path (e.g. "paymentTerms", or "deliveries[2].payment" for a
- * clause nested inside a repeating structure) rather than by a fixed,
- * statically-typed field on the envelope.
- */
-concept Clause {
-  o String path
-  o ClauseData data
-}
-
-/*
- * Clause instances for one document, keyed by instance path. This is
- * the data-driven replacement for subclassing per nested-clause type:
- * which clauses exist, and in what shape, is determined by what's in
- * the map at runtime, not by the document's static type hierarchy.
- *
- * Tooling note: as of this prototype, @accordproject/markdown-template
- * cannot bind a `{{#clause}}` grammar block to a Map entry at all --
- * ClauseDefinition/WithDefinition resolution looks properties up via
- * ClassDeclaration#getOwnProperty (see TypeVisitor.js), which only
- * inspects properties declared *directly* on the @template class and
- * never walks the supertype chain. That's a stricter problem than "no
- * map support": it means nothing reachable only through inheritance or
- * composition renders, whether it's this Map or a plain composed field.
- * See model/model.cto and test/render.test.mjs's `expectedFailures` for
- * how that plays out for this template. This gap is consistent with PR
- * #200 being flagged "a design target, not migration-ready": the model
- * shape can be expressed today (Concerto 4 map support), but
- * cicero-core/template-engine need to catch up before a template can
- * rely on it end-to-end for grammar rendering. This prototype populates
- * `clauses` as a faithful data-layer example anyway -- it compiles,
- * round-trips through the serializer, and is what template logic reads
- * (see logic/logic.ts) even though the grammar can't reach it yet.
- */
-map Clauses {
-  o String
-  o Clause
+concept AgreementParty {
+  o String role optional
+  --> Party party
 }
 
 /*
  * One instrument within an Agreement (e.g. a master agreement, a
- * schedule, an annex). Carries the template's composed data, its
- * clause map, and the subset of the agreement's parties relevant to
- * this document.
+ * schedule, an annex). Carries a template's composed data and the
+ * subset of the agreement's parties relevant to this document.
+ *
+ * `copyright-license-agreement-poc` has no composed sub-template
+ * archives, so its own template model (model/model.cto's
+ * `CopyrightLicenseData`) *is* the renderable root directly -- it is
+ * never wrapped in an `AgreementDocument`, and this prototype's
+ * model.cto does not import this concept. It's vendored here purely to
+ * document the wider envelope a runtime composing multiple documents
+ * together would use.
+ *
+ * Where a document *does* compose one or more sub-template archives,
+ * each instance would be addressed through a `clauses` map keyed by its
+ * TemplateMark instance path (e.g. "paymentTerms", rooted at the
+ * document's data -- never prefixed with "data."), holding a `Clause {
+ * template: TemplateReference, clauseId optional, clauseHash optional }`
+ * pointing at the composed archive (see the `template@1.0.0` and
+ * `agreement@1.0.0` namespaces in accordproject/models#200 for that
+ * full shape -- note `Clause.path` has been removed there: the instance
+ * path now lives only as the map key). That `clauses` map is omitted
+ * from this vendored subset entirely, because this prototype's
+ * `PaymentTerms` (model/model.cto) is an ordinary nested concept, not a
+ * composed sub-template archive -- no `clauses` entry is ever
+ * populated, or would even have anywhere authoritative to point.
  */
 concept AgreementDocument {
   o String documentId
   o TemplateData data
-  o Clauses clauses
-  o Party[] parties optional
+  o AgreementParty[] parties optional
+}
+
+/*
+ * A reference to one document within an agreement, e.g. for
+ * cross-referencing between composed documents. Vendored for parity
+ * with the real namespace; unused by this prototype.
+ */
+concept AgreementReference {
+  o String agreementId
+  o String documentId
+}
+
+/*
+ * The top-level agreement: a collection of documents plus the parties
+ * to the agreement as a whole. Vendored for parity with the real
+ * namespace; unused by this prototype.
+ */
+concept Agreement {
+  o String agreementId
+  o AgreementDocument[] documents
+  o AgreementParty[] parties optional
 }

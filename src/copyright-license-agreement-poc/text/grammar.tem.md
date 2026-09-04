@@ -1,7 +1,6 @@
 Copyright License Agreement
 
-{{#with data}}
-This COPYRIGHT LICENSE AGREEMENT (the "Agreement"), dated as of {{effectiveDate}} (the "Effective Date"), is made by and between {{licensee}} ("Licensee") and {{licensor}} ("Licensor").
+This COPYRIGHT LICENSE AGREEMENT (the "Agreement"), dated as of {{effectiveDate}} (the "Effective Date"), is made by and between {{#with licensee}}{{label}}{{/with}} ("Licensee") and {{#with licensor}}{{label}}{{/with}} ("Licensor").
 
 WHEREAS, Licensor solely and exclusively owns or controls the Work (as defined below) and wishes to grant to Licensee a license to the Work, and Licensee wishes to obtain a license to the Work for the uses and purposes described herein, each subject to the terms and conditions set forth herein.
 
@@ -18,7 +17,6 @@ Copyright Notices. Licensee shall ensure that its use of the Work is marked with
 {{#clause paymentTerms}}
 Payment. As consideration in full for the rights granted herein, Licensee shall pay Licensor a one-time fee in the amount of {{amountText}} ({{amount}}) upon execution of this Agreement, payable as follows: {{paymentProcedure}}.
 {{/clause}}
-{{/with}}
 
 General.
 

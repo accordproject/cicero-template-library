@@ -2,15 +2,17 @@
 // Generated code for namespace: poc.accordproject.party@0.1.0
 
 // imports
-import {IConcept} from './concerto@1.0.0';
+import {IParticipant,IConcept} from './concerto@1.0.0';
 
 // interfaces
-export interface IParty extends IConcept {
+export interface IParty extends IParticipant {
    partyId: string;
-   name: string;
-   role?: string;
-   entityType?: string;
-   state?: string;
-   address?: string;
+   name?: string;
+}
+
+export interface IPartyRef extends IConcept {
+   id: string;
+   scheme: string;
+   label?: string;
 }
 
