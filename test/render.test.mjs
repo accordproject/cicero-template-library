@@ -44,7 +44,6 @@ if (archivedTemplates.length) {
 //   supply-agreement-loc      — template-engine#146
 //   volumediscountolist       — template-engine#145
 //   volumediscountulist       — template-engine#145
-//
 
 const expectedFailures = new Set([
     'bill-of-lading',
@@ -52,6 +51,38 @@ const expectedFailures = new Set([
     'supply-agreement-loc',
     'volumediscountolist',
     'volumediscountulist',
+]);
+
+// copyright-license-agreement-poc is a prototype migration onto the model
+// design proposed in accordproject/models#200 ("Agreement 1.0 Model
+// Redesign"). Per that design, a template's model has no `@template`
+// decorator: the renderable root is found by its *parent type* — a
+// template's model declares exactly one concrete subtype of
+// `templatedata@1.0.0.TemplateData`, and that subtype IS the template
+// model (see model/model.cto's `CopyrightLicenseData`).
+//
+// The *installed* @accordproject/cicero-core (2.1.1, and the copy vendored
+// inside @accordproject/template-engine) doesn't know that rule yet:
+// `Template#getTemplateModel()` calls markdown-template's
+// `findTemplateConcept()`, which unconditionally requires exactly one
+// concrete concept carrying `@template` and throws "Failed to find a
+// concept with the @template decorator" otherwise. That call isn't only
+// on the rendering path — `Template#validate()` calls it unconditionally,
+// and `Template.fromDirectory()` calls `validate()`, so *loading* this
+// template at all (not just drafting or triggering it) throws with
+// today's toolchain. The fix is accordproject/template-archive#946, which
+// is not released; until it ships this template cannot be loaded, drafted,
+// or triggered through cicero-core/template-engine. See
+// src/copyright-license-agreement-poc/README.md.
+//
+// This is intentional — re-adding `@template` would just paper over the
+// gap this prototype exists to demonstrate — so it's tracked as its own
+// set (a strict superset of `expectedFailures`: a template here can't
+// even be *loaded*, let alone drafted or triggered) rather than folded
+// into `expectedFailures` above, whose entries load and trigger fine and
+// fail only at the drafting step.
+const expectedLoadFailures = new Set([
+    'copyright-license-agreement-poc', // template-archive#946
 ]);
 
 // Only templates with compiled logic can be triggered/initialized.
@@ -92,8 +123,24 @@ const getTemplate = (templatePath) => {
 const isStatefulTemplate = (template) => template.isStateful();
 const statefulLogicTemplateNames = new Set(
     (await Promise.all(logicTemplates.map(async ({ name, path: templatePath }) => {
-        const template = await getTemplate(templatePath);
-        return isStatefulTemplate(template) ? name : null;
+        try {
+            const template = await getTemplate(templatePath);
+            return isStatefulTemplate(template) ? name : null;
+        } catch (error) {
+            // A template in `expectedLoadFailures` is known not to load
+            // at all with today's toolchain (see comment above) — that
+            // gap surfaces properly, as a failing `it.fails`, in the
+            // per-template describe blocks below. Swallowing it here
+            // only prevents this module-level probe (which every
+            // template's test depends on, stateful or not) from taking
+            // the whole file down before any test even runs. Any other
+            // template failing to load here is a real, unexpected
+            // problem, so it's left to throw.
+            if (expectedLoadFailures.has(name)) {
+                return null;
+            }
+            throw error;
+        }
     }))).filter(Boolean),
 );
 const statefulLogicTemplates = logicTemplates.filter(t => statefulLogicTemplateNames.has(t.name));
@@ -131,7 +178,7 @@ describe('template compilation', () => {
 
 describe('template-engine render', () => {
     for (const name of templates) {
-        const test = expectedFailures.has(name) ? it.fails : it;
+        const test = (expectedFailures.has(name) || expectedLoadFailures.has(name)) ? it.fails : it;
         test(name, async () => {
             const templatePath = join(SRC, name);
             const template = await getTemplate(templatePath);
@@ -179,7 +226,8 @@ describe.concurrent('template-engine init', () => {
 
 describe.concurrent('template-engine trigger', () => {
     for (const { name, path: templatePath } of logicTemplates) {
-        it(name, async () => {
+        const test = expectedLoadFailures.has(name) ? it.fails : it;
+        test(name, async () => {
             const template = await getTemplate(templatePath);
             const proc = new TemplateArchiveProcessor(template);
             const data = getData(templatePath, name);

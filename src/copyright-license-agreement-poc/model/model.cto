@@ -1,0 +1,101 @@
+/*
+ * PROTOTYPE: migrating `copyright-license`'s nested `PaymentClause` onto
+ * the model design proposed in accordproject/models#200 ("Agreement 1.0
+ * Model Redesign"): https://github.com/accordproject/models/pull/200
+ *
+ * Compare with src/copyright-license/model/model.cto, which has:
+ *
+ *   asset PaymentClause extends Clause { ... }
+ *   asset TemplateModel extends Contract {
+ *     ... licensee/licenseeState/licenseeEntityType/licenseeAddress ...
+ *     ... licensor/licensorState/licensorEntityType/licensorAddress ...
+ *     o PaymentClause paymentClause
+ *   }
+ *
+ * Here, per PR #200's current shape:
+ *   - There is no `@template` decorator and no envelope class for the
+ *     data to be composed onto. A template's model declares exactly one
+ *     *concrete* subtype of `templatedata@1.0.0.TemplateData`, and that
+ *     subtype IS the template model -- the renderable root is found by
+ *     its parent type, not a decorator. `CopyrightLicenseData` below is
+ *     that root; it carries the template's variables directly.
+ *   - `PaymentTerms` is an ordinary nested concept (not a `Clause`
+ *     subclass, and not itself a `TemplateData` subtype -- only the
+ *     root extends `TemplateData`), addressed as a plain subtree of the
+ *     data at "paymentTerms". `copyright-license` has no composed
+ *     sub-template archive for its payment clause -- `{{#clause
+ *     paymentTerms}}` in text/grammar.tem.md is an inline grammar block
+ *     written directly in this template's own grammar -- so there is no
+ *     `clauses` map here at all (see model/agreement.cto).
+ *   - The four duplicated "licensee..." / "licensor..." string fields
+ *     collapse to two `PartyRef` values (see model/party.cto): a
+ *     portable embedded reference, not a `--> Party` relationship. A
+ *     relationship reaches `trigger()` as an unresolvable
+ *     `"resource:...#me"` string with nothing to resolve it against;
+ *     `--> Party` relationships belong on the agreement envelope's
+ *     `AgreementParty`, where a registry actually exists.
+ *
+ * Whether this compiles, round-trips sample.json, renders, and triggers
+ * with *today's* installed toolchain -- as opposed to being faithful to
+ * PR #200's design -- is a separate question. See
+ * src/copyright-license-agreement-poc/README.md and
+ * test/render.test.mjs's `expectedFailures` for what was actually
+ * observed.
+ */
+
+namespace poc.accordproject.copyrightlicense@0.1.0
+
+import poc.accordproject.templatedata@0.1.0.TemplateData
+import poc.accordproject.party@0.1.0.PartyRef
+import org.accordproject.runtime@0.2.0.{Request, Response, Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
+import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+
+/* Requesting a payment */
+transaction PaymentRequest extends Request {
+}
+
+/* PayOut response */
+transaction PayOut extends Response {
+  o MonetaryAmount amount
+}
+
+event PaymentObligationEvent extends Obligation {
+  o MonetaryAmount amount
+  o String description
+}
+
+/*
+ * An ordinary nested concept, not a `Clause` subclass and not a
+ * `TemplateData` subtype -- just a subtree of `CopyrightLicenseData`,
+ * addressed by TemplateMark at "paymentTerms". Was:
+ *   asset PaymentClause extends Clause { ... }
+ */
+concept PaymentTerms {
+  o String amountText
+  o MonetaryAmount amount
+  o String paymentProcedure
+}
+
+/*
+ * The template model. This concept IS the renderable root -- there is
+ * no `@template` decorator and no envelope it's composed onto. Its
+ * properties are declared directly here, so the grammar roots at the
+ * data itself (`{{effectiveDate}}` resolves directly; no `{{#with
+ * data}}` wrapper is needed).
+ *
+ * `licensee` and `licensor` are `PartyRef` values -- portable embedded
+ * references, not relationships -- replacing eight ad hoc string fields
+ * (four per party) with two references to one shared representation.
+ */
+concept CopyrightLicenseData extends TemplateData {
+  o DateTime effectiveDate
+
+  o PartyRef licensee
+  o PartyRef licensor
+
+  o String territory
+  o String purposeDescription
+  o String workDescription
+
+  o PaymentTerms paymentTerms
+}
