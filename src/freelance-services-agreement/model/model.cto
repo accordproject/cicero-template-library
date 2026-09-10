@@ -1,0 +1,53 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.accordproject.freelanceservicesagreement
+
+import org.accordproject.contract.* from https://models.accordproject.org/accordproject/contract.cto
+import org.accordproject.party.* from https://models.accordproject.org/accordproject/party.cto
+import org.accordproject.runtime.* from https://models.accordproject.org/accordproject/runtime.cto
+import org.accordproject.obligation.* from https://models.accordproject.org/accordproject/obligation.cto
+import org.accordproject.money.MonetaryAmount from https://models.accordproject.org/money@0.2.0.cto
+import org.accordproject.payment.PaymentReceived from https://models.accordproject.org/payment/payment@0.2.0.cto
+
+/**
+ * The template model for a Freelance Services Agreement
+ */
+asset FreelanceServicesAgreementTemplate extends Contract {
+  --> Party client
+  --> Party provider
+  o String scopeOfWork
+  o MonetaryAmount paymentAmount
+  o Integer paymentDueDays
+  o String governingLaw
+}
+
+/**
+ * Request: the provider notifies that work is complete
+ */
+transaction WorkCompleted extends Request {
+}
+
+/**
+ * Contract state
+ */
+asset FreelanceServicesAgreementState extends State {
+  o AgreementStatus status default = "INITIALIZED"
+}
+
+enum AgreementStatus {
+  o INITIALIZED
+  o PAYMENT_DUE
+  o COMPLETED
+}
