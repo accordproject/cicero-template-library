@@ -9,7 +9,7 @@ import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
 export interface ITemplateModel extends IClause {
    purchaser: string;
    supplier: string;
-   effectiveDate: Date;
+   effectiveDate: string;
    minimumPercentage: number;
 }
 

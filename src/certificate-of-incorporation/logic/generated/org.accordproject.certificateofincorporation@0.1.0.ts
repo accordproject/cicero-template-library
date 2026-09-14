@@ -2,18 +2,19 @@
 // Generated code for namespace: org.accordproject.certificateofincorporation@0.1.0
 
 // imports
-import {IClause} from './org.accordproject.contract@0.2.0';
-import {IEvent} from './concerto@1.0.0';
+import {IContract} from './org.accordproject.contract@0.2.0';
+import {IObligation} from './org.accordproject.runtime@0.2.0';
+import {IParticipant} from './concerto@1.0.0';
 
 // interfaces
-export interface IIncorporationEvent extends IEvent {
+export interface IIncorporationEvent extends IObligation {
    companyName: string;
-   incorporationDate: Date;
+   incorporationDate: string;
    authorizedShareCapital: number;
    parValue: number;
 }
 
-export interface ITemplateModel extends IClause {
+export interface ITemplateModel extends IContract {
    companyName: string;
    incorporationState: string;
    streetAddress: string;
@@ -21,7 +22,7 @@ export interface ITemplateModel extends IClause {
    addressLocality: string;
    postalCode: string;
    registeredAgentName: string;
-   incorporationDate: Date;
+   incorporationDate: string;
    authorizedShareCapital: number;
    parValue: number;
    incorporatorName: string;

@@ -42,7 +42,7 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
                 $class: 'org.accordproject.supplyagreementloc@0.2.0.SensorReadingData',
                 temperature: reading.temperature,
                 humidity: reading.humidity,
-                readingTime: now,
+                readingTime: now.toISOString(),
             };
             const updatedReadings = [...state.sensorReadings, readingData];
 

@@ -80,12 +80,12 @@ export enum DocumentType {
 export interface IEnvelopeStatus extends IConcept {
    status: EnvelopeStatusCode;
    envelopeId?: string;
-   created?: Date;
-   sent?: Date;
-   delivered?: Date;
-   signed?: Date;
-   completed?: Date;
-   declined?: Date;
+   created?: string;
+   sent?: string;
+   delivered?: string;
+   signed?: string;
+   completed?: string;
+   declined?: string;
    email?: string;
 }
 
@@ -93,10 +93,10 @@ export interface IRecipient extends IConcept {
    status: RecipientStatusCode;
    email: string;
    userName: string;
-   sent?: Date;
-   delivered?: Date;
-   signed?: Date;
-   declined?: Date;
+   sent?: string;
+   delivered?: string;
+   signed?: string;
+   declined?: string;
    declineReason?: string;
    tabStatuses?: ITabStatus[];
 }
@@ -111,7 +111,7 @@ export interface ITabStatus extends IConcept {
    status: string;
    tabLabel: string;
    originalValue?: string;
-   signed?: Date;
+   signed?: string;
    customTabType?: CustomTabTypeCode;
 }
 
@@ -133,7 +133,7 @@ export interface ITextTabStatus extends ITabStatus {
 
 export interface IDateTabStatus extends ITabStatus {
    tabName?: string;
-   tabValue?: Date;
+   tabValue?: string;
 }
 
 export interface IBooleanTabStatus extends ITabStatus {

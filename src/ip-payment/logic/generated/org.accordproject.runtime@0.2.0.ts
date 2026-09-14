@@ -6,12 +6,12 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPaymentRequest
-} from './org.accordproject.ippayment@0.2.0';
+} from './org.accordproject.ippayment@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IPayOut
-} from './org.accordproject.ippayment@0.2.0';
+} from './org.accordproject.ippayment@0.3.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 
@@ -31,7 +31,7 @@ export interface IObligation extends IEvent {
    contract: IContract;
    promisor?: IParticipant;
    promisee?: IParticipant;
-   deadline?: Date;
+   deadline?: string;
 }
 
 export interface IState extends IAsset {

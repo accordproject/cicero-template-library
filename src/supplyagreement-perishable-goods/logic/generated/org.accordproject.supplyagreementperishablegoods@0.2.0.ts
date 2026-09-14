@@ -2,10 +2,10 @@
 // Generated code for namespace: org.accordproject.supplyagreementperishablegoods@0.2.0
 
 // imports
-import {IClause} from './org.accordproject.contract@0.2.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IContract} from './org.accordproject.contract@0.2.0';
+import {IObligation,IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
-import {IConcept,IEvent} from './concerto@1.0.0';
+import {IConcept,IParticipant} from './concerto@1.0.0';
 
 // interfaces
 export enum ShipmentStatus {
@@ -33,7 +33,7 @@ export interface IShipment extends IConcept {
    sensorReadings?: ISensorReading[];
 }
 
-export interface IPaymentObligationEvent extends IEvent {
+export interface IPaymentObligationEvent extends IObligation {
    grower: string;
    importer: string;
    totalPrice: IMonetaryAmount;
@@ -51,8 +51,8 @@ export interface IPriceCalculation extends IResponse {
    late: boolean;
 }
 
-export interface ITemplateModel extends IClause {
-   dueDate: Date;
+export interface ITemplateModel extends IContract {
+   dueDate: string;
    grower: string;
    importer: string;
    shipment: string;

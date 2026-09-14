@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-// Generated code for namespace: org.accordproject.ippayment@0.2.0
+// Generated code for namespace: org.accordproject.ippayment@0.3.0
 
 // imports
 import {IClause} from './org.accordproject.contract@0.2.0';
@@ -9,14 +9,14 @@ import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 
 // interfaces
 export interface IPaymentRequest extends IRequest {
-   netSaleRevenue: number;
-   sublicensingRevenue: number;
-   permissionGrantedBy?: Date;
+   netSaleRevenue: IMonetaryAmount;
+   sublicensingRevenue: IMonetaryAmount;
+   permissionGrantedBy?: string;
 }
 
 export interface IPayOut extends IResponse {
    totalAmount: IMonetaryAmount;
-   dueBy: Date;
+   dueBy: string;
 }
 
 export interface ITemplateModel extends IClause {

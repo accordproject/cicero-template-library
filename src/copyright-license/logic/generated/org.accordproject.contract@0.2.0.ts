@@ -5,8 +5,12 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IPaymentClause,
 	ITemplateModel
+} from './org.accordproject.copyrightlicense@0.2.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IPaymentClause
 } from './org.accordproject.copyrightlicense@0.2.0';
 import {IAsset} from './concerto@1.0.0';
 
@@ -15,10 +19,11 @@ export interface IContract extends IAsset {
    contractId: string;
 }
 
+export type ContractUnion = ITemplateModel;
+
 export interface IClause extends IAsset {
    clauseId: string;
 }
 
-export type ClauseUnion = IPaymentClause | 
-ITemplateModel;
+export type ClauseUnion = IPaymentClause;
 

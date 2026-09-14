@@ -2,7 +2,7 @@
 // Generated code for namespace: org.accordproject.supplyagreement@0.2.0
 
 // imports
-import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IContract} from './org.accordproject.contract@0.2.0';
 import {IObligation,IState,IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 import {IConcept,IParticipant} from './concerto@1.0.0';
@@ -23,12 +23,12 @@ export interface IOrderItem extends IConcept {
 export interface IPurchaseOrder extends IConcept {
    products: IProduct[];
    deliveryLocation: string;
-   deliveryDate: Date;
+   deliveryDate: string;
 }
 
 export interface IDeliveryObligationEvent extends IObligation {
    party: string;
-   expectedDelivery: Date;
+   expectedDelivery: string;
    deliverables: IOrderItem[];
 }
 
@@ -53,7 +53,7 @@ export interface IPurchaseObligationData extends IConcept {
 
 export interface IDeliveryObligationData extends IConcept {
    party: string;
-   expectedDelivery: Date;
+   expectedDelivery: string;
    deliverables: IOrderItem[];
 }
 
@@ -97,8 +97,8 @@ export interface IPaymentResponse extends IResponse {
    paid: IMonetaryAmount;
 }
 
-export interface ITemplateModel extends IClause {
-   effectiveDate: Date;
+export interface ITemplateModel extends IContract {
+   effectiveDate: string;
    supplier: string;
    buyer: string;
    shortDescriptionOfTheProducts: string;

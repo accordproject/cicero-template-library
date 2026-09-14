@@ -12,7 +12,7 @@ import {IConcept} from './concerto@1.0.0';
 export interface ISensorReadingData extends IConcept {
    temperature: number;
    humidity: number;
-   readingTime: Date;
+   readingTime: string;
 }
 
 export interface ISensorReading extends IRequest {
@@ -33,12 +33,12 @@ export interface ISupplyAgreementState extends IState {
 }
 
 export interface ITemplateModel extends IClause {
-   executionDate: Date;
+   executionDate: string;
    exporter: string;
    importer: string;
    product: string;
    importerCreditworthiness: string;
-   issueDate: Date;
+   issueDate: string;
    importerLOCBank: string;
    importerLOCNumber: number;
    importerLOCAmount: IMonetaryAmount;
@@ -57,7 +57,7 @@ export interface ITemplateModel extends IClause {
    unitPriceOfEachProduct: IMonetaryAmount;
    unitPriceCurrency: string;
    locationForDelivery: string;
-   deliveryDate: Date;
+   deliveryDate: string;
    exporterBankAccount: number;
    modifiedPurchaseOrder: string;
    cancellationDeadline: IDuration;
@@ -71,7 +71,7 @@ export interface ITemplateModel extends IClause {
    freightCurrency: string;
    evaluationTime: IDuration;
    acceptanceCriteria: string;
-   termBeginDate: Date;
+   termBeginDate: string;
    termPeriod: string;
    currentTerm: string;
    shipment: string;

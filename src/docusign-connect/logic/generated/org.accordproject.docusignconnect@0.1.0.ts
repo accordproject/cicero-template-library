@@ -2,7 +2,7 @@
 // Generated code for namespace: org.accordproject.docusignconnect@0.1.0
 
 // imports
-import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IContract} from './org.accordproject.contract@0.2.0';
 import {IResponse,IObligation,IState} from './org.accordproject.runtime@0.2.0';
 import {EnvelopeStatusCode} from './com.docusign.connect@0.4.0';
 import {IParticipant} from './concerto@1.0.0';
@@ -22,7 +22,7 @@ export interface IDocuSignEnvelopeCounterState extends IState {
    counter: number;
 }
 
-export interface ITemplateModel extends IClause {
+export interface ITemplateModel extends IContract {
    status: EnvelopeStatusCode;
 }
 

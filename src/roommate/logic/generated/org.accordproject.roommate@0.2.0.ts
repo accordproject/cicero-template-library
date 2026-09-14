@@ -14,11 +14,11 @@ export interface ITemplateModel extends IClause {
    spaceOccupied: string;
    rentAmount: IMonetaryAmount;
    depositAmount: IMonetaryAmount;
-   startDate: Date;
-   endDate: Date;
+   startDate: string;
+   endDate: string;
    holderSignature: string;
-   holderDateSigned: Date;
+   holderDateSigned: string;
    roommateSignature: string;
-   roommateDateSigned: Date;
+   roommateDateSigned: string;
 }
 

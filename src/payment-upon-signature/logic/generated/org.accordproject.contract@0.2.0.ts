@@ -14,9 +14,9 @@ export interface IContract extends IAsset {
    contractId: string;
 }
 
+export type ContractUnion = ITemplateModel;
+
 export interface IClause extends IAsset {
    clauseId: string;
 }
-
-export type ClauseUnion = ITemplateModel;
 
