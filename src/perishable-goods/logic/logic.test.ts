@@ -36,8 +36,11 @@ function makeModel(overrides: Partial<ITemplateModel> = {}): ITemplateModel {
         importer: "DAN",
         shipmentId: "SHIP_001",
         dueDate: FUTURE_DUE_DATE,
-        unitPrice: 1.5,
-        currencyCode: "USD",
+        unitPrice: {
+            $class: "org.accordproject.money@0.3.0.MonetaryAmount",
+            doubleValue: 1.5,
+            currencyCode: "USD",
+        },
         unit: "KG",
         minUnits: 3000,
         maxUnits: 3500,

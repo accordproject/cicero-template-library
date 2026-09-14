@@ -7,7 +7,7 @@ import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
 
 // interfaces
 export interface IInspectDeliverable extends IRequest {
-   deliverableReceivedAt: Date;
+   deliverableReceivedAt: string;
    inspectionPassed: boolean;
 }
 

@@ -20,9 +20,6 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IIncorporationEvent
-} from './org.accordproject.certificateofincorporation@0.1.0';
-import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
 
@@ -44,16 +41,15 @@ export interface IParticipant extends IConcept {
 }
 
 export interface ITransaction extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
 export type TransactionUnion = IRequest | 
 IResponse;
 
 export interface IEvent extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
-export type EventUnion = IIncorporationEvent | 
-IObligation;
+export type EventUnion = IObligation;
 

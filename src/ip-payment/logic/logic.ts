@@ -1,4 +1,4 @@
-import { ITemplateModel, IPaymentRequest, IPayOut } from './generated/org.accordproject.ippayment@0.2.0';
+import { ITemplateModel, IPaymentRequest, IPayOut } from './generated/org.accordproject.ippayment@0.3.0';
 import type { IDuration } from './generated/org.accordproject.time@0.3.0';
 import { IMonetaryAmount, CurrencyCode } from './generated/org.accordproject.money@0.3.0';
 
@@ -47,8 +47,11 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
     }
 
     async trigger(data: ITemplateModel, request: IPaymentRequest): Promise<IPPaymentResponse> {
-        const netSaleRevenue = request.netSaleRevenue as unknown as IMonetaryAmount;
-        const sublicensingRevenue = request.sublicensingRevenue as unknown as IMonetaryAmount;
+        const netSaleRevenue = request.netSaleRevenue;
+        const sublicensingRevenue = request.sublicensingRevenue;
+        if (netSaleRevenue.currencyCode !== sublicensingRevenue.currencyCode) {
+            throw new Error('Net sale and sublicensing revenue must use the same currency.');
+        }
         const royaltiesAmount = netSaleRevenue.doubleValue * data.royaltyRate / 100.0;
         const sublicensingAmount = sublicensingRevenue.doubleValue * data.sublicensingRoyaltyRate / 100.0;
         const totalAmountValue = royaltiesAmount + sublicensingAmount;
@@ -62,10 +65,10 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
 
         return {
             result: {
-                $class: 'org.accordproject.ippayment@0.2.0.PayOut',
+                $class: 'org.accordproject.ippayment@0.3.0.PayOut',
                 $timestamp: new Date(),
                 totalAmount: monetary(totalAmountValue, netSaleRevenue.currencyCode),
-                dueBy,
+                dueBy: dueBy.toISOString(),
             },
         };
     }

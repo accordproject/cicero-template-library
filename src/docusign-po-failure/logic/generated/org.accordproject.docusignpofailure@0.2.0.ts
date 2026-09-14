@@ -2,7 +2,7 @@
 // Generated code for namespace: org.accordproject.docusignpofailure@0.2.0
 
 // imports
-import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IContract} from './org.accordproject.contract@0.2.0';
 import {IResponse,IObligation,IState} from './org.accordproject.runtime@0.2.0';
 import {IDuration} from './org.accordproject.time@0.3.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
@@ -19,11 +19,11 @@ export interface IPurchaseOrderPaymentEvent extends IObligation {
 }
 
 export interface IPurchaseOrderFailureState extends IState {
-   pastFailures: Date[];
+   pastFailures: string[];
    nbPastFailures: number;
 }
 
-export interface ITemplateModel extends IClause {
+export interface ITemplateModel extends IContract {
    buyerName: string;
    lateOne: IDuration;
    lateTwo: IDuration;
