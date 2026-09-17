@@ -1,0 +1,47 @@
+{
+  "$class": "org.accordproject.agreement@1.0.0.AgreementDocument",
+  "documentId": "copyright-license-doc-inline-001",
+  "template": {
+    "$class": "org.accordproject.template@1.0.0.TemplateReference",
+    "templateId": "org.accordproject.copyrightlicense@0.2.0",
+    "version": "1.0.1",
+    "archiveHash": {
+      "$class": "org.accordproject.crypto@1.0.0.ContentHash",
+      "algorithm": {
+        "$class": "org.accordproject.crypto@1.0.0.HashAlgorithm",
+        "type": "SHA_256"
+      },
+      "value": "de8f20b6273fd2f4fdfc32f34870aa5776ad2a0b2d8d55da44f56ef4f76931f2",
+      "encoding": "HEX"
+    }
+  },
+  "data": {
+    "$class": "poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData",
+    "effectiveDate": "2018-01-01T01:00:00.000+01:00",
+    "licensee": {
+      "$class": "poc.accordproject.party@0.1.0.PartyRef",
+      "id": "licensee-01",
+      "scheme": "poc.accordproject.party@0.1.0.Party",
+      "label": "Me"
+    },
+    "licensor": {
+      "$class": "poc.accordproject.party@0.1.0.PartyRef",
+      "id": "licensor-01",
+      "scheme": "poc.accordproject.party@0.1.0.Party",
+      "label": "Myself"
+    },
+    "territory": "United States",
+    "purposeDescription": "stuff",
+    "workDescription": "other stuff",
+    "paymentTerms": {
+      "$class": "poc.accordproject.copyrightlicense@0.1.0.PaymentTerms",
+      "amountText": "one hundred US Dollars",
+      "amount": {
+        "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+        "doubleValue": 100,
+        "currencyCode": "USD"
+      },
+      "paymentProcedure": "bank transfer"
+    }
+  }
+}

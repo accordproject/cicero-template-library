@@ -89,3 +89,33 @@ trigger` checks are both tracked as expected failures — see that file's
 `expectedLoadFailures` — with a comment naming template-archive#946.
 `@template` has deliberately **not** been added back: doing so would
 silently paper over the exact gap this prototype exists to surface.
+
+## Composed-template provenance evidence (models#200 closure)
+
+This prototype's grammar block is inline-only (`{{#clause paymentTerms}} ... {{/clause}}`),
+so it cannot itself produce composed-template provenance. To make the missing
+evidence reproducible in this repo anyway, we include side-by-side
+`AgreementDocument` fixtures and assertions in:
+
+- `src/copyright-license-agreement-poc/evidence/composed-agreement-document.json`
+- `src/copyright-license-agreement-poc/evidence/inline-only-agreement-document.json`
+- `test/composed-template-provenance.evidence.test.mjs`
+
+Run:
+
+```bash
+npx vitest run test/composed-template-provenance.evidence.test.mjs
+```
+
+What this proves:
+
+- **Composed archive case**: `AgreementDocument.clauses.paymentTerms` is present
+  and carries a `Clause.template` `TemplateReference`, showing provenance to a
+  separate clause-template archive.
+- **Instance-path keying**: the map key is `paymentTerms` (rooted at document
+  `data`), intentionally not `data.paymentTerms`.
+- **Inline-only case**: with the same data subtree but no separately composed
+  archive, `AgreementDocument.clauses` is intentionally absent (not an empty
+  map). This is additionally anchored to the live inline template baseline at
+  `src/copyright-license/sample.json`, which has `paymentClause` data but no
+  provenance map.
