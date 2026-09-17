@@ -1,0 +1,10 @@
+{
+  "documentId": "copyright-license-doc-composed-001",
+  "parentTemplate": "../copyright-license",
+  "clauses": {
+    "paymentClause": {
+      "template": "../payment-upon-signature",
+      "clauseId": "payment-upon-signature-001"
+    }
+  }
+}

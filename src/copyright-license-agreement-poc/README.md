@@ -93,12 +93,12 @@ silently paper over the exact gap this prototype exists to surface.
 ## Composed-template provenance evidence (models#200 closure)
 
 This prototype's grammar block is inline-only (`{{#clause paymentTerms}} ... {{/clause}}`),
-so it cannot itself produce composed-template provenance. To make the missing
-evidence reproducible in this repo anyway, we include side-by-side
-`AgreementDocument` fixtures and assertions in:
+so it cannot itself produce composed-template provenance. The evidence harness
+therefore uses the existing loadable `copyright-license` template as the parent
+and `payment-upon-signature` as a distinct child template. The binding and
+assertions live in:
 
-- `src/copyright-license-agreement-poc/evidence/composed-agreement-document.json`
-- `src/copyright-license-agreement-poc/evidence/inline-only-agreement-document.json`
+- `src/copyright-license-agreement-poc/evidence/composition-binding.json`
 - `test/composed-template-provenance.evidence.test.mjs`
 
 Run:
@@ -107,15 +107,32 @@ Run:
 npx vitest run test/composed-template-provenance.evidence.test.mjs
 ```
 
+The test loads each template from its own directory, serializes each to a
+separate Cicero Template Archive buffer, reloads both buffers with
+`Template.fromArchive`, and creates a `Clause` instance from the child archive.
+It then projects those runtime identities and hashes into the models#200
+`AgreementDocument` provenance shape.
+
 What this proves:
 
-- **Composed archive case**: `AgreementDocument.clauses.paymentTerms` is present
+- **Two real archives**: parent and child have different template identifiers,
+  archive bytes, and hashes; the child clause instance reports the child
+  template identifier.
+- **Composed archive case**: `AgreementDocument.clauses.paymentClause` is present
   and carries a `Clause.template` `TemplateReference`, showing provenance to a
-  separate clause-template archive.
-- **Instance-path keying**: the map key is `paymentTerms` (rooted at document
-  `data`), intentionally not `data.paymentTerms`.
+  separately loaded clause-template archive. Its hash is obtained from that
+  loaded archive, not copied from a hand-written expected fixture.
+- **Instance-path keying**: the map key is `paymentClause` (rooted at document
+  `data`), intentionally not `data.paymentClause`.
 - **Inline-only case**: with the same data subtree but no separately composed
   archive, `AgreementDocument.clauses` is intentionally absent (not an empty
-  map). This is additionally anchored to the live inline template baseline at
-  `src/copyright-license/sample.json`, which has `paymentClause` data but no
-  provenance map.
+  map).
+
+This is a provenance-boundary proof, not evidence of a native Cicero composition
+operation. The current `cicero-core` API can load a `Template`, instantiate a
+`Clause`, and serialize archives, but it has no API that attaches a child
+`Clause` to a parent `Contract`. The binding fixture makes that missing
+orchestration step explicit. End-to-end native composition remains a tooling
+gap; the test verifies the strongest currently executable boundary: two real
+archives in, a child-derived provenance reference at the parent instance path
+out.
