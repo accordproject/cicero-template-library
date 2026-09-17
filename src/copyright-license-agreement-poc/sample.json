@@ -1,0 +1,29 @@
+{
+  "$class": "poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData",
+  "effectiveDate": "2018-01-01T01:00:00.000+01:00",
+  "licensee": {
+    "$class": "poc.accordproject.party@0.1.0.PartyRef",
+    "id": "me",
+    "scheme": "poc.accordproject.party@0.1.0.Party",
+    "label": "Me"
+  },
+  "licensor": {
+    "$class": "poc.accordproject.party@0.1.0.PartyRef",
+    "id": "myself",
+    "scheme": "poc.accordproject.party@0.1.0.Party",
+    "label": "Myself"
+  },
+  "territory": "United States",
+  "purposeDescription": "stuff",
+  "workDescription": "other stuff",
+  "paymentTerms": {
+    "$class": "poc.accordproject.copyrightlicense@0.1.0.PaymentTerms",
+    "amountText": "one hundred US Dollars",
+    "amount": {
+      "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
+      "doubleValue": 100,
+      "currencyCode": "USD"
+    },
+    "paymentProcedure": "bank transfer"
+  }
+}

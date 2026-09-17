@@ -1,0 +1,43 @@
+/*
+ * PROTOTYPE model.
+ *
+ * A local stand-in for the `templatedata@1.0.0` namespace proposed in
+ * accordproject/models#200 ("Agreement 1.0 Model Redesign"):
+ * https://github.com/accordproject/models/pull/200
+ *
+ * That PR is explicitly "a design target, not migration-ready" and is
+ * not yet published to models.accordproject.org, so this file is a
+ * hand-vendored subset covering only what this prototype template
+ * needs. Delete it and import the real
+ * `org.accordproject.templatedata@1.0.0` namespace once that PR lands.
+ *
+ * This namespace used to be folded into `agreement@1.0.0` (as `data@1.0.0`
+ * in earlier revisions of PR #200); it has since been split out on its
+ * own, importing nothing, so that a template's model file need not pull
+ * in the whole agreement/party graph just to declare its root concept.
+ */
+
+namespace poc.accordproject.templatedata@0.1.0
+
+/*
+ * The extension point for a template's own variables. A template's
+ * model declares exactly one *concrete* subtype of `TemplateData`, and
+ * that subtype IS the template model -- there is no `@template`
+ * decorator and no envelope class for the data to be composed onto.
+ * See model/model.cto's `CopyrightLicenseData`.
+ *
+ * Types the data is merely composed *of* (e.g. this template's nested
+ * `PaymentTerms`) are ordinary concepts and must NOT extend
+ * `TemplateData` -- only the root does.
+ */
+abstract concept TemplateData {
+}
+
+/*
+ * The equivalent extension point for a stateful template's state shape.
+ * Unused by this prototype (copyright-license-agreement-poc has no
+ * state), but vendored alongside `TemplateData` for parity with the
+ * real namespace.
+ */
+abstract concept StateData {
+}
