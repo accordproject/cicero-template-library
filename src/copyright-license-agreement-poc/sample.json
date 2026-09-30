@@ -20,9 +20,14 @@
     "$class": "poc.accordproject.copyrightlicense@0.1.0.PaymentTerms",
     "amountText": "one hundred US Dollars",
     "amount": {
-      "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
-      "doubleValue": 100,
-      "currencyCode": "USD"
+      "$class": "poc.accordproject.money@0.1.0.PreciseAmount",
+      "unscaledValue": "10000",
+      "unit": {
+        "$class": "poc.accordproject.money@0.1.0.Unit",
+        "code": "USD",
+        "scheme": "iso4217",
+        "scale": 2
+      }
     },
     "paymentProcedure": "bank transfer"
   }

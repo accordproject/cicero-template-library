@@ -12,28 +12,32 @@ import type {
 	IPartyRef
 } from './poc.accordproject.party@0.1.0';
 import type {
+	IUnit,
+	IPreciseAmount
+} from './poc.accordproject.money@0.1.0';
+import type {
 	IAgreementParty,
 	IAgreementDocument,
 	IAgreementReference
 } from './poc.accordproject.agreement@0.1.0';
 import type {
+	ObligationStatus
+} from './poc.accordproject.obligation@0.1.0';
+import type {
+	IDocumentState
+} from './poc.accordproject.runtime@0.1.0';
+import type {
 	IPaymentTerms,
-	LicenseStatus,
-	PaymentStatus,
 	IPaymentTermsState
 } from './poc.accordproject.copyrightlicense@0.1.0';
-import type {
-	IDigitalMonetaryAmount,
-	DigitalCurrencyCode,
-	IMonetaryAmount,
-	CurrencyCode,
-	ICurrencyConversion
-} from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IAgreement
 } from './poc.accordproject.agreement@0.1.0';
+import type {
+	IDurableObligation
+} from './poc.accordproject.obligation@0.1.0';
 import type {
 	IAgreementState
 } from './poc.accordproject.runtime@0.1.0';
@@ -58,6 +62,10 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IObligationTransition,
+	IObligationIssued
+} from './poc.accordproject.obligation@0.1.0';
+import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
 
@@ -69,20 +77,21 @@ export interface IConcept {
 export type ConceptUnion = ITemplateData | 
 IStateData | 
 IPartyRef | 
+IUnit | 
+IPreciseAmount | 
 IAgreementParty | 
 IAgreementDocument | 
 IAgreementReference | 
+IDocumentState | 
 IPaymentTerms | 
-IPaymentTermsState | 
-IDigitalMonetaryAmount | 
-IMonetaryAmount | 
-ICurrencyConversion;
+IPaymentTermsState;
 
 export interface IAsset extends IConcept {
    $identifier: string;
 }
 
 export type AssetUnion = IAgreement | 
+IDurableObligation | 
 IAgreementState | 
 IContract | 
 IClause | 
@@ -105,5 +114,7 @@ export interface IEvent extends IConcept {
    $timestamp: Date;
 }
 
-export type EventUnion = IObligation;
+export type EventUnion = IObligationTransition | 
+IObligationIssued | 
+IObligation;
 

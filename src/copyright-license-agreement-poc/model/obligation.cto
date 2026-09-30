@@ -1,0 +1,96 @@
+/*
+ * PROTOTYPE model.
+ *
+ * A local stand-in for the `obligation@1.0.0` namespace proposed in
+ * accordproject/models#200 ("Agreement 1.0 Model Redesign"):
+ * https://github.com/accordproject/models/pull/200
+ *
+ * A hand-vendored subset covering only what this prototype needs:
+ * `DurableObligation`, `PaymentObligation` and `ObligationTransition`. The other
+ * obligation subtypes and `FulfilmentAttempt` are omitted, as are the
+ * `basisHash` / `evidenceHash` properties (they need the unvendored
+ * `crypto@1.0.0.ContentHash`). `ObligationIssued` is NOT in models#200;
+ * see its comment. Delete this file and import the real
+ * `org.accordproject.obligation@1.0.0` namespace once that PR lands.
+ *
+ * Renamed: models#200's abstract `Obligation` is `DurableObligation` here.
+ * This template still imports `org.accordproject.runtime@0.2.0` for the
+ * `Request` / `Response` bases today's template-engine checks against,
+ * and that namespace also declares an `Obligation`; the TypeScript codegen
+ * emits a duplicate import when two loaded namespaces share a name. No
+ * such clash exists in models#200 itself, because runtime@1.0.0 drops
+ * its `Obligation`.
+ */
+
+namespace poc.accordproject.obligation@0.1.0
+
+import poc.accordproject.money@0.1.0.PreciseAmount
+import poc.accordproject.party@0.1.0.PartyRef
+import poc.accordproject.agreement@0.1.0.AgreementReference
+
+/*
+ * Lifecycle states for the legal obligation itself.
+ */
+enum ObligationStatus {
+  o PENDING
+  o DUE
+  o FULFILLED
+  o BREACHED
+  o WAIVED
+  o SUPERSEDED
+  o DISPUTED
+}
+
+/*
+ * A durable obligation derived from an agreement. `agreement.clausePath`
+ * names the clause instance it arises from.
+ */
+abstract asset DurableObligation identified by obligationId {
+  o String obligationId
+  o ObligationStatus status
+  o DateTime createdAt
+  o DateTime dueAt optional
+  o PartyRef[] bearers
+  o PartyRef[] beneficiaries optional
+  o AgreementReference agreement
+  o String description optional
+  o String authorityRef optional
+  o String parentObligationId optional
+  o String supersedesObligationId optional
+  o Long revision default=0 range=[0,]
+}
+
+/*
+ * An obligation to transfer an exact monetary amount.
+ */
+asset PaymentObligation extends DurableObligation {
+  o PreciseAmount amount
+}
+
+/*
+ * An explicit lifecycle transition for an obligation. `fromStatus` is
+ * optional so that producers which did not observe the previous state
+ * can still submit one; note that `revision` is nonetheless required.
+ */
+event ObligationTransition {
+  --> DurableObligation obligation
+  o ObligationStatus fromStatus optional
+  o ObligationStatus toStatus
+  o DateTime effectiveAt
+  o PartyRef actor optional
+  o String reason optional
+  o String correlationId optional
+  o Long revision range=[0,]
+}
+
+/*
+ * PROPOSED -- not in models#200. obligation@1.0.0 has an event for every
+ * status change after an obligation exists, but none that carries a newly
+ * created obligation's full record (bearers, amount, due date and so on),
+ * and template logic can only return state and events. This event is how
+ * this prototype's init() issues its PaymentObligation, at revision 0 and
+ * status PENDING.
+ */
+event ObligationIssued {
+  o DurableObligation obligation
+}

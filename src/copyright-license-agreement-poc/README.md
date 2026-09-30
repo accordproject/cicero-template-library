@@ -43,37 +43,74 @@ Per PR #200's current shape:
   that wider envelope even though this template's own model doesn't import
   it (it has no envelope to be composed onto).
 - **State has the same shape as data.** The original `copyright-license`
-  has no state; it is added here to show how agreement- and clause-scoped
-  state work in the new design. `CopyrightLicenseState` (`model/model.cto`)
-  is the template's one concrete `templatedata@1.0.0.StateData` subtype,
-  found by its parent type like `CopyrightLicenseData`:
-  - Agreement-scoped: `status`, `AWAITING_PAYMENT` → `IN_FORCE`. The status
-    vocabulary is the template's own; `StateData` deliberately has none.
-  - Clause-scoped: the inline payment clause's state is `paymentTerms:
-    PaymentTermsState` (`UNPAID` → `REQUESTED` → `PAID`, plus
-    `amountPaid`), an ordinary nested concept at the same instance path as
-    its data. It is not a second `StateData` subtype, mirroring how
-    `PaymentTerms` doesn't extend `TemplateData`.
+  has no state; it is added here to show how clause-scoped state works in
+  the new design. `CopyrightLicenseState` (`model/model.cto`) is the
+  template's one concrete `templatedata@1.0.0.StateData` subtype, found by
+  its parent type like `CopyrightLicenseData`. The inline payment clause's
+  state is `paymentTerms: PaymentTermsState`, an ordinary nested concept at
+  the same instance path as its data. It is not a second `StateData`
+  subtype, mirroring how `PaymentTerms` doesn't extend `TemplateData`, and
+  it is not a `clauseStates` entry: that map holds the state of *composed*
+  sub-template archives, and the payment clause is inline, so it has no
+  entry there, just as it has no `clauses` entry.
+- **The obligation, not template state, owns the payment lifecycle.** The
+  fee is an `obligation@1.0.0` `PaymentObligation` (`model/obligation.cto`)
+  moving `PENDING` → `DUE` → `FULFILLED`. Logic can't read the obligation
+  registry, so clause state records only *facts* — `amountPaid`, and
+  `dueAt` once payment is requested — and logic derives the obligation's
+  status and revision from them. No status enum is stored anywhere a
+  registry could disagree with it. Whether the licence is in force is also
+  derived rather than stored: it is exactly when the obligation is
+  `FULFILLED`.
 
-  `init()` seeds the state. `PaymentRequest` asks for the outstanding
-  balance and marks the clause `REQUESTED`. The new `PaymentReceived`
-  records a payment, and once the fee is paid in full it marks the clause
-  `PAID` *and* puts the licence `IN_FORCE` in the same returned state.
+  `init()` seeds the state and issues the obligation with an
+  `ObligationIssued` event. `PaymentRequest` returns the outstanding balance
+  and, the first time, makes the obligation `DUE`. `PaymentReceived`
+  records a payment, rejecting the wrong currency or scale, non-positive
+  amounts and overpayment, and fulfils the obligation once the fee is paid.
+  Status changes are `ObligationTransition` events carrying an accurate
+  `fromStatus` and `revision`. Timestamps come from the data or the
+  request, never the clock, so replaying the same inputs reproduces the
+  same state and events.
 
-  Logic only ever sees and returns `CopyrightLicenseState`. The runtime
-  wraps it in an identified, revisioned `AgreementState` (`model/runtime.cto`,
-  a stand-in for `runtime@1.0.0`), writing one revision per transition, so
-  that cross-scope change is a single write. `AgreementState.clauseStates`
-  is keyed like `AgreementDocument.clauses` and holds the state of
-  *composed* sub-template archives. The payment clause is inline, so it has
-  no entry there, just as it has no `clauses` entry.
-  `logic/logic.test.ts` covers the transitions and simulates the envelope.
+  Logic sees no agreement, so the obligation's id is the clause path
+  (`"paymentTerms"`) and its `AgreementReference` carries only
+  `clausePath`. The runtime must qualify the id and back-fill
+  `agreementId` from the envelope it owns, as template-engine already
+  back-fills `contract` on runtime@0.2.0 obligations. Until it does, the
+  issued obligation fails Concerto validation for the missing
+  `agreementId`; with it filled in, every state and event this template
+  emits validates.
+- **Amounts are exact.** Amounts are money@1.0.0 `PreciseAmount`s
+  (`model/money.cto`): an integer `unscaledValue` plus a `unit` with a
+  `scale`, so $100.00 is `"10000"` at scale 2. Logic does the arithmetic
+  with `BigInt`. models#200 types `unscaledValue` as `BigInteger`, which
+  the Concerto 4.x installed here rejects, so it is a digit `String` here,
+  matching how a `BigInteger` serializes in JSON. TemplateMark can't
+  format a `PreciseAmount`, so the grammar renders the fee with an inline
+  formula for now; template-engine should learn to format `PreciseAmount`
+  natively, as it does `MonetaryAmount`.
+- **Where state lives in the runtime.** Logic only ever sees and returns
+  `CopyrightLicenseState`. The runtime wraps it in an identified,
+  revisioned `AgreementState` (`model/runtime.cto`, a stand-in for
+  `runtime@1.0.0`), writing one revision per transition. That stand-in also
+  sketches a PROPOSED change: in models#200, `AgreementState` has a single
+  `data` slot and one agreement-wide `clauseStates` map, which leaves a
+  multi-document agreement nowhere to put each document template's state,
+  and lets clause paths from different documents collide. Here each
+  document's state and composed-clause states sit under
+  `documentStates[documentId]`, leaving `data` for agreement-wide state.
+
+`logic/logic.test.ts` covers the transitions and guards. It also checks the
+emitted events against a minimal obligation registry, and simulates the
+runtime's `AgreementState` envelope.
 
 See `model/*.cto` for the vendored prototype namespaces (`templatedata@0.1.0`,
-`party@0.1.0`, `agreement@0.1.0`, `runtime@0.1.0` — hand-written local
-stand-ins for the `templatedata@1.0.0` / `party@1.0.0` / `agreement@1.0.0` /
-`runtime@1.0.0` namespaces proposed in PR #200, since that PR is
-unpublished) and their inline comments for the reasoning behind each shape.
+`party@0.1.0`, `money@0.1.0`, `agreement@0.1.0`, `obligation@0.1.0`,
+`runtime@0.1.0` — hand-written local stand-ins for the corresponding
+`@1.0.0` namespaces proposed in PR #200, since that PR is unpublished) and
+their inline comments for the reasoning behind each shape and each
+divergence.
 
 ## Known gap: this cannot load with today's installed toolchain
 

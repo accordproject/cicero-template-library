@@ -1,0 +1,39 @@
+/*
+ * PROTOTYPE model.
+ *
+ * A local stand-in for `PreciseAmount` from the `money@1.0.0` namespace in
+ * accordproject/models#200 ("Agreement 1.0 Model Redesign"):
+ * https://github.com/accordproject/models/pull/200
+ *
+ * One deliberate divergence: models#200 declares `unscaledValue` as a
+ * `BigInteger`, which the Concerto 4.x installed in this repo rejects
+ * ("Undeclared type"). It is a `String` of digits here instead, which is
+ * how a `BigInteger` serializes in JSON anyway, so instances have the
+ * same shape. Logic does exact arithmetic on it with `BigInt`.
+ *
+ * Delete this file and import the real `org.accordproject.money@1.0.0`
+ * namespace once that PR lands and the toolchain supports `BigInteger`.
+ */
+
+namespace poc.accordproject.money@0.1.0
+
+/*
+ * The unit an amount is denominated in, and its scale: the number of
+ * digits of `unscaledValue` that fall after the decimal point.
+ */
+concept Unit {
+  o String code
+  o String scheme default="iso4217"
+  o String identifier optional
+  o Integer scale range=[0,]
+}
+
+/*
+ * A fixed-point monetary amount: unscaledValue × 10^(−unit.scale).
+ * For example $100.00 is { unscaledValue: "10000", unit: { code: "USD",
+ * scale: 2 } }.
+ */
+concept PreciseAmount {
+  o String unscaledValue regex=/^-?[0-9]+$/
+  o Unit unit
+}

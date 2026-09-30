@@ -20,7 +20,7 @@ export interface IAgreementDocument extends IConcept {
 
 export interface IAgreementReference extends IConcept {
    agreementId: string;
-   documentId: string;
+   clausePath?: string;
 }
 
 export interface IAgreement extends IAsset {

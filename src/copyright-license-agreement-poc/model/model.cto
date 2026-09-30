@@ -36,13 +36,21 @@
  *     `AgreementParty`, where a registry actually exists.
  *   - State follows the same shape as data. `CopyrightLicenseState` is
  *     the template's one concrete `templatedata@1.0.0.StateData`
- *     subtype, holding agreement-scoped state (`status`). The inline
- *     payment clause's state is an ordinary nested concept at the same
- *     instance path as its data ("paymentTerms"), not a separate
- *     `StateData` subtype and not a `ClauseStates` entry: that map is
- *     for composed sub-template archives (see model/runtime.cto). The
- *     original copyright-license template has no state at all; this is
- *     added to illustrate agreement- and clause-scoped state.
+ *     subtype. The inline payment clause's state is an ordinary nested
+ *     concept at the same instance path as its data ("paymentTerms"),
+ *     not a separate `StateData` subtype and not a `ClauseStates` entry:
+ *     that map is for composed sub-template archives (see
+ *     model/runtime.cto). The original copyright-license template has no
+ *     state at all; this is added to illustrate clause-scoped state.
+ *   - The payment lifecycle lives in an obligation@1.0.0
+ *     `PaymentObligation` (model/obligation.cto), not in template state.
+ *     Clause state holds only the facts logic needs to derive the
+ *     obligation's status (`amountPaid`, `dueAt`), so no status enum is
+ *     stored anywhere a registry could disagree with it. Whether the
+ *     licence is in force is likewise derived -- it is exactly when the
+ *     payment obligation is FULFILLED -- rather than stored.
+ *   - Amounts are money@1.0.0 `PreciseAmount`s (model/money.cto), not
+ *     money@0.3.0 `MonetaryAmount` doubles, so arithmetic is exact.
  *
  * Whether this compiles, round-trips sample.json, renders, and triggers
  * with *today's* installed toolchain -- as opposed to being faithful to
@@ -56,8 +64,8 @@ namespace poc.accordproject.copyrightlicense@0.1.0
 
 import poc.accordproject.templatedata@0.1.0.{TemplateData, StateData}
 import poc.accordproject.party@0.1.0.PartyRef
-import org.accordproject.runtime@0.2.0.{Request, Response, Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
-import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+import poc.accordproject.money@0.1.0.PreciseAmount
+import org.accordproject.runtime@0.2.0.{Request, Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 /* Requesting a payment */
 transaction PaymentRequest extends Request {
@@ -65,22 +73,17 @@ transaction PaymentRequest extends Request {
 
 /* PayOut response: the amount still outstanding */
 transaction PayOut extends Response {
-  o MonetaryAmount amount
+  o PreciseAmount amount
 }
 
 /* Recording a payment made by the licensee */
 transaction PaymentReceived extends Request {
-  o MonetaryAmount amount
+  o PreciseAmount amount
 }
 
 /* PaymentReceived response */
 transaction PaymentReceipt extends Response {
-  o MonetaryAmount outstanding
-}
-
-event PaymentObligationEvent extends Obligation {
-  o MonetaryAmount amount
-  o String description
+  o PreciseAmount outstanding
 }
 
 /*
@@ -91,7 +94,7 @@ event PaymentObligationEvent extends Obligation {
  */
 concept PaymentTerms {
   o String amountText
-  o MonetaryAmount amount
+  o PreciseAmount amount
   o String paymentProcedure
 }
 
@@ -120,28 +123,19 @@ concept CopyrightLicenseData extends TemplateData {
 }
 
 /*
- * Status vocabularies belong to the template, not to `StateData` (which
- * deliberately has no lifecycle status).
- */
-enum LicenseStatus {
-  o AWAITING_PAYMENT
-  o IN_FORCE
-}
-
-enum PaymentStatus {
-  o UNPAID
-  o REQUESTED
-  o PAID
-}
-
-/*
  * The inline payment clause's state: an ordinary concept, not a
  * `StateData` subtype, mirroring `PaymentTerms` not extending
- * `TemplateData`.
+ * `TemplateData`. It records facts, not a status: logic derives the
+ * PaymentObligation's status from them (FULFILLED once `amountPaid`
+ * reaches the fee, DUE once `dueAt` is set, otherwise PENDING).
+ *
+ * `obligationId` is the clause instance path; the runtime qualifies it
+ * with the agreement id, as it does `AgreementReference.agreementId`.
  */
 concept PaymentTermsState {
-  o PaymentStatus status
-  o MonetaryAmount amountPaid
+  o String obligationId
+  o PreciseAmount amountPaid
+  o DateTime dueAt optional
 }
 
 /*
@@ -150,6 +144,5 @@ concept PaymentTermsState {
  * it in an identified, revisioned `AgreementState` (model/runtime.cto).
  */
 concept CopyrightLicenseState extends StateData {
-  o LicenseStatus status
   o PaymentTermsState paymentTerms
 }

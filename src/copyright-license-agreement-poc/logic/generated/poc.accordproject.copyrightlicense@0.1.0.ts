@@ -4,34 +4,29 @@
 // imports
 import {ITemplateData,IStateData} from './poc.accordproject.templatedata@0.1.0';
 import {IPartyRef} from './poc.accordproject.party@0.1.0';
-import {IRequest,IResponse,IObligation} from './org.accordproject.runtime@0.2.0';
-import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
-import {IParticipant,IConcept} from './concerto@1.0.0';
+import {IPreciseAmount} from './poc.accordproject.money@0.1.0';
+import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IConcept} from './concerto@1.0.0';
 
 // interfaces
 export interface IPaymentRequest extends IRequest {
 }
 
 export interface IPayOut extends IResponse {
-   amount: IMonetaryAmount;
+   amount: IPreciseAmount;
 }
 
 export interface IPaymentReceived extends IRequest {
-   amount: IMonetaryAmount;
+   amount: IPreciseAmount;
 }
 
 export interface IPaymentReceipt extends IResponse {
-   outstanding: IMonetaryAmount;
-}
-
-export interface IPaymentObligationEvent extends IObligation {
-   amount: IMonetaryAmount;
-   description: string;
+   outstanding: IPreciseAmount;
 }
 
 export interface IPaymentTerms extends IConcept {
    amountText: string;
-   amount: IMonetaryAmount;
+   amount: IPreciseAmount;
    paymentProcedure: string;
 }
 
@@ -45,24 +40,13 @@ export interface ICopyrightLicenseData extends ITemplateData {
    paymentTerms: IPaymentTerms;
 }
 
-export enum LicenseStatus {
-   AWAITING_PAYMENT = 'AWAITING_PAYMENT',
-   IN_FORCE = 'IN_FORCE',
-}
-
-export enum PaymentStatus {
-   UNPAID = 'UNPAID',
-   REQUESTED = 'REQUESTED',
-   PAID = 'PAID',
-}
-
 export interface IPaymentTermsState extends IConcept {
-   status: PaymentStatus;
-   amountPaid: IMonetaryAmount;
+   obligationId: string;
+   amountPaid: IPreciseAmount;
+   dueAt?: Date;
 }
 
 export interface ICopyrightLicenseState extends IStateData {
-   status: LicenseStatus;
    paymentTerms: IPaymentTermsState;
 }
 

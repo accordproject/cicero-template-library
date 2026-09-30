@@ -63,13 +63,19 @@ concept AgreementDocument {
 }
 
 /*
- * A reference to one document within an agreement, e.g. for
- * cross-referencing between composed documents. Vendored for parity
- * with the real namespace; unused by this prototype.
+ * Portable provenance for records that travel without the agreement, such
+ * as obligations (model/obligation.cto). `clausePath` is the clause
+ * instance path the record arises from. The real namespace's optional
+ * `agreementHash`, `template` and `clauseHash` are omitted because their
+ * types aren't vendored.
+ *
+ * Template logic sees only its data, never the agreement, so it sets just
+ * `clausePath` and the runtime back-fills `agreementId` from the envelope
+ * it owns (see logic/logic.ts).
  */
 concept AgreementReference {
   o String agreementId
-  o String documentId
+  o String clausePath optional
 }
 
 /*

@@ -20,7 +20,7 @@
     ],
     "scripts": {
         "test": "vitest run",
-        "compile": "concerto compile --model model/templatedata.cto --model model/party.cto --model model/agreement.cto --model model/runtime.cto --model model/model.cto --target typescript --output logic/generated"
+        "compile": "concerto compile --model model/templatedata.cto --model model/party.cto --model model/money.cto --model model/agreement.cto --model model/obligation.cto --model model/runtime.cto --model model/model.cto --target typescript --output logic/generated"
     },
     "tags": [
         "intellectual-property",

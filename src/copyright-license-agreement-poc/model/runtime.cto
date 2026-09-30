@@ -17,6 +17,9 @@
  * `Response` (this template still extends the published
  * `org.accordproject.runtime@0.2.0` ones, which is what today's
  * template-engine checks requests and responses against).
+ *
+ * `DocumentState` / `DocumentStates` are a PROPOSED change, not in
+ * models#200; see `AgreementState`.
  */
 
 namespace poc.accordproject.runtime@0.1.0
@@ -25,10 +28,10 @@ import poc.accordproject.agreement@0.1.0.Agreement
 import poc.accordproject.templatedata@0.1.0.StateData
 
 /*
- * The state of an agreement's *composed* clause instances, keyed by the
- * same instance paths that key `AgreementDocument.clauses` (see
- * model/agreement.cto). Each value is the `StateData` subtype declared by
- * the composed sub-template archive at that path.
+ * The state of a document's *composed* clause instances, keyed by the
+ * same instance paths that key that document's `AgreementDocument.clauses`
+ * (see model/agreement.cto). Each value is the `StateData` subtype declared
+ * by the composed sub-template archive at that path.
  *
  * `copyright-license-agreement-poc` composes no sub-template archives --
  * its `{{#clause paymentTerms}}` block is inline -- so this map is never
@@ -42,18 +45,41 @@ map ClauseStates {
 }
 
 /*
+ * PROPOSED. The state of one document: its template's own `StateData`
+ * subtype, plus the state of the sub-template archives composed into it.
+ */
+concept DocumentState {
+  o StateData data optional
+  o ClauseStates clauseStates optional
+}
+
+/*
+ * PROPOSED. Document states keyed by `AgreementDocument.documentId`.
+ */
+map DocumentStates {
+  o String
+  o DocumentState
+}
+
+/*
  * The runtime's identified, revisioned snapshot of an agreement's state.
  *
  * Template logic never sees this envelope: `init()` and `trigger()` take
- * and return only the template's own `StateData` subtype (carried here in
- * `data`), and the runtime owns `stateId`, `revision` and `effectiveAt`.
- * This mirrors how the template author writes `TemplateData` and never
- * sees the `AgreementDocument` wrapped around it.
+ * and return only the template's own `StateData` subtype, and the runtime
+ * owns `stateId`, `revision` and `effectiveAt`. This mirrors how the
+ * template author writes `TemplateData` and never sees the
+ * `AgreementDocument` wrapped around it.
  *
- * Because agreement-scoped and clause-scoped state are one document, a
- * transition that spans scopes (here: the payment clause becoming PAID
- * puts the licence as a whole IN_FORCE) is a single write and a single
- * revision.
+ * PROPOSED divergence from models#200. There, `AgreementState` has one
+ * `data` slot and one agreement-wide `clauseStates` map. That leaves an
+ * agreement built from several documents -- each from a different
+ * template, each declaring its own `StateData` subtype -- nowhere to put
+ * each document's state, and clause paths are only unique within a
+ * document, so one agreement-wide `clauseStates` map can collide. Here
+ * each document's template state and composed-clause states sit under
+ * `documentStates[documentId]`, and `data` is left for state scoped to
+ * the agreement as a whole. This template is a single document, so its
+ * `CopyrightLicenseState` is `documentStates[documentId].data`.
  */
 asset AgreementState identified by stateId {
   o String stateId
@@ -61,5 +87,5 @@ asset AgreementState identified by stateId {
   o Long revision default=0 range=[0,]
   o DateTime effectiveAt
   o StateData data optional
-  o ClauseStates clauseStates optional
+  o DocumentStates documentStates optional
 }
