@@ -86,10 +86,12 @@ Per PR #200's current shape:
   `scale`, so $100.00 is `"10000"` at scale 2. Logic does the arithmetic
   with `BigInt`. models#200 types `unscaledValue` as `BigInteger`, which
   the Concerto 4.x installed here rejects, so it is a digit `String` here,
-  matching how a `BigInteger` serializes in JSON. TemplateMark can't
-  format a `PreciseAmount`, so the grammar renders the fee with an inline
-  formula for now; template-engine should learn to format `PreciseAmount`
-  natively, as it does `MonetaryAmount`.
+  matching how a `BigInteger` serializes in JSON. The grammar renders the
+  fee with an inline formula for now. template-engine 5.1.0 already formats
+  `org.accordproject.money@1.PreciseAmount` natively, so `{{amount}}` will
+  work once this repo moves off template-engine 4.0.0 *and* this template
+  imports the real `money@1.0.0`: the drafter is keyed on that namespace,
+  which the vendored `poc.accordproject.money@0.1.0` stand-in doesn't match.
 - **Where state lives in the runtime.** Logic only ever sees and returns
   `CopyrightLicenseState`. The runtime wraps it in an identified,
   revisioned `AgreementState` (`model/runtime.cto`, a stand-in for
