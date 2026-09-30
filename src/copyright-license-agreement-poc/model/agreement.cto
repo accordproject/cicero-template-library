@@ -74,10 +74,11 @@ concept AgreementReference {
 
 /*
  * The top-level agreement: a collection of documents plus the parties
- * to the agreement as a whole. Vendored for parity with the real
- * namespace; unused by this prototype.
+ * to the agreement as a whole. Identified, as in the real namespace, so
+ * that model/runtime.cto's `AgreementState` can hold a relationship to
+ * it; otherwise unused by this prototype.
  */
-concept Agreement {
+asset Agreement identified by agreementId {
   o String agreementId
   o AgreementDocument[] documents
   o AgreementParty[] parties optional

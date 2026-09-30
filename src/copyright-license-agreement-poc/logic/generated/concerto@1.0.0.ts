@@ -14,11 +14,13 @@ import type {
 import type {
 	IAgreementParty,
 	IAgreementDocument,
-	IAgreementReference,
-	IAgreement
+	IAgreementReference
 } from './poc.accordproject.agreement@0.1.0';
 import type {
-	IPaymentTerms
+	IPaymentTerms,
+	LicenseStatus,
+	PaymentStatus,
+	IPaymentTermsState
 } from './poc.accordproject.copyrightlicense@0.1.0';
 import type {
 	IDigitalMonetaryAmount,
@@ -29,6 +31,12 @@ import type {
 } from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IAgreement
+} from './poc.accordproject.agreement@0.1.0';
+import type {
+	IAgreementState
+} from './poc.accordproject.runtime@0.1.0';
 import type {
 	IContract,
 	IClause
@@ -64,8 +72,8 @@ IPartyRef |
 IAgreementParty | 
 IAgreementDocument | 
 IAgreementReference | 
-IAgreement | 
 IPaymentTerms | 
+IPaymentTermsState | 
 IDigitalMonetaryAmount | 
 IMonetaryAmount | 
 ICurrencyConversion;
@@ -74,7 +82,9 @@ export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IContract | 
+export type AssetUnion = IAgreement | 
+IAgreementState | 
+IContract | 
 IClause | 
 IState;
 

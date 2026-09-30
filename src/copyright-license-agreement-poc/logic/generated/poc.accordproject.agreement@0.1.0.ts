@@ -4,7 +4,7 @@
 // imports
 import {IParty} from './poc.accordproject.party@0.1.0';
 import {ITemplateData} from './poc.accordproject.templatedata@0.1.0';
-import {IConcept} from './concerto@1.0.0';
+import {IConcept,IAsset} from './concerto@1.0.0';
 
 // interfaces
 export interface IAgreementParty extends IConcept {
@@ -23,7 +23,7 @@ export interface IAgreementReference extends IConcept {
    documentId: string;
 }
 
-export interface IAgreement extends IConcept {
+export interface IAgreement extends IAsset {
    agreementId: string;
    documents: IAgreementDocument[];
    parties?: IAgreementParty[];

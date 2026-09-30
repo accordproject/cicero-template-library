@@ -1,0 +1,65 @@
+/*
+ * PROTOTYPE model.
+ *
+ * A local stand-in for the `runtime@1.0.0` namespace proposed in
+ * accordproject/models#200 ("Agreement 1.0 Model Redesign"):
+ * https://github.com/accordproject/models/pull/200
+ *
+ * That PR is explicitly "a design target, not migration-ready" and is
+ * not yet published to models.accordproject.org, so this file is a
+ * hand-vendored subset covering only what this prototype template
+ * needs. Delete it and import the real `org.accordproject.runtime@1.0.0`
+ * namespace once that PR lands.
+ *
+ * Omitted from this subset: `stateHash` / `previousStateHash` (they need
+ * the unvendored `crypto@1.0.0.ContentHash`, and their canonicalization
+ * is left to a profile anyway), and runtime@1.0.0's own `Request` /
+ * `Response` (this template still extends the published
+ * `org.accordproject.runtime@0.2.0` ones, which is what today's
+ * template-engine checks requests and responses against).
+ */
+
+namespace poc.accordproject.runtime@0.1.0
+
+import poc.accordproject.agreement@0.1.0.Agreement
+import poc.accordproject.templatedata@0.1.0.StateData
+
+/*
+ * The state of an agreement's *composed* clause instances, keyed by the
+ * same instance paths that key `AgreementDocument.clauses` (see
+ * model/agreement.cto). Each value is the `StateData` subtype declared by
+ * the composed sub-template archive at that path.
+ *
+ * `copyright-license-agreement-poc` composes no sub-template archives --
+ * its `{{#clause paymentTerms}}` block is inline -- so this map is never
+ * populated for it. The inline clause's state lives in the template's own
+ * `StateData` subtype instead, as a subtree at the same path as its data
+ * (see `CopyrightLicenseState.paymentTerms` in model/model.cto).
+ */
+map ClauseStates {
+  o String
+  o StateData
+}
+
+/*
+ * The runtime's identified, revisioned snapshot of an agreement's state.
+ *
+ * Template logic never sees this envelope: `init()` and `trigger()` take
+ * and return only the template's own `StateData` subtype (carried here in
+ * `data`), and the runtime owns `stateId`, `revision` and `effectiveAt`.
+ * This mirrors how the template author writes `TemplateData` and never
+ * sees the `AgreementDocument` wrapped around it.
+ *
+ * Because agreement-scoped and clause-scoped state are one document, a
+ * transition that spans scopes (here: the payment clause becoming PAID
+ * puts the licence as a whole IN_FORCE) is a single write and a single
+ * revision.
+ */
+asset AgreementState identified by stateId {
+  o String stateId
+  --> Agreement agreement
+  o Long revision default=0 range=[0,]
+  o DateTime effectiveAt
+  o StateData data optional
+  o ClauseStates clauseStates optional
+}

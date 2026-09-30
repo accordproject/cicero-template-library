@@ -35,9 +35,12 @@ abstract concept TemplateData {
 
 /*
  * The equivalent extension point for a stateful template's state shape.
- * Unused by this prototype (copyright-license-agreement-poc has no
- * state), but vendored alongside `TemplateData` for parity with the
- * real namespace.
+ * As with `TemplateData`, a template declares exactly one concrete
+ * subtype, found by its parent type rather than a decorator, and types
+ * the state is composed of are ordinary concepts. There is deliberately
+ * no lifecycle status here: the status vocabulary belongs to the
+ * template. See model/model.cto's `CopyrightLicenseState`, and
+ * model/runtime.cto for the envelope the runtime carries it in.
  */
 abstract concept StateData {
 }

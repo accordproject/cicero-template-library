@@ -5,12 +5,14 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IPaymentRequest
+	IPaymentRequest,
+	IPaymentReceived
 } from './poc.accordproject.copyrightlicense@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IPayOut
+	IPayOut,
+	IPaymentReceipt
 } from './poc.accordproject.copyrightlicense@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
@@ -24,12 +26,14 @@ import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 export interface IRequest extends ITransaction {
 }
 
-export type RequestUnion = IPaymentRequest;
+export type RequestUnion = IPaymentRequest | 
+IPaymentReceived;
 
 export interface IResponse extends ITransaction {
 }
 
-export type ResponseUnion = IPayOut;
+export type ResponseUnion = IPayOut | 
+IPaymentReceipt;
 
 export interface IObligation extends IEvent {
    $identifier: string;

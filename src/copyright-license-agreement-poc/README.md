@@ -42,12 +42,38 @@ Per PR #200's current shape:
   a registry actually exists — see `model/agreement.cto`, which documents
   that wider envelope even though this template's own model doesn't import
   it (it has no envelope to be composed onto).
+- **State has the same shape as data.** The original `copyright-license`
+  has no state; it is added here to show how agreement- and clause-scoped
+  state work in the new design. `CopyrightLicenseState` (`model/model.cto`)
+  is the template's one concrete `templatedata@1.0.0.StateData` subtype,
+  found by its parent type like `CopyrightLicenseData`:
+  - Agreement-scoped: `status`, `AWAITING_PAYMENT` → `IN_FORCE`. The status
+    vocabulary is the template's own; `StateData` deliberately has none.
+  - Clause-scoped: the inline payment clause's state is `paymentTerms:
+    PaymentTermsState` (`UNPAID` → `REQUESTED` → `PAID`, plus
+    `amountPaid`), an ordinary nested concept at the same instance path as
+    its data. It is not a second `StateData` subtype, mirroring how
+    `PaymentTerms` doesn't extend `TemplateData`.
+
+  `init()` seeds the state. `PaymentRequest` asks for the outstanding
+  balance and marks the clause `REQUESTED`. The new `PaymentReceived`
+  records a payment, and once the fee is paid in full it marks the clause
+  `PAID` *and* puts the licence `IN_FORCE` in the same returned state.
+
+  Logic only ever sees and returns `CopyrightLicenseState`. The runtime
+  wraps it in an identified, revisioned `AgreementState` (`model/runtime.cto`,
+  a stand-in for `runtime@1.0.0`), writing one revision per transition, so
+  that cross-scope change is a single write. `AgreementState.clauseStates`
+  is keyed like `AgreementDocument.clauses` and holds the state of
+  *composed* sub-template archives. The payment clause is inline, so it has
+  no entry there, just as it has no `clauses` entry.
+  `logic/logic.test.ts` covers the transitions and simulates the envelope.
 
 See `model/*.cto` for the vendored prototype namespaces (`templatedata@0.1.0`,
-`party@0.1.0`, `agreement@0.1.0` — hand-written local stand-ins for the
-`templatedata@1.0.0` / `party@1.0.0` / `agreement@1.0.0` namespaces proposed
-in PR #200, since that PR is unpublished) and their inline comments for the
-reasoning behind each shape.
+`party@0.1.0`, `agreement@0.1.0`, `runtime@0.1.0` — hand-written local
+stand-ins for the `templatedata@1.0.0` / `party@1.0.0` / `agreement@1.0.0` /
+`runtime@1.0.0` namespaces proposed in PR #200, since that PR is
+unpublished) and their inline comments for the reasoning behind each shape.
 
 ## Known gap: this cannot load with today's installed toolchain
 
@@ -89,3 +115,20 @@ trigger` checks are both tracked as expected failures — see that file's
 `expectedLoadFailures` — with a comment naming template-archive#946.
 `@template` has deliberately **not** been added back: doing so would
 silently paper over the exact gap this prototype exists to surface.
+
+State has a matching gap that would remain even once template-archive#946
+ships. The toolchain recognises state only as a subclass of
+`org.accordproject.runtime@0.2.0.State`, an identified asset:
+
+- cicero-core 2.1.1's `Template#isStateful()` looks for concrete
+  subclasses of it. It would classify this template as stateless, and the
+  render test would then call `trigger()` with no state.
+- template-engine binds `TemplateLogic`'s state type parameter to
+  subclasses of it, and on current `main` also asserts that returned
+  state's `$class` extends it.
+
+`StateData` is a plain, unidentified concept carried inside a
+runtime-owned `AgreementState`, so both checks need the same
+find-by-parent-type change as the template root. Until then, the stateful
+behaviour is exercised by `logic/logic.test.ts` rather than the render
+tests.
