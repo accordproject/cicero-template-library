@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Agreement Quarter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a walk through an Inn of Court. A painted "Directory" board stays
+   beside the reader; each stop is a chambers staircase (No. 1, No. 2, ...)
+   read at three depths: the board, the brief, the bundle. */
+:root {
+  /* Portland stone by day */
+  --ground: #e8e6e0;
+  --paper: #f3f2ee;
+  --ink: #1c2230;
+  --muted: #5a5f6c;
+  --rule: #c7c3b8;
+  --claret: #7a1f2c;
+  --brass: #87601a;
+  --well: #dfdcd3;
+  --hatch: #cfcabd;
+  --added: #2f5d3a;
+  --removed: #7a1f2c;
+  --display: "IM Fell English SC", "Cormorant SC", Georgia, serif;
+  --italic: "IM Fell English", Georgia, serif;
+  --body: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* gaslight at dusk */
+    --ground: #0f131b; --paper: #161b25; --ink: #e7e1d2; --muted: #a29d90; --rule: #2c3341;
+    --claret: #d47a82; --brass: #e1b45e; --well: #0b0e14; --hatch: #232a38;
+    --added: #8fc59b; --removed: #e08a92; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0f131b; --paper: #161b25; --ink: #e7e1d2; --muted: #a29d90; --rule: #2c3341;
+  --claret: #d47a82; --brass: #e1b45e; --well: #0b0e14; --hatch: #232a38;
+  --added: #8fc59b; --removed: #e08a92; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--body);
+  padding-inline: 1rem;
+  padding-block: 0 4rem;
+}
+a { color: var(--claret); text-underline-offset: 0.15em; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+code, pre, .mono { font-family: var(--mono); font-size: 0.86em; }
+h1, h2, h3 { text-wrap: balance; font-weight: 400; margin: 0; }
+p { margin: 0; }
+
+.walk {
+  max-width: 76rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: 3rem;
+}
+
+/* The Directory: the painted board at a staircase door */
+.directory {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+  align-self: start;
+  margin-top: 1.5rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 1rem 1rem 1.1rem;
+}
+.directory h2 { font: 400 1.05rem/1 var(--display); letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.75rem; }
+.directory ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+.directory a {
+  display: grid; grid-template-columns: 3rem 1fr; gap: 0.25rem;
+  text-decoration: none; color: var(--ink); padding: 0.2rem 0.3rem;
+  font: 400 0.98rem/1.3 var(--italic);
+  border-left: 2px solid transparent;
+}
+.directory a .no { font: 500 0.7rem/1.9 var(--mono); color: var(--muted); letter-spacing: 0.04em; }
+.directory a[aria-current="true"] { border-left-color: var(--claret); color: var(--claret); }
+.directory a:hover { color: var(--claret); }
+
+main { min-width: 0; display: grid; gap: 5.5rem; padding-top: 1.5rem; }
+/* Grid children holding code or long words must be allowed to shrink. */
+main > *, .opening > *, .stop > *, .brief > *, .bundle > *, .section > *, .pair > *, .board > * { min-width: 0; }
+.kicker { overflow-wrap: anywhere; }
+
+/* Plates: illustrations, or numbered placeholders until they exist */
+.plate { margin: 0; display: grid; gap: 0.6rem; }
+.plate-art {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  border: 3px double var(--rule);
+  background:
+    repeating-linear-gradient(135deg, var(--hatch) 0 1px, transparent 1px 7px),
+    var(--well);
+  display: grid; place-items: center; text-align: center;
+  overflow: hidden;
+}
+.plate-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.plate-art .label { display: grid; gap: 0.2rem; padding: 0.6rem 1rem; background: var(--paper); border: 1px solid var(--rule); }
+.plate-art .label b { font: 400 0.8rem/1 var(--mono); letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; }
+.plate-art .label span { font: 400 1.4rem/1.1 var(--display); letter-spacing: 0.04em; }
+.plate figcaption { font: italic 400 0.92rem/1.45 var(--italic); color: var(--muted); max-width: 62ch; }
+
+/* The opening */
+.opening { display: grid; gap: 1.6rem; }
+.kicker { font: 500 0.74rem/1.4 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.kicker em { font-style: normal; color: var(--claret); }
+.opening h1 { font: 400 clamp(2.6rem, 6.5vw, 4.6rem)/0.98 var(--display); letter-spacing: 0.01em; }
+.opening h1 i { font-family: var(--italic); font-style: italic; color: var(--claret); }
+.opening .lede { font-size: 1.25rem; line-height: 1.5; max-width: 40ch; }
+.manifest { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; padding-block: 0.9rem; border-block: 1px solid var(--rule); font: 400 0.82rem/1.4 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.manifest b { color: var(--ink); font-weight: 500; }
+
+/* A stop */
+.stop { display: grid; gap: 1.8rem; scroll-margin-top: 1.5rem; }
+.board { display: grid; gap: 0.6rem; }
+.board h2 { font: 400 clamp(2rem, 4.6vw, 3.1rem)/1.02 var(--display); }
+.board h2 i { font-family: var(--italic); font-style: italic; color: var(--claret); }
+.brief { display: grid; gap: 1.3rem; max-width: 68ch; }
+.claim { font-size: 1.2rem; line-height: 1.5; }
+.shape { margin: 0; padding: 0.8rem 1rem; background: var(--well); border-left: 3px solid var(--brass); overflow-x: auto; white-space: pre; line-height: 1.55; }
+.shape-label { font: 500 0.7rem/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; display: block; }
+dl.anatomy { margin: 0; display: grid; grid-template-columns: minmax(8rem, max-content) minmax(0, 1fr); gap: 0.45rem 1.1rem; }
+dl.anatomy dt { font: 500 0.84rem/1.55 var(--mono); color: var(--claret); }
+dl.anatomy dd { margin: 0; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem 2rem; }
+.pair h3 { font: 400 1.1rem/1.2 var(--display); letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.pair ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; }
+.pair .gets h3 { color: var(--brass); }
+.receipts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.receipt { font: 400 0.74rem/1 var(--mono); letter-spacing: 0.04em; padding: 0.4rem 0.55rem; border: 1px solid var(--rule); color: var(--muted); text-decoration: none; background: var(--paper); }
+a.receipt:hover { color: var(--claret); border-color: var(--claret); }
+
+/* The bundle: worked examples */
+.bundle { display: grid; gap: 1rem; border-top: 1px solid var(--rule); padding-top: 1.3rem; }
+.bundle > h3 { font: 400 1.35rem/1.2 var(--display); }
+.bundle > p { max-width: 68ch; }
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1rem; }
+.compare figure { margin: 0; min-width: 0; display: grid; grid-template-rows: auto 1fr; }
+.compare figcaption, .code-label { font: 500 0.7rem/1.3 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 0.5rem 0.75rem; border: 1px solid var(--rule); border-bottom: 0; background: var(--paper); }
+.compare figcaption.after { color: var(--added); }
+.compare figcaption.before { color: var(--removed); }
+pre.code { margin: 0; padding: 0.85rem 0.9rem; background: var(--well); border: 1px solid var(--rule); overflow-x: auto; line-height: 1.55; tab-size: 4; }
+pre.code .c { color: var(--muted); }
+pre.code .k { color: var(--claret); }
+pre.code .s { color: var(--brass); }
+ol.stages { list-style: none; counter-reset: stage; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+ol.stages li { counter-increment: stage; display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 0.8rem; align-items: start; }
+ol.stages li::before { content: counter(stage, upper-roman); font: 400 1rem/1.5 var(--display); color: var(--claret); text-align: right; }
+ol.stages b { font-weight: 600; }
+ol.stages code { overflow-wrap: anywhere; }
+details { border: 1px solid var(--rule); background: var(--paper); }
+details summary { cursor: pointer; padding: 0.6rem 0.8rem; font: 500 0.78rem/1.3 var(--mono); letter-spacing: 0.06em; color: var(--muted); }
+details[open] summary { border-bottom: 1px solid var(--rule); }
+details pre.code { border: 0; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); }
+th { font: 500 0.72rem/1.3 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+td code { font-size: 0.82em; }
+.tree { margin: 0; padding: 0.9rem 1rem; background: var(--well); border: 1px solid var(--rule); overflow-x: auto; line-height: 1.6; white-space: pre; }
+.tree .doc { color: var(--claret); }
+.tree .tpl { color: var(--muted); }
+.tree .inl { color: var(--brass); }
+
+/* Closing sections */
+.section { display: grid; gap: 1.4rem; scroll-margin-top: 1.5rem; }
+.section > h2 { font: 400 clamp(1.9rem, 4vw, 2.7rem)/1.05 var(--display); }
+ol.checklist { margin: 0; padding-left: 1.6rem; display: grid; gap: 0.6rem; max-width: 70ch; }
+ol.checklist li::marker { font-family: var(--display); color: var(--claret); }
+.kind { font: 500 0.68rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.4rem; border: 1px solid currentColor; white-space: nowrap; }
+.kind.models { color: var(--muted); }
+.kind.proposed { color: var(--claret); }
+.kind.engine { color: var(--brass); }
+.kind.template { color: var(--added); }
+ul.plain { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.5rem; max-width: 70ch; }
+footer.colophon { border-top: 1px solid var(--rule); padding-top: 1.2rem; font-size: 0.92rem; color: var(--muted); display: grid; gap: 0.5rem; }
+
+@media (max-width: 60rem) {
+  .walk { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .directory {
+    top: env(safe-area-inset-top, 0px);
+    z-index: 2; margin: 0 -1rem; border-width: 0 0 1px; padding: 0.55rem 1rem;
+  }
+  .directory h2 { display: none; }
+  .directory ol { display: flex; overflow-x: auto; gap: 0.25rem; scrollbar-width: none; }
+  .directory a { display: flex; gap: 0.35rem; white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; }
+  .directory a[aria-current="true"] { border-bottom-color: var(--claret); }
+  .directory a .no { line-height: 1.6; }
+  main { gap: 4rem; }
+}
+@media (max-width: 30rem) {
+  dl.anatomy { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  dl.anatomy dd { margin-bottom: 0.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="walk">
+
+<nav class="directory" aria-label="Directory">
+  <h2>Directory</h2>
+  <ol>
+    <li><a href="#registry"><span class="no">No. 1</span>The Registry</a></li>
+    <li><a href="#conveyancer"><span class="no">No. 2</span>The Conveyancer's</a></li>
+    <li><a href="#strongroom"><span class="no">No. 3</span>The Strongroom</a></li>
+    <li><a href="#windows"><span class="no">No. 4</span>The Clerks' Windows</a></li>
+    <li><a href="#library"><span class="no">No. 5</span>The Library</a></li>
+    <li><a href="#chancery"><span class="no">No. 6</span>The Chancery</a></li>
+    <li><a href="#seals"><span class="no">No. 7</span>The Seal Office</a></li>
+    <li><a href="#recorder"><span class="no">No. 8</span>The Recorder</a></li>
+    <li><a href="#moot"><span class="no">No. 9</span>The Moot</a></li>
+    <li><a href="#lodge"><span class="no">No. 10</span>The Porters' Lodge</a></li>
+    <li><a href="#checklist"><span class="no">§</span>The Checklist</a></li>
+    <li><a href="#roll"><span class="no">§</span>The Roll</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="opening" id="gatehouse">
+  <figure class="plate" data-scene="gatehouse">
+    <div class="plate-art"><div class="label"><b>Plate I</b><span>The Gatehouse</span></div></div>
+    <figcaption>The barrister and the lantern-headed clerk walk in under the gatehouse arch; lit chambers line the court beyond, each door with its painted name board.</figcaption>
+  </figure>
+  <p class="kicker">Accord Project · Agreement 1.0 proposal · <em>copyright-license-agreement-poc</em></p>
+  <h1>Every template, <i>one agreement.</i></h1>
+  <p class="lede">Ten changes to how Accord Project templates are modelled, written and run. Each stop names what template authors change, what they get, and the code that proves it.</p>
+  <p class="manifest">
+    <span><b>16</b> commits</span>
+    <span><b>72</b> files</span>
+    <span><b>43</b> tests passing</span>
+    <span><b>8</b> models#205 namespaces, verbatim</span>
+    <span><b>4</b> models#205 changes</span>
+    <span><b>45</b> generated factories</span>
+  </p>
+</header>
+
+<!-- No. 1 -->
+<section class="stop" id="registry" aria-labelledby="registry-h">
+  <figure class="plate" data-scene="registry">
+    <div class="plate-art"><div class="label"><b>Plate II</b><span>The Registry</span></div></div>
+    <figcaption>A registrar rebinds overstuffed folios into slim new volumes while the clerk carries one clean volume to the barrister.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 1 · The Registry · <em>Models 1.0</em></p>
+    <h2 id="registry-h">No decorator. No envelope. <i>Just the data.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">A template's model declares exactly one concrete <code>TemplateData</code> subtype, and that type is the template: the grammar renders it and logic reads it. A stateful template declares one <code>StateData</code> subtype the same way.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">concept CopyrightLicenseData extends TemplateData { … }
+concept CopyrightLicenseState extends StateData { … }</pre></div>
+    <dl class="anatomy">
+      <dt>TemplateData</dt><dd>The root is found by its parent type, so <code>@template</code> goes, and so does the <code>Contract</code> envelope. Where the models hold several <code>TemplateData</code> types, package.json's <code>accordproject.templateModel</code> names the root.</dd>
+      <dt>StateData</dt><dd>State has the same shape as data, and is found the same way. The runtime wraps it with identity and a revision.</dd>
+      <dt>PartyRef</dt><dd>A portable reference to a party. It replaces eight loose strings per licence, and a relationship that logic could never resolve.</dd>
+      <dt>PreciseAmount</dt><dd>An integer <code>unscaledValue</code> plus a unit with a <code>scale</code>: $100.00 is <code>"10000"</code> at scale 2, and arithmetic is exact <code>BigInt</code>.</dd>
+      <dt>@1.0.0</dt><dd>Every base namespace is versioned. A published version never changes, so a template's types are fixed at compile time.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Remove <code>@template</code> and the <code>Contract</code> or <code>Clause</code> supertype.</li>
+        <li>Extend <code>TemplateData</code>; add one <code>StateData</code> subtype if the template keeps state.</li>
+        <li>Use <code>PreciseAmount</code> for money and <code>PartyRef</code> for parties.</li>
+        <li>Import <code>Request</code> and <code>Response</code> from <code>runtime@1.0.0</code>.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>The grammar roots at the data: <code>{{effectiveDate}}</code>, with no <code>{{#with data}}</code> wrapper.</li>
+        <li>Exact money, at any magnitude.</li>
+        <li>No envelope, so no doubt about which copy of the data is the real one.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/models/pull/200">models#200 · head 337cc68</a>
+      <span class="receipt">7101b7a · 2026-09-04</span>
+      <span class="receipt">b8c8e45 · 2026-10-01</span>
+      <a class="receipt" href="https://github.com/accordproject/template-archive/pull/946">template-archive#946, #950</a>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>The same licence, before and after</h3>
+    <div class="compare">
+      <figure><figcaption class="before">Before · copyright-license@0.2.0</figcaption>
+<pre class="code"><span class="k">@template</span>
+asset TemplateModel extends Contract {
+  o DateTime effectiveDate
+  o String licensee
+  o String licenseeState
+  o String licenseeEntityType
+  o String licenseeAddress
+  o String licensor
+  <span class="c">/* …four more licensor strings… */</span>
+  o PaymentClause paymentClause
+}
+asset PaymentClause extends Clause {
+  o String amountText
+  o MonetaryAmount amount  <span class="c">// a Double</span>
+  o String paymentProcedure
+}</pre></figure>
+      <figure><figcaption class="after">After · this branch</figcaption>
+<pre class="code">concept CopyrightLicenseData extends TemplateData {
+  o DateTime effectiveDate
+  o PartyRef licensee
+  o PartyRef licensor
+  o String territory
+  o String purposeDescription
+  o String workDescription
+  o PaymentTerms paymentTerms
+}
+concept PaymentTerms {
+  o String amountText
+  o PreciseAmount amount  <span class="c">// exact</span>
+  o String paymentProcedure
+}</pre></figure>
+    </div>
+  </div>
+</section>
+
+<!-- No. 2 -->
+<section class="stop" id="conveyancer" aria-labelledby="conveyancer-h">
+  <figure class="plate" data-scene="conveyancer">
+    <div class="plate-art"><div class="label"><b>Plate III</b><span>The Conveyancer's</span></div></div>
+    <figcaption>A deed is bound with red tape while a separate folio is stitched into it as its own section.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 2 · The Conveyancer's · <em>Documents and clauses</em></p>
+    <h2 id="conveyancer-h">An agreement is <i>one tree.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">A document is the root template instance. Each clause composed into it is a child instance, with its own template and its own data. Inline clauses stay where they are, inside their template's data.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">AgreementDocument { documentId, template, data, clauses: map&lt;path, Clause&gt; }
+Clause { template, clauseId, data, clauses?, clauseHash? }</pre></div>
+    <dl class="anatomy">
+      <dt>documentId</dt><dd>The document's instance id.</dd>
+      <dt>clauses key</dt><dd>Where the clause sits in its parent's grammar, e.g. <code>latePayment</code>.</dd>
+      <dt>clauseId</dt><dd>The clause's stable instance id, e.g. <code>licence/late-payment</code>.</dd>
+      <dt>data</dt><dd>The clause's own <code>TemplateData</code>. The parent's model declares nothing about it.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Nothing, for inline clauses.</li>
+        <li>A reusable clause becomes its own archive, with its own model, grammar and logic, and is composed in.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>One structure for the whole hierarchy. No parallel maps of data and clause state to keep in step.</li>
+        <li>A clause written once and composed into any document.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/models/pull/205">models#205 · Clause</a>
+      <span class="receipt">4da9026 · 2026-10-01</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>The example agreement</h3>
+    <p>One licence with an inline payment clause and a composed late payment clause, plus a stateless schedule describing the licensed work. Each instance names its template by <code>templateId</code>: three sibling templates in the library.</p>
+<pre class="tree mono">Agreement <b>licence-001</b>
+├─ <span class="doc">Document licence</span>          <span class="tpl">copyright-license-agreement-poc</span>
+│  ├─ <span class="inl">data.paymentTerms</span>        <span class="tpl">inline clause</span>
+│  └─ clauses.latePayment     <span class="tpl">→ licence/late-payment · late-payment-poc</span>
+└─ <span class="doc">Document schedule-1</span>       <span class="tpl">licensed-work-schedule-poc · stateless</span></pre>
+  </div>
+</section>
+
+<!-- No. 3 -->
+<section class="stop" id="strongroom" aria-labelledby="strongroom-h">
+  <figure class="plate" data-scene="strongroom">
+    <div class="plate-art"><div class="label"><b>Plate IV</b><span>The Strongroom</span></div></div>
+    <figcaption>The clerk files a tied bundle into a numbered pigeonhole by its tag; one pigeonhole stays empty.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 3 · The Strongroom · <em>Agreement state</em></p>
+    <h2 id="strongroom-h">One index of state, <i>keyed by instance.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">The agreement's state is one flat index from instance id to that instance's own <code>StateData</code>. In models#205 it replaces models#200's <code>data</code> and <code>clauseStates</code>.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">AgreementState { stateId, agreement, revision, effectiveAt, states: map&lt;instanceId, StateData&gt; }</pre></div>
+    <dl class="anatomy">
+      <dt>states</dt><dd>One entry per stateful instance. A stateless instance has none.</dd>
+      <dt>revision</dt><dd>Goes up by one for each request the agreement commits.</dd>
+      <dt>effectiveAt</dt><dd>The committed request's timestamp.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Nothing. Logic sees only its own state, at its own type.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>Stateless templates cost nothing.</li>
+        <li>Keys are stable ids, so the tree can change shape without migrating state.</li>
+        <li>One revision for the whole agreement.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/models/pull/205">models#205 · AgreementState.states</a>
+      <span class="receipt">4da9026 · 2026-10-01</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>After the licensee is chased once</h3>
+<pre class="code">{
+  <span class="s">"$class"</span>: "org.accordproject.runtime@1.0.0.AgreementState",
+  <span class="s">"stateId"</span>: "licence-001-state",
+  <span class="s">"revision"</span>: 2,
+  <span class="s">"states"</span>: {
+    <span class="s">"licence"</span>: { "paymentTerms": { "amountPaid": …, "dueAt": "2018-01-02T00:00:01.000Z" } },
+    <span class="s">"licence/late-payment"</span>: { "remindersSent": 1, "discharged": false }
+  }
+}                                       <span class="c">// no entry for schedule-1</span></pre>
+  </div>
+</section>
+
+<!-- No. 4 -->
+<section class="stop" id="windows" aria-labelledby="windows-h">
+  <figure class="plate" data-scene="windows">
+    <div class="plate-art"><div class="label"><b>Plate V</b><span>The Clerks' Windows</span></div></div>
+    <figcaption>A corridor of service windows, each with its own emblem; the clerk sends a petitioner to the right one.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 4 · The Clerks' Windows · <em>Logic</em></p>
+    <h2 id="windows-h">One handler per request. <i>No switch.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">Logic registers one handler for each request type it handles. The engine dispatches on the request's type, and each handler's signature declares what callers get back.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">defineLogic&lt;Self&gt;()
+  .init(self =&gt; …)
+  .on(RequestType, async (request, self): Promise&lt;Response&gt; =&gt; …)</pre></div>
+    <dl class="anatomy">
+      <dt>.init(self)</dt><dd>Seeds state and emits the first events.</dd>
+      <dt>.on(Type, …)</dt><dd>Registers a handler. <code>request</code> is typed by the request type.</dd>
+      <dt>Promise&lt;…&gt;</dt><dd>The declared response is the template's API.</dd>
+      <dt>ApiOf&lt;…&gt;</dt><dd>Collects the handlers into what a composing template can trigger.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Replace <code>class … extends TemplateLogic</code> and its switch with <code>defineLogic()</code>, from <code>@accordproject/template-engine/logic</code>.</li>
+        <li>Handlers take <code>(request, self)</code> instead of <code>(data, request, state)</code>.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>No casts. A switch on <code>$class</code> never narrowed the request's type.</li>
+        <li>A request nothing handles is rejected before any logic runs.</li>
+        <li>A subtype falls back to its nearest supertype's handler.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/agreement/logic.ts</a>
+      <span class="receipt">ef3c58a · 2026-10-01</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>Dispatch, before and after</h3>
+    <div class="compare">
+      <figure><figcaption class="before">Before · switch in trigger()</figcaption>
+<pre class="code">async trigger(data, request, state) {
+  <span class="k">switch</span> (request.$class) {
+    <span class="k">case</span> `${NS}.PaymentRequest`:
+      return this.requestPayment(
+        data, request, state);
+    <span class="k">case</span> `${NS}.PaymentReceived`:
+      return this.receivePayment(
+        data, request <span class="k">as IPaymentReceived</span>,
+        state);
+    <span class="k">default</span>:
+      throw new Error('Unsupported');
+  }
+}</pre></figure>
+      <figure><figcaption class="after">After · one handler per type</figcaption>
+<pre class="code">const copyrightLicense = defineLogic&lt;Licence&gt;()
+  .init(licence =&gt; { … })
+  .on(PaymentRequest,
+    async (request, licence): Promise&lt;IPayOut&gt; =&gt; {
+      …
+    })
+  .on(PaymentReceived,
+    async (request, licence): Promise&lt;IPaymentReceipt&gt; =&gt; {
+      …
+    });</pre></figure>
+    </div>
+  </div>
+</section>
+
+<!-- No. 5 -->
+<section class="stop" id="library" aria-labelledby="library-h">
+  <figure class="plate" data-scene="library">
+    <div class="plate-art"><div class="label"><b>Plate VI</b><span>The Library</span></div></div>
+    <figcaption>The barrister writes at one desk by the clerk's lantern; the other volumes can be read through their glass but not taken down.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 5 · The Library · <em>self</em></p>
+    <h2 id="library-h">Read the whole agreement. <i>Write only your own.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim"><code>self</code> is the template's own node in the agreement tree. It reads its own data and state, and reaches every other instance by walking the tree.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">self.data · self.state · self.parent · self.clauses
+self.document.agreement.documents · agreement.resolve(reference)</pre></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Instance</th><th>Read</th><th>Write</th></tr></thead>
+      <tbody>
+        <tr><td>Itself</td><td>data, state</td><td><code>setState</code>, <code>emit</code></td></tr>
+        <tr><td>Its own composed clauses</td><td>data, state</td><td>only by <code>trigger</code></td></tr>
+        <tr><td>Parent, cousins, other documents</td><td>data, state</td><td>none</td></tr>
+      </tbody>
+    </table></div>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Read parties, documents and other clauses through <code>self</code> instead of passing them in.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>Logic reads parent documents and cousin clauses.</li>
+        <li>Writing anywhere else fails to compile, and the views are frozen at runtime.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <span class="receipt">test/types.check.ts</span>
+      <span class="receipt">b8c8e45 · 2026-10-01</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>The licence reads its schedule</h3>
+    <p>When it issues the payment obligation, the licence names the licensed work from the schedule, a cousin document in the same agreement.</p>
+<pre class="code"><span class="k">for</span> (const document of licence.document.agreement.documents.values()) {
+  const data = document.root.data;
+  <span class="k">if</span> (LicensedWorkSchedule.is(data)) {
+    return `"${data.title}"`;          <span class="c">// "Other Stuff"</span>
+  }
+}
+return licence.data.workDescription;</pre>
+  </div>
+</section>
+
+<!-- No. 6 -->
+<section class="stop" id="chancery" aria-labelledby="chancery-h">
+  <figure class="plate" data-scene="chancery">
+    <div class="plate-art"><div class="label"><b>Plate VII</b><span>The Chancery</span></div></div>
+    <figcaption>Several documents gathered under one brass press, about to be sealed together; a torn draft goes in the basket.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 6 · The Chancery · <em>Transactions</em></p>
+    <h2 id="chancery-h">Commit everything, <i>or nothing.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">Handlers write only through <code>self</code>. The engine buffers every write and commits the request as one revision, or nothing if the handler throws. Each clause call runs in a nested transaction of its own.</p>
+    <dl class="anatomy">
+      <dt>Buffered</dt><dd>A handler sees its own writes straight away. Nobody else does until commit.</dd>
+      <dt>Nested</dt><dd>A clause's writes merge into its parent's when it returns, and are discarded if it throws. A parent that catches the error loses only the clause's writes.</dd>
+      <dt>Deterministic</dt><dd>Timestamps come from the request, never the clock, so a replay reproduces every outcome.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Call <code>setState</code> and <code>emit</code> instead of returning state and events.</li>
+        <li>Take time from <code>request.$timestamp</code>, not <code>new Date()</code>.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>A document and its clauses stay consistent without any code to keep them so.</li>
+        <li>Replayable, auditable logic.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/agreement/execute.ts</a>
+      <span class="receipt">test/AgreementLogic.test.ts</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>Paying in full, as one revision</h3>
+    <ol class="stages">
+      <li><span><b>The request arrives.</b> <code>PaymentReceived</code> for the outstanding 100.00 USD, at revision 1.</span></li>
+      <li><span><b>The licence records it.</b> <code>licence.setState(…)</code> sets <code>amountPaid</code> to the full fee.</span></li>
+      <li><span><b>It fulfils the obligation.</b> <code>licence.emit(…)</code> records the move from DUE to FULFILLED.</span></li>
+      <li><span><b>It discharges the clause.</b> <code>latePayment.trigger(PaymentSettled…)</code> runs in a nested transaction and sets <code>discharged</code>.</span></li>
+      <li><span><b>The engine commits revision 2.</b> Both states and the event commit together. Had anything thrown, revision 1 would stand untouched.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- No. 7 -->
+<section class="stop" id="seals" aria-labelledby="seals-h">
+  <figure class="plate" data-scene="seals">
+    <div class="plate-art"><div class="label"><b>Plate VIII</b><span>The Seal Office</span></div></div>
+    <figcaption>Racks of engraved seal matrices; the clerk presses one into wax while the barrister holds out the next document.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 7 · The Seal Office · <em>Type factories</em></p>
+    <h2 id="seals-h">Every value, <i>sealed by its type.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">Every value is made with its type's factory, generated from the models. Logic never writes a <code>$class</code> by hand.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">PayOut.create({ … }) · LicensedWorkSchedule.is(data) · PaymentObligation.ref(id)</pre></div>
+    <dl class="anatomy">
+      <dt>.create()</dt><dd>Fills in <code>$class</code>, and <code>$identifier</code> for an identified type. Every required field must be given.</dd>
+      <dt>.is()</dt><dd>Checks a value's type and narrows it.</dd>
+      <dt>.ref()</dt><dd>Makes a relationship to an identified instance.</dd>
+      <dt>Request types</dt><dd>Also the keys handlers register under.</dd>
+      <dt>types.ts</dt><dd>Generated into <code>logic/generated/</code> by <code>template-engine-codegen</code>: one <code>conceptType</code> or <code>identifiedType</code> factory per concrete type. The engine supplies the same factories at runtime.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Replace object literals with factories, and delete namespace string constants.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>A mistyped or hand-written <code>$class</code> doesn't compile.</li>
+        <li>Generated by <code>npm run compile</code>: 45 factories for the licence.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/agreement/codegen.ts</a>
+      <span class="receipt">98aeb04 · 2026-10-01</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>Making a response, before and after</h3>
+    <div class="compare">
+      <figure><figcaption class="before">Before · literal with $class</figcaption>
+<pre class="code">return {
+  $class: <span class="s">'org.accordproject.copyrightlicense@0.2.0.PayOut'</span>,
+  $timestamp: <span class="k">new Date()</span>,
+  amount: data.paymentClause.amount,
+};</pre></figure>
+      <figure><figcaption class="after">After · factory</figcaption>
+<pre class="code">return PayOut.create({
+  $timestamp: request.$timestamp,
+  amount: outstanding(data, terms),
+});</pre></figure>
+    </div>
+  </div>
+</section>
+
+<!-- No. 8 -->
+<section class="stop" id="recorder" aria-labelledby="recorder-h">
+  <figure class="plate" data-scene="recorder">
+    <div class="plate-art"><div class="label"><b>Plate IX</b><span>The Recorder</span></div></div>
+    <figcaption>A public board of pinned notices, each stamped through a sequence of marks; the clerk pins up a new one.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 8 · The Recorder · <em>Obligations</em></p>
+    <h2 id="recorder-h">State records facts. <i>The registry owns the status.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">The licence fee is a <code>PaymentObligation</code> that moves from PENDING to DUE to FULFILLED. State keeps only facts, the amount paid and the due date. Logic derives the status and announces each change as an event.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">ObligationIssued { obligation }
+ObligationTransition { obligation: ref, fromStatus, toStatus, effectiveAt, revision }</pre></div>
+    <dl class="anatomy">
+      <dt>Issued</dt><dd>Emitted by <code>init</code>. Added by models#205.</dd>
+      <dt>Transition</dt><dd>Carries an accurate <code>fromStatus</code> and <code>revision</code>, so the registry can check each one.</dd>
+      <dt>Reference</dt><dd>An <code>AgreementReference</code> naming the agreement, document and clause path. Its <code>documentId</code> is new in models#205.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Emit obligation events instead of storing a status.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>No stored status that a registry could disagree with.</li>
+        <li>Obligation ids unique across agreements, such as <code>licence-001/licence/paymentTerms</code>.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/models/pull/205">models#205 · ObligationIssued, documentId</a>
+      <span class="receipt">1b63b32 · 2026-09-30</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>The transition a payment request emits</h3>
+<pre class="code">ObligationTransition.create({
+  $timestamp: request.$timestamp,
+  obligation: PaymentObligation.ref('licence-001/licence/paymentTerms'),
+  fromStatus: 'PENDING',
+  toStatus: 'DUE',
+  effectiveAt: request.$timestamp,
+  revision: 1,
+})</pre>
+  </div>
+</section>
+
+<!-- No. 9 -->
+<section class="stop" id="moot" aria-labelledby="moot-h">
+  <figure class="plate" data-scene="moot">
+    <div class="plate-art"><div class="label"><b>Plate X</b><span>The Moot</span></div></div>
+    <figcaption>A practice moot: the barrister argues to an empty bench against a stand-in witness of card and wire, and the clerk keeps the record.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 9 · The Moot · <em>Testing</em></p>
+    <h2 id="moot-h">Rehearse every clause <i>before it's argued.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim">Unit tests get a <code>self</code> that runs on the engine's own transaction code and records what the engine would commit. Composed clauses are replaced by typed stand-ins.</p>
+    <dl class="anatomy">
+      <dt>testInstance</dt><dd>A <code>self</code> for one template, with optional cousin documents, validated against the models. From <code>@accordproject/template-engine/testing</code>, like <code>stubClause</code>.</dd>
+      <dt>stubClause</dt><dd>A stand-in clause, typed by the clause's API, which records the requests it gets.</dd>
+      <dt>types.check.ts</dt><dd>Compile-time checks of the API, run with <code>tsc</code>.</dd>
+    </dl>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Drop the global mocks of <code>TemplateLogic</code>.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>Tests that match the engine's behaviour exactly.</li>
+        <li>A stubbed response of the wrong type doesn't compile.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <span class="receipt">@accordproject/template-engine/testing</span>
+      <span class="receipt">43 tests passing</span>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>Chasing through a stand-in clause</h3>
+<pre class="code">const latePayment = stubClause({
+  [PaymentOverdue.$class]: ReminderSent.create({ $timestamp, remindersSent: 1 }),
+});
+const self = testInstance({ data, state, clauses: { latePayment }, models });
+
+await copyrightLicense.handle(PaymentRequest.create({ $timestamp }), self);
+
+expect(latePayment.calls).toEqual([PaymentOverdue.create({ $timestamp })]);
+expect(self.committed.state).toEqual(state);</pre>
+  </div>
+</section>
+
+<!-- No. 10 -->
+<section class="stop" id="lodge" aria-labelledby="lodge-h">
+  <figure class="plate" data-scene="lodge">
+    <div class="plate-art"><div class="label"><b>Plate XI</b><span>The Porters' Lodge</span></div></div>
+    <figcaption>At night the clerk hands a numbered bundle through the lodge window; the porter checks it against his ledger.</figcaption>
+  </figure>
+  <div class="board">
+    <p class="kicker">No. 10 · The Porters' Lodge · <em>Deployment</em></p>
+    <h2 id="lodge-h">Run an agreement <i>as a stateless function.</i></h2>
+  </div>
+  <div class="brief">
+    <p class="claim"><code>AgreementProcessor</code>'s entry points take JSON and return JSON, and run an agreement over several templates. One invocation loads the state, executes, and commits with a conditional write on the revision.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">initialise(agreement, documents, effectiveAt)
+  → { state@0, events }
+execute({ agreement, documents, state@N }, documentId, request)
+  → { result, events, state@N+1 }</pre></div>
+    <div class="pair">
+      <div><h3>Template authors change</h3><ul>
+        <li>Nothing. Legacy <code>TemplateLogic</code> templates run unchanged.</li>
+      </ul></div>
+      <div class="gets"><h3>What you get</h3><ul>
+        <li>Serverless hosting with no state held between calls.</li>
+        <li>Safe retries, because logic is deterministic.</li>
+        <li>The agreement as the unit of deployment: composed clauses run in the same invocation as their parent.</li>
+        <li>Each template still runs alone: <code>TemplateArchiveProcessor</code>'s <code>init</code> and <code>trigger</code> run it as the one document of an agreement.</li>
+      </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/AgreementProcessor.ts</a>
+    </div>
+  </div>
+  <div class="bundle">
+    <h3>One invocation</h3>
+    <ol class="stages">
+      <li><span><b>Load</b> the agreement, its documents and the state at revision N.</span></li>
+      <li><span><b>Execute</b> the request in memory.</span></li>
+      <li><span><b>Commit</b> state N+1 only if the store still holds revision N, and write the events to an outbox in the same write.</span></li>
+      <li><span><b>Retry</b> from the winning state if another request committed first.</span></li>
+      <li><span><b>Return the stored result</b> if the same request is delivered again.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Checklist -->
+<section class="section" id="checklist" aria-labelledby="checklist-h">
+  <p class="kicker">For template authors</p>
+  <h2 id="checklist-h">The Checklist</h2>
+  <p>In the order to do them, for each template.</p>
+  <ol class="checklist">
+    <li>Import the <code>@1.0.0</code> base namespaces, and <code>Request</code> and <code>Response</code> from <code>runtime@1.0.0</code>.</li>
+    <li>Remove <code>@template</code>; make the root extend <code>TemplateData</code>, and add one <code>StateData</code> subtype if the template keeps state. If the models hold several <code>TemplateData</code> types, name the root in package.json's <code>accordproject.templateModel</code>.</li>
+    <li>Use <code>PreciseAmount</code> for money and <code>PartyRef</code> for parties.</li>
+    <li>Optionally, move a reusable clause into its own archive and compose it in.</li>
+    <li>Replace the <code>TemplateLogic</code> class and its switch with <code>defineLogic().init().on()</code> from <code>@accordproject/template-engine/logic</code>.</li>
+    <li>Make every value with a factory generated by <code>npm run compile</code>, and delete hand-written <code>$class</code> strings.</li>
+    <li>Take timestamps from the request or the data, never the clock.</li>
+    <li>Emit obligation events, and keep only facts in state.</li>
+    <li>Test with <code>testInstance</code> and <code>stubClause</code> from <code>@accordproject/template-engine/testing</code>.</li>
+  </ol>
+</section>
+
+<!-- The Roll -->
+<section class="section" id="roll" aria-labelledby="roll-h">
+  <figure class="plate" data-scene="roll">
+    <div class="plate-art"><div class="label"><b>Plate XII</b><span>The Roll</span></div></div>
+    <figcaption>In the great hall by candlelight, the barrister and the clerk sign the foot of a long parchment roll.</figcaption>
+  </figure>
+  <p class="kicker">Every change, itemized</p>
+  <h2 id="roll-h">The Roll</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Change</th><th>Kind</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td>Root found by its <code>TemplateData</code> parent type</td><td><span class="kind models">models#200</span></td><td>templatedata@1.0.0</td></tr>
+      <tr><td>State as a <code>StateData</code> subtype</td><td><span class="kind models">models#200</span></td><td>templatedata@1.0.0</td></tr>
+      <tr><td>Parties as <code>PartyRef</code></td><td><span class="kind models">models#200</span></td><td>party@1.0.0</td></tr>
+      <tr><td>Exact money with <code>PreciseAmount</code></td><td><span class="kind models">models#200</span></td><td>money@1.0.0</td></tr>
+      <tr><td>Payment obligations and transitions</td><td><span class="kind models">models#200</span></td><td>obligation@1.0.0</td></tr>
+      <tr><td>Composed clauses carry their own data</td><td><span class="kind proposed">models#205</span></td><td>agreement@1.0.0 <code>Clause</code></td></tr>
+      <tr><td>One state index keyed by instance id</td><td><span class="kind proposed">models#205</span></td><td>runtime@1.0.0 <code>AgreementState</code></td></tr>
+      <tr><td>References name their document</td><td><span class="kind proposed">models#205</span></td><td>agreement@1.0.0 <code>AgreementReference</code></td></tr>
+      <tr><td>Issuing an obligation is an event</td><td><span class="kind proposed">models#205</span></td><td>obligation@1.0.0 <code>ObligationIssued</code></td></tr>
+      <tr><td>Template model found by parent type or <code>templateModel</code>; state by <code>StateData</code></td><td><span class="kind engine">cicero-core</span></td><td>template-archive#946, #950</td></tr>
+      <tr><td><code>defineLogic</code> handlers taking <code>(request, self)</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/logic.ts</td></tr>
+      <tr><td>Read-only tree views around <code>self</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/execute.ts</td></tr>
+      <tr><td>Buffered, nested transactions</td><td><span class="kind engine">Engine</span></td><td>src/agreement/execute.ts</td></tr>
+      <tr><td>JSON-to-JSON <code>execute</code> and <code>initialise</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/execute.ts, src/AgreementProcessor.ts</td></tr>
+      <tr><td>Generated type factories</td><td><span class="kind engine">Engine</span></td><td>template-engine-codegen</td></tr>
+      <tr><td><code>testInstance</code> and <code>stubClause</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/testing.ts</td></tr>
+      <tr><td>The licence, late payment clause and schedule, as three templates</td><td><span class="kind template">Template</span></td><td>copyright-license-agreement-poc, late-payment-poc, licensed-work-schedule-poc</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="kicker" style="margin-top:1rem">Not yet possible</h3>
+  <ul class="plain">
+    <li>It runs on unreleased branches (models#205, template-engine#187, template-archive#946 and #950), installed from git dist branches.</li>
+    <li>TemplateMark can't place a composed clause in its parent's text: its <code>ClauseDefinition</code> can't name a composed template.</li>
+    <li>Nothing yet resolves a <code>TemplateReference</code> to an archive.</li>
+    <li>concerto-core 5.0.0's ESM build rejects <code>concerto version "^5.0.0"</code> (<a href="https://github.com/accordproject/concerto/issues/1462">concerto#1462</a>, fix in <a href="https://github.com/accordproject/concerto/pull/1463">#1463</a>).</li>
+  </ul>
+</section>
+
+<footer class="colophon">
+  <p>The example lives in <code>src/copyright-license-agreement-poc</code>, <code>src/late-payment-poc</code> and <code>src/licensed-work-schedule-poc</code> on <a href="https://github.com/accordproject/cicero-template-library/pull/528">cicero-template-library#528</a>, built on <a href="https://github.com/accordproject/models/pull/200">models#200</a> and <a href="https://github.com/accordproject/models/pull/205">models#205</a>, and run by <a href="https://github.com/accordproject/template-engine/pull/187">template-engine#187</a> and cicero-core from <a href="https://github.com/accordproject/template-archive/pull/946">template-archive#946</a> and <a href="https://github.com/accordproject/template-archive/pull/950">#950</a>. Related: <a href="https://github.com/accordproject/template-engine/issues/186">template-engine#186</a>.</p>
+</footer>
+
+</main>
+</div>
+
+<script>
+// Show a plate's illustration once its image exists: images/<scene>.webp.
+document.querySelectorAll('.plate[data-scene]').forEach(plate => {
+  const art = plate.querySelector('.plate-art');
+  const img = new Image();
+  img.alt = plate.querySelector('figcaption')?.textContent ?? '';
+  img.onload = () => art.append(img);
+  img.src = 'images/' + plate.dataset.scene + '.webp';
+});
+
+// Mark the current stop in the Directory.
+const links = new Map([...document.querySelectorAll('.directory a')].map(a => [a.hash.slice(1), a]));
+const observer = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    links.forEach(a => a.removeAttribute('aria-current'));
+    const link = links.get(entry.target.id);
+    if (link) {
+      link.setAttribute('aria-current', 'true');
+      // On narrow screens the Directory is a horizontal strip: keep the
+      // current stop in view without moving the page.
+      const strip = link.closest('ol');
+      if (strip.scrollWidth > strip.clientWidth) {
+        strip.scrollTo({ left: link.offsetLeft - strip.offsetLeft - 16 });
+      }
+    }
+  }
+}, { rootMargin: '-35% 0px -60% 0px' });
+links.forEach((_, id) => { const el = document.getElementById(id); if (el) observer.observe(el); });
+</script>
+</body>
+</html>
