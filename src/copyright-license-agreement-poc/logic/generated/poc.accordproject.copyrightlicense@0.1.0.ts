@@ -2,10 +2,10 @@
 // Generated code for namespace: poc.accordproject.copyrightlicense@0.1.0
 
 // imports
-import {ITemplateData,IStateData} from './poc.accordproject.templatedata@0.1.0';
-import {IPartyRef} from './poc.accordproject.party@0.1.0';
+import {ITemplateData,IStateData} from './org.accordproject.templatedata@1.0.0';
+import {IPartyRef} from './org.accordproject.party@1.0.0';
 import {IPreciseAmount} from './org.accordproject.money@1.0.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {IRequest,IResponse} from './org.accordproject.runtime@1.0.0';
 import {IConcept} from './concerto@1.0.0';
 
 // interfaces

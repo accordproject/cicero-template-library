@@ -1,177 +1,141 @@
-// @ts-nocheck - Suppress type checking for runtime mocks
-declare global {
-    var TemplateLogic: any;
-    var EngineResponse: any;
-    var InitResponse: any;
-}
-
-// Mock runtime globals BEFORE importing logic
-(global as any).TemplateLogic = class TemplateLogic<T, S = undefined> {
-    async trigger(data: T, request: any, state?: S): Promise<any> { return {}; }
-};
-(global as any).EngineResponse = class EngineResponse<S> {};
-(global as any).InitResponse = class InitResponse<S> {};
-
-import CopyrightLicenseLogic from './logic';
-import {
-    ICopyrightLicenseData,
-    ICopyrightLicenseState,
-    IPaymentRequest,
-    IPaymentReceived,
-} from './generated/poc.accordproject.copyrightlicense@0.1.0';
+// @ts-nocheck - test fixtures are plain JSON
+// Unit tests of the licence's logic alone. Each test gets a `self` from
+// runtime/testing.ts, runs on the engine's own transaction code, and
+// stands stubs in for any composed clause. Everything written is
+// validated against the models.
+import copyrightLicense from './logic';
+import { PaymentRequest, PaymentReceived, PaymentOverdue, PaymentSettled } from './request-types';
+import { stubClause, testInstance, TEST_AGREEMENT, TEST_DOCUMENT } from '../runtime/testing';
+import { amount, at, loadModels, sample, templateReference } from '../test/support';
 
 const NS = 'poc.accordproject.copyrightlicense@0.1.0';
-const OBLIGATION_NS = 'poc.accordproject.obligation@0.1.0';
-const EFFECTIVE_DATE = new Date('2018-01-01T00:00:00Z');
+const OBLIGATION_NS = 'org.accordproject.obligation@1.0.0';
+const OBLIGATION_ID = `${TEST_AGREEMENT}/${TEST_DOCUMENT}/paymentTerms`;
+const EFFECTIVE_DATE = '2018-01-01T01:00:00.000+01:00';
 
-const amount = (unscaledValue: string, code = 'USD', scale = 2) => ({
-    $class: 'org.accordproject.money@1.0.0.PreciseAmount',
-    unscaledValue,
-    unit: { $class: 'org.accordproject.money@1.0.0.Unit', code, scheme: 'iso4217', scale },
-});
+const models = loadModels();
 
 let clock = 0;
-const nextTimestamp = () => new Date(Date.UTC(2018, 0, 2, 0, 0, clock++));
+const paymentRequest = () => PaymentRequest.create({ $timestamp: at(clock++) });
+const paymentReceived = (unscaledValue: string, code = 'USD', scale = 2) =>
+    PaymentReceived.create({ $timestamp: at(clock++), amount: amount(unscaledValue, code, scale) });
 
-const paymentRequest = (): IPaymentRequest => ({
-    $class: `${NS}.PaymentRequest`,
-    $timestamp: nextTimestamp()
+// The licensed work schedule, as a cousin document in the same agreement.
+const schedule = () => ({
+    $class: 'org.accordproject.agreement@1.0.0.AgreementDocument',
+    $identifier: 'schedule-1',
+    documentId: 'schedule-1',
+    template: templateReference('licensed-work-schedule'),
+    data: sample('documents/licensed-work-schedule'),
 });
 
-const paymentReceived = (unscaledValue: string, code = 'USD', scale = 2): IPaymentReceived => ({
-    $class: `${NS}.PaymentReceived`,
-    $timestamp: nextTimestamp(),
-    amount: amount(unscaledValue, code, scale)
-});
-
-describe('CopyrightLicenseLogic', () => {
-    let logic: CopyrightLicenseLogic;
-    let data: ICopyrightLicenseData;
+describe('copyright licence logic', () => {
+    let data;
 
     beforeEach(() => {
-        logic = new CopyrightLicenseLogic();
-
-        // Raw sample data, mirroring what template-engine hands to
-        // logic.trigger(): `data` IS the template model directly (no
-        // envelope to unwrap, and no `clauses` map -- see logic.ts
-        // comments). `licensee`/`licensor` are portable PartyRef values,
-        // not relationships, so there is nothing to resolve.
-        data = {
-            $class: `${NS}.CopyrightLicenseData`,
-            effectiveDate: EFFECTIVE_DATE,
-            licensee: { $class: 'poc.accordproject.party@0.1.0.PartyRef', id: 'me', scheme: 'poc.accordproject.party@0.1.0.Party', label: 'Me' },
-            licensor: { $class: 'poc.accordproject.party@0.1.0.PartyRef', id: 'myself', scheme: 'poc.accordproject.party@0.1.0.Party', label: 'Myself' },
-            territory: 'United States',
-            purposeDescription: 'stuff',
-            workDescription: 'other stuff',
-            paymentTerms: {
-                $class: `${NS}.PaymentTerms`,
-                amountText: 'one hundred US Dollars',
-                amount: amount('10000'),
-                paymentProcedure: 'bank transfer',
-            },
-        } as unknown as ICopyrightLicenseData;
+        data = sample('.');
     });
 
-    const initialState = async (): Promise<ICopyrightLicenseState> => (await logic.init(data)).state;
+    const licence = (options = {}) => testInstance({ data, models, ...options });
 
-    // Runs requests from the initial state, returning the final state and
-    // every event emitted along the way, init's included.
+    // Runs init then each request, committing what each one writes, as the
+    // engine would. Returns the final state and every event emitted.
     const run = async (...requests) => {
-        const init = await logic.init(data);
-        let state = init.state;
-        const events = [...init.events];
+        let self = licence();
+        await copyrightLicense.start(self);
+        let { state } = self.committed;
+        const events = [...self.committed.events];
         for (const request of requests) {
-            const response = await logic.trigger(data, request, state);
-            state = response.state;
-            events.push(...response.events);
+            self = licence({ state });
+            await copyrightLicense.handle(request, self);
+            ({ state } = self.committed);
+            events.push(...self.committed.events);
         }
         return { state, events };
     };
 
-    describe('init', () => {
-        it('should start the payment clause with nothing paid and no due date', async () => {
-            const state = await initialState();
+    const initialState = async () => (await run()).state;
 
-            expect(state.$class).toBe(`${NS}.CopyrightLicenseState`);
-            expect(state.paymentTerms).toEqual({
-                $class: `${NS}.PaymentTermsState`,
-                obligationId: 'paymentTerms',
-                amountPaid: amount('0'),
+    describe('init', () => {
+        it('starts the payment clause with nothing paid and no due date', async () => {
+            expect(await initialState()).toEqual({
+                $class: `${NS}.CopyrightLicenseState`,
+                paymentTerms: { $class: `${NS}.PaymentTermsState`, obligationId: OBLIGATION_ID, amountPaid: amount('0') },
             });
         });
 
-        it('should issue a PENDING PaymentObligation for the fee at revision 0', async () => {
-            const { events } = await logic.init(data);
+        it('issues a PENDING PaymentObligation for the fee at revision 0', async () => {
+            const { events } = await run();
 
             expect(events).toHaveLength(1);
-            const issued = events[0] as any;
-            expect(issued.$class).toBe(`${OBLIGATION_NS}.ObligationIssued`);
-            expect(issued.$timestamp).toEqual(EFFECTIVE_DATE);
-
-            const obligation = issued.obligation;
-            expect(obligation.$class).toBe(`${OBLIGATION_NS}.PaymentObligation`);
-            expect(obligation.obligationId).toBe('paymentTerms');
-            expect(obligation.status).toBe('PENDING');
-            expect(obligation.revision).toBe(0);
-            expect(obligation.createdAt).toEqual(EFFECTIVE_DATE);
-            expect(obligation.amount).toEqual(amount('10000'));
-            expect(obligation.bearers).toEqual([data.licensee]);
-            expect(obligation.beneficiaries).toEqual([data.licensor]);
-            expect(obligation.description).toBe('Me should pay contract amount to Myself');
+            expect(events[0].$class).toBe('poc.accordproject.composition@0.1.0.ObligationIssued');
+            expect(events[0].$timestamp).toBe(EFFECTIVE_DATE);
+            expect(events[0].obligation).toMatchObject({
+                $class: `${OBLIGATION_NS}.PaymentObligation`,
+                obligationId: OBLIGATION_ID,
+                status: 'PENDING',
+                revision: 0,
+                createdAt: EFFECTIVE_DATE,
+                amount: amount('10000'),
+                bearers: [data.licensee],
+                beneficiaries: [data.licensor],
+                description: 'Me should pay the licence fee for other stuff to Myself',
+            });
         });
 
-        it('should reference the originating clause, leaving agreementId for the runtime to back-fill', async () => {
-            const { events } = await logic.init(data);
+        it('references the payment clause fully, since logic can see the agreement it is in', async () => {
+            const { events } = await run();
 
-            const reference = (events[0] as any).obligation.agreement;
-            expect(reference.clausePath).toBe('paymentTerms');
-            expect(reference).not.toHaveProperty('agreementId');
+            expect(events[0].obligation.agreement).toMatchObject({
+                $class: 'poc.accordproject.composition@0.1.0.DocumentReference',
+                agreementId: TEST_AGREEMENT,
+                documentId: TEST_DOCUMENT,
+                clausePath: 'paymentTerms',
+            });
         });
 
-        it('should be deterministic, so replaying init reproduces the same state and events', async () => {
-            expect(await logic.init(data)).toEqual(await logic.init(data));
+        it('names the licensed work from the agreement\'s schedule, a cousin document', async () => {
+            const self = licence({ documents: [schedule()] });
+
+            await copyrightLicense.start(self);
+
+            expect(self.committed.events[0].obligation.description)
+                .toBe('Me should pay the licence fee for "Other Stuff" to Myself');
         });
 
-        it('should return only the template state, leaving identity and revision to the runtime envelope', async () => {
-            const state = await initialState();
-
-            expect(state).not.toHaveProperty('$identifier');
-            expect(state).not.toHaveProperty('revision');
+        it('is deterministic, so replaying init reproduces the same state and events', async () => {
+            expect(await run()).toEqual(await run());
         });
     });
 
     describe('PaymentRequest', () => {
-        it('should return the outstanding fee, timestamped by the request', async () => {
+        it('returns the outstanding fee, timestamped by the request', async () => {
             const request = paymentRequest();
 
-            const result = await logic.trigger(data, request, await initialState());
+            const result = await copyrightLicense.handle(request, licence({ state: await initialState() }));
 
-            expect(result.result.$class).toBe(`${NS}.PayOut`);
-            expect(result.result.$timestamp).toEqual(request.$timestamp);
-            expect(result.result.amount).toEqual(amount('10000'));
+            expect(result).toEqual({ $class: `${NS}.PayOut`, $timestamp: request.$timestamp, amount: amount('10000') });
         });
 
-        it('should read the fee from the nested paymentTerms field', async () => {
-            (data as any).paymentTerms.amount = amount('25000', 'GBP');
+        it('reads the fee from the nested paymentTerms field', async () => {
+            data.paymentTerms.amount = amount('25000', 'GBP');
 
-            const result = await logic.trigger(data, paymentRequest(), await initialState());
+            const result = await copyrightLicense.handle(paymentRequest(), licence({ state: await initialState() }));
 
-            expect(result.result.amount).toEqual(amount('25000', 'GBP'));
+            expect(result.amount).toEqual(amount('25000', 'GBP'));
         });
 
-        it('should make the obligation DUE: record dueAt and emit a PENDING to DUE transition', async () => {
-            const before = await initialState();
+        it('makes the obligation DUE: records dueAt and emits a PENDING to DUE transition', async () => {
+            const self = licence({ state: await initialState() });
             const request = paymentRequest();
 
-            const result = await logic.trigger(data, request, before);
+            await copyrightLicense.handle(request, self);
 
-            expect(result.state.paymentTerms.dueAt).toEqual(request.$timestamp);
-            expect(before.paymentTerms.dueAt).toBeUndefined();
-            expect(result.events).toEqual([{
+            expect(self.committed.state.paymentTerms.dueAt).toBe(request.$timestamp);
+            expect(self.committed.events).toEqual([{
                 $class: `${OBLIGATION_NS}.ObligationTransition`,
                 $timestamp: request.$timestamp,
-                obligation: `resource:${OBLIGATION_NS}.PaymentObligation#paymentTerms`,
+                obligation: `resource:${OBLIGATION_NS}.PaymentObligation#${OBLIGATION_ID}`,
                 fromStatus: 'PENDING',
                 toStatus: 'DUE',
                 effectiveAt: request.$timestamp,
@@ -179,64 +143,99 @@ describe('CopyrightLicenseLogic', () => {
             }]);
         });
 
-        it('should leave an already-DUE obligation unchanged', async () => {
-            const { state } = await run(paymentRequest());
+        it('sees its own write straight away, before anything is committed', async () => {
+            const self = licence({ state: await initialState() });
+            expect(self.state.paymentTerms.dueAt).toBeUndefined();
 
-            const result = await logic.trigger(data, paymentRequest(), state);
+            await copyrightLicense.handle(paymentRequest(), self);
 
-            expect(result.state).toEqual(state);
-            expect(result.events).toHaveLength(0);
-            expect(result.result.amount).toEqual(amount('10000'));
+            expect(self.state.paymentTerms.dueAt).toBeDefined();
         });
 
-        it('should request only the outstanding balance after a partial payment', async () => {
+        it('chases an already-DUE payment through the composed late payment clause', async () => {
+            const { state } = await run(paymentRequest());
+            const latePayment = stubClause({ [PaymentOverdue.$class]: { $class: 'poc.accordproject.latepayment@0.1.0.ReminderSent', $timestamp: at(0), remindersSent: 1 } });
+            const self = licence({ state, clauses: { latePayment } });
+            const request = paymentRequest();
+
+            const result = await copyrightLicense.handle(request, self);
+
+            expect(latePayment.calls).toEqual([{ $class: PaymentOverdue.$class, $timestamp: request.$timestamp }]);
+            expect(self.committed.state).toEqual(state);
+            expect(result.amount).toEqual(amount('10000'));
+        });
+
+        it('leaves an already-DUE obligation unchanged when no late payment clause is composed', async () => {
+            const { state } = await run(paymentRequest());
+            const self = licence({ state });
+
+            await copyrightLicense.handle(paymentRequest(), self);
+
+            expect(self.committed).toEqual({ state, events: [] });
+        });
+
+        it('requests only the outstanding balance after a partial payment', async () => {
             const { state } = await run(paymentReceived('4000'));
 
-            const result = await logic.trigger(data, paymentRequest(), state);
+            const result = await copyrightLicense.handle(paymentRequest(), licence({ state }));
 
-            expect(result.result.amount).toEqual(amount('6000'));
+            expect(result.amount).toEqual(amount('6000'));
         });
 
-        it('should reject a request once the fee has been paid in full', async () => {
+        it('rejects a request once the fee has been paid in full', async () => {
             const { state } = await run(paymentReceived('10000'));
 
-            await expect(logic.trigger(data, paymentRequest(), state))
+            await expect(copyrightLicense.handle(paymentRequest(), licence({ state })))
                 .rejects.toThrow('already been paid in full');
         });
     });
 
     describe('PaymentReceived', () => {
-        it('should record a partial payment without changing the obligation status', async () => {
+        it('records a partial payment without changing the obligation status', async () => {
+            const { state } = await run(paymentRequest());
+            const self = licence({ state });
+
+            const result = await copyrightLicense.handle(paymentReceived('4000'), self);
+
+            expect(result.$class).toBe(`${NS}.PaymentReceipt`);
+            expect(result.outstanding).toEqual(amount('6000'));
+            expect(self.committed.state.paymentTerms.amountPaid).toEqual(amount('4000'));
+            expect(self.committed.events).toHaveLength(0);
+        });
+
+        it('fulfils a DUE obligation when the balance is paid, at revision 2', async () => {
+            const { state } = await run(paymentRequest(), paymentReceived('4000'));
+            const self = licence({ state });
+
+            const result = await copyrightLicense.handle(paymentReceived('6000'), self);
+
+            expect(result.outstanding).toEqual(amount('0'));
+            expect(self.committed.events).toEqual([expect.objectContaining({ fromStatus: 'DUE', toStatus: 'FULFILLED', revision: 2 })]);
+        });
+
+        it('fulfils a PENDING obligation paid before it was requested, at revision 1', async () => {
+            const self = licence({ state: await initialState() });
+
+            await copyrightLicense.handle(paymentReceived('10000'), self);
+
+            expect(self.committed.events).toEqual([expect.objectContaining({ fromStatus: 'PENDING', toStatus: 'FULFILLED', revision: 1 })]);
+        });
+
+        it('discharges the composed late payment clause once paid in full, and only then', async () => {
+            const latePayment = stubClause({ [PaymentSettled.$class]: { $class: 'poc.accordproject.latepayment@0.1.0.LatePaymentDischarged', $timestamp: at(0) } });
             const { state } = await run(paymentRequest());
 
-            const result = await logic.trigger(data, paymentReceived('4000'), state);
+            await copyrightLicense.handle(paymentReceived('4000'), licence({ state, clauses: { latePayment } }));
+            expect(latePayment.calls).toEqual([]);
 
-            expect(result.result.$class).toBe(`${NS}.PaymentReceipt`);
-            expect(result.result.outstanding).toEqual(amount('6000'));
-            expect(result.state.paymentTerms.amountPaid).toEqual(amount('4000'));
-            expect(result.events).toHaveLength(0);
+            const request = paymentReceived('10000');
+            await copyrightLicense.handle(request, licence({ state, clauses: { latePayment } }));
+            expect(latePayment.calls).toEqual([{ $class: PaymentSettled.$class, $timestamp: request.$timestamp }]);
         });
 
-        it('should fulfil a DUE obligation when the balance is paid, at revision 2', async () => {
-            const { state } = await run(paymentRequest(), paymentReceived('4000'));
-
-            const result = await logic.trigger(data, paymentReceived('6000'), state);
-
-            expect(result.result.outstanding).toEqual(amount('0'));
-            expect(result.events).toHaveLength(1);
-            expect(result.events[0]).toMatchObject({ fromStatus: 'DUE', toStatus: 'FULFILLED', revision: 2 });
-        });
-
-        it('should fulfil a PENDING obligation paid before it was requested, at revision 1', async () => {
-            const result = await logic.trigger(data, paymentReceived('10000'), await initialState());
-
-            expect(result.events).toHaveLength(1);
-            expect(result.events[0]).toMatchObject({ fromStatus: 'PENDING', toStatus: 'FULFILLED', revision: 1 });
-        });
-
-        it('should keep exact totals beyond the range doubles represent exactly', async () => {
+        it('keeps exact totals beyond the range doubles represent exactly', async () => {
             // 2^53 + 1 minor units: a double rounds it to 2^53.
-            (data as any).paymentTerms.amount = amount('9007199254740993');
+            data.paymentTerms.amount = amount('9007199254740993');
 
             const { state, events } = await run(paymentReceived('9007199254740992'), paymentReceived('1'));
 
@@ -244,32 +243,46 @@ describe('CopyrightLicenseLogic', () => {
             expect(events.at(-1)).toMatchObject({ toStatus: 'FULFILLED' });
         });
 
-        it('should reject a payment in a different currency or scale from the fee', async () => {
+        it('rejects a payment in a different currency or scale from the fee', async () => {
             const state = await initialState();
 
-            await expect(logic.trigger(data, paymentReceived('10000', 'EUR'), state))
+            await expect(copyrightLicense.handle(paymentReceived('10000', 'EUR'), licence({ state })))
                 .rejects.toThrow('Payment must be made in USD at scale 2');
-            await expect(logic.trigger(data, paymentReceived('100', 'USD', 0), state))
+            await expect(copyrightLicense.handle(paymentReceived('100', 'USD', 0), licence({ state })))
                 .rejects.toThrow('Payment must be made in USD at scale 2');
         });
 
-        it('should reject a non-positive payment', async () => {
-            await expect(logic.trigger(data, paymentReceived('0'), await initialState()))
+        it('rejects a non-positive payment', async () => {
+            await expect(copyrightLicense.handle(paymentReceived('0'), licence({ state: await initialState() })))
                 .rejects.toThrow('must be positive');
         });
 
-        it('should reject a payment that would exceed the fee', async () => {
+        it('rejects a payment that would exceed the fee', async () => {
             const { state } = await run(paymentReceived('4000'));
 
-            await expect(logic.trigger(data, paymentReceived('6001'), state))
+            await expect(copyrightLicense.handle(paymentReceived('6001'), licence({ state })))
                 .rejects.toThrow('would exceed the licence fee');
         });
 
-        it('should reject a payment once the fee has been paid in full', async () => {
+        it('rejects a payment once the fee has been paid in full', async () => {
             const { state } = await run(paymentReceived('10000'));
 
-            await expect(logic.trigger(data, paymentReceived('1'), state))
+            await expect(copyrightLicense.handle(paymentReceived('1'), licence({ state })))
                 .rejects.toThrow('already been paid in full');
+        });
+    });
+
+    describe('dispatch', () => {
+        it('registers a handler for exactly the licence\'s own request types', () => {
+            expect(copyrightLicense.requestTypes).toEqual([PaymentRequest.$class, PaymentReceived.$class]);
+        });
+
+        it('rejects a request it has no handler for, before any logic runs', async () => {
+            const self = licence({ state: await initialState() });
+
+            await expect(copyrightLicense.handle(PaymentOverdue.create({ $timestamp: at(0) }), self))
+                .rejects.toThrow(`No handler for ${PaymentOverdue.$class}.`);
+            expect(self.committed.events).toEqual([]);
         });
     });
 
@@ -280,7 +293,7 @@ describe('CopyrightLicenseLogic', () => {
         const applyObligationEvents = (events) => {
             let obligation;
             for (const event of events) {
-                if (event.$class === `${OBLIGATION_NS}.ObligationIssued`) {
+                if (event.$class.endsWith('.ObligationIssued')) {
                     obligation = { ...event.obligation };
                     continue;
                 }
@@ -292,7 +305,7 @@ describe('CopyrightLicenseLogic', () => {
             return obligation;
         };
 
-        it('should receive transitions whose fromStatus and revision match the record it holds', async () => {
+        it('receives transitions whose fromStatus and revision match the record it holds', async () => {
             const { events } = await run(paymentRequest(), paymentRequest(), paymentReceived('4000'), paymentReceived('6000'));
 
             const obligation = applyObligationEvents(events);

@@ -1,11 +1,14 @@
-// Runs this template through @accordproject/template-engine 5.1, installed
-// for this workspace only (the rest of the repo is still on 4.0.0). 5.x
-// lets a caller name the template's root concept instead of finding it by
-// the @template decorator, and formats money@1.0.0 PreciseAmount natively.
-// cicero-core's Template still requires the decorator (template-archive#946)
-// and only recognises runtime@0.2.0.State as state, so these tests drive
-// the engine's interpreter and compiler directly rather than through a
-// loaded Template.
+// Renders this prototype's archives with @accordproject/template-engine
+// 5.1, installed for this workspace only (the rest of the repo is still on
+// 4.0.0). 5.x lets a caller name the template's root concept instead of
+// finding it by the @template decorator, and formats money@1.0.0
+// PreciseAmount natively. cicero-core's Template still requires the
+// decorator (template-archive#946), so these tests drive the engine's
+// interpreter directly rather than through a loaded Template.
+//
+// The logic is not compiled with the engine: 5.1 compiles logic against
+// runtime@0.2.0 and a `TemplateLogic` class, not the runtime@1.0.0 bases
+// and `defineLogic` API this prototype proposes (see the README).
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import {
@@ -13,7 +16,6 @@ import {
     TemplateMarkInterpreter,
     TemplateMarkTransformer,
 } from '@accordproject/template-engine';
-import { TypeScriptToJavaScriptCompiler } from '@accordproject/template-engine/lib/TypeScriptToJavaScriptCompiler';
 
 const TEMPLATE_DIR = join(__dirname, '..');
 const LICENCE = { dir: '.', root: 'poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData' };
@@ -60,12 +62,6 @@ async function render(archive: { dir: string; root: string }) {
     return plainText(ciceroMark.toJSON());
 }
 
-async function compileErrors(archive: { dir: string; root: string }, ...composedDirs: string[]) {
-    const compiler = new TypeScriptToJavaScriptCompiler(loadModels(archive.dir, ...composedDirs), archive.root);
-    await compiler.initialize();
-    return compiler.compile(read(archive.dir, 'logic', 'logic.ts')).errors.map((e: any) => e.renderedMessage);
-}
-
 describe('template-engine 5.1', () => {
     it('renders the licence with the root concept named explicitly, no @template decorator', async () => {
         const text = await render(LICENCE);
@@ -79,13 +75,5 @@ describe('template-engine 5.1', () => {
     it('renders the composed late payment clause and the schedule, each as a template in its own right', async () => {
         expect(await render(LATE_PAYMENT)).toContain('within 14 days of it falling due');
         expect(await render(SCHEDULE)).toContain('Format: Digital photographs, JPEG');
-    });
-
-    it('type-checks the licence logic, with its composed clause\'s model loaded alongside, against the runtime declarations 5.1 injects', async () => {
-        expect(await compileErrors(LICENCE, LATE_PAYMENT.dir)).toEqual([]);
-    });
-
-    it('type-checks the late payment clause\'s logic against its own model', async () => {
-        expect(await compileErrors(LATE_PAYMENT)).toEqual([]);
     });
 });

@@ -5,27 +5,40 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	ITemplateData,
-	IStateData
-} from './poc.accordproject.templatedata@0.1.0';
+	IClause,
+	IAgreementParty,
+	IAgreementReference
+} from './org.accordproject.agreement@1.0.0';
+import type {
+	ObligationStatus,
+	FulfilmentAttemptStatus
+} from './org.accordproject.obligation@1.0.0';
 import type {
 	IPartyRef
-} from './poc.accordproject.party@0.1.0';
+} from './org.accordproject.party@1.0.0';
+import type {
+	TemplateArtifactRole,
+	ITemplateArtifact,
+	ITemplateReference
+} from './org.accordproject.template@1.0.0';
+import type {
+	ITemplateData,
+	IStateData
+} from './org.accordproject.templatedata@1.0.0';
+import type {
+	HashAlgorithmType,
+	IHashAlgorithm,
+	HashEncoding,
+	IHash,
+	CanonicalizationType,
+	ICanonicalization,
+	IHashedResource
+} from './org.accordproject.crypto@1.0.0';
 import type {
 	IApproximateAmount,
 	IUnit,
 	IPreciseAmount
 } from './org.accordproject.money@1.0.0';
-import type {
-	IAgreementParty,
-	ITemplateReference,
-	ITemplateInstance,
-	IAgreementDocument,
-	IAgreementReference
-} from './poc.accordproject.agreement@0.1.0';
-import type {
-	ObligationStatus
-} from './poc.accordproject.obligation@0.1.0';
 import type {
 	IPaymentTerms,
 	IPaymentTermsState
@@ -33,61 +46,59 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IAgreementDocument,
 	IAgreement
-} from './poc.accordproject.agreement@0.1.0';
+} from './org.accordproject.agreement@1.0.0';
 import type {
-	IDurableObligation
-} from './poc.accordproject.obligation@0.1.0';
+	IObligation,
+	IFulfilmentAttempt
+} from './org.accordproject.obligation@1.0.0';
 import type {
 	IAgreementState
-} from './poc.accordproject.runtime@0.1.0';
-import type {
-	IContract,
-	IClause
-} from './org.accordproject.contract@0.2.0';
-import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
+} from './org.accordproject.runtime@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IParty
-} from './poc.accordproject.party@0.1.0';
+} from './org.accordproject.party@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IRequest,
 	IResponse
-} from './org.accordproject.runtime@0.2.0';
+} from './org.accordproject.runtime@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IObligationTransition,
+	IObligationTransition
+} from './org.accordproject.obligation@1.0.0';
+import type {
 	IObligationIssued
-} from './poc.accordproject.obligation@0.1.0';
+} from './poc.accordproject.composition@0.1.0';
 import type {
 	IPaymentReminder
 } from './poc.accordproject.latepayment@0.1.0';
-import type {
-	IObligation
-} from './org.accordproject.runtime@0.2.0';
 
 // interfaces
 export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = ITemplateData | 
-IStateData | 
+export type ConceptUnion = IClause | 
+IAgreementParty | 
+IAgreementReference | 
 IPartyRef | 
+ITemplateArtifact | 
+ITemplateReference | 
+ITemplateData | 
+IStateData | 
+IHashAlgorithm | 
+IHash | 
+ICanonicalization | 
+IHashedResource | 
 IApproximateAmount | 
 IUnit | 
 IPreciseAmount | 
-IAgreementParty | 
-ITemplateReference | 
-ITemplateInstance | 
-IAgreementDocument | 
-IAgreementReference | 
 IPaymentTerms | 
 IPaymentTermsState;
 
@@ -95,12 +106,11 @@ export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IAgreement | 
-IDurableObligation | 
-IAgreementState | 
-IContract | 
-IClause | 
-IState;
+export type AssetUnion = IAgreementDocument | 
+IAgreement | 
+IObligation | 
+IFulfilmentAttempt | 
+IAgreementState;
 
 export interface IParticipant extends IConcept {
    $identifier: string;
@@ -121,6 +131,5 @@ export interface IEvent extends IConcept {
 
 export type EventUnion = IObligationTransition | 
 IObligationIssued | 
-IPaymentReminder | 
-IObligation;
+IPaymentReminder;
 

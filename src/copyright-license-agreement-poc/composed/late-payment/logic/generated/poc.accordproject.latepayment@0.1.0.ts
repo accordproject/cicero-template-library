@@ -2,8 +2,8 @@
 // Generated code for namespace: poc.accordproject.latepayment@0.1.0
 
 // imports
-import {ITemplateData,IStateData} from './poc.accordproject.templatedata@0.1.0';
-import {IRequest,IResponse} from './org.accordproject.runtime@0.2.0';
+import {ITemplateData,IStateData} from './org.accordproject.templatedata@1.0.0';
+import {IRequest,IResponse} from './org.accordproject.runtime@1.0.0';
 import {IEvent} from './concerto@1.0.0';
 
 // interfaces

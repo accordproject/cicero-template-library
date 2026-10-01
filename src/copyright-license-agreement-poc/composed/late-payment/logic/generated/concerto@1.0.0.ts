@@ -5,52 +5,109 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IClause,
+	IAgreementParty,
+	IAgreementReference
+} from './org.accordproject.agreement@1.0.0';
+import type {
+	ObligationStatus,
+	FulfilmentAttemptStatus
+} from './org.accordproject.obligation@1.0.0';
+import type {
+	IPartyRef
+} from './org.accordproject.party@1.0.0';
+import type {
+	TemplateArtifactRole,
+	ITemplateArtifact,
+	ITemplateReference
+} from './org.accordproject.template@1.0.0';
+import type {
 	ITemplateData,
 	IStateData
-} from './poc.accordproject.templatedata@0.1.0';
+} from './org.accordproject.templatedata@1.0.0';
+import type {
+	HashAlgorithmType,
+	IHashAlgorithm,
+	HashEncoding,
+	IHash,
+	CanonicalizationType,
+	ICanonicalization,
+	IHashedResource
+} from './org.accordproject.crypto@1.0.0';
+import type {
+	IApproximateAmount,
+	IUnit,
+	IPreciseAmount
+} from './org.accordproject.money@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IContract,
-	IClause
-} from './org.accordproject.contract@0.2.0';
+	IAgreementDocument,
+	IAgreement
+} from './org.accordproject.agreement@1.0.0';
 import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
+	IObligation,
+	IFulfilmentAttempt
+} from './org.accordproject.obligation@1.0.0';
+import type {
+	IAgreementState
+} from './org.accordproject.runtime@1.0.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IParty
+} from './org.accordproject.party@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IRequest,
 	IResponse
-} from './org.accordproject.runtime@0.2.0';
+} from './org.accordproject.runtime@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	IObligationTransition
+} from './org.accordproject.obligation@1.0.0';
+import type {
 	IPaymentReminder
 } from './poc.accordproject.latepayment@0.1.0';
-import type {
-	IObligation
-} from './org.accordproject.runtime@0.2.0';
 
 // interfaces
 export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = ITemplateData | 
-IStateData;
+export type ConceptUnion = IClause | 
+IAgreementParty | 
+IAgreementReference | 
+IPartyRef | 
+ITemplateArtifact | 
+ITemplateReference | 
+ITemplateData | 
+IStateData | 
+IHashAlgorithm | 
+IHash | 
+ICanonicalization | 
+IHashedResource | 
+IApproximateAmount | 
+IUnit | 
+IPreciseAmount;
 
 export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IContract | 
-IClause | 
-IState;
+export type AssetUnion = IAgreementDocument | 
+IAgreement | 
+IObligation | 
+IFulfilmentAttempt | 
+IAgreementState;
 
 export interface IParticipant extends IConcept {
    $identifier: string;
 }
+
+export type ParticipantUnion = IParty;
 
 export interface ITransaction extends IConcept {
    $timestamp: string;
@@ -63,6 +120,6 @@ export interface IEvent extends IConcept {
    $timestamp: string;
 }
 
-export type EventUnion = IPaymentReminder | 
-IObligation;
+export type EventUnion = IObligationTransition | 
+IPaymentReminder;
 

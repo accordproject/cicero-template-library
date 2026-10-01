@@ -1,62 +1,50 @@
 import {
     ILatePaymentData,
     ILatePaymentState,
-    IPaymentOverdue,
-    IPaymentSettled,
     IReminderSent,
     ILatePaymentDischarged,
     IPaymentReminder,
-} from "./generated/poc.accordproject.latepayment@0.1.0";
+} from './generated/poc.accordproject.latepayment@0.1.0';
+import { ApiOf, Self, defineLogic } from '../../../runtime/logic';
+import { PaymentOverdue, PaymentSettled } from './request-types';
 
 const NS = 'poc.accordproject.latepayment@0.1.0';
 
-type LatePaymentResponse = {
-    result: IReminderSent | ILatePaymentDischarged;
-    state: ILatePaymentState;
-    events: IPaymentReminder[];
-};
+export type LatePaymentClause = Self<ILatePaymentData, ILatePaymentState>;
 
-// @ts-ignore TemplateLogic is imported by the runtime
-class LatePaymentLogic extends TemplateLogic<ILatePaymentData, ILatePaymentState> {
-    async init(_data: ILatePaymentData): Promise<{ state: ILatePaymentState; events: IPaymentReminder[] }> {
-        return {
-            state: { $class: `${NS}.LatePaymentState`, remindersSent: 0, discharged: false },
-            events: []
-        };
-    }
-
-    async trigger(
-        data: ILatePaymentData,
-        request: IPaymentOverdue | IPaymentSettled,
-        state: ILatePaymentState
-    ): Promise<LatePaymentResponse> {
-        if (state.discharged) {
-            throw new Error('The late payment clause has been discharged.');
-        }
-        switch (request.$class) {
-            case `${NS}.PaymentOverdue`: {
-                const remindersSent = state.remindersSent + 1;
-                return {
-                    result: { $class: `${NS}.ReminderSent`, $timestamp: request.$timestamp, remindersSent },
-                    state: { ...state, remindersSent },
-                    events: [{
-                        $class: `${NS}.PaymentReminder`,
-                        $timestamp: request.$timestamp,
-                        reminderNumber: remindersSent,
-                        gracePeriodDays: data.gracePeriodDays
-                    }]
-                };
-            }
-            case `${NS}.PaymentSettled`:
-                return {
-                    result: { $class: `${NS}.LatePaymentDischarged`, $timestamp: request.$timestamp },
-                    state: { ...state, discharged: true },
-                    events: []
-                };
-            default:
-                throw new Error(`Unsupported request type: ${request.$class}`);
-        }
+function assertActive(clause: LatePaymentClause): void {
+    if (clause.state.discharged) {
+        throw new Error('The late payment clause has been discharged.');
     }
 }
 
-export default LatePaymentLogic;
+// A clause meant to be composed into a document that owns a payment: that
+// document chases an overdue payment through it, and discharges it once
+// the payment is settled. It knows nothing about the document's own model.
+const latePayment = defineLogic<LatePaymentClause>()
+    .init(clause => {
+        clause.setState({ $class: `${NS}.LatePaymentState`, remindersSent: 0, discharged: false });
+    })
+    .on(PaymentOverdue, async (request, clause): Promise<IReminderSent> => {
+        assertActive(clause);
+        const remindersSent = clause.state.remindersSent + 1;
+        clause.setState({ ...clause.state, remindersSent });
+        const reminder: IPaymentReminder = {
+            $class: `${NS}.PaymentReminder`,
+            $timestamp: request.$timestamp,
+            reminderNumber: remindersSent,
+            gracePeriodDays: clause.data.gracePeriodDays,
+        };
+        clause.emit(reminder);
+        return { $class: `${NS}.ReminderSent`, $timestamp: request.$timestamp, remindersSent };
+    })
+    .on(PaymentSettled, async (request, clause): Promise<ILatePaymentDischarged> => {
+        assertActive(clause);
+        clause.setState({ ...clause.state, discharged: true });
+        return { $class: `${NS}.LatePaymentDischarged`, $timestamp: request.$timestamp };
+    });
+
+export default latePayment;
+
+/** What a document composing this clause can trigger it with, and gets back. */
+export type LatePayment = ApiOf<typeof latePayment>;

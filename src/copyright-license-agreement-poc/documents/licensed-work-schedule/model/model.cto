@@ -8,7 +8,7 @@
 
 namespace poc.accordproject.licensedwork@0.1.0
 
-import poc.accordproject.templatedata@0.1.0.TemplateData
+import org.accordproject.templatedata@1.0.0.TemplateData
 
 concept LicensedWorkSchedule extends TemplateData {
   o String title

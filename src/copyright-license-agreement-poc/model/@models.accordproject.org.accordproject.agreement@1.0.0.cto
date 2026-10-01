@@ -1,0 +1,249 @@
+/*
+ * VENDORED, verbatim apart from this header, from accordproject/models#200
+ * (https://github.com/accordproject/models/pull/200, head 337cc68):
+ * src/accordproject/agreement@1.0.0.cto. It is not yet published at https://models.accordproject.org/accordproject/agreement@1.0.0.cto,
+ * so it is vendored under the file name Concerto gives a downloaded
+ * external model. Delete it once that PR lands and is published.
+ */
+
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Requires a Concerto with map type support: concerto-core 3.x accepts a map
+// type only behind the enableMapType flag, which the models build does not set.
+// The requirement first held at 4.0.0; the declared floor tracks the release
+// the models build supports, which is Concerto 5 since #204.
+concerto version "^5.0.0"
+
+/**
+ * Agreements and the documents that record them.
+ *
+ * The templates they are created from are modelled in
+ * org.accordproject.template@1.0.0, which this namespace imports. Templates
+ * are cited by records that have no agreement in hand, so naming one does not
+ * require taking on this model.
+ *
+ * Scope: this model records structure and provenance. It does not carry prose.
+ * The text of an agreement is defined by its templates, and its instantiated
+ * form is TemplateMark and CiceroMark markup, which remains authoritative for
+ * document structure. Clause instances are recorded here for provenance and
+ * are addressed by the same instance paths the markup uses.
+ *
+ * The following are deliberately left to extension profiles and are not
+ * modelled here. Each is listed with what a profile would have to define.
+ *
+ * Order of precedence.
+ *   Which document prevails where two conflict, as with a schedule prevailing
+ *   over a master agreement. Not modelled because reading order and precedence
+ *   order are commonly the inverse of one another, and the documents list
+ *   holds reading order. A profile must define a precedence ordering over an
+ *   agreement's documents, whether it is total or may be scoped to a subject
+ *   matter, and how ties are resolved.
+ *
+ * Supersession and amendment.
+ *   That a later instrument replaces or amends an earlier one. Not modelled
+ *   because it is a link between documents rather than an ordering over them.
+ *   A profile must define the reference from the superseding document to the
+ *   superseded one, whether supersession is partial or total, and the point
+ *   from which it takes effect.
+ *
+ * Incorporation by reference.
+ *   That a document incorporates terms defined elsewhere, such as standard
+ *   terms published at a URL. A profile must define how the incorporated
+ *   material is identified and hash-committed, and whether it is incorporated
+ *   as at a fixed version or as amended from time to time.
+ *
+ * Hash canonicalization.
+ *   Every hash property here is optional, and this model does not define how
+ *   the bytes they commit to are produced. Two implementations hashing the
+ *   same agreement under different canonicalization rules would both be
+ *   conformant, so a hash is only meaningful under a profile that fixes those
+ *   rules. A deterministic profile must define the canonical serialization,
+ *   state that the hash property itself is excluded from its own pre-image,
+ *   and may require the properties this model leaves optional. Where a hash is
+ *   supplied its crypto@1.0.0 Canonicalization should be populated, so that a
+ *   verifier can tell which discipline produced it rather than having to
+ *   assume one.
+ *
+ *   The properties are optional rather than required because optional to
+ *   required is a breaking change and this family is published permanently: a
+ *   profile can tighten what the core model leaves open, but nothing can
+ *   loosen it afterwards.
+ *
+ * Cross-level hash commitment.
+ *   Each hash in this model commits only to its own level. Nothing states that
+ *   an agreement's hash commits to its documents' hashes, or a document's to
+ *   its clauses'. A profile that needs a composed agreement to be verifiable
+ *   as the composition of its parts must define the canonical serialization at
+ *   each level and the order in which child hashes are combined.
+ *
+ * Party role vocabulary.
+ *   AgreementParty.role is an open string. A profile should constrain it for
+ *   its domain.
+ */
+namespace org.accordproject.agreement@1.0.0
+
+import org.accordproject.crypto@1.0.0.ContentHash from https://models.accordproject.org/crypto/crypto@1.0.0.cto
+import org.accordproject.templatedata@1.0.0.TemplateData from https://models.accordproject.org/accordproject/templatedata@1.0.0.cto
+import org.accordproject.party@1.0.0.Party from https://models.accordproject.org/accordproject/party@1.0.0.cto
+import org.accordproject.template@1.0.0.TemplateReference from https://models.accordproject.org/accordproject/template@1.0.0.cto
+
+/**
+ * A clause instance within an agreement document.
+ *
+ * A Clause records a sub-template archive composed into this document: a
+ * {{#clause ...}} block whose body is supplied by a separate template, named
+ * by Clause.template. It is provenance for composition, not an index of the
+ * document's structure.
+ *
+ * An inline {{#clause ...}} block, whose body is written in the parent grammar
+ * and which composes no separate archive, gets no entry. A document whose
+ * clause blocks are all inline has no composed archives to record, so its
+ * clauses map is absent rather than present and empty. Clause.template is
+ * required for the same reason: there is nothing to name where nothing was
+ * composed. Prose outside a clause block is likewise not a Clause; it is
+ * ordinary markup in the parent grammar.
+ *
+ * A clause is addressed by its instance path, which is the key it appears
+ * under in AgreementDocument.clauses. The path is rooted at the document's
+ * data — the TemplateData subtype carried in AgreementDocument.data — and not
+ * at the document itself, so a clause bound to the paymentTerms property of
+ * the data has the path "paymentTerms" and never "data.paymentTerms". It is a
+ * bare name for a singleton clause, for example "payment", and is qualified by
+ * index where a clause is generated inside a list or foreach block, for
+ * example "deliveries[2].inspection". Instance paths, rather than a static
+ * clause tree, are used because the number of clause instances is determined
+ * by the data: a list block yields one instance per element and a conditional
+ * block may yield none. The authoritative structure of the agreement remains
+ * the TemplateMark and CiceroMark markup; this model records provenance over
+ * it and does not restate it.
+ *
+ * The path is deliberately held only in the map key and not repeated as a
+ * property, so there is one place it is stated and no invariant tying two
+ * copies together. Records which cite a clause from outside the map, such as
+ * AgreementReference, carry the path themselves.
+ *
+ * clauseId is an optional stable handle for a clause whose identity must
+ * survive across agreement revisions, where the instance path may change.
+ */
+concept Clause {
+  o TemplateReference template
+  o String clauseId optional
+  o ContentHash clauseHash optional
+}
+
+/**
+ * The sub-template archives composed into a document, keyed by clause instance
+ * path.
+ *
+ * Absent, rather than empty, where a document composes no archives of its own.
+ */
+map Clauses {
+  o String
+  o Clause
+}
+
+/**
+ * A party in a stated role, such as "buyer", "licensor" or "guarantor".
+ *
+ * Roles are open strings rather than an enumeration because the vocabulary is
+ * domain-specific; profiles should constrain it for their domain.
+ */
+concept AgreementParty {
+  --> Party party
+  o String role
+}
+
+/**
+ * A single instrument recording part of an agreement: a master agreement, a
+ * schedule, a confirmation, an annex or a standalone contract.
+ *
+ * documentHash commits to the document, excluding the documentHash property
+ * itself. It is optional and its canonicalization is left to a deterministic
+ * profile, as set out under Hash canonicalization above. It is independent of
+ * the hashes of the agreement above it and the clauses within it; no
+ * cross-level commitment is implied.
+ *
+ * template is optional because an assembled instrument may bind sub-templates
+ * per clause without itself being generated from a document-level template.
+ *
+ * parties narrows the agreement's party set when a document binds fewer or
+ * different parties than the agreement as a whole, as with an affiliate
+ * schedule under a master agreement. When absent the agreement's parties apply.
+ *
+ * This type is concrete so that a document needing no additional properties
+ * can be used directly. It may still be extended by a profile.
+ */
+asset AgreementDocument identified by documentId {
+  o String documentId
+  o ContentHash documentHash optional
+  o TemplateReference template optional
+  o TemplateData data optional
+  o Clauses clauses optional
+  o AgreementParty[] parties optional
+}
+
+/**
+ * An agreement between parties, recorded in one or more documents.
+ *
+ * agreementHash commits to the agreement, excluding the agreementHash
+ * property itself. It is optional and its canonicalization is left to a
+ * deterministic profile, as set out under Hash canonicalization above.
+ *
+ * documents is ordered by reading order, that is, the order in which the
+ * instruments are assembled and rendered. Order of precedence between
+ * conflicting documents is deliberately not modelled here: in common practice
+ * the two orderings are inverse, and precedence, incorporation by reference
+ * and supersession belong to an agreement profile.
+ *
+ * This type is concrete so that an agreement needing no additional properties
+ * can be used directly; template-specific data belongs in
+ * AgreementDocument.data rather than in a subclass. It may still be extended
+ * by a profile.
+ */
+asset Agreement identified by agreementId {
+  o String agreementId
+  o ContentHash agreementHash optional
+  --> AgreementDocument[] documents
+  o AgreementParty[] parties
+}
+
+/**
+ * Portable provenance for an instantiated agreement.
+ *
+ * This is a projection for records which must travel standalone, such as
+ * obligations, attestations and settlement evidence. It is deliberately not
+ * identified: it denotes an agreement rather than being one, and must not
+ * claim the identifier of the Agreement asset.
+ *
+ * agreementId corresponds to Agreement.agreementId when the complete asset is
+ * available. template is optional because an agreement carries no template of
+ * its own; supply it when the provenance derives from a single templated
+ * document. clausePath identifies a specific originating clause instance,
+ * using the same instance path that keys AgreementDocument.clauses. It is held
+ * here because a reference travels without the map that would otherwise supply
+ * it.
+ *
+ * agreementHash is optional and its canonicalization is left to a
+ * deterministic profile, as set out under Hash canonicalization above. A
+ * profile whose evidence depends on the reference being verifiable should
+ * require it.
+ */
+concept AgreementReference {
+  o String agreementId
+  o ContentHash agreementHash optional
+  o TemplateReference template optional
+  o String clausePath optional
+  o ContentHash clauseHash optional
+}

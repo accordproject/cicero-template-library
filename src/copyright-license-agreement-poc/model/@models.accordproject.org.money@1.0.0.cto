@@ -1,10 +1,9 @@
 /*
  * VENDORED, verbatim apart from this header, from accordproject/models#200
  * (https://github.com/accordproject/models/pull/200, head 337cc68):
- * src/money@1.0.0.cto. Kept under its real namespace so template-engine
- * 5.1's native PreciseAmount drafter (keyed on org.accordproject.money@1)
- * formats it. Delete this file and import the published
- * https://models.accordproject.org/money@1.0.0.cto once that PR lands.
+ * src/money@1.0.0.cto. It is not yet published at https://models.accordproject.org/money@1.0.0.cto,
+ * so it is vendored under the file name Concerto gives a downloaded
+ * external model. Delete it once that PR lands and is published.
  */
 
 /*
