@@ -7,6 +7,8 @@ import { IEvent } from '../logic/generated/concerto@1.0.0';
 import { IStateData, ITemplateData } from '../logic/generated/org.accordproject.templatedata@1.0.0';
 import { ITemplateReference } from '../logic/generated/org.accordproject.template@1.0.0';
 import { DocumentJson, Options, SelfView, Session, Transaction } from './execute';
+import { Agreement, AgreementDocument, ContentHash, HashAlgorithm, TemplateReference } from '../logic/generated/types';
+import { HashAlgorithmType, HashEncoding } from '../logic/generated/org.accordproject.crypto@1.0.0';
 import type { Clause, Handles, Self } from './logic';
 
 type DataOf<S> = S extends Self<infer D, any, any> ? D : never;
@@ -18,17 +20,15 @@ export const TEST_DOCUMENT = 'test-document';
 
 /** A placeholder template reference, for documents a test makes up. */
 export function testTemplate(templateId: string): ITemplateReference {
-    return {
-        $class: 'org.accordproject.template@1.0.0.TemplateReference',
+    return TemplateReference.create({
         templateId,
         version: '0.0.0',
-        archiveHash: {
-            $class: 'org.accordproject.crypto@1.0.0.ContentHash',
-            algorithm: { $class: 'org.accordproject.crypto@1.0.0.HashAlgorithm', type: 'SHA_256' as never },
+        archiveHash: ContentHash.create({
+            algorithm: HashAlgorithm.create({ type: HashAlgorithmType.SHA_256 }),
             value: '0'.repeat(64),
-            encoding: 'HEX' as never,
-        },
-    };
+            encoding: HashEncoding.HEX,
+        }),
+    });
 }
 
 export type TestSelf<S> = S & {
@@ -49,19 +49,15 @@ export function testInstance<S extends Self<any, any, any>>(options: {
     documents?: DocumentJson[];
     models?: Options['models'];
 }): TestSelf<S> {
-    const document = {
-        $class: 'org.accordproject.agreement@1.0.0.AgreementDocument',
+    const document = AgreementDocument.create({
         documentId: TEST_DOCUMENT,
         template: testTemplate('test'),
         data: options.data as ITemplateData,
-    } as DocumentJson;
+    }) as unknown as DocumentJson;
     const documents = [document, ...(options.documents ?? [])];
     const agreement = {
-        $class: 'org.accordproject.agreement@1.0.0.Agreement',
-        $identifier: TEST_AGREEMENT,
-        agreementId: TEST_AGREEMENT,
-        documents: documents.map(d => `resource:org.accordproject.agreement@1.0.0.AgreementDocument#${d.documentId}`),
-        parties: [],
+        ...Agreement.create({ agreementId: TEST_AGREEMENT, documents: [], parties: [] }),
+        documents: documents.map(d => String(AgreementDocument.ref(d.documentId))),
     };
     const session = new Session(agreement, documents, 0, {}, { models: options.models });
     const root = session.tree.documents.get(TEST_DOCUMENT)!.root;

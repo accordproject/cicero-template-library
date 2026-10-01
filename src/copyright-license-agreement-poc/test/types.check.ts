@@ -3,7 +3,10 @@
 // everything else must compile. Nothing here runs.
 import copyrightLicense, { Licence } from '../logic/logic';
 import latePayment, { LatePayment } from '../composed/late-payment/logic/logic';
-import { PaymentRequest, PaymentOverdue, PaymentSettled } from '../logic/request-types';
+import {
+    LatePaymentDischarged, LicensedWorkSchedule, PaymentObligation, PaymentOverdue, PaymentRequest, PaymentSettled, PayOut, ReminderSent,
+} from '../logic/generated/types';
+import { IPaymentObligation } from '../logic/generated/org.accordproject.obligation@1.0.0';
 import { ApiOf, defineLogic } from '../runtime/logic';
 import { stubClause, testInstance } from '../runtime/testing';
 import { IPayOut, IPaymentReceipt, IPaymentRequest, IPaymentReceived } from '../logic/generated/poc.accordproject.copyrightlicense@0.1.0';
@@ -55,17 +58,34 @@ function handlers() {
         .on(PaymentRequest, async (request, self) => {
             assert<Equals<typeof request, IPaymentRequest>>();
             assert<Equals<typeof self, Licence>>();
-            return { $class: '', $timestamp: '', amount: self.data.paymentTerms.amount } as IPayOut;
+            return PayOut.create({ $timestamp: request.$timestamp, amount: self.data.paymentTerms.amount });
         })
         // @ts-expect-error -- a declared response type is checked against what the handler returns.
-        .on(PaymentSettled, async (request): Promise<IReminderSent> => ({ $class: '', $timestamp: request.$timestamp }));
+        .on(PaymentSettled, async (request): Promise<IReminderSent> => LatePaymentDischarged.create({ $timestamp: request.$timestamp }));
 }
 
 function stubs() {
-    stubClause<LatePayment>({ [PaymentOverdue.$class]: { $class: '', $timestamp: '', remindersSent: 1 } });
+    stubClause<LatePayment>({ [PaymentOverdue.$class]: ReminderSent.create({ $timestamp: '', remindersSent: 1 }) });
     // @ts-expect-error -- a stub's responses are checked against the clause's API.
-    stubClause<LatePayment>({ [PaymentOverdue.$class]: { $class: '', $timestamp: '' } });
+    stubClause<LatePayment>({ [PaymentOverdue.$class]: LatePaymentDischarged.create({ $timestamp: '' }) });
     testInstance<Licence>({ data: {} as never, clauses: { latePayment: stubClause<LatePayment>({}) } });
 }
 
-export { composedClauses, readOnlyViews, handlers, stubs };
+function factories() {
+    // A factory fills in $class (and $identifier, for an identified type)...
+    const payOut = PayOut.create({ $timestamp: '', amount: licence.data.paymentTerms.amount });
+    assert<Equals<typeof payOut.$class, 'poc.accordproject.copyrightlicense@0.1.0.PayOut'>>();
+    // @ts-expect-error -- ...so it can't be written by hand,
+    PayOut.create({ $class: 'poc.accordproject.copyrightlicense@0.1.0.PayOut', $timestamp: '', amount: payOut.amount });
+    // @ts-expect-error -- and every required field must be given.
+    PayOut.create({ $timestamp: '' });
+    // A relationship is typed as generated interfaces type it.
+    assert<Equals<ReturnType<typeof PaymentObligation.ref>, IPaymentObligation>>();
+    // is() narrows another template's data to its type.
+    const data = licence.document.root.data;
+    if (LicensedWorkSchedule.is(data)) {
+        assert<Equals<typeof data.title, string>>();
+    }
+}
+
+export { composedClauses, readOnlyViews, handlers, stubs, factories };

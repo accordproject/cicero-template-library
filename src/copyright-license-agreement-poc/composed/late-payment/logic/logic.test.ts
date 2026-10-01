@@ -1,10 +1,9 @@
 // @ts-nocheck - test fixtures are plain JSON
 import latePayment from './logic';
-import { PaymentOverdue, PaymentSettled } from './request-types';
+import { LatePaymentDischarged, LatePaymentState, PaymentOverdue, PaymentSettled } from './generated/types';
 import { testInstance } from '../../../runtime/testing';
 import { at, loadModels, sample } from '../../../test/support';
 
-const NS = 'poc.accordproject.latepayment@0.1.0';
 const models = loadModels();
 
 describe('late payment clause logic', () => {
@@ -17,7 +16,7 @@ describe('late payment clause logic', () => {
     };
 
     it('starts with no reminders sent', async () => {
-        expect(await initialState()).toEqual({ $class: `${NS}.LatePaymentState`, remindersSent: 0, discharged: false });
+        expect(await initialState()).toEqual(LatePaymentState.create({ remindersSent: 0, discharged: false }));
     });
 
     it('sends a numbered reminder, with the grace period, each time the payment is overdue', async () => {
@@ -37,7 +36,7 @@ describe('late payment clause logic', () => {
 
         const result = await latePayment.handle(PaymentSettled.create({ $timestamp: at(1) }), self);
 
-        expect(result.$class).toBe(`${NS}.LatePaymentDischarged`);
+        expect(LatePaymentDischarged.is(result)).toBe(true);
         expect(self.committed.state.discharged).toBe(true);
         await expect(latePayment.handle(PaymentOverdue.create({ $timestamp: at(2) }), self))
             .rejects.toThrow('has been discharged');

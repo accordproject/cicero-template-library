@@ -1,19 +1,19 @@
 // PROTOTYPE of the logic API template-engine would provide to templates
 // under "design B" (see the README). Nothing here is released: the engine
-// would supply it to the logic sandbox, as it supplies dayjs today, and
-// the request type constants (`requestType`) would be generated from the
-// model alongside the interfaces in logic/generated/.
+// would supply it to the logic sandbox, as it supplies dayjs today.
 //
 // A template's logic is `defineLogic<Self>()` with one `.on()` per request
-// type it handles, plus an optional `.init()`. Each handler takes
-// `(request, self)`: `self` is this template instance, a node in the
-// agreement's tree of documents and clauses. Handlers write only through
-// `self` (setState, emit, and triggering composed clauses), and the engine
-// buffers those writes in a transaction that commits as one revision, or
-// not at all if the handler throws. Logic is therefore deterministic and
-// transactional, though not pure; runtime/execute.ts is the engine side.
+// type it handles, plus an optional `.init()`. Values of every model type
+// are made with that type's generated factory (`PayOut.create({...})`),
+// which fills in its `$class`. Each handler takes `(request, self)`:
+// `self` is this template instance, a node in the agreement's tree of
+// documents and clauses. Handlers write only through `self` (setState,
+// emit, and triggering composed clauses), and the engine buffers those
+// writes in a transaction that commits as one revision, or not at all if
+// the handler throws. Logic is therefore deterministic and transactional,
+// though not pure; runtime/execute.ts is the engine side.
 import { IRequest, IResponse } from '../logic/generated/org.accordproject.runtime@1.0.0';
-import { IEvent } from '../logic/generated/concerto@1.0.0';
+import { IConcept, IEvent } from '../logic/generated/concerto@1.0.0';
 import { ITemplateData, IStateData } from '../logic/generated/org.accordproject.templatedata@1.0.0';
 import { ITemplateReference } from '../logic/generated/org.accordproject.template@1.0.0';
 import { IAgreementParty } from '../logic/generated/org.accordproject.agreement@1.0.0';
@@ -91,23 +91,48 @@ export interface Self<Data extends ITemplateData, State extends IStateData | und
 // Request types and handlers.
 // ---------------------------------------------------------------------------
 
-/** A request with its `$class` narrowed to one literal type. */
-export type Typed<R extends IRequest, C extends string> = R & { readonly $class: C };
+/** A Concerto value with its `$class` narrowed to one literal type. */
+export type Typed<T extends IConcept, C extends string> = T & { readonly $class: C };
+
+/** A type's fields, without the system fields its factory fills in. */
+export type Fields<T> = Omit<T, '$class' | '$identifier'>;
 
 /**
- * A Concerto request type as a runtime value: the key logic registers a
- * handler under, and a factory for requests of that type. Would be
- * generated from the model; see logic/request-types.ts.
+ * A concrete Concerto type as a runtime value: a factory for values of
+ * that type, a type guard, and, for a request type, the key logic
+ * registers a handler under. Generated from the model alongside its
+ * interfaces (logic/generated/types.ts).
  */
-export interface RequestType<R extends IRequest, C extends string = string> {
+export interface ConceptType<T extends IConcept, C extends string = string> {
     readonly $class: C;
-    create(fields: Omit<R, '$class'>): Typed<R, C>;
+    /** A value of this type: `fields`, plus its `$class` (and `$identifier`, for an identified type). */
+    create(fields: Fields<T>): Typed<T, C>;
+    /** Whether `value` is exactly this type. */
+    is<V extends { readonly $class: string }>(value: V): value is V & Typed<T, C>;
 }
 
-export function requestType<R extends IRequest>() {
-    return <C extends string>($class: C): RequestType<R, C> => ({
+/** An identified Concerto type (an asset or participant). */
+export interface IdentifiedType<T extends IConcept, C extends string = string> extends ConceptType<T, C> {
+    /** A relationship to the instance identified by `id`, typed as generated interfaces type relationships. */
+    ref(id: string): T;
+}
+
+/** A request type: what logic registers a handler for. */
+export type RequestType<R extends IRequest, C extends string = string> = ConceptType<R, C>;
+
+export function conceptType<T extends IConcept>() {
+    return <C extends string>($class: C): ConceptType<T, C> => ({
         $class,
-        create: fields => ({ $class, ...fields }) as Typed<R, C>,
+        create: fields => ({ $class, ...fields }) as Typed<T, C>,
+        is: <V extends { readonly $class: string }>(value: V): value is V & Typed<T, C> => value?.$class === $class,
+    });
+}
+
+export function identifiedType<T extends IConcept>() {
+    return <C extends string>($class: C, identifiedBy: keyof Fields<T> & string): IdentifiedType<T, C> => ({
+        ...conceptType<T>()($class),
+        create: fields => ({ $class, $identifier: String(fields[identifiedBy as keyof typeof fields]), ...fields }) as unknown as Typed<T, C>,
+        ref: (id: string) => `resource:${$class}#${id}` as unknown as T,
     });
 }
 

@@ -1,16 +1,17 @@
 // @ts-nocheck - toy logic with free-form state
 // The engine's transaction semantics (runtime/execute.ts), with toy logic
 // so each behaviour is isolated. Only the last tests load models.
-import { defineLogic, requestType } from '../runtime/logic';
+import { defineLogic } from '../runtime/logic';
+import { AgreementDocument, LatePaymentDischarged, PaymentOverdue, PaymentSettled, ReminderSent, Request } from '../logic/generated/types';
 import { execute, initialise } from '../runtime/execute';
 import { testTemplate } from '../runtime/testing';
 import { at, loadModels } from './support';
 
-const Ping = requestType()('poc.accordproject.latepayment@0.1.0.PaymentOverdue');
-const Pong = requestType()('poc.accordproject.latepayment@0.1.0.PaymentSettled');
-const AnyRequest = requestType()('org.accordproject.runtime@1.0.0.Request');
+// Toy requests, borrowing the late payment clause's request types.
+const Ping = PaymentOverdue;
+const Pong = PaymentSettled;
 
-const response = (request, extra = {}) => ({ $class: 'poc.accordproject.latepayment@0.1.0.LatePaymentDischarged', $timestamp: request.$timestamp, ...extra });
+const response = (request, extra = {}) => ({ ...LatePaymentDischarged.create({ $timestamp: request.$timestamp }), ...extra });
 
 // A counter that fails on request once its count reaches `failAt`.
 const counter = defineLogic()
@@ -52,7 +53,7 @@ const clause = (clauseId, templateId, data = {}, clauses?) => ({ clauseId, templ
 
 function agreementOf(documents) {
     return {
-        agreement: { agreementId: 'a', parties: [], documents: documents.map(d => `resource:x#${d.documentId}`) },
+        agreement: { agreementId: 'a', parties: [], documents: documents.map(d => AgreementDocument.ref(d.documentId)) },
         documents,
     };
 }
@@ -148,7 +149,7 @@ describe('the engine', () => {
 
         it('dispatches a request to the handler for its nearest supertype when it has none of its own', async () => {
             const seen = [];
-            const catchAll = defineLogic().on(AnyRequest, async (request) => {
+            const catchAll = defineLogic().on(Request, async (request) => {
                 seen.push(request.$class);
                 return response(request);
             });
@@ -161,7 +162,7 @@ describe('the engine', () => {
         });
 
         it('rejects logic registered for something that is not a Request type, before anything runs', async () => {
-            const wrong = defineLogic().on(requestType()('poc.accordproject.latepayment@0.1.0.ReminderSent'), async r => r);
+            const wrong = defineLogic().on(ReminderSent, async r => r);
             const { run } = await setUp();
 
             await expect(run(Ping.create({ $timestamp: at(1) }), undefined, { ...LOGIC, parent: wrong }, { models }))

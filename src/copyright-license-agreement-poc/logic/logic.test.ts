@@ -4,12 +4,26 @@
 // stands stubs in for any composed clause. Everything written is
 // validated against the models.
 import copyrightLicense from './logic';
-import { PaymentRequest, PaymentReceived, PaymentOverdue, PaymentSettled } from './request-types';
+import {
+    AgreementDocument,
+    CopyrightLicenseState,
+    DocumentReference,
+    LatePaymentDischarged,
+    ObligationIssued,
+    ObligationTransition,
+    PaymentObligation,
+    PaymentOverdue,
+    PaymentReceipt,
+    PaymentReceived,
+    PaymentRequest,
+    PaymentSettled,
+    PaymentTermsState,
+    PayOut,
+    ReminderSent,
+} from './generated/types';
 import { stubClause, testInstance, TEST_AGREEMENT, TEST_DOCUMENT } from '../runtime/testing';
 import { amount, at, loadModels, sample, templateReference } from '../test/support';
 
-const NS = 'poc.accordproject.copyrightlicense@0.1.0';
-const OBLIGATION_NS = 'org.accordproject.obligation@1.0.0';
 const OBLIGATION_ID = `${TEST_AGREEMENT}/${TEST_DOCUMENT}/paymentTerms`;
 const EFFECTIVE_DATE = '2018-01-01T01:00:00.000+01:00';
 
@@ -21,9 +35,7 @@ const paymentReceived = (unscaledValue: string, code = 'USD', scale = 2) =>
     PaymentReceived.create({ $timestamp: at(clock++), amount: amount(unscaledValue, code, scale) });
 
 // The licensed work schedule, as a cousin document in the same agreement.
-const schedule = () => ({
-    $class: 'org.accordproject.agreement@1.0.0.AgreementDocument',
-    $identifier: 'schedule-1',
+const schedule = () => AgreementDocument.create({
     documentId: 'schedule-1',
     template: templateReference('licensed-work-schedule'),
     data: sample('documents/licensed-work-schedule'),
@@ -58,20 +70,19 @@ describe('copyright licence logic', () => {
 
     describe('init', () => {
         it('starts the payment clause with nothing paid and no due date', async () => {
-            expect(await initialState()).toEqual({
-                $class: `${NS}.CopyrightLicenseState`,
-                paymentTerms: { $class: `${NS}.PaymentTermsState`, obligationId: OBLIGATION_ID, amountPaid: amount('0') },
-            });
+            expect(await initialState()).toEqual(CopyrightLicenseState.create({
+                paymentTerms: PaymentTermsState.create({ obligationId: OBLIGATION_ID, amountPaid: amount('0') }),
+            }));
         });
 
         it('issues a PENDING PaymentObligation for the fee at revision 0', async () => {
             const { events } = await run();
 
             expect(events).toHaveLength(1);
-            expect(events[0].$class).toBe('poc.accordproject.composition@0.1.0.ObligationIssued');
+            expect(ObligationIssued.is(events[0])).toBe(true);
             expect(events[0].$timestamp).toBe(EFFECTIVE_DATE);
             expect(events[0].obligation).toMatchObject({
-                $class: `${OBLIGATION_NS}.PaymentObligation`,
+                $class: PaymentObligation.$class,
                 obligationId: OBLIGATION_ID,
                 status: 'PENDING',
                 revision: 0,
@@ -87,7 +98,7 @@ describe('copyright licence logic', () => {
             const { events } = await run();
 
             expect(events[0].obligation.agreement).toMatchObject({
-                $class: 'poc.accordproject.composition@0.1.0.DocumentReference',
+                $class: DocumentReference.$class,
                 agreementId: TEST_AGREEMENT,
                 documentId: TEST_DOCUMENT,
                 clausePath: 'paymentTerms',
@@ -114,7 +125,7 @@ describe('copyright licence logic', () => {
 
             const result = await copyrightLicense.handle(request, licence({ state: await initialState() }));
 
-            expect(result).toEqual({ $class: `${NS}.PayOut`, $timestamp: request.$timestamp, amount: amount('10000') });
+            expect(result).toEqual(PayOut.create({ $timestamp: request.$timestamp, amount: amount('10000') }));
         });
 
         it('reads the fee from the nested paymentTerms field', async () => {
@@ -132,15 +143,14 @@ describe('copyright licence logic', () => {
             await copyrightLicense.handle(request, self);
 
             expect(self.committed.state.paymentTerms.dueAt).toBe(request.$timestamp);
-            expect(self.committed.events).toEqual([{
-                $class: `${OBLIGATION_NS}.ObligationTransition`,
+            expect(self.committed.events).toEqual([ObligationTransition.create({
                 $timestamp: request.$timestamp,
-                obligation: `resource:${OBLIGATION_NS}.PaymentObligation#${OBLIGATION_ID}`,
+                obligation: PaymentObligation.ref(OBLIGATION_ID),
                 fromStatus: 'PENDING',
                 toStatus: 'DUE',
                 effectiveAt: request.$timestamp,
                 revision: 1,
-            }]);
+            })]);
         });
 
         it('sees its own write straight away, before anything is committed', async () => {
@@ -154,13 +164,13 @@ describe('copyright licence logic', () => {
 
         it('chases an already-DUE payment through the composed late payment clause', async () => {
             const { state } = await run(paymentRequest());
-            const latePayment = stubClause({ [PaymentOverdue.$class]: { $class: 'poc.accordproject.latepayment@0.1.0.ReminderSent', $timestamp: at(0), remindersSent: 1 } });
+            const latePayment = stubClause({ [PaymentOverdue.$class]: ReminderSent.create({ $timestamp: at(0), remindersSent: 1 }) });
             const self = licence({ state, clauses: { latePayment } });
             const request = paymentRequest();
 
             const result = await copyrightLicense.handle(request, self);
 
-            expect(latePayment.calls).toEqual([{ $class: PaymentOverdue.$class, $timestamp: request.$timestamp }]);
+            expect(latePayment.calls).toEqual([PaymentOverdue.create({ $timestamp: request.$timestamp })]);
             expect(self.committed.state).toEqual(state);
             expect(result.amount).toEqual(amount('10000'));
         });
@@ -197,7 +207,7 @@ describe('copyright licence logic', () => {
 
             const result = await copyrightLicense.handle(paymentReceived('4000'), self);
 
-            expect(result.$class).toBe(`${NS}.PaymentReceipt`);
+            expect(PaymentReceipt.is(result)).toBe(true);
             expect(result.outstanding).toEqual(amount('6000'));
             expect(self.committed.state.paymentTerms.amountPaid).toEqual(amount('4000'));
             expect(self.committed.events).toHaveLength(0);
@@ -222,7 +232,7 @@ describe('copyright licence logic', () => {
         });
 
         it('discharges the composed late payment clause once paid in full, and only then', async () => {
-            const latePayment = stubClause({ [PaymentSettled.$class]: { $class: 'poc.accordproject.latepayment@0.1.0.LatePaymentDischarged', $timestamp: at(0) } });
+            const latePayment = stubClause({ [PaymentSettled.$class]: LatePaymentDischarged.create({ $timestamp: at(0) }) });
             const { state } = await run(paymentRequest());
 
             await copyrightLicense.handle(paymentReceived('4000'), licence({ state, clauses: { latePayment } }));
@@ -230,7 +240,7 @@ describe('copyright licence logic', () => {
 
             const request = paymentReceived('10000');
             await copyrightLicense.handle(request, licence({ state, clauses: { latePayment } }));
-            expect(latePayment.calls).toEqual([{ $class: PaymentSettled.$class, $timestamp: request.$timestamp }]);
+            expect(latePayment.calls).toEqual([PaymentSettled.create({ $timestamp: request.$timestamp })]);
         });
 
         it('keeps exact totals beyond the range doubles represent exactly', async () => {
@@ -293,11 +303,11 @@ describe('copyright licence logic', () => {
         const applyObligationEvents = (events) => {
             let obligation;
             for (const event of events) {
-                if (event.$class.endsWith('.ObligationIssued')) {
+                if (ObligationIssued.is(event)) {
                     obligation = { ...event.obligation };
                     continue;
                 }
-                expect(event.obligation).toBe(`resource:${obligation.$class}#${obligation.obligationId}`);
+                expect(event.obligation).toBe(PaymentObligation.ref(obligation.obligationId));
                 expect(event.fromStatus).toBe(obligation.status);
                 expect(event.revision).toBe(obligation.revision + 1);
                 obligation = { ...obligation, status: event.toStatus, revision: event.revision };

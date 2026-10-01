@@ -3,6 +3,8 @@ import { createHash } from 'crypto';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { ModelManager } from '@accordproject/concerto-core';
+import { ContentHash, HashAlgorithm, PreciseAmount, TemplateReference, Unit } from '../logic/generated/types';
+import { HashAlgorithmType, HashEncoding } from '../logic/generated/org.accordproject.crypto@1.0.0';
 
 export const ROOT = join(__dirname, '..');
 
@@ -43,24 +45,19 @@ export function templateReference(templateId: keyof typeof ARCHIVES) {
             hash.update(`${part}/${file}\n`).update(read(dir, part, file));
         }
     }
-    return {
-        $class: 'org.accordproject.template@1.0.0.TemplateReference',
+    return TemplateReference.create({
         templateId,
         version: '0.1.0',
-        archiveHash: {
-            $class: 'org.accordproject.crypto@1.0.0.ContentHash',
-            algorithm: { $class: 'org.accordproject.crypto@1.0.0.HashAlgorithm', type: 'SHA_256' },
+        archiveHash: ContentHash.create({
+            algorithm: HashAlgorithm.create({ type: HashAlgorithmType.SHA_256 }),
             value: hash.digest('hex'),
-            encoding: 'HEX',
-        },
-    };
+            encoding: HashEncoding.HEX,
+        }),
+    });
 }
 
-export const amount = (unscaledValue: string, code = 'USD', scale = 2) => ({
-    $class: 'org.accordproject.money@1.0.0.PreciseAmount',
-    unscaledValue,
-    unit: { $class: 'org.accordproject.money@1.0.0.Unit', code, scheme: 'iso4217', scale },
-});
+export const amount = (unscaledValue: string, code = 'USD', scale = 2) =>
+    PreciseAmount.create({ unscaledValue, unit: Unit.create({ code, scheme: 'iso4217', scale }) });
 
 /** An ISO timestamp `seconds` after midnight on 2 January 2018. */
 export const at = (seconds: number) => new Date(Date.UTC(2018, 0, 2, 0, 0, seconds)).toISOString();

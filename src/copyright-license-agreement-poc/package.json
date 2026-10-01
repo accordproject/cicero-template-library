@@ -20,7 +20,7 @@
     ],
     "scripts": {
         "test": "vitest run",
-        "compile": "concerto compile --offline --model model/@*.cto model/composition.cto model/model.cto composed/late-payment/model/model.cto documents/licensed-work-schedule/model/model.cto --target typescript --output logic/generated && concerto compile --offline --model model/@*.cto composed/late-payment/model/model.cto --target typescript --output composed/late-payment/logic/generated"
+        "compile": "concerto compile --offline --model model/@*.cto model/composition.cto model/model.cto composed/late-payment/model/model.cto documents/licensed-work-schedule/model/model.cto --target typescript --output logic/generated && concerto compile --offline --model model/@*.cto composed/late-payment/model/model.cto --target typescript --output composed/late-payment/logic/generated && node scripts/generate-types.js logic/generated model composed/late-payment/model documents/licensed-work-schedule/model && node scripts/generate-types.js composed/late-payment/logic/generated model composed/late-payment/model"
     },
     "tags": [
         "intellectual-property",

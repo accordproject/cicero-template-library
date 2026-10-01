@@ -26,6 +26,7 @@ import {
     IIndexedAgreementState,
 } from '../logic/generated/poc.accordproject.composition@0.1.0';
 import type { Agreement, Document, Instance, Logic } from './logic';
+import { Agreement as AgreementType, DocumentReference, IndexedAgreementState, Request } from '../logic/generated/types';
 
 /** `T` as JSON: maps are objects, as Concerto's serializer writes them. */
 export type Json<T> =
@@ -60,10 +61,6 @@ export interface Outcome {
     state: StateJson;
 }
 
-const STATE_CLASS = 'poc.accordproject.composition@0.1.0.IndexedAgreementState';
-const AGREEMENT_CLASS = 'org.accordproject.agreement@1.0.0.Agreement';
-const REFERENCE_CLASS = 'poc.accordproject.composition@0.1.0.DocumentReference';
-const REQUEST_CLASS = 'org.accordproject.runtime@1.0.0.Request';
 
 /** Initialises every instance in the agreement, as revision 0. */
 export async function initialise(
@@ -246,7 +243,7 @@ export class Session {
             this.serializer = new Serializer(new Factory(models), models);
             for (const node of this.nodes()) {
                 for (const type of this.logicFor(node)?.requestTypes ?? []) {
-                    if (type !== REQUEST_CLASS && !this.supertypes(type).includes(REQUEST_CLASS)) {
+                    if (type !== Request.$class && !this.supertypes(type).includes(Request.$class)) {
                         throw new Error(`Logic for '${node.template.templateId}' handles ${type}, which is not a Request type in the models.`);
                     }
                 }
@@ -302,16 +299,13 @@ export class Session {
     }
 
     envelope(revision: number, effectiveAt: string, states: Record<string, IStateData>): StateJson {
-        const stateId = `${this.tree.agreementId}-state`;
-        return {
-            $class: STATE_CLASS,
-            $identifier: stateId,
-            stateId,
-            agreement: `resource:${AGREEMENT_CLASS}#${this.tree.agreementId}`,
+        return IndexedAgreementState.create({
+            stateId: `${this.tree.agreementId}-state`,
+            agreement: AgreementType.ref(this.tree.agreementId),
             revision,
             effectiveAt,
-            states: states as StateJson['states'],
-        } as StateJson;
+            states: states as unknown as Map<string, IStateData>,
+        }) as unknown as StateJson;
     }
 
     /** `type`'s supertypes, nearest first; none without models, or for an unknown type. */
@@ -353,13 +347,12 @@ export class InstanceView implements Instance {
 
     reference(inlinePath?: string): IDocumentReference {
         const clausePath = join(this.node.path, inlinePath);
-        return {
-            $class: REFERENCE_CLASS,
+        return DocumentReference.create({
             agreementId: this.session.tree.agreementId,
             documentId: this.node.document.id,
             template: structuredClone(this.node.template),
             ...(clausePath ? { clausePath } : {}),
-        };
+        });
     }
 }
 

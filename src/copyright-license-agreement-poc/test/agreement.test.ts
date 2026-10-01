@@ -6,12 +6,20 @@
 import { Factory, Serializer } from '@accordproject/concerto-core';
 import copyrightLicense from '../logic/logic';
 import latePayment from '../composed/late-payment/logic/logic';
-import { PaymentRequest, PaymentReceived } from '../logic/request-types';
+import {
+    Agreement,
+    AgreementDocument,
+    AgreementParty,
+    ComposedClause,
+    ObligationIssued,
+    Party,
+    PaymentReceived,
+    PaymentReminder,
+    PaymentRequest,
+} from '../logic/generated/types';
 import { execute, initialise } from '../runtime/execute';
 import { amount, at, loadModels, sample, templateReference } from './support';
 
-const AGREEMENT_NS = 'org.accordproject.agreement@1.0.0';
-const COMPOSITION_NS = 'poc.accordproject.composition@0.1.0';
 const LOGIC = { 'copyright-license-agreement-poc': copyrightLicense, 'late-payment': latePayment };
 const EFFECTIVE_AT = '2018-01-01T00:00:00.000Z';
 
@@ -19,9 +27,7 @@ const models = loadModels();
 const options = { models };
 const serializer = new Serializer(new Factory(models), models);
 
-const document = (documentId: string, templateId, data, clauses?) => ({
-    $class: `${AGREEMENT_NS}.AgreementDocument`,
-    $identifier: documentId,
+const document = (documentId: string, templateId, data, clauses?) => AgreementDocument.create({
     documentId,
     template: templateReference(templateId),
     data,
@@ -29,29 +35,22 @@ const document = (documentId: string, templateId, data, clauses?) => ({
 });
 
 function licenceAgreement({ withLatePaymentClause = true } = {}) {
-    const latePaymentClause = {
-        $class: `${COMPOSITION_NS}.ComposedClause`,
+    const latePaymentClause = ComposedClause.create({
         clauseId: 'licence/late-payment',
         template: templateReference('late-payment'),
         data: sample('composed/late-payment'),
-    };
+    });
     const documents = [
         document('licence', 'copyright-license-agreement-poc', sample('.'),
             withLatePaymentClause ? { latePayment: latePaymentClause } : undefined),
         document('schedule-1', 'licensed-work-schedule', sample('documents/licensed-work-schedule')),
     ];
-    const party = (id: string, role: string) => ({
-        $class: `${AGREEMENT_NS}.AgreementParty`,
-        party: `resource:org.accordproject.party@1.0.0.Party#${id}`,
-        role,
-    });
-    const agreement = {
-        $class: `${AGREEMENT_NS}.Agreement`,
-        $identifier: 'licence-001',
+    const party = (id: string, role: string) => AgreementParty.create({ party: Party.ref(id), role });
+    const agreement = Agreement.create({
         agreementId: 'licence-001',
-        documents: documents.map(d => `resource:${AGREEMENT_NS}.AgreementDocument#${d.documentId}`),
+        documents: documents.map(d => AgreementDocument.ref(d.documentId)),
         parties: [party('me', 'licensee'), party('myself', 'licensor')],
-    };
+    });
     return { agreement, documents };
 }
 
@@ -90,7 +89,7 @@ describe('an agreement as one tree of template instances (design B)', () => {
         expect(state.states['licence'].paymentTerms.amountPaid.unscaledValue).toBe('0');
         expect(state.states['licence/late-payment']).toMatchObject({ remindersSent: 0, discharged: false });
         expect(state.revision).toBe(0);
-        expect(events.map(e => e.$class)).toEqual([`${COMPOSITION_NS}.ObligationIssued`]);
+        expect(events.map(e => e.$class)).toEqual([ObligationIssued.$class]);
         expect(() => serializer.fromJSON(state)).not.toThrow();
     });
 
@@ -111,7 +110,7 @@ describe('an agreement as one tree of template instances (design B)', () => {
         expect(chased.state.states['licence']).toEqual(requested.states['licence']);
         expect(chased.state.states['licence/late-payment'].remindersSent).toBe(1);
         expect(chased.events).toEqual([expect.objectContaining({
-            $class: 'poc.accordproject.latepayment@0.1.0.PaymentReminder', reminderNumber: 1, gracePeriodDays: 14,
+            $class: PaymentReminder.$class, reminderNumber: 1, gracePeriodDays: 14,
         })]);
     });
 
@@ -247,7 +246,7 @@ describe('an agreement as one tree of template instances (design B)', () => {
             await expect(r2).rejects.toThrow('already been paid in full');
             expect(store.load().revision).toBe(2);
             expect(store.load().states['licence/late-payment'].discharged).toBe(true);
-            expect(store.outbox.map(e => e.toStatus ?? e.$class)).toEqual(['DUE', 'FULFILLED']);
+            expect(store.outbox.map(e => e.toStatus)).toEqual(['DUE', 'FULFILLED']);
         });
 
         it('commits a retried request once, on top of the request that won', async () => {

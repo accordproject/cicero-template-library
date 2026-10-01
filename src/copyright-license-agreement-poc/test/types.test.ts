@@ -1,8 +1,7 @@
-// The logic API's typing (test/types.check.ts) and the hand-written
-// request type constants, which template-engine would generate.
+// The logic API's typing (test/types.check.ts), and the generated factories.
 import { spawnSync } from 'child_process';
-import * as licenceRequestTypes from '../logic/request-types';
-import * as latePaymentRequestTypes from '../composed/late-payment/logic/request-types';
+import * as licenceTypes from '../logic/generated/types';
+import * as latePaymentTypes from '../composed/late-payment/logic/generated/types';
 import { ROOT, loadModels } from './support';
 
 describe('typing', () => {
@@ -13,13 +12,23 @@ describe('typing', () => {
         expect(tsc.status).toBe(0);
     }, 60_000);
 
-    it('declares request type constants that match Request types in the models, under their own names', () => {
+    it("generates a factory, under its own name, for every concrete type in each archive's models", () => {
         const models = loadModels();
-        for (const [name, type] of Object.entries({ ...licenceRequestTypes, ...latePaymentRequestTypes })) {
-            const declaration = models.getType(type.$class);
-            expect(declaration.getName()).toBe(name);
-            expect(declaration.getAllSuperTypeDeclarations().map(d => d.getFullyQualifiedName()))
-                .toContain('org.accordproject.runtime@1.0.0.Request');
+        for (const factories of [licenceTypes, latePaymentTypes]) {
+            for (const [name, type] of Object.entries(factories)) {
+                const declaration = models.getType(type.$class);
+                expect(declaration.getName()).toBe(name);
+                expect(declaration.isAbstract()).toBe(false);
+            }
         }
+        expect(Object.keys(licenceTypes)).toEqual(expect.arrayContaining(['PayOut', 'PaymentObligation', 'LicensedWorkSchedule']));
+        expect(Object.keys(latePaymentTypes)).toEqual(expect.arrayContaining(['ReminderSent', 'LatePaymentState']));
+    });
+
+    it('fills in $class, and $identifier from the identifying field', () => {
+        expect(licenceTypes.Party.create({ partyId: 'me' })).toEqual({
+            $class: 'org.accordproject.party@1.0.0.Party', $identifier: 'me', partyId: 'me',
+        });
+        expect(licenceTypes.Party.ref('me')).toBe('resource:org.accordproject.party@1.0.0.Party#me');
     });
 });

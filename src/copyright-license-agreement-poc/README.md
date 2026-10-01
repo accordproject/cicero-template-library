@@ -150,25 +150,34 @@ export type Licence = Self<ICopyrightLicenseData, ICopyrightLicenseState, {
 }>;
 
 export default defineLogic<Licence>()
-    .init(licence => { licence.setState(...); licence.emit(issued); })
+    .init(licence => {
+        licence.setState(CopyrightLicenseState.create({ paymentTerms: PaymentTermsState.create({ ... }) }));
+        licence.emit(ObligationIssued.create({ $timestamp: data.effectiveDate, obligation }));
+    })
     .on(PaymentRequest, async (request, licence): Promise<IPayOut> => {
         ...
         await licence.clauses.latePayment?.trigger(PaymentOverdue.create({ $timestamp: request.$timestamp }));
-        ...
+        return PayOut.create({ $timestamp: request.$timestamp, amount: outstanding(data, terms) });
     })
     .on(PaymentReceived, async (request, licence): Promise<IPaymentReceipt> => { ... });
 ```
 
-- **No dispatch switch.** The engine dispatches on the request's `$class`
-  to the handler registered for it, or for its nearest supertype, and
-  rejects a request nothing handles before any logic runs.
-  `PaymentRequest` and friends (`logic/request-types.ts`) are the model's
-  request types as runtime values; template-engine would generate them
-  with the interfaces.
+- **A factory for every type.** Every value is made with its type's
+  factory (`PayOut.create({...})`), which fills in `$class`, and
+  `$identifier` for an identified type, so logic never writes either by
+  hand. Factories also check a value's type (`LicensedWorkSchedule.is(data)`)
+  and make relationships (`PaymentObligation.ref(id)`).
+  `scripts/generate-types.js` generates them from the models into
+  `logic/generated/types.ts`, as part of `npm run compile`; template-engine
+  or Concerto's TypeScript codegen would emit them with the interfaces.
+- **No dispatch switch.** A request type's factory is also the key its
+  handler is registered under. The engine dispatches on the request's
+  `$class` to the handler registered for it, or for its nearest
+  supertype, and rejects a request nothing handles before any logic runs.
 - **The signatures are the declaration.** Each handler's `request` is
   typed by the request type it is registered for, and its response type
-  is whatever it declares. `ApiOf<typeof logic>` collects them into the API a composing
-  template triggers it with (`LatePayment`). The licence imports that as a
+  is whatever it declares. `ApiOf<typeof logic>` collects them into the
+  API a composing template triggers it with (`LatePayment`). The licence imports that as a
   type only, so it depends on the clause's requests and responses, never
   its state or code.
 - **`self` is this instance's node in the agreement tree.** It reads its
@@ -186,9 +195,10 @@ export default defineLogic<Licence>()
   request commits as one revision, or not at all.
 
 `test/types.check.ts` holds compile-time checks of all of this (e.g.
-triggering the clause with `PaymentOverdue` returns `IReminderSent`, and
-writing to another document doesn't compile). `test/types.test.ts` runs
-them with `tsc`, along with strict type-checking of both logic files.
+triggering the clause with `PaymentOverdue` returns `IReminderSent`,
+writing to another document doesn't compile, and a factory won't take a
+hand-written `$class`). `test/types.test.ts` runs them with `tsc`, along
+with strict type-checking of both logic files.
 
 ### Testing
 

@@ -6,21 +6,24 @@ import {
     IPaymentReceipt,
 } from './generated/poc.accordproject.copyrightlicense@0.1.0';
 import { IPreciseAmount, IUnit } from './generated/org.accordproject.money@1.0.0';
+import { IObligationTransition, ObligationStatus } from './generated/org.accordproject.obligation@1.0.0';
 import {
-    IObligation,
-    IPaymentObligation,
-    IObligationTransition,
-    ObligationStatus,
-} from './generated/org.accordproject.obligation@1.0.0';
-import { IObligationIssued } from './generated/poc.accordproject.composition@0.1.0';
-import { ILicensedWorkSchedule } from './generated/poc.accordproject.licensedwork@0.1.0';
+    CopyrightLicenseState,
+    LicensedWorkSchedule,
+    ObligationIssued,
+    ObligationTransition,
+    PaymentObligation,
+    PaymentOverdue,
+    PaymentReceipt,
+    PaymentReceived,
+    PaymentRequest,
+    PaymentSettled,
+    PaymentTermsState,
+    PayOut,
+    PreciseAmount,
+} from './generated/types';
 import { Clause, DeepReadonly, Self, defineLogic } from '../runtime/logic';
 import type { LatePayment } from '../composed/late-payment/logic/logic';
-import { PaymentRequest, PaymentReceived, PaymentOverdue, PaymentSettled } from './request-types';
-
-const NS = 'poc.accordproject.copyrightlicense@0.1.0';
-const OBLIGATION_NS = 'org.accordproject.obligation@1.0.0';
-const SCHEDULE = 'poc.accordproject.licensedwork@0.1.0.LicensedWorkSchedule';
 
 // The inline payment clause's path within this licence's data.
 const PAYMENT_TERMS = 'paymentTerms';
@@ -38,7 +41,7 @@ type Data = Licence['data'];
 type TermsState = DeepReadonly<IPaymentTermsState>;
 
 function precise(unscaledValue: bigint, unit: DeepReadonly<IUnit>): IPreciseAmount {
-    return { $class: 'org.accordproject.money@1.0.0.PreciseAmount', unscaledValue: unscaledValue.toString(), unit };
+    return PreciseAmount.create({ unscaledValue: unscaledValue.toString(), unit });
 }
 
 function sameUnit(a: DeepReadonly<IUnit>, b: DeepReadonly<IUnit>): boolean {
@@ -65,16 +68,14 @@ function outstanding(data: Data, terms: TermsState): IPreciseAmount {
 }
 
 function transition(terms: TermsState, fromStatus: ObligationStatus, toStatus: ObligationStatus, revision: number, effectiveAt: string): IObligationTransition {
-    return {
-        $class: `${OBLIGATION_NS}.ObligationTransition`,
+    return ObligationTransition.create({
         $timestamp: effectiveAt,
-        // A relationship serializes as a "resource:<type>#<id>" string.
-        obligation: `resource:${OBLIGATION_NS}.PaymentObligation#${terms.obligationId}` as unknown as IObligation,
+        obligation: PaymentObligation.ref(terms.obligationId),
         fromStatus,
         toStatus,
         effectiveAt,
         revision,
-    };
+    });
 }
 
 // What is licensed: the title from the agreement's licensed work schedule,
@@ -84,8 +85,8 @@ function transition(terms: TermsState, fromStatus: ObligationStatus, toStatus: O
 function licensedWork(licence: Licence): string {
     for (const document of licence.document.agreement.documents.values()) {
         const data = document.root.data;
-        if (data.$class === SCHEDULE) {
-            return `"${(data as DeepReadonly<ILicensedWorkSchedule>).title}"`;
+        if (LicensedWorkSchedule.is(data)) {
+            return `"${data.title}"`;
         }
     }
     return licence.data.workDescription;
@@ -106,9 +107,7 @@ const copyrightLicense = defineLogic<Licence>()
         // Unique across agreements, so the obligation registry needs no
         // qualification from the runtime.
         const obligationId = `${licence.document.agreement.id}/${licence.document.id}/${PAYMENT_TERMS}`;
-        const obligation: IPaymentObligation = {
-            $class: `${OBLIGATION_NS}.PaymentObligation`,
-            $identifier: obligationId,
+        const obligation = PaymentObligation.create({
             obligationId,
             status: ObligationStatus.PENDING,
             createdAt: data.effectiveDate,
@@ -118,21 +117,11 @@ const copyrightLicense = defineLogic<Licence>()
             description: `${data.licensee.label} should pay the licence fee for ${licensedWork(licence)} to ${data.licensor.label}`,
             revision: 0,
             amount: due,
-        };
-        const issued: IObligationIssued = {
-            $class: 'poc.accordproject.composition@0.1.0.ObligationIssued',
-            $timestamp: data.effectiveDate,
-            obligation,
-        };
-        licence.setState({
-            $class: `${NS}.CopyrightLicenseState`,
-            paymentTerms: {
-                $class: `${NS}.PaymentTermsState`,
-                obligationId,
-                amountPaid: precise(0n, due.unit),
-            },
         });
-        licence.emit(issued);
+        licence.setState(CopyrightLicenseState.create({
+            paymentTerms: PaymentTermsState.create({ obligationId, amountPaid: precise(0n, due.unit) }),
+        }));
+        licence.emit(ObligationIssued.create({ $timestamp: data.effectiveDate, obligation }));
     })
     .on(PaymentRequest, async (request, licence): Promise<IPayOut> => {
         const { data, state } = licence;
@@ -149,7 +138,7 @@ const copyrightLicense = defineLogic<Licence>()
             licence.setState({ ...state, paymentTerms: next });
             licence.emit(transition(next, status, ObligationStatus.DUE, obligationRevision(ObligationStatus.DUE, next), request.$timestamp));
         }
-        return { $class: `${NS}.PayOut`, $timestamp: request.$timestamp, amount: outstanding(data, terms) };
+        return PayOut.create({ $timestamp: request.$timestamp, amount: outstanding(data, terms) });
     })
     .on(PaymentReceived, async (request, licence): Promise<IPaymentReceipt> => {
         const { data, state } = licence;
@@ -181,7 +170,7 @@ const copyrightLicense = defineLogic<Licence>()
             // neither is if anything here throws.
             await licence.clauses.latePayment?.trigger(PaymentSettled.create({ $timestamp: request.$timestamp }));
         }
-        return { $class: `${NS}.PaymentReceipt`, $timestamp: request.$timestamp, outstanding: outstanding(data, next) };
+        return PaymentReceipt.create({ $timestamp: request.$timestamp, outstanding: outstanding(data, next) });
     });
 
 export default copyrightLicense;
