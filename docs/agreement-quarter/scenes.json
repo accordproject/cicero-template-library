@@ -73,7 +73,8 @@
       "plate": "X",
       "title": "The Moot",
       "prompt": "A practice moot in a panelled hall: a mock trial with a stand-in witness made of cardboard and wire. The barrister argues to an empty bench while the clerk keeps the record.",
-      "humans": 1
+      "humans": 1,
+      "people": "This is a practice trial, so the barrister wears court dress: a short grey horsehair barrister's wig over her pinned-up hair. She wears no wig in any other scene."
     },
     {
       "id": "lodge",
