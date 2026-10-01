@@ -5,16 +5,10 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	ICopyrightLicenseData
-} from './poc.accordproject.copyrightlicense@0.1.0';
-import type {
 	ILatePaymentData
 } from './poc.accordproject.latepayment@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
-import type {
-	ICopyrightLicenseState
-} from './poc.accordproject.copyrightlicense@0.1.0';
 import type {
 	ILatePaymentState
 } from './poc.accordproject.latepayment@0.1.0';
@@ -24,12 +18,10 @@ import {IConcept} from './concerto@1.0.0';
 export interface ITemplateData extends IConcept {
 }
 
-export type TemplateDataUnion = ICopyrightLicenseData | 
-ILatePaymentData;
+export type TemplateDataUnion = ILatePaymentData;
 
 export interface IStateData extends IConcept {
 }
 
-export type StateDataUnion = ICopyrightLicenseState | 
-ILatePaymentState;
+export type StateDataUnion = ILatePaymentState;
 

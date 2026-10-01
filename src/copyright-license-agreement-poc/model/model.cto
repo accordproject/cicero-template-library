@@ -38,10 +38,10 @@
  *     the template's one concrete `templatedata@1.0.0.StateData`
  *     subtype. The inline payment clause's state is an ordinary nested
  *     concept at the same instance path as its data ("paymentTerms"),
- *     not a separate `StateData` subtype and not a `ClauseStates` entry:
- *     that map is for composed sub-template archives (see
- *     model/runtime.cto). The original copyright-license template has no
- *     state at all; this is added to illustrate clause-scoped state.
+ *     not a separate `StateData` subtype. A composed clause is a separate
+ *     template instance with its own state (see model/agreement.cto and
+ *     composed/late-payment/). The original copyright-license template has
+ *     no state at all; this is added to illustrate clause-scoped state.
  *   - The payment lifecycle lives in an obligation@1.0.0
  *     `PaymentObligation` (model/obligation.cto), not in template state.
  *     Clause state holds only the facts logic needs to derive the

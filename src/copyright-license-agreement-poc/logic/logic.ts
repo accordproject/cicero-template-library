@@ -16,13 +16,22 @@ import {
     IObligationTransition,
     ObligationStatus,
 } from "./generated/poc.accordproject.obligation@0.1.0";
+import { IStateData } from "./generated/poc.accordproject.templatedata@0.1.0";
+import {
+    IPaymentOverdue,
+    IPaymentSettled,
+    IReminderSent,
+    ILatePaymentDischarged,
+    IPaymentReminder,
+} from "./generated/poc.accordproject.latepayment@0.1.0";
 
 const NS = 'poc.accordproject.copyrightlicense@0.1.0';
 const OBLIGATION_NS = 'poc.accordproject.obligation@0.1.0';
+const LATE_PAYMENT_NS = 'poc.accordproject.latepayment@0.1.0';
 
 // The inline payment clause's instance path, which is also the payment
 // obligation's id. Logic never sees the agreement, so the runtime qualifies
-// both with the agreement id when it applies the events below.
+// both with the agreement and document ids when it applies the events below.
 const CLAUSE_PATH = 'paymentTerms';
 
 type CopyrightLicenseInitResponse = {
@@ -30,10 +39,27 @@ type CopyrightLicenseInitResponse = {
     events: IObligationIssued[];
 };
 
+// A clause composed into this licence, as the runtime links it in: it runs
+// the clause template's own logic against that clause's own data and state.
+// The licence depends only on the clause's request and response types and
+// never reads or writes the clause's state, which stays opaque here.
+type ComposedClause<Request, Result, Event> = {
+    trigger(request: Request): Promise<{ result: Result; state: IStateData; events: Event[] }>;
+};
+
+// Composed clauses by instance path. Each is optional: a licence composed
+// without a late payment clause works unchanged.
+type CopyrightLicenseClauses = {
+    latePayment?: ComposedClause<IPaymentOverdue | IPaymentSettled, IReminderSent | ILatePaymentDischarged, IPaymentReminder>;
+};
+
 type CopyrightLicenseResponse = {
     result: IPayOut | IPaymentReceipt;
     state: ICopyrightLicenseState;
-    events: IObligationTransition[];
+    // New state for each composed clause this transition changed, by
+    // instance path. The runtime commits it with `state` as one revision.
+    clauseStates?: { latePayment?: IStateData };
+    events: (IObligationTransition | IPaymentReminder)[];
 };
 
 function precise(unscaledValue: bigint, unit: IUnit): IPreciseAmount {
@@ -72,8 +98,8 @@ function transition(
     fromStatus: ObligationStatus,
     toStatus: ObligationStatus,
     revision: number,
-    // DateTime is a Date in the Concerto 4 codegen and a string in the one
-    // template-engine 5.x compiles logic with, so take the generated type.
+    // DateTime's generated type differs between Concerto codegens (a Date in
+    // Concerto 4's, a string in 5's), so take whichever was generated.
     effectiveAt: IObligationTransition['effectiveAt']
 ): IObligationTransition {
     return {
@@ -141,7 +167,8 @@ class CopyrightLicenseLogic extends TemplateLogic<ICopyrightLicenseData, ICopyri
     async trigger(
         data: ICopyrightLicenseData,
         request: IPaymentRequest | IPaymentReceived,
-        state: ICopyrightLicenseState
+        state: ICopyrightLicenseState,
+        clauses: CopyrightLicenseClauses = {}
     ): Promise<CopyrightLicenseResponse> {
         // `data` IS the template model -- there is no envelope to unwrap
         // (was: `data.data as ICopyrightLicenseData`) and no `clauses`
@@ -150,19 +177,20 @@ class CopyrightLicenseLogic extends TemplateLogic<ICopyrightLicenseData, ICopyri
         // was authoritative). `paymentTerms` is simply a nested field.
         switch (request.$class) {
             case `${NS}.PaymentRequest`:
-                return this.requestPayment(data, request, state);
+                return this.requestPayment(data, request, state, clauses);
             case `${NS}.PaymentReceived`:
-                return this.receivePayment(data, request as IPaymentReceived, state);
+                return this.receivePayment(data, request as IPaymentReceived, state, clauses);
             default:
                 throw new Error(`Unsupported request type: ${request.$class}`);
         }
     }
 
-    private requestPayment(
+    private async requestPayment(
         data: ICopyrightLicenseData,
         request: IPaymentRequest,
-        state: ICopyrightLicenseState
-    ): CopyrightLicenseResponse {
+        state: ICopyrightLicenseState,
+        clauses: CopyrightLicenseClauses
+    ): Promise<CopyrightLicenseResponse> {
         const clause = state.paymentTerms;
         const status = obligationStatus(data, clause);
         if (status === ObligationStatus.FULFILLED) {
@@ -175,7 +203,16 @@ class CopyrightLicenseLogic extends TemplateLogic<ICopyrightLicenseData, ICopyri
             amount: outstanding(data, clause)
         };
         if (status === ObligationStatus.DUE) {
-            return { result, state, events: [] };
+            // Already requested and still outstanding: chase it through the
+            // late payment clause, if one is composed into this licence.
+            if (!clauses.latePayment) {
+                return { result, state, events: [] };
+            }
+            const chased = await clauses.latePayment.trigger({
+                $class: `${LATE_PAYMENT_NS}.PaymentOverdue`,
+                $timestamp: request.$timestamp
+            });
+            return { result, state, clauseStates: { latePayment: chased.state }, events: chased.events };
         }
 
         const next: IPaymentTermsState = { ...clause, dueAt: request.$timestamp };
@@ -186,11 +223,12 @@ class CopyrightLicenseLogic extends TemplateLogic<ICopyrightLicenseData, ICopyri
         };
     }
 
-    private receivePayment(
+    private async receivePayment(
         data: ICopyrightLicenseData,
         request: IPaymentReceived,
-        state: ICopyrightLicenseState
-    ): CopyrightLicenseResponse {
+        state: ICopyrightLicenseState,
+        clauses: CopyrightLicenseClauses
+    ): Promise<CopyrightLicenseResponse> {
         const clause = state.paymentTerms;
         const due = data.paymentTerms.amount;
         const status = obligationStatus(data, clause);
@@ -211,7 +249,7 @@ class CopyrightLicenseLogic extends TemplateLogic<ICopyrightLicenseData, ICopyri
 
         const next: IPaymentTermsState = { ...clause, amountPaid: precise(amountPaid, due.unit) };
         const nextStatus = obligationStatus(data, next);
-        return {
+        const response: CopyrightLicenseResponse = {
             result: {
                 $class: `${NS}.PaymentReceipt`,
                 $timestamp: request.$timestamp,
@@ -221,6 +259,22 @@ class CopyrightLicenseLogic extends TemplateLogic<ICopyrightLicenseData, ICopyri
             events: nextStatus === status
                 ? []
                 : [transition(status, nextStatus, obligationRevision(nextStatus, next), request.$timestamp)]
+        };
+        if (nextStatus !== ObligationStatus.FULFILLED || !clauses.latePayment) {
+            return response;
+        }
+
+        // Paying in full also discharges the late payment clause: the
+        // licence's own state and the clause's are returned together, so the
+        // runtime commits both in one revision or neither.
+        const settled = await clauses.latePayment.trigger({
+            $class: `${LATE_PAYMENT_NS}.PaymentSettled`,
+            $timestamp: request.$timestamp
+        });
+        return {
+            ...response,
+            clauseStates: { latePayment: settled.state },
+            events: [...response.events, ...settled.events]
         };
     }
 }

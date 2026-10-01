@@ -23,8 +23,8 @@ export enum ObligationStatus {
 export interface IDurableObligation extends IAsset {
    obligationId: string;
    status: ObligationStatus;
-   createdAt: Date;
-   dueAt?: Date;
+   createdAt: string;
+   dueAt?: string;
    bearers: IPartyRef[];
    beneficiaries?: IPartyRef[];
    agreement: IAgreementReference;
@@ -45,7 +45,7 @@ export interface IObligationTransition extends IEvent {
    obligation: IDurableObligation;
    fromStatus?: ObligationStatus;
    toStatus: ObligationStatus;
-   effectiveAt: Date;
+   effectiveAt: string;
    actor?: IPartyRef;
    reason?: string;
    correlationId?: string;

@@ -12,14 +12,29 @@ export interface IAgreementParty extends IConcept {
    party: IParty;
 }
 
+export interface ITemplateReference extends IConcept {
+   templateId: string;
+   version: string;
+}
+
+export type Children = Map<string, ITemplateInstance>;
+
+export interface ITemplateInstance extends IConcept {
+   instanceId: string;
+   template: ITemplateReference;
+   data: ITemplateData;
+   children?: Children;
+}
+
 export interface IAgreementDocument extends IConcept {
    documentId: string;
-   data: ITemplateData;
+   root: ITemplateInstance;
    parties?: IAgreementParty[];
 }
 
 export interface IAgreementReference extends IConcept {
    agreementId: string;
+   documentId?: string;
    clausePath?: string;
 }
 

@@ -19,7 +19,6 @@ import {
     IPaymentRequest,
     IPaymentReceived,
 } from './generated/poc.accordproject.copyrightlicense@0.1.0';
-import { IAgreementState } from './generated/poc.accordproject.runtime@0.1.0';
 
 const NS = 'poc.accordproject.copyrightlicense@0.1.0';
 const OBLIGATION_NS = 'poc.accordproject.obligation@0.1.0';
@@ -300,46 +299,6 @@ describe('CopyrightLicenseLogic', () => {
 
             expect(obligation.status).toBe('FULFILLED');
             expect(obligation.revision).toBe(2);
-        });
-    });
-
-    describe('runtime AgreementState envelope', () => {
-        const DOCUMENT_ID = 'licence-001-document';
-
-        // A stand-in for the runtime's side of the contract: it owns the
-        // identified, revisioned AgreementState and writes each state the
-        // logic returns as the next revision, under this document's entry
-        // in the proposed documentStates map.
-        const commit = (previous: IAgreementState | undefined, state: ICopyrightLicenseState): IAgreementState => ({
-            $class: 'poc.accordproject.runtime@0.1.0.AgreementState',
-            $identifier: 'licence-001-state',
-            stateId: 'licence-001-state',
-            agreement: 'resource:poc.accordproject.agreement@0.1.0.Agreement#licence-001' as any,
-            revision: previous ? previous.revision + 1 : 0,
-            effectiveAt: new Date(),
-            documentStates: new Map([[DOCUMENT_ID, {
-                $class: 'poc.accordproject.runtime@0.1.0.DocumentState',
-                data: state,
-            }]]),
-        });
-
-        it('should carry the template state as its document\'s state, one revision per transition', async () => {
-            let envelope = commit(undefined, await initialState());
-
-            for (const request of [paymentRequest(), paymentReceived('4000'), paymentReceived('6000')]) {
-                const current = envelope.documentStates.get(DOCUMENT_ID).data as ICopyrightLicenseState;
-                const { state } = await logic.trigger(data, request, current);
-                envelope = commit(envelope, state);
-            }
-
-            const document = envelope.documentStates.get(DOCUMENT_ID);
-            expect(envelope.revision).toBe(3);
-            expect((document.data as ICopyrightLicenseState).paymentTerms.amountPaid).toEqual(amount('10000'));
-            // The payment clause is inline, so its state is a subtree of the
-            // document's data; clauseStates is only for composed archives,
-            // and nothing is scoped to the agreement as a whole.
-            expect(document.clauseStates).toBeUndefined();
-            expect(envelope.data).toBeUndefined();
         });
     });
 });

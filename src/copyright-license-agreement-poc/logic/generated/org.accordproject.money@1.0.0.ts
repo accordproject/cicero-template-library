@@ -5,9 +5,11 @@
 import {IConcept} from './concerto@1.0.0';
 
 // interfaces
+export type CurrencyCode = string;
+
 export interface IApproximateAmount extends IConcept {
    doubleValue: number;
-   currencyCode: string;
+   currencyCode: CurrencyCode;
 }
 
 export interface IUnit extends IConcept {
@@ -17,8 +19,10 @@ export interface IUnit extends IConcept {
    scale: number;
 }
 
+export type BigInteger = string;
+
 export interface IPreciseAmount extends IConcept {
-   unscaledValue: string;
+   unscaledValue: BigInteger;
    unit: IUnit;
 }
 

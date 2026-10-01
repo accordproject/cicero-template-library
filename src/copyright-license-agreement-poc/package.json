@@ -20,13 +20,14 @@
     ],
     "scripts": {
         "test": "vitest run",
-        "compile": "concerto compile --model model/templatedata.cto --model model/party.cto --model model/money.cto --model model/agreement.cto --model model/obligation.cto --model model/runtime.cto --model model/model.cto --target typescript --output logic/generated"
+        "compile": "concerto compile --model model/templatedata.cto --model model/party.cto --model model/money.cto --model model/agreement.cto --model model/obligation.cto --model model/runtime.cto --model model/model.cto --model composed/late-payment/model/model.cto --target typescript --output logic/generated && concerto compile --model model/templatedata.cto --model composed/late-payment/model/model.cto --target typescript --output composed/late-payment/logic/generated"
     },
     "tags": [
         "intellectual-property",
         "prototype"
     ],
     "devDependencies": {
+        "@accordproject/concerto-cli": "4.2.0",
         "@accordproject/template-engine": "5.1.0"
     }
 }

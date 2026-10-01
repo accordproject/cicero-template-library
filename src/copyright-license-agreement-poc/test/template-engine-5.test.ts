@@ -16,14 +16,21 @@ import {
 import { TypeScriptToJavaScriptCompiler } from '@accordproject/template-engine/lib/TypeScriptToJavaScriptCompiler';
 
 const TEMPLATE_DIR = join(__dirname, '..');
-const TEMPLATE_ROOT = 'poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData';
+const LICENCE = { dir: '.', root: 'poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData' };
+const LATE_PAYMENT = { dir: 'composed/late-payment', root: 'poc.accordproject.latepayment@0.1.0.LatePaymentData' };
+const SCHEDULE = { dir: 'documents/licensed-work-schedule', root: 'poc.accordproject.licensedwork@0.1.0.LicensedWorkSchedule' };
 
 const read = (...path: string[]) => readFileSync(join(TEMPLATE_DIR, ...path), 'utf8');
 
-function loadModels() {
+// The licence's own models (including the vendored base namespaces) plus
+// those of any other archives named, loaded into one model manager: the
+// composite loading a parent with composed clauses needs.
+function loadModels(...archiveDirs: string[]) {
     const modelManager = new ModelManager();
-    for (const file of readdirSync(join(TEMPLATE_DIR, 'model'))) {
-        modelManager.addCTOModel(read('model', file), file, true);
+    for (const dir of new Set(['.', ...archiveDirs])) {
+        for (const file of readdirSync(join(TEMPLATE_DIR, dir, 'model'))) {
+            modelManager.addCTOModel(read(dir, 'model', file), join(dir, file), true);
+        }
     }
     modelManager.validateModelFiles();
     return modelManager;
@@ -44,15 +51,24 @@ function plainText(ciceroMark: any): string {
     return parts.join('');
 }
 
-describe('template-engine 5.1', () => {
-    it('renders the sample with the root concept named explicitly, no @template decorator', async () => {
-        const modelManager = loadModels();
-        const templateMark = new TemplateMarkTransformer().fromMarkdownTemplate(
-            { content: read('text', 'grammar.tem.md') }, modelManager, 'contract', { verbose: false }, TEMPLATE_ROOT);
+async function render(archive: { dir: string; root: string }) {
+    const modelManager = loadModels(archive.dir);
+    const templateMark = new TemplateMarkTransformer().fromMarkdownTemplate(
+        { content: read(archive.dir, 'text', 'grammar.tem.md') }, modelManager, 'contract', { verbose: false }, archive.root);
+    const ciceroMark = await new TemplateMarkInterpreter(modelManager, {}, archive.root)
+        .generate(templateMark, JSON.parse(read(archive.dir, 'sample.json')), { now: '2026-10-01T00:00:00.000Z' });
+    return plainText(ciceroMark.toJSON());
+}
 
-        const ciceroMark = await new TemplateMarkInterpreter(modelManager, {}, TEMPLATE_ROOT)
-            .generate(templateMark, JSON.parse(read('sample.json')), { now: '2026-10-01T00:00:00.000Z' });
-        const text = plainText(ciceroMark.toJSON());
+async function compileErrors(archive: { dir: string; root: string }, ...composedDirs: string[]) {
+    const compiler = new TypeScriptToJavaScriptCompiler(loadModels(archive.dir, ...composedDirs), archive.root);
+    await compiler.initialize();
+    return compiler.compile(read(archive.dir, 'logic', 'logic.ts')).errors.map((e: any) => e.renderedMessage);
+}
+
+describe('template-engine 5.1', () => {
+    it('renders the licence with the root concept named explicitly, no @template decorator', async () => {
+        const text = await render(LICENCE);
 
         expect(text).toContain('made by and between Me ("Licensee") and Myself ("Licensor")');
         // {{amount}} is a money@1.0.0 PreciseAmount, drafted natively by 5.1.
@@ -60,12 +76,16 @@ describe('template-engine 5.1', () => {
         expect(text).not.toContain('{{');
     });
 
-    it('type-checks logic.ts against the runtime declarations it injects', async () => {
-        const compiler = new TypeScriptToJavaScriptCompiler(loadModels(), TEMPLATE_ROOT);
-        await compiler.initialize();
+    it('renders the composed late payment clause and the schedule, each as a template in its own right', async () => {
+        expect(await render(LATE_PAYMENT)).toContain('within 14 days of it falling due');
+        expect(await render(SCHEDULE)).toContain('Format: Digital photographs, JPEG');
+    });
 
-        const result = compiler.compile(read('logic', 'logic.ts'));
+    it('type-checks the licence logic, with its composed clause\'s model loaded alongside, against the runtime declarations 5.1 injects', async () => {
+        expect(await compileErrors(LICENCE, LATE_PAYMENT.dir)).toEqual([]);
+    });
 
-        expect(result.errors.map((e: any) => e.renderedMessage)).toEqual([]);
+    it('type-checks the late payment clause\'s logic against its own model', async () => {
+        expect(await compileErrors(LATE_PAYMENT)).toEqual([]);
     });
 });

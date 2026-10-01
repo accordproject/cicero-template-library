@@ -31,7 +31,7 @@ export interface IPaymentTerms extends IConcept {
 }
 
 export interface ICopyrightLicenseData extends ITemplateData {
-   effectiveDate: Date;
+   effectiveDate: string;
    licensee: IPartyRef;
    licensor: IPartyRef;
    territory: string;
@@ -43,7 +43,7 @@ export interface ICopyrightLicenseData extends ITemplateData {
 export interface IPaymentTermsState extends IConcept {
    obligationId: string;
    amountPaid: IPreciseAmount;
-   dueAt?: Date;
+   dueAt?: string;
 }
 
 export interface ICopyrightLicenseState extends IStateData {

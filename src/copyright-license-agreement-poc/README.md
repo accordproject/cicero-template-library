@@ -49,10 +49,8 @@ Per PR #200's current shape:
   its parent type like `CopyrightLicenseData`. The inline payment clause's
   state is `paymentTerms: PaymentTermsState`, an ordinary nested concept at
   the same instance path as its data. It is not a second `StateData`
-  subtype, mirroring how `PaymentTerms` doesn't extend `TemplateData`, and
-  it is not a `clauseStates` entry: that map holds the state of *composed*
-  sub-template archives, and the payment clause is inline, so it has no
-  entry there, just as it has no `clauses` entry.
+  subtype, mirroring how `PaymentTerms` doesn't extend `TemplateData`.
+  Composed clauses work differently; see "Design B" below.
 - **The obligation, not template state, owns the payment lifecycle.** The
   fee is an `obligation@1.0.0` `PaymentObligation` (`model/obligation.cto`)
   moving `PENDING` → `DUE` → `FULFILLED`. Logic can't read the obligation
@@ -76,32 +74,80 @@ Per PR #200's current shape:
   Logic sees no agreement, so the obligation's id is the clause path
   (`"paymentTerms"`) and its `AgreementReference` carries only
   `clausePath`. The runtime must qualify the id and back-fill
-  `agreementId` from the envelope it owns, as template-engine already
-  back-fills `contract` on runtime@0.2.0 obligations. Until it does, the
-  issued obligation fails Concerto validation for the missing
-  `agreementId`; with it filled in, every state and event this template
-  emits validates.
+  `agreementId` and `documentId` from the envelope it owns, as
+  template-engine already back-fills `contract` on runtime@0.2.0
+  obligations. Until it does, the issued obligation fails Concerto
+  validation for the missing `agreementId`; with it filled in, every state
+  and event this template emits validates.
 - **Amounts are exact.** Amounts are money@1.0.0 `PreciseAmount`s:
   an integer `unscaledValue` plus a `unit` with a `scale`, so $100.00 is
   `"10000"` at scale 2. Logic does the arithmetic with `BigInt`.
   `model/money.cto` is models#200's `money@1.0.0` vendored verbatim under
   its real namespace; its `BigInteger` is a `String` scalar it declares
-  itself, so it compiles with this repo's Concerto 4 toolchain unchanged.
+  itself, so it needs nothing from Concerto beyond scalars.
   The grammar renders the fee as a plain `{{amount}}`; see below.
-- **Where state lives in the runtime.** Logic only ever sees and returns
-  `CopyrightLicenseState`. The runtime wraps it in an identified,
-  revisioned `AgreementState` (`model/runtime.cto`, a stand-in for
-  `runtime@1.0.0`), writing one revision per transition. That stand-in also
-  sketches a PROPOSED change: in models#200, `AgreementState` has a single
-  `data` slot and one agreement-wide `clauseStates` map, which leaves a
-  multi-document agreement nowhere to put each document template's state,
-  and lets clause paths from different documents collide. Here each
-  document's state and composed-clause states sit under
-  `documentStates[documentId]`, leaving `data` for agreement-wide state.
 
-`logic/logic.test.ts` covers the transitions and guards. It also checks the
-emitted events against a minimal obligation registry, and simulates the
-runtime's `AgreementState` envelope.
+`logic/logic.test.ts` covers the transitions and guards, and checks the
+emitted events against a minimal obligation registry.
+
+## Design B: an agreement as one tree of template instances
+
+A PROPOSED alternative to models#200's agreement and runtime shapes,
+sketched here end to end. It allows embedded executable clauses, while
+keeping a single structure for the template hierarchy.
+
+**One tree.** An `AgreementDocument` has a `root` `TemplateInstance`
+(`model/agreement.cto`):
+
+```
+TemplateInstance { instanceId, template: TemplateReference, data: TemplateData, children? }
+```
+
+- An **inline** clause is a subtree of its template's `data`, as before.
+- A **composed** clause is a child instance with its own template and its
+  own data. A parent's model therefore declares nothing about the clauses
+  composed into it.
+
+This replaces models#200's `AgreementDocument.data` + `clauses` map.
+
+**One state index.** `AgreementState.states` (`model/runtime.cto`) maps
+`instanceId` to that instance's own `StateData` subtype. Keys are stable
+ids, so the index never has to mirror the tree's shape, and a stateless
+instance has no entry. This replaces models#200's `data` + `clauseStates`.
+
+**One writer per transition.** A request goes to a document's logic. It
+receives its own data and state, plus handles to the clauses composed into
+it (`logic/logic.ts`'s `CopyrightLicenseClauses`). It sends those clauses
+requests, and returns its own new state together with any new clause
+states (`clauseStates`). The runtime commits all of them as one revision,
+or nothing if the logic throws.
+
+The parent depends only on a clause's request and response types, never on
+its state's shape. Every abstractly typed `data`/`state` is therefore
+handled only by the generic runtime, as with `AgreementDocument.data` today.
+
+**The example** (`test/agreement.test.ts`) is one agreement of two
+documents:
+
+- **The licence** (this template). Its payment terms are inline. A late
+  payment clause (`composed/late-payment/`: its own model, grammar and
+  logic) is composed at `"latePayment"`. Chasing an overdue payment
+  delegates to the clause. Paying in full fulfils the obligation and
+  discharges the clause, committed in one revision.
+- **Schedule 1** (`documents/licensed-work-schedule/`), a stateless
+  document. It gets no state entry and has nothing to trigger.
+
+`agreement/host.ts` stands in for the runtime. Everything the agreement and
+its states hold validates against the models, with Concerto 5.
+
+**Not yet possible**:
+- Placing the composed clause in the licence's text: TemplateMark's
+  `ClauseDefinition` has no way to name a composed archive. Each archive
+  renders on its own (`test/template-engine-5.test.ts`).
+- Resolving `TemplateReference` to an archive.
+- Loading parent and child archives together through cicero-core. The
+  tests load their models side by side, and the licence's compile includes
+  the clause's model so it can use the clause's request types.
 
 See `model/*.cto` for the vendored prototype namespaces (`templatedata@0.1.0`,
 `party@0.1.0`, `agreement@0.1.0`, `obligation@0.1.0`, `runtime@0.1.0` —
@@ -186,9 +232,12 @@ exercises it:
   `org.accordproject.money@1.PreciseAmount` natively.
 - **Stricter logic type-checking.** 5.x compiles `logic.ts` against
   runtime declarations derived from the model, so the response's `events`
-  must be the model's event types (not `object[]`). Its codegen also
-  represents `DateTime` as a `string` where the Concerto 4 codegen this repo
-  commits uses `Date`, so logic takes timestamps' types from the generated
-  interfaces rather than naming `Date`. `logic.ts` type-checks cleanly under
-  both. Trigger still can't run through the engine, because it needs a
-  loaded `Template`.
+  must be the model's event types (not `object[]`). Both logic files
+  type-check cleanly against it. Trigger still can't run through the
+  engine, because it needs a loaded `Template`.
+- **Concerto 5 codegen.** This workspace also compiles its models with
+  `@accordproject/concerto-cli` 4.2.0 (built on Concerto 5) rather than
+  the repo's 4.0.1. The older codegen drops the import for a type used only
+  as a map value, which breaks `AgreementState.states`. The newer one
+  represents `DateTime` as a `string`, matching what template-engine 5.x
+  compiles logic against.

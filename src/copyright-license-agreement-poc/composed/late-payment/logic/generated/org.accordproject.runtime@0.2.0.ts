@@ -5,19 +5,11 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IPaymentRequest,
-	IPaymentReceived
-} from './poc.accordproject.copyrightlicense@0.1.0';
-import type {
 	IPaymentOverdue,
 	IPaymentSettled
 } from './poc.accordproject.latepayment@0.1.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
-import type {
-	IPayOut,
-	IPaymentReceipt
-} from './poc.accordproject.copyrightlicense@0.1.0';
 import type {
 	IReminderSent,
 	ILatePaymentDischarged
@@ -29,17 +21,13 @@ import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 export interface IRequest extends ITransaction {
 }
 
-export type RequestUnion = IPaymentRequest | 
-IPaymentReceived | 
-IPaymentOverdue | 
+export type RequestUnion = IPaymentOverdue | 
 IPaymentSettled;
 
 export interface IResponse extends ITransaction {
 }
 
-export type ResponseUnion = IPayOut | 
-IPaymentReceipt | 
-IReminderSent | 
+export type ResponseUnion = IReminderSent | 
 ILatePaymentDischarged;
 
 export interface IObligation extends IEvent {

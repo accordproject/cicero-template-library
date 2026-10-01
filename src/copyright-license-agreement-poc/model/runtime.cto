@@ -18,8 +18,8 @@
  * `org.accordproject.runtime@0.2.0` ones, which is what today's
  * template-engine checks requests and responses against).
  *
- * `DocumentState` / `DocumentStates` are a PROPOSED change, not in
- * models#200; see `AgreementState`.
+ * PROPOSED divergence ("design B"): state is one flat index keyed by
+ * template instance, replacing models#200's `data` + `clauseStates`.
  */
 
 namespace poc.accordproject.runtime@0.1.0
@@ -28,64 +28,32 @@ import poc.accordproject.agreement@0.1.0.Agreement
 import poc.accordproject.templatedata@0.1.0.StateData
 
 /*
- * The state of a document's *composed* clause instances, keyed by the
- * same instance paths that key that document's `AgreementDocument.clauses`
- * (see model/agreement.cto). Each value is the `StateData` subtype declared
- * by the composed sub-template archive at that path.
- *
- * `copyright-license-agreement-poc` composes no sub-template archives --
- * its `{{#clause paymentTerms}}` block is inline -- so this map is never
- * populated for it. The inline clause's state lives in the template's own
- * `StateData` subtype instead, as a subtree at the same path as its data
- * (see `CopyrightLicenseState.paymentTerms` in model/model.cto).
+ * PROPOSED. The state of each stateful template instance in the
+ * agreement, keyed by `agreement.TemplateInstance.instanceId`. Each value
+ * is that instance's template's own `StateData` subtype; an inline
+ * clause's state is a subtree of it. Keys are stable ids, not paths, so
+ * the index has no shape to keep in step with the instance tree: adding,
+ * removing or reordering instances only adds or removes entries. A
+ * stateless instance has no entry.
  */
-map ClauseStates {
+map InstanceStates {
   o String
   o StateData
-}
-
-/*
- * PROPOSED. The state of one document: its template's own `StateData`
- * subtype, plus the state of the sub-template archives composed into it.
- */
-concept DocumentState {
-  o StateData data optional
-  o ClauseStates clauseStates optional
-}
-
-/*
- * PROPOSED. Document states keyed by `AgreementDocument.documentId`.
- */
-map DocumentStates {
-  o String
-  o DocumentState
 }
 
 /*
  * The runtime's identified, revisioned snapshot of an agreement's state.
  *
  * Template logic never sees this envelope: `init()` and `trigger()` take
- * and return only the template's own `StateData` subtype, and the runtime
- * owns `stateId`, `revision` and `effectiveAt`. This mirrors how the
- * template author writes `TemplateData` and never sees the
- * `AgreementDocument` wrapped around it.
- *
- * PROPOSED divergence from models#200. There, `AgreementState` has one
- * `data` slot and one agreement-wide `clauseStates` map. That leaves an
- * agreement built from several documents -- each from a different
- * template, each declaring its own `StateData` subtype -- nowhere to put
- * each document's state, and clause paths are only unique within a
- * document, so one agreement-wide `clauseStates` map can collide. Here
- * each document's template state and composed-clause states sit under
- * `documentStates[documentId]`, and `data` is left for state scoped to
- * the agreement as a whole. This template is a single document, so its
- * `CopyrightLicenseState` is `documentStates[documentId].data`.
+ * and return only their own template's `StateData` subtype, and the
+ * runtime owns `stateId`, `revision` and `effectiveAt`. A transition that
+ * changes several instances -- a document and the clauses composed into
+ * it -- is committed as one revision (see agreement/host.ts).
  */
 asset AgreementState identified by stateId {
   o String stateId
   --> Agreement agreement
   o Long revision default=0 range=[0,]
   o DateTime effectiveAt
-  o StateData data optional
-  o DocumentStates documentStates optional
+  o InstanceStates states optional
 }

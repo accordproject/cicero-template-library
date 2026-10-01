@@ -10,6 +10,15 @@
  * hand-vendored subset covering only what this prototype template
  * needs. Delete it and import the real `org.accordproject.agreement@1.0.0`
  * namespace once that PR lands.
+ *
+ * PROPOSED divergence ("design B"): an agreement document is a single tree
+ * of template instances. models#200 instead gives a document a `data`
+ * value plus a separate `clauses` map of composed archives, and keeps
+ * clause state in a third, parallel structure (runtime@1.0.0
+ * `clauseStates`). Here one `TemplateInstance` tree records which template
+ * runs where and with what data; runtime state is a flat index keyed by
+ * the same `instanceId`s (model/runtime.cto), so no structure is
+ * maintained twice.
  */
 
 namespace poc.accordproject.agreement@0.1.0
@@ -30,59 +39,82 @@ concept AgreementParty {
 }
 
 /*
+ * Which template an instance runs. A subset of models#200's
+ * `template@1.0.0.TemplateReference`; its required `archiveHash` is
+ * omitted because `crypto@1.0.0.ContentHash` isn't vendored.
+ */
+concept TemplateReference {
+  o String templateId
+  o String version
+}
+
+/*
+ * The composed clauses of a template instance, keyed by instance path
+ * within that instance's grammar (e.g. "latePayment").
+ */
+map Children {
+  o String
+  o TemplateInstance
+}
+
+/*
+ * PROPOSED. One running template: a document's root template, or a
+ * composed clause within it.
+ *
+ * - `instanceId` is stable across agreement revisions and unique within
+ *   the agreement. It keys this instance's state in
+ *   runtime.AgreementState.states, so the state index never mirrors the
+ *   tree's shape.
+ * - `data` is this template's own `TemplateData` subtype. An inline clause
+ *   is a subtree of it, as in models#200; a composed clause is not, and
+ *   its data lives on its own node under `children`. A parent's model
+ *   therefore declares nothing about the clauses composed into it.
+ * - `data` is typed abstractly, but only the generic runtime handles it
+ *   at that type: each template's logic receives its own data at its own
+ *   concrete type, as with models#200's `AgreementDocument.data`.
+ */
+concept TemplateInstance {
+  o String instanceId
+  o TemplateReference template
+  o TemplateData data
+  o Children children optional
+}
+
+/*
  * One instrument within an Agreement (e.g. a master agreement, a
- * schedule, an annex). Carries a template's composed data and the
- * subset of the agreement's parties relevant to this document.
- *
- * `copyright-license-agreement-poc` has no composed sub-template
- * archives, so its own template model (model/model.cto's
- * `CopyrightLicenseData`) *is* the renderable root directly -- it is
- * never wrapped in an `AgreementDocument`, and this prototype's
- * model.cto does not import this concept. It's vendored here purely to
- * document the wider envelope a runtime composing multiple documents
- * together would use.
- *
- * Where a document *does* compose one or more sub-template archives,
- * each instance would be addressed through a `clauses` map keyed by its
- * TemplateMark instance path (e.g. "paymentTerms", rooted at the
- * document's data -- never prefixed with "data."), holding a `Clause {
- * template: TemplateReference, clauseId optional, clauseHash optional }`
- * pointing at the composed archive (see the `template@1.0.0` and
- * `agreement@1.0.0` namespaces in accordproject/models#200 for that
- * full shape -- note `Clause.path` has been removed there: the instance
- * path now lives only as the map key). That `clauses` map is omitted
- * from this vendored subset entirely, because this prototype's
- * `PaymentTerms` (model/model.cto) is an ordinary nested concept, not a
- * composed sub-template archive -- no `clauses` entry is ever
- * populated, or would even have anywhere authoritative to point.
+ * schedule, an annex): a tree of template instances rooted at `root`,
+ * plus the subset of the agreement's parties it binds.
  */
 concept AgreementDocument {
   o String documentId
-  o TemplateData data
+  o TemplateInstance root
   o AgreementParty[] parties optional
 }
 
 /*
  * Portable provenance for records that travel without the agreement, such
  * as obligations (model/obligation.cto). `clausePath` is the clause
- * instance path the record arises from. The real namespace's optional
+ * instance path the record arises from, which is only unique within a
+ * document, hence `documentId`. The real namespace's optional
  * `agreementHash`, `template` and `clauseHash` are omitted because their
  * types aren't vendored.
  *
  * Template logic sees only its data, never the agreement, so it sets just
- * `clausePath` and the runtime back-fills `agreementId` from the envelope
- * it owns (see logic/logic.ts).
+ * `clausePath` and the runtime back-fills `agreementId` and `documentId`
+ * from the envelope it owns (see logic/logic.ts).
  */
 concept AgreementReference {
   o String agreementId
+  o String documentId optional
   o String clausePath optional
 }
 
 /*
- * The top-level agreement: a collection of documents plus the parties
- * to the agreement as a whole. Identified, as in the real namespace, so
- * that model/runtime.cto's `AgreementState` can hold a relationship to
- * it; otherwise unused by this prototype.
+ * The top-level agreement: its documents in reading order, plus the
+ * parties to the agreement as a whole. Identified, as in the real
+ * namespace, so that model/runtime.cto's `AgreementState` can hold a
+ * relationship to it. Documents are contained rather than related here so
+ * that an agreement is one portable JSON value.
  */
 asset Agreement identified by agreementId {
   o String agreementId

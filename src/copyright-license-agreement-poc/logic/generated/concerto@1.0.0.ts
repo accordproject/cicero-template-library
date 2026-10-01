@@ -18,15 +18,14 @@ import type {
 } from './org.accordproject.money@1.0.0';
 import type {
 	IAgreementParty,
+	ITemplateReference,
+	ITemplateInstance,
 	IAgreementDocument,
 	IAgreementReference
 } from './poc.accordproject.agreement@0.1.0';
 import type {
 	ObligationStatus
 } from './poc.accordproject.obligation@0.1.0';
-import type {
-	IDocumentState
-} from './poc.accordproject.runtime@0.1.0';
 import type {
 	IPaymentTerms,
 	IPaymentTermsState
@@ -67,6 +66,9 @@ import type {
 	IObligationIssued
 } from './poc.accordproject.obligation@0.1.0';
 import type {
+	IPaymentReminder
+} from './poc.accordproject.latepayment@0.1.0';
+import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
 
@@ -82,9 +84,10 @@ IApproximateAmount |
 IUnit | 
 IPreciseAmount | 
 IAgreementParty | 
+ITemplateReference | 
+ITemplateInstance | 
 IAgreementDocument | 
 IAgreementReference | 
-IDocumentState | 
 IPaymentTerms | 
 IPaymentTermsState;
 
@@ -106,17 +109,18 @@ export interface IParticipant extends IConcept {
 export type ParticipantUnion = IParty;
 
 export interface ITransaction extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
 export type TransactionUnion = IRequest | 
 IResponse;
 
 export interface IEvent extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
 export type EventUnion = IObligationTransition | 
 IObligationIssued | 
+IPaymentReminder | 
 IObligation;
 
