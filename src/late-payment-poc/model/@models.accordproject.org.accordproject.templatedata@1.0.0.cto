@@ -1,0 +1,91 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+concerto version "^3.0.0"
+
+/**
+ * The extension points a template declares its own types against.
+ *
+ * These are the two concepts every template subclasses: one for the variables
+ * it instantiates, one for the state its logic keeps. They are deliberately
+ * empty, and this namespace deliberately imports nothing.
+ *
+ * They are held apart from the models that consume them so that declaring the
+ * shape of a template's own data does not require taking on the agreement
+ * envelope, the runtime state envelope, or the hash and party types those
+ * carry. A template subclassing TemplateData is describing its variables; it
+ * is not asserting anything about agreements, documents or clause structure.
+ * The same holds for StateData and runtime state.
+ *
+ * Keeping this namespace free of imports also keeps it free of the Concerto
+ * version floors its consumers carry: agreement@1.0.0 and runtime@1.0.0 both
+ * declare map types and require Concerto 4, while a template that only
+ * subclasses these two concepts stays on Concerto 3 syntax.
+ */
+namespace org.accordproject.templatedata@1.0.0
+
+/**
+ * The extension point for template-specific data.
+ *
+ * A template declares one concrete subtype holding its instantiated variables.
+ * That subtype is carried by composition, in agreement@1.0.0's
+ * AgreementDocument.data, rather than by subclassing the document itself, so
+ * the envelope's type and its relationship URIs stay stable across template
+ * versions.
+ *
+ * The data of a clause is a subtree of the document's data, addressed by the
+ * clause's instance path. A clause does not carry its own copy.
+ *
+ * Extending this concept is what declares a template's data. A template's
+ * model holds exactly one concrete subtype of TemplateData, and that subtype
+ * is the template's renderable root, found by its parent type. No decorator
+ * marks it: the supertype carries that meaning, so a template author states
+ * the fact once rather than declaring an inheritance and then repeating it as
+ * an annotation which nothing keeps in agreement with it. Types the data is
+ * composed of are ordinary concepts and do not extend TemplateData; only the
+ * root does.
+ *
+ * Because the grammar roots at the data, {{effectiveDate}} resolves against it
+ * directly and no {{#with data}} wrapper is required. Rooting a grammar at an
+ * agreement envelope instead cannot render at all: markdown-template resolves
+ * clause and with blocks with getOwnProperty, which does not walk supertypes,
+ * so {{#with data}} on an empty subclass of an envelope never resolves. Plain
+ * variables resolve through inheritance; block constructs do not. The division
+ * of labour is that a template author writes data, and the runtime wraps it in
+ * a provenance envelope the author never has to see.
+ *
+ * A template's data should name parties with party@1.0.0's PartyRef rather
+ * than with a relationship to Party. Data travels to contract logic as a
+ * serialized value with no resolution step, where a relationship arrives as an
+ * unresolvable "resource:...#me" string. Relationships to Party belong on the
+ * envelope, in agreement@1.0.0's AgreementParty, where a registry is available
+ * to resolve them.
+ */
+abstract concept TemplateData {}
+
+/**
+ * The extension point for template-specific runtime state.
+ *
+ * A template declares one concrete subtype, and as with TemplateData that
+ * subtype is found by its parent type rather than by a decorator. It is
+ * carried in runtime@1.0.0's AgreementState.data for state scoped to the
+ * agreement, and as a ClauseStates value, keyed by clause instance path, for
+ * state scoped to a clause.
+ *
+ * There is deliberately no lifecycle status property. What it means for a
+ * clause to be, for example, active or breached is a matter for the template
+ * and its logic, not for this model, so the status vocabulary belongs in the
+ * concrete subtype a template declares.
+ */
+abstract concept StateData {}

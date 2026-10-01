@@ -83,7 +83,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
             throw new Error("Units received out of range for the contract");
         }
 
-        const currency = data.currencyCode;
+        const currency = data.unitPrice.currencyCode;
 
         // Guard: check if shipment is late (past dueDate)
         const now = new Date();
@@ -114,7 +114,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         }
 
         // Calculate base payout
-        const payOut = data.unitPrice * request.unitCount;
+        const payOut = data.unitPrice.doubleValue * request.unitCount;
 
         // Calculate penalties
         const tempPenalty = this.calculateTempPenalty(

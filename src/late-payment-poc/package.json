@@ -1,0 +1,29 @@
+{
+    "name": "late-payment-poc",
+    "displayName": "Late Payment (agreement@1.0.0 composed clause prototype)",
+    "version": "0.1.0",
+    "description": "Prototype clause template for composition (accordproject/models#205): reminds a party of an overdue payment until it is settled. Composed into copyright-license-agreement-poc.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "template": "clause",
+        "cicero": "^2.0.0"
+    },
+    "keywords": [
+        "clause",
+        "late",
+        "payment",
+        "reminder",
+        "prototype",
+        "agreement-1.0"
+    ],
+    "scripts": {
+        "test": "vitest run",
+        "compile": "template-engine-codegen --offline"
+    },
+    "tags": [
+        "payment",
+        "prototype"
+    ]
+}

@@ -11,7 +11,7 @@ declare global {
 (global as any).InitResponse = class InitResponse<S> {};
 
 import IPPaymentLogic from './logic';
-import { ITemplateModel, IPaymentRequest } from './generated/org.accordproject.ippayment@0.2.0';
+import { ITemplateModel, IPaymentRequest } from './generated/org.accordproject.ippayment@0.3.0';
 
 describe('IPPaymentLogic', () => {
     let logic: IPPaymentLogic;
@@ -20,7 +20,7 @@ describe('IPPaymentLogic', () => {
     beforeEach(() => {
         logic = new IPPaymentLogic();
         model = {
-            $class: 'org.accordproject.ippayment@0.2.0.TemplateModel',
+            $class: 'org.accordproject.ippayment@0.3.0.TemplateModel',
             $identifier: 'test-id',
             clauseId: 'test-id',
             royaltyText: 'ten percent',
@@ -43,7 +43,7 @@ describe('IPPaymentLogic', () => {
     describe('trigger', () => {
         it('should calculate total royalties correctly', async () => {
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.ippayment@0.2.0.PaymentRequest',
+                $class: 'org.accordproject.ippayment@0.3.0.PaymentRequest',
                 $timestamp: new Date(),
                 netSaleRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 sublicensingRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 200, currencyCode: 'USD' },
@@ -56,29 +56,39 @@ describe('IPPaymentLogic', () => {
 
         it('should use paymentPeriod when no permission date', async () => {
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.ippayment@0.2.0.PaymentRequest',
+                $class: 'org.accordproject.ippayment@0.3.0.PaymentRequest',
                 $timestamp: new Date(),
                 netSaleRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 1000, currencyCode: 'USD' },
                 sublicensingRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 0, currencyCode: 'USD' },
             };
             const result = await logic.trigger(model, request);
-            expect(result.result.dueBy).toBeInstanceOf(Date);
-            expect(result.result.$class).toBe('org.accordproject.ippayment@0.2.0.PayOut');
+            expect(new Date(result.result.dueBy).toString()).not.toBe('Invalid Date');
+            expect(result.result.$class).toBe('org.accordproject.ippayment@0.3.0.PayOut');
         });
 
         it('should use paymentPeriodWithPermission when permission date is given', async () => {
             const permissionDate = new Date('2025-01-01T00:00:00Z');
             const request: IPaymentRequest = {
-                $class: 'org.accordproject.ippayment@0.2.0.PaymentRequest',
+                $class: 'org.accordproject.ippayment@0.3.0.PaymentRequest',
                 $timestamp: new Date(),
-                netSaleRevenue: 500,
-                sublicensingRevenue: 100,
+                netSaleRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 500, currencyCode: 'USD' },
+                sublicensingRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 100, currencyCode: 'USD' },
                 permissionGrantedBy: permissionDate,
             };
             const result = await logic.trigger(model, request);
             const expectedDue = new Date(permissionDate);
             expectedDue.setDate(expectedDue.getDate() + 14);
-            expect(result.result.dueBy.toISOString()).toBe(expectedDue.toISOString());
+            expect(result.result.dueBy).toBe(expectedDue.toISOString());
+        });
+
+        it('should reject revenue amounts in different currencies', async () => {
+            const request: IPaymentRequest = {
+                $class: 'org.accordproject.ippayment@0.3.0.PaymentRequest',
+                $timestamp: new Date(),
+                netSaleRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 500, currencyCode: 'USD' },
+                sublicensingRevenue: { $class: 'org.accordproject.money@0.3.0.MonetaryAmount', doubleValue: 100, currencyCode: 'EUR' },
+            };
+            await expect(logic.trigger(model, request)).rejects.toThrow('same currency');
         });
     });
 });

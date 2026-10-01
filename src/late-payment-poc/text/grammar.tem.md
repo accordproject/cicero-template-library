@@ -1,0 +1,1 @@
+Late Payment. If Licensee has not paid the fee within {{gracePeriodDays}} days of it falling due, Licensor may send Licensee payment reminders. This clause is discharged once the fee has been paid in full.

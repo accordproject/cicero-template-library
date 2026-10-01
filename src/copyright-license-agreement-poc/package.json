@@ -1,0 +1,30 @@
+{
+    "name": "copyright-license-agreement-poc",
+    "displayName": "Copyright License (agreement@1.0.0 migration prototype)",
+    "version": "0.1.0",
+    "description": "Prototype migration of copyright-license's nested PaymentClause onto the org.accordproject 1.0.0 namespaces (accordproject/models#200 and #205): an agreement of template instances, with a late payment clause (late-payment-poc) composed into the licence and a licensed work schedule (licensed-work-schedule-poc) alongside it, and logic written with template-engine's defineLogic API.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "template": "contract",
+        "cicero": "^2.0.0",
+        "templateModel": "poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData"
+    },
+    "keywords": [
+        "clause",
+        "copyright",
+        "license",
+        "agreement",
+        "prototype",
+        "agreement-1.0"
+    ],
+    "scripts": {
+        "test": "vitest run",
+        "compile": "template-engine-codegen --offline"
+    },
+    "tags": [
+        "intellectual-property",
+        "prototype"
+    ]
+}

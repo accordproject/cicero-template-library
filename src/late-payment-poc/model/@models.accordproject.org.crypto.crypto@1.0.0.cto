@@ -1,0 +1,127 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+concerto version "^3.0.0"
+
+namespace org.accordproject.crypto@1.0.0
+
+/**
+ * Common hash algorithms used across legal, payment, content-addressing, and
+ * distributed-ledger systems.
+ *
+ * Scope: the stable, fully-specified, non-parameterised set. An algorithm is
+ * included only when its name alone pins the digest unambiguously. Algorithms
+ * whose behaviour depends on parameters that a bare name does not carry (field,
+ * arity, round constants — e.g. Poseidon, Pedersen) are deliberately excluded:
+ * a bare enum literal for them would imply an interop guarantee that does not
+ * exist. Use CUSTOM with HashAlgorithm.customName (and uri for a parameter
+ * profile) for those, and for anything newer or domain-specific.
+ *
+ * Coverage note: this set keeps the primary digests of common ledgers
+ * first-class — SHA-384 (Hedera), BLAKE2b-256 and Keccak-256 (Sui),
+ * SHA2/SHA3 (general) — while ZK hashes (e.g. Midnight-class Poseidon) fall
+ * to CUSTOM by design, since those chains do not commit to a fully-specified
+ * algorithm name in their public APIs.
+ */
+enum HashAlgorithmType {
+  o SHA_256
+  o SHA_384       // Hedera block/running hash default
+  o SHA_512
+  o SHA3_256
+  o SHA3_512
+  o KECCAK_256    // Ethereum/EVM; Sui; fully specified by name
+  o BLAKE2B_256   // Sui primary digest; fully specified by name
+  o BLAKE3
+  o CUSTOM
+}
+
+/**
+ * Identifies the digest algorithm used to produce a hash value.
+ *
+ * When type is CUSTOM, customName should carry the protocol or implementation
+ * name, for example "poseidon2", "stark-pedersen", or "sha256d".
+ * uri may point to a registry entry, specification, or implementation profile.
+ */
+concept HashAlgorithm {
+  o HashAlgorithmType type
+  o String customName optional
+  o String uri optional
+}
+
+/**
+ * Text encoding used for the digest value.
+ */
+enum HashEncoding {
+  o HEX
+  o HEX_0X
+  o BASE64
+  o BASE64URL
+  o MULTIBASE
+}
+
+/**
+ * A digest value with the metadata needed to interpret it.
+ *
+ * Domain models should still name the field according to its role, for example
+ * templateHash, evidenceHash, receiptHash, or mandateHash.
+ */
+concept Hash {
+  o HashAlgorithm algorithm
+  o String value
+  o HashEncoding encoding default="HEX"
+}
+
+/**
+ * Canonicalization or byte discipline used before hashing content.
+ *
+ * RAW_BYTES means the digest is over the bytes as supplied. Use CUSTOM with
+ * Canonicalization.customName for protocol-specific rules.
+ */
+enum CanonicalizationType {
+  o RAW_BYTES
+  o RFC8785_JCS
+  o DAG_CBOR
+  o ZIP_NORMALIZED
+  o CUSTOM
+}
+
+/**
+ * Identifies how structured content was converted to bytes before hashing.
+ */
+concept Canonicalization {
+  o CanonicalizationType type default="RAW_BYTES"
+  o String customName optional
+  o String uri optional
+}
+
+/**
+ * A hash of a concrete content artifact, with enough metadata for a verifier
+ * to reproduce the digest where the surrounding protocol requires that.
+ */
+concept ContentHash extends Hash {
+  o Canonicalization canonicalization optional
+  o String mediaType optional
+  o Long byteLength optional
+}
+
+/**
+ * A reference to an external resource together with its content hash.
+ *
+ * uri can be an HTTPS URL, IPFS URI, content-addressed storage reference, or
+ * any other resolver understood by the consuming protocol.
+ */
+concept HashedResource {
+  o String uri optional
+  o ContentHash hash
+}

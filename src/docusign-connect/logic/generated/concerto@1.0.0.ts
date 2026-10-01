@@ -63,14 +63,14 @@ export interface IParticipant extends IConcept {
 }
 
 export interface ITransaction extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
 export type TransactionUnion = IRequest | 
 IResponse;
 
 export interface IEvent extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
 export type EventUnion = IObligation;

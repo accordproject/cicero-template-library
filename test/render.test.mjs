@@ -44,7 +44,6 @@ if (archivedTemplates.length) {
 //   supply-agreement-loc      — template-engine#146
 //   volumediscountolist       — template-engine#145
 //   volumediscountulist       — template-engine#145
-//
 
 const expectedFailures = new Set([
     'bill-of-lading',
@@ -53,6 +52,11 @@ const expectedFailures = new Set([
     'volumediscountolist',
     'volumediscountulist',
 ]);
+
+// Templates that are known not to load at all with today's toolchain, a
+// strict superset of `expectedFailures` (a template here can't be drafted,
+// triggered or initialized either). None at present.
+const expectedLoadFailures = new Set([]);
 
 // Only templates with compiled logic can be triggered/initialized.
 const hasLogic = (templatePath) => existsSync(join(templatePath, 'logic', 'logic.ts'));
@@ -92,8 +96,24 @@ const getTemplate = (templatePath) => {
 const isStatefulTemplate = (template) => template.isStateful();
 const statefulLogicTemplateNames = new Set(
     (await Promise.all(logicTemplates.map(async ({ name, path: templatePath }) => {
-        const template = await getTemplate(templatePath);
-        return isStatefulTemplate(template) ? name : null;
+        try {
+            const template = await getTemplate(templatePath);
+            return isStatefulTemplate(template) ? name : null;
+        } catch (error) {
+            // A template in `expectedLoadFailures` is known not to load
+            // at all with today's toolchain (see comment above) — that
+            // gap surfaces properly, as a failing `it.fails`, in the
+            // per-template describe blocks below. Swallowing it here
+            // only prevents this module-level probe (which every
+            // template's test depends on, stateful or not) from taking
+            // the whole file down before any test even runs. Any other
+            // template failing to load here is a real, unexpected
+            // problem, so it's left to throw.
+            if (expectedLoadFailures.has(name)) {
+                return null;
+            }
+            throw error;
+        }
     }))).filter(Boolean),
 );
 const statefulLogicTemplates = logicTemplates.filter(t => statefulLogicTemplateNames.has(t.name));
@@ -131,7 +151,7 @@ describe('template compilation', () => {
 
 describe('template-engine render', () => {
     for (const name of templates) {
-        const test = expectedFailures.has(name) ? it.fails : it;
+        const test = (expectedFailures.has(name) || expectedLoadFailures.has(name)) ? it.fails : it;
         test(name, async () => {
             const templatePath = join(SRC, name);
             const template = await getTemplate(templatePath);
@@ -179,7 +199,8 @@ describe.concurrent('template-engine init', () => {
 
 describe.concurrent('template-engine trigger', () => {
     for (const { name, path: templatePath } of logicTemplates) {
-        it(name, async () => {
+        const test = expectedLoadFailures.has(name) ? it.fails : it;
+        test(name, async () => {
             const template = await getTemplate(templatePath);
             const proc = new TemplateArchiveProcessor(template);
             const data = getData(templatePath, name);

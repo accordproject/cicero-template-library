@@ -1,0 +1,138 @@
+/*
+ * PROTOTYPE: migrating `copyright-license`'s nested `PaymentClause` onto
+ * the org.accordproject 1.0.0 namespaces (accordproject/models#200, with
+ * the composed clauses of accordproject/models#205).
+ *
+ * Compare with src/copyright-license/model/model.cto, which has:
+ *
+ *   asset PaymentClause extends Clause { ... }
+ *   asset TemplateModel extends Contract {
+ *     ... licensee/licenseeState/licenseeEntityType/licenseeAddress ...
+ *     ... licensor/licensorState/licensorEntityType/licensorAddress ...
+ *     o PaymentClause paymentClause
+ *   }
+ *
+ * Here:
+ *   - There is no `@template` decorator. The template model is a
+ *     concrete subtype of `templatedata@1.0.0.TemplateData`:
+ *     `CopyrightLicenseData` below, carrying the template's variables
+ *     directly. This template's models also hold the late payment
+ *     clause's and the licensed work schedule's (late-payment-poc.cto and
+ *     licensed-work-schedule-poc.cto, copies of those templates' models),
+ *     because its logic uses their types, so package.json names the
+ *     template model (`accordproject.templateModel`).
+ *   - `PaymentTerms` is an inline clause: an ordinary nested concept,
+ *     addressed as a subtree of the data at "paymentTerms" and written in
+ *     this template's own grammar (`{{#clause paymentTerms}}`). A late
+ *     payment clause may also be composed into a licence: an instance of
+ *     the late-payment-poc template in the AgreementDocument's `clauses`,
+ *     with its own data and state, of which this model declares nothing.
+ *   - The four duplicated "licensee..." / "licensor..." string fields
+ *     collapse to two party@1.0.0 `PartyRef` values: a portable embedded
+ *     reference, not a `--> Party` relationship. `--> Party`
+ *     relationships belong on the agreement's `AgreementParty`.
+ *   - State follows the same shape as data. `CopyrightLicenseState` is
+ *     the template's one concrete `templatedata@1.0.0.StateData`
+ *     subtype; the inline payment clause's state is an ordinary nested
+ *     concept at the same path as its data ("paymentTerms").
+ *   - The payment lifecycle lives in an obligation@1.0.0
+ *     `PaymentObligation`, which logic issues (`ObligationIssued`) and
+ *     moves on (`ObligationTransition`), not in template state. Clause
+ *     state holds only the facts logic derives the obligation's status
+ *     from (`amountPaid`, `dueAt`), so no status is stored anywhere an
+ *     obligation registry could disagree with it.
+ *   - Amounts are money@1.0.0 `PreciseAmount`s, not money@0.3.0
+ *     `MonetaryAmount` doubles, so arithmetic is exact.
+ */
+
+concerto version "^5.0.0"
+
+namespace poc.accordproject.copyrightlicense@0.1.0
+
+import org.accordproject.templatedata@1.0.0.{TemplateData, StateData}
+import org.accordproject.party@1.0.0.PartyRef
+import org.accordproject.money@1.0.0.PreciseAmount
+import org.accordproject.runtime@1.0.0.{Request, Response}
+// What this template's logic issues and emits.
+import org.accordproject.obligation@1.0.0.{PaymentObligation, ObligationIssued, ObligationTransition}
+
+/* Requesting a payment */
+transaction PaymentRequest extends Request {
+}
+
+/* PayOut response: the amount still outstanding */
+transaction PayOut extends Response {
+  o PreciseAmount amount
+}
+
+/* Recording a payment made by the licensee */
+transaction PaymentReceived extends Request {
+  o PreciseAmount amount
+}
+
+/* PaymentReceived response */
+transaction PaymentReceipt extends Response {
+  o PreciseAmount outstanding
+}
+
+/*
+ * An ordinary nested concept, not a `Clause` subclass and not a
+ * `TemplateData` subtype -- just a subtree of `CopyrightLicenseData`,
+ * addressed by TemplateMark at "paymentTerms". Was:
+ *   asset PaymentClause extends Clause { ... }
+ */
+concept PaymentTerms {
+  o String amountText
+  o PreciseAmount amount
+  o String paymentProcedure
+}
+
+/*
+ * The template model. This concept IS the renderable root -- there is
+ * no `@template` decorator and no envelope it's composed onto. Its
+ * properties are declared directly here, so the grammar roots at the
+ * data itself (`{{effectiveDate}}` resolves directly; no `{{#with
+ * data}}` wrapper is needed).
+ *
+ * `licensee` and `licensor` are `PartyRef` values -- portable embedded
+ * references, not relationships -- replacing eight ad hoc string fields
+ * (four per party) with two references to one shared representation.
+ */
+concept CopyrightLicenseData extends TemplateData {
+  o DateTime effectiveDate
+
+  o PartyRef licensee
+  o PartyRef licensor
+
+  o String territory
+  o String purposeDescription
+  o String workDescription
+
+  o PaymentTerms paymentTerms
+}
+
+/*
+ * The inline payment clause's state: an ordinary concept, not a
+ * `StateData` subtype, mirroring `PaymentTerms` not extending
+ * `TemplateData`. It records facts, not a status: logic derives the
+ * PaymentObligation's status from them (FULFILLED once `amountPaid`
+ * reaches the fee, DUE once `dueAt` is set, otherwise PENDING).
+ *
+ * `obligationId` is set by init(): the agreement id, document id and
+ * clause path, so it is unique wherever the obligation travels.
+ */
+concept PaymentTermsState {
+  o String obligationId
+  o PreciseAmount amountPaid
+  o DateTime dueAt optional
+}
+
+/*
+ * The template's state. Like `CopyrightLicenseData`, it is found by its
+ * parent type (`StateData`) and carries no identifier: the runtime wraps
+ * it in an identified, revisioned runtime@1.0.0 `AgreementState`, under
+ * this instance's id in its `states`.
+ */
+concept CopyrightLicenseState extends StateData {
+  o PaymentTermsState paymentTerms
+}

@@ -33,7 +33,7 @@ export interface IObligation extends IEvent {
    contract: IContract;
    promisor?: IParticipant;
    promisee?: IParticipant;
-   deadline?: Date;
+   deadline?: string;
 }
 
 export interface IState extends IAsset {

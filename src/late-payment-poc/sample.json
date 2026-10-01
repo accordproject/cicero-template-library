@@ -1,0 +1,4 @@
+{
+  "$class": "poc.accordproject.latepayment@0.1.0.LatePaymentData",
+  "gracePeriodDays": 14
+}

@@ -46,12 +46,11 @@ describe('InstallmentSaleLogic', () => {
             clauseId: 'test-id',
             BUYER: 'Dan',
             SELLER: 'Ned',
-            INITIAL_DUE: 10000.0,
-            CURRENCY_CODE: 'EUR',
+            INITIAL_DUE: monetaryAmount(10000.0),
             INTEREST_RATE: 1.5,
             TOTAL_DUE_BEFORE_CLOSING: monetaryAmount(9500.0),
             MIN_PAYMENT: monetaryAmount(500.0),
-            DUE_AT_CLOSING: 500.0,
+            DUE_AT_CLOSING: monetaryAmount(500.0),
             FIRST_MONTH: 3
         };
         initialState = {
@@ -100,6 +99,15 @@ describe('InstallmentSaleLogic', () => {
                 amount: monetaryAmount(100.0),
             };
             await expect(logic.trigger(model, request, initialState)).rejects.toThrow('Underpaying is forbidden.');
+        });
+
+        it('should reject a payment in a different currency', async () => {
+            const request: IInstallment = {
+                $class: `${NS}.Installment`,
+                $timestamp: new Date(),
+                amount: monetaryAmount(2500.0, 'USD'),
+            };
+            await expect(logic.trigger(model, request, initialState)).rejects.toThrow('same currency');
         });
 
         it('should accumulate state across multiple payments', async () => {

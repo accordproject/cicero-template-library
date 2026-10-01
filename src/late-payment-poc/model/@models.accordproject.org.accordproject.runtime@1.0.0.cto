@@ -1,0 +1,111 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Requires map type support, and specifically a release in which map values
+// that are a type imported from another namespace serialize correctly: 3.x
+// accepts a map type only behind the enableMapType flag that the models build
+// does not set, and the cross-namespace map value fix landed in 4.2.0
+// (accordproject/concerto#1279). The requirement first held at 4.2.0; the
+// declared floor tracks the release the models build supports, which is
+// Concerto 5 since #204.
+concerto version "^5.0.0"
+
+namespace org.accordproject.runtime@1.0.0
+
+import org.accordproject.agreement@1.0.0.Agreement from https://models.accordproject.org/accordproject/agreement@1.0.0.cto
+import org.accordproject.crypto@1.0.0.ContentHash from https://models.accordproject.org/crypto/crypto@1.0.0.cto
+import org.accordproject.templatedata@1.0.0.StateData from https://models.accordproject.org/accordproject/templatedata@1.0.0.cto
+
+/**
+ * Base request for invoking contract logic with no custom request properties.
+ */
+transaction Request {
+}
+
+/**
+ * Base response for contract logic with no custom response properties.
+ */
+transaction Response {
+}
+
+/**
+ * The state of an agreement's template instances, keyed by instance id.
+ *
+ * Keys are a document's AgreementDocument.documentId or a composed clause's
+ * Clause.clauseId from agreement@1.0.0. Ids are stable across revisions, so
+ * the index never has to mirror the shape of the agreement's tree, and a
+ * stateless instance has no entry.
+ *
+ * The value is StateData itself, so a template's own state subtype is the map
+ * value with nothing wrapping it. Both the declared value type and the
+ * concrete type an instance carries are therefore imported from other
+ * namespaces, which requires concerto-core 4.2.0 or later
+ * (accordproject/concerto#1279).
+ */
+map InstanceStates {
+  o String
+  o StateData
+}
+
+/**
+ * An identified, revisioned snapshot of the whole runtime state of an
+ * agreement, including the state of each of its clause instances.
+ *
+ * AgreementState is registry-resident, and intentionally so. It holds a
+ * relationship to its Agreement rather than the portable AgreementReference
+ * used by obligations and settlement evidence, because state is written by a
+ * runtime that has the agreement and its documents in hand: a revision counter
+ * and a previous-state hash chain are only meaningful where successive
+ * revisions can be resolved against one another. Records which must travel
+ * standalone reference an agreement portably instead; state does not travel,
+ * so it does not need to. This mirrors the distinction party@1.0.0 draws
+ * between Party and PartyRef.
+ *
+ * State is held as one document per agreement rather than one asset per
+ * clause. A transition which spans scopes, such as marking a clause BREACHED
+ * because of a condition detected in the agreement or in a peer clause, is
+ * then a single write producing a single revision and a single hash, and
+ * sibling state is in scope without a further lookup. Per-clause state assets
+ * would require a cross-asset transaction that Concerto does not provide, and
+ * would leave revision and previousStateHash without a well-defined meaning.
+ *
+ * states holds every stateful instance's state, the documents' and the
+ * composed clauses' alike, keyed by instance id. A template's logic reads and
+ * writes only its own entry; a transition that changes a document and the
+ * clauses composed into it is still one write and one revision.
+ *
+ * stateHash commits to the state, excluding the stateHash property itself,
+ * and previousStateHash links a revision to its immediate predecessor when one
+ * exists. Both are optional and this model does not define the canonicalization
+ * they use, so a hash chain over revisions is only meaningful under a profile
+ * that fixes those rules. A deterministic profile must define the canonical
+ * serialization, state that stateHash is excluded from its own pre-image, and
+ * should require stateHash where the chain is relied upon. Where a hash is
+ * supplied its crypto@1.0.0 Canonicalization should be populated. The
+ * properties are optional rather than required because optional to required is
+ * a breaking change and this namespace is published permanently.
+ *
+ * Obligations are intentionally not defined in this namespace. New
+ * implementations should use org.accordproject.obligation@1.0.0 so durable
+ * obligation state and lifecycle events are not coupled to the runtime API.
+ */
+asset AgreementState identified by stateId {
+  o String stateId
+  --> Agreement agreement
+  o Long revision default=0 range=[0,]
+  o DateTime effectiveAt
+  o InstanceStates states optional
+  o ContentHash stateHash optional
+  o ContentHash previousStateHash optional
+}

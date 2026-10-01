@@ -1,0 +1,49 @@
+/*
+ * PROTOTYPE: a clause template, composed into a document (accordproject/models#205).
+ *
+ * A separately versioned clause archive with its own model, grammar and
+ * logic. An instance of it is composed into a copyright licence
+ * (copyright-license-agreement-poc) at path "latePayment" of the licence's
+ * AgreementDocument `clauses`.
+ *
+ * Its parent never reads or writes this clause's state. It depends only on
+ * the requests and responses declared here: it triggers the clause with
+ * `PaymentOverdue` / `PaymentSettled`, and the engine commits the state
+ * the clause's own logic writes with the parent's, as one revision.
+ */
+
+concerto version "^5.0.0"
+
+namespace poc.accordproject.latepayment@0.1.0
+
+import org.accordproject.templatedata@1.0.0.{TemplateData, StateData}
+import org.accordproject.runtime@1.0.0.{Request, Response}
+
+/* A payment this clause governs is overdue */
+transaction PaymentOverdue extends Request {
+}
+
+transaction ReminderSent extends Response {
+  o Integer remindersSent
+}
+
+/* The payment this clause governs has been made in full */
+transaction PaymentSettled extends Request {
+}
+
+transaction LatePaymentDischarged extends Response {
+}
+
+event PaymentReminder {
+  o Integer reminderNumber
+  o Integer gracePeriodDays
+}
+
+concept LatePaymentData extends TemplateData {
+  o Integer gracePeriodDays range=[0,]
+}
+
+concept LatePaymentState extends StateData {
+  o Integer remindersSent
+  o Boolean discharged
+}

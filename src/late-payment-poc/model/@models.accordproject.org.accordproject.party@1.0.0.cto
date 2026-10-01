@@ -1,0 +1,53 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+concerto version "^3.0.0"
+
+namespace org.accordproject.party@1.0.0
+
+/**
+ * A party to an agreement.
+ *
+ * Party is registry-resident: it is the target of relationships from models
+ * which can assume a resolver, such as agreement@1.0.0.
+ */
+participant Party identified by partyId {
+  o String partyId
+  o String name optional
+}
+
+/**
+ * A portable, self-contained projection of a Party.
+ *
+ * PartyRef is the serializable form used by records which must travel
+ * standalone and therefore cannot assume a registry: obligations, attestations
+ * and settlement evidence. scheme names the identifier authority, for example
+ * "did", "lei" or "email", so that id can be resolved without ambiguity.
+ *
+ * A PartyRef with scheme "party" and id equal to Party.partyId denotes the
+ * corresponding Party in the same deployment.
+ *
+ * PartyRef deliberately carries no role. A role is a property of an act, not
+ * of a party: the same party may be a signatory on one document and a witness
+ * on another, and may sign in different roles on documents within one
+ * agreement. Role therefore belongs on the record of the act — on
+ * agreement@1.0.0's AgreementParty for a party's role under an agreement, and
+ * on an attestation for the capacity in which a signature was given. label is
+ * a display name only and must not be used to carry one.
+ */
+concept PartyRef {
+  o String id
+  o String scheme
+  o String label optional
+}

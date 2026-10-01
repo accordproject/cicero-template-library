@@ -1,0 +1,100 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+concerto version "^3.0.0"
+
+/**
+ * Templates: the immutable, hash-addressed archives that agreements are
+ * created from, and the named artifacts inside them.
+ *
+ * Scope: this namespace identifies a template and commits to its content. It
+ * says nothing about agreements, clauses or runtime state, and imports nothing
+ * but the hash types, so a consumer that only needs to name a template does not
+ * take on the agreement model to do it. Templates are referenced by more than
+ * agreements — obligations, attestations and settlement evidence all cite the
+ * template an artefact derives from — and a registry may catalogue templates
+ * with no agreement in sight.
+ *
+ * Deliberately deferred to profiles:
+ *
+ * Artifact manifests.
+ *   Where TemplateReference.artifacts is populated, a profile must define the
+ *   manifest canonicalization and require the list to agree with
+ *   artifactManifestHash. This model cannot express that conditional.
+ *
+ * Identifier syntax.
+ *   TemplateReference.templateId is an open string. A profile should define
+ *   whether it is a name, a URI or a registry key, and how it is compared.
+ */
+namespace org.accordproject.template@1.0.0
+
+import org.accordproject.crypto@1.0.0.ContentHash from https://models.accordproject.org/crypto/crypto@1.0.0.cto
+
+/**
+ * The role of a named artifact within a template archive.
+ */
+enum TemplateArtifactRole {
+  o LOGIC
+  o MODEL
+  o GRAMMAR
+  o PROSE
+  o DOCUMENTATION
+  o TEST
+  o RESOURCE
+  o CUSTOM
+}
+
+/**
+ * A named, hash-addressed artifact contained in a template archive.
+ *
+ * For executable logic, name and path can identify an entry point such as
+ * "logic.ts" while language and runtime describe how it is executed. The
+ * content hash ensures that an evaluation can identify the exact artifact,
+ * independently of the archive-level hash.
+ */
+concept TemplateArtifact {
+  o String name
+  o TemplateArtifactRole role
+  o String customRole optional
+  o String path
+  o String language optional
+  o String runtime optional
+  o Boolean entryPoint default=false
+  o ContentHash contentHash
+}
+
+/**
+ * A reference to an immutable template archive.
+ *
+ * archiveHash commits to the complete archive. artifactManifestHash commits to
+ * the canonical manifest of named artifacts when the archive supplies one.
+ * Profiles which populate artifacts should define the manifest canonicalization
+ * and require the list to agree with artifactManifestHash.
+ *
+ * templateId names the template itself, not this reference: the same
+ * templateId and version denote the same archive wherever they are cited.
+ * TemplateReference is deliberately not a Concerto-identified type, so
+ * templateId carries no identity semantics of its own; its syntax is deferred
+ * to a profile.
+ *
+ * The hash commits only to the archive. Nothing here states a relationship
+ * between it and the hash of anything created from the template.
+ */
+concept TemplateReference {
+  o String templateId
+  o String version
+  o ContentHash archiveHash
+  o ContentHash artifactManifestHash optional
+  o TemplateArtifact[] artifacts optional
+}

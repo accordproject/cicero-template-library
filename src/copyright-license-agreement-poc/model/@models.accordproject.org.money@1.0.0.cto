@@ -1,0 +1,120 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+concerto version "^3.0.0"
+
+namespace org.accordproject.money@1.0.0
+
+/**
+ * An ISO 4217 alphabetic currency code: three uppercase Latin letters
+ * (e.g. "USD", "JPY", "KWD"). The regex matches the ISO 4217 format without
+ * enumerating the code list, so new/retired codes need no model change.
+ *
+ * Every value of the org.accordproject.money@0.3.0.CurrencyCode enum is three
+ * uppercase letters, so existing instances validate against this scalar
+ * unchanged.
+ */
+scalar CurrencyCode extends String regex=/^[A-Z]{3}$/
+
+/**
+ * An approximate (floating-point) monetary amount.
+ *
+ * `doubleValue` is an IEEE-754 double, so it cannot represent most decimal
+ * fractions exactly and errors accumulate under arithmetic. This type is for
+ * display, estimates, and legacy contracts only — NOT for settlement, ledgers,
+ * or any calculation. For exact arithmetic use PreciseAmount.
+ *
+ * Backwards-compatible with org.accordproject.money@0.3.0.MonetaryAmount:
+ * instances of the 0.3.0 concept validate against this definition unchanged
+ * (its `currencyCode` enum members are three uppercase letters and so satisfy
+ * the CurrencyCode scalar, e.g. "USD"); only the `$class` name changes on
+ * migration.
+ *
+ * Example: { "doubleValue": 10.50, "currencyCode": "USD" }
+ */
+concept ApproximateAmount {
+  o Double doubleValue
+  o CurrencyCode currencyCode
+}
+
+/**
+ * A unit of account, self-describing across schemes.
+ *
+ * `code`       the unit's short code within `scheme` (e.g. "USD", "JPY", "ETH").
+ * `scheme`     the namespace the code is drawn from. Defaults to ISO 4217 for
+ *              fiat; other schemes (e.g. "iso24165", "erc20", "slip44",
+ *              "caip19") allow non-fiat units without hard-coding ticker codes
+ *              into the model.
+ * `identifier` an optional, unambiguous, scheme-scoped identifier for the exact
+ *              asset — e.g. a CAIP-19 asset id
+ *              ("eip155:1/erc20:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"), a
+ *              token contract address, or a DTI (ISO 24165). `code` alone is
+ *              ambiguous for token schemes — the same ticker can exist on many
+ *              chains / contracts — so carrying the disambiguator on the
+ *              instance avoids relying solely on a registry lookup.
+ * `scale`      the number of decimal places / minor units (non-negative).
+ *              Travels with the unit so that a PreciseAmount is fully
+ *              self-describing without needing to resolve external reference
+ *              data. e.g. USD=2, JPY=0, KWD=3, USDC=6, ETH=18.
+ *
+ * Canonical scales/identifiers for well-known schemes are published as
+ * reference data in org.accordproject.money.reference.
+ */
+concept Unit {
+  o String code
+  o String scheme default="iso4217"
+  o String identifier optional
+  o Integer scale range=[0,]
+}
+
+/**
+ * An arbitrary-precision, base-10 integer represented as a string, in
+ * canonical form (no leading zeros). Used as the unscaled value of a
+ * PreciseAmount.
+ *
+ * Encoded as a string so the value is exact at any magnitude — unbounded by
+ * the 2^53 limit of a JSON number / IEEE-754 double, and never silently
+ * truncated by a JSON parser. Clients convert once at the boundary (e.g.
+ * BigInt(unscaledValue), or a Dinero.js v2 / big.js money object) and then do
+ * exact integer arithmetic.
+ */
+scalar BigInteger extends String regex=/^(0|-?[1-9][0-9]*)$/
+
+/**
+ * A precise (fixed-point) monetary amount.
+ *
+ * Follows the same model as Java's BigDecimal — an integer `unscaledValue`
+ * and a `scale` (here carried on `unit`):
+ *
+ *   amount = unscaledValue × 10^(−unit.scale)
+ *
+ * `unscaledValue` is an exact integer (see BigInteger): amounts add, subtract
+ * and compare with exact integer arithmetic — no floating-point drift, and
+ * exact at any magnitude (e.g. 18-decimal tokens, aggregate balances) rather
+ * than being capped at 2^53. Because the encoding is fixed there is no
+ * discriminator to interpret.
+ *
+ * Use for banking, settlement, ledgers, tax computation, regulated
+ * reporting, cross-currency arithmetic, on-chain base-unit accounting, and
+ * any currency with non-decimal denominations.
+ *
+ * Examples:
+ *   $10.50      -> { "unscaledValue": "1050",                "unit": { "code": "USD",  "scale": 2 } }
+ *   ¥10,050     -> { "unscaledValue": "10050",               "unit": { "code": "JPY",  "scale": 0 } }
+ *   100.500 KWD -> { "unscaledValue": "100500",              "unit": { "code": "KWD",  "scale": 3 } }
+ *   1.5 ETH     -> { "unscaledValue": "1500000000000000000", "unit": { "code": "ETH", "scheme": "slip44", "scale": 18 } }
+ */
+concept PreciseAmount {
+  o BigInteger unscaledValue
+  o Unit unit
+}

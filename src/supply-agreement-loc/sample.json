@@ -13,19 +13,12 @@
     "doubleValue": 1000000,
     "currencyCode": "SEK"
   },
+  "importerLOCCurrency": "SEK",
   "orderBillOfLading": "ORDER-001",
   "packingList": "PACKING-001",
   "renewalTerms": 2,
-  "termRenewal": {
-    "$class": "org.accordproject.time@0.3.0.Period",
-    "amount": 5,
-    "unit": "years"
-  },
-  "termTerminationNotice": {
-    "$class": "org.accordproject.time@0.3.0.Period",
-    "amount": 90,
-    "unit": "days"
-  },
+  "termRenewal": "5 years",
+  "termTerminationNotice": "90 days",
   "invoice": "INVOICE-001",
   "bookingId": "BOOKING-001",
   "purchaseOrder": "PO-001",
@@ -37,6 +30,7 @@
     "doubleValue": 300,
     "currencyCode": "SEK"
   },
+  "unitPriceCurrency": "SEK",
   "locationForDelivery": "34 Elm Street",
   "deliveryDate": "2021-01-30T01:00:00.000+01:00",
   "exporterBankAccount": 142635263523,
@@ -57,6 +51,7 @@
     "doubleValue": 4000,
     "currencyCode": "SEK"
   },
+  "freightCurrency": "SEK",
   "evaluationTime": {
     "$class": "org.accordproject.time@0.3.0.Duration",
     "amount": 7,
@@ -64,30 +59,19 @@
   },
   "acceptanceCriteria": "good are acceptable",
   "termBeginDate": "2021-01-20T01:00:00.000+01:00",
-  "termPeriod": {
-    "$class": "org.accordproject.time@0.3.0.Period",
-    "amount": 3,
-    "unit": "years"
-  },
-  "currentTerm": {
-    "$class": "org.accordproject.time@0.3.0.Period",
-    "amount": 2,
-    "unit": "years"
-  },
+  "termPeriod": "3 years",
+  "currentTerm": "2 years",
   "shipment": "Shipment 001",
   "unitPrice": {
     "$class": "org.accordproject.money@0.3.0.MonetaryAmount",
     "doubleValue": 4000,
     "currencyCode": "SEK"
   },
+  "unitCurrency": "SEK",
   "unit": 10,
   "sensorReadingFrequency": 10,
   "duration": "days",
-  "countPeriod": {
-    "$class": "org.accordproject.time@0.3.0.Period",
-    "amount": 10,
-    "unit": "days"
-  },
+  "countPeriod": "10 days",
   "$identifier": "5d084f1a-1380-4887-ae54-72afd091b702",
   "clauseId": "5d084f1a-1380-4887-ae54-72afd091b702"
 }

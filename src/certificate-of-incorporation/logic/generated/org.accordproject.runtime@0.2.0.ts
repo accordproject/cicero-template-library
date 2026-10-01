@@ -7,6 +7,11 @@
 import type {
 	IContractSigned
 } from './org.accordproject.signature@0.3.0';
+
+// Warning: Beware of circular dependencies when modifying these imports
+import type {
+	IIncorporationEvent
+} from './org.accordproject.certificateofincorporation@0.1.0';
 import {IContract} from './org.accordproject.contract@0.2.0';
 import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 
@@ -24,8 +29,10 @@ export interface IObligation extends IEvent {
    contract: IContract;
    promisor?: IParticipant;
    promisee?: IParticipant;
-   deadline?: Date;
+   deadline?: string;
 }
+
+export type ObligationUnion = IIncorporationEvent;
 
 export interface IState extends IAsset {
 }
