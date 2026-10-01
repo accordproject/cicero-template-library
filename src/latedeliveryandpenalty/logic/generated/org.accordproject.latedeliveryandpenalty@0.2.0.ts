@@ -11,8 +11,8 @@ import {IEvent} from './concerto@1.0.0';
 // interfaces
 export interface ILateDeliveryAndPenaltyRequest extends IRequest {
    forceMajeure: boolean;
-   agreedDelivery: Date;
-   deliveredAt?: Date;
+   agreedDelivery: string;
+   deliveredAt?: string;
    goodsValue: IMonetaryAmount;
 }
 

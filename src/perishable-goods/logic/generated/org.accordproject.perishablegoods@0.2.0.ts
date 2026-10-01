@@ -2,7 +2,7 @@
 // Generated code for namespace: org.accordproject.perishablegoods@0.2.0
 
 // imports
-import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IContract} from './org.accordproject.contract@0.2.0';
 import {IRequest,IResponse,IObligation,IState} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 import {IConcept,IParticipant} from './concerto@1.0.0';
@@ -43,11 +43,11 @@ export interface IPerishableGoodsState extends IState {
    totalPaid: number;
 }
 
-export interface ITemplateModel extends IClause {
+export interface ITemplateModel extends IContract {
    grower: string;
    importer: string;
    shipmentId: string;
-   dueDate: Date;
+   dueDate: string;
    unit: UnitOfMass;
    minUnits: number;
    maxUnits: number;

@@ -8,13 +8,6 @@ import type {
 	ShipmentStatus
 } from './org.accordproject.fragilegoods@0.2.0';
 import type {
-	IDigitalMonetaryAmount,
-	DigitalCurrencyCode,
-	IMonetaryAmount,
-	CurrencyCode,
-	ICurrencyConversion
-} from './org.accordproject.money@0.3.0';
-import type {
 	Month,
 	Day,
 	TemporalUnit,
@@ -22,6 +15,13 @@ import type {
 	PeriodUnit,
 	IPeriod
 } from './org.accordproject.time@0.3.0';
+import type {
+	IDigitalMonetaryAmount,
+	DigitalCurrencyCode,
+	IMonetaryAmount,
+	CurrencyCode,
+	ICurrencyConversion
+} from './org.accordproject.money@0.3.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -40,9 +40,6 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IFragileGoodsEvent
-} from './org.accordproject.fragilegoods@0.2.0';
-import type {
 	IObligation
 } from './org.accordproject.runtime@0.2.0';
 
@@ -51,11 +48,11 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IDigitalMonetaryAmount | 
+export type ConceptUnion = IDuration | 
+IPeriod | 
+IDigitalMonetaryAmount | 
 IMonetaryAmount | 
-ICurrencyConversion | 
-IDuration | 
-IPeriod;
+ICurrencyConversion;
 
 export interface IAsset extends IConcept {
    $identifier: string;
@@ -70,16 +67,15 @@ export interface IParticipant extends IConcept {
 }
 
 export interface ITransaction extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
 export type TransactionUnion = IRequest | 
 IResponse;
 
 export interface IEvent extends IConcept {
-   $timestamp: Date;
+   $timestamp: string;
 }
 
-export type EventUnion = IFragileGoodsEvent | 
-IObligation;
+export type EventUnion = IObligation;
 

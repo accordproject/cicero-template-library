@@ -17,7 +17,7 @@ export interface IResult extends IResponse {
 
 export interface ITemplateModel extends IClause {
    amount: IMonetaryAmount;
-   date: Date;
+   date: string;
    maker: string;
    interestRate: number;
    individual: boolean;
@@ -26,7 +26,7 @@ export interface ITemplateModel extends IClause {
    legalEntity: string;
    lenderAddress: string;
    principal: IMonetaryAmount;
-   maturityDate: Date;
+   maturityDate: string;
    defaultDays: number;
    insolvencyDays: number;
    jurisdiction: string;

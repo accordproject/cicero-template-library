@@ -9,8 +9,8 @@ import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 
 // interfaces
 export interface ILateRequest extends IRequest {
-   agreedDelivery: Date;
-   deliveredAt: Date;
+   agreedDelivery: string;
+   deliveredAt: string;
    goodsValue: IMonetaryAmount;
 }
 

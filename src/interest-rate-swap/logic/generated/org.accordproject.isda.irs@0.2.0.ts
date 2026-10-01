@@ -22,13 +22,13 @@ export interface IResult extends IResponse {
 
 export interface ITemplateModel extends IClause {
    bank: string;
-   letterDate: Date;
+   letterDate: string;
    counterparty: string;
    bankReference: string;
    notionalAmount: IMonetaryAmount;
-   tradeDate: Date;
-   effectiveDate: Date;
-   terminationDate: Date;
+   tradeDate: string;
+   effectiveDate: string;
+   terminationDate: string;
    fixedRatePayer: string;
    fixedRatePayerPeriodEndDates: string;
    fixedRatePayerPaymentDates: string;
