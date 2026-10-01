@@ -26,9 +26,9 @@ const OBLIGATION_NS = 'poc.accordproject.obligation@0.1.0';
 const EFFECTIVE_DATE = new Date('2018-01-01T00:00:00Z');
 
 const amount = (unscaledValue: string, code = 'USD', scale = 2) => ({
-    $class: 'poc.accordproject.money@0.1.0.PreciseAmount',
+    $class: 'org.accordproject.money@1.0.0.PreciseAmount',
     unscaledValue,
-    unit: { $class: 'poc.accordproject.money@0.1.0.Unit', code, scheme: 'iso4217', scale },
+    unit: { $class: 'org.accordproject.money@1.0.0.Unit', code, scheme: 'iso4217', scale },
 });
 
 let clock = 0;

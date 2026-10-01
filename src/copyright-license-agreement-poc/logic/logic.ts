@@ -7,7 +7,7 @@ import {
     IPayOut,
     IPaymentReceipt,
 } from "./generated/poc.accordproject.copyrightlicense@0.1.0";
-import { IPreciseAmount, IUnit } from "./generated/poc.accordproject.money@0.1.0";
+import { IPreciseAmount, IUnit } from "./generated/org.accordproject.money@1.0.0";
 import { IAgreementReference } from "./generated/poc.accordproject.agreement@0.1.0";
 import {
     IDurableObligation,
@@ -27,17 +27,17 @@ const CLAUSE_PATH = 'paymentTerms';
 
 type CopyrightLicenseInitResponse = {
     state: ICopyrightLicenseState;
-    events: object[];
+    events: IObligationIssued[];
 };
 
 type CopyrightLicenseResponse = {
     result: IPayOut | IPaymentReceipt;
     state: ICopyrightLicenseState;
-    events: object[];
+    events: IObligationTransition[];
 };
 
 function precise(unscaledValue: bigint, unit: IUnit): IPreciseAmount {
-    return { $class: 'poc.accordproject.money@0.1.0.PreciseAmount', unscaledValue: unscaledValue.toString(), unit };
+    return { $class: 'org.accordproject.money@1.0.0.PreciseAmount', unscaledValue: unscaledValue.toString(), unit };
 }
 
 function sameUnit(a: IUnit, b: IUnit): boolean {
@@ -72,7 +72,9 @@ function transition(
     fromStatus: ObligationStatus,
     toStatus: ObligationStatus,
     revision: number,
-    effectiveAt: Date
+    // DateTime is a Date in the Concerto 4 codegen and a string in the one
+    // template-engine 5.x compiles logic with, so take the generated type.
+    effectiveAt: IObligationTransition['effectiveAt']
 ): IObligationTransition {
     return {
         $class: `${OBLIGATION_NS}.ObligationTransition`,

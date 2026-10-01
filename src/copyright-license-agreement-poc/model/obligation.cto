@@ -24,7 +24,7 @@
 
 namespace poc.accordproject.obligation@0.1.0
 
-import poc.accordproject.money@0.1.0.PreciseAmount
+import org.accordproject.money@1.0.0.PreciseAmount
 import poc.accordproject.party@0.1.0.PartyRef
 import poc.accordproject.agreement@0.1.0.AgreementReference
 

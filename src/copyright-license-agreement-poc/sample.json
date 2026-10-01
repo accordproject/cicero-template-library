@@ -20,10 +20,10 @@
     "$class": "poc.accordproject.copyrightlicense@0.1.0.PaymentTerms",
     "amountText": "one hundred US Dollars",
     "amount": {
-      "$class": "poc.accordproject.money@0.1.0.PreciseAmount",
+      "$class": "org.accordproject.money@1.0.0.PreciseAmount",
       "unscaledValue": "10000",
       "unit": {
-        "$class": "poc.accordproject.money@0.1.0.Unit",
+        "$class": "org.accordproject.money@1.0.0.Unit",
         "code": "USD",
         "scheme": "iso4217",
         "scale": 2

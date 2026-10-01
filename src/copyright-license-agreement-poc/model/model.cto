@@ -49,8 +49,9 @@
  *     stored anywhere a registry could disagree with it. Whether the
  *     licence is in force is likewise derived -- it is exactly when the
  *     payment obligation is FULFILLED -- rather than stored.
- *   - Amounts are money@1.0.0 `PreciseAmount`s (model/money.cto), not
- *     money@0.3.0 `MonetaryAmount` doubles, so arithmetic is exact.
+ *   - Amounts are money@1.0.0 `PreciseAmount`s (model/money.cto, vendored
+ *     verbatim), not money@0.3.0 `MonetaryAmount` doubles, so arithmetic
+ *     is exact.
  *
  * Whether this compiles, round-trips sample.json, renders, and triggers
  * with *today's* installed toolchain -- as opposed to being faithful to
@@ -64,7 +65,7 @@ namespace poc.accordproject.copyrightlicense@0.1.0
 
 import poc.accordproject.templatedata@0.1.0.{TemplateData, StateData}
 import poc.accordproject.party@0.1.0.PartyRef
-import poc.accordproject.money@0.1.0.PreciseAmount
+import org.accordproject.money@1.0.0.PreciseAmount
 import org.accordproject.runtime@0.2.0.{Request, Response} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
 
 /* Requesting a payment */

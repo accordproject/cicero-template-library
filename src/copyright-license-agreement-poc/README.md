@@ -81,17 +81,13 @@ Per PR #200's current shape:
   issued obligation fails Concerto validation for the missing
   `agreementId`; with it filled in, every state and event this template
   emits validates.
-- **Amounts are exact.** Amounts are money@1.0.0 `PreciseAmount`s
-  (`model/money.cto`): an integer `unscaledValue` plus a `unit` with a
-  `scale`, so $100.00 is `"10000"` at scale 2. Logic does the arithmetic
-  with `BigInt`. models#200 types `unscaledValue` as `BigInteger`, which
-  the Concerto 4.x installed here rejects, so it is a digit `String` here,
-  matching how a `BigInteger` serializes in JSON. The grammar renders the
-  fee with an inline formula for now. template-engine 5.1.0 already formats
-  `org.accordproject.money@1.PreciseAmount` natively, so `{{amount}}` will
-  work once this repo moves off template-engine 4.0.0 *and* this template
-  imports the real `money@1.0.0`: the drafter is keyed on that namespace,
-  which the vendored `poc.accordproject.money@0.1.0` stand-in doesn't match.
+- **Amounts are exact.** Amounts are money@1.0.0 `PreciseAmount`s:
+  an integer `unscaledValue` plus a `unit` with a `scale`, so $100.00 is
+  `"10000"` at scale 2. Logic does the arithmetic with `BigInt`.
+  `model/money.cto` is models#200's `money@1.0.0` vendored verbatim under
+  its real namespace; its `BigInteger` is a `String` scalar it declares
+  itself, so it compiles with this repo's Concerto 4 toolchain unchanged.
+  The grammar renders the fee as a plain `{{amount}}`; see below.
 - **Where state lives in the runtime.** Logic only ever sees and returns
   `CopyrightLicenseState`. The runtime wraps it in an identified,
   revisioned `AgreementState` (`model/runtime.cto`, a stand-in for
@@ -108,11 +104,11 @@ emitted events against a minimal obligation registry, and simulates the
 runtime's `AgreementState` envelope.
 
 See `model/*.cto` for the vendored prototype namespaces (`templatedata@0.1.0`,
-`party@0.1.0`, `money@0.1.0`, `agreement@0.1.0`, `obligation@0.1.0`,
-`runtime@0.1.0` — hand-written local stand-ins for the corresponding
-`@1.0.0` namespaces proposed in PR #200, since that PR is unpublished) and
-their inline comments for the reasoning behind each shape and each
-divergence.
+`party@0.1.0`, `agreement@0.1.0`, `obligation@0.1.0`, `runtime@0.1.0` —
+hand-written local stand-ins for the corresponding `@1.0.0` namespaces
+proposed in PR #200, since that PR is unpublished — plus `money@1.0.0`,
+vendored verbatim) and their inline comments for the reasoning behind each
+shape and each divergence.
 
 ## Known gap: this cannot load with today's installed toolchain
 
@@ -171,3 +167,28 @@ runtime-owned `AgreementState`, so both checks need the same
 find-by-parent-type change as the template root. Until then, the stateful
 behaviour is exercised by `logic/logic.test.ts` rather than the render
 tests.
+
+## What template-engine 5.x already changes
+
+This workspace alone depends on `@accordproject/template-engine` 5.1.0
+(the rest of the repo is still on 4.0.0); `test/template-engine-5.test.ts`
+exercises it:
+
+- **Rendering without `@template`.** 5.x's `TemplateMarkTransformer` and
+  `TemplateMarkInterpreter` accept the root concept's name, so the sample
+  renders end to end with the root named explicitly
+  (`poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData`). What's
+  still missing is cicero-core finding that root by its `TemplateData`
+  parent type (template-archive#946), so `Template.fromDirectory()`, and
+  the repo's render tests, still can't load it.
+- **Native `PreciseAmount` formatting.** `{{amount}}` renders as
+  `100.00 USD` with no formula, because 5.x drafts
+  `org.accordproject.money@1.PreciseAmount` natively.
+- **Stricter logic type-checking.** 5.x compiles `logic.ts` against
+  runtime declarations derived from the model, so the response's `events`
+  must be the model's event types (not `object[]`). Its codegen also
+  represents `DateTime` as a `string` where the Concerto 4 codegen this repo
+  commits uses `Date`, so logic takes timestamps' types from the generated
+  interfaces rather than naming `Date`. `logic.ts` type-checks cleanly under
+  both. Trigger still can't run through the engine, because it needs a
+  loaded `Template`.

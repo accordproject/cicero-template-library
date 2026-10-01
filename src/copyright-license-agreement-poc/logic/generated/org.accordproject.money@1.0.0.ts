@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-// Generated code for namespace: poc.accordproject.money@0.1.0
+// Generated code for namespace: org.accordproject.money@1.0.0
 
 // imports
 import {IConcept} from './concerto@1.0.0';
 
 // interfaces
+export interface IApproximateAmount extends IConcept {
+   doubleValue: number;
+   currencyCode: string;
+}
+
 export interface IUnit extends IConcept {
    code: string;
    scheme: string;

@@ -12,9 +12,10 @@ import type {
 	IPartyRef
 } from './poc.accordproject.party@0.1.0';
 import type {
+	IApproximateAmount,
 	IUnit,
 	IPreciseAmount
-} from './poc.accordproject.money@0.1.0';
+} from './org.accordproject.money@1.0.0';
 import type {
 	IAgreementParty,
 	IAgreementDocument,
@@ -77,6 +78,7 @@ export interface IConcept {
 export type ConceptUnion = ITemplateData | 
 IStateData | 
 IPartyRef | 
+IApproximateAmount | 
 IUnit | 
 IPreciseAmount | 
 IAgreementParty | 

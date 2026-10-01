@@ -4,7 +4,7 @@
 // imports
 
 // Warning: Beware of circular dependencies when modifying these imports
-import {IPreciseAmount} from './poc.accordproject.money@0.1.0';
+import {IPreciseAmount} from './org.accordproject.money@1.0.0';
 import {IPartyRef} from './poc.accordproject.party@0.1.0';
 import {IAgreementReference} from './poc.accordproject.agreement@0.1.0';
 import {IAsset,IEvent} from './concerto@1.0.0';

@@ -25,5 +25,8 @@
     "tags": [
         "intellectual-property",
         "prototype"
-    ]
+    ],
+    "devDependencies": {
+        "@accordproject/template-engine": "5.1.0"
+    }
 }
