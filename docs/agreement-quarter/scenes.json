@@ -1,77 +1,96 @@
 {
-  "style": "Victorian steel-engraving illustration, fine cross-hatched linework with restrained hand-tinting in gaslight amber, claret red and slate blue. The Inns of Court, London, at dusk: Portland stone, brick staircases, gas lamps, painted name boards at doorways. Two recurring characters in every scene: a barrister in a black gown and white bands (the template author), and a small brass clockwork clerk whose head is a softly glowing lantern (the runtime). Wide 16:9 composition, full-bleed to every edge: no border, frame, vignette or rounded corners, no caption, and no text or lettering anywhere. No modern objects.",
+  "style": "Victorian steel-engraving illustration, fine cross-hatched linework with restrained hand-tinting in gaslight amber, claret red and slate blue. The Inns of Court, London, at dusk: Portland stone, brick staircases, gas lamps, painted name boards at doorways. Two recurring characters in every scene: a barrister in a black gown and white bands (the template author), a Black woman in her thirties with her hair pinned back, and a small brass clockwork clerk whose head is a softly glowing lantern (the runtime). Wide 16:9 composition, full-bleed to every edge: no border, frame, vignette or rounded corners, no caption, and no text or lettering anywhere. No modern objects.",
   "scenes": [
     {
       "id": "gatehouse",
       "plate": "I",
       "title": "The Gatehouse",
-      "prompt": "The arched gatehouse into an Inn of Court at dusk. The barrister and the lantern-headed clerk walk in together beneath a hanging lamp; through the arch, lit windows of chambers line a cobbled court, each doorway with a painted name board."
+      "prompt": "The arched gatehouse into an Inn of Court at dusk. The barrister and the lantern-headed clerk walk in together beneath a hanging lamp; through the arch, lit windows of chambers line a cobbled court, each doorway with a painted name board.",
+      "humans": 1
     },
     {
       "id": "registry",
       "plate": "II",
       "title": "The Registry",
-      "prompt": "A tall registry office lined with ledgers. A registrar re-binds old, overstuffed folios into slim new volumes on a reading stand while the clerk carries a single clean volume to the barrister. Discarded wax seals and loose envelopes lie in a basket."
+      "prompt": "A tall registry office lined with ledgers. A registrar re-binds old, overstuffed folios into slim new volumes on a reading stand while the clerk carries a single clean volume to the barrister. Discarded wax seals and loose envelopes lie in a basket.",
+      "people": "The registrar seated at the desk on the left becomes a South Asian man in his fifties with a grey beard. The barrister standing on the right becomes the Black woman barrister.",
+      "humans": 2
     },
     {
       "id": "conveyancer",
       "plate": "III",
       "title": "The Conveyancer's",
-      "prompt": "A conveyancer's desk where a large deed is being bound with red tape. A separate smaller folio is being stitched into it as a sewn-in section; the clerk holds the needle and thread while the barrister checks the binding."
+      "prompt": "A conveyancer's desk where a large deed is being bound with red tape. A separate smaller folio is being stitched into it as a sewn-in section; the clerk holds the needle and thread while the barrister checks the binding.",
+      "humans": 1
     },
     {
       "id": "strongroom",
       "plate": "IV",
       "title": "The Strongroom",
-      "prompt": "A vaulted strongroom with a wall of identical numbered pigeonholes. The clerk files a tied bundle into one pigeonhole by its tag while the barrister reads the tags; one pigeonhole stands deliberately empty."
+      "prompt": "A vaulted strongroom with a wall of identical numbered pigeonholes. The clerk files a tied bundle into one pigeonhole by its tag while the barrister reads the tags; one pigeonhole stands deliberately empty.",
+      "humans": 1
     },
     {
       "id": "windows",
       "plate": "V",
       "title": "The Clerks' Windows",
-      "prompt": "A corridor of small service windows, each with a different carved emblem above it. Petitioners queue at the right window; the clerk directs one petitioner to the correct window while the barrister watches from a doorway."
+      "prompt": "A corridor of small service windows, each with a different carved emblem above it. Petitioners queue at the right window; the clerk directs one petitioner to the correct window while the barrister watches from a doorway.",
+      "people": "The barrister standing in the doorway on the left becomes the Black woman barrister, with no wig and her hair in a bun. The three petitioners at the window on the right become a Chinese woman in a dark travelling dress, an older Black man in a top hat, and a Middle Eastern woman in a claret dress.",
+      "humans": 4
     },
     {
       "id": "library",
       "plate": "VI",
       "title": "The Library",
-      "prompt": "A galleried law library. The barrister writes at a single desk lit by the clerk's lantern; around them, other volumes sit behind locked glass-fronted cases that can be read through the glass but not opened."
+      "prompt": "A galleried law library. The barrister writes at a single desk lit by the clerk's lantern; around them, other volumes sit behind locked glass-fronted cases that can be read through the glass but not opened.",
+      "humans": 1
     },
     {
       "id": "chancery",
       "plate": "VII",
       "title": "The Chancery",
-      "prompt": "A sealing table in a chancery office. Several documents are gathered under one large brass press about to seal them all at once; the clerk lowers the press while the barrister holds a torn draft over a waste basket."
+      "prompt": "A sealing table in a chancery office. Several documents are gathered under one large brass press about to seal them all at once; the clerk lowers the press while the barrister holds a torn draft over a waste basket.",
+      "humans": 1,
+      "people": "The barrister standing at the right of the table becomes the Black woman barrister."
     },
     {
       "id": "seals",
       "plate": "VIII",
       "title": "The Seal Office",
-      "prompt": "A seal office with racks of engraved brass seal matrices, each a different crest. The clerk presses a matrix into wax on a document, and the barrister holds out the next blank document."
+      "prompt": "A seal office with racks of engraved brass seal matrices, each a different crest. The clerk presses a matrix into wax on a document, and the barrister holds out the next blank document.",
+      "humans": 1
     },
     {
       "id": "recorder",
       "plate": "IX",
       "title": "The Recorder",
-      "prompt": "A recorder's office with a large public board of pinned notices, each notice stamped through a sequence of marks. The clerk pins a new stamped notice while the barrister reads an older one beside it."
+      "prompt": "A recorder's office with a large public board of pinned notices, each notice stamped through a sequence of marks. The clerk pins a new stamped notice while the barrister reads an older one beside it.",
+      "humans": 1,
+      "people": "The barrister reading the notice board on the left becomes the Black woman barrister."
     },
     {
       "id": "moot",
       "plate": "X",
       "title": "The Moot",
-      "prompt": "A practice moot in a panelled hall: a mock trial with a stand-in witness made of cardboard and wire. The barrister argues to an empty bench while the clerk keeps the record."
+      "prompt": "A practice moot in a panelled hall: a mock trial with a stand-in witness made of cardboard and wire. The barrister argues to an empty bench while the clerk keeps the record.",
+      "humans": 1
     },
     {
       "id": "lodge",
       "plate": "XI",
       "title": "The Porters' Lodge",
-      "prompt": "A porters' lodge at night. The clerk hands a sealed, numbered bundle through the lodge window to a night porter, who checks it against a numbered ledger; a second porter holds a returned bundle marked for resubmission."
+      "prompt": "A porters' lodge at night. The clerk hands a sealed, numbered bundle through the lodge window to a night porter, who checks it against a numbered ledger; a second porter holds a returned bundle marked for resubmission.",
+      "people": "The barrister on the left is the Black woman barrister. The porter leaning out of the lodge window becomes an older East Asian woman. The young porter standing on the right becomes a young South Asian man.",
+      "humans": 3
     },
     {
       "id": "roll",
       "plate": "XII",
       "title": "The Roll",
-      "prompt": "The great hall of the Inn by candlelight, a long parchment roll unfurled down the high table listing entries; the barrister and the clerk sign the foot of the roll together."
+      "prompt": "The great hall of the Inn by candlelight, a long parchment roll unfurled down the high table listing entries; the barrister and the clerk sign the foot of the roll together.",
+      "humans": 1,
+      "people": "The barrister signing the roll at the high table becomes the Black woman barrister."
     }
-  ]
+  ],
+  "cast": "The recurring barrister is a Black woman in her thirties, clearly a woman, with a feminine face and her hair pinned up in a bun under no hat, wearing a black barrister's gown and white bands. Do not add or remove any people. If other people already appear, redraw them as a mix of women and men of African, South Asian, East Asian, Middle Eastern and European descent, in Victorian dress for their role."
 }
