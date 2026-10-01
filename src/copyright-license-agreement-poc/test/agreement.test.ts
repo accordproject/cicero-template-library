@@ -1,49 +1,45 @@
 // @ts-nocheck - test fixtures are plain JSON
-// "Design B" end to end, through the engine's entry points
-// (runtime/execute.ts): one agreement of two models#200 AgreementDocuments.
-// The licence has an inline payment clause in its data and a late payment
-// clause composed into it; the licensed work schedule is stateless.
-import { Factory, Serializer } from '@accordproject/concerto-core';
-import copyrightLicense from '../logic/logic';
-import latePayment from '../composed/late-payment/logic/logic';
+// An agreement of two documents, run by template-engine's AgreementProcessor
+// over the three templates, whose logic it compiles and loads as it would
+// from their archives. The licence has an inline payment clause in its data
+// and a late payment clause composed into it; the licensed work schedule is
+// stateless.
 import {
     Agreement,
     AgreementDocument,
     AgreementParty,
-    ComposedClause,
+    Clause,
     ObligationIssued,
     Party,
     PaymentReceived,
     PaymentReminder,
     PaymentRequest,
 } from '../logic/generated/types';
-import { execute, initialise } from '../runtime/execute';
-import { amount, at, loadModels, sample, templateReference } from './support';
+import { amount, at, loadAgreementProcessor, sample, templateReference } from './support';
 
-const LOGIC = { 'copyright-license-agreement-poc': copyrightLicense, 'late-payment': latePayment };
 const EFFECTIVE_AT = '2018-01-01T00:00:00.000Z';
 
-const models = loadModels();
-const options = { models };
-const serializer = new Serializer(new Factory(models), models);
+let processor;
+beforeAll(async () => {
+    processor = await loadAgreementProcessor();
+}, 60_000);
 
-const document = (documentId: string, templateId, data, clauses?) => AgreementDocument.create({
+const document = (documentId: string, templateId, clauses?) => AgreementDocument.create({
     documentId,
     template: templateReference(templateId),
-    data,
+    data: sample(templateId),
     ...(clauses ? { clauses } : {}),
 });
 
 function licenceAgreement({ withLatePaymentClause = true } = {}) {
-    const latePaymentClause = ComposedClause.create({
+    const latePaymentClause = Clause.create({
         clauseId: 'licence/late-payment',
-        template: templateReference('late-payment'),
-        data: sample('composed/late-payment'),
+        template: templateReference('late-payment-poc'),
+        data: sample('late-payment-poc'),
     });
     const documents = [
-        document('licence', 'copyright-license-agreement-poc', sample('.'),
-            withLatePaymentClause ? { latePayment: latePaymentClause } : undefined),
-        document('schedule-1', 'licensed-work-schedule', sample('documents/licensed-work-schedule')),
+        document('licence', 'copyright-license-agreement-poc', withLatePaymentClause ? { latePayment: latePaymentClause } : undefined),
+        document('schedule-1', 'licensed-work-schedule-poc'),
     ];
     const party = (id: string, role: string) => AgreementParty.create({ party: Party.ref(id), role });
     const agreement = Agreement.create({
@@ -58,7 +54,7 @@ const paymentRequest = (seconds: number) => PaymentRequest.create({ $timestamp: 
 const paymentReceived = (unscaledValue: string, seconds: number) =>
     PaymentReceived.create({ $timestamp: at(seconds), amount: amount(unscaledValue) });
 
-describe('an agreement as one tree of template instances (design B)', () => {
+describe('an agreement as one tree of template instances', () => {
     let agreement;
     let documents;
 
@@ -66,19 +62,19 @@ describe('an agreement as one tree of template instances (design B)', () => {
         ({ agreement, documents } = licenceAgreement());
     });
 
-    const start = () => initialise(agreement, documents, EFFECTIVE_AT, LOGIC, options);
-    const trigger = (state, documentId, request) => execute({ agreement, documents, state }, documentId, request, LOGIC, options);
+    const start = () => processor.initialise(agreement, documents, EFFECTIVE_AT);
+    const trigger = (state, documentId, request) => processor.execute({ agreement, documents, state }, documentId, request);
 
-    it('holds two models#200 documents, one with an inline and a composed clause, as valid instances', () => {
-        expect(() => serializer.fromJSON(agreement)).not.toThrow();
+    it('holds two documents, one with an inline and a composed clause, as valid instances', () => {
+        expect(() => processor.validate(agreement)).not.toThrow();
         for (const d of documents) {
-            expect(() => serializer.fromJSON(d)).not.toThrow();
+            expect(() => processor.validate(d)).not.toThrow();
         }
         const [licence] = documents;
         // The inline clause is a subtree of the licence's own data...
         expect(licence.data.paymentTerms.amountText).toBe('one hundred US Dollars');
         // ...while the composed clause carries its own template and data.
-        expect(licence.clauses.latePayment.template.templateId).toBe('late-payment');
+        expect(licence.clauses.latePayment.template.templateId).toBe('late-payment-poc');
         expect(licence.data).not.toHaveProperty('latePayment');
     });
 
@@ -90,7 +86,7 @@ describe('an agreement as one tree of template instances (design B)', () => {
         expect(state.states['licence/late-payment']).toMatchObject({ remindersSent: 0, discharged: false });
         expect(state.revision).toBe(0);
         expect(events.map(e => e.$class)).toEqual([ObligationIssued.$class]);
-        expect(() => serializer.fromJSON(state)).not.toThrow();
+        expect(() => processor.validate(state)).not.toThrow();
     });
 
     it('lets the licence read its cousin, the schedule, when it issues the obligation', async () => {
@@ -124,7 +120,7 @@ describe('an agreement as one tree of template instances (design B)', () => {
         expect(paid.state.states['licence'].paymentTerms.amountPaid.unscaledValue).toBe('10000');
         expect(paid.state.states['licence/late-payment'].discharged).toBe(true);
         expect(paid.events).toEqual([expect.objectContaining({ fromStatus: 'DUE', toStatus: 'FULFILLED' })]);
-        expect(() => serializer.fromJSON(paid.state)).not.toThrow();
+        expect(() => processor.validate(paid.state)).not.toThrow();
     });
 
     it('commits nothing when the licence logic rejects a request', async () => {
@@ -214,7 +210,7 @@ describe('an agreement as one tree of template instances (design B)', () => {
                 }
                 const state = store.load();
                 await onLoad();
-                const outcome = await execute({ agreement, documents, state }, documentId, request, LOGIC, options);
+                const outcome = await processor.execute({ agreement, documents, state }, documentId, request);
                 try {
                     store.commit(state.revision, requestId, outcome);
                     return outcome.result;

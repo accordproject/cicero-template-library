@@ -1,5 +1,5 @@
 /*
- * PROTOTYPE: a second document template ("design B" sketch).
+ * PROTOTYPE: a second document template, for agreements of several documents.
  *
  * Schedule 1 to the copyright licence, describing the licensed work. It is
  * an ordinary, stateless document template: no `StateData` subtype and no

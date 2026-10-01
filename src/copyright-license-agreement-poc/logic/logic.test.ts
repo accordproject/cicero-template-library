@@ -1,13 +1,13 @@
 // @ts-nocheck - test fixtures are plain JSON
 // Unit tests of the licence's logic alone. Each test gets a `self` from
-// runtime/testing.ts, runs on the engine's own transaction code, and
+// @accordproject/template-engine/testing, runs on the engine's own transaction code, and
 // stands stubs in for any composed clause. Everything written is
 // validated against the models.
 import copyrightLicense from './logic';
 import {
     AgreementDocument,
     CopyrightLicenseState,
-    DocumentReference,
+    AgreementReference,
     LatePaymentDischarged,
     ObligationIssued,
     ObligationTransition,
@@ -21,13 +21,16 @@ import {
     PayOut,
     ReminderSent,
 } from './generated/types';
-import { stubClause, testInstance, TEST_AGREEMENT, TEST_DOCUMENT } from '../runtime/testing';
+import { stubClause, testInstance, TEST_AGREEMENT, TEST_DOCUMENT } from '@accordproject/template-engine/testing';
 import { amount, at, loadModels, sample, templateReference } from '../test/support';
 
 const OBLIGATION_ID = `${TEST_AGREEMENT}/${TEST_DOCUMENT}/paymentTerms`;
 const EFFECTIVE_DATE = '2018-01-01T01:00:00.000+01:00';
 
-const models = loadModels();
+let models;
+beforeAll(async () => {
+    models = await loadModels();
+});
 
 let clock = 0;
 const paymentRequest = () => PaymentRequest.create({ $timestamp: at(clock++) });
@@ -37,15 +40,15 @@ const paymentReceived = (unscaledValue: string, code = 'USD', scale = 2) =>
 // The licensed work schedule, as a cousin document in the same agreement.
 const schedule = () => AgreementDocument.create({
     documentId: 'schedule-1',
-    template: templateReference('licensed-work-schedule'),
-    data: sample('documents/licensed-work-schedule'),
+    template: templateReference('licensed-work-schedule-poc'),
+    data: sample('licensed-work-schedule-poc'),
 });
 
 describe('copyright licence logic', () => {
     let data;
 
     beforeEach(() => {
-        data = sample('.');
+        data = sample('copyright-license-agreement-poc');
     });
 
     const licence = (options = {}) => testInstance({ data, models, ...options });
@@ -98,7 +101,7 @@ describe('copyright licence logic', () => {
             const { events } = await run();
 
             expect(events[0].obligation.agreement).toMatchObject({
-                $class: DocumentReference.$class,
+                $class: AgreementReference.$class,
                 agreementId: TEST_AGREEMENT,
                 documentId: TEST_DOCUMENT,
                 clausePath: 'paymentTerms',

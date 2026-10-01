@@ -1,0 +1,24 @@
+{
+    "name": "licensed-work-schedule-poc",
+    "displayName": "Licensed Work Schedule (agreement@1.0.0 document prototype)",
+    "version": "0.1.0",
+    "description": "Prototype stateless document template: a schedule describing the work a copyright licence (copyright-license-agreement-poc) licenses, as a second document in the same agreement.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "template": "contract",
+        "cicero": "^2.0.0"
+    },
+    "keywords": [
+        "schedule",
+        "copyright",
+        "license",
+        "prototype",
+        "agreement-1.0"
+    ],
+    "tags": [
+        "intellectual-property",
+        "prototype"
+    ]
+}

@@ -1,0 +1,17 @@
+/*
+ * PROTOTYPE: a second document template, for agreements of several documents.
+ *
+ * Schedule 1 to the copyright licence, describing the licensed work. It is
+ * an ordinary, stateless document template: no `StateData` subtype and no
+ * logic, so it contributes nothing to the agreement's state index.
+ */
+
+namespace poc.accordproject.licensedwork@0.1.0
+
+import org.accordproject.templatedata@1.0.0.TemplateData
+
+concept LicensedWorkSchedule extends TemplateData {
+  o String title
+  o String format
+  o String description
+}

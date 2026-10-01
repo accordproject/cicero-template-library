@@ -1,7 +1,7 @@
 /*
  * PROTOTYPE: migrating `copyright-license`'s nested `PaymentClause` onto
- * the model design proposed in accordproject/models#200 ("Agreement 1.0
- * Model Redesign"): https://github.com/accordproject/models/pull/200
+ * the org.accordproject 1.0.0 namespaces (accordproject/models#200, with
+ * the composed clauses of accordproject/models#205).
  *
  * Compare with src/copyright-license/model/model.cto, which has:
  *
@@ -12,53 +12,37 @@
  *     o PaymentClause paymentClause
  *   }
  *
- * Here, per PR #200's current shape:
- *   - There is no `@template` decorator and no envelope class for the
- *     data to be composed onto. A template's model declares exactly one
- *     *concrete* subtype of `templatedata@1.0.0.TemplateData`, and that
- *     subtype IS the template model -- the renderable root is found by
- *     its parent type, not a decorator. `CopyrightLicenseData` below is
- *     that root; it carries the template's variables directly.
- *   - `PaymentTerms` is an ordinary nested concept (not a `Clause`
- *     subclass, and not itself a `TemplateData` subtype -- only the
- *     root extends `TemplateData`), addressed as a plain subtree of the
- *     data at "paymentTerms". `copyright-license` has no composed
- *     sub-template archive for its payment clause -- `{{#clause
- *     paymentTerms}}` in text/grammar.tem.md is an inline grammar block
- *     written directly in this template's own grammar -- so there is no
- *     clause composed into the model at all (see model/composition.cto).
+ * Here:
+ *   - There is no `@template` decorator. The template model is a
+ *     concrete subtype of `templatedata@1.0.0.TemplateData`:
+ *     `CopyrightLicenseData` below, carrying the template's variables
+ *     directly. This template's models also hold the late payment
+ *     clause's and the licensed work schedule's (late-payment-poc.cto and
+ *     licensed-work-schedule-poc.cto, copies of those templates' models),
+ *     because its logic uses their types, so package.json names the
+ *     template model (`accordproject.templateModel`).
+ *   - `PaymentTerms` is an inline clause: an ordinary nested concept,
+ *     addressed as a subtree of the data at "paymentTerms" and written in
+ *     this template's own grammar (`{{#clause paymentTerms}}`). A late
+ *     payment clause may also be composed into a licence: an instance of
+ *     the late-payment-poc template in the AgreementDocument's `clauses`,
+ *     with its own data and state, of which this model declares nothing.
  *   - The four duplicated "licensee..." / "licensor..." string fields
- *     collapse to two party@1.0.0 `PartyRef` values: a
- *     portable embedded reference, not a `--> Party` relationship. A
- *     relationship reaches `trigger()` as an unresolvable
- *     `"resource:...#me"` string with nothing to resolve it against;
- *     `--> Party` relationships belong on the agreement envelope's
- *     `AgreementParty`, where a registry actually exists.
+ *     collapse to two party@1.0.0 `PartyRef` values: a portable embedded
+ *     reference, not a `--> Party` relationship. `--> Party`
+ *     relationships belong on the agreement's `AgreementParty`.
  *   - State follows the same shape as data. `CopyrightLicenseState` is
  *     the template's one concrete `templatedata@1.0.0.StateData`
- *     subtype. The inline payment clause's state is an ordinary nested
- *     concept at the same instance path as its data ("paymentTerms"),
- *     not a separate `StateData` subtype. A composed clause is a separate
- *     template instance with its own state (see model/composition.cto and
- *     composed/late-payment/). The original copyright-license template has
- *     no state at all; this is added to illustrate clause-scoped state.
+ *     subtype; the inline payment clause's state is an ordinary nested
+ *     concept at the same path as its data ("paymentTerms").
  *   - The payment lifecycle lives in an obligation@1.0.0
- *     `PaymentObligation`, not in template state.
- *     Clause state holds only the facts logic needs to derive the
- *     obligation's status (`amountPaid`, `dueAt`), so no status enum is
- *     stored anywhere a registry could disagree with it. Whether the
- *     licence is in force is likewise derived -- it is exactly when the
- *     payment obligation is FULFILLED -- rather than stored.
- *   - Amounts are money@1.0.0 `PreciseAmount`s (vendored
- *     verbatim), not money@0.3.0 `MonetaryAmount` doubles, so arithmetic
- *     is exact.
- *
- * Whether this compiles, round-trips sample.json, renders, and triggers
- * with *today's* installed toolchain -- as opposed to being faithful to
- * PR #200's design -- is a separate question. See
- * src/copyright-license-agreement-poc/README.md and
- * test/render.test.mjs's `expectedFailures` for what was actually
- * observed.
+ *     `PaymentObligation`, which logic issues (`ObligationIssued`) and
+ *     moves on (`ObligationTransition`), not in template state. Clause
+ *     state holds only the facts logic derives the obligation's status
+ *     from (`amountPaid`, `dueAt`), so no status is stored anywhere an
+ *     obligation registry could disagree with it.
+ *   - Amounts are money@1.0.0 `PreciseAmount`s, not money@0.3.0
+ *     `MonetaryAmount` doubles, so arithmetic is exact.
  */
 
 concerto version "^5.0.0"
@@ -69,6 +53,8 @@ import org.accordproject.templatedata@1.0.0.{TemplateData, StateData}
 import org.accordproject.party@1.0.0.PartyRef
 import org.accordproject.money@1.0.0.PreciseAmount
 import org.accordproject.runtime@1.0.0.{Request, Response}
+// What this template's logic issues and emits.
+import org.accordproject.obligation@1.0.0.{PaymentObligation, ObligationIssued, ObligationTransition}
 
 /* Requesting a payment */
 transaction PaymentRequest extends Request {
@@ -144,8 +130,8 @@ concept PaymentTermsState {
 /*
  * The template's state. Like `CopyrightLicenseData`, it is found by its
  * parent type (`StateData`) and carries no identifier: the runtime wraps
- * it in an identified, revisioned `AgreementState` (model/composition.cto's
- * `IndexedAgreementState`).
+ * it in an identified, revisioned runtime@1.0.0 `AgreementState`, under
+ * this instance's id in its `states`.
  */
 concept CopyrightLicenseState extends StateData {
   o PaymentTermsState paymentTerms

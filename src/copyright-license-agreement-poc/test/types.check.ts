@@ -2,13 +2,13 @@
 // (test/types.test.ts). Each `@ts-expect-error` must be an error, and
 // everything else must compile. Nothing here runs.
 import copyrightLicense, { Licence } from '../logic/logic';
-import latePayment, { LatePayment } from '../composed/late-payment/logic/logic';
+import latePayment, { LatePayment } from '../../late-payment-poc/logic/logic';
 import {
     LatePaymentDischarged, LicensedWorkSchedule, PaymentObligation, PaymentOverdue, PaymentRequest, PaymentSettled, PayOut, ReminderSent,
 } from '../logic/generated/types';
 import { IPaymentObligation } from '../logic/generated/org.accordproject.obligation@1.0.0';
-import { ApiOf, defineLogic } from '../runtime/logic';
-import { stubClause, testInstance } from '../runtime/testing';
+import { ApiOf, defineLogic } from '@accordproject/template-engine/logic';
+import { stubClause, testInstance } from '@accordproject/template-engine/testing';
 import { IPayOut, IPaymentReceipt, IPaymentRequest, IPaymentReceived } from '../logic/generated/poc.accordproject.copyrightlicense@0.1.0';
 import { IReminderSent, ILatePaymentDischarged, IPaymentOverdue } from '../logic/generated/poc.accordproject.latepayment@0.1.0';
 

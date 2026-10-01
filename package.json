@@ -14,7 +14,8 @@
     "node": ">=22"
   },
   "overrides": {
-    "ajv": "8.17.1"
+    "ajv": "8.17.1",
+    "@accordproject/cicero-core": "$@accordproject/cicero-core"
   },
   "nyc": {
     "include": [
@@ -34,14 +35,14 @@
     "all": true
   },
   "dependencies": {
-    "@accordproject/cicero-core": "^2.2.0",
+    "@accordproject/cicero-core": "github:accordproject/template-archive#claude/agreement-1.0-dual-runtime-dist",
     "@accordproject/concerto-cli": "^4.2.0",
     "@accordproject/concerto-core": "^5.0.0",
     "@accordproject/concerto-codegen": "^6.3.0",
     "@accordproject/concerto-util": "^5.0.0",
     "@accordproject/markdown-cicero": "^1.1.0",
     "@accordproject/markdown-html": "^1.1.0",
-    "@accordproject/template-engine": "^5.0.0",
+    "@accordproject/template-engine": "github:accordproject/template-engine#claude/agreement-1.0-logic-dist",
     "adm-zip": "^0.4.11",
     "bulma": "^0.7.1",
     "chai": "4.2.0",

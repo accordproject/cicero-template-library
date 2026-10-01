@@ -5,7 +5,7 @@ module.exports = defineConfig({
     test: {
         globals: true,
         environment: 'node',
-        include: ['logic/**/*.test.ts', 'test/**/*.test.ts'],
+        include: ['logic/**/*.test.ts'],
         setupFiles: [path.join(__dirname, '../test-setup.js')],
         testTimeout: 30_000,
     },

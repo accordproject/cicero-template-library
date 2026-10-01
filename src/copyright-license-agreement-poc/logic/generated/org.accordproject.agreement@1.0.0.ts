@@ -2,16 +2,6 @@
 // Generated code for namespace: org.accordproject.agreement@1.0.0
 
 // imports
-
-// Warning: Beware of circular dependencies when modifying these imports
-import type {
-	IComposedClause
-} from './poc.accordproject.composition@0.1.0';
-
-// Warning: Beware of circular dependencies when modifying these imports
-import type {
-	IDocumentReference
-} from './poc.accordproject.composition@0.1.0';
 import {IContentHash} from './org.accordproject.crypto@1.0.0';
 import {ITemplateData} from './org.accordproject.templatedata@1.0.0';
 import {IParty} from './org.accordproject.party@1.0.0';
@@ -21,11 +11,11 @@ import {IConcept,IAsset} from './concerto@1.0.0';
 // interfaces
 export interface IClause extends IConcept {
    template: ITemplateReference;
-   clauseId?: string;
+   clauseId: string;
+   data: ITemplateData;
+   clauses?: Clauses;
    clauseHash?: IContentHash;
 }
-
-export type ClauseUnion = IComposedClause;
 
 export type Clauses = Map<string, IClause>;
 
@@ -53,10 +43,9 @@ export interface IAgreement extends IAsset {
 export interface IAgreementReference extends IConcept {
    agreementId: string;
    agreementHash?: IContentHash;
+   documentId?: string;
    template?: ITemplateReference;
    clausePath?: string;
    clauseHash?: IContentHash;
 }
-
-export type AgreementReferenceUnion = IDocumentReference;
 

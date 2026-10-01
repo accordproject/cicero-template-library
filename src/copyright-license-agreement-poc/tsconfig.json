@@ -8,6 +8,6 @@
         "skipLibCheck": true,
         "types": []
     },
-    "include": ["runtime/**/*.ts", "logic/**/*.ts", "composed/**/*.ts", "test/types.check.ts"],
+    "include": ["logic/**/*.ts", "../late-payment-poc/logic/**/*.ts", "test/types.check.ts"],
     "exclude": ["**/*.test.ts"]
 }

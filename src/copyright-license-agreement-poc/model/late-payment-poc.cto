@@ -1,11 +1,10 @@
 /*
- * PROTOTYPE: a composed clause template ("design B" sketch).
+ * PROTOTYPE: a clause template, composed into a document (accordproject/models#205).
  *
  * A separately versioned clause archive with its own model, grammar and
- * logic, composed into the copyright licence at instance path
- * "latePayment" (see the "design B" section of ../../README.md). It imports the
- * models#200 namespaces the licence's model/ directory vendors; a real
- * archive would import them from models.accordproject.org.
+ * logic. An instance of it is composed into a copyright licence
+ * (copyright-license-agreement-poc) at path "latePayment" of the licence's
+ * AgreementDocument `clauses`.
  *
  * Its parent never reads or writes this clause's state. It depends only on
  * the requests and responses declared here: it triggers the clause with

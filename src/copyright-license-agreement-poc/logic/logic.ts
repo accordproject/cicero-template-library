@@ -22,8 +22,8 @@ import {
     PayOut,
     PreciseAmount,
 } from './generated/types';
-import { Clause, DeepReadonly, Self, defineLogic } from '../runtime/logic';
-import type { LatePayment } from '../composed/late-payment/logic/logic';
+import { Clause, DeepReadonly, Self, defineLogic } from '@accordproject/template-engine/logic';
+import type { LatePayment } from '../../late-payment-poc/logic/logic';
 
 // The inline payment clause's path within this licence's data.
 const PAYMENT_TERMS = 'paymentTerms';

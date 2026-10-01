@@ -10,10 +10,6 @@ import type {
 	IAgreementReference
 } from './org.accordproject.agreement@1.0.0';
 import type {
-	ObligationStatus,
-	FulfilmentAttemptStatus
-} from './org.accordproject.obligation@1.0.0';
-import type {
 	IPartyRef
 } from './org.accordproject.party@1.0.0';
 import type {
@@ -34,21 +30,12 @@ import type {
 	ICanonicalization,
 	IHashedResource
 } from './org.accordproject.crypto@1.0.0';
-import type {
-	IApproximateAmount,
-	IUnit,
-	IPreciseAmount
-} from './org.accordproject.money@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	IAgreementDocument,
 	IAgreement
 } from './org.accordproject.agreement@1.0.0';
-import type {
-	IObligation,
-	IFulfilmentAttempt
-} from './org.accordproject.obligation@1.0.0';
 import type {
 	IAgreementState
 } from './org.accordproject.runtime@1.0.0';
@@ -65,9 +52,6 @@ import type {
 } from './org.accordproject.runtime@1.0.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
-import type {
-	IObligationTransition
-} from './org.accordproject.obligation@1.0.0';
 import type {
 	IPaymentReminder
 } from './poc.accordproject.latepayment@0.1.0';
@@ -88,10 +72,7 @@ IStateData |
 IHashAlgorithm | 
 IHash | 
 ICanonicalization | 
-IHashedResource | 
-IApproximateAmount | 
-IUnit | 
-IPreciseAmount;
+IHashedResource;
 
 export interface IAsset extends IConcept {
    $identifier: string;
@@ -99,8 +80,6 @@ export interface IAsset extends IConcept {
 
 export type AssetUnion = IAgreementDocument | 
 IAgreement | 
-IObligation | 
-IFulfilmentAttempt | 
 IAgreementState;
 
 export interface IParticipant extends IConcept {
@@ -120,6 +99,5 @@ export interface IEvent extends IConcept {
    $timestamp: string;
 }
 
-export type EventUnion = IObligationTransition | 
-IPaymentReminder;
+export type EventUnion = IPaymentReminder;
 

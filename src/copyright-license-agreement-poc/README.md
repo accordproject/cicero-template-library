@@ -1,48 +1,42 @@
 # Copyright License (agreement@1.0.0 migration prototype)
 
 A prototype of [`copyright-license`](../copyright-license) migrated onto the
-model design proposed in
+org.accordproject 1.0.0 namespaces:
 [accordproject/models#200](https://github.com/accordproject/models/pull/200)
-("Agreement 1.0 Model Redesign"). This template exists to show what
-migrating a template with a nested payment clause actually looks like at the
-model, sample-data, and logic level, and to pin down precisely where today's
-tooling (`cicero-core` / `@accordproject/template-engine`) still falls short
-of loading, rendering, and triggering it end to end.
+("Agreement 1.0 Model Redesign"), extended for composed, executable clauses
+by [accordproject/models#205](https://github.com/accordproject/models/pull/205).
+It shows what migrating a template with a nested payment clause looks like
+at the model, sample-data and logic level, and it loads, drafts, initialises
+and triggers end to end through cicero-core and template-engine.
 
-It also prototypes "design B", a proposed extension of models#200 for
-composed, executable clauses, and the logic API that goes with it. Both
-are described below.
+It is one of three templates that make up its example agreement:
+
+- **`copyright-license-agreement-poc`** (this template): the licence, a
+  stateful document with an inline payment clause;
+- **[`late-payment-poc`](../late-payment-poc)**: a stateful clause template,
+  composed into the licence;
+- **[`licensed-work-schedule-poc`](../licensed-work-schedule-poc)**: a
+  stateless document, Schedule 1 to the licence.
 
 ## Models
 
-`model/` vendors models#200's 1.0.0 namespaces verbatim (`templatedata`,
-`party`, `template`, `crypto`, `agreement`, `obligation`, `runtime` and
-`money`, head 337cc68). They are not yet published at
-models.accordproject.org, so each is saved under the file name Concerto
-gives a downloaded external model, and `npm run compile` runs offline.
+`model/` holds the 1.0.0 namespaces (`templatedata`, `party`, `template`,
+`crypto`, `agreement`, `obligation`, `runtime` and `money`) as of models#205.
+They are not yet published at models.accordproject.org, so each is saved
+under the file name Concerto gives a downloaded external model, and
+`npm run compile` runs offline.
 
-What design B adds or changes is in one namespace of its own,
-`poc.accordproject.composition@0.1.0` (`model/composition.cto`), each
-change as a subtype of the models#200 type it would change, so the whole
-delta is reviewable in one file. The templates' own namespaces
-(`poc.accordproject.copyrightlicense@0.1.0` and so on) are just the
-templates' versions.
-
-Two tooling issues showed up:
-
-- **concerto-core 5.0.0's ESM build rejects models#200.** It reports its
-  own version as `5.0.0-beta.2`, which doesn't satisfy the `concerto
-  version "^5.0.0"` the agreement, obligation and runtime namespaces
-  declare. Its CommonJS build reports 5.0.0 and accepts them, so
-  `vitest.config.js` loads that one.
-- **Codegen duplicates same-named types.** Concerto's TypeScript codegen
-  emits duplicate imports for two loaded types with the same short name,
-  so the proposal's types can't reuse the names of the types they change
-  (`ComposedClause` rather than `Clause`).
+The licence's logic uses the late payment clause's request types and reads
+the schedule's data, so its models also hold copies of theirs
+(`late-payment-poc.cto` and `licensed-work-schedule-poc.cto`, identical to
+those templates' `model.cto`; an agreement's templates must define a shared
+namespace identically). With three `TemplateData` subtypes in its models,
+the licence names its template model in package.json
+(`accordproject.templateModel`).
 
 ## The current design
 
-Per models#200's current shape:
+Per models#200:
 
 - **No `@template` decorator.** A template's model declares exactly one
   *concrete* subtype of `templatedata@1.0.0.TemplateData`, and that subtype
@@ -73,7 +67,7 @@ Per models#200's current shape:
   `templatedata@1.0.0.StateData` subtype, found by its parent type like
   `CopyrightLicenseData`. The inline payment clause's state is
   `paymentTerms: PaymentTermsState`, an ordinary nested concept at the same
-  path as its data. Composed clauses work differently; see design B.
+  path as its data. Composed clauses work differently; see below.
 - **The obligation, not template state, owns the payment lifecycle.** The
   fee is an obligation@1.0.0 `PaymentObligation` moving `PENDING` → `DUE`
   → `FULFILLED`. Logic can't read the obligation registry, so clause state
@@ -83,7 +77,7 @@ Per models#200's current shape:
   when the obligation is `FULFILLED`.
 
   `init` seeds the state and issues the obligation with an
-  `ObligationIssued` event (proposed in `model/composition.cto`).
+  obligation@1.0.0 `ObligationIssued` event (models#205).
   `PaymentRequest` returns the outstanding balance and, the first time,
   makes the obligation `DUE`. `PaymentReceived` records a payment,
   rejecting the wrong currency or scale, non-positive amounts and
@@ -94,55 +88,53 @@ Per models#200's current shape:
   same state and events.
 
   Logic can see the agreement it is in, so it gives the obligation an id
-  unique across agreements and a full reference: agreement, document and
-  clause path. The reference is a proposed `DocumentReference`, since
-  models#200's `AgreementReference` has no document, and a clause path is
-  only unique within one.
+  unique across agreements and a full `AgreementReference`: agreement,
+  document (added by models#205, since a clause path is only unique within
+  one document) and clause path.
 - **Amounts are exact.** Amounts are money@1.0.0 `PreciseAmount`s: an
   integer `unscaledValue` plus a `unit` with a `scale`, so $100.00 is
   `"10000"` at scale 2. Logic does the arithmetic with `BigInt`.
 
-## Design B: an agreement as one tree of template instances
+## Composed clauses: an agreement as one tree of template instances
 
-A PROPOSED extension of models#200, sketched here end to end. It allows
-embedded executable clauses, while keeping a single structure for the
-template hierarchy.
+models#205 lets a clause be a template instance of its own, while keeping a
+single structure for the template hierarchy.
 
 **One tree.** An `AgreementDocument` is the root template instance (its
-`template` and `data`). Each entry in its `clauses` map is a
-`ComposedClause`: models#200's `Clause` plus the clause's own `data` and
-its own composed `clauses`.
+`template` and `data`). Each entry in its `clauses` map is an
+agreement@1.0.0 `Clause`: a template, a `clauseId`, the clause's own `data`
+and its own composed `clauses`.
 
-- An **inline** clause is a subtree of its template's `data`, as before.
+- An **inline** clause is a subtree of its template's `data`.
 - A **composed** clause has its own template and its own data, so a
   parent's model declares nothing about the clauses composed into it.
 
-**One state index.** `IndexedAgreementState.states` maps each stateful
-instance's id (a document's `documentId`, a clause's `clauseId`) to its own
-`StateData` subtype. Keys are stable ids, so the index never mirrors the
-tree's shape, and a stateless instance has no entry. This replaces
-models#200's `data` and `clauseStates`.
+**One state index.** runtime@1.0.0 `AgreementState.states` maps each
+stateful instance's id (a document's `documentId`, a clause's `clauseId`)
+to its own `StateData` subtype. Keys are stable ids, so the index never
+mirrors the tree's shape, and a stateless instance has no entry.
 
 **The example** (`test/agreement.test.ts`) is one agreement of two
-documents:
+documents, run by template-engine's `AgreementProcessor` over the three
+templates:
 
 - **The licence** (this template). Its payment terms are inline. A late
-  payment clause (`composed/late-payment/`: its own model, grammar and
-  logic) is composed at `"latePayment"`. Chasing an overdue payment
-  delegates to the clause. Paying in full fulfils the obligation and
-  discharges the clause, committed in one revision. Issuing the obligation
-  reads the title of the licensed work from the schedule, a cousin
-  document.
-- **Schedule 1** (`documents/licensed-work-schedule/`), a stateless
+  payment clause (an instance of `late-payment-poc`) is composed at
+  `"latePayment"`. Chasing an overdue payment delegates to the clause.
+  Paying in full fulfils the obligation and discharges the clause,
+  committed in one revision. Issuing the obligation reads the title of the
+  licensed work from the schedule, a cousin document.
+- **Schedule 1** (an instance of `licensed-work-schedule-poc`), a stateless
   document. It gets no state entry and has nothing to trigger.
 
 Every document, state and event validates against the models.
 
-## The logic API (proposed)
+## The logic API
 
-`runtime/` prototypes what template-engine would provide; nothing in it is
-released. A template's logic is built with `defineLogic`, one handler per
-request type it handles, and an optional `init`:
+The logic is written with template-engine's logic API
+(`@accordproject/template-engine/logic`, accordproject/template-engine#187):
+`defineLogic`, one handler per request type it handles, and an optional
+`init`:
 
 ```ts
 export type Licence = Self<ICopyrightLicenseData, ICopyrightLicenseState, {
@@ -167,9 +159,9 @@ export default defineLogic<Licence>()
   `$identifier` for an identified type, so logic never writes either by
   hand. Factories also check a value's type (`LicensedWorkSchedule.is(data)`)
   and make relationships (`PaymentObligation.ref(id)`).
-  `scripts/generate-types.js` generates them from the models into
-  `logic/generated/types.ts`, as part of `npm run compile`; template-engine
-  or Concerto's TypeScript codegen would emit them with the interfaces.
+  `npm run compile` (`template-engine-codegen --offline`) generates them
+  from the models into `logic/generated/types.ts`, alongside Concerto's
+  interfaces; when logic runs, the engine supplies the same factories.
 - **No dispatch switch.** A request type's factory is also the key its
   handler is registered under. The engine dispatches on the request's
   `$class` to the handler registered for it, or for its nearest
@@ -202,17 +194,16 @@ with strict type-checking of both logic files.
 
 ### Testing
 
-`runtime/testing.ts` gives unit tests a `self` (`testInstance`) running on
-the engine's own transaction code, recording what the engine would commit,
-and typed stand-ins for composed clauses (`stubClause`), which record the
-requests they get. `logic/logic.test.ts` and
-`composed/late-payment/logic/logic.test.ts` test each template alone that
-way. `test/runtime.test.ts` covers the engine's transaction semantics.
+`@accordproject/template-engine/testing` gives unit tests a `self`
+(`testInstance`) running on the engine's own transaction code, recording
+what the engine would commit, and typed stand-ins for composed clauses
+(`stubClause`), which record the requests they get. `logic/logic.test.ts`
+and `../late-payment-poc/logic/logic.test.ts` test each template alone that
+way; template-engine's own tests cover the transaction semantics.
 
 ### Running it as a stateless function
 
-The engine's entry points (`runtime/execute.ts`) are functions from JSON
-to JSON:
+`AgreementProcessor`'s entry points are functions from JSON to JSON:
 
 ```
 initialise(agreement, documents, effectiveAt)        -> { state@0, events }
@@ -228,73 +219,36 @@ winning state, and a redelivered request returns its stored result.
 clauses run in the same invocation and transaction as their parent, so
 the unit of deployment is the agreement, not the clause.
 
+On its own, through `TemplateArchiveProcessor`, each template runs as the
+one document of an agreement: `init(data)` returns its state and events,
+and `trigger(data, request, state)` its response, next state and events.
+That is how `test/render.test.mjs` drafts, initialises and triggers it.
+
 ### Not yet possible
 
 - Placing the composed clause in the licence's text: TemplateMark's
-  `ClauseDefinition` has no way to name a composed archive. Each archive
-  renders on its own (`test/template-engine-5.test.ts`).
-- Resolving `TemplateReference` to an archive. The tests register logic by
-  `templateId`, and hash each archive's files as a stand-in for its
-  `archiveHash`.
-- Running any of this through template-engine. Its compiler and runtime
-  hardcode `runtime@0.2.0` Request, Response and State types and a
-  `TemplateLogic` base class, so the logic here is checked with `tsc`
-  and run by `runtime/execute.ts` instead.
+  `ClauseDefinition` has no way to name a composed template. Each template
+  drafts on its own.
+- Resolving a `TemplateReference` to an archive. The tests name templates by
+  `templateId` (their package names), and hash each template's files as a
+  stand-in for its `archiveHash`.
 
-## Known gap: this cannot load with today's installed toolchain
+## Toolchain
 
-The *installed* `@accordproject/cicero-core` (2.1.1, including the copy
-vendored inside `@accordproject/template-engine`) finds a template's root
-concept exclusively via the `@template` decorator —
-`Template#getTemplateModel()` calls markdown-template's
-`findTemplateConcept()`, which throws `"Failed to find a concept with the
-@template decorator"` when none is present. `Template#validate()` calls it
-unconditionally, and `Template.fromDirectory()` calls `validate()`, so with
-no `@template` decorator, **this template cannot even be loaded** by the
-installed toolchain, let alone drafted or triggered.
+This runs on unreleased branches, installed from git by the repository's
+root package.json:
 
-The fix — finding the template model by parent type
-(`templatedata@1.0.0.TemplateData`) instead of, or in addition to, a
-decorator — is the subject of
-[accordproject/template-archive#946](https://github.com/accordproject/template-archive/issues/946),
-which is not released. Until it ships, `npm run compile` succeeds and this
-workspace's own tests pass, but `test/render.test.mjs`'s `template-engine
-render` and `template-engine trigger` checks are both tracked as expected
-failures — see that file's `expectedLoadFailures`. `@template` has
-deliberately **not** been added back: doing so would silently paper over
-the exact gap this prototype exists to surface.
-
-State has a matching gap that would remain even once template-archive#946
-ships. The toolchain recognises state only as a subclass of
-`org.accordproject.runtime@0.2.0.State`, an identified asset:
-
-- cicero-core's `Template#isStateful()` looks for concrete subclasses of
-  it, so it would classify this template as stateless.
-- template-engine binds `TemplateLogic`'s state type parameter to
-  subclasses of it, and on current `main` also asserts that returned
-  state's `$class` extends it.
-
-`StateData` is a plain, unidentified concept carried inside a
-runtime-owned agreement state, so both checks need the same
-find-by-parent-type change as the template root.
-
-## What template-engine 5.x already changes
-
-This workspace alone depends on `@accordproject/template-engine` 5.1.0
-(the rest of the repo is still on 4.0.0); `test/template-engine-5.test.ts`
-exercises it:
-
-- **Rendering without `@template`.** 5.x's `TemplateMarkTransformer` and
-  `TemplateMarkInterpreter` accept the root concept's name, so each
-  archive's sample renders with the root named explicitly. What's still
-  missing is cicero-core finding that root by its `TemplateData` parent
-  type (template-archive#946).
-- **Native `PreciseAmount` formatting.** `{{amount}}` renders as
-  `100.00 USD` with no formula, because 5.x drafts
-  `org.accordproject.money@1.PreciseAmount` natively.
-- **Concerto 5 codegen.** This workspace also compiles its models with
-  `@accordproject/concerto-cli` 4.2.0 (built on Concerto 5) rather than
-  the repo's 4.0.1. The older codegen drops the import for a type used only
-  as a map value, which breaks `IndexedAgreementState.states`. The newer
-  one represents `DateTime` as a `string`, matching what template-engine
-  5.x compiles logic against.
+- **cicero-core** finds the template model by its `TemplateData` parent
+  type, or by `accordproject.templateModel`, and state by `StateData`,
+  alongside runtime@0.2.0 templates
+  ([template-archive#946](https://github.com/accordproject/template-archive/pull/946),
+  [#950](https://github.com/accordproject/template-archive/pull/950)).
+- **template-engine** adds the logic API, the agreement runtime, codegen
+  and the testing helpers, and drafts by the named template model
+  ([template-engine#187](https://github.com/accordproject/template-engine/pull/187)).
+- **Concerto**: concerto-core 5.0.0's ESM build reports its own version as
+  `5.0.0-beta.2`, which rejects the `concerto version "^5.0.0"` the 1.0.0
+  namespaces declare
+  ([concerto#1462](https://github.com/accordproject/concerto/issues/1462)).
+  These tests load concerto-core only through cicero-core and
+  template-engine, whose CommonJS builds report 5.0.0.

@@ -32,15 +32,14 @@ export interface IResponse extends ITransaction {
 export type ResponseUnion = IReminderSent | 
 ILatePaymentDischarged;
 
-export type ClauseStates = Map<string, IStateData>;
+export type InstanceStates = Map<string, IStateData>;
 
 export interface IAgreementState extends IAsset {
    stateId: string;
    agreement: IAgreement;
    revision: number;
    effectiveAt: string;
-   data?: IStateData;
-   clauseStates?: ClauseStates;
+   states?: InstanceStates;
    stateHash?: IContentHash;
    previousStateHash?: IContentHash;
 }

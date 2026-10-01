@@ -2,13 +2,14 @@
     "name": "copyright-license-agreement-poc",
     "displayName": "Copyright License (agreement@1.0.0 migration prototype)",
     "version": "0.1.0",
-    "description": "Prototype migration of copyright-license's nested PaymentClause onto the model design proposed in accordproject/models#200, extended with composed executable clauses (design B) and a proposed logic API: defineLogic handlers taking (request, self), run in transactions by a prototype engine.",
+    "description": "Prototype migration of copyright-license's nested PaymentClause onto the org.accordproject 1.0.0 namespaces (accordproject/models#200 and #205): an agreement of template instances, with a late payment clause (late-payment-poc) composed into the licence and a licensed work schedule (licensed-work-schedule-poc) alongside it, and logic written with template-engine's defineLogic API.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "template": "contract",
-        "cicero": "^2.0.0"
+        "cicero": "^2.0.0",
+        "templateModel": "poc.accordproject.copyrightlicense@0.1.0.CopyrightLicenseData"
     },
     "keywords": [
         "clause",
@@ -16,18 +17,14 @@
         "license",
         "agreement",
         "prototype",
-        "models#200"
+        "agreement-1.0"
     ],
     "scripts": {
         "test": "vitest run",
-        "compile": "concerto compile --offline --model model/@*.cto model/composition.cto model/model.cto composed/late-payment/model/model.cto documents/licensed-work-schedule/model/model.cto --target typescript --output logic/generated && concerto compile --offline --model model/@*.cto composed/late-payment/model/model.cto --target typescript --output composed/late-payment/logic/generated && node scripts/generate-types.js logic/generated model composed/late-payment/model documents/licensed-work-schedule/model && node scripts/generate-types.js composed/late-payment/logic/generated model composed/late-payment/model"
+        "compile": "template-engine-codegen --offline"
     },
     "tags": [
         "intellectual-property",
         "prototype"
-    ],
-    "devDependencies": {
-        "@accordproject/concerto-cli": "4.2.0",
-        "@accordproject/template-engine": "5.1.0"
-    }
+    ]
 }

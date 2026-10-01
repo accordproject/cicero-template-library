@@ -70,11 +70,9 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IObligationTransition
-} from './org.accordproject.obligation@1.0.0';
-import type {
+	IObligationTransition,
 	IObligationIssued
-} from './poc.accordproject.composition@0.1.0';
+} from './org.accordproject.obligation@1.0.0';
 import type {
 	IPaymentReminder
 } from './poc.accordproject.latepayment@0.1.0';

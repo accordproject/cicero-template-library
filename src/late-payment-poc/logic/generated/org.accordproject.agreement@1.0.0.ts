@@ -11,7 +11,9 @@ import {IConcept,IAsset} from './concerto@1.0.0';
 // interfaces
 export interface IClause extends IConcept {
    template: ITemplateReference;
-   clauseId?: string;
+   clauseId: string;
+   data: ITemplateData;
+   clauses?: Clauses;
    clauseHash?: IContentHash;
 }
 
@@ -41,6 +43,7 @@ export interface IAgreement extends IAsset {
 export interface IAgreementReference extends IConcept {
    agreementId: string;
    agreementHash?: IContentHash;
+   documentId?: string;
    template?: ITemplateReference;
    clausePath?: string;
    clauseHash?: IContentHash;

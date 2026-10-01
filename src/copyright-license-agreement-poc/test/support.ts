@@ -2,44 +2,46 @@
 import { createHash } from 'crypto';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
-import { ModelManager } from '@accordproject/concerto-core';
+import { Template } from '@accordproject/cicero-core';
+import { AgreementProcessor } from '@accordproject/template-engine';
 import { ContentHash, HashAlgorithm, PreciseAmount, TemplateReference, Unit } from '../logic/generated/types';
 import { HashAlgorithmType, HashEncoding } from '../logic/generated/org.accordproject.crypto@1.0.0';
 
 export const ROOT = join(__dirname, '..');
 
-/** Each archive in this prototype, by templateId. */
-export const ARCHIVES = {
+/** The templates an agreement of a licence is made of, by templateId (each one's package name). */
+export const TEMPLATES = {
     'copyright-license-agreement-poc': '.',
-    'late-payment': 'composed/late-payment',
-    'licensed-work-schedule': 'documents/licensed-work-schedule',
+    'late-payment-poc': '../late-payment-poc',
+    'licensed-work-schedule-poc': '../licensed-work-schedule-poc',
 } as const;
 
+export type TemplateId = keyof typeof TEMPLATES;
+
 export const read = (...path: string[]) => readFileSync(join(ROOT, ...path), 'utf8');
-export const sample = (dir: string) => JSON.parse(read(dir, 'sample.json'));
+export const sample = (templateId: TemplateId) => JSON.parse(read(TEMPLATES[templateId], 'sample.json'));
 
-/** Every archive's models in one model manager, as a host loading the whole agreement would. */
-export function loadModels(dirs: string[] = Object.values(ARCHIVES)): ModelManager {
-    const models = new ModelManager();
-    for (const dir of new Set(dirs)) {
-        for (const file of readdirSync(join(ROOT, dir, 'model'))) {
-            models.addCTOModel(read(dir, 'model', file), join(dir, file), true);
-        }
-    }
-    models.validateModelFiles();
-    return models;
-}
+/** A template, loaded as the engine loads it. */
+export const loadTemplate = (templateId: TemplateId): Promise<Template> =>
+    Template.fromDirectory(join(ROOT, TEMPLATES[templateId]), { offline: true });
 
-/** A template@1.0.0 TemplateReference, hashing the archive's model, text and logic as a stand-in for its archive hash. */
-export function templateReference(templateId: keyof typeof ARCHIVES) {
-    const dir = ARCHIVES[templateId];
+/** This template's models, which include the late payment clause's and the schedule's. */
+export const loadModels = async () => (await loadTemplate('copyright-license-agreement-poc')).getModelManager();
+
+/** An engine for agreements of these templates. */
+export const loadAgreementProcessor = async () =>
+    new AgreementProcessor(await Promise.all((Object.keys(TEMPLATES) as TemplateId[]).map(loadTemplate)));
+
+/** A template@1.0.0 TemplateReference, hashing the template's model, text and logic as a stand-in for its archive hash. */
+export function templateReference(templateId: TemplateId) {
+    const dir = TEMPLATES[templateId];
     const hash = createHash('sha256');
     for (const part of ['model', 'text', 'logic']) {
         let files: string[] = [];
         try {
             files = readdirSync(join(ROOT, dir, part)).filter(f => f.includes('.')).sort();
         } catch {
-            // A stateless archive has no logic.
+            // A stateless template has no logic.
         }
         for (const file of files) {
             hash.update(`${part}/${file}\n`).update(read(dir, part, file));

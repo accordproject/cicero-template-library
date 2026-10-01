@@ -1,19 +1,19 @@
 // The logic API's typing (test/types.check.ts), and the generated factories.
 import { spawnSync } from 'child_process';
 import * as licenceTypes from '../logic/generated/types';
-import * as latePaymentTypes from '../composed/late-payment/logic/generated/types';
+import * as latePaymentTypes from '../../late-payment-poc/logic/generated/types';
 import { ROOT, loadModels } from './support';
 
 describe('typing', () => {
-    it('type-checks the runtime, both logic files, and the compile-time checks, in strict mode', () => {
+    it('type-checks both logic files, and the compile-time checks, against the engine\'s logic API, in strict mode', () => {
         const tsc = spawnSync(process.execPath, [require.resolve('typescript/bin/tsc'), '-p', ROOT], { encoding: 'utf8' });
 
         expect(tsc.stdout + tsc.stderr).toBe('');
         expect(tsc.status).toBe(0);
     }, 60_000);
 
-    it("generates a factory, under its own name, for every concrete type in each archive's models", () => {
-        const models = loadModels();
+    it("generates a factory, under its own name, for every concrete type in each template's models", async () => {
+        const models = await loadModels();
         for (const factories of [licenceTypes, latePaymentTypes]) {
             for (const [name, type] of Object.entries(factories)) {
                 const declaration = models.getType(type.$class);

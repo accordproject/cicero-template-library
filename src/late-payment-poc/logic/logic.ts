@@ -12,7 +12,7 @@ import {
     PaymentSettled,
     ReminderSent,
 } from './generated/types';
-import { ApiOf, Self, defineLogic } from '../../../runtime/logic';
+import { ApiOf, Self, defineLogic } from '@accordproject/template-engine/logic';
 
 export type LatePaymentClause = Self<ILatePaymentData, ILatePaymentState>;
 

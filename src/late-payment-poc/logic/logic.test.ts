@@ -1,13 +1,22 @@
 // @ts-nocheck - test fixtures are plain JSON
 import latePayment from './logic';
 import { LatePaymentDischarged, LatePaymentState, PaymentOverdue, PaymentSettled } from './generated/types';
-import { testInstance } from '../../../runtime/testing';
-import { at, loadModels, sample } from '../../../test/support';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { Template } from '@accordproject/cicero-core';
+import { testInstance } from '@accordproject/template-engine/testing';
 
-const models = loadModels();
+const ROOT = join(__dirname, '..');
+const data = JSON.parse(readFileSync(join(ROOT, 'sample.json'), 'utf8'));
+const at = (seconds: number) => new Date(Date.UTC(2018, 0, 2, 0, 0, seconds)).toISOString();
+
+let models;
+beforeAll(async () => {
+    models = (await Template.fromDirectory(ROOT, { offline: true })).getModelManager();
+});
 
 describe('late payment clause logic', () => {
-    const clause = (state?) => testInstance({ data: sample('composed/late-payment'), state, models });
+    const clause = (state?) => testInstance({ data, state, models });
 
     const initialState = async () => {
         const self = clause();

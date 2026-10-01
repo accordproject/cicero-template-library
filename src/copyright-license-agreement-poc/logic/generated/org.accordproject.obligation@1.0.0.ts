@@ -89,6 +89,10 @@ export interface IObligationTransition extends IEvent {
    revision: number;
 }
 
+export interface IObligationIssued extends IEvent {
+   obligation: IObligation;
+}
+
 export interface IFulfilmentAttempt extends IAsset {
    attemptId: string;
    obligation: IObligation;

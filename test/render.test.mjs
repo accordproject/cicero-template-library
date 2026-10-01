@@ -53,37 +53,10 @@ const expectedFailures = new Set([
     'volumediscountulist',
 ]);
 
-// copyright-license-agreement-poc is a prototype migration onto the model
-// design proposed in accordproject/models#200 ("Agreement 1.0 Model
-// Redesign"). Per that design, a template's model has no `@template`
-// decorator: the renderable root is found by its *parent type* — a
-// template's model declares exactly one concrete subtype of
-// `templatedata@1.0.0.TemplateData`, and that subtype IS the template
-// model (see model/model.cto's `CopyrightLicenseData`).
-//
-// The *installed* @accordproject/cicero-core (2.1.1, and the copy vendored
-// inside @accordproject/template-engine) doesn't know that rule yet:
-// `Template#getTemplateModel()` calls markdown-template's
-// `findTemplateConcept()`, which unconditionally requires exactly one
-// concrete concept carrying `@template` and throws "Failed to find a
-// concept with the @template decorator" otherwise. That call isn't only
-// on the rendering path — `Template#validate()` calls it unconditionally,
-// and `Template.fromDirectory()` calls `validate()`, so *loading* this
-// template at all (not just drafting or triggering it) throws with
-// today's toolchain. The fix is accordproject/template-archive#946, which
-// is not released; until it ships this template cannot be loaded, drafted,
-// or triggered through cicero-core/template-engine. See
-// src/copyright-license-agreement-poc/README.md.
-//
-// This is intentional — re-adding `@template` would just paper over the
-// gap this prototype exists to demonstrate — so it's tracked as its own
-// set (a strict superset of `expectedFailures`: a template here can't
-// even be *loaded*, let alone drafted or triggered) rather than folded
-// into `expectedFailures` above, whose entries load and trigger fine and
-// fail only at the drafting step.
-const expectedLoadFailures = new Set([
-    'copyright-license-agreement-poc', // template-archive#946
-]);
+// Templates that are known not to load at all with today's toolchain, a
+// strict superset of `expectedFailures` (a template here can't be drafted,
+// triggered or initialized either). None at present.
+const expectedLoadFailures = new Set([]);
 
 // Only templates with compiled logic can be triggered/initialized.
 const hasLogic = (templatePath) => existsSync(join(templatePath, 'logic', 'logic.ts'));
