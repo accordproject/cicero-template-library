@@ -241,12 +241,12 @@ footer.colophon { border-top: 1px solid var(--rule); padding-top: 1.2rem; font-s
   <h1>Every template, <i>one agreement.</i></h1>
   <p class="lede">Ten changes to how Accord Project templates are modelled, written and run. Each stop names what template authors change, what they get, and the code that proves it.</p>
   <p class="manifest">
-    <span><b>14</b> commits</span>
-    <span><b>65</b> files</span>
-    <span><b>54</b> tests passing</span>
-    <span><b>8</b> models#200 namespaces, verbatim</span>
-    <span><b>4</b> proposed types</span>
-    <span><b>48</b> generated factories</span>
+    <span><b>16</b> commits</span>
+    <span><b>72</b> files</span>
+    <span><b>43</b> tests passing</span>
+    <span><b>8</b> models#205 namespaces, verbatim</span>
+    <span><b>4</b> models#205 changes</span>
+    <span><b>45</b> generated factories</span>
   </p>
 </header>
 
@@ -265,8 +265,8 @@ footer.colophon { border-top: 1px solid var(--rule); padding-top: 1.2rem; font-s
     <div><span class="shape-label">Shape</span><pre class="shape mono">concept CopyrightLicenseData extends TemplateData { … }
 concept CopyrightLicenseState extends StateData { … }</pre></div>
     <dl class="anatomy">
-      <dt>TemplateData</dt><dd>The root is found by its parent type, so <code>@template</code> goes, and so does the <code>Contract</code> envelope.</dd>
-      <dt>StateData</dt><dd>State has the same shape as data. The runtime wraps it with identity and a revision.</dd>
+      <dt>TemplateData</dt><dd>The root is found by its parent type, so <code>@template</code> goes, and so does the <code>Contract</code> envelope. Where the models hold several <code>TemplateData</code> types, package.json's <code>accordproject.templateModel</code> names the root.</dd>
+      <dt>StateData</dt><dd>State has the same shape as data, and is found the same way. The runtime wraps it with identity and a revision.</dd>
       <dt>PartyRef</dt><dd>A portable reference to a party. It replaces eight loose strings per licence, and a relationship that logic could never resolve.</dd>
       <dt>PreciseAmount</dt><dd>An integer <code>unscaledValue</code> plus a unit with a <code>scale</code>: $100.00 is <code>"10000"</code> at scale 2, and arithmetic is exact <code>BigInt</code>.</dd>
       <dt>@1.0.0</dt><dd>Every base namespace is versioned. A published version never changes, so a template's types are fixed at compile time.</dd>
@@ -288,6 +288,7 @@ concept CopyrightLicenseState extends StateData { … }</pre></div>
       <a class="receipt" href="https://github.com/accordproject/models/pull/200">models#200 · head 337cc68</a>
       <span class="receipt">7101b7a · 2026-09-04</span>
       <span class="receipt">b8c8e45 · 2026-10-01</span>
+      <a class="receipt" href="https://github.com/accordproject/template-archive/pull/946">template-archive#946, #950</a>
     </div>
   </div>
   <div class="bundle">
@@ -341,8 +342,8 @@ concept PaymentTerms {
   </div>
   <div class="brief">
     <p class="claim">A document is the root template instance. Each clause composed into it is a child instance, with its own template and its own data. Inline clauses stay where they are, inside their template's data.</p>
-    <div><span class="shape-label">Shape</span><pre class="shape mono">AgreementDocument { documentId, template, data, clauses: map&lt;path, ComposedClause&gt; }
-ComposedClause extends Clause { clauseId, template, data, clauses? }</pre></div>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">AgreementDocument { documentId, template, data, clauses: map&lt;path, Clause&gt; }
+Clause { template, clauseId, data, clauses?, clauseHash? }</pre></div>
     <dl class="anatomy">
       <dt>documentId</dt><dd>The document's instance id.</dd>
       <dt>clauses key</dt><dd>Where the clause sits in its parent's grammar, e.g. <code>latePayment</code>.</dd>
@@ -360,18 +361,18 @@ ComposedClause extends Clause { clauseId, template, data, clauses? }</pre></div>
       </ul></div>
     </div>
     <div class="receipts">
-      <span class="receipt">Proposed · ComposedClause</span>
-      <span class="receipt">b08a8d2 · 2026-10-01</span>
+      <a class="receipt" href="https://github.com/accordproject/models/pull/205">models#205 · Clause</a>
+      <span class="receipt">4da9026 · 2026-10-01</span>
     </div>
   </div>
   <div class="bundle">
     <h3>The example agreement</h3>
-    <p>One licence with an inline payment clause and a composed late payment clause, plus a stateless schedule describing the licensed work.</p>
+    <p>One licence with an inline payment clause and a composed late payment clause, plus a stateless schedule describing the licensed work. Each instance names its template by <code>templateId</code>: three sibling templates in the library.</p>
 <pre class="tree mono">Agreement <b>licence-001</b>
 ├─ <span class="doc">Document licence</span>          <span class="tpl">copyright-license-agreement-poc</span>
 │  ├─ <span class="inl">data.paymentTerms</span>        <span class="tpl">inline clause</span>
-│  └─ clauses.latePayment     <span class="tpl">→ licence/late-payment · late-payment</span>
-└─ <span class="doc">Document schedule-1</span>       <span class="tpl">licensed-work-schedule · stateless</span></pre>
+│  └─ clauses.latePayment     <span class="tpl">→ licence/late-payment · late-payment-poc</span>
+└─ <span class="doc">Document schedule-1</span>       <span class="tpl">licensed-work-schedule-poc · stateless</span></pre>
   </div>
 </section>
 
@@ -386,8 +387,8 @@ ComposedClause extends Clause { clauseId, template, data, clauses? }</pre></div>
     <h2 id="strongroom-h">One index of state, <i>keyed by instance.</i></h2>
   </div>
   <div class="brief">
-    <p class="claim">The agreement's state is one flat index from instance id to that instance's own <code>StateData</code>. It replaces models#200's <code>data</code> and <code>clauseStates</code>.</p>
-    <div><span class="shape-label">Shape</span><pre class="shape mono">IndexedAgreementState { stateId, agreement, revision, effectiveAt, states: map&lt;instanceId, StateData&gt; }</pre></div>
+    <p class="claim">The agreement's state is one flat index from instance id to that instance's own <code>StateData</code>. In models#205 it replaces models#200's <code>data</code> and <code>clauseStates</code>.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">AgreementState { stateId, agreement, revision, effectiveAt, states: map&lt;instanceId, StateData&gt; }</pre></div>
     <dl class="anatomy">
       <dt>states</dt><dd>One entry per stateful instance. A stateless instance has none.</dd>
       <dt>revision</dt><dd>Goes up by one for each request the agreement commits.</dd>
@@ -404,14 +405,14 @@ ComposedClause extends Clause { clauseId, template, data, clauses? }</pre></div>
       </ul></div>
     </div>
     <div class="receipts">
-      <span class="receipt">Proposed · IndexedAgreementState</span>
-      <span class="receipt">b08a8d2 · 2026-10-01</span>
+      <a class="receipt" href="https://github.com/accordproject/models/pull/205">models#205 · AgreementState.states</a>
+      <span class="receipt">4da9026 · 2026-10-01</span>
     </div>
   </div>
   <div class="bundle">
     <h3>After the licensee is chased once</h3>
 <pre class="code">{
-  <span class="s">"$class"</span>: "poc.accordproject.composition@0.1.0.IndexedAgreementState",
+  <span class="s">"$class"</span>: "org.accordproject.runtime@1.0.0.AgreementState",
   <span class="s">"stateId"</span>: "licence-001-state",
   <span class="s">"revision"</span>: 2,
   <span class="s">"states"</span>: {
@@ -445,7 +446,7 @@ ComposedClause extends Clause { clauseId, template, data, clauses? }</pre></div>
     </dl>
     <div class="pair">
       <div><h3>Template authors change</h3><ul>
-        <li>Replace <code>class … extends TemplateLogic</code> and its switch with <code>defineLogic()</code>.</li>
+        <li>Replace <code>class … extends TemplateLogic</code> and its switch with <code>defineLogic()</code>, from <code>@accordproject/template-engine/logic</code>.</li>
         <li>Handlers take <code>(request, self)</code> instead of <code>(data, request, state)</code>.</li>
       </ul></div>
       <div class="gets"><h3>What you get</h3><ul>
@@ -455,8 +456,8 @@ ComposedClause extends Clause { clauseId, template, data, clauses? }</pre></div>
       </ul></div>
     </div>
     <div class="receipts">
-      <span class="receipt">runtime/logic.ts</span>
-      <span class="receipt">b8c8e45 · 2026-10-01</span>
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/agreement/logic.ts</a>
+      <span class="receipt">ef3c58a · 2026-10-01</span>
     </div>
   </div>
   <div class="bundle">
@@ -477,7 +478,7 @@ ComposedClause extends Clause { clauseId, template, data, clauses? }</pre></div>
   }
 }</pre></figure>
       <figure><figcaption class="after">After · one handler per type</figcaption>
-<pre class="code">export default defineLogic&lt;Licence&gt;()
+<pre class="code">const copyrightLicense = defineLogic&lt;Licence&gt;()
   .init(licence =&gt; { … })
   .on(PaymentRequest,
     async (request, licence): Promise&lt;IPayOut&gt; =&gt; {
@@ -568,8 +569,8 @@ return licence.data.workDescription;</pre>
       </ul></div>
     </div>
     <div class="receipts">
-      <span class="receipt">runtime/execute.ts</span>
-      <span class="receipt">test/runtime.test.ts</span>
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/agreement/execute.ts</a>
+      <span class="receipt">test/AgreementLogic.test.ts</span>
     </div>
   </div>
   <div class="bundle">
@@ -602,6 +603,7 @@ return licence.data.workDescription;</pre>
       <dt>.is()</dt><dd>Checks a value's type and narrows it.</dd>
       <dt>.ref()</dt><dd>Makes a relationship to an identified instance.</dd>
       <dt>Request types</dt><dd>Also the keys handlers register under.</dd>
+      <dt>types.ts</dt><dd>Generated into <code>logic/generated/</code> by <code>template-engine-codegen</code>: one <code>conceptType</code> or <code>identifiedType</code> factory per concrete type. The engine supplies the same factories at runtime.</dd>
     </dl>
     <div class="pair">
       <div><h3>Template authors change</h3><ul>
@@ -609,11 +611,11 @@ return licence.data.workDescription;</pre>
       </ul></div>
       <div class="gets"><h3>What you get</h3><ul>
         <li>A mistyped or hand-written <code>$class</code> doesn't compile.</li>
-        <li>Generated by <code>npm run compile</code>: 48 factories for the licence.</li>
+        <li>Generated by <code>npm run compile</code>: 45 factories for the licence.</li>
       </ul></div>
     </div>
     <div class="receipts">
-      <span class="receipt">scripts/generate-types.js</span>
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/agreement/codegen.ts</a>
       <span class="receipt">98aeb04 · 2026-10-01</span>
     </div>
   </div>
@@ -650,9 +652,9 @@ return licence.data.workDescription;</pre>
     <div><span class="shape-label">Shape</span><pre class="shape mono">ObligationIssued { obligation }
 ObligationTransition { obligation: ref, fromStatus, toStatus, effectiveAt, revision }</pre></div>
     <dl class="anatomy">
-      <dt>Issued</dt><dd>Emitted by <code>init</code>. Proposed for models#200.</dd>
+      <dt>Issued</dt><dd>Emitted by <code>init</code>. Added by models#205.</dd>
       <dt>Transition</dt><dd>Carries an accurate <code>fromStatus</code> and <code>revision</code>, so the registry can check each one.</dd>
-      <dt>Reference</dt><dd>Names the agreement, document and clause path. The proposed <code>DocumentReference</code> adds the document.</dd>
+      <dt>Reference</dt><dd>An <code>AgreementReference</code> naming the agreement, document and clause path. Its <code>documentId</code> is new in models#205.</dd>
     </dl>
     <div class="pair">
       <div><h3>Template authors change</h3><ul>
@@ -664,7 +666,7 @@ ObligationTransition { obligation: ref, fromStatus, toStatus, effectiveAt, revis
       </ul></div>
     </div>
     <div class="receipts">
-      <span class="receipt">Proposed · ObligationIssued, DocumentReference</span>
+      <a class="receipt" href="https://github.com/accordproject/models/pull/205">models#205 · ObligationIssued, documentId</a>
       <span class="receipt">1b63b32 · 2026-09-30</span>
     </div>
   </div>
@@ -694,7 +696,7 @@ ObligationTransition { obligation: ref, fromStatus, toStatus, effectiveAt, revis
   <div class="brief">
     <p class="claim">Unit tests get a <code>self</code> that runs on the engine's own transaction code and records what the engine would commit. Composed clauses are replaced by typed stand-ins.</p>
     <dl class="anatomy">
-      <dt>testInstance</dt><dd>A <code>self</code> for one template, with optional cousin documents, validated against the models.</dd>
+      <dt>testInstance</dt><dd>A <code>self</code> for one template, with optional cousin documents, validated against the models. From <code>@accordproject/template-engine/testing</code>, like <code>stubClause</code>.</dd>
       <dt>stubClause</dt><dd>A stand-in clause, typed by the clause's API, which records the requests it gets.</dd>
       <dt>types.check.ts</dt><dd>Compile-time checks of the API, run with <code>tsc</code>.</dd>
     </dl>
@@ -708,8 +710,8 @@ ObligationTransition { obligation: ref, fromStatus, toStatus, effectiveAt, revis
       </ul></div>
     </div>
     <div class="receipts">
-      <span class="receipt">runtime/testing.ts</span>
-      <span class="receipt">54 tests passing</span>
+      <span class="receipt">@accordproject/template-engine/testing</span>
+      <span class="receipt">43 tests passing</span>
     </div>
   </div>
   <div class="bundle">
@@ -737,18 +739,24 @@ expect(self.committed.state).toEqual(state);</pre>
     <h2 id="lodge-h">Run an agreement <i>as a stateless function.</i></h2>
   </div>
   <div class="brief">
-    <p class="claim">The engine's entry points take JSON and return JSON. One invocation loads the state, executes, and commits with a conditional write on the revision.</p>
-    <div><span class="shape-label">Shape</span><pre class="shape mono">execute({ agreement, documents, state@N }, documentId, request)
+    <p class="claim"><code>AgreementProcessor</code>'s entry points take JSON and return JSON, and run an agreement over several templates. One invocation loads the state, executes, and commits with a conditional write on the revision.</p>
+    <div><span class="shape-label">Shape</span><pre class="shape mono">initialise(agreement, documents, effectiveAt)
+  → { state@0, events }
+execute({ agreement, documents, state@N }, documentId, request)
   → { result, events, state@N+1 }</pre></div>
     <div class="pair">
       <div><h3>Template authors change</h3><ul>
-        <li>Nothing.</li>
+        <li>Nothing. Legacy <code>TemplateLogic</code> templates run unchanged.</li>
       </ul></div>
       <div class="gets"><h3>What you get</h3><ul>
         <li>Serverless hosting with no state held between calls.</li>
         <li>Safe retries, because logic is deterministic.</li>
         <li>The agreement as the unit of deployment: composed clauses run in the same invocation as their parent.</li>
+        <li>Each template still runs alone: <code>TemplateArchiveProcessor</code>'s <code>init</code> and <code>trigger</code> run it as the one document of an agreement.</li>
       </ul></div>
+    </div>
+    <div class="receipts">
+      <a class="receipt" href="https://github.com/accordproject/template-engine/pull/187">template-engine#187 · src/AgreementProcessor.ts</a>
     </div>
   </div>
   <div class="bundle">
@@ -770,14 +778,14 @@ expect(self.committed.state).toEqual(state);</pre>
   <p>In the order to do them, for each template.</p>
   <ol class="checklist">
     <li>Import the <code>@1.0.0</code> base namespaces, and <code>Request</code> and <code>Response</code> from <code>runtime@1.0.0</code>.</li>
-    <li>Remove <code>@template</code>; make the root extend <code>TemplateData</code>, and add one <code>StateData</code> subtype if the template keeps state.</li>
+    <li>Remove <code>@template</code>; make the root extend <code>TemplateData</code>, and add one <code>StateData</code> subtype if the template keeps state. If the models hold several <code>TemplateData</code> types, name the root in package.json's <code>accordproject.templateModel</code>.</li>
     <li>Use <code>PreciseAmount</code> for money and <code>PartyRef</code> for parties.</li>
     <li>Optionally, move a reusable clause into its own archive and compose it in.</li>
-    <li>Replace the <code>TemplateLogic</code> class and its switch with <code>defineLogic().init().on()</code>.</li>
-    <li>Make every value with a generated factory, and delete hand-written <code>$class</code> strings.</li>
+    <li>Replace the <code>TemplateLogic</code> class and its switch with <code>defineLogic().init().on()</code> from <code>@accordproject/template-engine/logic</code>.</li>
+    <li>Make every value with a factory generated by <code>npm run compile</code>, and delete hand-written <code>$class</code> strings.</li>
     <li>Take timestamps from the request or the data, never the clock.</li>
     <li>Emit obligation events, and keep only facts in state.</li>
-    <li>Test with <code>testInstance</code> and <code>stubClause</code>.</li>
+    <li>Test with <code>testInstance</code> and <code>stubClause</code> from <code>@accordproject/template-engine/testing</code>.</li>
   </ol>
 </section>
 
@@ -797,33 +805,32 @@ expect(self.committed.state).toEqual(state);</pre>
       <tr><td>Parties as <code>PartyRef</code></td><td><span class="kind models">models#200</span></td><td>party@1.0.0</td></tr>
       <tr><td>Exact money with <code>PreciseAmount</code></td><td><span class="kind models">models#200</span></td><td>money@1.0.0</td></tr>
       <tr><td>Payment obligations and transitions</td><td><span class="kind models">models#200</span></td><td>obligation@1.0.0</td></tr>
-      <tr><td>Composed clauses carry their own data</td><td><span class="kind proposed">Proposed</span></td><td><code>ComposedClause</code></td></tr>
-      <tr><td>One state index keyed by instance id</td><td><span class="kind proposed">Proposed</span></td><td><code>IndexedAgreementState</code></td></tr>
-      <tr><td>References name their document</td><td><span class="kind proposed">Proposed</span></td><td><code>DocumentReference</code></td></tr>
-      <tr><td>Issuing an obligation is an event</td><td><span class="kind proposed">Proposed</span></td><td><code>ObligationIssued</code></td></tr>
-      <tr><td><code>defineLogic</code> handlers taking <code>(request, self)</code></td><td><span class="kind engine">Engine</span></td><td>runtime/logic.ts</td></tr>
-      <tr><td>Read-only tree views around <code>self</code></td><td><span class="kind engine">Engine</span></td><td>runtime/execute.ts</td></tr>
-      <tr><td>Buffered, nested transactions</td><td><span class="kind engine">Engine</span></td><td>runtime/execute.ts</td></tr>
-      <tr><td>JSON-to-JSON <code>execute</code> and <code>initialise</code></td><td><span class="kind engine">Engine</span></td><td>runtime/execute.ts</td></tr>
-      <tr><td>Generated type factories</td><td><span class="kind engine">Engine</span></td><td>scripts/generate-types.js</td></tr>
-      <tr><td><code>testInstance</code> and <code>stubClause</code></td><td><span class="kind engine">Engine</span></td><td>runtime/testing.ts</td></tr>
-      <tr><td>The licence and late payment clause, ported</td><td><span class="kind template">Template</span></td><td>logic/, composed/late-payment/</td></tr>
+      <tr><td>Composed clauses carry their own data</td><td><span class="kind proposed">models#205</span></td><td>agreement@1.0.0 <code>Clause</code></td></tr>
+      <tr><td>One state index keyed by instance id</td><td><span class="kind proposed">models#205</span></td><td>runtime@1.0.0 <code>AgreementState</code></td></tr>
+      <tr><td>References name their document</td><td><span class="kind proposed">models#205</span></td><td>agreement@1.0.0 <code>AgreementReference</code></td></tr>
+      <tr><td>Issuing an obligation is an event</td><td><span class="kind proposed">models#205</span></td><td>obligation@1.0.0 <code>ObligationIssued</code></td></tr>
+      <tr><td>Template model found by parent type or <code>templateModel</code>; state by <code>StateData</code></td><td><span class="kind engine">cicero-core</span></td><td>template-archive#946, #950</td></tr>
+      <tr><td><code>defineLogic</code> handlers taking <code>(request, self)</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/logic.ts</td></tr>
+      <tr><td>Read-only tree views around <code>self</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/execute.ts</td></tr>
+      <tr><td>Buffered, nested transactions</td><td><span class="kind engine">Engine</span></td><td>src/agreement/execute.ts</td></tr>
+      <tr><td>JSON-to-JSON <code>execute</code> and <code>initialise</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/execute.ts, src/AgreementProcessor.ts</td></tr>
+      <tr><td>Generated type factories</td><td><span class="kind engine">Engine</span></td><td>template-engine-codegen</td></tr>
+      <tr><td><code>testInstance</code> and <code>stubClause</code></td><td><span class="kind engine">Engine</span></td><td>src/agreement/testing.ts</td></tr>
+      <tr><td>The licence, late payment clause and schedule, as three templates</td><td><span class="kind template">Template</span></td><td>copyright-license-agreement-poc, late-payment-poc, licensed-work-schedule-poc</td></tr>
     </tbody>
   </table></div>
 
   <h3 class="kicker" style="margin-top:1rem">Not yet possible</h3>
   <ul class="plain">
-    <li>cicero-core can't load a template without <code>@template</code> (<a href="https://github.com/accordproject/template-archive/issues/946">template-archive#946</a>).</li>
-    <li>template-engine and cicero-core hardcode <code>runtime@0.2.0</code> and a <code>TemplateLogic</code> base class, so this logic runs on the prototype engine.</li>
-    <li>TemplateMark can't place a composed clause in its parent's text.</li>
+    <li>It runs on unreleased branches (models#205, template-engine#187, template-archive#946 and #950), installed from git dist branches.</li>
+    <li>TemplateMark can't place a composed clause in its parent's text: its <code>ClauseDefinition</code> can't name a composed template.</li>
     <li>Nothing yet resolves a <code>TemplateReference</code> to an archive.</li>
     <li>concerto-core 5.0.0's ESM build rejects <code>concerto version "^5.0.0"</code> (<a href="https://github.com/accordproject/concerto/issues/1462">concerto#1462</a>, fix in <a href="https://github.com/accordproject/concerto/pull/1463">#1463</a>).</li>
-    <li>Factories come from a workspace script, not from Concerto's codegen.</li>
   </ul>
 </section>
 
 <footer class="colophon">
-  <p>The prototype lives in <code>src/copyright-license-agreement-poc</code> on <a href="https://github.com/accordproject/cicero-template-library/pull/528">cicero-template-library#528</a>, built on <a href="https://github.com/accordproject/models/pull/200">models#200</a>. Related: <a href="https://github.com/accordproject/template-engine/issues/186">template-engine#186</a>.</p>
+  <p>The example lives in <code>src/copyright-license-agreement-poc</code>, <code>src/late-payment-poc</code> and <code>src/licensed-work-schedule-poc</code> on <a href="https://github.com/accordproject/cicero-template-library/pull/528">cicero-template-library#528</a>, built on <a href="https://github.com/accordproject/models/pull/200">models#200</a> and <a href="https://github.com/accordproject/models/pull/205">models#205</a>, and run by <a href="https://github.com/accordproject/template-engine/pull/187">template-engine#187</a> and cicero-core from <a href="https://github.com/accordproject/template-archive/pull/946">template-archive#946</a> and <a href="https://github.com/accordproject/template-archive/pull/950">#950</a>. Related: <a href="https://github.com/accordproject/template-engine/issues/186">template-engine#186</a>.</p>
 </footer>
 
 </main>

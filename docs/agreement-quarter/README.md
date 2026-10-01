@@ -1,9 +1,11 @@
 # The Agreement Quarter
 
-A walkthrough page for the Agreement 1.0 template proposal prototyped in
-`src/copyright-license-agreement-poc` (PR #528): what changes for template
-authors, what they get, and the code behind each change. Open `index.html`
-in a browser.
+A walkthrough page for the Agreement 1.0 template proposal, as implemented
+in accordproject/models#205, template-engine#187 and template-archive#946
+and #950, and shown by `src/copyright-license-agreement-poc` and its sibling
+templates `src/late-payment-poc` and `src/licensed-work-schedule-poc`
+(PR #528): what changes for template authors, what they get, and the code
+behind each change. Open `index.html` in a browser.
 
 ## Plates
 
