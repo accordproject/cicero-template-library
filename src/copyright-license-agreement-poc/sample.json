@@ -1,0 +1,34 @@
+{
+  "$class": "poc.accordproject.copyrightlicense@0.2.0.CopyrightLicenseData",
+  "utcOffset": "+01:00",
+  "effectiveDate": "2018-01-01T01:00:00.000+01:00",
+  "licensee": {
+    "$class": "org.accordproject.party@1.0.0.PartyRef",
+    "partyId": "me",
+    "displayName": "Me"
+  },
+  "licensor": {
+    "$class": "org.accordproject.party@1.0.0.PartyRef",
+    "partyId": "myself",
+    "displayName": "Myself"
+  },
+  "territory": "United States",
+  "purposeDescription": "stuff",
+  "salesAccountId": "sales-account-001",
+  "paymentTerms": {
+    "$class": "poc.accordproject.copyrightlicense@0.2.0.PaymentTerms",
+    "amountText": "one hundred US Dollars",
+    "amount": {
+      "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+      "unscaledValue": "10000",
+      "unit": {
+        "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+        "currencyCode": "USD",
+        "scale": 2
+      }
+    },
+    "paymentProcedure": "bank transfer",
+    "dueDate": "2018-01-31T17:00:00.000+01:00",
+    "royaltyBasisPoints": 1000
+  }
+}

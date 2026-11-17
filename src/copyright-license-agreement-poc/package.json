@@ -1,0 +1,58 @@
+{
+    "name": "copyright-license-agreement-poc",
+    "displayName": "Copyright License (next major release prototype)",
+    "version": "0.2.0",
+    "description": "Prototype of copyright-license on the next major release of the Accord Project stack: the primary document of an agreement whose schedule of licensed works is a document of its own (schedule/), inline payment terms, the @1.0.0 base namespaces (TemplateData, StateData, PartyRef, PreciseAmount), and defineLogic logic that notifies a PaymentObligation and records each party's acceptance of the whole agreement.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "semantics": "1.0.0-draft",
+        "implements": {
+            "org.accordproject.outstanding.api": "1.0.0"
+        },
+        "slots": {
+            "latePayment": {
+                "interface": "org.accordproject.latepayment.api@^1.0.0",
+                "optional": true,
+                "bind": {
+                    "utcOffset": "utcOffset"
+                }
+            }
+        },
+        "documents": {
+            "schedule": {
+                "template": {
+                    "hash": "UNPINNED",
+                    "name": "copyright-license-schedule-poc",
+                    "version": "0.1.0",
+                    "location": "./schedule"
+                }
+            }
+        },
+        "reads": {
+            "sales": {
+                "interface": "org.accordproject.royalty.api@^1.0.0",
+                "fact": "SalesToDate",
+                "key": "salesAccountId"
+            }
+        }
+    },
+    "keywords": [
+        "clause",
+        "copyright",
+        "license",
+        "agreement",
+        "prototype",
+        "next-major"
+    ],
+    "scripts": {
+        "test": "vitest run",
+        "test:record": "RECORD_VECTORS=1 vitest run -t 'copyright licence' && vitest run",
+        "compile": "tsx scripts/codegen.mts"
+    },
+    "tags": [
+        "intellectual-property",
+        "prototype"
+    ]
+}

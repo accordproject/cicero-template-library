@@ -1,0 +1,89 @@
+{
+  "agreementHash": "af4bcad78bfe0bc8baee8e16f0d11e88f2a86e6ae4b3e908d336a5a7dff2b46e",
+  "agreementId": "copyright-licence",
+  "documents": [
+    {
+      "clauses": {
+        "late-payment": {
+          "data": {
+            "$class": "poc.accordproject.latepayment@0.1.0.LatePaymentData",
+            "lateFee": {
+              "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+              "unit": {
+                "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                "currencyCode": "USD",
+                "scale": 2
+              },
+              "unscaledValue": "2500"
+            },
+            "reminderIntervalDays": 7,
+            "reminderLimit": 3
+          },
+          "template": {
+            "hash": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
+          }
+        }
+      },
+      "data": {
+        "$class": "poc.accordproject.copyrightlicense@0.2.0.CopyrightLicenseData",
+        "effectiveDate": "2018-01-01T01:00:00.000+01:00",
+        "licensee": {
+          "$class": "org.accordproject.party@1.0.0.PartyRef",
+          "displayName": "Me",
+          "partyId": "me"
+        },
+        "licensor": {
+          "$class": "org.accordproject.party@1.0.0.PartyRef",
+          "displayName": "Myself",
+          "partyId": "myself"
+        },
+        "paymentTerms": {
+          "$class": "poc.accordproject.copyrightlicense@0.2.0.PaymentTerms",
+          "amount": {
+            "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+            "unit": {
+              "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+              "currencyCode": "USD",
+              "scale": 2
+            },
+            "unscaledValue": "10000"
+          },
+          "amountText": "one hundred US Dollars",
+          "dueDate": "2018-01-31T17:00:00.000+01:00",
+          "paymentProcedure": "bank transfer",
+          "royaltyBasisPoints": 1000
+        },
+        "purposeDescription": "stuff",
+        "salesAccountId": "sales-account-001",
+        "territory": "United States",
+        "utcOffset": "+01:00"
+      },
+      "documentHash": "bff7bc2a6632f70adb09efb503e1a9097b848259782736732a659b3c1094a69c",
+      "documentId": "licence",
+      "references": {
+        "schedule": "schedule"
+      },
+      "template": {
+        "hash": "fd34be4763078dda3823676a603190640932728c706a7adc3c6a1cb9e1df0cea"
+      }
+    },
+    {
+      "data": {
+        "$class": "poc.accordproject.copyrightlicense.schedule@0.1.0.LicensedWorksScheduleData",
+        "works": [
+          {
+            "$class": "poc.accordproject.copyrightlicense.schedule@0.1.0.LicensedWork",
+            "description": "other stuff",
+            "title": "The Work"
+          }
+        ]
+      },
+      "documentHash": "f87bb0c917c0a81211528585106d751f8fec33053000cc4ab3064857cdc598d0",
+      "documentId": "schedule",
+      "template": {
+        "hash": "4be504c4cb51fd987d9dc037924b0c422b786c1f16481ec3433cd2fc0e92a70d"
+      }
+    }
+  ],
+  "primary": "licence"
+}

@@ -1,0 +1,14 @@
+{
+  "$class": "poc.accordproject.latepayment@0.1.0.LatePaymentData",
+  "reminderLimit": 3,
+  "reminderIntervalDays": 7,
+  "lateFee": {
+    "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+    "unscaledValue": "2500",
+    "unit": {
+      "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+      "currencyCode": "USD",
+      "scale": 2
+    }
+  }
+}

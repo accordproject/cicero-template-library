@@ -1,0 +1,1 @@
+Late Payment. If any amount due under this Agreement is not paid when due, the payee shall send the payer a written reminder, and a further reminder every {{reminderIntervalDays}} days until the amount is paid, up to {{reminderLimit}} reminders in all. A late fee of {{% return formatAmount(data.lateFee) %}} becomes payable when the first reminder is sent.
