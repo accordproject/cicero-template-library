@@ -1,14 +1,31 @@
 {
     "name": "copyright-license-agreement-poc",
-    "displayName": "Copyright License (agreement@1.0.0 migration prototype)",
-    "version": "0.1.0",
-    "description": "Prototype migration of copyright-license's nested PaymentClause onto the model design proposed in accordproject/models#200: no @template decorator, the template model is a plain TemplateData subtype, and parties use a portable PartyRef instead of a relationship.",
+    "displayName": "Copyright License (next major release prototype)",
+    "version": "0.2.0",
+    "description": "Prototype of copyright-license on the next major release of the Accord Project stack: the primary document of an agreement whose schedule of licensed works is a document of its own (schedule/), inline payment terms, the @1.0.0 base namespaces (TemplateData, StateData, PartyRef, PreciseAmount), and defineLogic logic that notifies a PaymentObligation and records each party's acceptance of the whole agreement.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
-        "template": "contract",
-        "cicero": "^2.0.0"
+        "semantics": "1.0.0-draft",
+        "implements": {},
+        "slots": {
+            "latePayment": {
+                "interface": "org.accordproject.latepayment.api@^1.0.0",
+                "optional": true,
+                "bind": { "utcOffset": "utcOffset" }
+            }
+        },
+        "documents": {
+            "schedule": {
+                "template": {
+                    "hash": "UNPINNED",
+                    "name": "copyright-license-schedule-poc",
+                    "version": "0.1.0",
+                    "location": "./schedule"
+                }
+            }
+        }
     },
     "keywords": [
         "clause",
@@ -16,11 +33,12 @@
         "license",
         "agreement",
         "prototype",
-        "models#200"
+        "next-major"
     ],
     "scripts": {
         "test": "vitest run",
-        "compile": "concerto compile --model model/templatedata.cto --model model/party.cto --model model/agreement.cto --model model/model.cto --target typescript --output logic/generated"
+        "test:record": "RECORD_VECTORS=1 vitest run -t 'copyright licence' && vitest run",
+        "compile": "tsx scripts/codegen.mts"
     },
     "tags": [
         "intellectual-property",

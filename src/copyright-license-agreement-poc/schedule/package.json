@@ -1,0 +1,14 @@
+{
+    "name": "copyright-license-schedule-poc",
+    "displayName": "Copyright License: Schedule of Licensed Works (next major release prototype)",
+    "version": "0.1.0",
+    "description": "The schedule of licensed works of copyright-license-agreement-poc: a text template (no logic), a document of its own in the licence's agreement (decision 16), drafted and accepted with it.",
+    "author": "Accord Project",
+    "license": "Apache-2.0",
+    "accordproject": {
+        "runtime": "typescript",
+        "semantics": "1.0.0-draft",
+        "implements": {},
+        "slots": {}
+    }
+}

@@ -1,0 +1,52 @@
+/*
+ * DRAFT for the next major release of the Accord Project stack.
+ *
+ * A late payment clause: a reusable template of its own, composed into a
+ * parent's slot through the late payment interface it implements
+ * (latepayment.api.cto). The parent tells it when an amount is overdue and
+ * when it is paid; the clause sends the reminders, as effects, and accrues
+ * the late fee.
+ *
+ * The parent binds its utcOffset into the clause's (manifest "bind"), so the
+ * clause drafts in the parent's offset. Agreement data may not set a bound
+ * field.
+ */
+
+namespace poc.accordproject.latepayment@0.1.0
+
+import org.accordproject.templatedata@1.0.0.{TemplateData, StateData}
+import org.accordproject.party@1.0.0.PartyRef
+import org.accordproject.money@1.0.0.PreciseAmount
+import org.accordproject.runtime@1.0.0.Effect
+
+/* The clause's terms. */
+concept LatePaymentData extends TemplateData {
+  /* How many reminders are sent in all, the first one included. */
+  o Integer reminderLimit range=[1,]
+  /* Days between one reminder and the next. */
+  o Integer reminderIntervalDays range=[1,]
+  /* Owed once, when the first reminder is sent. */
+  o PreciseAmount lateFee
+}
+
+/*
+ * A written reminder to the obligor. An effect: it always gets an outcome,
+ * which comes back to this clause, so the clause keeps it pending until
+ * then.
+ */
+event PaymentReminder extends Effect {
+  o PartyRef to
+  o PartyRef from
+  o PreciseAmount amount
+  o DateTime dueAt
+  o Integer reminder
+}
+
+/* What the clause keeps. */
+concept LatePaymentState extends StateData {
+  o Integer remindersSent
+  /* Reminders sent whose outcome has not come back yet, by effect id. */
+  o String[] pendingReminders
+  /* Set when the parent reports the overdue amount paid. */
+  o Boolean settled
+}

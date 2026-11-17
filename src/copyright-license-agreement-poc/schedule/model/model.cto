@@ -1,0 +1,23 @@
+/*
+ * DRAFT for the next major release of the Accord Project stack.
+ *
+ * The copyright licence's schedule of licensed works: a text template (no
+ * logic, no state), a document of its own in the licence's agreement. The
+ * licence names it in its manifest's "documents" and its text refers to
+ * it; the agreement says which of its documents fills that reference.
+ */
+
+namespace poc.accordproject.copyrightlicense.schedule@0.1.0
+
+import org.accordproject.templatedata@1.0.0.{TemplateData}
+
+/* One work the licence covers. */
+concept LicensedWork {
+  o String title
+  o String description
+}
+
+/* The schedule's data: the works, in the order the schedule lists them. */
+concept LicensedWorksScheduleData extends TemplateData {
+  o LicensedWork[] works
+}

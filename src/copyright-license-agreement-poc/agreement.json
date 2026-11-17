@@ -1,0 +1,87 @@
+{
+  "agreementHash": "1631a87db854b1e7adf5e6587360887e8b24e43a5d46ec6dfede40c85d4999d6",
+  "agreementId": "copyright-licence",
+  "documents": [
+    {
+      "clauses": {
+        "late-payment": {
+          "data": {
+            "$class": "poc.accordproject.latepayment@0.1.0.LatePaymentData",
+            "lateFee": {
+              "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+              "unit": {
+                "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                "currencyCode": "USD",
+                "scale": 2
+              },
+              "unscaledValue": "2500"
+            },
+            "reminderIntervalDays": 7,
+            "reminderLimit": 3
+          },
+          "template": {
+            "hash": "48595a8aabe480827aa347e7101c48788402123998f47215b5a3e1333536369a"
+          }
+        }
+      },
+      "data": {
+        "$class": "poc.accordproject.copyrightlicense@0.2.0.CopyrightLicenseData",
+        "effectiveDate": "2018-01-01T01:00:00.000+01:00",
+        "licensee": {
+          "$class": "org.accordproject.party@1.0.0.PartyRef",
+          "displayName": "Me",
+          "partyId": "me"
+        },
+        "licensor": {
+          "$class": "org.accordproject.party@1.0.0.PartyRef",
+          "displayName": "Myself",
+          "partyId": "myself"
+        },
+        "paymentTerms": {
+          "$class": "poc.accordproject.copyrightlicense@0.2.0.PaymentTerms",
+          "amount": {
+            "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+            "unit": {
+              "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+              "currencyCode": "USD",
+              "scale": 2
+            },
+            "unscaledValue": "10000"
+          },
+          "amountText": "one hundred US Dollars",
+          "dueDate": "2018-01-31T17:00:00.000+01:00",
+          "paymentProcedure": "bank transfer"
+        },
+        "purposeDescription": "stuff",
+        "territory": "United States",
+        "utcOffset": "+01:00"
+      },
+      "documentHash": "d69f3a373f3b74b8dd4c96bed2576cc0c0c18d931d6012b8f1809b686fa5f732",
+      "documentId": "licence",
+      "references": {
+        "schedule": "schedule"
+      },
+      "template": {
+        "hash": "48ae85c7495853f36800568874f8929dd35db4609af39d389c86b3deb1ca85e0"
+      }
+    },
+    {
+      "data": {
+        "$class": "poc.accordproject.copyrightlicense.schedule@0.1.0.LicensedWorksScheduleData",
+        "works": [
+          {
+            "$class": "poc.accordproject.copyrightlicense.schedule@0.1.0.LicensedWork",
+            "description": "other stuff",
+            "title": "The Work"
+          }
+        ]
+      },
+      "documentHash": "f87bb0c917c0a81211528585106d751f8fec33053000cc4ab3064857cdc598d0",
+      "documentId": "schedule",
+      "template": {
+        "hash": "4be504c4cb51fd987d9dc037924b0c422b786c1f16481ec3433cd2fc0e92a70d"
+      }
+    }
+  ],
+  "primary": "licence"
+}

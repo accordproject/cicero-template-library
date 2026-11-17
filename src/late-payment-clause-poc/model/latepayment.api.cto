@@ -1,0 +1,65 @@
+/*
+ * DRAFT for the next major release of the Accord Project stack.
+ *
+ * The late payment interface: what a parent may ask a late payment clause,
+ * and what the clause may answer. An interface is a versioned namespace
+ * with no marker type: every non-abstract transaction that extends Request
+ * is a member, and each member describes itself with the runtime's
+ * @Returns, @Declines and @Emits.
+ *
+ * A parent declares a slot that asks for this interface with a semver
+ * range ("org.accordproject.latepayment.api@^1.0.0"); this clause
+ * implements 1.2.0, which the range accepts. The interface would be
+ * published on its own; until then it ships with the clause that
+ * implements it, and the engine loads it beside every archive of the
+ * agreement.
+ */
+
+namespace org.accordproject.latepayment.api@1.2.0
+
+import org.accordproject.party@1.0.0.PartyRef
+import org.accordproject.money@1.0.0.PreciseAmount
+import org.accordproject.runtime@1.0.0.{Request, Response, Declined, Notification, Returns, Declines, Emits}
+
+/*
+ * An amount is overdue: send the obligor a reminder. The first reminder
+ * also accrues the late fee. Declined once the clause has sent every
+ * reminder it allows.
+ */
+@Returns(ReminderSent)
+@Declines(ReminderLimitReached)
+@Emits(LateFeeAccrued)
+transaction PaymentOverdue extends Request {
+  o PartyRef obligor
+  o PartyRef obligee
+  o PreciseAmount amount
+  o DateTime dueAt
+}
+
+/* The overdue amount has been paid: stop the reminders. Never declined. */
+@Returns(LatePaymentCleared)
+transaction PaymentSettled extends Request {
+}
+
+/* A reminder is on its way. `nextReminderAt` is absent after the last one the clause allows. */
+transaction ReminderSent extends Response {
+  o Integer reminder
+  o DateTime nextReminderAt optional
+}
+
+/* The reminders stop. */
+transaction LatePaymentCleared extends Response {
+  o Integer remindersSent
+}
+
+/* Every reminder the clause allows has been sent. */
+transaction ReminderLimitReached extends Declined {
+  o Integer remindersSent
+}
+
+/* The late fee is owed, on top of the overdue amount. */
+event LateFeeAccrued extends Notification {
+  o PartyRef obligor
+  o PartyRef obligee
+  o PreciseAmount amount
+}

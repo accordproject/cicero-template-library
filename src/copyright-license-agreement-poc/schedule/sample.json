@@ -1,0 +1,10 @@
+{
+  "$class": "poc.accordproject.copyrightlicense.schedule@0.1.0.LicensedWorksScheduleData",
+  "works": [
+    {
+      "$class": "poc.accordproject.copyrightlicense.schedule@0.1.0.LicensedWork",
+      "title": "The Work",
+      "description": "other stuff"
+    }
+  ]
+}

@@ -1,91 +1,145 @@
 /*
- * PROTOTYPE: migrating `copyright-license`'s nested `PaymentClause` onto
- * the model design proposed in accordproject/models#200 ("Agreement 1.0
- * Model Redesign"): https://github.com/accordproject/models/pull/200
+ * DRAFT for the next major release of the Accord Project stack.
  *
- * Compare with src/copyright-license/model/model.cto, which has:
+ * The copyright licence's own model. It imports the `@1.0.0` base
+ * namespaces as drafts; none of them is redefined or copied here: the
+ * engine loads them beside every archive.
  *
- *   asset PaymentClause extends Clause { ... }
- *   asset TemplateModel extends Contract {
- *     ... licensee/licenseeState/licenseeEntityType/licenseeAddress ...
- *     ... licensor/licensorState/licensorEntityType/licensorAddress ...
- *     o PaymentClause paymentClause
- *   }
- *
- * Here, per PR #200's current shape:
- *   - There is no `@template` decorator and no envelope class for the
- *     data to be composed onto. A template's model declares exactly one
- *     *concrete* subtype of `templatedata@1.0.0.TemplateData`, and that
- *     subtype IS the template model -- the renderable root is found by
- *     its parent type, not a decorator. `CopyrightLicenseData` below is
- *     that root; it carries the template's variables directly.
- *   - `PaymentTerms` is an ordinary nested concept (not a `Clause`
- *     subclass, and not itself a `TemplateData` subtype -- only the
- *     root extends `TemplateData`), addressed as a plain subtree of the
- *     data at "paymentTerms". `copyright-license` has no composed
- *     sub-template archive for its payment clause -- `{{#clause
- *     paymentTerms}}` in text/grammar.tem.md is an inline grammar block
- *     written directly in this template's own grammar -- so there is no
- *     `clauses` map here at all (see model/agreement.cto).
- *   - The four duplicated "licensee..." / "licensor..." string fields
- *     collapse to two `PartyRef` values (see model/party.cto): a
- *     portable embedded reference, not a `--> Party` relationship. A
- *     relationship reaches `trigger()` as an unresolvable
- *     `"resource:...#me"` string with nothing to resolve it against;
- *     `--> Party` relationships belong on the agreement envelope's
- *     `AgreementParty`, where a registry actually exists.
- *
- * Whether this compiles, round-trips sample.json, renders, and triggers
- * with *today's* installed toolchain -- as opposed to being faithful to
- * PR #200's design -- is a separate question. See
- * src/copyright-license-agreement-poc/README.md and
- * test/render.test.mjs's `expectedFailures` for what was actually
- * observed.
+ * The licence is the primary document of an agreement of two documents
+ * (decision 16): the licence and its schedule of licensed works, a text
+ * template of its own (schedule/), which the licence names in its
+ * manifest's "documents". Its payment terms are part of its own data, an
+ * inline clause. Its late payment clause is a template of its own
+ * (../late-payment-clause-poc), composed into the optional `latePayment`
+ * slot through org.accordproject.latepayment.api; the licence calls it
+ * only through that interface, so this model does not import it.
  */
 
-namespace poc.accordproject.copyrightlicense@0.1.0
+namespace poc.accordproject.copyrightlicense@0.2.0
 
-import poc.accordproject.templatedata@0.1.0.TemplateData
-import poc.accordproject.party@0.1.0.PartyRef
-import org.accordproject.runtime@0.2.0.{Request, Response, Obligation} from https://models.accordproject.org/accordproject/runtime@0.2.0.cto
-import org.accordproject.money@0.3.0.MonetaryAmount from https://models.accordproject.org/money@0.3.0.cto
+import org.accordproject.templatedata@1.0.0.{TemplateData, StateData}
+import org.accordproject.party@1.0.0.PartyRef
+import org.accordproject.money@1.0.0.PreciseAmount
+import org.accordproject.runtime@1.0.0.{Request, Response, Declined, TimerFiring, PaymentObligation, Returns, Declines, Emits}
 
-/* Requesting a payment */
+/*
+ * Asks the licence what the licensee owes. Who asks, and when, are inputs
+ * the host attests, so the request carries no fields of its own.
+ *
+ * The root's own request describes itself as an interface member does: it
+ * answers with PayOut, notifies a PaymentObligation while handling it, and,
+ * with no @Declines, never declines. The engine holds the logic to these
+ * (a response or notification they do not list is a Fault).
+ */
+@Returns(PayOut)
+@Emits(PaymentObligation)
 transaction PaymentRequest extends Request {
 }
 
-/* PayOut response */
+/* The one-time fee the licensee owes the licensor. */
 transaction PayOut extends Response {
-  o MonetaryAmount amount
-}
-
-event PaymentObligationEvent extends Obligation {
-  o MonetaryAmount amount
-  o String description
+  o PreciseAmount amount
 }
 
 /*
- * An ordinary nested concept, not a `Clause` subclass and not a
- * `TemplateData` subtype -- just a subtree of `CopyrightLicenseData`,
- * addressed by TemplateMark at "paymentTerms". Was:
- *   asset PaymentClause extends Clause { ... }
+ * The licensor records that the fee has been paid. Only the licensor (as
+ * the host attests the caller) records it, and only while it is due. The
+ * late payment clause, if the agreement has one, stops its reminders.
+ */
+@Returns(FeeSettled)
+@Declines(FeePaymentRefused)
+transaction RecordFeePayment extends Request {
+}
+
+/* The fee is paid. `remindersSent` is how many reminders the late payment clause sent, if there is one. */
+transaction FeeSettled extends Response {
+  o PreciseAmount amount
+  o Integer remindersSent optional
+}
+
+enum FeePaymentRefusal {
+  o NOT_THE_LICENSOR
+  o NOT_DUE
+}
+
+transaction FeePaymentRefused extends Declined {
+  o FeePaymentRefusal reason
+}
+
+/*
+ * The licence's timer: the fee's due date, or the next reminder date the
+ * late payment clause gave, has passed. The engine sends it as the system
+ * principal when the timer fires.
+ */
+@Returns(OverdueHandled)
+transaction FeeOverdue extends TimerFiring {
+}
+
+/* What the licence did about it: `reminder` is the reminder the clause sent, if it sent one. */
+transaction OverdueHandled extends Response {
+  o Integer reminder optional
+}
+
+/*
+ * A party (the licensee or the licensor, as the host attests the caller)
+ * accepts the whole agreement: the licence and its schedule. `digest` is
+ * the acceptance digest the party agreed to, which binds the agreement's
+ * terms version (self.agreementTermsHash): a change to the words or data of
+ * either document gives a new digest, so an acceptance of the old one is
+ * refused.
+ */
+@Returns(LicenceAccepted)
+@Declines(AcceptanceRefused)
+transaction AcceptLicence extends Request {
+  o String digest
+}
+
+/* The acceptance is recorded, against the agreement's terms version. */
+transaction LicenceAccepted extends Response {
+  o PartyRef party
+  o String agreementTermsHash
+}
+
+/* Why an acceptance was refused: a fixed reason, not prose built from data. */
+enum AcceptanceRefusal {
+  o NOT_A_PARTY
+  o TERMS_CHANGED
+}
+
+transaction AcceptanceRefused extends Declined {
+  o AcceptanceRefusal reason
+}
+
+/* A party's acceptance, as the licence keeps it. */
+concept Acceptance {
+  o PartyRef party
+  o String digest
+  o DateTime acceptedAt
+}
+
+/*
+ * The payment terms: the one-time fee, in words and as an amount, and how
+ * it is paid. An ordinary nested concept inside the licence's data.
  */
 concept PaymentTerms {
   o String amountText
-  o MonetaryAmount amount
+  o PreciseAmount amount
   o String paymentProcedure
+  /* The last day to pay before the fee is overdue. */
+  o DateTime dueDate
+}
+
+/* Where the fee stands. */
+enum FeeStatus {
+  o NOT_DUE
+  o DUE
+  o PAID
 }
 
 /*
- * The template model. This concept IS the renderable root -- there is
- * no `@template` decorator and no envelope it's composed onto. Its
- * properties are declared directly here, so the grammar roots at the
- * data itself (`{{effectiveDate}}` resolves directly; no `{{#with
- * data}}` wrapper is needed).
- *
- * `licensee` and `licensor` are `PartyRef` values -- portable embedded
- * references, not relationships -- replacing eight ad hoc string fields
- * (four per party) with two references to one shared representation.
+ * The licence's data. `utcOffset`, inherited from TemplateData, is the
+ * offset the effective date is drafted in. The works it licenses are not
+ * here: they are the schedule's data, a document of its own.
  */
 concept CopyrightLicenseData extends TemplateData {
   o DateTime effectiveDate
@@ -95,7 +149,12 @@ concept CopyrightLicenseData extends TemplateData {
 
   o String territory
   o String purposeDescription
-  o String workDescription
 
   o PaymentTerms paymentTerms
+}
+
+/* The licence keeps each party's acceptance, at most one per party (a later one replaces it), and where the fee stands. */
+concept CopyrightLicenseState extends StateData {
+  o Acceptance[] acceptances
+  o FeeStatus fee
 }
