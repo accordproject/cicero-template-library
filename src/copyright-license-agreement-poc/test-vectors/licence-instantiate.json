@@ -1,6 +1,6 @@
 {
   "agreement": {
-    "agreementHash": "1631a87db854b1e7adf5e6587360887e8b24e43a5d46ec6dfede40c85d4999d6",
+    "agreementHash": "af4bcad78bfe0bc8baee8e16f0d11e88f2a86e6ae4b3e908d336a5a7dff2b46e",
     "agreementId": "copyright-licence",
     "documents": [
       {
@@ -21,7 +21,7 @@
               "reminderLimit": 3
             },
             "template": {
-              "hash": "48595a8aabe480827aa347e7101c48788402123998f47215b5a3e1333536369a"
+              "hash": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
             }
           }
         },
@@ -51,19 +51,21 @@
             },
             "amountText": "one hundred US Dollars",
             "dueDate": "2018-01-31T17:00:00.000+01:00",
-            "paymentProcedure": "bank transfer"
+            "paymentProcedure": "bank transfer",
+            "royaltyBasisPoints": 1000
           },
           "purposeDescription": "stuff",
+          "salesAccountId": "sales-account-001",
           "territory": "United States",
           "utcOffset": "+01:00"
         },
-        "documentHash": "d69f3a373f3b74b8dd4c96bed2576cc0c0c18d931d6012b8f1809b686fa5f732",
+        "documentHash": "bff7bc2a6632f70adb09efb503e1a9097b848259782736732a659b3c1094a69c",
         "documentId": "licence",
         "references": {
           "schedule": "schedule"
         },
         "template": {
-          "hash": "48ae85c7495853f36800568874f8929dd35db4609af39d389c86b3deb1ca85e0"
+          "hash": "fd34be4763078dda3823676a603190640932728c706a7adc3c6a1cb9e1df0cea"
         }
       },
       {
@@ -87,9 +89,9 @@
     "primary": "licence"
   },
   "archives": [
-    "48595a8aabe480827aa347e7101c48788402123998f47215b5a3e1333536369a",
-    "48ae85c7495853f36800568874f8929dd35db4609af39d389c86b3deb1ca85e0",
-    "4be504c4cb51fd987d9dc037924b0c422b786c1f16481ec3433cd2fc0e92a70d"
+    "4be504c4cb51fd987d9dc037924b0c422b786c1f16481ec3433cd2fc0e92a70d",
+    "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b",
+    "fd34be4763078dda3823676a603190640932728c706a7adc3c6a1cb9e1df0cea"
   ],
   "id": "licence-instantiate",
   "recorded": true,
@@ -102,16 +104,16 @@
           "artifacts": [
             {
               "$class": "org.accordproject.runtime@1.0.0.Artifact",
-              "hash": "5986a0b65a7e6d6bc4b4fabb44db3082d3c54f6c90bc9bf896b4c6e64bee519a",
+              "hash": "ef7756e17b0b5b4baf7b4f6708ac6be222150467463b92759102c628b06e335d",
               "instance": "licence",
               "kind": "agreement",
               "template": {
                 "$class": "org.accordproject.runtime@1.0.0.TemplateReference",
-                "hash": "48ae85c7495853f36800568874f8929dd35db4609af39d389c86b3deb1ca85e0",
+                "hash": "fd34be4763078dda3823676a603190640932728c706a7adc3c6a1cb9e1df0cea",
                 "name": "copyright-license-agreement-poc",
                 "version": "0.2.0"
               },
-              "text": "Copyright License Agreement\n\nThis COPYRIGHT LICENSE AGREEMENT (the \"Agreement\"), dated as of 2018-01-01T01:00:00.000+01:00 (the \"Effective Date\"), is made by and between Me (\"Licensee\") and Myself (\"Licensor\").\n\nWHEREAS, Licensor solely and exclusively owns or controls the Work (as defined below) and wishes to grant to Licensee a license to the Work, and Licensee wishes to obtain a license to the Work for the uses and purposes described herein, each subject to the terms and conditions set forth herein.\n\nNOW, THEREFORE, in consideration of the mutual covenants, terms, and conditions set forth herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties agree as follows:\n\nLicense.\n\nGrant of Rights. Subject to the terms and conditions of this Agreement, Licensor hereby grants to Licensee and its affiliates during the Term (as defined below) an exclusive, transferable right and license in the United States (the \"Territory\"), to reproduce, publicly perform, display, transmit, and distribute the Work, including translate, alter, modify, and create derivative works of the Work, through all media now known or hereinafter developed for purposes of stuff. The \"Work\" is defined as the work or works listed in the Schedule of Licensed Works, which forms part of this Agreement (the \"Schedule\").\n\nPermissions. Licensor has obtained from all persons and entities who are, or whose trademark or other property is, identified, depicted, or otherwise referred to in the Work, such written and signed licenses, permissions, waivers, and consents (collectively, \"Permissions\" and each, individually, a \"Permission\"), including those relating to publicity, privacy, and any intellectual property rights, as are or reasonably may be expected to be necessary for Licensee to exercise its rights in the Work as permitted under this Agreement, without incurring any payment or other obligation to, or otherwise violating any right of, any such person or entity.\n\nCopyright Notices. Licensee shall ensure that its use of the Work is marked with the appropriate copyright notices specified by Licensor in a reasonably prominent position in the order and manner provided by Licensor. Licensee shall abide by the copyright laws and what are considered to be sound practices for copyright notice provisions in the Territory. Licensee shall not use any copyright notices that conflict with, confuse, or negate the notices Licensor provides and requires hereunder.\n\nPayment. As consideration in full for the rights granted herein, Licensee shall pay Licensor a one-time fee in the amount of one hundred US Dollars (100.00 USD) upon execution of this Agreement, and in any event no later than 2018-01-31T17:00:00.000+01:00, payable as follows: bank transfer.\n\nLate Payment. If any amount due under this Agreement is not paid when due, the payee shall send the payer a written reminder, and a further reminder every 7 days until the amount is paid, up to 3 reminders in all. A late fee of 25.00 USD becomes payable when the first reminder is sent.\n\nGeneral.\n\nInterpretation. For purposes of this Agreement, (a) the words \"include,\" \"includes,\" and \"including\" are deemed to be followed by the words \"without limitation\"; (b) the word \"or\" is not exclusive; and (c) the words \"herein,\" \"hereof,\" \"hereby,\" \"hereto,\" and \"hereunder\" refer to this Agreement as a whole. This Agreement is intended to be construed without regard to any presumption or rule requiring construction or interpretation against the party drafting an instrument or causing any instrument to be drafted.\n\nEntire Agreement. This Agreement, including and together with any related attachments, constitutes the sole and entire agreement of the parties with respect to the subject matter contained herein, and supersedes all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, with respect to such subject matter.\n\nSeverability. If any term or provision of this Agreement is invalid, illegal, or unenforceable in any jurisdiction, such invalidity, illegality, or unenforceability will not affect the enforceability of any other term or provision of this Agreement, or invalidate or render unenforceable such term or provision in any other jurisdiction. [Upon a determination that any term or provision is invalid, illegal, or unenforceable, [the parties shall negotiate in good faith to/the court may] modify this Agreement to effect the original intent of the parties as closely as possible in order that the transactions contemplated hereby be consummated as originally contemplated to the greatest extent possible.]\n\nAssignment. Licensee may freely assign or otherwise transfer all or any of its rights, or delegate or otherwise transfer all or any of its obligations or performance, under this Agreement without Licensor's consent. This Agreement is binding upon and inures to the benefit of the parties hereto and their respective permitted successors and assigns."
+              "text": "Copyright License Agreement\n\nThis COPYRIGHT LICENSE AGREEMENT (the \"Agreement\"), dated as of 2018-01-01T01:00:00.000+01:00 (the \"Effective Date\"), is made by and between Me (\"Licensee\") and Myself (\"Licensor\").\n\nWHEREAS, Licensor solely and exclusively owns or controls the Work (as defined below) and wishes to grant to Licensee a license to the Work, and Licensee wishes to obtain a license to the Work for the uses and purposes described herein, each subject to the terms and conditions set forth herein.\n\nNOW, THEREFORE, in consideration of the mutual covenants, terms, and conditions set forth herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties agree as follows:\n\nLicense.\n\nGrant of Rights. Subject to the terms and conditions of this Agreement, Licensor hereby grants to Licensee and its affiliates during the Term (as defined below) an exclusive, transferable right and license in the United States (the \"Territory\"), to reproduce, publicly perform, display, transmit, and distribute the Work, including translate, alter, modify, and create derivative works of the Work, through all media now known or hereinafter developed for purposes of stuff. The \"Work\" is defined as the work or works listed in the Schedule of Licensed Works, which forms part of this Agreement (the \"Schedule\").\n\nPermissions. Licensor has obtained from all persons and entities who are, or whose trademark or other property is, identified, depicted, or otherwise referred to in the Work, such written and signed licenses, permissions, waivers, and consents (collectively, \"Permissions\" and each, individually, a \"Permission\"), including those relating to publicity, privacy, and any intellectual property rights, as are or reasonably may be expected to be necessary for Licensee to exercise its rights in the Work as permitted under this Agreement, without incurring any payment or other obligation to, or otherwise violating any right of, any such person or entity.\n\nCopyright Notices. Licensee shall ensure that its use of the Work is marked with the appropriate copyright notices specified by Licensor in a reasonably prominent position in the order and manner provided by Licensor. Licensee shall abide by the copyright laws and what are considered to be sound practices for copyright notice provisions in the Territory. Licensee shall not use any copyright notices that conflict with, confuse, or negate the notices Licensor provides and requires hereunder.\n\nPayment. As consideration for the rights granted herein, Licensee shall pay Licensor a one-time fee in the amount of one hundred US Dollars (100.00 USD) upon execution of this Agreement, and in any event no later than 2018-01-31T17:00:00.000+01:00, payable as follows: bank transfer.\n\nRoyalty. In addition, Licensee shall pay Licensor a royalty of 10% of the gross receipts from the Work, as the sales registry reports them for Licensee's sales account sales-account-001. Licensor may invoice the royalty on the receipts not invoiced before at any time.\n\nLate Payment. If any amount due under this Agreement is not paid when due, the payee shall send the payer a written reminder, and a further reminder every 7 days until the amount is paid, up to 3 reminders in all. A late fee of 25.00 USD becomes payable when the first reminder is sent.\n\nGeneral.\n\nInterpretation. For purposes of this Agreement, (a) the words \"include,\" \"includes,\" and \"including\" are deemed to be followed by the words \"without limitation\"; (b) the word \"or\" is not exclusive; and (c) the words \"herein,\" \"hereof,\" \"hereby,\" \"hereto,\" and \"hereunder\" refer to this Agreement as a whole. This Agreement is intended to be construed without regard to any presumption or rule requiring construction or interpretation against the party drafting an instrument or causing any instrument to be drafted.\n\nEntire Agreement. This Agreement, including and together with any related attachments, constitutes the sole and entire agreement of the parties with respect to the subject matter contained herein, and supersedes all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, with respect to such subject matter.\n\nSeverability. If any term or provision of this Agreement is invalid, illegal, or unenforceable in any jurisdiction, such invalidity, illegality, or unenforceability will not affect the enforceability of any other term or provision of this Agreement, or invalidate or render unenforceable such term or provision in any other jurisdiction. [Upon a determination that any term or provision is invalid, illegal, or unenforceable, [the parties shall negotiate in good faith to/the court may] modify this Agreement to effect the original intent of the parties as closely as possible in order that the transactions contemplated hereby be consummated as originally contemplated to the greatest extent possible.]\n\nAssignment. Licensee may freely assign or otherwise transfer all or any of its rights, or delegate or otherwise transfer all or any of its obligations or performance, under this Agreement without Licensor's consent. This Agreement is binding upon and inures to the benefit of the parties hereto and their respective permitted successors and assigns."
             },
             {
               "$class": "org.accordproject.runtime@1.0.0.Artifact",
@@ -133,14 +135,14 @@
             "$class": "org.accordproject.runtime@1.0.0.Instantiated",
             "$timestamp": "2018-01-01T00:00:00.000Z",
             "agreement": "copyright-licence",
-            "agreementHash": "1631a87db854b1e7adf5e6587360887e8b24e43a5d46ec6dfede40c85d4999d6"
+            "agreementHash": "af4bcad78bfe0bc8baee8e16f0d11e88f2a86e6ae4b3e908d336a5a7dff2b46e"
           },
           "revisionFrom": -1,
           "revisionTo": 0,
           "state": {
             "$class": "org.accordproject.runtime@1.0.0.AgreementState",
             "agreement": "copyright-licence",
-            "agreementHash": "1631a87db854b1e7adf5e6587360887e8b24e43a5d46ec6dfede40c85d4999d6",
+            "agreementHash": "af4bcad78bfe0bc8baee8e16f0d11e88f2a86e6ae4b3e908d336a5a7dff2b46e",
             "businessTime": "2018-01-01T00:00:00.000Z",
             "pendingEffects": [],
             "revision": 0,
@@ -151,9 +153,18 @@
                 "state": {
                   "$class": "poc.accordproject.copyrightlicense@0.2.0.CopyrightLicenseState",
                   "acceptances": [],
-                  "fee": "NOT_DUE"
+                  "fee": "NOT_DUE",
+                  "royaltiesInvoiced": {
+                    "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                    "unit": {
+                      "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                      "currencyCode": "USD",
+                      "scale": 2
+                    },
+                    "unscaledValue": "0"
+                  }
                 },
-                "template": "48ae85c7495853f36800568874f8929dd35db4609af39d389c86b3deb1ca85e0"
+                "template": "fd34be4763078dda3823676a603190640932728c706a7adc3c6a1cb9e1df0cea"
               },
               "licence/late-payment": {
                 "$class": "org.accordproject.runtime@1.0.0.InstanceState",
@@ -164,7 +175,7 @@
                   "remindersSent": 0,
                   "settled": false
                 },
-                "template": "48595a8aabe480827aa347e7101c48788402123998f47215b5a3e1333536369a"
+                "template": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
               }
             },
             "timers": []
@@ -175,6 +186,26 @@
         "result": "Committed"
       },
       "inputs": {
+        "facts": [
+          {
+            "instance": "licence",
+            "name": "sales",
+            "value": {
+              "$class": "org.accordproject.royalty.api@1.0.0.SalesToDate",
+              "grossReceipts": {
+                "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                "unit": {
+                  "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                  "currencyCode": "USD",
+                  "scale": 2
+                },
+                "unscaledValue": "0"
+              },
+              "salesAccountId": "sales-account-001",
+              "unitsSold": 0
+            }
+          }
+        ],
         "now": "2018-01-01T00:00:00.000Z",
         "principal": {
           "$class": "org.accordproject.runtime@1.0.0.SystemPrincipal"

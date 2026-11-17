@@ -14,6 +14,7 @@
   },
   "territory": "United States",
   "purposeDescription": "stuff",
+  "salesAccountId": "sales-account-001",
   "paymentTerms": {
     "$class": "poc.accordproject.copyrightlicense@0.2.0.PaymentTerms",
     "amountText": "one hundred US Dollars",
@@ -27,6 +28,7 @@
       }
     },
     "paymentProcedure": "bank transfer",
-    "dueDate": "2018-01-31T17:00:00.000+01:00"
+    "dueDate": "2018-01-31T17:00:00.000+01:00",
+    "royaltyBasisPoints": 1000
   }
 }

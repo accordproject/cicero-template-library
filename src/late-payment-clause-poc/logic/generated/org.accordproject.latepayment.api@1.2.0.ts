@@ -28,13 +28,16 @@ export interface ILatePaymentCleared {
 }
 export const LatePaymentCleared = conceptType<ILatePaymentCleared>('org.accordproject.latepayment.api@1.2.0.LatePaymentCleared');
 
+/** org.accordproject.latepayment.api@1.2.0.NothingOutstanding (transaction) */
+export interface INothingOutstanding {
+    $class: 'org.accordproject.latepayment.api@1.2.0.NothingOutstanding';
+    $timestamp?: string;
+}
+export const NothingOutstanding = conceptType<INothingOutstanding>('org.accordproject.latepayment.api@1.2.0.NothingOutstanding');
+
 /** org.accordproject.latepayment.api@1.2.0.PaymentOverdue (transaction) */
 export interface IPaymentOverdue {
     $class: 'org.accordproject.latepayment.api@1.2.0.PaymentOverdue';
-    obligor: IPartyRef;
-    obligee: IPartyRef;
-    amount: IPreciseAmount;
-    dueAt: string;
     $timestamp?: string;
 }
 export const PaymentOverdue = conceptType<IPaymentOverdue>('org.accordproject.latepayment.api@1.2.0.PaymentOverdue');
@@ -66,6 +69,7 @@ export const ReminderSent = conceptType<IReminderSent>('org.accordproject.latepa
 registerSupertypes({
     'org.accordproject.latepayment.api@1.2.0.LateFeeAccrued': 'org.accordproject.runtime@1.0.0.Notification',
     'org.accordproject.latepayment.api@1.2.0.LatePaymentCleared': 'org.accordproject.runtime@1.0.0.Response',
+    'org.accordproject.latepayment.api@1.2.0.NothingOutstanding': 'org.accordproject.runtime@1.0.0.Declined',
     'org.accordproject.latepayment.api@1.2.0.PaymentOverdue': 'org.accordproject.runtime@1.0.0.Request',
     'org.accordproject.latepayment.api@1.2.0.PaymentSettled': 'org.accordproject.runtime@1.0.0.Request',
     'org.accordproject.latepayment.api@1.2.0.ReminderLimitReached': 'org.accordproject.runtime@1.0.0.Declined',

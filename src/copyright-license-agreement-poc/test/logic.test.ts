@@ -39,6 +39,9 @@ import {
     PaymentRequest,
     PayOut,
     RecordFeePayment,
+    RoyaltyStatement,
+    RoyaltyStatementRefused,
+    RoyaltyStatementRequest,
     type ICopyrightLicenseData,
     type ICopyrightLicenseState,
 } from '../logic/generated/poc.accordproject.copyrightlicense@0.2.0.js';
@@ -48,12 +51,15 @@ import {
 } from '../logic/generated/poc.accordproject.copyrightlicense.schedule@0.1.0.js';
 import {
     LateFeeAccrued,
+    NothingOutstanding,
     PaymentOverdue,
     PaymentSettled,
     ReminderLimitReached,
     ReminderSent,
 } from '../logic/generated/org.accordproject.latepayment.api@1.2.0.js';
 import { MonetaryUnit, PreciseAmount } from '../logic/generated/org.accordproject.money@1.0.0.js';
+import { AmountOutstanding } from '../logic/generated/org.accordproject.outstanding.api@1.0.0.js';
+import { SalesToDate, type ISalesToDate } from '../logic/generated/org.accordproject.royalty.api@1.0.0.js';
 import { PaymentObligation } from '../logic/generated/org.accordproject.runtime@1.0.0.js';
 import {
     PaymentReminder,
@@ -116,8 +122,28 @@ function agreement(data: ICopyrightLicenseData, works = scheduleData(), withLate
     };
 }
 
+/** USD at scale 2, from a whole-cent string. */
+const usd = (unscaledValue: string) => PreciseAmount.create({ unscaledValue, unit: MonetaryUnit.create({ currencyCode: 'USD', scale: 2 }) });
+
+/**
+ * The sales registry, as the test host reads it: the SalesToDate record for
+ * the account the licence's read names. A test moves the figures on by
+ * changing `registry.sales`; the host reads them afresh for each request.
+ */
+const salesRecord = (unitsSold: number, grossReceipts = usd('0')) =>
+    SalesToDate.create({ salesAccountId: 'sales-account-001', unitsSold, grossReceipts });
+const registry: { sales: ISalesToDate } = { sales: salesRecord(0) };
+
+beforeEach(() => {
+    registry.sales = salesRecord(0);
+});
+
 function make(data: ICopyrightLicenseData, works = scheduleData(), withLatePayment = true) {
-    const { host, result } = TestHost.make(agreement(data, works, withLatePayment), { start: START });
+    const { host, result } = TestHost.make(agreement(data, works, withLatePayment), {
+        start: START,
+        // The licence's `sales` read: the host reads the record its key names.
+        suppliers: { sales: (read) => (read.key === registry.sales.salesAccountId ? registry.sales : undefined) },
+    });
     expect(isCommitted(result)).toBe(true);
     return { host, result };
 }
@@ -169,6 +195,7 @@ describe('copyright licence', () => {
         expect(licence?.text).toContain('is made by and between Me ("Licensee") and Myself ("Licensor")');
         expect(licence?.text).toContain('a one-time fee in the amount of one hundred US Dollars (100.00 USD) upon execution of this Agreement, and in any event no later than 2018-01-31T17:00:00.000+01:00, payable as follows: bank transfer.');
         expect(licence?.text).toContain('The "Work" is defined as the work or works listed in the Schedule of Licensed Works, which forms part of this Agreement (the "Schedule").');
+        expect(licence?.text).toContain('Royalty. In addition, Licensee shall pay Licensor a royalty of 10% of the gross receipts from the Work, as the sales registry reports them for Licensee\'s sales account sales-account-001.');
         // The late payment clause is drafted in place, in the licence's text.
         expect(licence?.text).toContain('a further reminder every 7 days until the amount is paid, up to 3 reminders in all. A late fee of 25.00 USD becomes payable when the first reminder is sent.');
         expect(licence?.text).not.toContain('other stuff');
@@ -283,8 +310,10 @@ describe('copyright licence', () => {
         expect(isCommitted(first)).toBe(true);
         if (!isCommitted(first)) return;
         expect(OverdueHandled.is(first.body.response) && first.body.response.reminder).toBe(1);
-        // The reminder is an effect of the clause's; the late fee is a notification of the clause's.
+        // The reminder is an effect of the clause's, for what the licence's AmountOutstanding fact says is owed;
+        // the late fee is a notification of the clause's.
         expect(first.body.effects.map((e) => [e.$class, (e as { reminder?: number }).reminder])).toEqual([[PaymentReminder.$class, 1]]);
+        expect(first.body.effects[0]).toMatchObject({ to: { partyId: 'me' }, from: { partyId: 'myself' }, amount: { unscaledValue: '10000' }, dueAt: '2018-01-31T17:00:00.000+01:00' });
         expect(first.body.notifications.map((n) => n.$class)).toEqual([LateFeeAccrued.$class]);
         expect(first.body.notifications[0]).toMatchObject({ obligor: { partyId: 'me' }, obligee: { partyId: 'myself' }, amount: { unscaledValue: '2500' } });
         expect(host.state.pendingEffects.map((p) => p.instance)).toEqual(['licence/late-payment']);
@@ -348,6 +377,57 @@ describe('copyright licence', () => {
         expect(host.state.timers).toEqual([]);
     });
 
+    it('reads the sales to date from the sales registry for a royalty statement, and invoices only what was not invoiced before', () => {
+        const { host } = make(data);
+        // The host reads the licence's one host fact, keyed by its salesAccountId; the clause's fact is the licence's to provide.
+        expect(host.agreement.hostReads.map((r) => [r.instance, r.name, r.key])).toEqual([['licence', 'sales', 'sales-account-001']]);
+
+        // Only the licensor asks for a statement.
+        const byLicensee = host.send(RoyaltyStatementRequest.create({}), asLicensee(data));
+        expect(isRejection(byLicensee) && RoyaltyStatementRefused.is(byLicensee.body.response) && byLicensee.body.response.reason).toBe('NOT_THE_LICENSOR');
+
+        // USD 50,000.00 of receipts: 10% is USD 5,000.00, all of it due.
+        registry.sales = salesRecord(2000, usd('5000000'));
+        const first = host.send(RoyaltyStatementRequest.create({}), asLicensor(data));
+        expect(isCommitted(first)).toBe(true);
+        if (!isCommitted(first)) return;
+        expect(RoyaltyStatement.is(first.body.response) && first.body.response).toMatchObject({
+            unitsSold: 2000, grossReceipts: { unscaledValue: '5000000' }, royaltyToDate: { unscaledValue: '500000' }, invoicedBefore: { unscaledValue: '0' }, due: { unscaledValue: '500000' },
+        });
+        expect(first.body.notifications).toHaveLength(1);
+        expect(first.body.notifications[0]).toMatchObject({ $class: PaymentObligation.$class, obligor: { partyId: 'me' }, obligee: { partyId: 'myself' }, amount: { unscaledValue: '500000' }, description: 'Royalty on gross receipts' });
+        // The fact is in the request's inputs, as the host read it; the licence keeps only what it invoiced.
+        expect(host.session('inputs').steps.at(-1)!.inputs.facts).toEqual([{ instance: 'licence', name: 'sales', value: registry.sales }]);
+        expect(host.stateOf<ICopyrightLicenseState>('licence').royaltiesInvoiced.unscaledValue).toBe('500000');
+
+        // Nothing sold since: nothing is due, and nothing is notified.
+        const again = host.send(RoyaltyStatementRequest.create({}), asLicensor(data));
+        expect(isCommitted(again) && again.body.notifications).toEqual([]);
+        expect(isCommitted(again) && RoyaltyStatement.is(again.body.response) && again.body.response.due.unscaledValue).toBe('0');
+
+        // USD 80,000.09 to date: USD 8,000.00 royalty, rounded down to the cent; USD 3,000.00 of it new.
+        registry.sales = salesRecord(3201, usd('8000009'));
+        const later = host.send(RoyaltyStatementRequest.create({}), asLicensor(data));
+        expect(isCommitted(later) && RoyaltyStatement.is(later.body.response) && later.body.response).toMatchObject({
+            royaltyToDate: { unscaledValue: '800000' }, invoicedBefore: { unscaledValue: '500000' }, due: { unscaledValue: '300000' },
+        });
+
+        // A registry reporting in another currency is refused, not converted.
+        registry.sales = SalesToDate.create({ salesAccountId: 'sales-account-001', unitsSold: 1, grossReceipts: PreciseAmount.create({ unscaledValue: '100', unit: MonetaryUnit.create({ currencyCode: 'GBP', scale: 2 }) }) });
+        const gbp = host.send(RoyaltyStatementRequest.create({}), asLicensor(data));
+        expect(isRejection(gbp) && RoyaltyStatementRefused.is(gbp.body.response) && gbp.body.response.reason).toBe('CURRENCY_MISMATCH');
+        vector(host, 'licence-royalty');
+    });
+
+    it('the late payment clause reads what is owed from the licence, which provides it from its own state: no host read, nothing recorded', () => {
+        const { host } = make(data);
+        const read = host.agreement.instances.get('licence/late-payment')!.reads.get('outstanding');
+        expect(read).toMatchObject({ factType: AmountOutstanding.$class, provider: 'licence' });
+        expect(host.agreement.hostReads.some((r) => r.instance === 'licence/late-payment')).toBe(false);
+        // The licence keeps no outstanding amount: the fact is worked out from `fee` when the clause reads it.
+        expect(Object.keys(host.stateOf<ICopyrightLicenseState>('licence'))).not.toContain('outstanding');
+    });
+
     it('agreement.json is this agreement: the licence with its late payment clause, and the schedule, with the hashes the engine computes', () => {
         const { host } = make(data);
         const record = host.session('agreement').agreement;
@@ -386,7 +466,7 @@ describe('requests describe themselves (@Returns, @Declines, @Emits)', () => {
         const data = CopyrightLicenseData.create(sample as Parameters<typeof CopyrightLicenseData.create>[0]);
         const { host } = make(data);
         const models = host.agreement.models;
-        expect(models.member(PaymentOverdue.$class)).toMatchObject({ returns: [ReminderSent.$class], declines: [ReminderLimitReached.$class], emits: [LateFeeAccrued.$class] });
+        expect(models.member(PaymentOverdue.$class)).toMatchObject({ returns: [ReminderSent.$class], declines: [ReminderLimitReached.$class, NothingOutstanding.$class], emits: [LateFeeAccrued.$class] });
         expect(models.member(PaymentSettled.$class)).toMatchObject({ declines: [], emits: [] });
         expect(models.member(FeeOverdue.$class)).toMatchObject({ returns: [OverdueHandled.$class], declines: [], operator: false });
         expect(models.member(RecordFeePayment.$class)).toMatchObject({ returns: [FeeSettled.$class], declines: [FeePaymentRefused.$class] });
@@ -430,6 +510,35 @@ describe('copyright licence, expect: the revision a caller\'s decision rests on'
     });
 });
 
+// Named under 'copyright licence' so `npm run test:record` records its vector too.
+describe('copyright licence\'s late payment clause, alone', () => {
+    it('with no parent to provide it, the clause reads what is owed from the host', () => {
+        const party = (partyId: string, displayName: string) => ({ $class: 'org.accordproject.party@1.0.0.PartyRef' as const, partyId, displayName });
+        const owed = { value: AmountOutstanding.create({ obligor: party('me', 'Me'), obligee: party('myself', 'Myself'), amount: usd('0') }) };
+        const { host } = TestHost.make({
+            agreementId: 'late-payment-alone',
+            primary: 'late-payment',
+            documents: [{ documentId: 'late-payment', template: { hash: latePayment.hash }, data: { ...latePaymentData(), utcOffset: '+00:00' } }],
+            archives: [latePayment],
+        }, { start: START, suppliers: { outstanding: () => owed.value } });
+        expect(host.agreement.hostReads.map((r) => [r.instance, r.name])).toEqual([['late-payment', 'outstanding']]);
+
+        // Nothing owed: declined.
+        const nothing = host.send(PaymentOverdue.create({}), 'system');
+        expect(isRejection(nothing) && NothingOutstanding.is(nothing.body.response)).toBe(true);
+
+        // USD 40.00 owed since the 1st: a reminder for it, and the late fee.
+        owed.value = AmountOutstanding.create({ ...owed.value, amount: usd('4000'), dueAt: '2018-01-01T00:00:00.000Z' });
+        const reminded = host.send(PaymentOverdue.create({}), 'system');
+        expect(isCommitted(reminded)).toBe(true);
+        if (!isCommitted(reminded)) return;
+        expect(ReminderSent.is(reminded.body.response) && reminded.body.response.reminder).toBe(1);
+        expect(reminded.body.effects[0]).toMatchObject({ $class: PaymentReminder.$class, amount: { unscaledValue: '4000' } });
+        expect(host.session('inputs').steps.at(-1)!.inputs.facts).toEqual([{ instance: 'late-payment', name: 'outstanding', value: owed.value }]);
+        vector(host, 'late-payment-alone');
+    });
+});
+
 describe('formatAmount', () => {
     const amount = (unscaledValue: string, scale: number) =>
         PreciseAmount.create({ unscaledValue, unit: MonetaryUnit.create({ currencyCode: 'USD', scale }) });
@@ -458,9 +567,11 @@ describe('recorded vectors replay', () => {
             const v = JSON.parse(readFileSync(path.join(vectorDir, file), 'utf8')) as SessionVector;
             expect(v.semantics).toBe('1.0.0-draft');
             // The vector names its archives by hash, so it cannot point at the wrong template.
-            expect(v.archives).toEqual([archive.hash, schedule.hash, latePayment.hash].sort());
+            // Every archive it names is one of this folder's; the late payment clause alone needs only its own.
+            const archives = [archive, schedule, latePayment].filter((a) => v.archives.includes(a.hash));
+            expect(archives.map((a) => a.hash).sort()).toEqual(v.archives);
             // The vector's agreement carries its agreement and document hashes; the engine checks them as it loads it.
-            const agreement = loadAgreement({ ...v.agreement, archives: [archive, schedule, latePayment] });
+            const agreement = loadAgreement({ ...v.agreement, archives });
             expect(agreement.hash).toBe(v.agreement.agreementHash);
 
             let state: Parameters<typeof trigger>[1] | undefined;

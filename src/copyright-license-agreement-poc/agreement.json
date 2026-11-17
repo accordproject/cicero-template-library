@@ -1,5 +1,5 @@
 {
-  "agreementHash": "1631a87db854b1e7adf5e6587360887e8b24e43a5d46ec6dfede40c85d4999d6",
+  "agreementHash": "af4bcad78bfe0bc8baee8e16f0d11e88f2a86e6ae4b3e908d336a5a7dff2b46e",
   "agreementId": "copyright-licence",
   "documents": [
     {
@@ -20,7 +20,7 @@
             "reminderLimit": 3
           },
           "template": {
-            "hash": "48595a8aabe480827aa347e7101c48788402123998f47215b5a3e1333536369a"
+            "hash": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
           }
         }
       },
@@ -50,19 +50,21 @@
           },
           "amountText": "one hundred US Dollars",
           "dueDate": "2018-01-31T17:00:00.000+01:00",
-          "paymentProcedure": "bank transfer"
+          "paymentProcedure": "bank transfer",
+          "royaltyBasisPoints": 1000
         },
         "purposeDescription": "stuff",
+        "salesAccountId": "sales-account-001",
         "territory": "United States",
         "utcOffset": "+01:00"
       },
-      "documentHash": "d69f3a373f3b74b8dd4c96bed2576cc0c0c18d931d6012b8f1809b686fa5f732",
+      "documentHash": "bff7bc2a6632f70adb09efb503e1a9097b848259782736732a659b3c1094a69c",
       "documentId": "licence",
       "references": {
         "schedule": "schedule"
       },
       "template": {
-        "hash": "48ae85c7495853f36800568874f8929dd35db4609af39d389c86b3deb1ca85e0"
+        "hash": "fd34be4763078dda3823676a603190640932728c706a7adc3c6a1cb9e1df0cea"
       }
     },
     {

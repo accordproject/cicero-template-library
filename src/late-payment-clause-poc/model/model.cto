@@ -10,6 +10,11 @@
  * The parent binds its utcOffset into the clause's (manifest "bind"), so the
  * clause drafts in the parent's offset. Agreement data may not set a bound
  * field.
+ *
+ * What is owed, by whom and since when, the clause reads as a fact
+ * (outstanding.api.cto, manifest "reads"), never as request data: composed,
+ * the nearest ancestor that implements the interface provides it; alone, the
+ * host supplies it.
  */
 
 namespace poc.accordproject.latepayment@0.1.0

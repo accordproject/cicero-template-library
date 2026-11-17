@@ -1,0 +1,358 @@
+{
+  "agreement": {
+    "agreementHash": "87b0221cb3edc6e9c3c6518277eb1c7b500d88f84ccdb7d061df2fa8949abe2d",
+    "agreementId": "late-payment-alone",
+    "documents": [
+      {
+        "data": {
+          "$class": "poc.accordproject.latepayment@0.1.0.LatePaymentData",
+          "lateFee": {
+            "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+            "unit": {
+              "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+              "currencyCode": "USD",
+              "scale": 2
+            },
+            "unscaledValue": "2500"
+          },
+          "reminderIntervalDays": 7,
+          "reminderLimit": 3,
+          "utcOffset": "+00:00"
+        },
+        "documentHash": "fcb7d8fcdef99eec9c1e016bf6d5f2d40ecb9dcd7e2ae17bb4f6a15a987cfb54",
+        "documentId": "late-payment",
+        "template": {
+          "hash": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
+        }
+      }
+    ],
+    "primary": "late-payment"
+  },
+  "archives": [
+    "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
+  ],
+  "id": "late-payment-alone",
+  "recorded": true,
+  "semantics": "1.0.0-draft",
+  "steps": [
+    {
+      "expect": {
+        "body": {
+          "$class": "org.accordproject.runtime@1.0.0.CommittedBody",
+          "artifacts": [
+            {
+              "$class": "org.accordproject.runtime@1.0.0.Artifact",
+              "hash": "3773110b4477536c02b0d7d9b2a3a457ed1b4f1397111fe59540ef4767f3ab14",
+              "instance": "late-payment",
+              "kind": "agreement",
+              "template": {
+                "$class": "org.accordproject.runtime@1.0.0.TemplateReference",
+                "hash": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b",
+                "name": "late-payment-clause-poc",
+                "version": "0.1.0"
+              },
+              "text": "Late Payment. If any amount due under this Agreement is not paid when due, the payee shall send the payer a written reminder, and a further reminder every 7 days until the amount is paid, up to 3 reminders in all. A late fee of 25.00 USD becomes payable when the first reminder is sent."
+            }
+          ],
+          "effects": [],
+          "notifications": [],
+          "response": {
+            "$class": "org.accordproject.runtime@1.0.0.Instantiated",
+            "$timestamp": "2018-01-01T00:00:00.000Z",
+            "agreement": "late-payment-alone",
+            "agreementHash": "87b0221cb3edc6e9c3c6518277eb1c7b500d88f84ccdb7d061df2fa8949abe2d"
+          },
+          "revisionFrom": -1,
+          "revisionTo": 0,
+          "state": {
+            "$class": "org.accordproject.runtime@1.0.0.AgreementState",
+            "agreement": "late-payment-alone",
+            "agreementHash": "87b0221cb3edc6e9c3c6518277eb1c7b500d88f84ccdb7d061df2fa8949abe2d",
+            "businessTime": "2018-01-01T00:00:00.000Z",
+            "pendingEffects": [],
+            "revision": 0,
+            "states": {
+              "late-payment": {
+                "$class": "org.accordproject.runtime@1.0.0.InstanceState",
+                "revision": 0,
+                "state": {
+                  "$class": "poc.accordproject.latepayment@0.1.0.LatePaymentState",
+                  "pendingReminders": [],
+                  "remindersSent": 0,
+                  "settled": false
+                },
+                "template": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
+              }
+            },
+            "timers": []
+          },
+          "timersCancelled": [],
+          "timersSet": []
+        },
+        "result": "Committed"
+      },
+      "inputs": {
+        "facts": [
+          {
+            "instance": "late-payment",
+            "name": "outstanding",
+            "value": {
+              "$class": "org.accordproject.outstanding.api@1.0.0.AmountOutstanding",
+              "amount": {
+                "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                "unit": {
+                  "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                  "currencyCode": "USD",
+                  "scale": 2
+                },
+                "unscaledValue": "0"
+              },
+              "obligee": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Myself",
+                "partyId": "myself"
+              },
+              "obligor": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Me",
+                "partyId": "me"
+              }
+            }
+          }
+        ],
+        "now": "2018-01-01T00:00:00.000Z",
+        "principal": {
+          "$class": "org.accordproject.runtime@1.0.0.SystemPrincipal"
+        },
+        "requestId": "instantiate-1"
+      },
+      "request": null
+    },
+    {
+      "expect": {
+        "body": {
+          "$class": "org.accordproject.runtime@1.0.0.RejectionBody",
+          "declinedBy": "late-payment",
+          "response": {
+            "$class": "org.accordproject.latepayment.api@1.2.0.NothingOutstanding",
+            "$timestamp": "2018-01-01T00:00:00.000Z"
+          }
+        },
+        "result": "Rejection"
+      },
+      "inputs": {
+        "facts": [
+          {
+            "instance": "late-payment",
+            "name": "outstanding",
+            "value": {
+              "$class": "org.accordproject.outstanding.api@1.0.0.AmountOutstanding",
+              "amount": {
+                "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                "unit": {
+                  "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                  "currencyCode": "USD",
+                  "scale": 2
+                },
+                "unscaledValue": "0"
+              },
+              "obligee": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Myself",
+                "partyId": "myself"
+              },
+              "obligor": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Me",
+                "partyId": "me"
+              }
+            }
+          }
+        ],
+        "now": "2018-01-01T00:00:00.000Z",
+        "principal": {
+          "$class": "org.accordproject.runtime@1.0.0.SystemPrincipal"
+        },
+        "requestId": "req-2"
+      },
+      "request": {
+        "$class": "org.accordproject.latepayment.api@1.2.0.PaymentOverdue",
+        "$timestamp": "2018-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "expect": {
+        "body": {
+          "$class": "org.accordproject.runtime@1.0.0.CommittedBody",
+          "artifacts": [],
+          "effects": [
+            {
+              "$class": "poc.accordproject.latepayment@0.1.0.PaymentReminder",
+              "$timestamp": "2018-01-01T00:00:00.000Z",
+              "amount": {
+                "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                "unit": {
+                  "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                  "currencyCode": "USD",
+                  "scale": 2
+                },
+                "unscaledValue": "4000"
+              },
+              "dueAt": "2018-01-01T00:00:00.000Z",
+              "from": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Myself",
+                "partyId": "myself"
+              },
+              "id": "late-payment-alone/late-payment/1/0",
+              "ordinal": 0,
+              "reminder": 1,
+              "revision": 1,
+              "to": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Me",
+                "partyId": "me"
+              }
+            }
+          ],
+          "notifications": [
+            {
+              "$class": "org.accordproject.latepayment.api@1.2.0.LateFeeAccrued",
+              "$timestamp": "2018-01-01T00:00:00.000Z",
+              "amount": {
+                "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                "unit": {
+                  "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                  "currencyCode": "USD",
+                  "scale": 2
+                },
+                "unscaledValue": "2500"
+              },
+              "id": "late-payment-alone/late-payment/1/1",
+              "obligee": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Myself",
+                "partyId": "myself"
+              },
+              "obligor": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Me",
+                "partyId": "me"
+              },
+              "ordinal": 1,
+              "revision": 1
+            }
+          ],
+          "response": {
+            "$class": "org.accordproject.latepayment.api@1.2.0.ReminderSent",
+            "$timestamp": "2018-01-01T00:00:00.000Z",
+            "nextReminderAt": "2018-01-08T00:00:00.000Z",
+            "reminder": 1
+          },
+          "revisionFrom": 0,
+          "revisionTo": 1,
+          "state": {
+            "$class": "org.accordproject.runtime@1.0.0.AgreementState",
+            "agreement": "late-payment-alone",
+            "agreementHash": "87b0221cb3edc6e9c3c6518277eb1c7b500d88f84ccdb7d061df2fa8949abe2d",
+            "businessTime": "2018-01-01T00:00:00.000Z",
+            "pendingEffects": [
+              {
+                "$class": "org.accordproject.runtime@1.0.0.PendingEffect",
+                "effect": {
+                  "$class": "poc.accordproject.latepayment@0.1.0.PaymentReminder",
+                  "$timestamp": "2018-01-01T00:00:00.000Z",
+                  "amount": {
+                    "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                    "unit": {
+                      "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                      "currencyCode": "USD",
+                      "scale": 2
+                    },
+                    "unscaledValue": "4000"
+                  },
+                  "dueAt": "2018-01-01T00:00:00.000Z",
+                  "from": {
+                    "$class": "org.accordproject.party@1.0.0.PartyRef",
+                    "displayName": "Myself",
+                    "partyId": "myself"
+                  },
+                  "id": "late-payment-alone/late-payment/1/0",
+                  "ordinal": 0,
+                  "reminder": 1,
+                  "revision": 1,
+                  "to": {
+                    "$class": "org.accordproject.party@1.0.0.PartyRef",
+                    "displayName": "Me",
+                    "partyId": "me"
+                  }
+                },
+                "instance": "late-payment"
+              }
+            ],
+            "revision": 1,
+            "states": {
+              "late-payment": {
+                "$class": "org.accordproject.runtime@1.0.0.InstanceState",
+                "revision": 1,
+                "state": {
+                  "$class": "poc.accordproject.latepayment@0.1.0.LatePaymentState",
+                  "pendingReminders": [
+                    "late-payment-alone/late-payment/1/0"
+                  ],
+                  "remindersSent": 1,
+                  "settled": false
+                },
+                "template": "c3a61ca627e987f901e71ac461166c68e3c0cc7e31ce5de1bfa962ea55b9762b"
+              }
+            },
+            "timers": []
+          },
+          "timersCancelled": [],
+          "timersSet": []
+        },
+        "result": "Committed"
+      },
+      "inputs": {
+        "facts": [
+          {
+            "instance": "late-payment",
+            "name": "outstanding",
+            "value": {
+              "$class": "org.accordproject.outstanding.api@1.0.0.AmountOutstanding",
+              "amount": {
+                "$class": "org.accordproject.money@1.0.0.PreciseAmount",
+                "unit": {
+                  "$class": "org.accordproject.money@1.0.0.MonetaryUnit",
+                  "currencyCode": "USD",
+                  "scale": 2
+                },
+                "unscaledValue": "4000"
+              },
+              "dueAt": "2018-01-01T00:00:00.000Z",
+              "obligee": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Myself",
+                "partyId": "myself"
+              },
+              "obligor": {
+                "$class": "org.accordproject.party@1.0.0.PartyRef",
+                "displayName": "Me",
+                "partyId": "me"
+              }
+            }
+          }
+        ],
+        "now": "2018-01-01T00:00:00.000Z",
+        "principal": {
+          "$class": "org.accordproject.runtime@1.0.0.SystemPrincipal"
+        },
+        "requestId": "req-3"
+      },
+      "request": {
+        "$class": "org.accordproject.latepayment.api@1.2.0.PaymentOverdue",
+        "$timestamp": "2018-01-01T00:00:00.000Z"
+      }
+    }
+  ]
+}

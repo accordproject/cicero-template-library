@@ -23,17 +23,15 @@ import org.accordproject.runtime@1.0.0.{Request, Response, Declined, Notificatio
 
 /*
  * An amount is overdue: send the obligor a reminder. The first reminder
- * also accrues the late fee. Declined once the clause has sent every
- * reminder it allows.
+ * also accrues the late fee. The request carries nothing: what is owed, by
+ * whom and since when, the clause reads as a fact (outstanding.api), which
+ * its parent provides or, alone, the host supplies. Declined once the
+ * clause has sent every reminder it allows, or when nothing is owed.
  */
 @Returns(ReminderSent)
-@Declines(ReminderLimitReached)
+@Declines(ReminderLimitReached, NothingOutstanding)
 @Emits(LateFeeAccrued)
 transaction PaymentOverdue extends Request {
-  o PartyRef obligor
-  o PartyRef obligee
-  o PreciseAmount amount
-  o DateTime dueAt
 }
 
 /* The overdue amount has been paid: stop the reminders. Never declined. */
@@ -55,6 +53,10 @@ transaction LatePaymentCleared extends Response {
 /* Every reminder the clause allows has been sent. */
 transaction ReminderLimitReached extends Declined {
   o Integer remindersSent
+}
+
+/* The outstanding amount the clause read is zero: there is nothing to remind anyone of. */
+transaction NothingOutstanding extends Declined {
 }
 
 /* The late fee is owed, on top of the overdue amount. */

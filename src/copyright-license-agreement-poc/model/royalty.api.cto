@@ -1,0 +1,31 @@
+/*
+ * DRAFT for the next major release of the Accord Project stack.
+ *
+ * The royalty fact interface: what a sales registry, the system of record
+ * for a licensee's sales, tells a template that reads it. A fact interface
+ * declares fact types and no members. A template lists what it reads in its
+ * manifest's "reads"; before each request the host reads the fact once and
+ * passes it in the inputs, and logic reads it from self.facts. The template
+ * keeps no copy.
+ *
+ * It would be published on its own; until then it ships with the licence,
+ * the template that reads it.
+ */
+
+namespace org.accordproject.royalty.api@1.0.0
+
+import org.accordproject.money@1.0.0.PreciseAmount
+import org.accordproject.runtime@1.0.0.{Fact, FactKey}
+
+/*
+ * A sales account's sales to date: one record of many, named by
+ * salesAccountId (@FactKey). A read gives the path in the reader's data of
+ * the account it means, and the engine checks the record the host supplies
+ * is that account's.
+ */
+concept SalesToDate extends Fact {
+  @FactKey
+  o String salesAccountId
+  o Integer unitsSold
+  o PreciseAmount grossReceipts
+}

@@ -357,3 +357,31 @@ own that implements `org.accordproject.latepayment.api@1.2.0`.
 - **Vectors.** Every vector was re-recorded, because the agreement now holds
   the clause. There is a new `licence-late-payment` vector: three reminders,
   then payment.
+
+## Facts: royalties from the sales registry, and what is owed (2026-11-17)
+
+The sample now reads facts of both kinds, as the Agreement Quarter's No. 5
+describes.
+
+- **Host fact.** The licence reads `sales`
+  (`org.accordproject.royalty.api@^1.0.0` `SalesToDate`), keyed by a new
+  `salesAccountId` in its own data.
+  - The page's earlier sketch keyed the read by `work.workId`, but the
+    works are now the schedule's data, and a read's key is a path in the
+    reader's own data.
+  - One sales account per agreement keeps the example to one read; the page
+    now shows `"key": "salesAccountId"`.
+  - `RoyaltyStatementRequest` (licensor only) works out the royalty at
+    `royaltyBasisPoints` and notifies what was not invoiced before. The
+    state keeps only `royaltiesInvoiced`.
+  - The grammar gains a Royalty paragraph. The Payment paragraph no longer
+    says "consideration in full", which a royalty would contradict.
+- **Provided fact.** The licence implements
+  `org.accordproject.outstanding.api@1.0.0` and provides `AmountOutstanding`
+  from its fee status. The late payment clause reads it, so
+  `PaymentOverdue` carries no fields, and the clause declines
+  `NothingOutstanding` when nothing is owed. That changes the draft
+  `latepayment.api@1.2.0` in place while it is unpublished.
+- **Tests.** There are two new vectors: `licence-royalty`, and
+  `late-payment-alone`, the clause as a one-document agreement whose host
+  supplies the fact.

@@ -1,0 +1,31 @@
+/*
+ * DRAFT for the next major release of the Accord Project stack.
+ *
+ * The outstanding-amount fact interface: what is owed now, by whom, to whom
+ * and since when. A late payment clause reads it.
+ *
+ * Composed, the clause reads it from its parent: the nearest ancestor that
+ * implements this interface provides it, with a pure function of its own
+ * state (.provide), computed when read and never recorded. Alone, with no
+ * such ancestor, the clause reads it from the host. So one clause works
+ * composed or alone. Facts inform; they never authorise.
+ *
+ * It would be published on its own. Until then it ships with both templates
+ * that use it: the licence, which implements it, and the late payment
+ * clause, which reads it (the same file in each; the engine loads one).
+ */
+
+namespace org.accordproject.outstanding.api@1.0.0
+
+import org.accordproject.party@1.0.0.PartyRef
+import org.accordproject.money@1.0.0.PreciseAmount
+import org.accordproject.runtime@1.0.0.Fact
+
+/* What the obligor owes the obligee now: zero when nothing is owed. One record per provider (no key). */
+concept AmountOutstanding extends Fact {
+  o PartyRef obligor
+  o PartyRef obligee
+  o PreciseAmount amount
+  /* When it fell due; absent when nothing is owed. */
+  o DateTime dueAt optional
+}

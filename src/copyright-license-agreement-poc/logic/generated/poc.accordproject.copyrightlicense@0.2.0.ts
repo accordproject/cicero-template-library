@@ -46,6 +46,7 @@ export interface ICopyrightLicenseData {
     licensor: IPartyRef;
     territory: string;
     purposeDescription: string;
+    salesAccountId: string;
     paymentTerms: IPaymentTerms;
     utcOffset?: string;
 }
@@ -56,6 +57,7 @@ export interface ICopyrightLicenseState {
     $class: 'poc.accordproject.copyrightlicense@0.2.0.CopyrightLicenseState';
     acceptances: IAcceptance[];
     fee: IFeeStatus;
+    royaltiesInvoiced: IPreciseAmount;
 }
 export const CopyrightLicenseState = conceptType<ICopyrightLicenseState>('poc.accordproject.copyrightlicense@0.2.0.CopyrightLicenseState');
 
@@ -124,6 +126,7 @@ export interface IPaymentTerms {
     amount: IPreciseAmount;
     paymentProcedure: string;
     dueDate: string;
+    royaltyBasisPoints: number;
 }
 export const PaymentTerms = conceptType<IPaymentTerms>('poc.accordproject.copyrightlicense@0.2.0.PaymentTerms');
 
@@ -142,6 +145,37 @@ export interface IRecordFeePayment {
 }
 export const RecordFeePayment = conceptType<IRecordFeePayment>('poc.accordproject.copyrightlicense@0.2.0.RecordFeePayment');
 
+/** poc.accordproject.copyrightlicense@0.2.0.RoyaltyRefusal (enum) */
+export type IRoyaltyRefusal = 'NOT_THE_LICENSOR' | 'CURRENCY_MISMATCH';
+export const RoyaltyRefusal = { NOT_THE_LICENSOR: 'NOT_THE_LICENSOR', CURRENCY_MISMATCH: 'CURRENCY_MISMATCH' } as const;
+
+/** poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatement (transaction) */
+export interface IRoyaltyStatement {
+    $class: 'poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatement';
+    unitsSold: number;
+    grossReceipts: IPreciseAmount;
+    royaltyToDate: IPreciseAmount;
+    invoicedBefore: IPreciseAmount;
+    due: IPreciseAmount;
+    $timestamp?: string;
+}
+export const RoyaltyStatement = conceptType<IRoyaltyStatement>('poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatement');
+
+/** poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRefused (transaction) */
+export interface IRoyaltyStatementRefused {
+    $class: 'poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRefused';
+    reason: IRoyaltyRefusal;
+    $timestamp?: string;
+}
+export const RoyaltyStatementRefused = conceptType<IRoyaltyStatementRefused>('poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRefused');
+
+/** poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRequest (transaction) */
+export interface IRoyaltyStatementRequest {
+    $class: 'poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRequest';
+    $timestamp?: string;
+}
+export const RoyaltyStatementRequest = conceptType<IRoyaltyStatementRequest>('poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRequest');
+
 registerSupertypes({
     'poc.accordproject.copyrightlicense@0.2.0.Acceptance': null,
     'poc.accordproject.copyrightlicense@0.2.0.AcceptanceRefused': 'org.accordproject.runtime@1.0.0.Declined',
@@ -157,4 +191,7 @@ registerSupertypes({
     'poc.accordproject.copyrightlicense@0.2.0.PaymentTerms': null,
     'poc.accordproject.copyrightlicense@0.2.0.PayOut': 'org.accordproject.runtime@1.0.0.Response',
     'poc.accordproject.copyrightlicense@0.2.0.RecordFeePayment': 'org.accordproject.runtime@1.0.0.Request',
+    'poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatement': 'org.accordproject.runtime@1.0.0.Response',
+    'poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRefused': 'org.accordproject.runtime@1.0.0.Declined',
+    'poc.accordproject.copyrightlicense@0.2.0.RoyaltyStatementRequest': 'org.accordproject.runtime@1.0.0.Request',
 });

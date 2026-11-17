@@ -2,14 +2,22 @@
     "name": "late-payment-clause-poc",
     "displayName": "Late Payment (next major release prototype)",
     "version": "0.1.0",
-    "description": "Prototype of a reusable late payment clause on the next major release of the Accord Project stack: a template of its own that implements org.accordproject.latepayment.api@1.2.0, sends reminders as effects and accrues a late fee. The copyright licence composes it into its latePayment slot.",
+    "description": "Prototype of a reusable late payment clause on the next major release of the Accord Project stack: a template of its own that implements org.accordproject.latepayment.api@1.2.0, reads what is owed as a fact (its parent provides it, or the host), sends reminders as effects and accrues a late fee. The copyright licence composes it into its latePayment slot.",
     "author": "Accord Project",
     "license": "Apache-2.0",
     "accordproject": {
         "runtime": "typescript",
         "semantics": "1.0.0-draft",
-        "implements": { "org.accordproject.latepayment.api": "1.2.0" },
-        "slots": {}
+        "implements": {
+            "org.accordproject.latepayment.api": "1.2.0"
+        },
+        "slots": {},
+        "reads": {
+            "outstanding": {
+                "interface": "org.accordproject.outstanding.api@^1.0.0",
+                "fact": "AmountOutstanding"
+            }
+        }
     },
     "keywords": [
         "clause",

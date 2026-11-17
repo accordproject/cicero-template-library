@@ -8,12 +8,16 @@
     "accordproject": {
         "runtime": "typescript",
         "semantics": "1.0.0-draft",
-        "implements": {},
+        "implements": {
+            "org.accordproject.outstanding.api": "1.0.0"
+        },
         "slots": {
             "latePayment": {
                 "interface": "org.accordproject.latepayment.api@^1.0.0",
                 "optional": true,
-                "bind": { "utcOffset": "utcOffset" }
+                "bind": {
+                    "utcOffset": "utcOffset"
+                }
             }
         },
         "documents": {
@@ -24,6 +28,13 @@
                     "version": "0.1.0",
                     "location": "./schedule"
                 }
+            }
+        },
+        "reads": {
+            "sales": {
+                "interface": "org.accordproject.royalty.api@^1.0.0",
+                "fact": "SalesToDate",
+                "key": "salesAccountId"
             }
         }
     },

@@ -13,6 +13,12 @@
  * (../late-payment-clause-poc), composed into the optional `latePayment`
  * slot through org.accordproject.latepayment.api; the licence calls it
  * only through that interface, so this model does not import it.
+ *
+ * Facts. The licence reads one host fact, SalesToDate from the sales
+ * registry (royalty.api.cto), keyed by its own salesAccountId, to work out
+ * royalties; it keeps no copy of the sales. And it provides one fact,
+ * AmountOutstanding (outstanding.api.cto), to the late payment clause, from
+ * its own state: what is owed now, computed when read and never recorded.
  */
 
 namespace poc.accordproject.copyrightlicense@0.2.0
@@ -39,6 +45,37 @@ transaction PaymentRequest extends Request {
 /* The one-time fee the licensee owes the licensor. */
 transaction PayOut extends Response {
   o PreciseAmount amount
+}
+
+/*
+ * The licensor asks for a royalty statement. The licence reads the sales
+ * to date from the sales registry (the `sales` fact), works out the
+ * royalty on the gross receipts so far, and notifies a PaymentObligation
+ * for what has not been invoiced before. Only the licensor asks for it.
+ */
+@Returns(RoyaltyStatement)
+@Declines(RoyaltyStatementRefused)
+@Emits(PaymentObligation)
+transaction RoyaltyStatementRequest extends Request {
+}
+
+/* The statement: the sales it was worked out from, the royalty to date, and what is due now. */
+transaction RoyaltyStatement extends Response {
+  o Integer unitsSold
+  o PreciseAmount grossReceipts
+  o PreciseAmount royaltyToDate
+  o PreciseAmount invoicedBefore
+  o PreciseAmount due
+}
+
+enum RoyaltyRefusal {
+  o NOT_THE_LICENSOR
+  /* The sales registry reports in a currency or scale other than the licence's fee. */
+  o CURRENCY_MISMATCH
+}
+
+transaction RoyaltyStatementRefused extends Declined {
+  o RoyaltyRefusal reason
 }
 
 /*
@@ -127,6 +164,8 @@ concept PaymentTerms {
   o String paymentProcedure
   /* The last day to pay before the fee is overdue. */
   o DateTime dueDate
+  /* The royalty on gross receipts, in basis points (1000 is 10%). */
+  o Integer royaltyBasisPoints range=[0,10000]
 }
 
 /* Where the fee stands. */
@@ -150,6 +189,9 @@ concept CopyrightLicenseData extends TemplateData {
   o String territory
   o String purposeDescription
 
+  /* The licensee's account at the sales registry: names the SalesToDate record the licence reads. */
+  o String salesAccountId
+
   o PaymentTerms paymentTerms
 }
 
@@ -157,4 +199,6 @@ concept CopyrightLicenseData extends TemplateData {
 concept CopyrightLicenseState extends StateData {
   o Acceptance[] acceptances
   o FeeStatus fee
+  /* The royalties invoiced so far, in the fee's currency. */
+  o PreciseAmount royaltiesInvoiced
 }

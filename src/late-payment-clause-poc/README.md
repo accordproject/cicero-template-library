@@ -17,7 +17,7 @@ member, and each member describes itself.
 
 | Member | Answers | May decline with | Notifies |
 | --- | --- | --- | --- |
-| `PaymentOverdue {obligor, obligee, amount, dueAt}` | `ReminderSent {reminder, nextReminderAt?}` | `ReminderLimitReached {remindersSent}` | `LateFeeAccrued` |
+| `PaymentOverdue` | `ReminderSent {reminder, nextReminderAt?}` | `ReminderLimitReached {remindersSent}`, `NothingOutstanding` | `LateFeeAccrued` |
 | `PaymentSettled` | `LatePaymentCleared {remindersSent}` | (never declines) | |
 
 A parent's slot asks for the interface with a semver range, as the licence
@@ -27,6 +27,25 @@ published on its own. Until then it ships here, with the clause that
 implements it, and the engine loads it beside every archive of the
 agreement. A parent's logic is typed from it: the licence's codegen
 generates it into the licence's `logic/generated/` as well.
+
+## What it reads
+
+`PaymentOverdue` carries no fields. The clause reads what is owed, by whom
+and since when, as a fact:
+
+```json
+"reads": { "outstanding": { "interface": "org.accordproject.outstanding.api@^1.0.0", "fact": "AmountOutstanding" } }
+```
+
+- **Composed:** the nearest ancestor that implements
+  `org.accordproject.outstanding.api` provides the fact from its own state.
+  In the licence's agreement that's the licence. The engine works the fact
+  out when the clause reads it and never records it.
+- **Alone:** the host supplies it, as any host fact.
+
+So the clause works either way. When the amount is zero, the clause
+declines with `NothingOutstanding`. `model/outstanding.api.cto` is the
+same file the licence ships.
 
 ## The clause
 

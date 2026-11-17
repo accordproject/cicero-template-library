@@ -17,6 +17,9 @@ import {
     PaymentRequest,
     PayOut,
     RecordFeePayment,
+    RoyaltyStatement,
+    RoyaltyStatementRefused,
+    RoyaltyStatementRequest,
     type ICopyrightLicenseData,
     type ICopyrightLicenseState,
 } from './generated/poc.accordproject.copyrightlicense@0.2.0.js';
@@ -26,11 +29,15 @@ import {
     PaymentSettled,
     ReminderSent,
     type ILatePaymentCleared,
+    type INothingOutstanding,
     type IPaymentOverdue,
     type IPaymentSettled,
     type IReminderLimitReached,
     type IReminderSent,
 } from './generated/org.accordproject.latepayment.api@1.2.0.js';
+import { PreciseAmount, type IPreciseAmount } from './generated/org.accordproject.money@1.0.0.js';
+import { AmountOutstanding } from './generated/org.accordproject.outstanding.api@1.0.0.js';
+import type { ISalesToDate } from './generated/org.accordproject.royalty.api@1.0.0.js';
 import { ActorPrincipal, PaymentObligation } from './generated/org.accordproject.runtime@1.0.0.js';
 import type { ITemplateData } from './generated/org.accordproject.templatedata@1.0.0.js';
 import type { CopyrightLicenseAgreementPocDocuments } from './generated/documents.js';
@@ -40,18 +47,21 @@ import type { CopyrightLicenseAgreementPocDocuments } from './generated/document
  * request and what it may answer (its @Returns and @Declines).
  */
 type LatePaymentApi = {
-    PaymentOverdue: { request: IPaymentOverdue; response: IReminderSent | IReminderLimitReached };
+    PaymentOverdue: { request: IPaymentOverdue; response: IReminderSent | IReminderLimitReached | INothingOutstanding };
     PaymentSettled: { request: IPaymentSettled; response: ILatePaymentCleared };
 };
 
 // The licence's one slot: the late payment clause, optional, reached only
-// through its interface (the licence reads none of its data). It reads no
-// facts.
+// through its interface (the licence reads none of its data).
 type Clauses = { latePayment: ClauseHandle<ITemplateData, LatePaymentApi> | undefined };
-type NoFacts = Record<never, never>;
+
+// The facts the manifest's "reads" declares: `sales`, the SalesToDate record
+// for the licence's salesAccountId, which the host reads from the sales
+// registry before each request. Required, so it is always there.
+type Facts = { sales: ISalesToDate };
 
 // self.documents.schedule: the schedule of licensed works, a text document (data, no trigger).
-type LicenceSelf = Self<ICopyrightLicenseData, ICopyrightLicenseState, Clauses, NoFacts, CopyrightLicenseAgreementPocDocuments>;
+type LicenceSelf = Self<ICopyrightLicenseData, ICopyrightLicenseState, Clauses, Facts, CopyrightLicenseAgreementPocDocuments>;
 
 /** The licence's one timer: the fee's due date, then each reminder date the late payment clause gives. */
 const OVERDUE_TIMER = 'fee-overdue';
@@ -74,10 +84,35 @@ export function acceptanceDigest(partyId: string, agreementTermsHash: string): s
 const withState = (self: LicenceSelf, change: Partial<ICopyrightLicenseState>) =>
     self.setState(CopyrightLicenseState.create({ ...self.state, ...change }));
 
+/** The term royalty obligations come from (text/grammar.md, Royalty). */
+const ROYALTY = 'Royalty on gross receipts';
+
+const amountOf = (unscaledValue: bigint, unit: IPreciseAmount['unit']) =>
+    PreciseAmount.create({ unscaledValue: unscaledValue.toString(), unit });
+
+const sameUnit = (a: IPreciseAmount['unit'], b: IPreciseAmount['unit']) =>
+    a.currencyCode === b.currencyCode && a.scale === b.scale;
+
 export default defineLogic<LicenceSelf>()
-    // The licence starts with no acceptances, and the fee not yet asked for.
+    // The licence starts with no acceptances, the fee not yet asked for, and
+    // no royalties invoiced.
     .init((self) => {
-        self.setState(CopyrightLicenseState.create({ acceptances: [], fee: 'NOT_DUE' }));
+        self.setState(CopyrightLicenseState.create({
+            acceptances: [],
+            fee: 'NOT_DUE',
+            royaltiesInvoiced: amountOf(0n, self.data.paymentTerms.amount.unit),
+        }));
+    })
+
+    // The fact the late payment clause reads: what the licensee owes the
+    // licensor now. The fee while it is due, else zero. A pure function of
+    // the licence's state, worked out when the clause reads it and never
+    // recorded.
+    .provide(AmountOutstanding, (self) => {
+        const { licensee, licensor, paymentTerms } = self.data;
+        return self.state.fee === 'DUE'
+            ? AmountOutstanding.create({ obligor: licensee, obligee: licensor, amount: paymentTerms.amount, dueAt: paymentTerms.dueDate })
+            : AmountOutstanding.create({ obligor: licensee, obligee: licensor, amount: amountOf(0n, paymentTerms.amount.unit) });
     })
 
     // Licensee shall pay Licensor a one-time fee in the amount the payment
@@ -115,20 +150,15 @@ export default defineLogic<LicenceSelf>()
 
     // The timer fired: the fee is overdue. If the agreement has a late
     // payment clause, the licence tells it, and sets the timer again for the
-    // next reminder date the clause gives. When the clause has sent every
-    // reminder it allows it declines, its writes are discarded, and the
-    // licence sets no more timers. Without a clause, nothing happens.
+    // next reminder date the clause gives. The clause reads what is owed from
+    // the AmountOutstanding fact the licence provides. When the clause has
+    // sent every reminder it allows it declines, its writes are discarded,
+    // and the licence sets no more timers. Without a clause, nothing happens.
     .on(FeeOverdue, (_firing, self) => {
         const latePayment = self.clauses.latePayment;
         if (self.state.fee !== 'DUE' || !latePayment) return OverdueHandled.create({});
 
-        const { licensee, licensor, paymentTerms } = self.data;
-        const reply = latePayment.trigger(PaymentOverdue.create({
-            obligor: licensee,
-            obligee: licensor,
-            amount: paymentTerms.amount,
-            dueAt: paymentTerms.dueDate,
-        }));
+        const reply = latePayment.trigger(PaymentOverdue.create({}));
         if (!ReminderSent.is(reply)) return OverdueHandled.create({});
         if (reply.nextReminderAt) self.setTimer(OVERDUE_TIMER, reply.nextReminderAt, FeeOverdue.create({}));
         return OverdueHandled.create({ reminder: reply.reminder });
@@ -152,6 +182,43 @@ export default defineLogic<LicenceSelf>()
         return LatePaymentCleared.is(cleared)
             ? FeeSettled.create({ amount, remindersSent: cleared.remindersSent })
             : FeeSettled.create({ amount });
+    })
+
+    // The licensor asks for a royalty statement. The sales to date are a
+    // fact the host read from the sales registry for this request; the
+    // licence keeps no copy of them, only what it has invoiced. The royalty
+    // to date is the rate on the gross receipts, rounded down to the unit;
+    // what is due is that less what was invoiced before, and only that is
+    // notified as owed.
+    .on(RoyaltyStatementRequest, (_request, self) => {
+        const principal = self.principal;
+        if (!ActorPrincipal.is(principal) || principal.actor.partyId !== self.data.licensor.partyId) {
+            return RoyaltyStatementRefused.create({ reason: 'NOT_THE_LICENSOR' });
+        }
+        const sales = self.facts.sales;
+        const invoicedBefore = self.state.royaltiesInvoiced;
+        const unit = invoicedBefore.unit;
+        if (!sameUnit(sales.grossReceipts.unit, unit)) return RoyaltyStatementRefused.create({ reason: 'CURRENCY_MISMATCH' });
+
+        const toDate = (BigInt(sales.grossReceipts.unscaledValue) * BigInt(self.data.paymentTerms.royaltyBasisPoints)) / 10000n;
+        const before = BigInt(invoicedBefore.unscaledValue);
+        const due = toDate > before ? toDate - before : 0n;
+        if (due > 0n) {
+            self.notify(PaymentObligation.create({
+                obligor: self.data.licensee,
+                obligee: self.data.licensor,
+                amount: amountOf(due, unit),
+                description: ROYALTY,
+            }));
+            withState(self, { royaltiesInvoiced: amountOf(toDate, unit) });
+        }
+        return RoyaltyStatement.create({
+            unitsSold: sales.unitsSold,
+            grossReceipts: sales.grossReceipts,
+            royaltyToDate: amountOf(toDate, unit),
+            invoicedBefore,
+            due: amountOf(due, unit),
+        });
     })
 
     // A party accepts the whole agreement. Only the licensee or the licensor
