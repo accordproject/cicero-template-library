@@ -61,9 +61,12 @@ const githubRoot = `https://github.dev/accordproject/cicero-template-library/blo
 const ciceroMark = new CiceroMarkTransformer();
 const htmlMark = new HtmlTransformer();
 
-nunjucks.configure('./views', {
+const nunjucksEnv = nunjucks.configure('./views', {
     autoescape: false,
 });
+
+// Available in every view, so the footer copyright year never goes stale.
+nunjucksEnv.addGlobal('currentYear', new Date().getFullYear());
 
 /**
  * Generating a static website from a template library
