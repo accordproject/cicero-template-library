@@ -2,7 +2,7 @@
 // Generated code for namespace: org.accordproject.perishablegoods@0.2.0
 
 // imports
-import {IContract,IClause} from './org.accordproject.contract@0.2.0';
+import {IContract} from './org.accordproject.contract@0.2.0';
 import {IRequest,IResponse,IObligation,IState} from './org.accordproject.runtime@0.2.0';
 import {IMonetaryAmount} from './org.accordproject.money@0.3.0';
 import {IConcept,IParticipant} from './concerto@1.0.0';
@@ -19,10 +19,35 @@ export interface ISensorReading extends IConcept {
    humidity: number;
 }
 
+export enum ContractStatus {
+   IN_PROGRESS = 'IN_PROGRESS',
+   COMPLETED = 'COMPLETED',
+}
+
+export interface ISensorReadingsReceived extends IRequest {
+   shipmentId: string;
+   sensorReadings: ISensorReading[];
+}
+
+export interface ISensorReadingsRecorded extends IResponse {
+   readingCount: number;
+   minTemperatureRecorded?: number;
+   maxTemperatureRecorded?: number;
+   minHumidityRecorded?: number;
+   maxHumidityRecorded?: number;
+   late: boolean;
+}
+
+export interface ILateShipmentNotification extends IObligation {
+   shipmentId: string;
+   dueDate: Date;
+   description: string;
+}
+
 export interface IShipmentReceived extends IRequest {
    shipmentId: string;
    unitCount: number;
-   sensorReadings: ISensorReading[];
+   sensorReadings?: ISensorReading[];
 }
 
 export interface IPriceCalculation extends IResponse {
@@ -39,11 +64,17 @@ export interface IPerishableGoodsPaymentEvent extends IObligation {
 }
 
 export interface IPerishableGoodsState extends IState {
+   status: ContractStatus;
+   readingCount: number;
+   minTemperatureRecorded?: number;
+   maxTemperatureRecorded?: number;
+   minHumidityRecorded?: number;
+   maxHumidityRecorded?: number;
    payoutMade: boolean;
    totalPaid: number;
 }
 
-export interface ITemplateModel extends IClause {
+export interface ITemplateModel extends IContract {
    grower: string;
    importer: string;
    shipmentId: string;

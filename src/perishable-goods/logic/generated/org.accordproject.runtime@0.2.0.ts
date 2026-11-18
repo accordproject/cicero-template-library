@@ -5,16 +5,19 @@
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	ISensorReadingsReceived,
 	IShipmentReceived
 } from './org.accordproject.perishablegoods@0.2.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	ISensorReadingsRecorded,
 	IPriceCalculation
 } from './org.accordproject.perishablegoods@0.2.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
+	ILateShipmentNotification,
 	IPerishableGoodsPaymentEvent
 } from './org.accordproject.perishablegoods@0.2.0';
 
@@ -29,12 +32,14 @@ import {ITransaction,IEvent,IParticipant,IAsset} from './concerto@1.0.0';
 export interface IRequest extends ITransaction {
 }
 
-export type RequestUnion = IShipmentReceived;
+export type RequestUnion = ISensorReadingsReceived | 
+IShipmentReceived;
 
 export interface IResponse extends ITransaction {
 }
 
-export type ResponseUnion = IPriceCalculation;
+export type ResponseUnion = ISensorReadingsRecorded | 
+IPriceCalculation;
 
 export interface IObligation extends IEvent {
    $identifier: string;
@@ -44,7 +49,8 @@ export interface IObligation extends IEvent {
    deadline?: Date;
 }
 
-export type ObligationUnion = IPerishableGoodsPaymentEvent;
+export type ObligationUnion = ILateShipmentNotification | 
+IPerishableGoodsPaymentEvent;
 
 export interface IState extends IAsset {
 }

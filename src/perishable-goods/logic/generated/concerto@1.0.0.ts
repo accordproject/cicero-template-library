@@ -6,7 +6,8 @@
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
 	UnitOfMass,
-	ISensorReading
+	ISensorReading,
+	ContractStatus
 } from './org.accordproject.perishablegoods@0.2.0';
 import type {
 	IDigitalMonetaryAmount,

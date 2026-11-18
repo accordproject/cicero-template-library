@@ -22,12 +22,51 @@ concept SensorReading {
 }
 
 /**
- * Request: shipment received with unit count and embedded sensor readings
+ * Lifecycle of the contract
+ */
+enum ContractStatus {
+  o IN_PROGRESS
+  o COMPLETED
+}
+
+/**
+ * Request: one or more sensor readings taken during transit.
+ * Can be sent many times; the min/max values are kept in the contract state.
+ */
+transaction SensorReadingsReceived extends Request {
+  o String shipmentId
+  o SensorReading[] sensorReadings
+}
+
+/**
+ * Response: the min/max values recorded so far
+ */
+transaction SensorReadingsRecorded extends Response {
+  o Integer readingCount
+  o Double minTemperatureRecorded optional
+  o Double maxTemperatureRecorded optional
+  o Double minHumidityRecorded optional
+  o Double maxHumidityRecorded optional
+  o Boolean late
+}
+
+/**
+ * Event emitted when sensor readings arrive after the due date
+ */
+event LateShipmentNotification extends Obligation {
+  o String shipmentId
+  o DateTime dueDate
+  o String description
+}
+
+/**
+ * Request: shipment received with unit count.
+ * Any readings included here are combined with the readings already recorded in state.
  */
 transaction ShipmentReceived extends Request {
   o String shipmentId
   o Integer unitCount
-  o SensorReading[] sensorReadings
+  o SensorReading[] sensorReadings optional
 }
 
 /**
@@ -53,6 +92,12 @@ event PerishableGoodsPaymentEvent extends Obligation {
  * State for the perishable goods contract
  */
 asset PerishableGoodsState extends State {
+  o ContractStatus status default="IN_PROGRESS"
+  o Integer readingCount default=0
+  o Double minTemperatureRecorded optional
+  o Double maxTemperatureRecorded optional
+  o Double minHumidityRecorded optional
+  o Double maxHumidityRecorded optional
   o Boolean payoutMade default=false
   o Double totalPaid default=0.0
 }

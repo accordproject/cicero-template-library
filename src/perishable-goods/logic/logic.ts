@@ -1,5 +1,9 @@
-import {
+import type {
+    ContractStatus,
+    ILateShipmentNotification,
     IShipmentReceived,
+    ISensorReadingsReceived,
+    ISensorReadingsRecorded,
     IPriceCalculation,
     IPerishableGoodsPaymentEvent,
     IPerishableGoodsState,
@@ -7,13 +11,30 @@ import {
     ISensorReading,
 } from "./generated/org.accordproject.perishablegoods@0.2.0";
 
+const NS = "org.accordproject.perishablegoods@0.2.0";
+
+// The runtime loads this file on its own, so only type imports from ./generated
+// are allowed. Use the enum's string values directly.
+const IN_PROGRESS = "IN_PROGRESS" as unknown as ContractStatus;
+const COMPLETED = "COMPLETED" as unknown as ContractStatus;
+
 // @ts-expect-error EngineResponse is imported by the runtime
 interface PerishableGoodsResponse extends EngineResponse<IPerishableGoodsState> {
-    result: IPriceCalculation;
+    result: IPriceCalculation | ISensorReadingsRecorded;
     state: object;
     events: object[];
 }
 
+/**
+ * Stateful perishable goods contract.
+ *
+ * Sensor readings can be sent one at a time (or in small batches) with
+ * `SensorReadingsReceived`; the min/max temperature and humidity seen so far are
+ * kept in the contract state. When the shipment arrives (`ShipmentReceived`) the
+ * penalty is calculated from the recorded min/max values, a payment obligation is
+ * emitted and the contract is set to COMPLETED. Readings received after the due
+ * date emit a `LateShipmentNotification`.
+ */
 // @ts-ignore TemplateLogic is imported by the runtime
 class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGoodsState> {
 
@@ -21,59 +42,116 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
     async init(data: ITemplateModel): Promise<InitResponse<IPerishableGoodsState>> {
         return {
             state: {
-                $class: "org.accordproject.perishablegoods@0.2.0.PerishableGoodsState",
+                $class: `${NS}.PerishableGoodsState`,
                 $identifier: data.$identifier,
+                status: IN_PROGRESS,
+                readingCount: 0,
                 payoutMade: false,
                 totalPaid: 0.0,
             }
         };
     }
 
-    /**
-     * Calculate the temperature-based penalty from sensor readings.
-     * If any reading falls below minTemperature, apply penalty based on the deviation.
-     * If any reading exceeds maxTemperature, apply penalty based on the deviation.
-     */
-    private calculateTempPenalty(
-        minTemp: number,
-        maxTemp: number,
-        penaltyFactor: number,
-        readings: ISensorReading[]
-    ): number {
-        const temps = readings.map((r) => r.centigrade);
-        const lowestReading = Math.min(...temps);
-        const highestReading = Math.max(...temps);
-
-        if (lowestReading < minTemp) {
-            return (minTemp - lowestReading) * penaltyFactor;
-        } else if (highestReading > maxTemp) {
-            return (highestReading - maxTemp) * penaltyFactor;
-        }
-        return 0.0;
-    }
-
-    /**
-     * Calculate the humidity-based penalty from sensor readings.
-     */
-    private calculateHumPenalty(
-        minHumidity: number,
-        maxHumidity: number,
-        penaltyFactor: number,
-        readings: ISensorReading[]
-    ): number {
-        const humidities = readings.map((r) => r.humidity);
-        const lowestReading = Math.min(...humidities);
-        const highestReading = Math.max(...humidities);
-
-        if (lowestReading < minHumidity) {
-            return (minHumidity - lowestReading) * penaltyFactor;
-        } else if (highestReading > maxHumidity) {
-            return (highestReading - maxHumidity) * penaltyFactor;
-        }
-        return 0.0;
-    }
-
     async trigger(
+        data: ITemplateModel,
+        request: ISensorReadingsReceived | IShipmentReceived,
+        state: IPerishableGoodsState
+    ): Promise<PerishableGoodsResponse> {
+        if (state.status === COMPLETED) {
+            throw new Error("Contract is already completed");
+        }
+        if (request.shipmentId !== data.shipmentId) {
+            throw new Error(`Unknown shipment: ${request.shipmentId}`);
+        }
+
+        if (request.$class === `${NS}.SensorReadingsReceived`) {
+            return this.sensorReadingsReceived(data, request as ISensorReadingsReceived, state);
+        } else if (request.$class === `${NS}.ShipmentReceived`) {
+            return this.shipmentReceived(data, request as IShipmentReceived, state);
+        }
+        throw new Error(`Unknown request type: ${request.$class}`);
+    }
+
+    private isLate(data: ITemplateModel): boolean {
+        return new Date() >= new Date(data.dueDate);
+    }
+
+    /**
+     * Fold new readings into the min/max values kept in state.
+     */
+    private recordReadings(state: IPerishableGoodsState, readings: ISensorReading[]): IPerishableGoodsState {
+        if (readings.length === 0) return state;
+
+        const temps = readings.map((r) => r.centigrade);
+        const humidities = readings.map((r) => r.humidity);
+        const lowest = (values: number[], previous?: number) =>
+            Math.min(...values, ...(previous === undefined ? [] : [previous]));
+        const highest = (values: number[], previous?: number) =>
+            Math.max(...values, ...(previous === undefined ? [] : [previous]));
+
+        return {
+            ...state,
+            readingCount: state.readingCount + readings.length,
+            minTemperatureRecorded: lowest(temps, state.minTemperatureRecorded),
+            maxTemperatureRecorded: highest(temps, state.maxTemperatureRecorded),
+            minHumidityRecorded: lowest(humidities, state.minHumidityRecorded),
+            maxHumidityRecorded: highest(humidities, state.maxHumidityRecorded),
+        };
+    }
+
+    /**
+     * Penalty per unit for a value that went outside [min, max].
+     * A reading below the minimum takes precedence over one above the maximum.
+     */
+    private rangePenalty(min: number, max: number, lowest: number, highest: number, penaltyFactor: number): number {
+        if (lowest < min) {
+            return (min - lowest) * penaltyFactor;
+        } else if (highest > max) {
+            return (highest - max) * penaltyFactor;
+        }
+        return 0.0;
+    }
+
+    private async sensorReadingsReceived(
+        data: ITemplateModel,
+        request: ISensorReadingsReceived,
+        state: IPerishableGoodsState
+    ): Promise<PerishableGoodsResponse> {
+        const readings = request.sensorReadings ?? [];
+        if (readings.length === 0) {
+            throw new Error("No sensor readings received");
+        }
+
+        const newState = this.recordReadings(state, readings);
+        const late = this.isLate(data);
+
+        const result: ISensorReadingsRecorded = {
+            $class: `${NS}.SensorReadingsRecorded`,
+            $timestamp: new Date(),
+            readingCount: newState.readingCount,
+            minTemperatureRecorded: newState.minTemperatureRecorded,
+            maxTemperatureRecorded: newState.maxTemperatureRecorded,
+            minHumidityRecorded: newState.minHumidityRecorded,
+            maxHumidityRecorded: newState.maxHumidityRecorded,
+            late,
+        };
+
+        const events: object[] = [];
+        if (late) {
+            const notification: ILateShipmentNotification = {
+                $class: `${NS}.LateShipmentNotification`,
+                $timestamp: new Date(),
+                shipmentId: data.shipmentId,
+                dueDate: new Date(data.dueDate),
+                description: `Shipment ${data.shipmentId} from ${data.grower} to ${data.importer} is late`,
+            };
+            events.push(notification);
+        }
+
+        return { result, state: newState, events };
+    }
+
+    private async shipmentReceived(
         data: ITemplateModel,
         request: IShipmentReceived,
         state: IPerishableGoodsState
@@ -83,59 +161,54 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
             throw new Error("Units received out of range for the contract");
         }
 
-        const currency = data.currencyCode;
+        const currency = data.unitPrice.currencyCode;
 
-        // Guard: check if shipment is late (past dueDate)
-        const now = new Date();
-        const dueDate = new Date(data.dueDate);
-
-        if (now >= dueDate) {
-            // Shipment is late - return zero price
+        // Guard: shipment is late (past dueDate) - zero price, contract completed
+        if (this.isLate(data)) {
             const lateResult: IPriceCalculation = {
-                $class: "org.accordproject.perishablegoods@0.2.0.PriceCalculation",
+                $class: `${NS}.PriceCalculation`,
                 $timestamp: new Date(),
                 totalPrice: 0.0,
                 penalty: 0.0,
                 currencyCode: currency,
                 late: true,
             };
-            const newState: IPerishableGoodsState = {
-                ...state,
+            const lateState: IPerishableGoodsState = {
+                ...this.recordReadings(state, request.sensorReadings ?? []),
+                status: COMPLETED,
                 payoutMade: true,
-                totalPaid: state.totalPaid,
             };
-            return { result: lateResult, state: newState, events: [] };
+            return { result: lateResult, state: lateState, events: [] };
         }
 
-        // Guard: must have sensor readings
-        const readings = request.sensorReadings ?? [];
-        if (readings.length === 0) {
+        // Readings sent with the shipment are combined with those already in state
+        const recorded = this.recordReadings(state, request.sensorReadings ?? []);
+        if (recorded.readingCount === 0) {
             throw new Error("No temperature readings received");
         }
 
-        // Calculate base payout
-        const payOut = data.unitPrice * request.unitCount;
+        const payOut = data.unitPrice.doubleValue * request.unitCount;
 
-        // Calculate penalties
-        const tempPenalty = this.calculateTempPenalty(
+        const tempPenalty = this.rangePenalty(
             data.minTemperature,
             data.maxTemperature,
-            data.penaltyFactor,
-            readings
+            recorded.minTemperatureRecorded as number,
+            recorded.maxTemperatureRecorded as number,
+            data.penaltyFactor
         );
-        const humPenalty = this.calculateHumPenalty(
+        const humPenalty = this.rangePenalty(
             data.minHumidity,
             data.maxHumidity,
-            data.penaltyFactor,
-            readings
+            recorded.minHumidityRecorded as number,
+            recorded.maxHumidityRecorded as number,
+            data.penaltyFactor
         );
 
-        const totalPenaltyPerUnit = tempPenalty + humPenalty;
-        const totalPenalty = totalPenaltyPerUnit * request.unitCount;
+        const totalPenalty = (tempPenalty + humPenalty) * request.unitCount;
         const totalPrice = Math.max(payOut - totalPenalty, 0.0);
 
         const event: IPerishableGoodsPaymentEvent = {
-            $class: "org.accordproject.perishablegoods@0.2.0.PerishableGoodsPaymentEvent",
+            $class: `${NS}.PerishableGoodsPaymentEvent`,
             $timestamp: new Date(),
             totalPrice,
             currencyCode: currency,
@@ -143,7 +216,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         };
 
         const result: IPriceCalculation = {
-            $class: "org.accordproject.perishablegoods@0.2.0.PriceCalculation",
+            $class: `${NS}.PriceCalculation`,
             $timestamp: new Date(),
             totalPrice,
             penalty: totalPenalty,
@@ -152,8 +225,8 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
         };
 
         const newState: IPerishableGoodsState = {
-            $class: "org.accordproject.perishablegoods@0.2.0.PerishableGoodsState",
-            $identifier: state.$identifier,
+            ...recorded,
+            status: COMPLETED,
             payoutMade: true,
             totalPaid: state.totalPaid + totalPrice,
         };
