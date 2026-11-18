@@ -18,6 +18,7 @@ import PerishableGoodsLogic from "./logic";
 import {
     ITemplateModel,
     IShipmentReceived,
+    ISensorReadingsReceived,
     IPerishableGoodsState,
     ISensorReading,
 } from "./generated/org.accordproject.perishablegoods@0.2.0";
@@ -36,8 +37,11 @@ function makeModel(overrides: Partial<ITemplateModel> = {}): ITemplateModel {
         importer: "DAN",
         shipmentId: "SHIP_001",
         dueDate: FUTURE_DUE_DATE,
-        unitPrice: 1.5,
-        currencyCode: "USD",
+        unitPrice: {
+            $class: "org.accordproject.money@0.3.0.MonetaryAmount",
+            doubleValue: 1.5,
+            currencyCode: "USD",
+        },
         unit: "KG",
         minUnits: 3000,
         maxUnits: 3500,
@@ -57,6 +61,8 @@ function makeState(overrides: Partial<IPerishableGoodsState> = {}): IPerishableG
     return {
         $class: `${NS}.PerishableGoodsState`,
         $identifier: "test-clause-id",
+        status: "IN_PROGRESS",
+        readingCount: 0,
         payoutMade: false,
         totalPaid: 0.0,
         ...overrides,
@@ -86,6 +92,19 @@ function makeRequest(overrides: Partial<IShipmentReceived> = {}): IShipmentRecei
     };
 }
 
+function makeReadings(
+    readings: ISensorReading[],
+    overrides: Partial<ISensorReadingsReceived> = {}
+): ISensorReadingsReceived {
+    return {
+        $class: `${NS}.SensorReadingsReceived`,
+        $identifier: "readings-1",
+        shipmentId: "SHIP_001",
+        sensorReadings: readings,
+        ...overrides,
+    };
+}
+
 describe("PerishableGoodsLogic", () => {
     let logic: PerishableGoodsLogic;
     let model: ITemplateModel;
@@ -103,9 +122,12 @@ describe("PerishableGoodsLogic", () => {
             expect(result.state).toMatchObject({
                 $class: `${NS}.PerishableGoodsState`,
                 $identifier: "test-clause-id",
+                status: "IN_PROGRESS",
+                readingCount: 0,
                 payoutMade: false,
                 totalPaid: 0.0,
             });
+            expect(result.state.minTemperatureRecorded).toBeUndefined();
         });
 
         it("should propagate $identifier from data", async () => {
@@ -231,18 +253,150 @@ describe("PerishableGoodsLogic", () => {
         });
     });
 
-    describe("trigger — state accumulation", () => {
-        it("should accumulate totalPaid across multiple triggers", async () => {
+    describe("trigger — shipment completes the contract", () => {
+        it("should set status COMPLETED and record the payout", async () => {
             const request = makeRequest({
                 unitCount: 3000,
                 sensorReadings: [makeSensorReading(5, 80)],
             });
-            const result1 = await logic.trigger(model, request, initialState);
-            expect(result1.state.payoutMade).toBe(true);
-            expect(result1.state.totalPaid).toBeCloseTo(4500.0);
+            const result = await logic.trigger(model, request, initialState);
+            expect(result.state.status).toBe("COMPLETED");
+            expect(result.state.payoutMade).toBe(true);
+            expect(result.state.totalPaid).toBeCloseTo(4500.0);
+        });
 
-            const result2 = await logic.trigger(model, request, result1.state as IPerishableGoodsState);
-            expect(result2.state.totalPaid).toBeCloseTo(9000.0);
+        it("should reject a second shipment once the contract is completed", async () => {
+            const request = makeRequest({ sensorReadings: [makeSensorReading(5, 80)] });
+            const result = await logic.trigger(model, request, initialState);
+            await expect(logic.trigger(model, request, result.state))
+                .rejects.toThrow("Contract is already completed");
+        });
+
+        it("should reject sensor readings once the contract is completed", async () => {
+            const result = await logic.trigger(model, makeRequest({ sensorReadings: [makeSensorReading(5, 80)] }), initialState);
+            await expect(logic.trigger(model, makeReadings([makeSensorReading(5, 80)]), result.state))
+                .rejects.toThrow("Contract is already completed");
+        });
+
+        it("should mark a late shipment as COMPLETED", async () => {
+            const pastDueModel = makeModel({ dueDate: new Date("2000-01-01T00:00:00Z") });
+            const result = await logic.trigger(pastDueModel, makeRequest(), initialState);
+            expect(result.state.status).toBe("COMPLETED");
+        });
+    });
+
+    describe("trigger — stateful sensor readings", () => {
+        it("should record min/max values from a single reading", async () => {
+            const result = await logic.trigger(model, makeReadings([makeSensorReading(5, 80)]), initialState);
+            expect(result.result.$class).toBe(`${NS}.SensorReadingsRecorded`);
+            expect(result.state).toMatchObject({
+                status: "IN_PROGRESS",
+                readingCount: 1,
+                minTemperatureRecorded: 5,
+                maxTemperatureRecorded: 5,
+                minHumidityRecorded: 80,
+                maxHumidityRecorded: 80,
+                payoutMade: false,
+            });
+            expect(result.result).toMatchObject({ readingCount: 1, late: false });
+            expect(result.events).toHaveLength(0);
+        });
+
+        it("should keep the running min/max across readings sent one by one and in batches", async () => {
+            let state = initialState;
+            for (const request of [
+                makeReadings([makeSensorReading(6, 80)]),
+                makeReadings([makeSensorReading(3, 88), makeSensorReading(11, 75)]),
+                makeReadings([makeSensorReading(8, 72)]),
+            ]) {
+                state = (await logic.trigger(model, request, state)).state;
+            }
+            expect(state).toMatchObject({
+                readingCount: 4,
+                minTemperatureRecorded: 3,
+                maxTemperatureRecorded: 11,
+                minHumidityRecorded: 72,
+                maxHumidityRecorded: 88,
+            });
+        });
+
+        it("should not change the original state object", async () => {
+            await logic.trigger(model, makeReadings([makeSensorReading(5, 80)]), initialState);
+            expect(initialState.readingCount).toBe(0);
+            expect(initialState.minTemperatureRecorded).toBeUndefined();
+        });
+
+        it("should throw when a readings request has no readings", async () => {
+            await expect(logic.trigger(model, makeReadings([]), initialState))
+                .rejects.toThrow("No sensor readings received");
+        });
+
+        it("should throw for readings that belong to another shipment", async () => {
+            await expect(logic.trigger(model, makeReadings([makeSensorReading(5, 80)], { shipmentId: "OTHER" }), initialState))
+                .rejects.toThrow("Unknown shipment: OTHER");
+        });
+
+        it("should emit a LateShipmentNotification for readings received after the due date", async () => {
+            const pastDueModel = makeModel({ dueDate: new Date("2000-01-01T00:00:00Z") });
+            const result = await logic.trigger(pastDueModel, makeReadings([makeSensorReading(5, 80)]), initialState);
+            expect(result.result.late).toBe(true);
+            expect(result.state.readingCount).toBe(1); // still recorded
+            expect(result.events).toHaveLength(1);
+            const event: any = result.events[0];
+            expect(event.$class).toBe(`${NS}.LateShipmentNotification`);
+            expect(event.shipmentId).toBe("SHIP_001");
+            expect(event.description).toContain("late");
+        });
+
+        it("should throw for an unknown request type", async () => {
+            await expect(logic.trigger(model, { $class: `${NS}.Unknown`, shipmentId: "SHIP_001" }, initialState))
+                .rejects.toThrow(`Unknown request type: ${NS}.Unknown`);
+        });
+    });
+
+    describe("trigger — shipment uses the readings recorded in state", () => {
+        it("should calculate the penalty from readings recorded before the shipment arrived", async () => {
+            // Same violation as the 'temperature above max' case, but sent ahead of the shipment
+            const afterReadings = await logic.trigger(model, makeReadings([makeSensorReading(15, 80)]), initialState);
+            const result = await logic.trigger(
+                model,
+                makeRequest({ unitCount: 3000, sensorReadings: undefined }),
+                afterReadings.state
+            );
+            expect(result.result.penalty).toBeCloseTo(1200.0);
+            expect(result.result.totalPrice).toBeCloseTo(3300.0);
+            expect(result.state.status).toBe("COMPLETED");
+        });
+
+        it("should combine recorded readings with readings sent with the shipment", async () => {
+            // recorded: temp 5 (ok); with shipment: temp 0 (below min 2) -> penalty (2-0)*0.2*3000 = 1200
+            const afterReadings = await logic.trigger(model, makeReadings([makeSensorReading(5, 80)]), initialState);
+            const result = await logic.trigger(
+                model,
+                makeRequest({ unitCount: 3000, sensorReadings: [makeSensorReading(0, 80)] }),
+                afterReadings.state
+            );
+            expect(result.result.penalty).toBeCloseTo(1200.0);
+            expect(result.state.readingCount).toBe(2);
+        });
+
+        it("should throw when there are no readings in state or in the shipment", async () => {
+            await expect(logic.trigger(model, makeRequest({ sensorReadings: undefined }), initialState))
+                .rejects.toThrow("No temperature readings received");
+        });
+
+        it("should give the same result as sending all readings with the shipment", async () => {
+            const readings = [makeSensorReading(2, 80), makeSensorReading(5, 90), makeSensorReading(15, 65)];
+            const oneShot = await logic.trigger(model, makeRequest({ sensorReadings: readings }), initialState);
+
+            let state = initialState;
+            for (const r of readings) {
+                state = (await logic.trigger(model, makeReadings([r]), state)).state;
+            }
+            const stateful = await logic.trigger(model, makeRequest({ sensorReadings: undefined }), state);
+
+            expect(stateful.result.totalPrice).toBeCloseTo(oneShot.result.totalPrice);
+            expect(stateful.result.penalty).toBeCloseTo(oneShot.result.penalty);
         });
     });
 
