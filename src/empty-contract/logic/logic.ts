@@ -9,7 +9,7 @@ class EmptyContractLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IEmptyRequest): Promise<EmptyContractResponse> {
         return {
             result: {
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.emptycontract@0.1.0.EmptyResponse'
             }
         };

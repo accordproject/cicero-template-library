@@ -26,14 +26,14 @@ class PaymentUponDeliveryLogic extends TemplateLogic<ITemplateModel> {
         const totalAmountValue = data.costOfGoods.doubleValue + data.deliveryFee.doubleValue;
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.paymentupondelivery@0.2.0.PaymentObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             amount: monetary(totalAmountValue, data.costOfGoods.currencyCode),
             description: `${data.buyer} should pay cost of goods and delivery fee to ${data.seller}`,
         };
         return {
             result: {
                 $class: 'org.accordproject.paymentupondelivery@0.2.0.DeliveryAcceptedResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 totalAmount: monetary(totalAmountValue, data.costOfGoods.currencyCode),
             },
             events: [event],

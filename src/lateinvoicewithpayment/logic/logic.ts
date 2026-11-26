@@ -40,7 +40,7 @@ class LateInvoiceWithPaymentLogic extends TemplateLogic<ITemplateModel> {
             return {
                 result: {
                     $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.LateInvoiceResponse',
-                    $timestamp: now,
+                    $timestamp: now.toISOString(),
                     paymentRequired: false,
                     cause: `Invoice delivered after the maximum delay of ${data.maximumDelay.amount} ${data.maximumDelay.unit}`,
                 },
@@ -50,7 +50,7 @@ class LateInvoiceWithPaymentLogic extends TemplateLogic<ITemplateModel> {
 
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.PaymentObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             amount: request.amountDue,
             description: `${data.purchaser} should pay invoice amount to ${data.supplier}`,
         };
@@ -58,7 +58,7 @@ class LateInvoiceWithPaymentLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.lateinvoicewithpayment@0.2.0.LateInvoiceResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 paymentRequired: true,
             },
             events: [event],

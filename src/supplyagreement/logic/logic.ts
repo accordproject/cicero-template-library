@@ -26,7 +26,7 @@ interface SupplyAgreementResponse extends EngineResponse<IAgreementState> {
 // @ts-ignore TemplateLogic is injected by the runtime
 class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState> {
 
-    // @ts-expect-error InitResponse is injected by the runtime
+    // @ts-ignore InitResponse is injected by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IAgreementState>> {
         return {
             state: {
@@ -78,7 +78,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
     ): Promise<SupplyAgreementResponse> {
         const now = new Date();
 
-        if (data.effectiveDate >= now) {
+        if (new Date(data.effectiveDate) >= now) {
             throw new Error('Forecast was received before the effective date');
         }
 
@@ -104,7 +104,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
 
         const event: IPurchaseObligationEvent = {
             $class: 'org.accordproject.supplyagreement@0.2.0.PurchaseObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             party: data.buyer,
             requiredPurchase,
             year,
@@ -114,7 +114,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         return {
             result: {
                 $class: 'org.accordproject.supplyagreement@0.2.0.ForecastResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
             },
             state: newState,
             events: [event],
@@ -154,7 +154,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
 
         const event: IDeliveryObligationEvent = {
             $class: 'org.accordproject.supplyagreement@0.2.0.DeliveryObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             party: data.supplier,
             expectedDelivery: request.purchaseOrder.deliveryDate,
             deliverables: orderItems,
@@ -163,7 +163,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         return {
             result: {
                 $class: 'org.accordproject.supplyagreement@0.2.0.PurchaseResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
             },
             state: newState,
             events: [event],
@@ -205,7 +205,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
 
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.supplyagreement@0.2.0.PaymentObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             party: data.buyer,
             amount,
         };
@@ -213,7 +213,7 @@ class SupplyAgreementLogic extends TemplateLogic<ITemplateModel, IAgreementState
         return {
             result: {
                 $class: 'org.accordproject.supplyagreement@0.2.0.DeliveryResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
             },
             state: newState,
             events: [event],

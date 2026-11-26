@@ -10,7 +10,7 @@ class CopyrightLicenseLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IPaymentRequest): Promise<CopyrightLicenseResponse> {
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.copyrightlicense@0.2.0.PaymentObligationEvent',
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             amount: data.paymentClause.amount,
             description: `${data.licensee} should pay contract amount to ${data.licensor}`
         };
@@ -18,7 +18,7 @@ class CopyrightLicenseLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.copyrightlicense@0.2.0.PayOut',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 amount: data.paymentClause.amount
             },
             events: [event]

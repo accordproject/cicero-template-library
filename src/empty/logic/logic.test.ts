@@ -34,7 +34,8 @@ describe('EmptyLogic', () => {
             };
             const response = await logic.trigger(model, request);
             expect(response.result.$class).toBe('org.accordproject.empty@0.1.0.EmptyResponse');
-            expect(response.result.$timestamp).toBeInstanceOf(Date);
+            // DateTime values are ISO 8601 strings
+            expect(new Date(response.result.$timestamp).toISOString()).toBe(response.result.$timestamp);
         });
     });
 });

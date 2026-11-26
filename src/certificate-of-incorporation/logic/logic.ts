@@ -20,7 +20,7 @@ class CertificateOfIncorporationLogic extends TemplateLogic<ITemplateModel> {
     async trigger(data: ITemplateModel, request: IContractSigned): Promise<IncorporationResponse> {
         const event: IIncorporationEvent = {
             $class: 'org.accordproject.certificateofincorporation@0.1.0.IncorporationEvent',
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             companyName: data.companyName,
             incorporationDate: data.incorporationDate,
             authorizedShareCapital: data.authorizedShareCapital,

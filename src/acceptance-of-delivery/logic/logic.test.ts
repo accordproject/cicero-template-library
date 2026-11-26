@@ -96,7 +96,8 @@ describe('AcceptanceOfDeliveryLogic', () => {
             const result = await logic.trigger(model, request);
 
             expect(result.result).toHaveProperty('$timestamp');
-            expect(result.result.$timestamp).toBeInstanceOf(Date);
+            // DateTime values are ISO 8601 strings
+            expect(new Date(result.result.$timestamp).toISOString()).toBe(result.result.$timestamp);
         });
     });
 });

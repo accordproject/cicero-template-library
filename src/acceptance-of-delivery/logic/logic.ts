@@ -8,11 +8,15 @@ type AcceptanceOfDeliveryResponse = {
     result: IInspectionResponse;
 };
 
+type InspectionStatusValue = IInspectionResponse['status'];
+
+// The generated InspectionStatus is a TypeScript enum; its values are written here
+// so that the logic does not import a value from the generated files at runtime.
 const InspectionStatus = {
-    PASSED_TESTING: 'PASSED_TESTING',
-    FAILED_TESTING: 'FAILED_TESTING',
-    OUTSIDE_INSPECTION_PERIOD: 'OUTSIDE_INSPECTION_PERIOD',
-} as const satisfies Record<string, IInspectionResponse['status']>;
+    PASSED_TESTING: 'PASSED_TESTING' as InspectionStatusValue,
+    FAILED_TESTING: 'FAILED_TESTING' as InspectionStatusValue,
+    OUTSIDE_INSPECTION_PERIOD: 'OUTSIDE_INSPECTION_PERIOD' as InspectionStatusValue,
+};
 
 // @ts-ignore TemplateLogic is injected by the runtime
 class AcceptanceOfDeliveryLogic extends TemplateLogic<ITemplateModel> {
@@ -45,7 +49,7 @@ class AcceptanceOfDeliveryLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.acceptanceofdelivery@0.1.0.InspectionResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 status,
                 shipper: data.shipper,
                 receiver: data.receiver,

@@ -10,7 +10,7 @@ class OnlinePaymentContractTRLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.onlinepaymentcontracttr@0.1.0.MyResponse',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 output: request.input,
             },
         };

@@ -17,7 +17,7 @@ interface PerishableGoodsResponse extends EngineResponse<IPerishableGoodsState> 
 // @ts-ignore TemplateLogic is imported by the runtime
 class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGoodsState> {
 
-    // @ts-expect-error InitResponse is imported by the runtime
+    // @ts-ignore InitResponse is imported by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IPerishableGoodsState>> {
         return {
             state: {
@@ -93,7 +93,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
             // Shipment is late - return zero price
             const lateResult: IPriceCalculation = {
                 $class: "org.accordproject.perishablegoods@0.2.0.PriceCalculation",
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 totalPrice: 0.0,
                 penalty: 0.0,
                 currencyCode: currency,
@@ -136,7 +136,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
 
         const event: IPerishableGoodsPaymentEvent = {
             $class: "org.accordproject.perishablegoods@0.2.0.PerishableGoodsPaymentEvent",
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             totalPrice,
             currencyCode: currency,
             description: `${data.importer} should pay shipment amount to ${data.grower}`,
@@ -144,7 +144,7 @@ class PerishableGoodsLogic extends TemplateLogic<ITemplateModel, IPerishableGood
 
         const result: IPriceCalculation = {
             $class: "org.accordproject.perishablegoods@0.2.0.PriceCalculation",
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             totalPrice,
             penalty: totalPenalty,
             currencyCode: currency,

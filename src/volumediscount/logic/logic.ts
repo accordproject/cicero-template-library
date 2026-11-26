@@ -19,7 +19,7 @@ class VolumeDiscountLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.volumediscount@0.2.0.VolumeDiscountResponse',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 discountRate,
             },
         };

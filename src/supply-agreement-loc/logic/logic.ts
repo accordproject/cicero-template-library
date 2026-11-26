@@ -17,7 +17,7 @@ interface SupplyAgreementLocResponse extends EngineResponse<ISupplyAgreementStat
 // @ts-ignore TemplateLogic is injected by the runtime
 class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgreementState> {
 
-    // @ts-expect-error InitResponse is injected by the runtime
+    // @ts-ignore InitResponse is injected by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<ISupplyAgreementState>> {
         return {
             state: {
@@ -55,7 +55,7 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
             return {
                 result: {
                     $class: 'org.accordproject.supplyagreementloc@0.2.0.DeliveryResponse',
-                    $timestamp: now,
+                    $timestamp: now.toISOString(),
                     message: 'Sensor reading received',
                     inGoodOrder: true,
                 },
@@ -80,7 +80,7 @@ class SupplyAgreementLocLogic extends TemplateLogic<ITemplateModel, ISupplyAgree
             return {
                 result: {
                     $class: 'org.accordproject.supplyagreementloc@0.2.0.DeliveryResponse',
-                    $timestamp: now,
+                    $timestamp: now.toISOString(),
                     message,
                     inGoodOrder: sufficientReadings,
                 },

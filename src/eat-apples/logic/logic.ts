@@ -21,7 +21,7 @@ class EatApplesLogic extends TemplateLogic<ITemplateModel> {
             return {
                 result: {
                     notice: "You're fired!",
-                    $timestamp: new Date(),
+                    $timestamp: new Date().toISOString(),
                     $class: 'org.accordproject.eatapples@0.2.0.Outcome'
                 },
                 events: []
@@ -30,7 +30,7 @@ class EatApplesLogic extends TemplateLogic<ITemplateModel> {
 
         const bill: IBill = {
             $class: 'org.accordproject.eatapples@0.2.0.Bill',
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             billTo: data.employee,
             amount: monetary(request.price.doubleValue * (1.0 + data.tax / 100.0), request.price.currencyCode)
         };
@@ -38,7 +38,7 @@ class EatApplesLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 notice: 'Very healthy!',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.eatapples@0.2.0.Outcome'
             },
             events: [bill]

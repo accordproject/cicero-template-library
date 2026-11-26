@@ -312,7 +312,8 @@ describe("PaymentUponIoTLogic", () => {
             const state = runningState({ counter: 1.0 });
             const result = await logic.trigger(model, makeRequest("SingleButtonPress"), state);
             expect(result.result.$class).toBe(`${NS}.CounterResponse`);
-            expect(result.result.$timestamp).toBeInstanceOf(Date);
+            // DateTime values are ISO 8601 strings
+            expect(new Date(result.result.$timestamp).toISOString()).toBe(result.result.$timestamp);
         });
     });
 });

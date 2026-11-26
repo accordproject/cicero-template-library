@@ -46,7 +46,7 @@ class MiniLateDeliveryAndPenaltyCappedLogic extends TemplateLogic<ITemplateModel
         return {
             result: {
                 $class: 'org.accordproject.minilatedeliveryandpenaltycapped@0.2.0.LateResponse',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 penalty: monetary(cappedPenalty, request.goodsValue.currencyCode),
                 buyerMayTerminate,
             },

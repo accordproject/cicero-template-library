@@ -48,7 +48,7 @@ class MiniLateDeliveryAndPenaltyPaymentLogic extends TemplateLogic<ITemplateMode
 
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.minilatedeliveryandpenaltypayment@0.2.0.PaymentObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             amount: cappedPenaltyAmount,
             description: `${data.seller} should pay penalty amount to ${data.buyer}`,
         };
@@ -56,7 +56,7 @@ class MiniLateDeliveryAndPenaltyPaymentLogic extends TemplateLogic<ITemplateMode
         return {
             result: {
                 $class: 'org.accordproject.minilatedeliveryandpenaltypayment@0.2.0.LateResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 penalty: cappedPenaltyAmount,
                 buyerMayTerminate,
             },

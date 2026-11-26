@@ -18,7 +18,7 @@ interface FullPaymentUponSignatureEngineResponse extends EngineResponse<IFullPay
 // @ts-ignore TemplateLogic is injected by the runtime
 class FullPaymentUponSignatureLogic extends TemplateLogic<ITemplateModel, IFullPaymentUponSignatureState> {
 
-    // @ts-expect-error InitResponse is injected by the runtime
+    // @ts-ignore InitResponse is injected by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IFullPaymentUponSignatureState>> {
         return {
             state: {
@@ -43,12 +43,12 @@ class FullPaymentUponSignatureLogic extends TemplateLogic<ITemplateModel, IFullP
             }
             const event: IPaymentObligationEvent = {
                 $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.PaymentObligationEvent',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 amount: data.amount,
                 description: `${data.buyer} should pay contract amount to ${data.seller}`,
             };
             return {
-                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.ContractSignedResponse', $timestamp: now },
+                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.ContractSignedResponse', $timestamp: now.toISOString() },
                 state: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState', $identifier: state.$identifier, status: 'OBLIGATION_EMITTED' },
                 events: [event],
             };
@@ -57,7 +57,7 @@ class FullPaymentUponSignatureLogic extends TemplateLogic<ITemplateModel, IFullP
                 throw new Error("Either a payment obligation hasn't yet been emitted or payment has already been received.");
             }
             return {
-                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.PaymentReceivedResponse', $timestamp: now },
+                result: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.PaymentReceivedResponse', $timestamp: now.toISOString() },
                 state: { $class: 'org.accordproject.fullpaymentupondsignature@0.2.0.FullPaymentUponSignatureState', $identifier: state.$identifier, status: 'COMPLETED' },
                 events: [],
             };

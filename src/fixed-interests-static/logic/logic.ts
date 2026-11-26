@@ -10,7 +10,7 @@ class FixedInterestsStaticLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 output: `loan for the amount of ${data.loanAmount}`,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.fixedinterestsstatic@0.2.0.FixedInterestsStaticResponse'
             }
         };

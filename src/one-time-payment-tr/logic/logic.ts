@@ -16,12 +16,12 @@ interface OneTimePaymentEngineResponse extends EngineResponse<IOneTimePaymentSta
 // @ts-ignore TemplateLogic is injected by the runtime
 class OneTimePaymentLogic extends TemplateLogic<ITemplateModel, IOneTimePaymentState> {
 
-    // @ts-expect-error InitResponse is injected by the runtime
+    // @ts-ignore InitResponse is injected by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IOneTimePaymentState>> {
         const now = new Date();
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.onetimepaymenttr@0.2.0.PaymentObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             amount: data.totalPurchasePrice,
             description: `${data.buyer} should pay total purchase price to ${data.seller}`,
         };
@@ -45,7 +45,7 @@ class OneTimePaymentLogic extends TemplateLogic<ITemplateModel, IOneTimePaymentS
             throw new Error('Payment has already been received.');
         }
         return {
-            result: { $class: 'org.accordproject.onetimepaymenttr@0.2.0.PaymentReceivedResponse', $timestamp: now },
+            result: { $class: 'org.accordproject.onetimepaymenttr@0.2.0.PaymentReceivedResponse', $timestamp: now.toISOString() },
             state: { $class: 'org.accordproject.onetimepaymenttr@0.2.0.OneTimePaymentState', $identifier: state.$identifier, status: 'COMPLETED' },
             events: [],
         };
