@@ -17,7 +17,7 @@ class HelloModuleLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.hellomodule@0.1.0.MyResponse',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 output: `Hello ${data.name} (${request.input}) [motd: PI/2.0 radians is ${degrees} degrees]`,
             },
         };

@@ -35,7 +35,7 @@ interface IoTResponse extends EngineResponse<ICounterState> {
 // @ts-ignore TemplateLogic is imported by the runtime
 class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
 
-    // @ts-expect-error InitResponse is imported by the runtime
+    // @ts-ignore InitResponse is imported by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<ICounterState>> {
         return {
             state: {
@@ -51,7 +51,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
     private makeCounterResponse(state: ICounterState): ICounterResponse {
         return {
             $class: `${NS}.CounterResponse`,
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             counter: state.counter,
             paymentCount: state.paymentCount,
         };
@@ -135,7 +135,7 @@ class PaymentUponIoTLogic extends TemplateLogic<ITemplateModel, ICounterState> {
         }
         const event: IPaymentObligationEvent = {
             $class: `${NS}.PaymentObligationEvent`,
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             amount: {
                 $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
                 doubleValue: data.amountPerUnit.doubleValue * state.counter,

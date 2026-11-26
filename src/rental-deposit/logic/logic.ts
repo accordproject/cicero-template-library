@@ -39,7 +39,7 @@ class RentalDepositLogic extends TemplateLogic<ITemplateModel> {
 
         const event: IRentalDepositPaymentEvent = {
             $class: `${NS}.RentalDepositPaymentEvent`,
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             amount: monetary(balance, currencyCode),
             description
         };
@@ -47,7 +47,7 @@ class RentalDepositLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 balance: monetary(balance, currencyCode),
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: `${NS}.PropertyInspectionResponse`
             },
             events: [event]

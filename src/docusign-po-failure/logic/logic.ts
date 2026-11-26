@@ -81,7 +81,7 @@ interface PurchaseOrderResponse extends EngineResponse<IPurchaseOrderFailureStat
 // @ts-ignore TemplateLogic is imported by the runtime
 class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseOrderFailureState> {
 
-    // @ts-expect-error InitResponse is imported by the runtime
+    // @ts-ignore InitResponse is imported by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IPurchaseOrderFailureState>> {
         return {
             state: {
@@ -193,7 +193,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
             return {
                 result: {
                     $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureResponse',
-                    $timestamp: new Date(),
+                    $timestamp: new Date().toISOString(),
                     penaltyAmount: monetary(0.0, currencyCode)
                 },
                 state: { ...state },
@@ -212,9 +212,9 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         }
 
         // Update past failures within range
-        const pastFailureDates = state.pastFailures.map(d => d.toISOString());
+        // DateTime values are ISO 8601 strings
         const updatedFailures = this.failuresInRange(
-            [...pastFailureDates, deliveryDate.toISOString()],
+            [...state.pastFailures, deliveryDate.toISOString()],
             failureRangeDuration
         );
         const nbFailures = updatedFailures.length;
@@ -228,13 +228,13 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         const newState: IPurchaseOrderFailureState = {
             $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureState',
             $identifier: state.$identifier,
-            pastFailures: updatedFailures.map(d => new Date(d)),
+            pastFailures: updatedFailures,
             nbPastFailures: nbFailures
         };
 
         const event: IPurchaseOrderPaymentEvent = {
             $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderPaymentEvent',
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             penaltyAmount: monetary(penaltyAmount, currencyCode),
             description: `${data.buyerName} should be paid a penalty`
         };
@@ -242,7 +242,7 @@ class PurchaseOrderFailureLogic extends TemplateLogic<ITemplateModel, IPurchaseO
         return {
             result: {
                 $class: 'org.accordproject.docusignpofailure@0.2.0.PurchaseOrderFailureResponse',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 penaltyAmount: monetary(penaltyAmount, currencyCode)
             },
             state: newState,

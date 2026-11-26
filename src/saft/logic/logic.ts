@@ -23,7 +23,7 @@ class SaftLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 tokenAmount: 100.0,
                 tokenAddress: data.purchaser,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.saft@0.2.0.Payout'
             }
         };
@@ -34,7 +34,7 @@ class SaftLogic extends TemplateLogic<ITemplateModel> {
             result: {
                 tokenAmount: 9.0,
                 tokenAddress: data.purchaser,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.saft@0.2.0.Payout'
             }
         };

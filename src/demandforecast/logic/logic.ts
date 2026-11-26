@@ -26,7 +26,7 @@ class DemandForecastLogic extends TemplateLogic<ITemplateModel> {
                 requiredPurchase,
                 year,
                 quarter,
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 $class: 'org.accordproject.demandforecast@0.1.0.BindingResponse'
             }
         };

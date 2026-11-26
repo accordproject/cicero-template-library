@@ -91,7 +91,8 @@ describe("FragileGoodsLogic", () => {
             expect(response.result.paymentAmount.doubleValue).toBe(1000.0);
             expect(response.result.paymentAmount.currencyCode).toBe("USD");
             expect(response.result.$class).toBe(`${NS}.PayOut`);
-            expect(response.result.$timestamp).toBeInstanceOf(Date);
+            // DateTime values are ISO 8601 strings
+            expect(new Date(response.result.$timestamp).toISOString()).toBe(response.result.$timestamp);
             expect(Array.isArray(response.events)).toBe(true);
             expect(response.events).toHaveLength(1);
         });

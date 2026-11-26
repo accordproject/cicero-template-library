@@ -10,7 +10,7 @@ class SalesContractRuLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 output: request.input,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.salescontractru@0.1.0.MyResponse'
             }
         };

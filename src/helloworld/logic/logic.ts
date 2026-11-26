@@ -10,7 +10,7 @@ class HelloWorldLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 output: `Hello ${data.name} ${request.input}`,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.helloworld@0.1.0.MyResponse'
             }
         };

@@ -63,7 +63,7 @@ class ServiceLevelAgreementLogic extends TemplateLogic<ITemplateModel> {
                         doubleValue: 0.0,
                         currencyCode: request.monthlyCharge.currencyCode,
                     },
-                    $timestamp: new Date(),
+                    $timestamp: new Date().toISOString(),
                     $class: `${NS}.InvoiceCredit`
                 },
                 events: []
@@ -72,7 +72,7 @@ class ServiceLevelAgreementLogic extends TemplateLogic<ITemplateModel> {
 
         const event: IServiceCreditPaymentEvent = {
             $class: `${NS}.ServiceCreditPaymentEvent`,
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             amount: {
                 $class: 'org.accordproject.money@0.3.0.MonetaryAmount',
                 doubleValue: monthlyCredit,
@@ -88,7 +88,7 @@ class ServiceLevelAgreementLogic extends TemplateLogic<ITemplateModel> {
                     doubleValue: toFixed(monthlyCredit),
                     currencyCode: request.monthlyCharge.currencyCode,
                 },
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: `${NS}.InvoiceCredit`
             },
             events: [event]

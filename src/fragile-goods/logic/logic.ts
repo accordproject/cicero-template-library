@@ -55,7 +55,7 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
         if (request.status !== "ARRIVED" || !request.finishTime) {
             const result: IPayOut = {
                 $class: "org.accordproject.fragilegoods@0.2.0.PayOut",
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 paymentAmount: monetary(amount, currency),
             };
             return { result, events: [] };
@@ -73,13 +73,13 @@ class FragileGoodsLogic extends TemplateLogic<ITemplateModel> {
 
         const event: IFragileGoodsEvent = {
             $class: "org.accordproject.fragilegoods@0.2.0.FragileGoodsEvent",
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             paymentAmount: monetary(amount, currency),
         };
 
         const result: IPayOut = {
             $class: "org.accordproject.fragilegoods@0.2.0.PayOut",
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             paymentAmount: monetary(amount, currency),
         };
 

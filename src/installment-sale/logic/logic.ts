@@ -44,7 +44,7 @@ function assertCurrency(currencyCode: IMonetaryAmount['currencyCode'], amounts: 
 // @ts-ignore TemplateLogic is imported by the runtime
 class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSaleState> {
 
-    // @ts-expect-error InitResponse is imported by the runtime
+    // @ts-ignore InitResponse is imported by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IInstallmentSaleState>> {
         assertCurrency(data.INITIAL_DUE.currencyCode, [
             data.TOTAL_DUE_BEFORE_CLOSING,
@@ -121,7 +121,7 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
 
         const event: IInstallmentSalePaymentEvent = {
             $class: `${NS}.InstallmentSalePaymentEvent`,
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             amount: request.amount,
             description: `${data.BUYER} should pay installment to ${data.SELLER}`
         };
@@ -132,7 +132,7 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
                 balanceCurrency: request.amount.currencyCode,
                 total_paid,
                 totalPaidCurrency: request.amount.currencyCode,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: `${NS}.Balance`
             },
             state: newState,
@@ -175,7 +175,7 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
 
         const event: IInstallmentSalePaymentEvent = {
             $class: `${NS}.InstallmentSalePaymentEvent`,
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             amount: request.amount,
             description: `${data.BUYER} should pay installment to ${data.SELLER}`
         };
@@ -186,7 +186,7 @@ class InstallmentSaleLogic extends TemplateLogic<ITemplateModel, IInstallmentSal
                 balanceCurrency: request.amount.currencyCode,
                 total_paid,
                 totalPaidCurrency: request.amount.currencyCode,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: `${NS}.Balance`
             },
             state: newState,

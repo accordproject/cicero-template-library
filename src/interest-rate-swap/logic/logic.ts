@@ -30,7 +30,7 @@ class InterestRateSwapLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 outstandingBalance: monetary(10.0, data.notionalAmount.currencyCode),
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.isda.irs@0.2.0.Result'
             }
         };

@@ -127,6 +127,52 @@ describe('template compilation', () => {
     }
 });
 
+// Logic type checking
+//
+// template-engine compiles logic/logic.ts against the types it generates from the
+// model, but compileLogic() reports type errors instead of throwing, so logic that
+// no longer type-checks still renders and triggers. Template Playground refuses to
+// run such logic, so every template with logic must compile without errors.
+//
+// Templates whose events extend org.accordproject.runtime@0.2.0.Obligation (#527)
+// but do not yet set its required $identifier and contract.
+const expectedLogicTypeErrors = new Set([
+    'certificate-of-incorporation',
+    'copyright-license',
+    'docusign-connect',
+    'docusign-po-failure',
+    'fragile-goods',
+    'full-payment-upon-demand',
+    'helloworldstate',
+    'installment-sale',
+    'latedeliveryandpenalty',
+    'lateinvoicewithpayment',
+    'payment-upon-delivery',
+    'payment-upon-iot',
+    'payment-upon-signature',
+    'perishable-goods',
+    'rental-deposit',
+    'servicelevelagreement',
+    'supplyagreement',
+    'supply-agreement-loc',
+    'supplyagreement-perishable-goods',
+]);
+
+describe('template logic type-checks', () => {
+    for (const { name, path: templatePath } of logicTemplates) {
+        const test = expectedLogicTypeErrors.has(name) ? it.fails : it;
+        test(name, async () => {
+            const template = await getTemplate(templatePath);
+            const proc = new TemplateArchiveProcessor(template);
+            const compiled = await proc.compileLogic();
+            const errors = (compiled['logic/logic.ts']?.errors || [])
+                .filter(e => e.category === 1)
+                .map(e => `TS${e.code} ${e.renderedMessage.split('\n')[0]}`);
+            expect(errors, `${name}: logic does not type-check`).toEqual([]);
+        }, 60_000);
+    }
+});
+
 // Draft rendering
 
 describe('template-engine render', () => {

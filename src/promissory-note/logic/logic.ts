@@ -38,7 +38,7 @@ class PromissoryNoteLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 outstandingBalance: compounded,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.promissorynote@0.2.0.Result'
             }
         };

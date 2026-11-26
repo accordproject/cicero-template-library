@@ -76,7 +76,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
 
             const lateEvent: IPaymentObligationEvent = {
                 $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PaymentObligationEvent',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 grower: data.grower,
                 importer: data.importer,
                 totalPrice: zeroAmount,
@@ -85,7 +85,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
             return {
                 result: {
                     $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PriceCalculation',
-                    $timestamp: now,
+                    $timestamp: now.toISOString(),
                     totalPrice: zeroAmount,
                     penalty: zeroAmount,
                     late: true,
@@ -128,7 +128,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
 
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PaymentObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             grower: data.grower,
             importer: data.importer,
             totalPrice: totalPriceAmount,
@@ -138,7 +138,7 @@ class SupplyAgreementPerishableGoodsLogic extends TemplateLogic<ITemplateModel> 
         return {
             result: {
                 $class: 'org.accordproject.supplyagreementperishablegoods@0.2.0.PriceCalculation',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 totalPrice: totalPriceAmount,
                 penalty: totalPenaltyAmount,
                 late: false,

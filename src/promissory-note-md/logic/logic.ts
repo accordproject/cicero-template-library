@@ -50,7 +50,7 @@ class PromissoryNoteMdLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 outstandingBalance: monetary(compounded, data.amount.currencyCode),
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.promissorynotemd@0.2.0.Result'
             }
         };

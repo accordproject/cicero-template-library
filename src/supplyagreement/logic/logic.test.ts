@@ -100,6 +100,18 @@ describe('SupplyAgreementLogic', () => {
             await expect(logic.trigger(futureModel, request, initialState))
                 .rejects.toThrow('Forecast was received before the effective date');
         });
+
+        it('should throw if effectiveDate is in the future, given as the ISO string the engine passes', async () => {
+            const futureModel = { ...model, effectiveDate: '2099-01-01T00:00:00Z' };
+            const request: IForecastRequest = {
+                $class: 'org.accordproject.supplyagreement@0.2.0.ForecastRequest',
+                $identifier: 'req-1',
+                $timestamp: new Date().toISOString(),
+                supplyForecast: 1000,
+            };
+            await expect(logic.trigger(futureModel, request, initialState))
+                .rejects.toThrow('Forecast was received before the effective date');
+        });
     });
 
     describe('trigger - purchase', () => {

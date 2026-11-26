@@ -37,7 +37,7 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 tokenAmount,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.safte@0.2.0.TokenShare'
             }
         };
@@ -55,7 +55,7 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
                     doubleValue: equityAmount,
                     currencyCode: data.purchaseAmount.currencyCode,
                 },
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.safte@0.2.0.EquityShare'
             }
         };
@@ -65,7 +65,7 @@ class SafteLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 amount: data.purchaseAmount,
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 $class: 'org.accordproject.safte@0.2.0.PayOut'
             }
         };

@@ -17,7 +17,7 @@ interface HelloWorldStateEngineResponse extends EngineResponse<IHelloWorldState>
 // @ts-ignore TemplateLogic is injected by the runtime
 class HelloWorldStateLogic extends TemplateLogic<ITemplateModel, IHelloWorldState> {
 
-    // @ts-expect-error InitResponse is injected by the runtime
+    // @ts-ignore InitResponse is injected by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IHelloWorldState>> {
         return {
             state: {
@@ -38,7 +38,7 @@ class HelloWorldStateLogic extends TemplateLogic<ITemplateModel, IHelloWorldStat
         return {
             result: {
                 $class: 'org.accordproject.helloworldstate@0.1.0.MyResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 output: `Hello ${data.name} ${request.input}(${currentCounter})`,
             },
             state: {

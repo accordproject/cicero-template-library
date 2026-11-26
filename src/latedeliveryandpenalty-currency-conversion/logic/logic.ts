@@ -45,7 +45,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
             return {
                 result: {
                     $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.LateDeliveryAndPenaltyResponse',
-                    $timestamp: now,
+                    $timestamp: now.toISOString(),
                     penalty: monetary(0, data.toCurrency as CurrencyCode),
                     buyerMayTerminate: true,
                 },
@@ -72,7 +72,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
 
         const event: IPaymentObligationEvent = {
             $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.PaymentObligationEvent',
-            $timestamp: now,
+            $timestamp: now.toISOString(),
             amount: cappedAmount,
             description: `${data.seller} should pay penalty amount to ${data.buyer}`,
         };
@@ -80,7 +80,7 @@ class LateDeliveryAndPenaltyCurrencyConversionLogic extends TemplateLogic<ITempl
         return {
             result: {
                 $class: 'org.accordproject.latedeliveryandpenaltycurrencyconversion@0.2.0.LateDeliveryAndPenaltyResponse',
-                $timestamp: now,
+                $timestamp: now.toISOString(),
                 penalty: cappedAmount,
                 buyerMayTerminate,
             },

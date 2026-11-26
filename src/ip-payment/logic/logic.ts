@@ -66,7 +66,7 @@ class IPPaymentLogic extends TemplateLogic<ITemplateModel> {
         return {
             result: {
                 $class: 'org.accordproject.ippayment@0.3.0.PayOut',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 totalAmount: monetary(totalAmountValue, netSaleRevenue.currencyCode),
                 dueBy: dueBy.toISOString(),
             },

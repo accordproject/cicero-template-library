@@ -26,7 +26,7 @@ interface DocuSignConnectResponse extends EngineResponse<IDocuSignEnvelopeCounte
 // @ts-ignore TemplateLogic is imported by the runtime
 class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelopeCounterState> {
 
-    // @ts-expect-error InitResponse is imported by the runtime
+    // @ts-ignore InitResponse is imported by the runtime
     async init(data: ITemplateModel): Promise<InitResponse<IDocuSignEnvelopeCounterState>> {
         return {
             state: {
@@ -54,7 +54,7 @@ class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelo
             return {
                 result: {
                     $class: 'org.accordproject.docusignconnect@0.1.0.MyResponse',
-                    $timestamp: new Date(),
+                    $timestamp: new Date().toISOString(),
                     output: this.buildMessage(state.counter, contractStatus),
                     counter: state.counter
                 },
@@ -75,7 +75,7 @@ class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelo
 
         const event: IDocuSignNotificationEvent = {
             $class: 'org.accordproject.docusignconnect@0.1.0.DocuSignNotificationEvent',
-            $timestamp: new Date(),
+            $timestamp: new Date().toISOString(),
             title: `Contracts with status ${contractStatus}`,
             message: this.buildMessage(newCounter, contractStatus)
         };
@@ -83,7 +83,7 @@ class DocuSignConnectLogic extends TemplateLogic<ITemplateModel, IDocuSignEnvelo
         return {
             result: {
                 $class: 'org.accordproject.docusignconnect@0.1.0.MyResponse',
-                $timestamp: new Date(),
+                $timestamp: new Date().toISOString(),
                 output: this.buildMessage(newCounter, contractStatus),
                 counter: newCounter
             },
